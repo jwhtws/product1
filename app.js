@@ -8,6 +8,8 @@
   const pager = document.getElementById('pager');
   const modal = document.getElementById('detail-modal');
   const modalContent = document.getElementById('modal-content');
+  // 초기 HTML 샘플(구 데이터)이 잠깐 노출되지 않도록 비웁니다.
+  grid.innerHTML = '';
   const pageSize = 20;
   let restaurants = [];
   let allRestaurants = [];
@@ -79,7 +81,7 @@
     const start = (page - 1) * pageSize;
     const shown = matches.slice(start, start + pageSize);
     summary.textContent = `${matches.length.toLocaleString('ko-KR')}곳${query ? ' 검색됨' : ''}`;
-    state.textContent = fullLoaded ? '식당을 눌러 상세정보를 확인하세요.' : '식당명 미리보기입니다. 검색하면 전국 전체 목록을 불러옵니다.';
+    state.textContent = fullLoaded ? '식당을 눌러 상세정보를 확인하세요.' : '전국 16개 시·도 미리보기입니다. 검색하면 전국 전체 목록을 불러옵니다.';
     grid.innerHTML = shown.map((restaurant, index) => restaurantCard(restaurant, start + index)).join('') || '<p class="state">검색 결과가 없습니다.</p>';
     pager.innerHTML = matches.length ? `<button type="button" data-page="prev" ${page === 1 ? 'disabled' : ''}>이전</button><span>${page} / ${pages}</span><button type="button" data-page="next" ${page === pages ? 'disabled' : ''}>다음</button>` : '';
     grid.querySelectorAll('.restaurant-card').forEach(card => {
