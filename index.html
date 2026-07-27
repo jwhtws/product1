@@ -1,1 +1,296 @@
-gggg
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>먹당</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f5f5f5;
+}
+
+header{
+    background:#ff6b35;
+    color:white;
+    padding:20px;
+    text-align:center;
+}
+
+.search{
+    margin-top:15px;
+}
+
+.search input{
+    width:60%;
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+}
+
+.search button{
+    padding:12px 20px;
+    background:white;
+    color:#ff6b35;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.container{
+    width:1200px;
+    margin:30px auto;
+}
+
+.restaurant{
+    display:flex;
+    background:white;
+    border-radius:10px;
+    overflow:hidden;
+    margin-bottom:25px;
+    box-shadow:0 5px 10px rgba(0,0,0,.1);
+}
+
+.restaurant img{
+    width:300px;
+    height:220px;
+    object-fit:cover;
+}
+
+.info{
+    padding:20px;
+    flex:1;
+}
+
+.title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.score{
+    font-size:28px;
+    color:#ff6b35;
+    font-weight:bold;
+}
+
+.star{
+    color:gold;
+    font-size:20px;
+}
+
+.tag{
+    display:inline-block;
+    background:#eee;
+    padding:5px 10px;
+    border-radius:20px;
+    margin-top:10px;
+}
+
+.review{
+    margin-top:20px;
+    background:#fafafa;
+    padding:15px;
+    border-radius:8px;
+}
+
+.review h4{
+    margin-bottom:8px;
+}
+
+.review p{
+    color:#555;
+}
+
+.btn{
+    margin-top:15px;
+    background:#ff6b35;
+    color:white;
+    border:none;
+    padding:10px 18px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+footer{
+    margin-top:50px;
+    text-align:center;
+    padding:30px;
+    color:#666;
+}
+
+@media(max-width:900px){
+
+.container{
+width:95%;
+}
+
+.restaurant{
+flex-direction:column;
+}
+
+.restaurant img{
+width:100%;
+}
+
+.search input{
+width:90%;
+margin-bottom:10px;
+}
+
+}
+</style>
+
+</head>
+<body>
+
+<header>
+
+<h1>🍜 먹당</h1>
+
+<div class="search">
+<input type="text" placeholder="맛집 또는 지역 검색">
+<button>검색</button>
+</div>
+
+</header>
+
+<div class="container">
+
+<div class="restaurant">
+
+<img src="https://picsum.photos/500/300?1">
+
+<div class="info">
+
+<div class="title">
+<h2>서울 스시하우스</h2>
+<div class="score">4.8</div>
+</div>
+
+<div class="star">
+★★★★★
+</div>
+
+<div class="tag">🍣 일식</div>
+<div class="tag">💰 ₩₩</div>
+<div class="tag">📍 강남</div>
+
+<p style="margin-top:15px;">
+신선한 재료와 오마카세로 유명한 스시 전문점.
+</p>
+
+<div class="review">
+
+<h4>⭐⭐⭐⭐⭐ 홍길동</h4>
+
+<p>
+회가 정말 신선했고 직원분들도 친절했습니다.
+다음에도 꼭 방문하고 싶은 맛집입니다.
+</p>
+
+</div>
+
+<button class="btn">리뷰 작성</button>
+
+</div>
+
+</div>
+
+<div class="restaurant">
+
+<img src="https://picsum.photos/500/300?2">
+
+<div class="info">
+
+<div class="title">
+<h2>부산 돼지국밥</h2>
+<div class="score">4.6</div>
+</div>
+
+<div class="star">
+★★★★★
+</div>
+
+<div class="tag">🍲 한식</div>
+<div class="tag">💰 ₩</div>
+<div class="tag">📍 부산</div>
+
+<p style="margin-top:15px;">
+진한 국물과 푸짐한 고기로 유명한 국밥집.
+</p>
+
+<div class="review">
+
+<h4>⭐⭐⭐⭐☆ 김철수</h4>
+
+<p>
+국물이 정말 깊고 고기가 부드러웠어요.
+가격도 저렴해서 만족했습니다.
+</p>
+
+</div>
+
+<button class="btn">리뷰 작성</button>
+
+</div>
+
+</div>
+
+<div class="restaurant">
+
+<img src="https://picsum.photos/500/300?3">
+
+<div class="info">
+
+<div class="title">
+<h2>카페 루나</h2>
+<div class="score">4.9</div>
+</div>
+
+<div class="star">
+★★★★★
+</div>
+
+<div class="tag">☕ 카페</div>
+<div class="tag">💰 ₩₩</div>
+<div class="tag">📍 제주</div>
+
+<p style="margin-top:15px;">
+오션뷰와 직접 로스팅한 커피가 인기인 카페.
+</p>
+
+<div class="review">
+
+<h4>⭐⭐⭐⭐⭐ 이영희</h4>
+
+<p>
+뷰가 정말 아름답고 디저트도 훌륭했습니다.
+사진 찍기 좋은 카페입니다.
+</p>
+
+</div>
+
+<button class="btn">리뷰 작성</button>
+
+</div>
+
+</div>
+
+</div>
+
+<footer>
+© 2026 먹당
+</footer>
+
+</body>
+</html>
