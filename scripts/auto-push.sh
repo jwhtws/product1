@@ -3,6 +3,10 @@
 # Automatically commit and push workspace changes while this process is running.
 set -u
 
+# Codespaces may provide an outdated token in this variable.  Use the
+# GitHub CLI credential configured for this workspace instead.
+unset GITHUB_TOKEN
+
 REPO_DIR="$(git rev-parse --show-toplevel)"
 cd "$REPO_DIR"
 
