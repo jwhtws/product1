@@ -10,6 +10,16 @@
   const modalContent = document.getElementById('modal-content');
   // 초기 HTML 샘플(구 데이터)이 잠깐 노출되지 않도록 비웁니다.
   grid.innerHTML = '';
+  const restaurantsSection = document.getElementById('restaurants');
+  const layout = document.createElement('div');
+  layout.className = 'content-layout';
+  const popular = document.createElement('aside');
+  popular.className = 'popular-sidebar';
+  popular.setAttribute('aria-labelledby', 'popular-title');
+  popular.innerHTML = '<h2 id="popular-title">식당 검색 인기순위</h2><ol id="popular-list"><li class="empty-popular">검색하면 인기순위에 표시됩니다.</li></ol>';
+  restaurantsSection.parentNode.insertBefore(layout, restaurantsSection);
+  layout.appendChild(popular);
+  layout.appendChild(restaurantsSection);
   const pageSize = 20;
   let restaurants = [];
   let allRestaurants = [];
@@ -39,7 +49,7 @@
       if (end < 0) break;
       name = name.slice(end + 1).trim();
     }
-    name = name.replace(/^[\s.,·•:;|]+/g, '').trim();
+    name = name.replace(/^[\s.,·•:;|_]+|[\s.,·•:;|_]+$/g, '').trim();
     return name || String(value ?? '').trim();
   }
 
@@ -91,8 +101,26 @@
       card.addEventListener('click', event => { if (event.target.tagName !== 'A') open(); });
       card.addEventListener('keydown', event => { if (event.key === 'Enter') open(); });
     });
+    renderPopular();
     pager.querySelector('[data-page="prev"]')?.addEventListener('click', () => { page -= 1; render(); });
     pager.querySelector('[data-page="next"]')?.addEventListener('click', () => { page += 1; render(); });
+  }
+
+  function renderPopular() {
+    const target = document.getElementById('popular-list');
+    if (!target) return;
+    const saved = JSON.parse(localStorage.getItem('meokdang-popular') || '{}');
+    const ranked = Object.entries(saved).sort((a, b) => b[1] - a[1]).slice(0, 10);
+    target.innerHTML = ranked.length
+      ? ranked.map(([name, count], index) => `<li><span>${index + 1}</span><strong>${escapeHtml(name)}</strong><small>${count}회</small></li>`).join('')
+      : '<li class="empty-popular">검색하면 인기순위에 표시됩니다.</li>';
+  }
+
+  function recordPopular(restaurant) {
+    if (!restaurant?.name) return;
+    const saved = JSON.parse(localStorage.getItem('meokdang-popular') || '{}');
+    saved[restaurant.name] = (saved[restaurant.name] || 0) + 1;
+    localStorage.setItem('meokdang-popular', JSON.stringify(saved));
   }
 
   function renderSuggestions() {
@@ -120,7 +148,7 @@
 
   async function search() {
     suggestions.innerHTML = '';
-    try { await loadAllRestaurants(); page = 1; render(); } catch (error) { console.error(error); state.textContent = '데이터를 불러오지 못했습니다. 새로고침 후 다시 시도해 주세요.'; }
+    try { await loadAllRestaurants(); page = 1; render(); recordPopular(restaurants.find(restaurant => searchKey(restaurant.name).includes(searchKey(input.value)))); renderPopular(); } catch (error) { console.error(error); state.textContent = '데이터를 불러오지 못했습니다. 새로고침 후 다시 시도해 주세요.'; }
   }
 
   document.getElementById('modal-close').addEventListener('click', () => modal.classList.remove('open'));
