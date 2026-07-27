@@ -26,6 +26,18 @@ header{
 
 .search{
     margin-top:15px;
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
+.search select{
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    color:#444;
 }
 
 .search input{
@@ -200,6 +212,20 @@ footer{
     color:#666;
 }
 
+.data-status{
+    color:#666;
+    margin-bottom:18px;
+}
+
+.data-note{
+    padding:12px 15px;
+    background:#fff4ef;
+    color:#8c4a32;
+    border-radius:8px;
+    margin-bottom:20px;
+    font-size:14px;
+}
+
 @media(max-width:900px){
 
 .container{
@@ -242,13 +268,16 @@ padding:24px;
 <h1>🍜 먹당</h1>
 
 <div class="search">
+<select id="region-select" aria-label="지역 선택">
+<option value="">지역 불러오는 중...</option>
+</select>
 <input type="text" placeholder="맛집 또는 지역 검색">
-<button>검색</button>
+<button id="search-button">검색</button>
 </div>
 
 </header>
 
-<div class="container">
+<div class="container" id="restaurant-list">
 
 <div class="restaurant">
 
@@ -417,6 +446,76 @@ padding:24px;
 <footer>
 © 2026 먹당
 </footer>
+
+<script>
+(async function loadRestaurantData() {
+    const list = document.getElementById('restaurant-list');
+    const regionSelect = document.getElementById('region-select');
+    const searchInput = document.querySelector('.search input');
+    const searchButton = document.getElementById('search-button');
+    let restaurants = [];
+    let visibleCount = 30;
+
+    function card(restaurant) {
+        const phone = restaurant.phone ? `<p class="data-status">☎ ${restaurant.phone}</p>` : '';
+        return `<article class="restaurant">
+            <div class="info">
+                <div class="title"><h2>${escapeHtml(restaurant.name)}</h2><div class="score">영업</div></div>
+                <div class="tag">🍽️ ${escapeHtml(restaurant.category || '음식점')}</div>
+                <p style="margin-top:15px;">📍 ${escapeHtml(restaurant.address)}</p>
+                ${phone}
+                <p class="data-note">공공데이터 인허가 기준 영업 중인 식당</p>
+            </div>
+        </article>`;
+    }
+
+    function escapeHtml(value) {
+        return String(value).replace(/[&<>'"]/g, character => ({
+            '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
+        }[character]));
+    }
+
+    function render() {
+        const query = searchInput.value.trim().toLowerCase();
+        const matches = restaurants.filter(restaurant =>
+            !query || `${restaurant.name} ${restaurant.address} ${restaurant.category}`.toLowerCase().includes(query)
+        );
+        const shown = matches.slice(0, visibleCount);
+        list.innerHTML = `<p class="data-status">영업 중인 식당 ${matches.length.toLocaleString('ko-KR')}곳${query ? ' 검색됨' : ''}</p>
+            <div class="data-note">출처: 행정안전부 전국 일반음식점 표준데이터 · ${new Date().toLocaleDateString('ko-KR')} 기준</div>
+            ${shown.length ? shown.map(card).join('') : '<p class="data-status">검색 결과가 없습니다.</p>'}
+            ${shown.length < matches.length ? '<button class="btn" id="load-more" type="button">더 보기</button>' : ''}`;
+        const loadMore = document.getElementById('load-more');
+        if (loadMore) loadMore.addEventListener('click', () => { visibleCount += 30; render(); });
+    }
+
+    try {
+        const regionResponse = await fetch('data/restaurants/regions.json');
+        const regionData = await regionResponse.json();
+        regionSelect.innerHTML = regionData.regions.map(region =>
+            `<option value="${region.file}">${escapeHtml(region.name)} (${region.count.toLocaleString('ko-KR')})</option>`
+        ).join('');
+        const defaultRegion = regionData.regions.find(region => region.name === '서울특별시') || regionData.regions[0];
+        regionSelect.value = defaultRegion.file;
+
+        async function loadRegion() {
+            list.innerHTML = '<p class="data-status">실제 식당 데이터를 불러오는 중...</p>';
+            const response = await fetch(`data/restaurants/${regionSelect.value}`);
+            restaurants = await response.json();
+            visibleCount = 30;
+            render();
+        }
+
+        regionSelect.addEventListener('change', loadRegion);
+        searchButton.addEventListener('click', render);
+        searchInput.addEventListener('keydown', event => { if (event.key === 'Enter') render(); });
+        await loadRegion();
+    } catch (error) {
+        list.innerHTML = '<p class="data-status">식당 데이터를 불러오지 못했습니다. 잠시 후 새로고침해 주세요.</p>';
+        console.error(error);
+    }
+})();
+</script>
 
 <script>
 var disqus_config = function () {
