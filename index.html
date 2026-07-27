@@ -180,6 +180,19 @@ header{
     margin-top:2px;
 }
 
+.comments{
+    margin:45px 0 10px;
+    padding:32px;
+    background:white;
+    border-radius:10px;
+    box-shadow:0 5px 10px rgba(0,0,0,.1);
+}
+
+.comments h2{
+    color:#ff6b35;
+    margin-bottom:20px;
+}
+
 footer{
     margin-top:50px;
     text-align:center;
@@ -211,6 +224,10 @@ grid-template-columns:1fr;
 }
 
 .partnership{
+padding:24px;
+}
+
+.comments{
 padding:24px;
 }
 
@@ -391,9 +408,29 @@ padding:24px;
 </form>
 </section>
 
+<section class="comments" aria-labelledby="comments-title">
+<h2 id="comments-title">댓글</h2>
+<div id="disqus_thread"></div>
+<noscript>댓글을 보려면 JavaScript를 활성화해 주세요. <a href="https://disqus.com/?ref_noscript">Disqus 댓글</a></noscript>
+</section>
+
 <footer>
 © 2026 먹당
 </footer>
+
+<script>
+var disqus_config = function () {
+    this.page.url = window.location.href;
+    this.page.identifier = 'meokdang-home';
+};
+
+(function() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://product1-5.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+})();
+</script>
 
 </body>
 </html>
