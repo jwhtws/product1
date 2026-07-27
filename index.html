@@ -560,36 +560,38 @@ padding:24px;
         }
 
         async function ensureFullData() {
-            if (!fullLoaded && loadingPromise) await loadingPromise;
+            if (!fullLoaded) await (loadingPromise || loadRegion());
         }
 
         const previewResponse = await fetch('data/restaurants/previews.json');
         previews = await previewResponse.json();
         restaurants = previews[defaultRegion.file] || [];
         render();
-        loadRegion().catch(error => {
-            console.error(error);
-            if (!restaurants.length) list.innerHTML = '<p class="data-status">식당 데이터를 불러오지 못했습니다. 잠시 후 새로고침해 주세요.</p>';
-        });
 
         regionSelect.addEventListener('change', () => {
             fullLoaded = false;
+            loadingPromise = null;
             currentPage = 1;
             restaurants = previews[regionSelect.value] || [];
             render();
-            loadRegion().catch(console.error);
         });
 
-        searchButton.addEventListener('click', async () => {
-            await ensureFullData();
-            currentPage = 1;
-            render();
-        });
-        searchInput.addEventListener('keydown', async event => {
-            if (event.key === 'Enter') {
+        async function performSearch() {
+            list.innerHTML = '<p class="data-status">전체 지역 식당 데이터를 불러오는 중...</p>';
+            try {
                 await ensureFullData();
                 currentPage = 1;
                 render();
+            } catch (error) {
+                console.error(error);
+                list.innerHTML = '<p class="data-status">데이터를 불러오지 못했습니다. 새로고침 후 다시 시도해 주세요.</p>';
+            }
+        }
+
+        searchButton.addEventListener('click', performSearch);
+        searchInput.addEventListener('keydown', event => {
+            if (event.key === 'Enter') {
+                performSearch();
             }
         });
     } catch (error) {
