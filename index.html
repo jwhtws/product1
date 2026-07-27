@@ -483,6 +483,9 @@ padding:24px;
     let restaurants = [];
     let currentPage = 1;
     const pageSize = 20;
+    let previews = {};
+    let fullLoaded = false;
+    let loadingPromise = null;
 
     function card(restaurant) {
         const phone = restaurant.phone ? `<p class="data-status">☎ ${restaurant.phone}</p>` : '';
@@ -540,20 +543,55 @@ padding:24px;
         regionSelect.value = defaultRegion.file;
 
         async function loadRegion() {
-            list.innerHTML = '<p class="data-status">실제 식당 데이터를 불러오는 중...</p>';
+            fullLoaded = false;
             // The generated filenames contain literal percent signs, so encode
             // them once more when requesting them from GitHub Pages.
             const encodedFile = regionSelect.value.replace(/%/g, '%25');
-            const response = await fetch(`data/restaurants/${encodedFile}`);
-            restaurants = await response.json();
-            currentPage = 1;
-            render();
+            loadingPromise = fetch(`data/restaurants/${encodedFile}`).then(response => {
+                if (!response.ok) throw new Error(`식당 데이터 응답 오류: ${response.status}`);
+                return response.json();
+            }).then(data => {
+                restaurants = data;
+                fullLoaded = true;
+                currentPage = 1;
+                render();
+            });
+            return loadingPromise;
         }
 
-        regionSelect.addEventListener('change', loadRegion);
-        searchButton.addEventListener('click', () => { currentPage = 1; render(); });
-        searchInput.addEventListener('keydown', event => { if (event.key === 'Enter') { currentPage = 1; render(); } });
-        await loadRegion();
+        async function ensureFullData() {
+            if (!fullLoaded && loadingPromise) await loadingPromise;
+        }
+
+        const previewResponse = await fetch('data/restaurants/previews.json');
+        previews = await previewResponse.json();
+        restaurants = previews[defaultRegion.file] || [];
+        render();
+        loadRegion().catch(error => {
+            console.error(error);
+            if (!restaurants.length) list.innerHTML = '<p class="data-status">식당 데이터를 불러오지 못했습니다. 잠시 후 새로고침해 주세요.</p>';
+        });
+
+        regionSelect.addEventListener('change', () => {
+            fullLoaded = false;
+            currentPage = 1;
+            restaurants = previews[regionSelect.value] || [];
+            render();
+            loadRegion().catch(console.error);
+        });
+
+        searchButton.addEventListener('click', async () => {
+            await ensureFullData();
+            currentPage = 1;
+            render();
+        });
+        searchInput.addEventListener('keydown', async event => {
+            if (event.key === 'Enter') {
+                await ensureFullData();
+                currentPage = 1;
+                render();
+            }
+        });
     } catch (error) {
         list.innerHTML = '<p class="data-status">식당 데이터를 불러오지 못했습니다. 잠시 후 새로고침해 주세요.</p>';
         console.error(error);
