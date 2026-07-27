@@ -39,13 +39,14 @@
       if (end < 0) break;
       name = name.slice(end + 1).trim();
     }
+    name = name.replace(/^[\s.,·•:;|]+/g, '').trim();
     return name || String(value ?? '').trim();
   }
 
   const normalizeRestaurants = list => list
     .filter(restaurant => restaurant.name)
     .map(restaurant => ({ ...restaurant, name: cleanRestaurantName(restaurant.name) }));
-  const searchKey = value => String(value ?? '').toLocaleLowerCase('ko-KR').replace(/[\s()[\]{}.,'"/\\\-·]+/g, '');
+  const searchKey = value => String(value ?? '').toLocaleLowerCase('ko-KR').replace(/[^\p{L}\p{N}]+/gu, '');
 
   const escapeHtml = value => String(value ?? '').replace(/[&<>'"]/g, char => ({
     '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
@@ -53,7 +54,7 @@
   const fileUrl = file => `data/restaurants/${file.replace(/%/g, '%25')}`;
 
   function restaurantCard(restaurant, index) {
-    const query = encodeURIComponent(`${restaurant.name} ${restaurant.address}`);
+    const query = encodeURIComponent([restaurant.name, restaurant.address].filter(Boolean).join(' '));
     return `<article class="restaurant-card" tabindex="0" data-index="${index}">
       <div class="card-kicker">영업 중 · ${escapeHtml(restaurant.category || '음식점')}</div>
       <h3>${escapeHtml(restaurant.name)}</h3>
@@ -64,7 +65,7 @@
   }
 
   function showDetail(restaurant) {
-    const query = encodeURIComponent(`${restaurant.name} ${restaurant.address}`);
+    const query = encodeURIComponent([restaurant.name, restaurant.address].filter(Boolean).join(' '));
     modalContent.innerHTML = `<div class="card-kicker">영업 중 · ${escapeHtml(restaurant.category || '음식점')}</div>
       <h2 id="detail-title">${escapeHtml(restaurant.name)}</h2>
       <div class="detail-row"><strong>주소</strong><span>${escapeHtml(restaurant.address)}</span></div>
