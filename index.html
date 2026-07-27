@@ -541,7 +541,10 @@ padding:24px;
 
         async function loadRegion() {
             list.innerHTML = '<p class="data-status">실제 식당 데이터를 불러오는 중...</p>';
-            const response = await fetch(`data/restaurants/${regionSelect.value}`);
+            // The generated filenames contain literal percent signs, so encode
+            // them once more when requesting them from GitHub Pages.
+            const encodedFile = regionSelect.value.replace(/%/g, '%25');
+            const response = await fetch(`data/restaurants/${encodedFile}`);
             restaurants = await response.json();
             currentPage = 1;
             render();
