@@ -121,6 +121,65 @@ header{
     cursor:pointer;
 }
 
+.partnership{
+    margin:45px 0 10px;
+    padding:32px;
+    background:white;
+    border-radius:10px;
+    box-shadow:0 5px 10px rgba(0,0,0,.1);
+}
+
+.partnership h2{
+    color:#ff6b35;
+    margin-bottom:8px;
+}
+
+.partnership > p{
+    color:#666;
+    margin-bottom:22px;
+}
+
+.contact-form{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+}
+
+.form-field{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+}
+
+.form-field.full-width{
+    grid-column:1 / -1;
+}
+
+.form-field label{
+    font-weight:bold;
+    color:#333;
+}
+
+.form-field input,
+.form-field textarea{
+    width:100%;
+    padding:12px;
+    border:1px solid #ddd;
+    border-radius:6px;
+    font-size:15px;
+}
+
+.form-field textarea{
+    min-height:130px;
+    resize:vertical;
+}
+
+.contact-form button{
+    grid-column:1 / -1;
+    justify-self:start;
+    margin-top:2px;
+}
+
 footer{
     margin-top:50px;
     text-align:center;
@@ -145,6 +204,14 @@ width:100%;
 .search input{
 width:90%;
 margin-bottom:10px;
+}
+
+.contact-form{
+grid-template-columns:1fr;
+}
+
+.partnership{
+padding:24px;
 }
 
 }
@@ -287,6 +354,42 @@ margin-bottom:10px;
 </div>
 
 </div>
+
+<section class="partnership" aria-labelledby="partnership-title">
+<h2 id="partnership-title">제휴 문의</h2>
+<p>맛집 등록, 광고, 협업 제안은 아래 양식으로 보내주세요.</p>
+
+<form class="contact-form" action="https://formspree.io/f/mojgyppj" method="POST">
+<input type="hidden" name="_subject" value="먹당 제휴 문의">
+
+<div class="form-field">
+<label for="company">업체명</label>
+<input id="company" type="text" name="업체명" placeholder="업체명을 입력하세요" required>
+</div>
+
+<div class="form-field">
+<label for="name">담당자명</label>
+<input id="name" type="text" name="담당자명" placeholder="담당자명을 입력하세요" required>
+</div>
+
+<div class="form-field">
+<label for="email">이메일</label>
+<input id="email" type="email" name="email" placeholder="example@email.com" required>
+</div>
+
+<div class="form-field">
+<label for="phone">연락처</label>
+<input id="phone" type="tel" name="연락처" placeholder="010-0000-0000">
+</div>
+
+<div class="form-field full-width">
+<label for="message">문의 내용</label>
+<textarea id="message" name="문의내용" placeholder="제휴 내용을 자유롭게 작성해 주세요." required></textarea>
+</div>
+
+<button class="btn" type="submit">제휴 문의 보내기</button>
+</form>
+</section>
 
 <footer>
 © 2026 먹당
