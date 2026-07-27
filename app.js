@@ -15,6 +15,35 @@
   let fullLoaded = false;
   let fullLoadPromise = null;
 
+  function mixPreviews(previewData) {
+    const groups = Object.values(previewData);
+    const mixed = [];
+    for (let index = 0; index < 20; index += 1) {
+      groups.forEach(group => { if (group[index]) mixed.push(group[index]); });
+    }
+    return mixed;
+  }
+
+  // 공공데이터의 법인 표기((주), (유), (재) 등)는 이용자 화면에서 숨깁니다.
+  function cleanRestaurantName(value) {
+    let name = String(value ?? '').trim();
+    while (name.startsWith('(')) {
+      let depth = 0;
+      let end = -1;
+      for (let index = 0; index < name.length; index += 1) {
+        if (name[index] === '(') depth += 1;
+        if (name[index] === ')' && --depth === 0) { end = index; break; }
+      }
+      if (end < 0) break;
+      name = name.slice(end + 1).trim();
+    }
+    return name || String(value ?? '').trim();
+  }
+
+  const normalizeRestaurants = list => list
+    .filter(restaurant => restaurant.name)
+    .map(restaurant => ({ ...restaurant, name: cleanRestaurantName(restaurant.name) }));
+
   const escapeHtml = value => String(value ?? '').replace(/[&<>'"]/g, char => ({
     '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
   }[char]));
@@ -75,7 +104,7 @@
     if (!fullLoadPromise) {
       state.textContent = '전국 식당 데이터를 불러오는 중입니다...';
       fullLoadPromise = Promise.all(window.__MEOKDANG_REGIONS__.map(region => fetch(fileUrl(region.file)).then(response => { if (!response.ok) throw Error(`데이터 응답 ${response.status}`); return response.json(); }))).then(groups => {
-        restaurants = groups.flat().filter(restaurant => restaurant.name);
+        restaurants = normalizeRestaurants(groups.flat());
         allRestaurants = restaurants;
         fullLoaded = true;
         page = 1;
@@ -102,7 +131,7 @@
     const regionData = await regionsResponse.json();
     const previews = await previewsResponse.json();
     window.__MEOKDANG_REGIONS__ = regionData.regions;
-    allRestaurants = Object.values(previews).flat().filter(restaurant => restaurant.name);
+    allRestaurants = normalizeRestaurants(mixPreviews(previews));
     restaurants = allRestaurants;
     render();
   } catch (error) {
