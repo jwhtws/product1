@@ -45,6 +45,7 @@
   const normalizeRestaurants = list => list
     .filter(restaurant => restaurant.name)
     .map(restaurant => ({ ...restaurant, name: cleanRestaurantName(restaurant.name) }));
+  const searchKey = value => String(value ?? '').toLocaleLowerCase('ko-KR').replace(/[\s()[\]{}.,'"/\\\-·]+/g, '');
 
   const escapeHtml = value => String(value ?? '').replace(/[&<>'"]/g, char => ({
     '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
@@ -74,8 +75,8 @@
   }
 
   function render() {
-    const query = input.value.trim().toLowerCase();
-    const matches = restaurants.filter(restaurant => !query || restaurant.name.toLowerCase().includes(query));
+    const query = searchKey(input.value);
+    const matches = restaurants.filter(restaurant => !query || searchKey(restaurant.name).includes(query));
     const pages = Math.max(1, Math.ceil(matches.length / pageSize));
     page = Math.min(page, pages);
     const start = (page - 1) * pageSize;
@@ -94,9 +95,9 @@
   }
 
   function renderSuggestions() {
-    const query = input.value.trim().toLowerCase();
+    const query = searchKey(input.value);
     if (!query) { suggestions.innerHTML = ''; return; }
-    const matches = allRestaurants.filter(restaurant => restaurant.name.toLowerCase().includes(query)).slice(0, 8);
+    const matches = allRestaurants.filter(restaurant => searchKey(restaurant.name).includes(query)).slice(0, 8);
     suggestions.innerHTML = matches.map((restaurant, index) => `<button class="suggestion" type="button" data-suggestion="${index}">${escapeHtml(restaurant.name)}<small>${escapeHtml(restaurant.address)}</small></button>`).join('');
     suggestions.querySelectorAll('.suggestion').forEach(button => button.addEventListener('click', () => { input.value = matches[Number(button.dataset.suggestion)].name; suggestions.innerHTML = ''; search(); }));
   }
