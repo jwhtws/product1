@@ -135,7 +135,18 @@
     if (fullLoaded) return;
     if (!fullLoadPromise) {
       state.textContent = '전국 식당 데이터를 불러오는 중입니다...';
-      fullLoadPromise = Promise.all(window.__MEOKDANG_REGIONS__.map(region => fetch(fileUrl(region.file)).then(response => { if (!response.ok) throw Error(`데이터 응답 ${response.status}`); return response.json(); }))).then(groups => {
+      const fetchRegion = async region => {
+        let lastError;
+        for (let attempt = 0; attempt < 3; attempt += 1) {
+          try {
+            const response = await fetch(`${fileUrl(region.file)}?v=20260727-6`, { cache: 'no-store' });
+            if (!response.ok) throw Error(`데이터 응답 ${response.status}`);
+            return response.json();
+          } catch (error) { lastError = error; }
+        }
+        throw lastError;
+      };
+      fullLoadPromise = Promise.all(window.__MEOKDANG_REGIONS__.map(fetchRegion)).then(groups => {
         restaurants = normalizeRestaurants(groups.flat());
         allRestaurants = restaurants;
         fullLoaded = true;
