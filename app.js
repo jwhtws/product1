@@ -1,14 +1,106 @@
-(async function(){
-const regionSelect=document.getElementById('region-select'), input=document.getElementById('search-input'), searchButton=document.getElementById('search-button'), grid=document.getElementById('restaurant-grid'), state=document.getElementById('app-state'), summary=document.getElementById('result-summary'), pager=document.getElementById('pager'), modal=document.getElementById('detail-modal'), modalContent=document.getElementById('modal-content'), pageSize=20;let regions=[],previews={},restaurants=[],page=1,fullLoaded=false,loading=null;
-const esc=v=>String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
-const fileUrl=f=>`data/restaurants/${f.replace(/%/g,'%25')}`;
-const selectedFile=()=>regionSelect.value;
-function card(r,i){return `<button class="restaurant-card" type="button" data-index="${i}"><div class="card-kicker">영업 중 · ${esc(r.category||'음식점')}</div><h3>${esc(r.name)}</h3><p class="card-address">${esc(r.address)}</p><div class="card-meta"><span class="pill">상세정보 보기</span>${r.phone?`<span class="pill">☎ ${esc(r.phone)}</span>`:''}</div></button>`}
-function openDetail(r){const query=encodeURIComponent(`${r.name} ${r.address}`);modalContent.innerHTML=`<div class="card-kicker">영업 중 · ${esc(r.category||'음식점')}</div><h2 id="detail-title">${esc(r.name)}</h2><div class="detail-row"><strong>주소</strong><span>${esc(r.address)}</span></div><div class="detail-row"><strong>전화번호</strong><span>${r.phone?esc(r.phone):'등록된 전화번호가 없습니다.'}</span></div><div class="detail-row"><strong>평점</strong><span>Google·네이버 공식 API 연결 후 제공 예정입니다.</span></div><div class="map-links"><a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${query}">Google 지도</a><a target="_blank" rel="noopener" href="https://map.naver.com/p/search/${query}">네이버 지도</a></div>`;modal.classList.add('open')}
-function render(){const q=input.value.trim().toLowerCase(),matches=restaurants.filter(r=>!q||`${r.name} ${r.address} ${r.category}`.toLowerCase().includes(q)),pages=Math.max(1,Math.ceil(matches.length/pageSize));page=Math.min(page,pages);const shown=matches.slice((page-1)*pageSize,page*pageSize);summary.textContent=`${matches.length.toLocaleString('ko-KR')}곳${q?' 검색됨':''}`;state.textContent=fullLoaded?'식당을 눌러 주소와 지도 정보를 확인하세요.':'지역별 추천 식당 미리보기입니다. 검색하면 전체 목록을 불러옵니다.';grid.innerHTML=shown.map((r,i)=>card(r,(page-1)*pageSize+i)).join('')||'<p class="state">검색 결과가 없습니다.</p>';pager.innerHTML=matches.length?`<button type="button" data-page="prev" ${page===1?'disabled':''}>이전</button><span>${page} / ${pages}</span><button type="button" data-page="next" ${page===pages?'disabled':''}>다음</button>`:'';grid.querySelectorAll('.restaurant-card').forEach(b=>b.addEventListener('click',()=>openDetail(matches[Number(b.dataset.index)])));pager.querySelector('[data-page="prev"]')?.addEventListener('click',()=>{page--;render()});pager.querySelector('[data-page="next"]')?.addEventListener('click',()=>{page++;render()})}
-async function loadFull(){if(fullLoaded)return;if(!loading){state.textContent='전체 지역 식당 데이터를 불러오는 중입니다…';loading=fetch(fileUrl(selectedFile())).then(r=>{if(!r.ok)throw Error(`데이터 응답 ${r.status}`);return r.json()}).then(data=>{restaurants=data;fullLoaded=true;page=1;render()})}return loading}
-async function search(){try{await loadFull();page=1;render()}catch(e){console.error(e);state.textContent='데이터를 불러오지 못했습니다. 새로고침 후 다시 시도해 주세요.'}}
-function closeModal(){modal.classList.remove('open')}
-document.getElementById('modal-close').addEventListener('click',closeModal);modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});searchButton.addEventListener('click',search);input.addEventListener('keydown',e=>{if(e.key==='Enter')search()});
-try{const [rr,pr]=await Promise.all([fetch('data/restaurants/regions.json'),fetch('data/restaurants/previews.json')]);if(!rr.ok||!pr.ok)throw Error('데이터 목록을 불러오지 못했습니다.');const rd=await rr.json();previews=await pr.json();regions=rd.regions;regionSelect.innerHTML=regions.map(r=>`<option value="${r.file}">${esc(r.name)} (${r.count.toLocaleString('ko-KR')})</option>`).join('');const initial=regions.find(r=>r.name==='서울특별시')||regions[0];regionSelect.value=initial.file;restaurants=previews[initial.file]||[];render();regionSelect.addEventListener('change',()=>{fullLoaded=false;loading=null;page=1;restaurants=previews[selectedFile()]||[];render()})}catch(e){console.error(e);state.textContent='식당 데이터를 불러오지 못했습니다. 새로고침해 주세요.'}
+(async function () {
+  const input = document.getElementById('search-input');
+  const searchButton = document.getElementById('search-button');
+  const suggestions = document.getElementById('suggestions');
+  const grid = document.getElementById('restaurant-grid');
+  const state = document.getElementById('app-state');
+  const summary = document.getElementById('result-summary');
+  const pager = document.getElementById('pager');
+  const modal = document.getElementById('detail-modal');
+  const modalContent = document.getElementById('modal-content');
+  const pageSize = 20;
+  let restaurants = [];
+  let allRestaurants = [];
+  let page = 1;
+  let fullLoaded = false;
+  let fullLoadPromise = null;
+
+  const escapeHtml = value => String(value ?? '').replace(/[&<>'"]/g, char => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
+  }[char]));
+  const fileUrl = file => `data/restaurants/${file.replace(/%/g, '%25')}`;
+
+  function restaurantCard(restaurant, index) {
+    return `<button class="restaurant-card" type="button" data-index="${index}">
+      <div class="card-kicker">영업 중 · ${escapeHtml(restaurant.category || '음식점')}</div>
+      <h3>${escapeHtml(restaurant.name)}</h3>
+      <p class="card-address">${escapeHtml(restaurant.address)}</p>
+      <div class="card-meta"><span class="pill">상세정보 보기</span>${restaurant.phone ? `<span class="pill">전화번호 있음</span>` : ''}</div>
+    </button>`;
+  }
+
+  function showDetail(restaurant) {
+    const query = encodeURIComponent(`${restaurant.name} ${restaurant.address}`);
+    modalContent.innerHTML = `<div class="card-kicker">영업 중 · ${escapeHtml(restaurant.category || '음식점')}</div>
+      <h2 id="detail-title">${escapeHtml(restaurant.name)}</h2>
+      <div class="detail-row"><strong>주소</strong><span>${escapeHtml(restaurant.address)}</span></div>
+      <div class="detail-row"><strong>전화번호</strong><span>${restaurant.phone ? escapeHtml(restaurant.phone) : '등록된 전화번호가 없습니다.'}</span></div>
+      <div class="detail-row"><strong>평점</strong><span>Google·네이버 공식 API 연결 후 제공 예정입니다.</span></div>
+      <div class="map-links"><a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${query}">Google 지도</a><a target="_blank" rel="noopener" href="https://map.naver.com/p/search/${query}">네이버 지도</a></div>`;
+    modal.classList.add('open');
+  }
+
+  function render() {
+    const query = input.value.trim().toLowerCase();
+    const matches = restaurants.filter(restaurant => !query || restaurant.name.toLowerCase().includes(query));
+    const pages = Math.max(1, Math.ceil(matches.length / pageSize));
+    page = Math.min(page, pages);
+    const start = (page - 1) * pageSize;
+    const shown = matches.slice(start, start + pageSize);
+    summary.textContent = `${matches.length.toLocaleString('ko-KR')}곳${query ? ' 검색됨' : ''}`;
+    state.textContent = fullLoaded ? '식당을 눌러 상세정보를 확인하세요.' : '식당명 미리보기입니다. 검색하면 전국 전체 목록을 불러옵니다.';
+    grid.innerHTML = shown.map((restaurant, index) => restaurantCard(restaurant, start + index)).join('') || '<p class="state">검색 결과가 없습니다.</p>';
+    pager.innerHTML = matches.length ? `<button type="button" data-page="prev" ${page === 1 ? 'disabled' : ''}>이전</button><span>${page} / ${pages}</span><button type="button" data-page="next" ${page === pages ? 'disabled' : ''}>다음</button>` : '';
+    grid.querySelectorAll('.restaurant-card').forEach(button => button.addEventListener('click', () => showDetail(matches[Number(button.dataset.index) - start])));
+    pager.querySelector('[data-page="prev"]')?.addEventListener('click', () => { page -= 1; render(); });
+    pager.querySelector('[data-page="next"]')?.addEventListener('click', () => { page += 1; render(); });
+  }
+
+  function renderSuggestions() {
+    const query = input.value.trim().toLowerCase();
+    if (!query) { suggestions.innerHTML = ''; return; }
+    const matches = allRestaurants.filter(restaurant => restaurant.name.toLowerCase().includes(query)).slice(0, 8);
+    suggestions.innerHTML = matches.map((restaurant, index) => `<button class="suggestion" type="button" data-suggestion="${index}">${escapeHtml(restaurant.name)}<small>${escapeHtml(restaurant.address)}</small></button>`).join('');
+    suggestions.querySelectorAll('.suggestion').forEach(button => button.addEventListener('click', () => { input.value = matches[Number(button.dataset.suggestion)].name; suggestions.innerHTML = ''; search(); }));
+  }
+
+  async function loadAllRestaurants() {
+    if (fullLoaded) return;
+    if (!fullLoadPromise) {
+      state.textContent = '전국 식당 데이터를 불러오는 중입니다...';
+      fullLoadPromise = Promise.all(window.__MEOKDANG_REGIONS__.map(region => fetch(fileUrl(region.file)).then(response => { if (!response.ok) throw Error(`데이터 응답 ${response.status}`); return response.json(); }))).then(groups => {
+        restaurants = groups.flat().filter(restaurant => restaurant.name);
+        allRestaurants = restaurants;
+        fullLoaded = true;
+        page = 1;
+        render();
+      });
+    }
+    return fullLoadPromise;
+  }
+
+  async function search() {
+    suggestions.innerHTML = '';
+    try { await loadAllRestaurants(); page = 1; render(); } catch (error) { console.error(error); state.textContent = '데이터를 불러오지 못했습니다. 새로고침 후 다시 시도해 주세요.'; }
+  }
+
+  document.getElementById('modal-close').addEventListener('click', () => modal.classList.remove('open'));
+  modal.addEventListener('click', event => { if (event.target === modal) modal.classList.remove('open'); });
+  input.addEventListener('input', renderSuggestions);
+  input.addEventListener('keydown', event => { if (event.key === 'Enter') search(); });
+  searchButton.addEventListener('click', search);
+
+  try {
+    const [regionsResponse, previewsResponse] = await Promise.all([fetch('data/restaurants/regions.json'), fetch('data/restaurants/previews.json')]);
+    if (!regionsResponse.ok || !previewsResponse.ok) throw Error('데이터 목록을 불러오지 못했습니다.');
+    const regionData = await regionsResponse.json();
+    const previews = await previewsResponse.json();
+    window.__MEOKDANG_REGIONS__ = regionData.regions;
+    allRestaurants = Object.values(previews).flat().filter(restaurant => restaurant.name);
+    restaurants = allRestaurants;
+    render();
+  } catch (error) {
+    console.error(error);
+    state.textContent = '식당 데이터를 불러오지 못했습니다. 새로고침해 주세요.';
+  }
 })();
