@@ -21,12 +21,14 @@
   const fileUrl = file => `data/restaurants/${file.replace(/%/g, '%25')}`;
 
   function restaurantCard(restaurant, index) {
-    return `<button class="restaurant-card" type="button" data-index="${index}">
+    const query = encodeURIComponent(`${restaurant.name} ${restaurant.address}`);
+    return `<article class="restaurant-card" tabindex="0" data-index="${index}">
       <div class="card-kicker">영업 중 · ${escapeHtml(restaurant.category || '음식점')}</div>
       <h3>${escapeHtml(restaurant.name)}</h3>
       <p class="card-address">${escapeHtml(restaurant.address)}</p>
-      <div class="card-meta"><span class="pill">상세정보 보기</span>${restaurant.phone ? `<span class="pill">전화번호 있음</span>` : ''}</div>
-    </button>`;
+      <div class="rating-line"><span class="stars">☆☆☆☆☆</span><span>평점 API 연결 필요</span></div>
+      <div class="card-links"><a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${query}">Google 지도</a><a target="_blank" rel="noopener" href="https://map.naver.com/p/search/${query}">네이버 지도</a><a target="_blank" rel="noopener" href="https://map.kakao.com/?q=${query}">카카오맵</a></div>
+    </article>`;
   }
 
   function showDetail(restaurant) {
@@ -51,7 +53,11 @@
     state.textContent = fullLoaded ? '식당을 눌러 상세정보를 확인하세요.' : '식당명 미리보기입니다. 검색하면 전국 전체 목록을 불러옵니다.';
     grid.innerHTML = shown.map((restaurant, index) => restaurantCard(restaurant, start + index)).join('') || '<p class="state">검색 결과가 없습니다.</p>';
     pager.innerHTML = matches.length ? `<button type="button" data-page="prev" ${page === 1 ? 'disabled' : ''}>이전</button><span>${page} / ${pages}</span><button type="button" data-page="next" ${page === pages ? 'disabled' : ''}>다음</button>` : '';
-    grid.querySelectorAll('.restaurant-card').forEach(button => button.addEventListener('click', () => showDetail(matches[Number(button.dataset.index) - start])));
+    grid.querySelectorAll('.restaurant-card').forEach(card => {
+      const open = () => showDetail(matches[Number(card.dataset.index) - start]);
+      card.addEventListener('click', event => { if (event.target.tagName !== 'A') open(); });
+      card.addEventListener('keydown', event => { if (event.key === 'Enter') open(); });
+    });
     pager.querySelector('[data-page="prev"]')?.addEventListener('click', () => { page -= 1; render(); });
     pager.querySelector('[data-page="next"]')?.addEventListener('click', () => { page += 1; render(); });
   }
