@@ -160,12 +160,23 @@
       duration
     };
   }
-  function buildingSitePlan() {
-    return `<aside id="building-site-plan" class="title-site-plan"><div class="plan-title"><strong>건물·대지</strong><span>조회 중</span></div>
-      <div class="site-plan" role="img" aria-label="대지와 건물 배치 개념도, 자동차 한 대와 사람 한 명">
-        <div class="site-road"><span class="scale-car" aria-label="자동차">🚗</span><span>도로</span></div>
-        <div class="site-lot"><span>대지</span><div class="building-footprint"><b>건물</b><i>출입구</i></div><span class="scale-person" aria-label="사람">🚶</span></div>
-      </div><small>VWorld GIS건물통합정보 확인 중</small></aside>`;
+  function buildingSitePlan(r) {
+    const area = Number(r.facilityAreaM2);
+    const validArea = Number.isFinite(area) && area > 0;
+    const width = validArea ? Math.sqrt(area * 1.45) : 10;
+    const depth = validArea ? area / width : 8;
+    const margin = 6, canvasWidth = width + margin * 2, canvasHeight = depth + margin * 2;
+    const carX = 1, carY = canvasHeight - 2.5, personX = canvasWidth - 2.2, personY = canvasHeight - 2.8;
+    return `<aside id="building-site-plan" class="title-site-plan premises-scale"><div class="plan-title"><strong>식당 영업장 규모</strong><span>VWorld 조회 중</span></div>
+      <div class="site-plan real-building">
+        <svg class="building-shape" viewBox="0 0 ${canvasWidth.toFixed(2)} ${canvasHeight.toFixed(2)}" role="img" aria-label="신고 영업장 면적과 같은 축척의 자동차 및 사람">
+          <rect class="actual-footprint estimate-footprint" x="${margin}" y="${margin}" width="${width.toFixed(2)}" height="${depth.toFixed(2)}" rx=".5"/>
+          <g class="scale-car-real"><rect x="${carX}" y="${(carY - 1.8).toFixed(2)}" width="4.5" height="1.8" rx=".35"/><circle cx="${carX + 1}" cy="${carY}" r=".35"/><circle cx="${carX + 3.5}" cy="${carY}" r=".35"/></g>
+          <g class="scale-person-real"><circle cx="${personX.toFixed(2)}" cy="${(personY - 1.42).toFixed(2)}" r=".28"/><path d="M${personX.toFixed(2)} ${(personY - 1.12).toFixed(2)}v.7m-.45-.3m.45.3l.45-.3m-.45 0l-.38.82m.38-.82l.38.82"/></g>
+        </svg>
+      </div>
+      <dl class="building-facts"><div><dt>식당 신고면적</dt><dd>${validArea ? `${area.toLocaleString('ko-KR')}㎡ · 약 ${(area / 3.305785).toFixed(1)}평` : '공개 정보 없음'}</dd></div><div><dt>축척 기준</dt><dd>차량 4.5m · 사람 1.7m</dd></div></dl>
+      <small>식품위생 인허가 신고면적 기준 · 실제 건물 외곽 조회 중</small></aside>`;
   }
   function polygonRings(geometry) {
     if (geometry?.type === 'Polygon') return geometry.coordinates || [];
@@ -232,8 +243,8 @@
     } catch {
       const status = target.querySelector('.plan-title span');
       const note = target.querySelector(':scope > small');
-      if (status) status.textContent = '개념도';
-      if (note) note.textContent = '건물 도형을 찾지 못해 개념 배치로 표시';
+      if (status) status.textContent = '신고면적 기준';
+      if (note) note.textContent = 'VWorld 일시 장애 · 신고 영업장 면적을 동일 축척으로 표시';
     }
   }
   const categoryLabel = r => String(r.category || '음식점').replace(/\s+/g, ' ').trim();
@@ -519,7 +530,7 @@
     const naverQuery = encodeURIComponent(naverAddress);
     const fullQuery = encodeURIComponent(`${r.name} ${r.address || ''}`);
     const permit = permitDateInfo(r.permitDate);
-    $('#modal-content').innerHTML = `<div id="place-cover" class="detail-cover neutral-photo" data-category-label="${escapeHtml(categoryLabel(r))}"><span>${escapeHtml(categoryLabel(r))} · 사진 없음</span></div><div class="detail-hero"><div class="detail-heading"><div><span class="category">${escapeHtml(r.category || '음식점')}</span><h2 id="detail-title">${escapeHtml(r.name)}</h2><p>${escapeHtml(r.address)}</p></div>${buildingSitePlan()}</div>
+    $('#modal-content').innerHTML = `<div id="place-cover" class="detail-cover neutral-photo" data-category-label="${escapeHtml(categoryLabel(r))}"><span>${escapeHtml(categoryLabel(r))} · 사진 없음</span></div><div class="detail-hero"><div class="detail-heading"><div><span class="category">${escapeHtml(r.category || '음식점')}</span><h2 id="detail-title">${escapeHtml(r.name)}</h2><p>${escapeHtml(r.address)}</p></div>${buildingSitePlan(r)}</div>
       <div class="detail-score"><strong>★ ${r.rating}</strong><span>리뷰 신뢰도 ${r.trust}%</span><span>${priceText(r.price)} · ${r.mood}</span></div>
       <div class="permit-highlight"><div><span>현재 영업 기간</span><b>${permit ? escapeHtml(permit.duration) : '확인 필요'}</b></div><div><span>영업 시작일</span><strong>${permit ? escapeHtml(permit.formatted) : '확인 필요'}</strong></div><small>행정안전부 식품위생 인허가일 기준 · 영업 기간은 매년 자동 갱신</small></div>
       <div class="detail-actions"><button id="detail-save" class="primary">${isSaved(r) ? '저장됨' : '♡ 저장'}</button><button id="add-list" class="ghost">리스트에 추가</button><button id="share" class="ghost">공유</button></div></div>
