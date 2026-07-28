@@ -5,6 +5,8 @@
 .grid{grid-template-columns:1fr;max-width:860px;margin-inline:auto;gap:12px}.restaurant-card{min-height:0;padding:20px}.restaurant-card h3{margin-top:12px}.address{min-height:0}.score{margin-top:12px}.tags{margin-top:9px}
 .hero-home{color:inherit;text-decoration:none}.hero-home:focus-visible{outline:3px solid var(--accent);outline-offset:7px;border-radius:8px}
 .footer a{color:inherit}
+.hero{padding:68px 0 62px}.hero h1{margin:10px 0 12px}.hero-description{display:flex;justify-content:center;align-items:center;gap:8px;font-size:13px!important;letter-spacing:-.01em}.hero-description i{color:#bbb;font-style:normal}
+@media(max-width:560px){.hero{padding:48px 0 46px}.hero-description{gap:5px;font-size:11px!important}}
 .quick-categories button.active{border-color:var(--ink);background:var(--ink);color:#fff}
 .my-stats{grid-template-columns:repeat(2,1fr)}
 .profile-form input,.profile-form textarea,.profile-form select{width:100%;border:1px solid var(--line);border-radius:10px;padding:12px;background:#fff}.profile-form textarea{min-height:88px;resize:vertical}
