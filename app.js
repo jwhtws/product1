@@ -160,6 +160,45 @@
       duration
     };
   }
+  function premisesInfo(r) {
+    const address = String(r.address || '');
+    const floorMatches = [...address.matchAll(/(지하\s*\d+|B\s*\d+|\d+)\s*층/gi)].map(match => {
+      const raw = match[1].replace(/\s+/g, '').toUpperCase();
+      if (raw.startsWith('지하')) return `지하 ${raw.replace('지하', '')}층`;
+      if (raw.startsWith('B')) return `지하 ${raw.slice(1)}층`;
+      return `${raw}층`;
+    });
+    const floors = [...new Set(floorMatches)];
+    const unit = address.match(/(?:^|[\s,(])([A-Za-z가-힣]?\d+(?:-\d+)?(?:A|B)?호)(?=$|[\s,)])/i)?.[1] || '';
+    const areaM2 = Number(r.facilityAreaM2);
+    const validArea = Number.isFinite(areaM2) && areaM2 > 0;
+    const pyeong = validArea ? areaM2 / 3.305785 : null;
+    const kitchenRatio = /카페|커피|다방|제과/.test(r.category || '') ? 0.24
+      : /횟집|복어|중국|탕류|식육|숯불/.test(r.category || '') ? 0.36 : 0.31;
+    const supportRatio = 0.14;
+    const diningRatio = 1 - kitchenRatio - supportRatio;
+    const seats = validArea ? {
+      min: Math.max(2, Math.floor(areaM2 * diningRatio / 1.8)),
+      max: Math.max(4, Math.floor(areaM2 * diningRatio / 1.35))
+    } : null;
+    return { floors, unit, location: [floors.join('·'), unit].filter(Boolean).join(' '), areaM2: validArea ? areaM2 : null, pyeong, kitchenRatio, supportRatio, diningRatio, seats };
+  }
+  function premisesPanel(r) {
+    const info = premisesInfo(r);
+    const area = info.areaM2 ? `${info.areaM2.toLocaleString('ko-KR')}㎡ · 약 ${info.pyeong.toFixed(1)}평` : '공개 인허가 면적 없음';
+    const location = info.location || '주소에 층·호 표기 없음';
+    const layout = info.areaM2 ? `<div class="layout-bar" role="img" aria-label="추정 공간 구성">
+        <span style="width:${info.diningRatio * 100}%">객석 ${Math.round(info.diningRatio * 100)}%</span>
+        <span style="width:${info.kitchenRatio * 100}%">주방 ${Math.round(info.kitchenRatio * 100)}%</span>
+        <span style="width:${info.supportRatio * 100}%">기타 ${Math.round(info.supportRatio * 100)}%</span>
+      </div><small>업종·신고면적 기반 개념 추정 · 예상 ${info.seats.min}~${info.seats.max}석</small>`
+      : '<p class="estimate-empty">면적이 없어 공간 구성을 계산할 수 없습니다.</p>';
+    const parkingQuery = encodeURIComponent(`${r.name} ${naverMapAddress(r.address)} 주차`);
+    return `<section class="premises-panel"><div class="premises-head"><div><span>영업장 위치</span><strong>${escapeHtml(location)}</strong></div><div><span>신고 시설 규모</span><strong>${escapeHtml(area)}</strong></div></div>
+      <div class="layout-estimate"><h3>예상 공간 구성 <em>추정</em></h3>${layout}</div>
+      <div class="parking-check"><div><h3>주차 정보</h3><strong>주차 가능 여부·대수 확인 필요</strong><p>공개 인허가 데이터에는 식당 전용 주차 대수가 없습니다. 건물 전체 주차 대수를 식당 전용으로 표시하지 않습니다.</p></div><a target="_blank" rel="noopener" href="https://map.naver.com/p/search/${parkingQuery}">지도에서 주차 확인</a></div>
+      <p class="estimate-source">면적: 행정안전부 식품위생 인허가 시설총규모 · 층/호: 신고 주소에서 추출. 실제 전용면적과 내부 배치는 다를 수 있습니다.</p></section>`;
+  }
   const categoryLabel = r => String(r.category || '음식점').replace(/\s+/g, ' ').trim();
 
   function filtered() {
@@ -305,8 +344,8 @@
       const path = `data/restaurants/search-pages/${pageKey}.json?v=3`;
       if (!searchPageCache.has(path)) searchPageCache.set(path, fetch(path).then(response => response.ok ? response.json() : []));
       const rows = await searchPageCache.get(path);
-      const nextRows = enrich(rows.map(([name, category, address, phone, permitDate, permitDateSource]) =>
-        ({ name, category, address, phone, permitDate, permitDateSource })));
+      const nextRows = enrich(rows.map(([name, category, address, phone, permitDate, permitDateSource, facilityAreaM2]) =>
+        ({ name, category, address, phone, permitDate, permitDateSource, facilityAreaM2 })));
       const existing = new Set(state.all.map(idOf));
       state.all = state.all.concat(nextRows.filter(row => !existing.has(idOf(row))));
       session.done = session.nextPage > session.endPage && !session.containsPages.length;
@@ -447,6 +486,7 @@
       <div class="detail-score"><strong>★ ${r.rating}</strong><span>리뷰 신뢰도 ${r.trust}%</span><span>${priceText(r.price)} · ${r.mood}</span></div>
       <div class="permit-highlight"><div><span>현재 영업 기간</span><b>${permit ? escapeHtml(permit.duration) : '확인 필요'}</b></div><div><span>영업 시작일</span><strong>${permit ? escapeHtml(permit.formatted) : '확인 필요'}</strong></div><small>행정안전부 식품위생 인허가일 기준 · 영업 기간은 매년 자동 갱신</small></div>
       <div class="detail-actions"><button id="detail-save" class="primary">${isSaved(r) ? '저장됨' : '♡ 저장'}</button><button id="add-list" class="ghost">리스트에 추가</button><button id="share" class="ghost">공유</button></div></div>
+      ${premisesPanel(r)}
       <section id="place-extras" class="place-extras" aria-live="polite"><div class="place-loading">사진·가격·좌석 정보를 확인하는 중입니다.</div></section>
       <div class="detail-grid"><section><h3>식당 정보</h3><dl><dt>주소</dt><dd>${escapeHtml(r.address)}</dd><dt>전화번호</dt><dd id="place-phone">${escapeHtml(r.phone || '정보 없음')}</dd><dt>영업 시작일</dt><dd>${permit ? `${escapeHtml(permit.formatted)} <small>공공 인허가 기록 확인</small>` : '공공데이터 확인 필요'}</dd><dt>영업 기간</dt><dd>${permit ? escapeHtml(permit.duration) : '계산할 수 없음'}</dd><dt>영업시간</dt><dd id="place-hours">방문 전 지도 서비스에서 확인해 주세요.</dd></dl>
       <p class="data-source-note">영업 시작일은 ${escapeHtml(r.permitDateSource || '행정안전부 일반음식점 인허가 데이터')}의 식품위생 영업 인허가일 기준이며, 실제 첫 영업일과 다를 수 있습니다.</p>
