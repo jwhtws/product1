@@ -155,14 +155,7 @@
       duration
     };
   }
-  function fallbackImage(r) {
-    const text = `${r.name} ${r.category}`.toLocaleLowerCase('ko-KR');
-    if (/카페|커피|베이커|제과|디저트|케이크|빵|차\s|다방/.test(text)) return 'assets/food/cafe-ai.png';
-    if (/일식|초밥|스시|사시미|우동|소바|돈카츠|돈까스|라멘|이자카야/.test(text)) return 'assets/food/japanese-ai.png';
-    if (/중식|중국|짜장|짬뽕|마라|양꼬치|훠궈|딤섬|탕수육/.test(text)) return 'assets/food/chinese-ai.png';
-    if (/경양식|양식|파스타|피자|스테이크|브런치|버거|레스토랑/.test(text)) return 'assets/food/western-ai.png';
-    return 'assets/food/korean-ai.png';
-  }
+  const categoryLabel = r => String(r.category || '음식점').replace(/\s+/g, ' ').trim();
 
   function filtered() {
     const f = state.filters, q = searchKey(f.query);
@@ -189,7 +182,7 @@
   function card(r, index) {
     const permit = permitDateInfo(r.permitDate);
     return `<article class="restaurant-card" tabindex="0" data-index="${index}" data-place-key="${Math.abs(hash(idOf(r)))}">
-      <div class="listing-photo" data-place-photo style="background-image:url('${fallbackImage(r)}')"><span data-photo-badge>AI 대표 이미지</span></div>
+      <div class="listing-photo neutral-photo" data-place-photo data-category-label="${escapeHtml(categoryLabel(r))}"><span data-photo-badge>${escapeHtml(categoryLabel(r))} · 사진 없음</span></div>
       <div class="card-body"><div class="card-top"><span class="category">${escapeHtml(r.category || '음식점')}</span><button class="save ${isSaved(r) ? 'active' : ''}" data-save="${index}" type="button" aria-label="저장">♡</button></div>
       <div class="card-identity"><h3>${escapeHtml(r.name)}</h3></div><p class="address">${escapeHtml(r.address)}</p>
       ${permit ? `<div class="tenure-badge"><span>영업 기간</span><strong>${escapeHtml(permit.duration)}</strong></div>` : ''}
@@ -242,6 +235,7 @@
       const photo = cardEl.querySelector('[data-place-photo]');
       if (!photo) return;
       photo.style.backgroundImage = `url("${place.photoUrl.replace(/["\\]/g, '')}")`;
+      photo.classList.remove('neutral-photo');
       const badge = photo.querySelector('[data-photo-badge]');
       if (badge) badge.textContent = '실제 검색 이미지';
     });
@@ -435,7 +429,7 @@
     const naverQuery = encodeURIComponent(naverAddress);
     const fullQuery = encodeURIComponent(`${r.name} ${r.address || ''}`);
     const permit = permitDateInfo(r.permitDate);
-    $('#modal-content').innerHTML = `<div id="place-cover" class="detail-cover" style="background-image:url('${fallbackImage(r)}')"><span>AI 대표 이미지</span></div><div class="detail-hero"><span class="category">${escapeHtml(r.category || '음식점')}</span><h2 id="detail-title">${escapeHtml(r.name)}</h2><p>${escapeHtml(r.address)}</p>
+    $('#modal-content').innerHTML = `<div id="place-cover" class="detail-cover neutral-photo" data-category-label="${escapeHtml(categoryLabel(r))}"><span>${escapeHtml(categoryLabel(r))} · 사진 없음</span></div><div class="detail-hero"><span class="category">${escapeHtml(r.category || '음식점')}</span><h2 id="detail-title">${escapeHtml(r.name)}</h2><p>${escapeHtml(r.address)}</p>
       <div class="detail-score"><strong>★ ${r.rating}</strong><span>리뷰 신뢰도 ${r.trust}%</span><span>${priceText(r.price)} · ${r.mood}</span></div>
       <div class="permit-highlight"><div><span>현재 영업 기간</span><b>${permit ? escapeHtml(permit.duration) : '확인 필요'}</b></div><div><span>영업 시작일</span><strong>${permit ? escapeHtml(permit.formatted) : '확인 필요'}</strong></div><small>행정안전부 식품위생 인허가일 기준 · 영업 기간은 매년 자동 갱신</small></div>
       <div class="detail-actions"><button id="detail-save" class="primary">${isSaved(r) ? '저장됨' : '♡ 저장'}</button><button id="add-list" class="ghost">리스트에 추가</button><button id="share" class="ghost">공유</button></div></div>
@@ -465,6 +459,7 @@
     if (place.photoUrl) {
       cover.style.backgroundImage = `url("${place.photoUrl.replace(/["\\]/g, '')}")`;
       cover.classList.add('loaded');
+      cover.classList.remove('neutral-photo');
       applyRealPhoto(r, place);
     }
     if (place.phone) $('#place-phone').textContent = place.phone;
