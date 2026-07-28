@@ -22,7 +22,7 @@ export async function onRequestGet(context) {
   if (context.env.NAVER_CLIENT_ID && context.env.NAVER_CLIENT_SECRET) {
     const result = await fetchNaverPlace(context, name, address);
     if (result) {
-      const outgoing = json(result);
+      const outgoing = json(result, 200, result.photoUrl ? `public, max-age=${THIRTY_DAYS}` : 'public, max-age=86400');
       context.waitUntil(cache.put(cacheKey, outgoing.clone()));
       return outgoing;
     }
