@@ -183,25 +183,12 @@
     } : null;
     return { floors, unit, location: [floors.join('·'), unit].filter(Boolean).join(' '), areaM2: validArea ? areaM2 : null, pyeong, kitchenRatio, supportRatio, diningRatio, seats };
   }
-  function premisesPanel(r) {
-    const info = premisesInfo(r);
-    const kitchenWide = info.kitchenRatio >= 0.35;
-    const tables = info.areaM2 ? Math.max(3, Math.min(12, Math.round(info.seats.max / 4))) : 6;
-    return `<section class="premises-panel layout-only">
-      <article class="plan-card"><div class="plan-title"><strong>건물과 대지</strong><span>GIS 연결 전 개념도</span></div>
-        <div class="site-plan" role="img" aria-label="대지와 건물 배치 개념도">
-          <div class="site-road">도로</div><div class="site-lot"><span>대지</span><div class="building-footprint"><b>건물</b><i>출입구</i></div><div class="site-open">외부 공간</div></div>
-        </div>
-      </article>
-      <article class="plan-card"><div class="plan-title"><strong>일반적인 식당 구조</strong><span>업종·신고면적 기반 예시</span></div>
-        <div class="restaurant-plan ${kitchenWide ? 'wide-kitchen' : ''}" role="img" aria-label="일반적인 식당 구조 예시">
-          <div class="zone entrance">입구</div><div class="zone counter">카운터</div>
-          <div class="zone dining"><b>홀</b><div class="table-field">${Array.from({ length: tables }, () => '<i></i>').join('')}</div></div>
-          <div class="zone kitchen">주방</div><div class="zone storage">창고</div><div class="zone restroom">화장실</div>
-        </div>
-      </article>
-      <p class="plan-disclaimer">실제 도면이 아닌 개념 배치입니다. GIS 건물·필지 도형이 확인되면 실제 외곽 기반으로 표시됩니다.</p>
-    </section>`;
+  function buildingSitePlan() {
+    return `<aside class="title-site-plan"><div class="plan-title"><strong>건물·대지</strong><span>개념도</span></div>
+      <div class="site-plan" role="img" aria-label="대지와 건물 배치 개념도, 자동차 한 대와 사람 한 명">
+        <div class="site-road"><span class="scale-car" aria-label="자동차">🚗</span><span>도로</span></div>
+        <div class="site-lot"><span>대지</span><div class="building-footprint"><b>건물</b><i>출입구</i></div><span class="scale-person" aria-label="사람">🚶</span></div>
+      </div><small>실제 도면이 아닌 GIS 연결 전 개념 배치</small></aside>`;
   }
   const categoryLabel = r => String(r.category || '음식점').replace(/\s+/g, ' ').trim();
 
@@ -486,11 +473,10 @@
     const naverQuery = encodeURIComponent(naverAddress);
     const fullQuery = encodeURIComponent(`${r.name} ${r.address || ''}`);
     const permit = permitDateInfo(r.permitDate);
-    $('#modal-content').innerHTML = `<div id="place-cover" class="detail-cover neutral-photo" data-category-label="${escapeHtml(categoryLabel(r))}"><span>${escapeHtml(categoryLabel(r))} · 사진 없음</span></div><div class="detail-hero"><span class="category">${escapeHtml(r.category || '음식점')}</span><h2 id="detail-title">${escapeHtml(r.name)}</h2><p>${escapeHtml(r.address)}</p>
+    $('#modal-content').innerHTML = `<div id="place-cover" class="detail-cover neutral-photo" data-category-label="${escapeHtml(categoryLabel(r))}"><span>${escapeHtml(categoryLabel(r))} · 사진 없음</span></div><div class="detail-hero"><div class="detail-heading"><div><span class="category">${escapeHtml(r.category || '음식점')}</span><h2 id="detail-title">${escapeHtml(r.name)}</h2><p>${escapeHtml(r.address)}</p></div>${buildingSitePlan()}</div>
       <div class="detail-score"><strong>★ ${r.rating}</strong><span>리뷰 신뢰도 ${r.trust}%</span><span>${priceText(r.price)} · ${r.mood}</span></div>
       <div class="permit-highlight"><div><span>현재 영업 기간</span><b>${permit ? escapeHtml(permit.duration) : '확인 필요'}</b></div><div><span>영업 시작일</span><strong>${permit ? escapeHtml(permit.formatted) : '확인 필요'}</strong></div><small>행정안전부 식품위생 인허가일 기준 · 영업 기간은 매년 자동 갱신</small></div>
       <div class="detail-actions"><button id="detail-save" class="primary">${isSaved(r) ? '저장됨' : '♡ 저장'}</button><button id="add-list" class="ghost">리스트에 추가</button><button id="share" class="ghost">공유</button></div></div>
-      ${premisesPanel(r)}
       <section id="place-extras" class="place-extras" aria-live="polite"><div class="place-loading">사진·가격·좌석 정보를 확인하는 중입니다.</div></section>
       <div class="detail-grid"><section><h3>식당 정보</h3><dl><dt>주소</dt><dd>${escapeHtml(r.address)}</dd><dt>전화번호</dt><dd id="place-phone">${escapeHtml(r.phone || '정보 없음')}</dd><dt>영업 시작일</dt><dd>${permit ? `${escapeHtml(permit.formatted)} <small>공공 인허가 기록 확인</small>` : '공공데이터 확인 필요'}</dd><dt>영업 기간</dt><dd>${permit ? escapeHtml(permit.duration) : '계산할 수 없음'}</dd><dt>영업시간</dt><dd id="place-hours">방문 전 지도 서비스에서 확인해 주세요.</dd></dl>
       <p class="data-source-note">영업 시작일은 ${escapeHtml(r.permitDateSource || '행정안전부 일반음식점 인허가 데이터')}의 식품위생 영업 인허가일 기준이며, 실제 첫 영업일과 다를 수 있습니다.</p>
