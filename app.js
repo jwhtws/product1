@@ -51,6 +51,7 @@
   const fileUrl = file => `data/restaurants/${file.replace(/%/g, '%25')}`;
   const searchManifestCache = new Map();
   const searchPageCache = new Map();
+  const containsManifestCache = new Map();
   const placeDetailCache = new Map();
   async function loadRegion(region) {
     const files = region.files || [region.file];
@@ -290,18 +291,44 @@
     const session = state.searchSession;
     if (!session || session.done) return;
     while (filtered().length < targetCount && !session.done) {
-      const path = `data/restaurants/search-pages/${session.bucket}-${session.nextPage}.json?v=2`;
+      let pageKey = '';
+      if (session.nextPage <= session.endPage) {
+        pageKey = `${session.bucket}-${session.nextPage}`;
+        session.nextPage += 1;
+      } else {
+        pageKey = session.containsPages.shift() || '';
+      }
+      if (!pageKey) { session.done = true; break; }
+      const path = `data/restaurants/search-pages/${pageKey}.json?v=3`;
       if (!searchPageCache.has(path)) searchPageCache.set(path, fetch(path).then(response => response.ok ? response.json() : []));
       const rows = await searchPageCache.get(path);
-      if (!rows.length) { session.done = true; break; }
-      state.all = state.all.concat(enrich(rows.map(([name, category, address, phone, permitDate, permitDateSource]) =>
-        ({ name, category, address, phone, permitDate, permitDateSource }))));
-      session.nextPage += 1;
-      session.done = session.nextPage > session.endPage;
+      const nextRows = enrich(rows.map(([name, category, address, phone, permitDate, permitDateSource]) =>
+        ({ name, category, address, phone, permitDate, permitDateSource })));
+      const existing = new Set(state.all.map(idOf));
+      state.all = state.all.concat(nextRows.filter(row => !existing.has(idOf(row))));
+      session.done = session.nextPage > session.endPage && !session.containsPages.length;
     }
   }
+  async function containsPagesFor(queryChars) {
+    const bigrams = [];
+    for (let index = 0; index < queryChars.length - 1; index += 1) {
+      const pair = queryChars.slice(index, index + 2);
+      const routeKey = pair.map(char => char.codePointAt(0).toString(16)).join('-');
+      const shard = (pair.reduce((value, char) => ((value * 31) + char.codePointAt(0)) >>> 0, 0) % 256).toString(16).padStart(2, '0');
+      if (!containsManifestCache.has(shard)) {
+        containsManifestCache.set(shard, fetch(`data/restaurants/search-pages/contains-${shard}.json?v=1`)
+          .then(response => response.ok ? response.json() : {}));
+      }
+      bigrams.push({ routeKey, shard });
+    }
+    const manifests = await Promise.all([...new Set(bigrams.map(item => item.shard))].map(shard => containsManifestCache.get(shard)));
+    const byShard = new Map([...new Set(bigrams.map(item => item.shard))].map((shard, index) => [shard, manifests[index]]));
+    const candidates = bigrams.map(item => byShard.get(item.shard)?.[item.routeKey] || []).filter(pages => pages.length);
+    return candidates.sort((left, right) => left.length - right.length)[0] || [];
+  }
   async function startSearch(query) {
-    const chars = [...searchKey(query)].slice(0, 3);
+    const allChars = [...searchKey(query)].slice(0, 30);
+    const chars = allChars.slice(0, 3);
     if (!chars.length) { state.all = state.preview; state.searchSession = null; return; }
     const bucketChars = chars.slice(0, 2);
     const bucket = (bucketChars.reduce((value, char) => ((value * 31) + char.codePointAt(0)) >>> 0, 0) % 256).toString(16).padStart(2, '0');
@@ -309,8 +336,19 @@
     const manifest = await searchManifestCache.get(bucket);
     const keyFor = length => chars.slice(0, length).map(char => char.codePointAt(0).toString(16)).join('-');
     const entry = manifest[keyFor(Math.min(3, chars.length))] || manifest[keyFor(Math.min(2, chars.length))];
+    const prefixPages = new Set();
+    if (entry) for (let page = entry.start; page <= entry.end; page += 1) prefixPages.add(`${bucket}-${page}`);
+    const containsPages = allChars.length >= 2
+      ? (await containsPagesFor(allChars)).filter(page => !prefixPages.has(page))
+      : [];
     state.all = [];
-    state.searchSession = entry ? { bucket, nextPage: entry.start, endPage: entry.end, done: false } : { done: true };
+    state.searchSession = {
+      bucket,
+      nextPage: entry?.start ?? 1,
+      endPage: entry?.end ?? 0,
+      containsPages,
+      done: !entry && !containsPages.length
+    };
     await loadSearchResults(pageSize);
   }
   async function prefetchSearch(query) {
