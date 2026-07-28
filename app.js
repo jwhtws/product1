@@ -98,6 +98,31 @@
   function savedIds() { return store.get('saved', []); }
   function isSaved(r) { return savedIds().includes(idOf(r)); }
   function updateSavedCount() { $('#saved-count').textContent = savedIds().length; }
+  function renderHomeRankings() {
+    const searches = [
+      ['한식', '든든한 한 끼'], ['카페', '커피와 디저트'], ['일식', '깔끔한 메뉴'],
+      ['중식', '오늘의 별미'], ['분식', '가볍게 즐기기']
+    ];
+    const searchEl = $('#popular-searches');
+    if (searchEl) searchEl.innerHTML = searches.map(([name, note], index) =>
+      `<button type="button" data-ranking-category="${name}"><b>${index + 1}</b><strong>${name}</strong><span>${note}</span></button>`
+    ).join('');
+
+    const allReviews = Object.entries(store.get('reviews', {})).flatMap(([restaurantId, reviews]) =>
+      reviews.map(review => ({ ...review, restaurant: restaurantId.split('|')[0] }))
+    );
+    const reviewRows = (rows, emptyText) => rows.length ? rows.slice(0, 5).map((review, index) =>
+      `<div class="ranking-review"><b>${index + 1}</b><div><strong>${escapeHtml(review.restaurant)}</strong><p>${escapeHtml(review.text)}</p></div><span>★ ${review.rating}</span></div>`
+    ).join('') : `<p class="ranking-empty">${emptyText}</p>`;
+    const latestEl = $('#latest-reviews'), popularEl = $('#popular-reviews');
+    if (latestEl) latestEl.innerHTML = reviewRows([...allReviews].sort((a, b) => b.createdAt - a.createdAt), '아직 등록된 리뷰가 없습니다.');
+    if (popularEl) popularEl.innerHTML = reviewRows([...allReviews].sort((a, b) => (b.helpful || 0) - (a.helpful || 0) || b.rating - a.rating), '유용한 리뷰가 곧 표시됩니다.');
+    $$('[data-ranking-category]').forEach(button => button.addEventListener('click', () => {
+      const category = button.dataset.rankingCategory;
+      const target = $$('[data-category]').find(item => item.dataset.category === category);
+      target?.click();
+    }));
+  }
   function toggleSaved(r) {
     const saved = savedIds(), id = idOf(r), exists = saved.includes(id);
     store.set('saved', exists ? saved.filter(x => x !== id) : [...saved, id]);
@@ -166,6 +191,7 @@
       render(); $('#discover').scrollIntoView();
     }));
     $('#empty-reset')?.addEventListener('click', resetFilters);
+    renderHomeRankings();
   }
 
   async function ensureAll() {
@@ -322,13 +348,13 @@
     const reviews = [...reviewsFor(state.current)].sort((a, b) => sort === 'rating' ? b.rating - a.rating : sort === 'helpful' ? b.helpful - a.helpful : b.createdAt - a.createdAt);
     $('#review-list').innerHTML = reviews.length ? reviews.map(r => `<article class="review"><div><strong>${escapeHtml(r.author)}</strong><span class="verified">솔직 리뷰</span><time>${new Date(r.createdAt).toLocaleDateString('ko-KR')}</time></div><b>${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</b><p>${escapeHtml(r.text)}</p><button data-helpful="${r.id}" type="button">유용해요 ${r.helpful || 0}</button></article>`).join('') : '<p class="empty-reviews">첫 번째 솔직한 리뷰를 남겨주세요.</p>';
     $$('[data-helpful]').forEach(el => el.addEventListener('click', () => {
-      const all = store.get('reviews', {}), target = all[idOf(state.current)].find(x => x.id === Number(el.dataset.helpful)); target.helpful = (target.helpful || 0) + 1; store.set('reviews', all); renderReviews();
+      const all = store.get('reviews', {}), target = all[idOf(state.current)].find(x => x.id === Number(el.dataset.helpful)); target.helpful = (target.helpful || 0) + 1; store.set('reviews', all); renderReviews(); renderHomeRankings();
     }));
   }
   function submitReview(event) {
     event.preventDefault(); const data = new FormData(event.currentTarget), all = store.get('reviews', {}), id = idOf(state.current);
     all[id] = all[id] || []; all[id].push({ id: Date.now(), author: store.get('profile', {}).name || 'mukdang.com 사용자', rating: Number(data.get('rating')), text: data.get('text'), helpful: 0, createdAt: Date.now() });
-    store.set('reviews', all); event.currentTarget.reset(); renderReviews(); toast('리뷰를 등록했어요.');
+    store.set('reviews', all); event.currentTarget.reset(); renderReviews(); renderHomeRankings(); toast('리뷰를 등록했어요.');
   }
 
   function closeModals() { $$('.modal-backdrop').forEach(x => x.classList.remove('open')); document.body.classList.remove('locked'); }
