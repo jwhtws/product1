@@ -5,7 +5,7 @@
   const state = {
     preview: [], all: [], fullLoaded: false, loading: null, page: 1,
     filters: { query: '', region: '', category: '', price: '', mood: '', sort: 'recommend' },
-    current: null
+    current: null, progress: ''
   };
   const store = {
     get(key, fallback) { try { return JSON.parse(localStorage.getItem(`meokdang-${key}`)) ?? fallback; } catch { return fallback; } },
@@ -13,20 +13,36 @@
   };
   const escapeHtml = value => String(value ?? '').replace(/[&<>'"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[c]));
   const searchKey = value => String(value ?? '').toLocaleLowerCase('ko-KR').replace(/[^\p{L}\p{N}]+/gu, '');
-  function fuzzyMatch(query, value) {
-    const target = searchKey(value);
-    if (!query || target.includes(query) || query.includes(target)) return true;
-    if (query.length < 3 || target.length < 3) return false;
-    const pairs = text => {
-      const result = [];
-      for (let index = 0; index < text.length - 1; index += 1) result.push(text.slice(index, index + 2));
-      return result;
-    };
-    const queryPairs = pairs(query), targetPairs = pairs(target);
-    const targetSet = new Set(targetPairs);
-    const overlap = queryPairs.filter(pair => targetSet.has(pair)).length;
-    const similarity = (2 * overlap) / (queryPairs.length + targetPairs.length);
-    return (query.slice(0, 3) === target.slice(0, 3) && similarity >= .2) || similarity >= .58;
+  const initials = value => [...String(value ?? '')].map(char => {
+    const code = char.charCodeAt(0) - 0xac00;
+    return code >= 0 && code <= 11171 ? 'ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ'[Math.floor(code / 588)] : char;
+  }).join('');
+  const pairs = text => {
+    const result = [];
+    for (let index = 0; index < text.length - 1; index += 1) result.push(text.slice(index, index + 2));
+    return result;
+  };
+  function similarity(left, right) {
+    if (left.length < 3 || right.length < 3) return 0;
+    const leftPairs = pairs(left), rightSet = new Set(pairs(right));
+    const overlap = leftPairs.filter(pair => rightSet.has(pair)).length;
+    return (2 * overlap) / (leftPairs.length + Math.max(1, right.length - 1));
+  }
+  function relevance(query, restaurant) {
+    if (!query) return 1;
+    const name = searchKey(restaurant.name);
+    const address = searchKey(restaurant.address);
+    const category = searchKey(restaurant.category);
+    if (name === query) return 1000;
+    if (name.startsWith(query)) return 920;
+    if (name.includes(query)) return 850;
+    if (initials(name).startsWith(query)) return 800;
+    if (address.includes(query)) return 700;
+    if (category.includes(query)) return 650;
+    const score = similarity(query, name);
+    if (query.slice(0, 3) === name.slice(0, 3) && score >= .2) return 600 + Math.round(score * 100);
+    if (score >= .52) return 500 + Math.round(score * 100);
+    return 0;
   }
   const hash = value => [...String(value)].reduce((a, c) => ((a << 5) - a + c.charCodeAt(0)) | 0, 0);
   const idOf = restaurant => `${restaurant.name}|${restaurant.address}`;
@@ -73,19 +89,22 @@
 
   function filtered() {
     const f = state.filters, q = searchKey(f.query);
-    let rows = state.all.filter(r =>
-      (!q || searchKey(`${r.name} ${r.address} ${r.category}`).includes(q) || fuzzyMatch(q, r.name)) &&
-      (!f.region || r.address?.startsWith(f.region)) &&
-      (!f.category || r.category?.includes(f.category)) &&
-      (!f.price || String(r.price) === f.price) &&
-      (!f.mood || r.mood === f.mood)
+    let rows = state.all.map(r => ({ restaurant: r, relevance: relevance(q, r) })).filter(item =>
+      item.relevance > 0 &&
+      (!f.region || item.restaurant.address?.startsWith(f.region)) &&
+      (!f.category || item.restaurant.category?.includes(f.category)) &&
+      (!f.price || String(item.restaurant.price) === f.price) &&
+      (!f.mood || item.restaurant.mood === f.mood)
     );
-    return rows.sort((a, b) => {
-      if (f.sort === 'name') return a.name.localeCompare(b.name, 'ko');
-      if (f.sort === 'rating') return b.rating - a.rating;
-      if (f.sort === 'trust') return b.trust - a.trust;
-      return (Number(isSaved(b)) - Number(isSaved(a))) || b.trust - a.trust;
+    rows.sort((a, b) => {
+      if (q && b.relevance !== a.relevance) return b.relevance - a.relevance;
+      const left = a.restaurant, right = b.restaurant;
+      if (f.sort === 'name') return left.name.localeCompare(right.name, 'ko');
+      if (f.sort === 'rating') return right.rating - left.rating;
+      if (f.sort === 'trust') return right.trust - left.trust;
+      return (Number(isSaved(right)) - Number(isSaved(left))) || right.trust - left.trust;
     });
+    return rows.map(item => item.restaurant);
   }
   function card(r, index) {
     return `<article class="restaurant-card" tabindex="0" data-index="${index}">
@@ -100,7 +119,7 @@
     state.page = Math.min(state.page, pages);
     const start = (state.page - 1) * pageSize, shown = rows.slice(start, start + pageSize);
     $('#result-summary').textContent = `${rows.length.toLocaleString('ko-KR')}곳 · ${state.fullLoaded ? '전국 전체 데이터' : '빠른 미리보기'}`;
-    $('#app-state').textContent = state.fullLoaded ? '카드를 눌러 상세 정보와 리뷰를 확인하세요.' : '검색하거나 필터를 적용하면 전국 전체 데이터를 불러옵니다.';
+    $('#app-state').textContent = state.progress || (state.fullLoaded ? '카드를 눌러 상세 정보와 리뷰를 확인하세요.' : '검색하거나 필터를 적용하면 전국 전체 데이터를 불러옵니다.');
     $('#restaurant-grid').innerHTML = shown.map((r, i) => card(r, start + i)).join('') || '<div class="empty">조건에 맞는 식당이 없습니다.<br><button id="empty-reset" class="ghost">필터 초기화</button></div>';
     $('#pager').innerHTML = rows.length > pageSize ? `<button data-page="-1" ${state.page === 1 ? 'disabled' : ''}>이전</button><span>${state.page} / ${pages}</span><button data-page="1" ${state.page === pages ? 'disabled' : ''}>다음</button>` : '';
     $$('.restaurant-card').forEach(el => {
@@ -122,7 +141,7 @@
           : window.__MEOKDANG_REGIONS__;
         for (let index = 0; index < regions.length; index += 1) {
           const region = regions[index];
-          $('#app-state').textContent = `${region.name} 검색 중… (${index + 1}/${regions.length})`;
+          state.progress = `${region.name} 검색 중… (${index + 1}/${regions.length})`;
           const response = await fetch(`${fileUrl(region.file)}?v=20260728-2`);
           if (!response.ok) throw Error(`${region.name} 데이터 응답 ${response.status}`);
           loaded.push(...enrich(await response.json()));
@@ -133,9 +152,11 @@
         }
         state.fullLoaded = !state.filters.region;
         state.loading = null;
+        state.progress = '';
         render();
       })().catch(error => {
         state.loading = null;
+        state.progress = '';
         throw error;
       });
     }
