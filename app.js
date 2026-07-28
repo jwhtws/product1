@@ -289,9 +289,13 @@
   async function loadSearchResults(targetCount = pageSize) {
     const session = state.searchSession;
     if (!session || session.done) return;
-    while (filtered().length < targetCount && !session.done) {
+    while ((filtered().length < targetCount || session.containsPages.length) && !session.done) {
       let pageKey = '';
-      if (session.containsPages.length) {
+      if (!session.prefixLoaded && session.nextPage <= session.endPage) {
+        pageKey = `${session.bucket}-${session.nextPage}`;
+        session.nextPage += 1;
+        session.prefixLoaded = true;
+      } else if (session.containsPages.length) {
         pageKey = session.containsPages.shift();
       } else if (session.nextPage <= session.endPage) {
         pageKey = `${session.bucket}-${session.nextPage}`;
@@ -325,7 +329,8 @@
     const candidates = bigrams.map(item => byShard.get(item.shard)?.[item.routeKey] || []).filter(pages => pages.length);
     const pageScores = new Map();
     candidates.forEach(pages => pages.forEach(page => pageScores.set(page, (pageScores.get(page) || 0) + 1)));
-    return [...pageScores].sort((left, right) => right[1] - left[1]).map(([page]) => page);
+    const maxScore = Math.max(0, ...pageScores.values());
+    return [...pageScores].filter(([, score]) => score === maxScore).map(([page]) => page);
   }
   async function startSearch(query) {
     const normalizedQuery = searchKey(query);
@@ -340,7 +345,7 @@
     const entry = manifest[keyFor(Math.min(3, chars.length))] || manifest[keyFor(Math.min(2, chars.length))];
     const prefixPages = new Set();
     if (entry) for (let page = entry.start; page <= entry.end; page += 1) prefixPages.add(`${bucket}-${page}`);
-    const containsPages = allChars.length >= 2
+    const containsPages = allChars.length >= 3
       ? (await containsPagesFor(allChars)).filter(page => !prefixPages.has(page))
       : [];
     state.all = [];
@@ -349,6 +354,7 @@
       nextPage: entry?.start ?? 1,
       endPage: entry?.end ?? 0,
       containsPages,
+      prefixLoaded: false,
       done: !entry && !containsPages.length
     };
     await loadSearchResults(pageSize);
