@@ -193,7 +193,6 @@
     }));
     $('#empty-reset')?.addEventListener('click', resetFilters);
     renderHomeRankings();
-    enrichVisibleCards(rows);
   }
 
   async function fetchPlaceDetails(r) {
@@ -207,19 +206,6 @@
         .catch(() => null));
     }
     return placeDetailCache.get(key);
-  }
-  function enrichVisibleCards(rows) {
-    $$('.restaurant-card').forEach(cardEl => {
-      const restaurant = rows[Number(cardEl.dataset.index)];
-      if (!restaurant) return;
-      fetchPlaceDetails(restaurant).then(place => {
-        if (!place?.photoUrl || !cardEl.isConnected) return;
-        const photo = cardEl.querySelector('[data-place-photo]');
-        photo.textContent = '';
-        photo.style.backgroundImage = `url("${place.photoUrl.replace(/["\\]/g, '')}")`;
-        photo.classList.add('loaded');
-      });
-    });
   }
 
   async function ensureAll() {

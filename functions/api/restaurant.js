@@ -1,6 +1,7 @@
 const GOOGLE_TEXT_SEARCH = 'https://places.googleapis.com/v1/places:searchText';
 
-const json = (data, status = 200, cache = 'public, max-age=86400') =>
+const THIRTY_DAYS = 60 * 60 * 24 * 30;
+const json = (data, status = 200, cache = `public, max-age=${THIRTY_DAYS}`) =>
   new Response(JSON.stringify(data), {
     status,
     headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': cache }

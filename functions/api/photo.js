@@ -12,7 +12,7 @@ export async function onRequestGet(context) {
   const response = await fetch(source, { redirect: 'follow' });
   if (!response.ok) return new Response('Photo unavailable', { status: response.status });
   const outgoing = new Response(response.body, response);
-  outgoing.headers.set('cache-control', 'public, max-age=86400');
+  outgoing.headers.set('cache-control', 'public, max-age=2592000');
   context.waitUntil(cache.put(cacheKey, outgoing.clone()));
   return outgoing;
 }
