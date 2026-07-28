@@ -172,22 +172,38 @@
     if (geometry?.type === 'MultiPolygon') return (geometry.coordinates || []).flat();
     return [];
   }
-  function buildingSvg(geometry) {
+  function buildingDrawing(geometry) {
     const rings = polygonRings(geometry);
     const points = rings.flat().filter(pair => Array.isArray(pair) && pair.length >= 2)
       .map(pair => [Number(pair[0]), Number(pair[1])]).filter(pair => pair.every(Number.isFinite));
-    if (!points.length) return '';
+    if (!points.length) return null;
     const xs = points.map(point => point[0]), ys = points.map(point => point[1]);
     const minX = Math.min(...xs), maxX = Math.max(...xs), minY = Math.min(...ys), maxY = Math.max(...ys);
-    const width = Math.max(maxX - minX, 0.000001), height = Math.max(maxY - minY, 0.000001);
-    const scale = Math.min(172 / width, 92 / height);
-    const offsetX = (200 - width * scale) / 2, offsetY = (120 - height * scale) / 2;
+    const centerLat = (minY + maxY) / 2;
+    const metersX = Math.max((maxX - minX) * 111320 * Math.cos(centerLat * Math.PI / 180), 0.5);
+    const metersY = Math.max((maxY - minY) * 110540, 0.5);
+    const lonScale = metersX / Math.max(maxX - minX, 0.000000001);
+    const latScale = metersY / Math.max(maxY - minY, 0.000000001);
+    const margin = Math.max(6, Math.min(18, Math.max(metersX, metersY) * 0.22));
+    const canvasWidth = metersX + margin * 2;
+    const canvasHeight = metersY + margin * 2;
     const paths = rings.map(ring => ring.map((point, index) => {
-      const x = offsetX + (Number(point[0]) - minX) * scale;
-      const y = 120 - (offsetY + (Number(point[1]) - minY) * scale);
-      return `${index ? 'L' : 'M'}${x.toFixed(1)} ${y.toFixed(1)}`;
+      const x = margin + (Number(point[0]) - minX) * lonScale;
+      const y = margin + metersY - (Number(point[1]) - minY) * latScale;
+      return `${index ? 'L' : 'M'}${x.toFixed(2)} ${y.toFixed(2)}`;
     }).join(' ') + ' Z').join(' ');
-    return `<svg class="building-shape" viewBox="0 0 200 120" role="img" aria-label="VWorld에서 조회한 실제 건물 외곽"><path d="${paths}"/></svg>`;
+    const carX = Math.max(1, margin - 5), carY = canvasHeight - Math.max(2.5, margin * 0.45);
+    const personX = canvasWidth - Math.max(2.2, margin * 0.4), personY = canvasHeight - Math.max(3, margin * 0.45);
+    return {
+      widthM: metersX,
+      depthM: metersY,
+      svg: `<svg class="building-shape" viewBox="0 0 ${canvasWidth.toFixed(2)} ${canvasHeight.toFixed(2)}" role="img" aria-label="실제 건물 외곽과 같은 축척의 자동차 및 사람">
+        <path class="actual-footprint" d="${paths}"/>
+        <g class="scale-car-real" aria-label="길이 4.5미터 자동차"><rect x="${carX.toFixed(2)}" y="${(carY - 1.8).toFixed(2)}" width="4.5" height="1.8" rx=".35"/><circle cx="${(carX + 1).toFixed(2)}" cy="${carY.toFixed(2)}" r=".35"/><circle cx="${(carX + 3.5).toFixed(2)}" cy="${carY.toFixed(2)}" r=".35"/></g>
+        <g class="scale-person-real" aria-label="키 1.7미터 사람"><circle cx="${personX.toFixed(2)}" cy="${(personY - 1.42).toFixed(2)}" r=".28"/><path d="M${personX.toFixed(2)} ${(personY - 1.12).toFixed(2)}v.7m-.45-.3m.45.3l.45-.3m-.45 0l-.38.82m.38-.82l.38.82"/></g>
+        <text x="${(carX + 2.25).toFixed(2)}" y="${(carY - 2.35).toFixed(2)}">차량 4.5m</text><text x="${personX.toFixed(2)}" y="${(personY - 2.05).toFixed(2)}">사람 1.7m</text>
+      </svg>`
+    };
   }
   async function loadBuildingSite(address) {
     const target = $('#building-site-plan');
@@ -198,14 +214,20 @@
       const data = await response.json();
       if (!data.found || !data.geometry) throw Error('not found');
       const info = data.building || {};
-      const details = [
-        info.use,
-        info.areaM2 ? `${Number(info.areaM2).toLocaleString('ko-KR')}㎡` : '',
-        info.floorsAbove ? `지상 ${info.floorsAbove}층` : ''
-      ].filter(Boolean).join(' · ');
+      const drawing = buildingDrawing(data.geometry);
+      if (!drawing) throw Error('invalid geometry');
+      const facts = [
+        ['용도', info.use],
+        ['건축면적', info.areaM2 ? `${Number(info.areaM2).toLocaleString('ko-KR')}㎡` : ''],
+        ['연면적', info.totalAreaM2 ? `${Number(info.totalAreaM2).toLocaleString('ko-KR')}㎡` : ''],
+        ['층수', [info.floorsAbove ? `지상 ${info.floorsAbove}층` : '', info.floorsBelow ? `지하 ${info.floorsBelow}층` : ''].filter(Boolean).join(' · ')],
+        ['높이', info.heightM ? `${info.heightM}m` : ''],
+        ['외곽 크기', `약 ${drawing.widthM.toFixed(1)} × ${drawing.depthM.toFixed(1)}m`]
+      ].filter(([, value]) => value);
       target.innerHTML = `<div class="plan-title"><strong>${escapeHtml(info.name || '실제 건물 외곽')}</strong><span>VWorld</span></div>
-        <div class="site-plan real-building">${buildingSvg(data.geometry)}</div>
-        <small>${escapeHtml(details || 'GIS건물통합정보 실측 도형')}</small>`;
+        <div class="site-plan real-building">${drawing.svg}</div>
+        <dl class="building-facts">${facts.map(([label, value]) => `<div><dt>${escapeHtml(label)}</dt><dd>${escapeHtml(value)}</dd></div>`).join('')}</dl>
+        <small>건물·차량·사람 모두 동일 축척 · VWorld GIS건물통합정보</small>`;
       target.classList.add('loaded');
     } catch {
       const status = target.querySelector('.plan-title span');
