@@ -29,6 +29,11 @@ function normalizeDate(value) {
   return date && !Number.isNaN(date.getTime()) && date.toISOString().slice(0, 10) === normalized ? normalized : '';
 }
 
+function normalizeArea(value) {
+  const area = Number.parseFloat(clean(value));
+  return Number.isFinite(area) && area > 0 && area < 100000 ? Math.round(area * 100) / 100 : null;
+}
+
 function addRow(values) {
   if (!headers) {
     headers = values;
@@ -57,6 +62,7 @@ function addRow(values) {
     category: clean(values[9] || values[30] || '음식점'),
     address,
     phone: clean(values[33] || ''),
+    facilityAreaM2: normalizeArea(values[25] || values[5] || ''),
     permitDate,
     permitDateSource: '행정안전부 일반음식점 인허가 데이터'
   };
