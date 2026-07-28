@@ -135,7 +135,7 @@
     if (state.fullLoaded) return;
     if (!state.loading) {
       state.loading = (async () => {
-        const loaded = [];
+        let loaded = [];
         const regions = state.filters.region
           ? window.__MEOKDANG_REGIONS__.filter(region => region.name === state.filters.region)
           : [...window.__MEOKDANG_REGIONS__].sort((left, right) => {
@@ -148,7 +148,7 @@
           state.progress = `${region.name} 검색 중… (${index + 1}/${regions.length})`;
           const response = await fetch(`${fileUrl(region.file)}?v=20260728-2`);
           if (!response.ok) throw Error(`${region.name} 데이터 응답 ${response.status}`);
-          loaded.push(...enrich(await response.json()));
+          loaded = loaded.concat(enrich(await response.json()));
           state.all = loaded;
           state.page = 1;
           render();
