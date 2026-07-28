@@ -138,6 +138,14 @@
     store.set('popularity', popularity);
   }
   function priceText(price) { return '₩'.repeat(Number(price)); }
+  function fallbackImage(r) {
+    const text = `${r.name} ${r.category}`.toLocaleLowerCase('ko-KR');
+    if (/카페|커피|베이커|제과|디저트|케이크|빵|차\s|다방/.test(text)) return 'assets/food/cafe-ai.png';
+    if (/일식|초밥|스시|사시미|우동|소바|돈카츠|돈까스|라멘|이자카야/.test(text)) return 'assets/food/japanese-ai.png';
+    if (/중식|중국|짜장|짬뽕|마라|양꼬치|훠궈|딤섬|탕수육/.test(text)) return 'assets/food/chinese-ai.png';
+    if (/경양식|양식|파스타|피자|스테이크|브런치|버거|레스토랑/.test(text)) return 'assets/food/western-ai.png';
+    return 'assets/food/korean-ai.png';
+  }
 
   function filtered() {
     const f = state.filters, q = searchKey(f.query);
@@ -162,11 +170,12 @@
     return rows.map(item => item.restaurant);
   }
   function card(r, index) {
-    return `<article class="restaurant-card" tabindex="0" data-index="${index}">
-      <div class="card-top"><span class="category">${escapeHtml(r.category || '음식점')}</span><button class="save ${isSaved(r) ? 'active' : ''}" data-save="${index}" type="button" aria-label="저장">♡</button></div>
-      <div class="card-identity"><div class="restaurant-photo" data-place-photo aria-hidden="true">${escapeHtml(r.name.slice(0, 1))}</div><h3>${escapeHtml(r.name)}</h3></div><p class="address">${escapeHtml(r.address)}</p>
+    return `<article class="restaurant-card" tabindex="0" data-index="${index}" data-place-key="${Math.abs(hash(idOf(r)))}">
+      <div class="listing-photo" data-place-photo style="background-image:url('${fallbackImage(r)}')"><span data-photo-badge>AI 대표 이미지</span></div>
+      <div class="card-body"><div class="card-top"><span class="category">${escapeHtml(r.category || '음식점')}</span><button class="save ${isSaved(r) ? 'active' : ''}" data-save="${index}" type="button" aria-label="저장">♡</button></div>
+      <div class="card-identity"><h3>${escapeHtml(r.name)}</h3></div><p class="address">${escapeHtml(r.address)}</p>
       <div class="score"><strong>★ ${r.rating}</strong><span>신뢰도 ${r.trust}%</span><span>${priceText(r.price)}</span></div>
-      <div class="tags"><span>${r.mood}</span><span>영업 정보 확인</span></div>
+      <div class="tags"><span>${r.mood}</span><span>영업 정보 확인</span></div></div>
     </article>`;
   }
   function render() {
@@ -378,6 +387,12 @@
     if (place.photoUrl) {
       cover.style.backgroundImage = `url("${place.photoUrl.replace(/["\\]/g, '')}")`;
       cover.classList.add('loaded');
+      $$(`[data-place-key="${Math.abs(hash(idOf(r)))}"]`).forEach(cardEl => {
+        const photo = cardEl.querySelector('[data-place-photo]');
+        photo.style.backgroundImage = `url("${place.photoUrl.replace(/["\\]/g, '')}")`;
+        const badge = photo.querySelector('[data-photo-badge]');
+        if (badge) badge.textContent = '검색 이미지';
+      });
     }
     if (place.phone) $('#place-phone').textContent = place.phone;
     if (place.hours?.length) $('#place-hours').innerHTML = place.hours.map(escapeHtml).join('<br>');
