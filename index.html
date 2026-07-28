@@ -1,25 +1,80 @@
 <!doctype html>
 <html lang="ko">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<meta name="description" content="전국 일반음식점 정보를 한눈에 확인하는 먹당">
-<title>먹당 | 오늘의 식당</title>
-<link rel="stylesheet" href="styles.css?v=20260727-6">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="취향과 신뢰를 바탕으로 전국 맛집을 발견하는 먹당">
+  <title>먹당 | 나를 위한 맛집 리뷰</title>
+  <link rel="stylesheet" href="styles.css?v=20260728-1">
 </head>
 <body>
-<header class="shell topbar"><div class="brand"><span>먹당</span></div><nav class="nav"><a href="#restaurants">식당 찾기</a><a href="#partnership">제휴 문의</a><a href="#comments">댓글</a></nav></header>
-<main class="shell">
-<section class="hero"><div class="eyebrow">MEOKDANG RESTAURANT GUIDE</div><h1>오늘 어디서 맛있는 걸 먹을까?</h1><p>식당 이름으로 전국 맛집을 찾아보세요.</p><div class="search-wrap"><div class="searchbar"><input id="search-input" type="search" placeholder="식당명을 입력하세요" autocomplete="off" aria-label="식당명 검색"><button id="search-button" type="button">검색</button></div><div id="suggestions" class="suggestions" role="listbox"></div></div></section>
-<section id="restaurants"><div class="section-head"><div><h2>식당 둘러보기</h2><p id="result-summary">실제 공공데이터를 불러오는 중입니다.</p></div></div><div id="app-state" class="state">잠시만 기다려 주세요.</div><div id="restaurant-grid" class="grid" aria-live="polite"><article class="restaurant-card"><div class="card-kicker">영업 중 · 분식</div><h3>(구)옛날삼교리막국수</h3><p class="card-address">강원특별자치도 강릉시 주문진읍 신리천로 348-3</p></article><article class="restaurant-card"><div class="card-kicker">영업 중 · 한식</div><h3>(구)칡사랑메밀사랑</h3><p class="card-address">강원특별자치도 홍천군 영귀미면 수타사로 372-5</p></article><article class="restaurant-card"><div class="card-kicker">영업 중 · 한식</div><h3>(농업회사법인이음(주))철정휴게소</h3><p class="card-address">강원특별자치도 홍천군 두촌면 한계길 3</p></article><article class="restaurant-card"><div class="card-kicker">영업 중 · 한식</div><h3>(뉴)진수성찬</h3><p class="card-address">강원특별자치도 춘천시 공지로 450, 1층 우측상가호 (근화동)</p></article><article class="restaurant-card"><div class="card-kicker">영업 중 · 한식</div><h3>(맛)미친포차</h3><p class="card-address">강원특별자치도 원주시 천사로 20, 모닝프라자 1층 106호 (단계동)</p></article><article class="restaurant-card"><div class="card-kicker">영업 중 · 한식</div><h3>(사)화천군새마을회</h3><p class="card-address">강원특별자치도 화천군 하남면 영서로 5697-69 (외 1필지)</p></article><article class="restaurant-card"><div class="card-kicker">영업 중 · 통닭(치킨)</div><h3>(송정체인)페리카나치킨</h3><p class="card-address">강원특별자치도 동해시 동해항2길 5, 1층 (송정동)</p></article><article class="restaurant-card"><div class="card-kicker">영업 중 · 분식</div><h3>(신)옹달샘</h3><p class="card-address">강원특별자치도 춘천시 영서로 2352-44 (온의동, 상가12동83호)</p></article><article class="restaurant-card"><div class="card-kicker">영업 중 · 패밀리레스트랑</div><h3>(유)아웃백스테이크하우스코리아 춘천점</h3><p class="card-address">강원특별자치도 춘천시 후석로 120, 2층 (석사동)</p></article><article class="restaurant-card"><div class="card-kicker">영업 중 · 경양식</div><h3>(유)아웃백스테이크하우스코리아(원주점)</h3><p class="card-address">강원특별자치도 원주시 시청로 27, 지상2층 (무실동)</p></article><article class="restaurant-card"><div class="card-kicker">영업 중 · 기타</div><h3>(재)한솔문화재단</h3><p class="card-address">강원특별자치도 원주시 지정면 월송리 999-13</p></article><article class="restaurant-card"><div class="card-kicker">영업 중 · 한식</div><h3>(재)한솔문화재단카페테라스</h3><p class="card-address">강원특별자치도 원주시 지정면 월송리 999-13 박물관</p></article><article class="restaurant-card"><div class="card-kicker">영업 중 · 한식</div><h3>(주) 뉴월드푸드</h3><p class="card-address">강원특별자치도 양양군 현남면 인구사잇말길 135</p></article><article class="restaurant-card"><div class="card-kicker">영업 중 · 한식</div><h3>(주)88생선구이푸드</h3><p class="card-address">강원특별자치도 속초시 중앙로 144-8, 1층 (중앙동)</p></article><article class="restaurant-card"><div class="card-kicker">영업 중 · 식육(숯불구이)</div><h3>(주)강릉돈우마을</h3><p class="card-address">강원특별자치도 강릉시 주문진읍 연주로 245-3</p></article><article class="restaurant-card"><div class="card-kicker">영업 중 · 한식</div><h3>(주)강산푸드정가미</h3><p class="card-address">강원특별자치도 강릉시 강동면 정동역길 24, 1~2층</p></article><article class="restaurant-card"><div class="card-kicker">영업 중 · 횟집</div><h3>(주)강원양어장횟집</h3><p class="card-address">강원특별자치도 화천군 사내면 화악산로 589</p></article><article class="restaurant-card"><div class="card-kicker">영업 중 · 기타</div><h3>(주)계방산자연농원</h3><p class="card-address">강원특별자치도 평창군 용평면 지옆골길 42-12</p></article><article class="restaurant-card"><div class="card-kicker">영업 중 · 경양식</div><h3>(주)고봉삼계탕원주점</h3><p class="card-address">강원특별자치도 원주시 시청로 41 (무실동,(2층))</p></article><article class="restaurant-card"><div class="card-kicker">영업 중 · 한식</div><h3>(주)고향이야기</h3><p class="card-address">강원특별자치도 평창군 대관령면 눈마을길 9, 1층</p></article></div><div id="pager" class="pager"></div><p class="source-note">공공데이터포털 전국 일반음식점 표준데이터 기준 · 평점은 공식 API 연결 후 표시됩니다.</p></section>
-<section id="partnership" class="info-section"><h2>제휴 문의</h2><p>맛집 등록, 광고, 협업 제안을 보내주세요.</p><form class="contact-form" action="https://formspree.io/f/mojgyppj" method="POST"><input type="hidden" name="_subject" value="먹당 제휴 문의"><label>업체명<input name="업체명" required></label><label>담당자명<input name="담당자명" required></label><label>이메일<input type="email" name="email" required></label><label>연락처<input type="tel" name="연락처"></label><label class="wide">문의 내용<textarea name="문의내용" required></textarea></label><button class="primary" type="submit">문의 보내기</button></form></section>
-<section id="comments" class="comments"><h2>댓글</h2><div id="disqus_thread"></div><noscript>댓글을 보려면 JavaScript를 활성화해 주세요.</noscript></section>
-</main>
-<footer class="footer">© 2026 먹당</footer>
-<div id="detail-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="detail-title"><article class="modal"><button id="modal-close" class="modal-close" type="button" aria-label="닫기">×</button><div id="modal-content"></div></article></div>
-<script src="app.js?v=20260727-7" defer></script>
-<script src="disqus.js?v=20260727-2" defer></script>
+  <header class="topbar shell">
+    <a class="brand" href="#home" aria-label="먹당 홈">먹<span>당</span></a>
+    <nav class="nav" aria-label="주요 메뉴">
+      <a href="#discover">맛집 찾기</a>
+      <button type="button" data-open-panel="saved">저장 목록 <span id="saved-count">0</span></button>
+      <button type="button" data-open-panel="mypage">마이페이지</button>
+    </nav>
+    <button id="auth-button" class="ghost" type="button">로그인</button>
+  </header>
+
+  <main id="home">
+    <section class="hero shell">
+      <div class="eyebrow">TRUSTED RESTAURANT GUIDE</div>
+      <h1>검색은 빠르게,<br>선택은 믿을 수 있게.</h1>
+      <p>전국 공공데이터와 나의 취향을 바탕으로 오늘의 식당을 찾아보세요.</p>
+      <div class="search-wrap">
+        <div class="searchbar">
+          <input id="search-input" type="search" placeholder="식당명, 지역, 음식 종류 검색" autocomplete="off" aria-label="맛집 검색">
+          <button id="search-button" class="primary" type="button">검색</button>
+        </div>
+        <div id="suggestions" class="suggestions" role="listbox"></div>
+      </div>
+      <div class="quick-categories" aria-label="빠른 음식 카테고리">
+        <button data-category="">전체</button><button data-category="한식">한식</button><button data-category="일식">일식</button>
+        <button data-category="중국식">중식</button><button data-category="경양식">양식</button><button data-category="카페">카페</button>
+      </div>
+    </section>
+
+    <section class="trust-strip">
+      <div class="shell trust-grid">
+        <div><strong>전국 16개 시·도</strong><span>공공데이터 기반 식당 정보</span></div>
+        <div><strong>검증 리뷰</strong><span>방문 인증·신뢰도 표시 준비 중</span></div>
+        <div><strong>나만의 리스트</strong><span>브라우저에 안전하게 저장</span></div>
+      </div>
+    </section>
+
+    <section id="discover" class="shell discover">
+      <div class="section-head">
+        <div><span class="eyebrow">DISCOVER</span><h2>나를 위한 맛집</h2><p id="result-summary">식당 정보를 불러오는 중입니다.</p></div>
+        <button id="filter-toggle" class="filter-toggle" type="button">필터</button>
+      </div>
+
+      <div id="filters" class="filters">
+        <label>지역<select id="region-filter"><option value="">전국</option></select></label>
+        <label>음식 종류<select id="category-filter"><option value="">전체</option></select></label>
+        <label>가격대<select id="price-filter"><option value="">전체</option><option value="1">₩ 가볍게</option><option value="2">₩₩ 보통</option><option value="3">₩₩₩ 특별하게</option></select></label>
+        <label>분위기<select id="mood-filter"><option value="">전체</option><option>혼밥</option><option>데이트</option><option>가족 외식</option><option>회식</option></select></label>
+        <label>정렬<select id="sort-filter"><option value="recommend">추천순</option><option value="trust">신뢰도순</option><option value="rating">별점순</option><option value="name">이름순</option></select></label>
+        <button id="filter-reset" class="ghost" type="button">초기화</button>
+      </div>
+
+      <div id="app-state" class="state">잠시만 기다려 주세요.</div>
+      <div id="restaurant-grid" class="grid" aria-live="polite"></div>
+      <div id="pager" class="pager"></div>
+      <p class="source-note">공공데이터포털 전국 일반음식점 표준데이터 기준 · 추천 점수와 가격대는 탐색 편의를 위한 데모 값입니다.</p>
+    </section>
+  </main>
+
+  <footer class="footer"><strong>먹당</strong><span>믿고 고르는 오늘의 식당</span><small>© 2026 Meokdang</small></footer>
+
+  <div id="detail-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="detail-title">
+    <article class="modal detail-modal"><button class="modal-close" data-close type="button" aria-label="닫기">×</button><div id="modal-content"></div></article>
+  </div>
+  <div id="panel-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="panel-title">
+    <article class="modal panel-modal"><button class="modal-close" data-close type="button" aria-label="닫기">×</button><div id="panel-content"></div></article>
+  </div>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="app.js?v=20260728-1" defer></script>
 </body>
 </html>
