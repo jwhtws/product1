@@ -66,7 +66,7 @@
     return name.replace(/^[\s.,·•:;|_]+|[\s.,·•:;|_]+$/g, '').trim() || String(value ?? '').trim();
   }
   function enrich(list) {
-    return list.filter(r => r.name).map(r => {
+    return list.filter(r => r.name && searchKey(r.name)).map(r => {
       const name = cleanName(r.name);
       const seed = Math.abs(hash(`${name}${r.address}`));
       return { ...r, name, price: seed % 3 + 1, mood: ['혼밥', '데이트', '가족 외식', '회식'][seed % 4], rating: (3.6 + (seed % 14) / 10).toFixed(1), trust: 78 + seed % 21 };

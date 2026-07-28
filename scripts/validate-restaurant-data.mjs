@@ -6,11 +6,12 @@ const regionManifestPath = path.join(root, 'regions.json');
 const reportPath = process.argv.find(arg => arg.startsWith('--report='))?.slice(9);
 const errors = [];
 const warnings = [];
-const stats = { regions: 0, sourceRows: 0, searchRows: 0, duplicateIds: 0, duplicatePlaces: 0 };
+const stats = { regions: 0, sourceRows: 0, searchableRows: 0, quarantinedRows: 0, searchRows: 0, duplicateIds: 0, duplicatePlaces: 0 };
 const sourceSignatures = new Map();
 const ids = new Map();
 const places = new Map();
 const signature = row => JSON.stringify([row.name || '', row.category || '', row.address || '', row.phone || '']);
+const searchKey = value => String(value ?? '').toLocaleLowerCase('ko-KR').replace(/[^\p{L}\p{N}]+/gu, '');
 const badText = value => typeof value === 'string' && (value.includes('\uFFFD') || /[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F-\u009F]/.test(value));
 
 function addCount(map, key) {
@@ -48,7 +49,13 @@ for (const region of manifest?.regions || []) {
       else ids.set(row.id, signature(row));
     }
     addCount(places, `${row.name}\u0000${row.address}`);
-    addCount(sourceSignatures, signature(row));
+    if (searchKey(row.name)) {
+      stats.searchableRows += 1;
+      addCount(sourceSignatures, signature(row));
+    } else {
+      stats.quarantinedRows += 1;
+      warnings.push(`${where}: 검색 가능한 글자가 없는 식당명 격리 (${JSON.stringify(row.name)})`);
+    }
   });
 }
 
@@ -72,7 +79,7 @@ for (const [key, count] of sourceSignatures) {
   searchCounts.delete(key);
 }
 for (const [key, count] of searchCounts) errors.push(`원본에 없는 검색 결과: ${key.slice(0, 160)} (${count}건)`);
-if (stats.searchRows !== stats.sourceRows) errors.push(`검색 인덱스 총 건수 불일치: 원본 ${stats.sourceRows}, 검색 ${stats.searchRows}`);
+if (stats.searchRows !== stats.searchableRows) errors.push(`검색 인덱스 총 건수 불일치: 검색 가능 원본 ${stats.searchableRows}, 검색 ${stats.searchRows}`);
 
 const updatedAt = new Date(manifest?.updatedAt || 0);
 const ageDays = Math.floor((Date.now() - updatedAt.getTime()) / 86400000);
@@ -90,7 +97,7 @@ const result = {
 
 const summary = [
   `식당 데이터 검증: ${result.ok ? '통과' : '실패'}`,
-  `지역 ${stats.regions}개 / 원본 ${stats.sourceRows.toLocaleString('ko-KR')}건 / 검색 ${stats.searchRows.toLocaleString('ko-KR')}건`,
+  `지역 ${stats.regions}개 / 원본 ${stats.sourceRows.toLocaleString('ko-KR')}건 / 검색 ${stats.searchRows.toLocaleString('ko-KR')}건 / 격리 ${stats.quarantinedRows.toLocaleString('ko-KR')}건`,
   `오류 ${errors.length}건 / 경고 ${warnings.length}건`,
   ...errors.slice(0, 20).map(item => `ERROR: ${item}`),
   ...warnings.slice(0, 20).map(item => `WARN: ${item}`)
