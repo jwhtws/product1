@@ -89,6 +89,14 @@
     store.set('saved', exists ? saved.filter(x => x !== id) : [...saved, id]);
     updateSavedCount(); toast(exists ? '저장 목록에서 삭제했어요.' : '가고 싶은 곳에 저장했어요.'); render();
   }
+  function recordPopularity(restaurants) {
+    const popularity = store.get('popularity', {});
+    restaurants.forEach((restaurant, index) => {
+      const id = idOf(restaurant);
+      popularity[id] = (popularity[id] || 0) + Math.max(1, 10 - index);
+    });
+    store.set('popularity', popularity);
+  }
   function priceText(price) { return '₩'.repeat(Number(price)); }
 
   function filtered() {
@@ -106,7 +114,10 @@
       if (f.sort === 'name') return left.name.localeCompare(right.name, 'ko');
       if (f.sort === 'rating') return right.rating - left.rating;
       if (f.sort === 'trust') return right.trust - left.trust;
-      return (Number(isSaved(right)) - Number(isSaved(left))) || right.trust - left.trust;
+      const popularity = store.get('popularity', {});
+      return (Number(isSaved(right)) - Number(isSaved(left))) ||
+        ((popularity[idOf(right)] || 0) - (popularity[idOf(left)] || 0)) ||
+        right.trust - left.trust;
     });
     return rows.map(item => item.restaurant);
   }
@@ -123,6 +134,7 @@
     state.page = Math.min(state.page, pages);
     const start = (state.page - 1) * pageSize, shown = rows.slice(start, start + pageSize);
     $('#result-summary').textContent = `${rows.length.toLocaleString('ko-KR')}곳 · ${state.fullLoaded ? '전국 전체 데이터' : '빠른 미리보기'}`;
+    $('#discover-title').textContent = state.filters.query ? '검색 결과' : '인기 맛집';
     $('#app-state').textContent = state.progress || (state.fullLoaded ? '카드를 눌러 상세 정보와 리뷰를 확인하세요.' : '검색하거나 필터를 적용하면 전국 전체 데이터를 불러옵니다.');
     $('#restaurant-grid').innerHTML = shown.map((r, i) => card(r, start + i)).join('') || '<div class="empty">조건에 맞는 식당이 없습니다.<br><button id="empty-reset" class="ghost">필터 초기화</button></div>';
     const mayHaveMore = state.searchSession && !state.searchSession.done;
@@ -225,6 +237,7 @@
       await ready;
       if (!window.__MEOKDANG_REGIONS__?.length) throw Error('검색 데이터 초기화 실패');
       await startSearch(state.filters.query);
+      recordPopularity(filtered().slice(0, 10));
       state.fullLoaded = false;
       state.progress = '';
       render();
