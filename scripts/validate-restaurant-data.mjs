@@ -16,7 +16,7 @@ const permitDateIssues = [];
 const sourceSignatures = new Map();
 const ids = new Map();
 const places = new Map();
-const signature = row => JSON.stringify([row.name || '', row.category || '', row.address || '', row.phone || '', row.permitDate || '', row.permitDateSource || '']);
+const signature = row => JSON.stringify([row.name || '', row.category || '', row.address || '', row.phone || '', row.permitDate || '', row.permitDateSource || '', row.facilityAreaM2 || null]);
 const searchKey = value => String(value ?? '').toLocaleLowerCase('ko-KR').replace(/[^\p{L}\p{N}]+/gu, '');
 const isPrivateFacility = name => {
   const normalized = String(name || '').replace(/\s+/g, ' ').trim();
