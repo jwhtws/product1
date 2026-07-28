@@ -100,18 +100,35 @@
   async function ensureAll() {
     if (state.fullLoaded) return;
     if (!state.loading) {
-      $('#app-state').textContent = '전국 식당 데이터를 불러오는 중입니다…';
-      state.loading = Promise.all(window.__MEOKDANG_REGIONS__.map(async region => {
-        const response = await fetch(`${fileUrl(region.file)}?v=20260728-1`, { cache: 'no-store' });
-        if (!response.ok) throw Error(`데이터 응답 ${response.status}`);
-        return response.json();
-      })).then(groups => { state.all = enrich(groups.flat()); state.fullLoaded = true; });
+      state.loading = (async () => {
+        const loaded = [];
+        const regions = state.filters.region
+          ? window.__MEOKDANG_REGIONS__.filter(region => region.name === state.filters.region)
+          : window.__MEOKDANG_REGIONS__;
+        for (let index = 0; index < regions.length; index += 1) {
+          const region = regions[index];
+          $('#app-state').textContent = `${region.name} 검색 중… (${index + 1}/${regions.length})`;
+          const response = await fetch(`${fileUrl(region.file)}?v=20260728-2`);
+          if (!response.ok) throw Error(`${region.name} 데이터 응답 ${response.status}`);
+          loaded.push(...enrich(await response.json()));
+          state.all = loaded;
+          state.page = 1;
+          render();
+          await new Promise(resolve => requestAnimationFrame(resolve));
+        }
+        state.fullLoaded = !state.filters.region;
+        render();
+      })().catch(error => {
+        state.loading = null;
+        throw error;
+      });
     }
     await state.loading;
   }
   async function applySearch() {
     state.filters.query = $('#search-input').value.trim(); state.page = 1; $('#suggestions').innerHTML = '';
-    try { await ensureAll(); render(); } catch (error) { console.error(error); $('#app-state').textContent = '데이터를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.'; }
+    render();
+    try { await ensureAll(); } catch (error) { console.error(error); $('#app-state').textContent = '데이터를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.'; }
   }
   async function applyFilters() {
     ['region', 'category', 'price', 'mood', 'sort'].forEach(key => { state.filters[key] = $(`#${key}-filter`).value; });
