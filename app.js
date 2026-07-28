@@ -117,6 +117,7 @@
           await new Promise(resolve => requestAnimationFrame(resolve));
         }
         state.fullLoaded = !state.filters.region;
+        state.loading = null;
         render();
       })().catch(error => {
         state.loading = null;
