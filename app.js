@@ -138,7 +138,11 @@
         const loaded = [];
         const regions = state.filters.region
           ? window.__MEOKDANG_REGIONS__.filter(region => region.name === state.filters.region)
-          : window.__MEOKDANG_REGIONS__;
+          : [...window.__MEOKDANG_REGIONS__].sort((left, right) => {
+              const priority = ['경기도', '서울특별시', '부산광역시', '인천광역시'];
+              const leftIndex = priority.indexOf(left.name), rightIndex = priority.indexOf(right.name);
+              return (leftIndex < 0 ? 99 : leftIndex) - (rightIndex < 0 ? 99 : rightIndex);
+            });
         for (let index = 0; index < regions.length; index += 1) {
           const region = regions[index];
           state.progress = `${region.name} 검색 중… (${index + 1}/${regions.length})`;
@@ -164,8 +168,21 @@
   }
   async function applySearch() {
     state.filters.query = $('#search-input').value.trim(); state.page = 1; $('#suggestions').innerHTML = '';
+    const button = $('#search-button');
+    button.disabled = true;
+    button.textContent = '찾는 중';
+    state.progress = state.filters.query ? `‘${state.filters.query}’ 검색을 시작합니다…` : '전국 맛집을 불러오는 중…';
     render();
-    try { await ensureAll(); } catch (error) { console.error(error); $('#app-state').textContent = '데이터를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.'; }
+    $('#discover').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    try {
+      await ensureAll();
+    } catch (error) {
+      console.error(error);
+      $('#app-state').textContent = '데이터를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.';
+    } finally {
+      button.disabled = false;
+      button.textContent = '검색';
+    }
   }
   async function applyFilters() {
     ['region', 'category', 'price', 'mood', 'sort'].forEach(key => { state.filters[key] = $(`#${key}-filter`).value; });
