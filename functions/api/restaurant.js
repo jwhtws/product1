@@ -47,6 +47,32 @@ const stripHtml = value => String(value || '')
   .trim();
 const key = value => stripHtml(value).toLocaleLowerCase('ko-KR').replace(/[^\p{L}\p{N}]+/gu, '');
 const addressCore = value => String(value || '').replace(/\s+/g, '').slice(0, 18);
+const canonicalAddress = value => {
+  const cleaned = String(value || '')
+    .normalize('NFKC')
+    .split(',')[0]
+    .replace(/\([^)]*\)/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+  const tokens = cleaned.split(' ').filter(Boolean);
+  if (/도$|특별시$|광역시$/.test(tokens[0] || '')) tokens.shift();
+  return key(tokens.join(' '));
+};
+const sameAddress = (item, requested) => {
+  const requestedKey = canonicalAddress(requested);
+  return [item.roadAddress, item.address].filter(Boolean).some(candidate => {
+    const candidateKey = canonicalAddress(candidate);
+    return candidateKey === requestedKey ||
+      (candidateKey.length >= 10 && requestedKey.startsWith(candidateKey)) ||
+      (requestedKey.length >= 10 && candidateKey.startsWith(requestedKey));
+  });
+};
+const locationHints = value => String(value || '')
+  .normalize('NFKC')
+  .split(/[\s,()]+/)
+  .map(token => token.replace(/[^\p{L}\p{N}]/gu, ''))
+  .filter(token => token.length >= 2 && /[시군구읍면동리로길]$/.test(token))
+  .map(key);
 const locality = value => {
   const tokens = String(value || '').split(/\s+/).filter(Boolean);
   const end = tokens.slice(0, 4).findLastIndex(token => /[시군구]$/.test(token));
@@ -88,18 +114,25 @@ async function fetchNaverPlace(context, name, address) {
     const candidateAddress = item.roadAddress || item.address || '';
     let score = titleKey === nameKey ? 100 : titleKey.includes(nameKey) || nameKey.includes(titleKey) ? 70 : 0;
     const overlap = addressScore(candidateAddress, address);
-    if (addressCore(candidateAddress) === addressCore(address)) score += 100;
+    const exactAddress = sameAddress(item, address);
+    if (exactAddress) score += 140;
+    else if (addressCore(candidateAddress) === addressCore(address)) score += 100;
     else if (overlap >= 7) score += 80;
     else if (overlap >= 4) score += 45;
-    return { item, title, score, overlap };
+    return { item, title, score, overlap, exactAddress };
   }).sort((left, right) => right.score - left.score);
   const match = candidates[0];
   const foodCategory = /음식점|한식|중식|일식|양식|분식|카페|디저트|베이커리|술집|치킨|피자|햄버거|육류|고기|해산물|생선|국수|만두|요리/;
-  if (!match || match.score < 115 || match.overlap < 4 || !foodCategory.test(match.item.category || '')) return null;
+  if (!match || !match.exactAddress || !foodCategory.test(match.item.category || '')) return null;
 
   const matchedAddress = match.item.roadAddress || match.item.address || address;
   const district = matchedAddress.split(/\s+/).slice(0, 3).join(' ');
-  const imageQuery = `${match.title} ${district} 음식점`;
+  const imageQuery = `${match.title} ${matchedAddress} 음식점`;
+  const sameNameCandidates = candidates.filter(candidate =>
+    key(candidate.title) === key(match.title) && !sameAddress(candidate.item, matchedAddress)
+  );
+  const ambiguousName = sameNameCandidates.length > 0;
+  const hints = locationHints(matchedAddress);
   let image = null;
   for (const filter of ['large', 'all']) {
     const imageResponse = await fetch(`${NAVER_IMAGE_SEARCH}?query=${encodeURIComponent(imageQuery)}&display=10&sort=sim&filter=${filter}`, { headers });
@@ -107,8 +140,10 @@ async function fetchNaverPlace(context, name, address) {
     const imageData = await imageResponse.json();
     image = (imageData.items || []).find(item => {
       const titleKey = key(item.title);
-      return titleKey.includes(nameKey) || nameKey.includes(titleKey);
-    }) || imageData.items?.[0] || null;
+      const nameMatches = titleKey.includes(nameKey) || nameKey.includes(titleKey);
+      const locationMatches = hints.some(hint => titleKey.includes(hint));
+      return nameMatches && (!ambiguousName || locationMatches);
+    }) || null;
     if (image) break;
   }
   return {
