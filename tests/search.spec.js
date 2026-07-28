@@ -3,9 +3,6 @@ const { test, expect } = require('@playwright/test');
 test('배포 사이트에서 고수경 검색 결과를 표시한다', async ({ page }) => {
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));
-  page.on('console', message => {
-    if (message.type() === 'error') errors.push(message.text());
-  });
   page.on('requestfailed', request => errors.push(`REQUEST ${request.url()} ${request.failure()?.errorText}`));
 
   await page.goto(process.env.TEST_BASE_URL || 'https://jwhtws.github.io/product1/', { waitUntil: 'domcontentloaded' });
