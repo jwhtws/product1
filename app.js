@@ -13,6 +13,21 @@
   };
   const escapeHtml = value => String(value ?? '').replace(/[&<>'"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[c]));
   const searchKey = value => String(value ?? '').toLocaleLowerCase('ko-KR').replace(/[^\p{L}\p{N}]+/gu, '');
+  function fuzzyMatch(query, value) {
+    const target = searchKey(value);
+    if (!query || target.includes(query) || query.includes(target)) return true;
+    if (query.length < 3 || target.length < 3) return false;
+    const pairs = text => {
+      const result = [];
+      for (let index = 0; index < text.length - 1; index += 1) result.push(text.slice(index, index + 2));
+      return result;
+    };
+    const queryPairs = pairs(query), targetPairs = pairs(target);
+    const targetSet = new Set(targetPairs);
+    const overlap = queryPairs.filter(pair => targetSet.has(pair)).length;
+    const similarity = (2 * overlap) / (queryPairs.length + targetPairs.length);
+    return (query.slice(0, 3) === target.slice(0, 3) && similarity >= .2) || similarity >= .58;
+  }
   const hash = value => [...String(value)].reduce((a, c) => ((a << 5) - a + c.charCodeAt(0)) | 0, 0);
   const idOf = restaurant => `${restaurant.name}|${restaurant.address}`;
   const fileUrl = file => `data/restaurants/${file.replace(/%/g, '%25')}`;
@@ -59,7 +74,7 @@
   function filtered() {
     const f = state.filters, q = searchKey(f.query);
     let rows = state.all.filter(r =>
-      (!q || searchKey(`${r.name} ${r.address} ${r.category}`).includes(q)) &&
+      (!q || fuzzyMatch(q, `${r.name} ${r.address} ${r.category}`)) &&
       (!f.region || r.address?.startsWith(f.region)) &&
       (!f.category || r.category?.includes(f.category)) &&
       (!f.price || String(r.price) === f.price) &&
