@@ -134,7 +134,7 @@
     state.page = Math.min(state.page, pages);
     const start = (state.page - 1) * pageSize, shown = rows.slice(start, start + pageSize);
     $('#result-summary').textContent = `${rows.length.toLocaleString('ko-KR')}곳 · ${state.fullLoaded ? '전국 전체 데이터' : '빠른 미리보기'}`;
-    $('#discover-title').textContent = state.filters.query ? '검색 결과' : '인기 맛집';
+    $('#discover-title').textContent = state.filters.query ? '검색 결과' : '지금 많이 찾는 식당';
     $('#app-state').textContent = state.progress || (state.fullLoaded ? '카드를 눌러 상세 정보와 리뷰를 확인하세요.' : '검색하거나 필터를 적용하면 전국 전체 데이터를 불러옵니다.');
     $('#restaurant-grid').innerHTML = shown.map((r, i) => card(r, start + i)).join('') || '<div class="empty">조건에 맞는 식당이 없습니다.<br><button id="empty-reset" class="ghost">필터 초기화</button></div>';
     const mayHaveMore = state.searchSession && !state.searchSession.done;
@@ -339,8 +339,8 @@
   function login(name) { store.set('profile', { name, loggedIn: true, badge: '새싹 리뷰어' }); $('#auth-button').textContent = name; closeModals(); toast('로그인했어요.'); }
   function renderMyPage(content) {
     const profile = store.get('profile', { name: '게스트', badge: '새싹 리뷰어' }), reviewCount = Object.values(store.get('reviews', {})).flat().length;
-    content.innerHTML = `<h2 id="panel-title">마이페이지</h2><div class="profile-card"><div class="avatar">${escapeHtml(profile.name[0])}</div><div><strong>${escapeHtml(profile.name)}</strong><span>${profile.badge}</span></div></div><div class="my-stats"><div><strong>${savedIds().length}</strong><span>저장</span></div><div><strong>${reviewCount}</strong><span>리뷰</span></div><div><strong>0</strong><span>알림</span></div></div><form id="profile-form" class="profile-form"><label>표시 이름<input name="name" value="${escapeHtml(profile.name)}"></label><label class="check"><input type="checkbox" name="notify" ${profile.notify ? 'checked' : ''}> 리뷰 반응 알림 받기</label><button class="primary">프로필 저장</button></form><h3>내 리뷰</h3><p class="trust-note">작성한 리뷰 ${reviewCount}개 · 신뢰도 뱃지는 방문 인증 기능 연동 후 성장합니다.</p>`;
-    $('#profile-form').addEventListener('submit', e => { e.preventDefault(); const data = new FormData(e.currentTarget); store.set('profile', { ...profile, name: data.get('name') || '먹당 사용자', notify: data.get('notify') === 'on' }); $('#auth-button').textContent = data.get('name'); toast('프로필을 저장했어요.'); });
+    content.innerHTML = `<h2 id="panel-title">마이페이지</h2><div class="profile-card"><div class="avatar">${escapeHtml(profile.name[0])}</div><div><strong>${escapeHtml(profile.name)}</strong><span>${profile.badge}</span></div></div><div class="my-stats"><div><strong>${reviewCount}</strong><span>리뷰</span></div><div><strong>${savedIds().length}</strong><span>저장</span></div></div><h3>프로필 설정</h3><form id="profile-form" class="profile-form"><label>닉네임<input name="name" value="${escapeHtml(profile.name)}"></label><label>소개<textarea name="bio" placeholder="나의 맛집 취향을 소개해 보세요.">${escapeHtml(profile.bio || '')}</textarea></label><label>선호 음식<select name="favorite"><option value="">선택 안 함</option>${['한식','일식','중식','양식','분식'].map(food => `<option ${profile.favorite === food ? 'selected' : ''}>${food}</option>`).join('')}</select></label><button class="primary">프로필 저장</button></form><h3>내 리뷰 관리</h3><p class="trust-note">작성한 리뷰 ${reviewCount}개 · 신뢰도 뱃지는 방문 인증 기능 연동 후 성장합니다.</p>`;
+    $('#profile-form').addEventListener('submit', e => { e.preventDefault(); const data = new FormData(e.currentTarget); const name = data.get('name') || '먹당 사용자'; const { notify, ...cleanProfile } = profile; store.set('profile', { ...cleanProfile, name, bio: data.get('bio') || '', favorite: data.get('favorite') || '' }); $('#auth-button').textContent = name; toast('프로필을 저장했어요.'); });
   }
   async function shareText(text) {
     try { if (navigator.share) await navigator.share({ title: '먹당', text, url: location.href }); else { await navigator.clipboard.writeText(`${text}\n${location.href}`); toast('공유 내용을 복사했어요.'); } } catch {}
@@ -352,7 +352,7 @@
   $$('#filters select').forEach(el => el.addEventListener('change', applyFilters));
   $('#filter-reset').addEventListener('click', resetFilters);
   $('#filter-toggle').addEventListener('click', () => $('#filters').classList.toggle('open'));
-  $$('[data-category]').forEach(el => el.addEventListener('click', () => { $('#category-filter').value = el.dataset.category; state.filters.category = el.dataset.category; state.searchSession = null; state.all = state.preview; render(); $('#discover').scrollIntoView(); }));
+  $$('[data-category]').forEach(el => el.addEventListener('click', () => { $$('[data-category]').forEach(button => button.classList.toggle('active', button === el)); $('#category-filter').value = el.dataset.category; state.filters.category = el.dataset.category; state.searchSession = null; state.all = state.preview; render(); $('#discover').scrollIntoView(); }));
   $$('[data-open-panel]').forEach(el => el.addEventListener('click', () => openPanel(el.dataset.openPanel)));
   $('#auth-button').addEventListener('click', () => openPanel('auth'));
   $$('[data-close]').forEach(el => el.addEventListener('click', closeModals));

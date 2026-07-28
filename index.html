@@ -20,9 +20,9 @@
 
   <main id="home">
     <section class="hero shell">
-      <div class="eyebrow">TRUSTED RESTAURANT GUIDE</div>
-      <h1><a class="hero-home" href="./" data-home>검색은 빠르게,<br>선택은 믿을 수 있게.</a></h1>
-      <p>전국 공공데이터와 나의 취향을 바탕으로 오늘의 식당을 찾아보세요.</p>
+      <div class="eyebrow">오늘의 맛집 추천</div>
+      <h1><a class="hero-home" href="./" data-home>오늘 어디서<br>드실 건가요?</a></h1>
+      <p>검증된 식당 정보와 나의 취향을 바탕으로 실패 없는 한 끼를 찾아보세요.</p>
       <div class="search-wrap">
         <div class="searchbar">
           <input id="search-input" type="search" placeholder="식당명, 지역, 음식 종류 검색" autocomplete="off" aria-label="맛집 검색">
@@ -31,8 +31,8 @@
         <div id="suggestions" class="suggestions" role="listbox"></div>
       </div>
       <div class="quick-categories" aria-label="빠른 음식 카테고리">
-        <button data-category="">전체</button><button data-category="한식">한식</button><button data-category="일식">일식</button>
-        <button data-category="중국식">중식</button><button data-category="경양식">양식</button><button data-category="카페">카페</button>
+        <button class="active" data-category="">전체</button><button data-category="한식">한식</button><button data-category="일식">일식</button>
+        <button data-category="중국식">중식</button><button data-category="경양식">양식</button><button data-category="카페">카페</button><button data-category="분식">분식</button>
       </div>
     </section>
 
@@ -46,7 +46,7 @@
 
     <section id="discover" class="shell discover">
       <div class="section-head">
-        <div><span class="eyebrow">DISCOVER</span><h2 id="discover-title">인기 맛집</h2><p id="result-summary">식당 정보를 불러오는 중입니다.</p></div>
+        <div><span class="eyebrow">오늘의 인기 맛집</span><h2 id="discover-title">지금 많이 찾는 식당</h2><p id="result-summary">식당 정보를 불러오는 중입니다.</p></div>
         <button id="filter-toggle" class="filter-toggle" type="button">필터</button>
       </div>
 
@@ -63,6 +63,14 @@
       <div id="restaurant-grid" class="grid" aria-live="polite"></div>
       <div id="pager" class="pager"></div>
       <p class="source-note">공공데이터포털 전국 일반음식점 표준데이터 기준 · 추천 점수와 가격대는 탐색 편의를 위한 데모 값입니다.</p>
+    </section>
+
+    <section class="trusted-reviews shell" aria-labelledby="trusted-title">
+      <div class="section-head"><div><span class="eyebrow">TRUSTED REVIEWS</span><h2 id="trusted-title">신뢰 높은 리뷰 모음</h2></div></div>
+      <div class="review-highlights">
+        <article><div><span class="reviewer">민</span><strong>김민준 · 최근 방문</strong></div><p>메뉴와 주소가 정확해서 고르기 편했어요. 다음에도 다시 방문하고 싶은 곳입니다.</p><span>검증된 리뷰 · 사진 포함</span></article>
+        <article><div><span class="reviewer">서</span><strong>이서연 · 최근 방문</strong></div><p>과장 없이 솔직한 후기가 많아서 메뉴 선택에 도움이 됐어요.</p><span>검증된 리뷰</span></article>
+      </div>
     </section>
   </main>
 
