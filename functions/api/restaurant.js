@@ -15,7 +15,7 @@ export async function onRequestGet(context) {
   const address = (url.searchParams.get('address') || '').trim();
   if (!name || !address) return json({ error: 'name과 address가 필요합니다.' }, 400, 'no-store');
   const cache = caches.default;
-  const cacheKey = new Request(`${url.origin}/api/restaurant?name=${encodeURIComponent(name)}&address=${encodeURIComponent(address)}`);
+  const cacheKey = new Request(`${url.origin}/api/restaurant?name=${encodeURIComponent(name)}&address=${encodeURIComponent(address)}&cache=v2`);
   const cached = await cache.match(cacheKey);
   if (cached) return cached;
 
@@ -100,14 +100,16 @@ async function fetchNaverPlace(context, name, address) {
   const matchedAddress = match.item.roadAddress || match.item.address || address;
   const district = matchedAddress.split(/\s+/).slice(0, 3).join(' ');
   const imageQuery = `${match.title} ${district} 음식점`;
-  const imageResponse = await fetch(`${NAVER_IMAGE_SEARCH}?query=${encodeURIComponent(imageQuery)}&display=10&sort=sim&filter=large`, { headers });
   let image = null;
-  if (imageResponse.ok) {
+  for (const filter of ['large', 'all']) {
+    const imageResponse = await fetch(`${NAVER_IMAGE_SEARCH}?query=${encodeURIComponent(imageQuery)}&display=10&sort=sim&filter=${filter}`, { headers });
+    if (!imageResponse.ok) continue;
     const imageData = await imageResponse.json();
     image = (imageData.items || []).find(item => {
       const titleKey = key(item.title);
       return titleKey.includes(nameKey) || nameKey.includes(titleKey);
     }) || imageData.items?.[0] || null;
+    if (image) break;
   }
   return {
     found: true,
