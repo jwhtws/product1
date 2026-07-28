@@ -18,10 +18,9 @@ test('배포 사이트에서 고수경 검색 결과를 표시한다', async ({ 
   await page.locator('.restaurant-card').filter({ hasText: '고수경샤브칼국수' }).first().click();
   await expect(page.locator('#detail-modal')).toHaveClass(/open/);
   console.log('DETAIL', await page.locator('#modal-content').innerText());
-  await expect(page.locator('#modal-content')).toContainText('영업 시작일');
-  await expect(page.locator('#modal-content')).toContainText('공공 인허가 기록 확인');
   await expect(page.locator('.permit-highlight')).toBeVisible();
-  await expect(page.locator('.permit-highlight')).toContainText('2004년 9월 30일');
+  await expect(page.locator('.permit-highlight')).toContainText('21년 영업 중');
+  await expect(page.locator('.restaurant-card').first().locator('.tenure-badge')).toContainText('21년 영업 중');
   console.log('ERRORS', errors);
   await expect(page.locator('#result-summary')).not.toContainText('0곳');
   expect(errors).toEqual([]);
