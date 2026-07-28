@@ -35,7 +35,7 @@ test('상호 중간 단어와 지점명으로도 공공데이터 식당을 찾�
   const target = page.locator('.restaurant-card').filter({ hasText: '효천황토장어' }).first();
   await expect(target).toBeVisible({ timeout: 10000 });
   await expect(target).toContainText('경기도 의왕시 능안길 2');
-  await expect(page.locator('.restaurant-card')).not.toContainText('AI 대표 이미지');
+  await expect(page.locator('body')).not.toContainText('AI 대표 이미지');
   await target.click();
   await expect(page.locator('#modal-content')).toContainText('효천황토장어');
   await expect(page.locator('#modal-content')).toContainText('2014년 2월 26일');
