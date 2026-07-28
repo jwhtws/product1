@@ -288,7 +288,10 @@
     $$('[data-suggestion]').forEach(el => el.addEventListener('click', () => { $('#search-input').value = matches[Number(el.dataset.suggestion)].name; applySearch(); }));
   }
 
-  function reviewsFor(r) { return store.get('reviews', {})[idOf(r)] || []; }
+  function reviewsFor(r) {
+    const hidden = new Set(store.get('hidden-reviews', []).map(String));
+    return (store.get('reviews', {})[idOf(r)] || []).filter(review => !hidden.has(String(review.id)));
+  }
   function openDetail(r) {
     state.current = r;
     const reviews = reviewsFor(r);
