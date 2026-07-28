@@ -26,6 +26,7 @@ export async function onRequestGet(context) {
       context.waitUntil(cache.put(cacheKey, outgoing.clone()));
       return outgoing;
     }
+    if (!context.env.GOOGLE_PLACES_API_KEY) return json({ found: false, provider: 'naver' }, 404);
   }
   if (!context.env.GOOGLE_PLACES_API_KEY) {
     return json({ error: 'NAVER_CLIENT_ID와 NAVER_CLIENT_SECRET이 연결되지 않았습니다.' }, 503, 'no-store');
@@ -46,28 +47,49 @@ const stripHtml = value => String(value || '')
   .trim();
 const key = value => stripHtml(value).toLocaleLowerCase('ko-KR').replace(/[^\p{L}\p{N}]+/gu, '');
 const addressCore = value => String(value || '').replace(/\s+/g, '').slice(0, 18);
+const locality = value => {
+  const tokens = String(value || '').split(/\s+/).filter(Boolean);
+  const end = tokens.slice(0, 4).findLastIndex(token => /[시군구]$/.test(token));
+  return tokens.slice(0, end >= 0 ? end + 1 : 2).join(' ');
+};
+const addressTokens = value => new Set(key(value).match(/[가-힣]+|\d+(?:-\d+)?/g) || []);
+const addressScore = (left, right) => {
+  const leftTokens = addressTokens(left), rightTokens = addressTokens(right);
+  let overlap = 0;
+  for (const token of leftTokens) if (rightTokens.has(token)) overlap += token.length >= 3 ? 2 : 1;
+  return overlap;
+};
 
 async function fetchNaverPlace(context, name, address) {
   const headers = {
     'X-Naver-Client-Id': context.env.NAVER_CLIENT_ID,
     'X-Naver-Client-Secret': context.env.NAVER_CLIENT_SECRET
   };
-  const localUrl = `${NAVER_LOCAL_SEARCH}?query=${encodeURIComponent(`${name} ${address}`)}&display=5&sort=random`;
-  const localResponse = await fetch(localUrl, { headers });
-  if (!localResponse.ok) return null;
-  const localData = await localResponse.json();
   const nameKey = key(name);
-  const candidates = (localData.items || []).map(item => {
+  const queries = [...new Set([`${name} ${locality(address)}`, name])];
+  const items = [];
+  for (const query of queries) {
+    const localUrl = `${NAVER_LOCAL_SEARCH}?query=${encodeURIComponent(query)}&display=5&sort=random`;
+    const localResponse = await fetch(localUrl, { headers });
+    if (!localResponse.ok) continue;
+    const localData = await localResponse.json();
+    items.push(...(localData.items || []));
+    if (items.some(item => key(item.title) === nameKey && addressScore(item.roadAddress || item.address, address) >= 5)) break;
+  }
+  const uniqueItems = [...new Map(items.map(item => [`${key(item.title)}|${key(item.roadAddress || item.address)}`, item])).values()];
+  const candidates = uniqueItems.map(item => {
     const title = stripHtml(item.title);
     const titleKey = key(title);
     const candidateAddress = item.roadAddress || item.address || '';
     let score = titleKey === nameKey ? 100 : titleKey.includes(nameKey) || nameKey.includes(titleKey) ? 70 : 0;
+    const overlap = addressScore(candidateAddress, address);
     if (addressCore(candidateAddress) === addressCore(address)) score += 100;
-    else if (key(candidateAddress).includes(key(address).slice(0, 12))) score += 50;
+    else if (overlap >= 7) score += 80;
+    else if (overlap >= 4) score += 45;
     return { item, title, score };
   }).sort((left, right) => right.score - left.score);
   const match = candidates[0];
-  if (!match || match.score < 70) return null;
+  if (!match || match.score < 115) return null;
 
   const matchedAddress = match.item.roadAddress || match.item.address || address;
   const district = matchedAddress.split(/\s+/).slice(0, 3).join(' ');
