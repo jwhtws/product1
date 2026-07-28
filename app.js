@@ -343,6 +343,11 @@
   $$('[data-close]').forEach(el => el.addEventListener('click', closeModals));
   $$('.modal-backdrop').forEach(el => el.addEventListener('click', e => e.target === el && closeModals()));
   document.addEventListener('keydown', e => e.key === 'Escape' && closeModals());
+  $$('[data-home]').forEach(link => link.addEventListener('click', event => {
+    event.preventDefault();
+    history.replaceState(null, '', `${location.pathname}${location.search}`);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }));
 
   try {
     const [regionsResponse, previewsResponse] = await Promise.all([fetch('data/restaurants/regions.json'), fetch('data/restaurants/previews.json')]);
