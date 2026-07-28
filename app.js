@@ -108,13 +108,13 @@
       (!f.price || String(item.restaurant.price) === f.price) &&
       (!f.mood || item.restaurant.mood === f.mood)
     );
+    const popularity = store.get('popularity', {});
     rows.sort((a, b) => {
       if (q && b.relevance !== a.relevance) return b.relevance - a.relevance;
       const left = a.restaurant, right = b.restaurant;
       if (f.sort === 'name') return left.name.localeCompare(right.name, 'ko');
       if (f.sort === 'rating') return right.rating - left.rating;
       if (f.sort === 'trust') return right.trust - left.trust;
-      const popularity = store.get('popularity', {});
       return (Number(isSaved(right)) - Number(isSaved(left))) ||
         ((popularity[idOf(right)] || 0) - (popularity[idOf(left)] || 0)) ||
         right.trust - left.trust;
