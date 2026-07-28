@@ -15,7 +15,7 @@ export async function onRequestGet(context) {
   const address = (url.searchParams.get('address') || '').trim();
   if (!name || !address) return json({ error: 'name과 address가 필요합니다.' }, 400, 'no-store');
   const cache = caches.default;
-  const cacheKey = new Request(`${url.origin}/api/restaurant?name=${encodeURIComponent(name)}&address=${encodeURIComponent(address)}&cache=v2`);
+  const cacheKey = new Request(`${url.origin}/api/restaurant?name=${encodeURIComponent(name)}&address=${encodeURIComponent(address)}&cache=v3`);
   const cached = await cache.match(cacheKey);
   if (cached) return cached;
 
@@ -128,10 +128,7 @@ async function fetchNaverPlace(context, name, address) {
   const matchedAddress = match.item.roadAddress || match.item.address || address;
   const district = matchedAddress.split(/\s+/).slice(0, 3).join(' ');
   const imageQuery = `${match.title} ${matchedAddress} 음식점`;
-  const sameNameCandidates = candidates.filter(candidate =>
-    key(candidate.title) === key(match.title) && !sameAddress(candidate.item, matchedAddress)
-  );
-  const ambiguousName = sameNameCandidates.length > 0;
+  const matchedTitleKey = key(match.title);
   const hints = locationHints(matchedAddress);
   let image = null;
   for (const filter of ['large', 'all']) {
@@ -141,8 +138,9 @@ async function fetchNaverPlace(context, name, address) {
     image = (imageData.items || []).find(item => {
       const titleKey = key(item.title);
       const nameMatches = titleKey.includes(nameKey) || nameKey.includes(titleKey);
+      const exactTitleMatches = matchedTitleKey.length >= 3 && titleKey.includes(matchedTitleKey);
       const locationMatches = hints.some(hint => titleKey.includes(hint));
-      return nameMatches && (!ambiguousName || locationMatches);
+      return exactTitleMatches || (nameMatches && locationMatches);
     }) || null;
     if (image) break;
   }
