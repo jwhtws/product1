@@ -239,7 +239,8 @@
   }
   function resetFilters() {
     $('#search-input').value = ''; $$('#filters select').forEach(select => { select.selectedIndex = 0; });
-    state.filters = { query: '', region: '', category: '', price: '', mood: '', sort: 'recommend' }; state.page = 1; render();
+    state.filters = { query: '', region: '', category: '', price: '', mood: '', sort: 'recommend' };
+    state.searchSession = null; state.all = state.preview; state.page = 1; render();
   }
   function renderSuggestions() {
     const q = searchKey($('#search-input').value);
@@ -321,7 +322,7 @@
   $$('#filters select').forEach(el => el.addEventListener('change', applyFilters));
   $('#filter-reset').addEventListener('click', resetFilters);
   $('#filter-toggle').addEventListener('click', () => $('#filters').classList.toggle('open'));
-  $$('[data-category]').forEach(el => el.addEventListener('click', () => { $('#category-filter').value = el.dataset.category; state.filters.category = el.dataset.category; state.all = state.preview; render(); $('#discover').scrollIntoView(); }));
+  $$('[data-category]').forEach(el => el.addEventListener('click', () => { $('#category-filter').value = el.dataset.category; state.filters.category = el.dataset.category; state.searchSession = null; state.all = state.preview; render(); $('#discover').scrollIntoView(); }));
   $$('[data-open-panel]').forEach(el => el.addEventListener('click', () => openPanel(el.dataset.openPanel)));
   $('#auth-button').addEventListener('click', () => openPanel('auth'));
   $$('[data-close]').forEach(el => el.addEventListener('click', closeModals));
