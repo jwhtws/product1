@@ -387,7 +387,7 @@
     ];
     const price = place.priceRange || place.priceLevel || '가격 정보 없음';
     const sourceLink = place.provider === 'naver'
-      ? (place.naverPlaceUrl ? `<a href="${escapeHtml(place.naverPlaceUrl)}" target="_blank" rel="noopener">네이버에서 메뉴 확인</a>` : '등록된 메뉴 정보가 없습니다.')
+      ? (place.naverPlaceUrl ? `<a href="${escapeHtml(place.naverPlaceUrl)}" target="_blank" rel="noopener">관련 페이지에서 메뉴 확인</a>` : '등록된 메뉴 정보가 없습니다.')
       : (place.websiteUri ? `<a href="${escapeHtml(place.websiteUri)}" target="_blank" rel="noopener">공식 메뉴 확인</a>` : '등록된 메뉴 정보가 없습니다.');
     $('#place-extras').innerHTML = `<article><span>메뉴·가격</span><strong>${escapeHtml(price)}</strong><small>${sourceLink}</small></article>
       <article><span>좌석·이용</span><div class="seat-features">${seats.map(([label, value]) => `<b class="${value === true ? 'yes' : value === false ? 'no' : ''}">${label}</b>`).join('')}</div><small>공개된 장소 편의정보 기준</small></article>
