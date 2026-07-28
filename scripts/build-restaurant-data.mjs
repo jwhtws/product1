@@ -5,6 +5,7 @@ const input = process.argv[2] || '식품_일반음식점.csv';
 const outputDir = 'data/restaurants';
 const decoder = new TextDecoder('euc-kr');
 const groups = new Map();
+const rowsPerFile = 50000;
 let headers = null;
 let row = [];
 let value = '';
@@ -88,9 +89,14 @@ const regions = [...groups.entries()]
   .sort(([a], [b]) => a.localeCompare(b, 'ko'))
   .map(([name, restaurants]) => {
     restaurants.sort((a, b) => a.name.localeCompare(b.name, 'ko'));
-    const file = `${encodeURIComponent(name)}.json`;
-    writeFileSync(`${outputDir}/${file}`, JSON.stringify(restaurants));
-    return { name, count: restaurants.length, file };
+    const base = encodeURIComponent(name);
+    const files = [];
+    for (let start = 0; start < restaurants.length; start += rowsPerFile) {
+      const file = `${base}-${Math.floor(start / rowsPerFile)}.json`;
+      files.push(file);
+      writeFileSync(`${outputDir}/${file}`, JSON.stringify(restaurants.slice(start, start + rowsPerFile)));
+    }
+    return { name, count: restaurants.length, files };
   });
 
 writeFileSync(`${outputDir}/regions.json`, JSON.stringify({

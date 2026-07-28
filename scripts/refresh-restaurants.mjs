@@ -6,6 +6,7 @@ const serviceKey = process.env.DATA_GO_KR_SERVICE_KEY;
 const outputDir = 'data/restaurants';
 const pageSize = 1000;
 const minimumActiveRows = 500000;
+const rowsPerFile = 50000;
 const clean = value => String(value ?? '').trim().replace(/\s+/g, ' ');
 const pick = (row, ...keys) => {
   for (const key of keys) if (row?.[key] != null && row[key] !== '') return row[key];
@@ -92,7 +93,9 @@ if (groups.size < 15) throw new Error(`안전 중단: 지역이 ${groups.size}�
 const oldManifest = JSON.parse(fs.readFileSync(path.join(outputDir, 'regions.json'), 'utf8'));
 const oldIds = new Set();
 for (const region of oldManifest.regions) {
-  for (const row of JSON.parse(fs.readFileSync(path.join(outputDir, region.file), 'utf8'))) oldIds.add(row.id || `${row.name}|${row.address}`);
+  for (const file of region.files || [region.file]) {
+    for (const row of JSON.parse(fs.readFileSync(path.join(outputDir, file), 'utf8'))) oldIds.add(row.id || `${row.name}|${row.address}`);
+  }
 }
 const newIds = new Set(restaurants.map(row => row.id || `${row.name}|${row.address}`));
 const opened = [...newIds].filter(id => !oldIds.has(id)).length;
@@ -103,13 +106,20 @@ if (changeRatio > 0.08) throw new Error(`안전 중단: 하루 변경률이 ${(c
 const nextFiles = new Set();
 const regions = [...groups.entries()].sort(([a], [b]) => a.localeCompare(b, 'ko')).map(([name, rows]) => {
   rows.sort((a, b) => a.name.localeCompare(b.name, 'ko'));
-  const file = `${encodeURIComponent(name)}.json`;
-  nextFiles.add(file);
-  fs.writeFileSync(path.join(outputDir, file), JSON.stringify(rows));
-  return { name, count: rows.length, file };
+  const base = encodeURIComponent(name);
+  const files = [];
+  for (let start = 0; start < rows.length; start += rowsPerFile) {
+    const file = `${base}-${Math.floor(start / rowsPerFile)}.json`;
+    files.push(file);
+    nextFiles.add(file);
+    fs.writeFileSync(path.join(outputDir, file), JSON.stringify(rows.slice(start, start + rowsPerFile)));
+  }
+  return { name, count: rows.length, files };
 });
 for (const region of oldManifest.regions) {
-  if (!nextFiles.has(region.file)) fs.unlinkSync(path.join(outputDir, region.file));
+  for (const file of region.files || [region.file]) {
+    if (!nextFiles.has(file)) fs.unlinkSync(path.join(outputDir, file));
+  }
 }
 
 fs.writeFileSync(path.join(outputDir, 'regions.json'), JSON.stringify({

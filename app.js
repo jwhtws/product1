@@ -51,6 +51,13 @@
   const fileUrl = file => `data/restaurants/${file.replace(/%/g, '%25')}`;
   const searchManifestCache = new Map();
   const searchPageCache = new Map();
+  async function loadRegion(region) {
+    const files = region.files || [region.file];
+    const responses = await Promise.all(files.map(file => fetch(`${fileUrl(file)}?v=20260728-3`)));
+    const failed = responses.find(response => !response.ok);
+    if (failed) throw Error(`${region.name} 데이터 응답 ${failed.status}`);
+    return (await Promise.all(responses.map(response => response.json()))).flat();
+  }
 
   function cleanName(value) {
     let name = String(value ?? '').trim();
@@ -176,9 +183,7 @@
         for (let index = 0; index < regions.length; index += 1) {
           const region = regions[index];
           state.progress = `${region.name} 검색 중… (${index + 1}/${regions.length})`;
-          const response = await fetch(`${fileUrl(region.file)}?v=20260728-2`);
-          if (!response.ok) throw Error(`${region.name} 데이터 응답 ${response.status}`);
-          loaded = loaded.concat(enrich(await response.json()));
+          loaded = loaded.concat(enrich(await loadRegion(region)));
           state.all = loaded;
           state.page = 1;
           render();
@@ -268,8 +273,7 @@
       if (region) {
         state.progress = `${region.name} 식당을 불러오는 중…`;
         render();
-        const response = await fetch(`${fileUrl(region.file)}?v=20260728-2`);
-        state.all = enrich(await response.json());
+        state.all = enrich(await loadRegion(region));
         state.progress = '';
       }
     } else state.all = state.preview;

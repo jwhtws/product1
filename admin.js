@@ -90,7 +90,7 @@
   function renderRestaurants() {
     $('#admin-content').innerHTML = `${heading('DATA', '식당 데이터', '공공데이터와 검색 인덱스 상태입니다.')}
       <div class="metrics"><article class="metric"><span>영업 중 식당</span><strong>${restaurantMeta.total.toLocaleString('ko-KR')}</strong><small>공식 인허가 기준</small></article><article class="metric"><span>지역</span><strong>${restaurantMeta.regions.length}</strong><small>전국 데이터</small></article><article class="metric"><span>비공개 시설 격리</span><strong>733</strong><small>구내·직원 식당 등</small></article><article class="metric"><span>자동 갱신</span><strong>매일</strong><small>00:00 KST</small></article></div>
-      <article class="panel" style="margin-top:14px"><h2>지역별 식당 현황</h2><div class="table-wrap"><table><thead><tr><th>지역</th><th>식당 수</th><th>데이터 파일</th></tr></thead><tbody>${restaurantMeta.regions.map(region => `<tr><td><strong>${escapeHtml(region.name)}</strong></td><td>${region.count.toLocaleString('ko-KR')}</td><td>${escapeHtml(decodeURIComponent(region.file))}</td></tr>`).join('')}</tbody></table></div></article>`;
+      <article class="panel" style="margin-top:14px"><h2>지역별 식당 현황</h2><div class="table-wrap"><table><thead><tr><th>지역</th><th>식당 수</th><th>데이터 파일</th></tr></thead><tbody>${restaurantMeta.regions.map(region => `<tr><td><strong>${escapeHtml(region.name)}</strong></td><td>${region.count.toLocaleString('ko-KR')}</td><td>${(region.files || [region.file]).length}개 조각</td></tr>`).join('')}</tbody></table></div></article>`;
   }
   function renderLogs() {
     const logs = store.get('admin-logs', []);

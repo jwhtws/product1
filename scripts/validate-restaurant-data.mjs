@@ -37,8 +37,11 @@ const manifest = readJson(regionManifestPath);
 if (!manifest?.regions?.length) errors.push('regions.json에 지역 목록이 없습니다.');
 
 for (const region of manifest?.regions || []) {
-  const file = path.join(root, region.file);
-  const rows = readJson(file);
+  const files = region.files || [region.file];
+  const rows = files.flatMap(name => {
+    const data = readJson(path.join(root, name));
+    return Array.isArray(data) ? data : [];
+  });
   if (!Array.isArray(rows)) continue;
   stats.regions += 1;
   stats.sourceRows += rows.length;
