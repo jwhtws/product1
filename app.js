@@ -74,7 +74,7 @@
   function filtered() {
     const f = state.filters, q = searchKey(f.query);
     let rows = state.all.filter(r =>
-      (!q || fuzzyMatch(q, `${r.name} ${r.address} ${r.category}`)) &&
+      (!q || searchKey(`${r.name} ${r.address} ${r.category}`).includes(q) || fuzzyMatch(q, r.name)) &&
       (!f.region || r.address?.startsWith(f.region)) &&
       (!f.category || r.category?.includes(f.category)) &&
       (!f.price || String(r.price) === f.price) &&
