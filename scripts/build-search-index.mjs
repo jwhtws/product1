@@ -3,7 +3,7 @@ import path from 'node:path';
 
 const sourceDir = 'data/restaurants';
 const outputDir = path.join(sourceDir, 'search');
-const ignored = new Set(['regions.json', 'previews.json']);
+const ignored = new Set(['regions.json', 'previews.json', 'validation-report.json', 'data-quality-quarantine.json']);
 const key = value => String(value ?? '').toLocaleLowerCase('ko-KR').replace(/[^\p{L}\p{N}]+/gu, '');
 const buckets = new Map();
 
