@@ -14,12 +14,15 @@ for (const file of fs.readdirSync(dir).filter(name => name.endsWith('.json') && 
     total += 1;
     const nameKey = key(restaurant.name);
     if (!nameKey) continue;
-    if (!addressesByName.has(nameKey)) addressesByName.set(nameKey, new Set());
-    addressesByName.get(nameKey).add(key(restaurant.address));
+    const addressKey = key(restaurant.address);
+    const saved = addressesByName.get(nameKey);
+    if (!saved) addressesByName.set(nameKey, addressKey);
+    else if (typeof saved === 'string' && saved !== addressKey) addressesByName.set(nameKey, new Set([saved, addressKey]));
+    else if (saved instanceof Set) saved.add(addressKey);
   }
 }
 
-const duplicateGroups = [...addressesByName.values()].filter(addresses => addresses.size > 1);
+const duplicateGroups = [...addressesByName.values()].filter(addresses => addresses instanceof Set && addresses.size > 1);
 console.log(JSON.stringify({
   total,
   uniqueNames: addressesByName.size,
