@@ -207,7 +207,7 @@
     button.textContent = '찾는 중';
     state.progress = state.filters.query ? `‘${state.filters.query}’ 검색을 시작합니다…` : '전국 맛집을 불러오는 중…';
     render();
-    $('#discover').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    $('#discover').scrollIntoView({ behavior: 'instant', block: 'start' });
     try {
       await ready;
       if (!window.__MEOKDANG_REGIONS__?.length) throw Error('검색 데이터 초기화 실패');
