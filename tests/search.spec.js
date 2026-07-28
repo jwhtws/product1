@@ -27,3 +27,16 @@ test('배포 사이트에서 고수경 검색 결과를 표시한다', async ({ 
   await expect(page.locator('#result-summary')).not.toContainText('0곳');
   expect(errors).toEqual([]);
 });
+
+test('상호 중간 단어와 지점명으로도 공공데이터 식당을 찾는다', async ({ page }) => {
+  await page.goto(process.env.TEST_BASE_URL || 'https://product1-84t.pages.dev/', { waitUntil: 'domcontentloaded' });
+  await page.locator('#search-input').fill('황토장어 본점');
+  await page.locator('#search-button').click();
+  const target = page.locator('.restaurant-card').filter({ hasText: '효천황토장어' }).first();
+  await expect(target).toBeVisible({ timeout: 10000 });
+  await expect(target).toContainText('경기도 의왕시 능안길 2');
+  await expect(page.locator('.restaurant-card')).not.toContainText('AI 대표 이미지');
+  await target.click();
+  await expect(page.locator('#modal-content')).toContainText('효천황토장어');
+  await expect(page.locator('#modal-content')).toContainText('2014년 2월 26일');
+});
