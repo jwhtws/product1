@@ -207,27 +207,30 @@
       state.all = state.all.concat(enrich(rows.map(([name, category, address, phone]) => ({ name, category, address, phone }))));
       session.nextPage += 1;
       session.done = session.nextPage > session.endPage;
-      break;
     }
   }
   async function startSearch(query) {
-    const chars = [...searchKey(query)].slice(0, 2);
+    const chars = [...searchKey(query)].slice(0, 3);
     if (!chars.length) { state.all = state.preview; state.searchSession = null; return; }
-    const prefixKey = chars.map(char => char.codePointAt(0).toString(16)).join('-');
-    const bucket = (chars.reduce((value, char) => ((value * 31) + char.codePointAt(0)) >>> 0, 0) % 256).toString(16).padStart(2, '0');
-    if (!searchManifestCache.has(bucket)) searchManifestCache.set(bucket, fetch(`data/restaurants/search-pages/manifest-${bucket}.json?v=3`).then(response => response.json()));
-    const entry = (await searchManifestCache.get(bucket))[prefixKey];
+    const bucketChars = chars.slice(0, 2);
+    const bucket = (bucketChars.reduce((value, char) => ((value * 31) + char.codePointAt(0)) >>> 0, 0) % 256).toString(16).padStart(2, '0');
+    if (!searchManifestCache.has(bucket)) searchManifestCache.set(bucket, fetch(`data/restaurants/search-pages/manifest-${bucket}.json?v=4`).then(response => response.json()));
+    const manifest = await searchManifestCache.get(bucket);
+    const keyFor = length => chars.slice(0, length).map(char => char.codePointAt(0).toString(16)).join('-');
+    const entry = manifest[keyFor(Math.min(3, chars.length))] || manifest[keyFor(Math.min(2, chars.length))];
     state.all = [];
     state.searchSession = entry ? { bucket, nextPage: entry.start, endPage: entry.end, done: false } : { done: true };
     await loadSearchResults(pageSize);
   }
   async function prefetchSearch(query) {
-    const chars = [...searchKey(query)].slice(0, 2);
+    const chars = [...searchKey(query)].slice(0, 3);
     if (chars.length < 2) return;
-    const prefixKey = chars.map(char => char.codePointAt(0).toString(16)).join('-');
-    const bucket = (chars.reduce((value, char) => ((value * 31) + char.codePointAt(0)) >>> 0, 0) % 256).toString(16).padStart(2, '0');
-    if (!searchManifestCache.has(bucket)) searchManifestCache.set(bucket, fetch(`data/restaurants/search-pages/manifest-${bucket}.json?v=3`).then(response => response.json()));
-    const entry = (await searchManifestCache.get(bucket))[prefixKey];
+    const bucketChars = chars.slice(0, 2);
+    const bucket = (bucketChars.reduce((value, char) => ((value * 31) + char.codePointAt(0)) >>> 0, 0) % 256).toString(16).padStart(2, '0');
+    if (!searchManifestCache.has(bucket)) searchManifestCache.set(bucket, fetch(`data/restaurants/search-pages/manifest-${bucket}.json?v=4`).then(response => response.json()));
+    const manifest = await searchManifestCache.get(bucket);
+    const keyFor = length => chars.slice(0, length).map(char => char.codePointAt(0).toString(16)).join('-');
+    const entry = manifest[keyFor(Math.min(3, chars.length))] || manifest[keyFor(2)];
     if (!entry) return;
     const path = `data/restaurants/search-pages/${bucket}-${entry.start}.json?v=1`;
     if (!searchPageCache.has(path)) searchPageCache.set(path, fetch(path).then(response => response.ok ? response.json() : []));

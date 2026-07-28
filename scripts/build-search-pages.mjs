@@ -26,16 +26,20 @@ for (const [bucket, rows] of buckets) {
   bucketCount[bucket] = Math.ceil(rows.length / pageSize);
   const lookup = {};
   rows.forEach((row, index) => {
-    const prefixKey = [...key(row[0])].slice(0, 2).map(char => char.codePointAt(0).toString(16)).join('-');
+    const chars = [...key(row[0])];
     const page = Math.floor(index / pageSize);
-    const entry = lookup[prefixKey] || { start: page, end: page };
-    entry.end = page;
-    lookup[prefixKey] = entry;
+    for (const length of [2, 3]) {
+      if (chars.length < length) continue;
+      const prefixKey = chars.slice(0, length).map(char => char.codePointAt(0).toString(16)).join('-');
+      const entry = lookup[prefixKey] || { start: page, end: page };
+      entry.end = page;
+      lookup[prefixKey] = entry;
+    }
   });
   fs.writeFileSync(path.join(outputDir, `manifest-${bucket}.json`), JSON.stringify(lookup));
   for (let page = 0; page < bucketCount[bucket]; page += 1) {
     fs.writeFileSync(path.join(outputDir, `${bucket}-${page}.json`), JSON.stringify(rows.slice(page * pageSize, (page + 1) * pageSize)));
   }
 }
-fs.writeFileSync(path.join(outputDir, 'manifest.json'), JSON.stringify({ version: 3, pageSize }));
+fs.writeFileSync(path.join(outputDir, 'manifest.json'), JSON.stringify({ version: 4, pageSize, prefixLengths: [2, 3] }));
 console.log(`${Object.keys(bucketCount).length}개 검색 조각 생성`);
