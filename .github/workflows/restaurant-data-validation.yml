@@ -2,11 +2,15 @@ name: 식당 데이터 정기 검증
 
 on:
   schedule:
-    - cron: "17 18 * * 1"
+    - cron: "0 15 * * *"
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
+
+concurrency:
+  group: restaurant-data-refresh
+  cancel-in-progress: false
 
 jobs:
   validate:
@@ -15,6 +19,16 @@ jobs:
     steps:
       - name: 저장소 받기
         uses: actions/checkout@v4
+
+      - name: 공식 일간 데이터로 개업·폐업 갱신
+        env:
+          DATA_GO_KR_SERVICE_KEY: ${{ secrets.DATA_GO_KR_SERVICE_KEY }}
+        run: node scripts/refresh-restaurants.mjs
+
+      - name: 검색 인덱스 재생성
+        run: |
+          node scripts/build-search-index.mjs
+          node scripts/build-search-pages.mjs
 
       - name: 식당 원본과 검색 인덱스 검증
         run: |
@@ -25,6 +39,18 @@ jobs:
             echo "- 실행 시각: $(date -u '+%Y-%m-%d %H:%M UTC')"
             echo "- 결과: 통과"
           } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: 변경사항 자동 반영
+        run: |
+          if git diff --quiet; then
+            echo "개업·폐업 변경 없음" >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/restaurants
+          git commit -m "data: 일간 개업·폐업 정보 갱신"
+          git push
 
       - name: 검증 보고서 보관
         if: always()
