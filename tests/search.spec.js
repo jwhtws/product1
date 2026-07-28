@@ -18,6 +18,11 @@ test('배포 사이트에서 고수경 검색 결과를 표시한다', async ({ 
   console.log('STATE', await page.locator('#app-state').textContent());
   console.log('CARDS', await page.locator('.restaurant-card h3').allTextContents());
   console.log('CARD_COUNT', await page.locator('.restaurant-card').count());
+  await page.locator('.restaurant-card').filter({ hasText: '고수경샤브칼국수' }).first().click();
+  await expect(page.locator('#detail-modal')).toHaveClass(/open/);
+  console.log('DETAIL', await page.locator('#modal-content').innerText());
+  await expect(page.locator('#modal-content')).toContainText('영업 시작일');
+  await expect(page.locator('#modal-content')).toContainText('공공 인허가 기록 확인');
   console.log('ERRORS', errors);
   await expect(page.locator('#result-summary')).not.toContainText('0곳');
   expect(errors).toEqual([]);
