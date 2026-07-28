@@ -12,7 +12,7 @@
   <meta property="og:url" content="https://product1-84t.pages.dev/">
   <link rel="canonical" href="https://product1-84t.pages.dev/">
   <title>mukdang.com | 먹당·전국 맛집 검색</title>
-  <link rel="stylesheet" href="styles.css?v=20260728-4">
+  <link rel="stylesheet" href="styles.css?v=20260728-5">
   <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"WebSite","name":"mukdang.com","alternateName":["먹당","묵당"],"url":"https://product1-84t.pages.dev/","description":"전국 맛집 검색과 신뢰도 높은 리뷰 서비스"}
   </script>
@@ -30,7 +30,6 @@
 
   <main id="home">
     <section class="hero shell">
-      <div class="eyebrow">RESTAURANT DISCOVERY</div>
       <h1><a class="hero-home" href="./" data-home>mukdang</a></h1>
       <p class="hero-description"><span>Find a table you can trust.</span><i>·</i><span>믿고 고르는 오늘의 맛집</span></p>
       <div class="search-wrap">
@@ -40,17 +39,17 @@
         </div>
         <div id="suggestions" class="suggestions" role="listbox"></div>
       </div>
-      <div class="quick-categories" aria-label="빠른 음식 카테고리">
-        <button class="active" data-category="">전체</button><button data-category="한식">한식</button><button data-category="일식">일식</button>
+      <div class="quick-categories" aria-label="인기 검색">
+        <span>인기 검색</span><button class="active" data-category="">전체</button><button data-category="한식">한식</button><button data-category="일식">일식</button>
         <button data-category="중국식">중식</button><button data-category="경양식">양식</button><button data-category="카페">카페</button><button data-category="분식">분식</button>
       </div>
     </section>
 
     <section class="trust-strip">
       <div class="shell trust-grid">
-        <div><strong>전국 16개 시·도</strong><span>공공데이터 기반 식당 정보</span></div>
-        <div><strong>검증 리뷰</strong><span>방문 인증·신뢰도 표시 준비 중</span></div>
-        <div><strong>나만의 리스트</strong><span>브라우저에 안전하게 저장</span></div>
+        <div><span>검색 지역</span><strong>전국 16개 시·도</strong></div>
+        <div><span>식당 정보</span><strong>공공데이터 기반</strong></div>
+        <div><span>나만의 맛집</span><strong>간편 저장</strong></div>
       </div>
     </section>
 
@@ -84,7 +83,22 @@
     </section>
   </main>
 
-  <footer class="footer"><strong>mukdang.com</strong><span>믿고 고르는 오늘의 식당</span><small>© 2026 mukdang.com · <a href="admin.html">관리자</a></small></footer>
+  <footer class="footer">
+    <div class="footer-brand"><strong>mukdang.com</strong><span>Find a table you can trust.</span></div>
+    <details class="partnership">
+      <summary>제휴문의</summary>
+      <form class="contact-form" action="https://formspree.io/f/mojgyppj" method="POST">
+        <input type="hidden" name="_subject" value="mukdang 제휴 문의">
+        <label>업체명<input type="text" name="업체명" autocomplete="organization" required></label>
+        <label>담당자명<input type="text" name="담당자명" autocomplete="name" required></label>
+        <label>이메일<input type="email" name="email" autocomplete="email" required></label>
+        <label>연락처<input type="tel" name="연락처" autocomplete="tel"></label>
+        <label class="contact-message">문의 내용<textarea name="문의내용" rows="4" required></textarea></label>
+        <button class="primary" type="submit">문의 보내기</button>
+      </form>
+    </details>
+    <small>© 2026 mukdang.com · <a href="admin.html">관리자</a></small>
+  </footer>
 
   <div id="detail-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="detail-title">
     <article class="modal detail-modal"><button class="modal-close" data-close type="button" aria-label="닫기">×</button><div id="modal-content"></div></article>
