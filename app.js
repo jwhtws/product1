@@ -148,7 +148,7 @@
     let months = now.getMonth() - opened.getMonth();
     if (now.getDate() < opened.getDate()) months -= 1;
     if (months < 0) { years -= 1; months += 12; }
-    const duration = years > 0 ? `${years}년 ${months ? `${months}개월 ` : ''}영업` : `${Math.max(0, months)}개월 영업`;
+    const duration = years > 0 ? `${years}년 ${months ? `${months}개월 ` : ''}영업 중` : `${Math.max(0, months)}개월 영업 중`;
     return {
       formatted: new Intl.DateTimeFormat('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' }).format(opened),
       duration
@@ -191,8 +191,9 @@
       <div class="listing-photo" data-place-photo style="background-image:url('${fallbackImage(r)}')"><span data-photo-badge>AI 대표 이미지</span></div>
       <div class="card-body"><div class="card-top"><span class="category">${escapeHtml(r.category || '음식점')}</span><button class="save ${isSaved(r) ? 'active' : ''}" data-save="${index}" type="button" aria-label="저장">♡</button></div>
       <div class="card-identity"><h3>${escapeHtml(r.name)}</h3></div><p class="address">${escapeHtml(r.address)}</p>
+      ${permit ? `<div class="tenure-badge"><span>영업 기간</span><strong>${escapeHtml(permit.duration)}</strong></div>` : ''}
       <div class="score"><strong>★ ${r.rating}</strong><span>신뢰도 ${r.trust}%</span><span>${priceText(r.price)}</span></div>
-      <div class="tags"><span>${r.mood}</span><span>${permit ? escapeHtml(permit.duration) : '영업 정보 확인'}</span></div></div>
+      <div class="tags"><span>${r.mood}</span><span>${permit ? '인허가일 확인됨' : '영업 정보 확인'}</span></div></div>
     </article>`;
   }
   function render() {
@@ -398,7 +399,7 @@
     const permit = permitDateInfo(r.permitDate);
     $('#modal-content').innerHTML = `<div id="place-cover" class="detail-cover" style="background-image:url('${fallbackImage(r)}')"><span>AI 대표 이미지</span></div><div class="detail-hero"><span class="category">${escapeHtml(r.category || '음식점')}</span><h2 id="detail-title">${escapeHtml(r.name)}</h2><p>${escapeHtml(r.address)}</p>
       <div class="detail-score"><strong>★ ${r.rating}</strong><span>리뷰 신뢰도 ${r.trust}%</span><span>${priceText(r.price)} · ${r.mood}</span></div>
-      <div class="permit-highlight"><span>영업 시작</span><strong>${permit ? escapeHtml(permit.formatted) : '공공데이터 확인 필요'}</strong><b>${permit ? escapeHtml(permit.duration) : ''}</b><small>행정안전부 식품위생 인허가일 기준</small></div>
+      <div class="permit-highlight"><div><span>현재 영업 기간</span><b>${permit ? escapeHtml(permit.duration) : '확인 필요'}</b></div><div><span>영업 시작</span><strong>${permit ? escapeHtml(permit.formatted) : '공공데이터 확인 필요'}</strong></div><small>행정안전부 식품위생 인허가일 기준</small></div>
       <div class="detail-actions"><button id="detail-save" class="primary">${isSaved(r) ? '저장됨' : '♡ 저장'}</button><button id="add-list" class="ghost">리스트에 추가</button><button id="share" class="ghost">공유</button></div></div>
       <section id="place-extras" class="place-extras" aria-live="polite"><div class="place-loading">사진·가격·좌석 정보를 확인하는 중입니다.</div></section>
       <div class="detail-grid"><section><h3>식당 정보</h3><dl><dt>주소</dt><dd>${escapeHtml(r.address)}</dd><dt>전화번호</dt><dd id="place-phone">${escapeHtml(r.phone || '정보 없음')}</dd><dt>영업 시작일</dt><dd>${permit ? `${escapeHtml(permit.formatted)} <small>공공 인허가 기록 확인</small>` : '공공데이터 확인 필요'}</dd><dt>영업 기간</dt><dd>${permit ? escapeHtml(permit.duration) : '계산할 수 없음'}</dd><dt>영업시간</dt><dd id="place-hours">방문 전 지도 서비스에서 확인해 주세요.</dd></dl>
