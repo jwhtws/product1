@@ -1,4 +1,4 @@
-const { test, expect } = require('@playwright/test');
+const { test, expect } = require('playwright/test');
 
 test('배포 사이트에서 고수경 검색 결과를 표시한다', async ({ page }) => {
   const errors = [];
