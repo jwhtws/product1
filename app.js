@@ -51,6 +51,7 @@
   const fileUrl = file => `data/restaurants/${file.replace(/%/g, '%25')}`;
   const searchManifestCache = new Map();
   const searchPageCache = new Map();
+  const placeDetailCache = new Map();
   async function loadRegion(region) {
     const files = region.files || [region.file];
     const responses = await Promise.all(files.map(file => fetch(`${fileUrl(file)}?v=20260728-3`)));
@@ -163,7 +164,7 @@
   function card(r, index) {
     return `<article class="restaurant-card" tabindex="0" data-index="${index}">
       <div class="card-top"><span class="category">${escapeHtml(r.category || '음식점')}</span><button class="save ${isSaved(r) ? 'active' : ''}" data-save="${index}" type="button" aria-label="저장">♡</button></div>
-      <h3>${escapeHtml(r.name)}</h3><p class="address">${escapeHtml(r.address)}</p>
+      <div class="card-identity"><div class="restaurant-photo" data-place-photo aria-hidden="true">${escapeHtml(r.name.slice(0, 1))}</div><h3>${escapeHtml(r.name)}</h3></div><p class="address">${escapeHtml(r.address)}</p>
       <div class="score"><strong>★ ${r.rating}</strong><span>신뢰도 ${r.trust}%</span><span>${priceText(r.price)}</span></div>
       <div class="tags"><span>${r.mood}</span><span>영업 정보 확인</span></div>
     </article>`;
@@ -192,6 +193,33 @@
     }));
     $('#empty-reset')?.addEventListener('click', resetFilters);
     renderHomeRankings();
+    enrichVisibleCards(rows);
+  }
+
+  async function fetchPlaceDetails(r) {
+    const key = idOf(r);
+    if (!placeDetailCache.has(key)) {
+      placeDetailCache.set(key, fetch(`/api/restaurant?name=${encodeURIComponent(r.name)}&address=${encodeURIComponent(naverMapAddress(r.address))}`)
+        .then(async response => {
+          if (!response.ok) throw Error(`장소 상세정보 ${response.status}`);
+          return response.json();
+        })
+        .catch(() => null));
+    }
+    return placeDetailCache.get(key);
+  }
+  function enrichVisibleCards(rows) {
+    $$('.restaurant-card').forEach(cardEl => {
+      const restaurant = rows[Number(cardEl.dataset.index)];
+      if (!restaurant) return;
+      fetchPlaceDetails(restaurant).then(place => {
+        if (!place?.photoUrl || !cardEl.isConnected) return;
+        const photo = cardEl.querySelector('[data-place-photo]');
+        photo.textContent = '';
+        photo.style.backgroundImage = `url("${place.photoUrl.replace(/["\\]/g, '')}")`;
+        photo.classList.add('loaded');
+      });
+    });
   }
 
   async function ensureAll() {
@@ -336,10 +364,11 @@
     const naverAddress = naverMapAddress(r.address);
     const naverQuery = encodeURIComponent(naverAddress);
     const fullQuery = encodeURIComponent(`${r.name} ${r.address || ''}`);
-    $('#modal-content').innerHTML = `<div class="detail-hero"><span class="category">${escapeHtml(r.category || '음식점')}</span><h2 id="detail-title">${escapeHtml(r.name)}</h2><p>${escapeHtml(r.address)}</p>
+    $('#modal-content').innerHTML = `<div id="place-cover" class="detail-cover"><span>${escapeHtml(r.name.slice(0, 1))}</span></div><div class="detail-hero"><span class="category">${escapeHtml(r.category || '음식점')}</span><h2 id="detail-title">${escapeHtml(r.name)}</h2><p>${escapeHtml(r.address)}</p>
       <div class="detail-score"><strong>★ ${r.rating}</strong><span>리뷰 신뢰도 ${r.trust}%</span><span>${priceText(r.price)} · ${r.mood}</span></div>
       <div class="detail-actions"><button id="detail-save" class="primary">${isSaved(r) ? '저장됨' : '♡ 저장'}</button><button id="add-list" class="ghost">리스트에 추가</button><button id="share" class="ghost">공유</button></div></div>
-      <div class="detail-grid"><section><h3>식당 정보</h3><dl><dt>주소</dt><dd>${escapeHtml(r.address)}</dd><dt>전화번호</dt><dd>${escapeHtml(r.phone || '정보 없음')}</dd><dt>영업시간</dt><dd>방문 전 지도 서비스에서 확인해 주세요.</dd></dl>
+      <section id="place-extras" class="place-extras" aria-live="polite"><div class="place-loading">사진·가격·좌석 정보를 확인하는 중입니다.</div></section>
+      <div class="detail-grid"><section><h3>식당 정보</h3><dl><dt>주소</dt><dd>${escapeHtml(r.address)}</dd><dt>전화번호</dt><dd id="place-phone">${escapeHtml(r.phone || '정보 없음')}</dd><dt>영업시간</dt><dd id="place-hours">방문 전 지도 서비스에서 확인해 주세요.</dd></dl>
       <div class="map-links"><a target="_blank" rel="noopener" href="https://map.naver.com/p/search/${naverQuery}" title="${escapeHtml(naverAddress)} 주소로 검색">네이버 지도 · 주소검색</a><a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${fullQuery}">Google 지도</a></div></section>
       <section class="review-section"><div class="review-head"><h3>사용자 리뷰 <small>${reviews.length}</small></h3><select id="review-sort"><option value="latest">최신순</option><option value="rating">별점순</option><option value="helpful">유용한순</option></select></div>
       <div class="trust-note">✓ 작성 리뷰는 기기에 저장됩니다. 방문 인증과 광고성 리뷰 자동 검토는 서버 연동 후 제공됩니다.</div>
@@ -351,6 +380,29 @@
     $('#review-sort').addEventListener('change', renderReviews);
     $('#review-form').addEventListener('submit', submitReview);
     renderReviews();
+    fetchPlaceDetails(r).then(place => renderPlaceDetails(r, place));
+  }
+  function renderPlaceDetails(r, place) {
+    if (state.current !== r || !$('#place-extras')) return;
+    if (!place) {
+      $('#place-extras').innerHTML = '<div class="place-loading">연동 준비 중 · 공식 API 키를 연결하면 실제 사진과 상세정보가 표시됩니다.</div>';
+      return;
+    }
+    const cover = $('#place-cover');
+    if (place.photoUrl) {
+      cover.style.backgroundImage = `url("${place.photoUrl.replace(/["\\]/g, '')}")`;
+      cover.classList.add('loaded');
+    }
+    if (place.phone) $('#place-phone').textContent = place.phone;
+    if (place.hours?.length) $('#place-hours').innerHTML = place.hours.map(escapeHtml).join('<br>');
+    const seats = [
+      ['매장 식사', place.dineIn], ['단체 이용', place.goodForGroups],
+      ['야외 좌석', place.outdoorSeating], ['예약', place.reservable]
+    ];
+    const price = place.priceRange || place.priceLevel || '가격 정보 없음';
+    $('#place-extras').innerHTML = `<article><span>메뉴·가격</span><strong>${escapeHtml(price)}</strong><small>${place.websiteUri ? `<a href="${escapeHtml(place.websiteUri)}" target="_blank" rel="noopener">공식 메뉴 확인</a>` : '등록된 메뉴 정보가 없습니다.'}</small></article>
+      <article><span>좌석·이용</span><div class="seat-features">${seats.map(([label, value]) => `<b class="${value === true ? 'yes' : value === false ? 'no' : ''}">${label}</b>`).join('')}</div><small>공개된 장소 편의정보 기준</small></article>
+      <article><span>영업 상태</span><strong>${place.businessStatus === 'OPERATIONAL' ? '영업 중' : place.businessStatus === 'CLOSED_PERMANENTLY' ? '폐업' : '확인 필요'}</strong><small>Google Places 제공 정보</small></article>`;
   }
   function renderReviews() {
     const sort = $('#review-sort')?.value || 'latest';
