@@ -345,8 +345,7 @@
   document.addEventListener('keydown', e => e.key === 'Escape' && closeModals());
   $$('[data-home]').forEach(link => link.addEventListener('click', event => {
     event.preventDefault();
-    history.replaceState(null, '', `${location.pathname}${location.search}`);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.location.assign(new URL('./', window.location.href));
   }));
 
   try {
