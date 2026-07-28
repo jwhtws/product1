@@ -30,8 +30,8 @@
     const overlap = leftPairs.filter(pair => rightSet.has(pair)).length;
     return (2 * overlap) / (leftPairs.length + Math.max(1, right.length - 1));
   }
-  function relevance(query, restaurant) {
-    if (!query) return 1;
+  const branchlessKey = value => String(value || '').replace(/(?:본점|직영점|본관|메인점)$/u, '');
+  function relevanceScore(query, restaurant) {
     const name = searchKey(restaurant.name);
     const address = searchKey(restaurant.address);
     const category = searchKey(restaurant.category);
@@ -45,6 +45,11 @@
     if (query.slice(0, 3) === name.slice(0, 3) && score >= .2) return 600 + Math.round(score * 100);
     if (score >= .52) return 500 + Math.round(score * 100);
     return 0;
+  }
+  function relevance(query, restaurant) {
+    if (!query) return 1;
+    const core = branchlessKey(query);
+    return Math.max(relevanceScore(query, restaurant), core && core !== query ? relevanceScore(core, restaurant) : 0);
   }
   const hash = value => [...String(value)].reduce((a, c) => ((a << 5) - a + c.charCodeAt(0)) | 0, 0);
   const idOf = restaurant => `${restaurant.name}|${restaurant.address}`;
@@ -318,10 +323,13 @@
     const manifests = await Promise.all([...new Set(bigrams.map(item => item.shard))].map(shard => containsManifestCache.get(shard)));
     const byShard = new Map([...new Set(bigrams.map(item => item.shard))].map((shard, index) => [shard, manifests[index]]));
     const candidates = bigrams.map(item => byShard.get(item.shard)?.[item.routeKey] || []).filter(pages => pages.length);
-    return candidates.sort((left, right) => left.length - right.length)[0] || [];
+    const pageScores = new Map();
+    candidates.forEach(pages => pages.forEach(page => pageScores.set(page, (pageScores.get(page) || 0) + 1)));
+    return [...pageScores].sort((left, right) => right[1] - left[1]).map(([page]) => page);
   }
   async function startSearch(query) {
-    const allChars = [...searchKey(query)].slice(0, 30);
+    const normalizedQuery = searchKey(query);
+    const allChars = [...(branchlessKey(normalizedQuery) || normalizedQuery)].slice(0, 30);
     const chars = allChars.slice(0, 3);
     if (!chars.length) { state.all = state.preview; state.searchSession = null; return; }
     const bucketChars = chars.slice(0, 2);
