@@ -96,7 +96,7 @@
     const coverage = restaurantMeta.total ? ((verified / restaurantMeta.total) * 100).toFixed(1) : '0.0';
     const issues = validationReport?.permitDate?.issues || [];
     const issueLabel = type => ({
-      missing: '인허가일 누락', invalid: '날짜 형식 오류', future: '미래 날짜',
+      missing: '인허가일 누락', invalid: '날짜 형식 오류', future: '미래 날짜', 'broken-text': '깨진 원본 문자',
       'id-year-mismatch': '관리번호 연도 불일치'
     }[type] || type);
     $('#admin-content').innerHTML = `${heading('DATA', '식당 데이터', '공공데이터와 검색 인덱스 상태입니다.')}
