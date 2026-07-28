@@ -6,12 +6,18 @@ const regionManifestPath = path.join(root, 'regions.json');
 const reportPath = process.argv.find(arg => arg.startsWith('--report='))?.slice(9);
 const errors = [];
 const warnings = [];
-const stats = { regions: 0, sourceRows: 0, searchableRows: 0, quarantinedRows: 0, searchRows: 0, duplicateIds: 0, duplicatePlaces: 0 };
+const stats = { regions: 0, sourceRows: 0, searchableRows: 0, quarantinedRows: 0, privateFacilityRows: 0, searchRows: 0, duplicateIds: 0, duplicatePlaces: 0 };
 const sourceSignatures = new Map();
 const ids = new Map();
 const places = new Map();
 const signature = row => JSON.stringify([row.name || '', row.category || '', row.address || '', row.phone || '']);
 const searchKey = value => String(value ?? '').toLocaleLowerCase('ko-KR').replace(/[^\p{L}\p{N}]+/gu, '');
+const isPrivateFacility = name => {
+  const normalized = String(name || '').replace(/\s+/g, ' ').trim();
+  return /구내\s*식당|직원\s*식당|사원\s*식당|임직원\s*식당|노무자\s*급식소|기숙사\s*식당|현장\s*식당|함바(?:식당)?/i.test(normalized) ||
+    /(?:수련원|연수원).*(?:구내)?식당|(?:구내)?식당.*(?:수련원|연수원)/.test(normalized) ||
+    /^\s*\((?:주|사|유|재)\).+\s식당\s*\d+\s*$/.test(normalized);
+};
 const badText = value => typeof value === 'string' && (value.includes('\uFFFD') || /[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F-\u009F]/.test(value));
 
 function addCount(map, key) {
@@ -52,6 +58,7 @@ for (const region of manifest?.regions || []) {
     if (searchKey(row.name)) {
       stats.searchableRows += 1;
       addCount(sourceSignatures, signature(row));
+      if (isPrivateFacility(row.name)) stats.privateFacilityRows += 1;
     } else {
       stats.quarantinedRows += 1;
       warnings.push(`${where}: 검색 가능한 글자가 없는 식당명 격리 (${JSON.stringify(row.name)})`);
@@ -97,7 +104,7 @@ const result = {
 
 const summary = [
   `식당 데이터 검증: ${result.ok ? '통과' : '실패'}`,
-  `지역 ${stats.regions}개 / 원본 ${stats.sourceRows.toLocaleString('ko-KR')}건 / 검색 ${stats.searchRows.toLocaleString('ko-KR')}건 / 격리 ${stats.quarantinedRows.toLocaleString('ko-KR')}건`,
+  `지역 ${stats.regions}개 / 원본 ${stats.sourceRows.toLocaleString('ko-KR')}건 / 검색 ${stats.searchRows.toLocaleString('ko-KR')}건 / 비공개 시설 ${stats.privateFacilityRows.toLocaleString('ko-KR')}건 / 이상 이름 ${stats.quarantinedRows.toLocaleString('ko-KR')}건`,
   `오류 ${errors.length}건 / 경고 ${warnings.length}건`,
   ...errors.slice(0, 20).map(item => `ERROR: ${item}`),
   ...warnings.slice(0, 20).map(item => `WARN: ${item}`)

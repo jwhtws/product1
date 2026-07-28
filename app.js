@@ -65,8 +65,15 @@
     }
     return name.replace(/^[\s.,·•:;|_]+|[\s.,·•:;|_]+$/g, '').trim() || String(value ?? '').trim();
   }
+  function isPublicFacingRestaurant(restaurant) {
+    const name = String(restaurant?.name || '').replace(/\s+/g, ' ').trim();
+    const privateFacility = /구내\s*식당|직원\s*식당|사원\s*식당|임직원\s*식당|노무자\s*급식소|기숙사\s*식당|현장\s*식당|함바(?:식당)?/i;
+    const trainingFacility = /(?:수련원|연수원).*(?:구내)?식당|(?:구내)?식당.*(?:수련원|연수원)/;
+    const corporateNumberedCafeteria = /^\s*\((?:주|사|유|재)\).+\s식당\s*\d+\s*$/;
+    return !privateFacility.test(name) && !trainingFacility.test(name) && !corporateNumberedCafeteria.test(name);
+  }
   function enrich(list) {
-    return list.filter(r => r.name && searchKey(r.name)).map(r => {
+    return list.filter(r => r.name && searchKey(r.name) && isPublicFacingRestaurant(r)).map(r => {
       const name = cleanName(r.name);
       const seed = Math.abs(hash(`${name}${r.address}`));
       return { ...r, name, price: seed % 3 + 1, mood: ['혼밥', '데이트', '가족 외식', '회식'][seed % 4], rating: (3.6 + (seed % 14) / 10).toFixed(1), trust: 78 + seed % 21 };
@@ -282,7 +289,7 @@
   function openDetail(r) {
     state.current = r;
     const reviews = reviewsFor(r);
-    const naverQuery = encodeURIComponent(r.address || r.name);
+    const naverQuery = encodeURIComponent(`${r.name} ${r.address || ''}`.trim());
     const fullQuery = encodeURIComponent(`${r.name} ${r.address || ''}`);
     $('#modal-content').innerHTML = `<div class="detail-hero"><span class="category">${escapeHtml(r.category || '음식점')}</span><h2 id="detail-title">${escapeHtml(r.name)}</h2><p>${escapeHtml(r.address)}</p>
       <div class="detail-score"><strong>★ ${r.rating}</strong><span>리뷰 신뢰도 ${r.trust}%</span><span>${priceText(r.price)} · ${r.mood}</span></div>
