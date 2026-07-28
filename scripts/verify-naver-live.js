@@ -7,7 +7,9 @@ if (!baseUrl) throw new Error('배포 URL이 필요합니다.');
 
 const previews = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'restaurants', 'previews.json'), 'utf8'));
 const samples = Object.entries(previews).flatMap(([region, rows]) =>
-  rows.slice(0, perRegion).map(restaurant => ({ region, ...restaurant }))
+  Array.from({ length: Math.min(perRegion, rows.length) }, (_, index) =>
+    rows[Math.floor(((index + 1) * rows.length) / (Math.min(perRegion, rows.length) + 1))]
+  ).map(restaurant => ({ region, ...restaurant }))
 );
 const key = value => String(value || '').toLocaleLowerCase('ko-KR').replace(/[^\p{L}\p{N}]+/gu, '');
 const addressKey = value => key(value).slice(0, 14);

@@ -91,10 +91,11 @@ async function fetchNaverPlace(context, name, address) {
     if (addressCore(candidateAddress) === addressCore(address)) score += 100;
     else if (overlap >= 7) score += 80;
     else if (overlap >= 4) score += 45;
-    return { item, title, score };
+    return { item, title, score, overlap };
   }).sort((left, right) => right.score - left.score);
   const match = candidates[0];
-  if (!match || match.score < 115) return null;
+  const foodCategory = /음식점|한식|중식|일식|양식|분식|카페|디저트|베이커리|술집|치킨|피자|햄버거|육류|고기|해산물|생선|국수|만두|요리/;
+  if (!match || match.score < 115 || match.overlap < 4 || !foodCategory.test(match.item.category || '')) return null;
 
   const matchedAddress = match.item.roadAddress || match.item.address || address;
   const district = matchedAddress.split(/\s+/).slice(0, 3).join(' ');
