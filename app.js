@@ -49,6 +49,7 @@
   const hash = value => [...String(value)].reduce((a, c) => ((a << 5) - a + c.charCodeAt(0)) | 0, 0);
   const idOf = restaurant => `${restaurant.name}|${restaurant.address}`;
   const fileUrl = file => `data/restaurants/${file.replace(/%/g, '%25')}`;
+  const searchShardCache = new Map();
 
   function cleanName(value) {
     let name = String(value ?? '').trim();
@@ -168,6 +169,19 @@
     }
     await state.loading;
   }
+  async function loadSearchShard(query) {
+    const first = [...searchKey(query)][0];
+    if (!first) return state.preview;
+    const bucket = first.codePointAt(0).toString(16);
+    if (!searchShardCache.has(bucket)) {
+      searchShardCache.set(bucket, fetch(`data/restaurants/search/${bucket}.json?v=1`).then(response => {
+        if (response.status === 404) return [];
+        if (!response.ok) throw Error(`검색 색인 응답 ${response.status}`);
+        return response.json();
+      }).then(rows => enrich(rows.map(([name, category, address, phone]) => ({ name, category, address, phone })))));
+    }
+    return searchShardCache.get(bucket);
+  }
   async function applySearch() {
     state.filters.query = $('#search-input').value.trim(); state.page = 1; $('#suggestions').innerHTML = '';
     const button = $('#search-button');
@@ -179,7 +193,8 @@
     try {
       await ready;
       if (!window.__MEOKDANG_REGIONS__?.length) throw Error('검색 데이터 초기화 실패');
-      await ensureAll();
+      state.all = state.filters.query ? await loadSearchShard(state.filters.query) : state.preview;
+      state.fullLoaded = false;
       state.progress = '';
       render();
     } catch (error) {
@@ -192,7 +207,19 @@
   }
   async function applyFilters() {
     ['region', 'category', 'price', 'mood', 'sort'].forEach(key => { state.filters[key] = $(`#${key}-filter`).value; });
-    state.page = 1; await ensureAll(); render();
+    state.page = 1;
+    if (state.filters.query) state.all = await loadSearchShard(state.filters.query);
+    else if (state.filters.region) {
+      const region = window.__MEOKDANG_REGIONS__.find(item => item.name === state.filters.region);
+      if (region) {
+        state.progress = `${region.name} 식당을 불러오는 중…`;
+        render();
+        const response = await fetch(`${fileUrl(region.file)}?v=20260728-2`);
+        state.all = enrich(await response.json());
+        state.progress = '';
+      }
+    } else state.all = state.preview;
+    render();
   }
   function resetFilters() {
     $('#search-input').value = ''; $$('#filters select').forEach(select => { select.selectedIndex = 0; });
@@ -278,7 +305,7 @@
   $$('#filters select').forEach(el => el.addEventListener('change', applyFilters));
   $('#filter-reset').addEventListener('click', resetFilters);
   $('#filter-toggle').addEventListener('click', () => $('#filters').classList.toggle('open'));
-  $$('[data-category]').forEach(el => el.addEventListener('click', async () => { $('#category-filter').value = el.dataset.category; state.filters.category = el.dataset.category; await ensureAll(); render(); $('#discover').scrollIntoView(); }));
+  $$('[data-category]').forEach(el => el.addEventListener('click', () => { $('#category-filter').value = el.dataset.category; state.filters.category = el.dataset.category; state.all = state.preview; render(); $('#discover').scrollIntoView(); }));
   $$('[data-open-panel]').forEach(el => el.addEventListener('click', () => openPanel(el.dataset.openPanel)));
   $('#auth-button').addEventListener('click', () => openPanel('auth'));
   $$('[data-close]').forEach(el => el.addEventListener('click', closeModals));
