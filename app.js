@@ -281,12 +281,14 @@
   function reviewsFor(r) { return store.get('reviews', {})[idOf(r)] || []; }
   function openDetail(r) {
     state.current = r;
-    const reviews = reviewsFor(r), query = encodeURIComponent(`${r.name} ${r.address || ''}`);
+    const reviews = reviewsFor(r);
+    const nameQuery = encodeURIComponent(r.name);
+    const fullQuery = encodeURIComponent(`${r.name} ${r.address || ''}`);
     $('#modal-content').innerHTML = `<div class="detail-hero"><span class="category">${escapeHtml(r.category || '음식점')}</span><h2 id="detail-title">${escapeHtml(r.name)}</h2><p>${escapeHtml(r.address)}</p>
       <div class="detail-score"><strong>★ ${r.rating}</strong><span>리뷰 신뢰도 ${r.trust}%</span><span>${priceText(r.price)} · ${r.mood}</span></div>
       <div class="detail-actions"><button id="detail-save" class="primary">${isSaved(r) ? '저장됨' : '♡ 저장'}</button><button id="add-list" class="ghost">리스트에 추가</button><button id="share" class="ghost">공유</button></div></div>
       <div class="detail-grid"><section><h3>식당 정보</h3><dl><dt>주소</dt><dd>${escapeHtml(r.address)}</dd><dt>전화번호</dt><dd>${escapeHtml(r.phone || '정보 없음')}</dd><dt>영업시간</dt><dd>방문 전 지도 서비스에서 확인해 주세요.</dd></dl>
-      <div class="map-links"><a target="_blank" rel="noopener" href="https://map.naver.com/p/search/${query}">네이버 지도</a><a target="_blank" rel="noopener" href="https://map.kakao.com/?q=${query}">카카오맵</a><a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${query}">Google 지도</a></div></section>
+      <div class="map-links"><a target="_blank" rel="noopener" href="https://map.naver.com/p/search/${nameQuery}">네이버 지도</a><a target="_blank" rel="noopener" href="https://map.kakao.com/?q=${nameQuery}">카카오맵</a><a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${fullQuery}">Google 지도</a></div></section>
       <section class="review-section"><div class="review-head"><h3>사용자 리뷰 <small>${reviews.length}</small></h3><select id="review-sort"><option value="latest">최신순</option><option value="rating">별점순</option><option value="helpful">유용한순</option></select></div>
       <div class="trust-note">✓ 작성 리뷰는 기기에 저장됩니다. 방문 인증과 광고성 리뷰 자동 검토는 서버 연동 후 제공됩니다.</div>
       <form id="review-form"><label>별점<select name="rating"><option value="5">5점</option><option value="4">4점</option><option value="3">3점</option><option value="2">2점</option><option value="1">1점</option></select></label><textarea name="text" required maxlength="500" placeholder="직접 경험한 맛과 분위기를 알려주세요."></textarea><label class="photo-label">사진 첨부<input name="photo" type="file" accept="image/*"></label><button class="primary" type="submit">리뷰 등록</button></form><div id="review-list"></div></section></div>`;
