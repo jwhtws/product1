@@ -50,6 +50,7 @@
   const idOf = restaurant => `${restaurant.name}|${restaurant.address}`;
   const fileUrl = file => `data/restaurants/${file.replace(/%/g, '%25')}`;
   const searchManifestCache = new Map();
+  const searchPageCache = new Map();
 
   function cleanName(value) {
     let name = String(value ?? '').trim();
@@ -180,9 +181,10 @@
     const session = state.searchSession;
     if (!session || session.done) return;
     while (filtered().length < targetCount && !session.done) {
-      const response = await fetch(`data/restaurants/search-pages/${session.bucket}-${session.nextPage}.json?v=1`);
-      if (!response.ok) { session.done = true; break; }
-      const rows = await response.json();
+      const path = `data/restaurants/search-pages/${session.bucket}-${session.nextPage}.json?v=1`;
+      if (!searchPageCache.has(path)) searchPageCache.set(path, fetch(path).then(response => response.ok ? response.json() : []));
+      const rows = await searchPageCache.get(path);
+      if (!rows.length) { session.done = true; break; }
       state.all = state.all.concat(enrich(rows.map(([name, category, address, phone]) => ({ name, category, address, phone }))));
       session.nextPage += 1;
       session.done = session.nextPage > session.endPage;
@@ -199,6 +201,17 @@
     state.all = [];
     state.searchSession = entry ? { bucket, nextPage: entry.start, endPage: entry.end, done: false } : { done: true };
     await loadSearchResults(pageSize);
+  }
+  async function prefetchSearch(query) {
+    const chars = [...searchKey(query)].slice(0, 2);
+    if (chars.length < 2) return;
+    const prefixKey = chars.map(char => char.codePointAt(0).toString(16)).join('-');
+    const bucket = (chars.reduce((value, char) => ((value * 31) + char.codePointAt(0)) >>> 0, 0) % 256).toString(16).padStart(2, '0');
+    if (!searchManifestCache.has(bucket)) searchManifestCache.set(bucket, fetch(`data/restaurants/search-pages/manifest-${bucket}.json?v=3`).then(response => response.json()));
+    const entry = (await searchManifestCache.get(bucket))[prefixKey];
+    if (!entry) return;
+    const path = `data/restaurants/search-pages/${bucket}-${entry.start}.json?v=1`;
+    if (!searchPageCache.has(path)) searchPageCache.set(path, fetch(path).then(response => response.ok ? response.json() : []));
   }
   async function applySearch() {
     state.filters.query = $('#search-input').value.trim(); state.page = 1; $('#suggestions').innerHTML = '';
@@ -319,7 +332,7 @@
   }
 
   $('#search-button').addEventListener('click', applySearch);
-  $('#search-input').addEventListener('input', renderSuggestions);
+  $('#search-input').addEventListener('input', () => { renderSuggestions(); prefetchSearch($('#search-input').value).catch(() => {}); });
   $('#search-input').addEventListener('keydown', e => e.key === 'Enter' && applySearch());
   $$('#filters select').forEach(el => el.addEventListener('change', applyFilters));
   $('#filter-reset').addEventListener('click', resetFilters);
