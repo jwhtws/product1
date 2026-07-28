@@ -1,0 +1,35 @@
+name: 식당 데이터 정기 검증
+
+on:
+  schedule:
+    - cron: "17 18 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: 저장소 받기
+        uses: actions/checkout@v4
+
+      - name: 식당 원본과 검색 인덱스 검증
+        run: |
+          node scripts/validate-restaurant-data.mjs --report=validation-report.json
+          {
+            echo "## 식당 데이터 정기 검증"
+            echo
+            echo "- 실행 시각: $(date -u '+%Y-%m-%d %H:%M UTC')"
+            echo "- 결과: 통과"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: 검증 보고서 보관
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: restaurant-validation-report
+          path: validation-report.json
+          retention-days: 30
