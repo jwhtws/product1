@@ -73,11 +73,27 @@ if (manifest?.total !== stats.sourceRows) errors.push(`전체 건수 불일치: 
 
 const searchDir = path.join(root, 'search-pages');
 const searchCounts = new Map();
+const routingManifests = new Map();
 for (const file of fs.readdirSync(searchDir).filter(name => /^[0-9a-f]{2}-\d+\.json$/.test(name))) {
   const rows = readJson(path.join(searchDir, file));
   if (!Array.isArray(rows)) continue;
+  const [, bucket, pageText] = file.match(/^([0-9a-f]{2})-(\d+)\.json$/);
+  const page = Number(pageText);
+  if (!routingManifests.has(bucket)) routingManifests.set(bucket, readJson(path.join(searchDir, `manifest-${bucket}.json`)) || {});
+  const routing = routingManifests.get(bucket);
   stats.searchRows += rows.length;
-  for (const row of rows) addCount(searchCounts, JSON.stringify(row));
+  for (const row of rows) {
+    addCount(searchCounts, JSON.stringify(row));
+    const chars = [...searchKey(row[0])];
+    for (const length of [2, 3]) {
+      if (chars.length < length) continue;
+      const prefix = chars.slice(0, length).map(char => char.codePointAt(0).toString(16)).join('-');
+      const entry = routing[prefix];
+      if (!entry || page < entry.start || page > entry.end) {
+        errors.push(`검색 라우팅 누락: ${row[0]} / ${file} / ${length}글자`);
+      }
+    }
+  }
 }
 
 for (const [key, count] of sourceSignatures) {
