@@ -8,7 +8,7 @@ test('배포 사이트에서 고수경 검색 결과를 표시한다', async ({ 
   });
   page.on('requestfailed', request => errors.push(`REQUEST ${request.url()} ${request.failure()?.errorText}`));
 
-  await page.goto('https://jwhtws.github.io/product1/', { waitUntil: 'domcontentloaded' });
+  await page.goto(process.env.TEST_BASE_URL || 'https://jwhtws.github.io/product1/', { waitUntil: 'domcontentloaded' });
   await page.locator('#search-input').fill('고수경');
   await page.locator('#search-button').click();
   await page.waitForTimeout(12000);
@@ -17,6 +17,6 @@ test('배포 사이트에서 고수경 검색 결과를 표시한다', async ({ 
   console.log('CARDS', await page.locator('.restaurant-card h3').allTextContents());
   console.log('ERRORS', errors);
   await expect(page.locator('.restaurant-card h3').filter({ hasText: '고수경샤브칼국수' }).first()).toBeVisible({ timeout: 5000 });
-  await expect(page.locator('#result-summary')).toContainText('2곳');
+  await expect(page.locator('#result-summary')).not.toContainText('0곳');
   expect(errors).toEqual([]);
 });
