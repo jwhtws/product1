@@ -124,13 +124,20 @@
     $('#result-summary').textContent = `${rows.length.toLocaleString('ko-KR')}곳 · ${state.fullLoaded ? '전국 전체 데이터' : '빠른 미리보기'}`;
     $('#app-state').textContent = state.progress || (state.fullLoaded ? '카드를 눌러 상세 정보와 리뷰를 확인하세요.' : '검색하거나 필터를 적용하면 전국 전체 데이터를 불러옵니다.');
     $('#restaurant-grid').innerHTML = shown.map((r, i) => card(r, start + i)).join('') || '<div class="empty">조건에 맞는 식당이 없습니다.<br><button id="empty-reset" class="ghost">필터 초기화</button></div>';
-    $('#pager').innerHTML = rows.length > pageSize ? `<button data-page="-1" ${state.page === 1 ? 'disabled' : ''}>이전</button><span>${state.page} / ${pages}</span><button data-page="1" ${state.page === pages ? 'disabled' : ''}>다음</button>` : '';
+    const mayHaveMore = state.searchSession && !state.searchSession.done;
+    $('#pager').innerHTML = rows.length > pageSize || mayHaveMore ? `<button data-page="-1" ${state.page === 1 ? 'disabled' : ''}>이전</button><span>${state.page} / ${mayHaveMore ? '…' : pages}</span><button data-page="1" ${state.page === pages && !mayHaveMore ? 'disabled' : ''}>다음</button>` : '';
     $$('.restaurant-card').forEach(el => {
       el.addEventListener('click', e => { if (!e.target.closest('[data-save]')) openDetail(rows[Number(el.dataset.index)]); });
       el.addEventListener('keydown', e => e.key === 'Enter' && openDetail(rows[Number(el.dataset.index)]));
     });
     $$('[data-save]').forEach(el => el.addEventListener('click', () => toggleSaved(rows[Number(el.dataset.save)])));
-    $$('[data-page]').forEach(el => el.addEventListener('click', () => { state.page += Number(el.dataset.page); render(); $('#discover').scrollIntoView(); }));
+    $$('[data-page]').forEach(el => el.addEventListener('click', async () => {
+      const direction = Number(el.dataset.page);
+      if (direction > 0 && state.page === pages && mayHaveMore) await loadSearchResults((state.page + 1) * pageSize);
+      const availablePages = Math.max(1, Math.ceil(filtered().length / pageSize));
+      state.page = Math.max(1, Math.min(state.page + direction, availablePages));
+      render(); $('#discover').scrollIntoView();
+    }));
     $('#empty-reset')?.addEventListener('click', resetFilters);
   }
 
@@ -169,18 +176,27 @@
     }
     await state.loading;
   }
-  async function loadSearchShard(query) {
-    const first = [...searchKey(query)][0];
-    if (!first) return state.preview;
-    const bucket = first.codePointAt(0).toString(16);
-    if (!searchShardCache.has(bucket)) {
-      searchShardCache.set(bucket, fetch(`data/restaurants/search/${bucket}.json?v=1`).then(response => {
-        if (response.status === 404) return [];
-        if (!response.ok) throw Error(`검색 색인 응답 ${response.status}`);
-        return response.json();
-      }).then(rows => enrich(rows.map(([name, category, address, phone]) => ({ name, category, address, phone })))));
+  async function loadSearchResults(targetCount = pageSize) {
+    const session = state.searchSession;
+    if (!session || session.done) return;
+    while (filtered().length < targetCount && !session.done) {
+      const response = await fetch(`data/restaurants/search-pages/${session.bucket}-${session.nextPage}.json?v=1`);
+      if (!response.ok) { session.done = true; break; }
+      const rows = await response.json();
+      state.all = state.all.concat(enrich(rows.map(([name, category, address, phone]) => ({ name, category, address, phone }))));
+      session.nextPage += 1;
+      session.done = session.nextPage >= session.totalPages;
     }
-    return searchShardCache.get(bucket);
+  }
+  async function startSearch(query) {
+    const chars = [...searchKey(query)].slice(0, 2);
+    if (!chars.length) { state.all = state.preview; state.searchSession = null; return; }
+    if (!searchManifestPromise) searchManifestPromise = fetch('data/restaurants/search-pages/manifest.json?v=1').then(response => response.json());
+    const manifest = await searchManifestPromise;
+    const bucket = chars.map(char => char.codePointAt(0).toString(16)).join('-');
+    state.all = [];
+    state.searchSession = { bucket, nextPage: 0, totalPages: manifest.buckets[bucket] || 0, done: !manifest.buckets[bucket] };
+    await loadSearchResults(pageSize);
   }
   async function applySearch() {
     state.filters.query = $('#search-input').value.trim(); state.page = 1; $('#suggestions').innerHTML = '';
@@ -193,7 +209,7 @@
     try {
       await ready;
       if (!window.__MEOKDANG_REGIONS__?.length) throw Error('검색 데이터 초기화 실패');
-      state.all = state.filters.query ? await loadSearchShard(state.filters.query) : state.preview;
+      await startSearch(state.filters.query);
       state.fullLoaded = false;
       state.progress = '';
       render();
@@ -208,7 +224,7 @@
   async function applyFilters() {
     ['region', 'category', 'price', 'mood', 'sort'].forEach(key => { state.filters[key] = $(`#${key}-filter`).value; });
     state.page = 1;
-    if (state.filters.query) state.all = await loadSearchShard(state.filters.query);
+    if (state.filters.query) await startSearch(state.filters.query);
     else if (state.filters.region) {
       const region = window.__MEOKDANG_REGIONS__.find(item => item.name === state.filters.region);
       if (region) {
