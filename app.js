@@ -292,11 +292,11 @@
     if (!session || session.done) return;
     while (filtered().length < targetCount && !session.done) {
       let pageKey = '';
-      if (session.nextPage <= session.endPage) {
+      if (session.containsPages.length) {
+        pageKey = session.containsPages.shift();
+      } else if (session.nextPage <= session.endPage) {
         pageKey = `${session.bucket}-${session.nextPage}`;
         session.nextPage += 1;
-      } else {
-        pageKey = session.containsPages.shift() || '';
       }
       if (!pageKey) { session.done = true; break; }
       const path = `data/restaurants/search-pages/${pageKey}.json?v=3`;
