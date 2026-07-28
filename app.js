@@ -193,7 +193,7 @@
     if (!chars.length) { state.all = state.preview; state.searchSession = null; return; }
     if (!searchManifestPromise) searchManifestPromise = fetch('data/restaurants/search-pages/manifest.json?v=1').then(response => response.json());
     const manifest = await searchManifestPromise;
-    const bucket = chars.map(char => char.codePointAt(0).toString(16)).join('-');
+    const bucket = (chars.reduce((value, char) => ((value * 31) + char.codePointAt(0)) >>> 0, 0) % 256).toString(16).padStart(2, '0');
     state.all = [];
     state.searchSession = { bucket, nextPage: 0, totalPages: manifest.buckets[bucket] || 0, done: !manifest.buckets[bucket] };
     await loadSearchResults(pageSize);
