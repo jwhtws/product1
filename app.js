@@ -185,19 +185,23 @@
   }
   function premisesPanel(r) {
     const info = premisesInfo(r);
-    const area = info.areaM2 ? `${info.areaM2.toLocaleString('ko-KR')}㎡ · 약 ${info.pyeong.toFixed(1)}평` : '공개 인허가 면적 없음';
-    const location = info.location || '주소에 층·호 표기 없음';
-    const layout = info.areaM2 ? `<div class="layout-bar" role="img" aria-label="추정 공간 구성">
-        <span style="width:${info.diningRatio * 100}%">객석 ${Math.round(info.diningRatio * 100)}%</span>
-        <span style="width:${info.kitchenRatio * 100}%">주방 ${Math.round(info.kitchenRatio * 100)}%</span>
-        <span style="width:${info.supportRatio * 100}%">기타 ${Math.round(info.supportRatio * 100)}%</span>
-      </div><small>업종·신고면적 기반 개념 추정 · 예상 ${info.seats.min}~${info.seats.max}석</small>`
-      : '<p class="estimate-empty">면적이 없어 공간 구성을 계산할 수 없습니다.</p>';
-    const parkingQuery = encodeURIComponent(`${r.name} ${naverMapAddress(r.address)} 주차`);
-    return `<section class="premises-panel"><div class="premises-head"><div><span>영업장 위치</span><strong>${escapeHtml(location)}</strong></div><div><span>신고 시설 규모</span><strong>${escapeHtml(area)}</strong></div></div>
-      <div class="layout-estimate"><h3>예상 공간 구성 <em>추정</em></h3>${layout}</div>
-      <div class="parking-check"><div><h3>주차 정보</h3><strong>주차 가능 여부·대수 확인 필요</strong><p>공개 인허가 데이터에는 식당 전용 주차 대수가 없습니다. 건물 전체 주차 대수를 식당 전용으로 표시하지 않습니다.</p></div><a target="_blank" rel="noopener" href="https://map.naver.com/p/search/${parkingQuery}">지도에서 주차 확인</a></div>
-      <p class="estimate-source">면적: 행정안전부 식품위생 인허가 시설총규모 · 층/호: 신고 주소에서 추출. 실제 전용면적과 내부 배치는 다를 수 있습니다.</p></section>`;
+    const kitchenWide = info.kitchenRatio >= 0.35;
+    const tables = info.areaM2 ? Math.max(3, Math.min(12, Math.round(info.seats.max / 4))) : 6;
+    return `<section class="premises-panel layout-only">
+      <article class="plan-card"><div class="plan-title"><strong>건물과 대지</strong><span>GIS 연결 전 개념도</span></div>
+        <div class="site-plan" role="img" aria-label="대지와 건물 배치 개념도">
+          <div class="site-road">도로</div><div class="site-lot"><span>대지</span><div class="building-footprint"><b>건물</b><i>출입구</i></div><div class="site-open">외부 공간</div></div>
+        </div>
+      </article>
+      <article class="plan-card"><div class="plan-title"><strong>일반적인 식당 구조</strong><span>업종·신고면적 기반 예시</span></div>
+        <div class="restaurant-plan ${kitchenWide ? 'wide-kitchen' : ''}" role="img" aria-label="일반적인 식당 구조 예시">
+          <div class="zone entrance">입구</div><div class="zone counter">카운터</div>
+          <div class="zone dining"><b>홀</b><div class="table-field">${Array.from({ length: tables }, () => '<i></i>').join('')}</div></div>
+          <div class="zone kitchen">주방</div><div class="zone storage">창고</div><div class="zone restroom">화장실</div>
+        </div>
+      </article>
+      <p class="plan-disclaimer">실제 도면이 아닌 개념 배치입니다. GIS 건물·필지 도형이 확인되면 실제 외곽 기반으로 표시됩니다.</p>
+    </section>`;
   }
   const categoryLabel = r => String(r.category || '음식점').replace(/\s+/g, ' ').trim();
 
