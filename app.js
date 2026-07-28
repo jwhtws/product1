@@ -49,7 +49,7 @@
   const hash = value => [...String(value)].reduce((a, c) => ((a << 5) - a + c.charCodeAt(0)) | 0, 0);
   const idOf = restaurant => `${restaurant.name}|${restaurant.address}`;
   const fileUrl = file => `data/restaurants/${file.replace(/%/g, '%25')}`;
-  let searchManifestPromise;
+  const searchManifestCache = new Map();
 
   function cleanName(value) {
     let name = String(value ?? '').trim();
@@ -192,12 +192,12 @@
   async function startSearch(query) {
     const chars = [...searchKey(query)].slice(0, 2);
     if (!chars.length) { state.all = state.preview; state.searchSession = null; return; }
-    if (!searchManifestPromise) searchManifestPromise = fetch('data/restaurants/search-pages/manifest.json?v=1').then(response => response.json());
-    const manifest = await searchManifestPromise;
     const prefixKey = chars.map(char => char.codePointAt(0).toString(16)).join('-');
-    const entry = manifest.lookup[prefixKey];
+    const bucket = (chars.reduce((value, char) => ((value * 31) + char.codePointAt(0)) >>> 0, 0) % 256).toString(16).padStart(2, '0');
+    if (!searchManifestCache.has(bucket)) searchManifestCache.set(bucket, fetch(`data/restaurants/search-pages/manifest-${bucket}.json?v=3`).then(response => response.json()));
+    const entry = (await searchManifestCache.get(bucket))[prefixKey];
     state.all = [];
-    state.searchSession = entry ? { bucket: entry.bucket, nextPage: entry.start, endPage: entry.end, done: false } : { done: true };
+    state.searchSession = entry ? { bucket, nextPage: entry.start, endPage: entry.end, done: false } : { done: true };
     await loadSearchResults(pageSize);
   }
   async function applySearch() {
