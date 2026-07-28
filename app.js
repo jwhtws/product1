@@ -167,11 +167,15 @@
     const depth = validArea ? area / width : 8;
     const kitchenRatio = /카페|커피|다방|제과/.test(r.category || '') ? 0.24
       : /횟집|복어|중국|탕류|식육|숯불/.test(r.category || '') ? 0.36 : 0.31;
-    const canvasWidth = 76, canvasHeight = 56;
-    const planX = 8, planY = 4, diningWidth = width * (1 - kitchenRatio);
+    const largestSide = Math.max(width, depth);
+    const [canvasWidth, canvasHeight] = largestSide <= 10 ? [12, 9]
+      : largestSide <= 20 ? [26, 20]
+        : largestSide <= 35 ? [44, 32] : [76, 56];
+    const planX = canvasWidth * .08, planY = canvasHeight * .08, diningWidth = width * (1 - kitchenRatio);
     const serviceWidth = width - diningWidth, rearDepth = depth * 0.28;
-    const carX = 2, carY = canvasHeight - 1.5;
-    const personX = 10, personY = canvasHeight - 1.3;
+    const carX = canvasWidth * .08, carY = canvasHeight - .7;
+    const personX = carX + 6.2, personY = canvasHeight - .5;
+    const roomFont = canvasWidth * .045, smallFont = canvasWidth * .032, scaleFont = canvasWidth * .03;
     const tableCols = Math.max(2, Math.min(4, Math.floor(diningWidth / 2.7)));
     const tableRows = Math.max(2, Math.min(4, Math.floor(depth / 2.5)));
     const tableWidth = Math.max(.8, Math.min(1.4, diningWidth / (tableCols * 1.8)));
@@ -184,7 +188,7 @@
     }).join('');
     return `<aside id="building-site-plan" class="title-site-plan premises-scale"><div class="plan-title"><strong>식당 평면도</strong><span>신고면적 기준</span></div>
       <div class="site-plan real-building">
-        <svg class="building-shape restaurant-layout-svg" viewBox="0 0 ${canvasWidth.toFixed(2)} ${canvasHeight.toFixed(2)}" role="img" aria-label="홀, 주방, 카운터, 창고, 화장실이 포함된 식당 평면도와 같은 축척의 자동차 및 사람">
+        <svg class="building-shape restaurant-layout-svg" style="--room-font:${roomFont.toFixed(2)}px;--small-font:${smallFont.toFixed(2)}px;--scale-font:${scaleFont.toFixed(2)}px" viewBox="0 0 ${canvasWidth.toFixed(2)} ${canvasHeight.toFixed(2)}" role="img" aria-label="홀, 주방, 카운터, 창고, 화장실이 포함된 식당 평면도와 같은 축척의 자동차 및 사람">
           <rect class="plan-shell" x="${planX}" y="${planY}" width="${width.toFixed(2)}" height="${depth.toFixed(2)}"/>
           <rect class="plan-zone plan-dining" x="${planX}" y="${planY}" width="${diningWidth.toFixed(2)}" height="${depth.toFixed(2)}"/>
           <rect class="plan-zone plan-kitchen" x="${(planX + diningWidth).toFixed(2)}" y="${planY}" width="${serviceWidth.toFixed(2)}" height="${(depth - rearDepth).toFixed(2)}"/>
@@ -193,21 +197,22 @@
           <rect class="plan-counter" x="${(planX + diningWidth - Math.min(2.4, diningWidth * .34)).toFixed(2)}" y="${(planY + depth - 1.1).toFixed(2)}" width="${Math.min(2.4, diningWidth * .34).toFixed(2)}" height=".65"/>
           ${tables}
           <path class="plan-door" d="M${(planX + .5).toFixed(2)} ${(planY + depth).toFixed(2)}h1.2a1.2 1.2 0 0 0-1.2-1.2"/>
-          <text class="room-label" x="${(planX + diningWidth / 2).toFixed(2)}" y="${(planY + 1).toFixed(2)}">홀</text>
-          <text class="room-label" x="${(planX + diningWidth + serviceWidth / 2).toFixed(2)}" y="${(planY + (depth - rearDepth) / 2).toFixed(2)}">주방</text>
-          <text class="room-label small" x="${(planX + diningWidth + serviceWidth / 4).toFixed(2)}" y="${(planY + depth - rearDepth / 2).toFixed(2)}">창고</text>
-          <text class="room-label small" x="${(planX + diningWidth + serviceWidth * .75).toFixed(2)}" y="${(planY + depth - rearDepth / 2).toFixed(2)}">화장실</text>
-          <text class="room-label small" x="${(planX + diningWidth - Math.min(2.4, diningWidth * .34) / 2).toFixed(2)}" y="${(planY + depth - 1.3).toFixed(2)}">카운터</text>
-          <text class="room-label small" x="${(planX + 1.1).toFixed(2)}" y="${(planY + depth - .35).toFixed(2)}">입구</text>
+          <text class="room-label" x="${(planX + diningWidth / 2).toFixed(2)}" y="${(planY + 1).toFixed(2)}">1</text>
+          <text class="room-label" x="${(planX + diningWidth + serviceWidth / 2).toFixed(2)}" y="${(planY + (depth - rearDepth) / 2).toFixed(2)}">2</text>
+          <text class="room-label small" x="${(planX + diningWidth + serviceWidth / 4).toFixed(2)}" y="${(planY + depth - rearDepth / 2).toFixed(2)}">3</text>
+          <text class="room-label small" x="${(planX + diningWidth + serviceWidth * .75).toFixed(2)}" y="${(planY + depth - rearDepth / 2).toFixed(2)}">4</text>
+          <text class="room-label small" x="${(planX + diningWidth - Math.min(2.4, diningWidth * .34) / 2).toFixed(2)}" y="${(planY + depth - 1.3).toFixed(2)}">5</text>
+          <text class="room-label small" x="${(planX + 1.1).toFixed(2)}" y="${(planY + depth - .35).toFixed(2)}">↗</text>
           <g class="scale-car-real"><rect x="${carX}" y="${(carY - 1.8).toFixed(2)}" width="4.5" height="1.8" rx=".35"/><circle cx="${carX + 1}" cy="${carY}" r=".35"/><circle cx="${carX + 3.5}" cy="${carY}" r=".35"/></g>
           <g class="scale-person-real"><circle cx="${personX.toFixed(2)}" cy="${(personY - 1.42).toFixed(2)}" r=".28"/><path d="M${personX.toFixed(2)} ${(personY - 1.12).toFixed(2)}v.7m-.45-.3m.45.3l.45-.3m-.45 0l-.38.82m.38-.82l.38.82"/></g>
           <text class="scale-label" x="${(carX + 2.25).toFixed(2)}" y="${(carY - 2.15).toFixed(2)}">차량 4.5m</text>
           <text class="scale-label" x="${personX.toFixed(2)}" y="${(personY - 1.95).toFixed(2)}">사람 1.7m</text>
         </svg>
       </div>
-      <dl class="building-facts"><div><dt>식당 신고면적</dt><dd>${validArea ? `${area.toLocaleString('ko-KR')}㎡ · 약 ${(area / 3.305785).toFixed(1)}평` : '공개 정보 없음'}</dd></div><div><dt>축척 기준</dt><dd>차량 4.5m · 사람 1.7m</dd></div></dl>
+      <div class="plan-legend"><span class="dining">1 홀</span><span class="kitchen">2 주방</span><span class="storage">3 창고</span><span class="restroom">4 화장실</span><span class="counter">5 카운터</span></div>
+      <dl class="building-facts"><div><dt>식당 신고면적</dt><dd>${validArea ? `${area.toLocaleString('ko-KR')}㎡ · 약 ${(area / 3.305785).toFixed(1)}평` : '공개 정보 없음'}</dd></div><div><dt>크기·축척</dt><dd>약 ${width.toFixed(1)}×${depth.toFixed(1)}m · 화면 폭 ${canvasWidth}m</dd></div></dl>
       <div class="parking-assessment"><strong>주차 가능성 확인 중</strong><span>VWorld 대지·건축면적 조회 후 계산</span></div>
-      <small>모든 식당을 동일한 76×56m 화면 축척으로 비교 · 내부 구획은 업종 기반 예시</small><div class="gis-building-status">VWorld 건물정보 조회 중</div></aside>`;
+      <small>차량 4.5m·사람 1.7m를 평면도와 동일 축척으로 표시 · 내부 구획은 업종 기반 예시</small><div class="gis-building-status">VWorld 건물정보 조회 중</div></aside>`;
   }
   function polygonRings(geometry) {
     if (geometry?.type === 'Polygon') return geometry.coordinates || [];
