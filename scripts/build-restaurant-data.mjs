@@ -11,9 +11,22 @@ let row = [];
 let value = '';
 let quoted = false;
 let activeCount = 0;
+const quarantined = [];
 
 function clean(value) {
   return value.trim().replace(/\s+/g, ' ');
+}
+
+function hasBrokenText(value) {
+  return value.includes('\uFFFD') || /[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F-\u009F]/.test(value);
+}
+
+function normalizeDate(value) {
+  const raw = clean(value);
+  const compact = raw.match(/^(\d{4})(\d{2})(\d{2})$/);
+  const normalized = compact ? `${compact[1]}-${compact[2]}-${compact[3]}` : raw;
+  const date = /^\d{4}-\d{2}-\d{2}$/.test(normalized) ? new Date(`${normalized}T00:00:00Z`) : null;
+  return date && !Number.isNaN(date.getTime()) && date.toISOString().slice(0, 10) === normalized ? normalized : '';
 }
 
 function addRow(values) {
@@ -27,6 +40,15 @@ function addRow(values) {
   const name = clean(values[8] || '');
   const address = clean(values[19] || values[36] || '');
   if (!name || !address) return;
+  const permitDateRaw = clean(values[2] || '');
+  const permitDate = normalizeDate(permitDateRaw);
+  if (hasBrokenText(name) || hasBrokenText(address) || !permitDate) {
+    quarantined.push({
+      type: !permitDate ? 'invalid-permit-date' : 'broken-text',
+      id: clean(values[1] || ''), name, address, permitDate: permitDateRaw
+    });
+    return;
+  }
 
   const region = address.split(' ')[0];
   const restaurant = {
@@ -35,7 +57,7 @@ function addRow(values) {
     category: clean(values[9] || values[30] || '음식점'),
     address,
     phone: clean(values[33] || ''),
-    permitDate: clean(values[2] || ''),
+    permitDate,
     permitDateSource: '행정안전부 일반음식점 인허가 데이터'
   };
 
@@ -109,5 +131,11 @@ writeFileSync(`${outputDir}/regions.json`, JSON.stringify({
 writeFileSync(`${outputDir}/previews.json`, JSON.stringify(Object.fromEntries(
   [...groups].map(([name, restaurants]) => [name, restaurants.slice(0, 20)])
 )));
+writeFileSync(`${outputDir}/data-quality-quarantine.json`, JSON.stringify({
+  generatedAt: new Date().toISOString(),
+  source: '행정안전부 일반음식점 인허가 데이터',
+  total: quarantined.length,
+  rows: quarantined
+}));
 
 console.log(`완료: 영업 중 식당 ${activeCount.toLocaleString('ko-KR')}건, ${regions.length}개 지역`);

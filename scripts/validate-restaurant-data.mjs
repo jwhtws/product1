@@ -71,6 +71,8 @@ function validatePermitDate(row, where) {
 }
 
 const manifest = readJson(regionManifestPath);
+const quarantine = readJson(path.join(root, 'data-quality-quarantine.json')) || { total: 0, rows: [] };
+stats.sourceQuarantinedRows = Number(quarantine.total || 0);
 if (!manifest?.regions?.length) errors.push('regions.json에 지역 목록이 없습니다.');
 
 for (const region of manifest?.regions || []) {
@@ -158,7 +160,10 @@ const result = {
   permitDate: {
     source: '행정안전부 일반음식점 인허가 데이터',
     meaning: '식품위생 영업 인허가일이며 실제 최초 영업 개시일과 다를 수 있음',
-    issues: permitDateIssues.slice(0, 500)
+    issues: [
+      ...(quarantine.rows || []).map(row => ({ ...row, type: row.type === 'invalid-permit-date' ? 'invalid' : row.type })),
+      ...permitDateIssues
+    ].slice(0, 500)
   },
   errors: errors.slice(0, 100),
   warnings: warnings.slice(0, 100)

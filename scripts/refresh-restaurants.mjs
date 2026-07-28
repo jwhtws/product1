@@ -8,6 +8,15 @@ const pageSize = 1000;
 const minimumActiveRows = 500000;
 const rowsPerFile = 50000;
 const clean = value => String(value ?? '').trim().replace(/\s+/g, ' ');
+const hasBrokenText = value => value.includes('\uFFFD') || /[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F-\u009F]/.test(value);
+const normalizeDate = value => {
+  const raw = clean(value);
+  const compact = raw.match(/^(\d{4})(\d{2})(\d{2})$/);
+  const normalized = compact ? `${compact[1]}-${compact[2]}-${compact[3]}` : raw;
+  const date = /^\d{4}-\d{2}-\d{2}$/.test(normalized) ? new Date(`${normalized}T00:00:00Z`) : null;
+  return date && !Number.isNaN(date.getTime()) && date.toISOString().slice(0, 10) === normalized ? normalized : '';
+};
+const quarantined = [];
 const pick = (row, ...keys) => {
   for (const key of keys) if (row?.[key] != null && row[key] !== '') return row[key];
   return '';
@@ -34,14 +43,21 @@ function normalize(row) {
   const address = clean(pick(row, 'rdnWhlAddr', 'RDNWHLADDR', '도로명전체주소', '도로명주소') ||
     pick(row, 'siteWhlAddr', 'SITEWHLADDR', '소재지전체주소', '소재지주소'));
   if (!name || !address) return null;
+  const id = clean(pick(row, 'mgtNo', 'MGTNO', '관리번호', '인허가번호'));
+  const permitDateRaw = clean(pick(row, 'apvPermYmd', 'APVPERMYMD', '인허가일자', '허가일자'));
+  const permitDate = normalizeDate(permitDateRaw);
+  if (hasBrokenText(name) || hasBrokenText(address) || !permitDate) {
+    quarantined.push({ type: !permitDate ? 'invalid-permit-date' : 'broken-text', id, name, address, permitDate: permitDateRaw });
+    return null;
+  }
 
   return {
-    id: clean(pick(row, 'mgtNo', 'MGTNO', '관리번호', '인허가번호')),
+    id,
     name,
     category: clean(pick(row, 'uptaeNm', 'UPTAENM', '업태구분명', '업태명') || '음식점'),
     address,
     phone: clean(pick(row, 'siteTel', 'SITETEL', '소재지전화', '전화번호')),
-    permitDate: clean(pick(row, 'apvPermYmd', 'APVPERMYMD', '인허가일자', '허가일자')),
+    permitDate,
     permitDateSource: '행정안전부 일반음식점 인허가 데이터'
   };
 }
@@ -132,5 +148,11 @@ fs.writeFileSync(path.join(outputDir, 'regions.json'), JSON.stringify({
 fs.writeFileSync(path.join(outputDir, 'previews.json'), JSON.stringify(Object.fromEntries(
   [...groups].map(([name, rows]) => [name, rows.slice(0, 20)])
 )));
+fs.writeFileSync(path.join(outputDir, 'data-quality-quarantine.json'), JSON.stringify({
+  generatedAt: new Date().toISOString(),
+  source: '행정안전부 일반음식점 인허가 데이터',
+  total: quarantined.length,
+  rows: quarantined
+}));
 
 console.log(`갱신 완료: 영업 중 ${restaurants.length.toLocaleString('ko-KR')}곳 / 개업 ${opened.toLocaleString('ko-KR')}곳 / 폐업·제외 ${closed.toLocaleString('ko-KR')}곳`);
