@@ -52,7 +52,12 @@ const locality = value => {
   const end = tokens.slice(0, 4).findLastIndex(token => /[시군구]$/.test(token));
   return tokens.slice(0, end >= 0 ? end + 1 : 2).join(' ');
 };
-const addressTokens = value => new Set(key(value).match(/[가-힣]+|\d+(?:-\d+)?/g) || []);
+const addressTokens = value => new Set(String(value || '')
+  .normalize('NFKC')
+  .replace(/[(),]/g, ' ')
+  .split(/\s+/)
+  .map(token => token.replace(/[^\p{L}\p{N}-]/gu, ''))
+  .filter(Boolean));
 const addressScore = (left, right) => {
   const leftTokens = addressTokens(left), rightTokens = addressTokens(right);
   let overlap = 0;
