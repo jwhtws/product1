@@ -161,11 +161,58 @@
     };
   }
   function buildingSitePlan() {
-    return `<aside class="title-site-plan"><div class="plan-title"><strong>건물·대지</strong><span>개념도</span></div>
+    return `<aside id="building-site-plan" class="title-site-plan"><div class="plan-title"><strong>건물·대지</strong><span>조회 중</span></div>
       <div class="site-plan" role="img" aria-label="대지와 건물 배치 개념도, 자동차 한 대와 사람 한 명">
         <div class="site-road"><span class="scale-car" aria-label="자동차">🚗</span><span>도로</span></div>
         <div class="site-lot"><span>대지</span><div class="building-footprint"><b>건물</b><i>출입구</i></div><span class="scale-person" aria-label="사람">🚶</span></div>
-      </div><small>실제 도면이 아닌 GIS 연결 전 개념 배치</small></aside>`;
+      </div><small>VWorld GIS건물통합정보 확인 중</small></aside>`;
+  }
+  function polygonRings(geometry) {
+    if (geometry?.type === 'Polygon') return geometry.coordinates || [];
+    if (geometry?.type === 'MultiPolygon') return (geometry.coordinates || []).flat();
+    return [];
+  }
+  function buildingSvg(geometry) {
+    const rings = polygonRings(geometry);
+    const points = rings.flat().filter(pair => Array.isArray(pair) && pair.length >= 2)
+      .map(pair => [Number(pair[0]), Number(pair[1])]).filter(pair => pair.every(Number.isFinite));
+    if (!points.length) return '';
+    const xs = points.map(point => point[0]), ys = points.map(point => point[1]);
+    const minX = Math.min(...xs), maxX = Math.max(...xs), minY = Math.min(...ys), maxY = Math.max(...ys);
+    const width = Math.max(maxX - minX, 0.000001), height = Math.max(maxY - minY, 0.000001);
+    const scale = Math.min(172 / width, 92 / height);
+    const offsetX = (200 - width * scale) / 2, offsetY = (120 - height * scale) / 2;
+    const paths = rings.map(ring => ring.map((point, index) => {
+      const x = offsetX + (Number(point[0]) - minX) * scale;
+      const y = 120 - (offsetY + (Number(point[1]) - minY) * scale);
+      return `${index ? 'L' : 'M'}${x.toFixed(1)} ${y.toFixed(1)}`;
+    }).join(' ') + ' Z').join(' ');
+    return `<svg class="building-shape" viewBox="0 0 200 120" role="img" aria-label="VWorld에서 조회한 실제 건물 외곽"><path d="${paths}"/></svg>`;
+  }
+  async function loadBuildingSite(address) {
+    const target = $('#building-site-plan');
+    if (!target) return;
+    try {
+      const response = await fetch(`/api/building?address=${encodeURIComponent(naverMapAddress(address))}`);
+      if (!response.ok) throw Error(String(response.status));
+      const data = await response.json();
+      if (!data.found || !data.geometry) throw Error('not found');
+      const info = data.building || {};
+      const details = [
+        info.use,
+        info.areaM2 ? `${Number(info.areaM2).toLocaleString('ko-KR')}㎡` : '',
+        info.floorsAbove ? `지상 ${info.floorsAbove}층` : ''
+      ].filter(Boolean).join(' · ');
+      target.innerHTML = `<div class="plan-title"><strong>${escapeHtml(info.name || '실제 건물 외곽')}</strong><span>VWorld</span></div>
+        <div class="site-plan real-building">${buildingSvg(data.geometry)}</div>
+        <small>${escapeHtml(details || 'GIS건물통합정보 실측 도형')}</small>`;
+      target.classList.add('loaded');
+    } catch {
+      const status = target.querySelector('.plan-title span');
+      const note = target.querySelector(':scope > small');
+      if (status) status.textContent = '개념도';
+      if (note) note.textContent = '건물 도형을 찾지 못해 개념 배치로 표시';
+    }
   }
   const categoryLabel = r => String(r.category || '음식점').replace(/\s+/g, ' ').trim();
 
@@ -469,6 +516,7 @@
     $('#review-form').addEventListener('submit', submitReview);
     renderReviews();
     fetchPlaceDetails(r).then(place => renderPlaceDetails(r, place));
+    loadBuildingSite(r.address);
   }
   function renderPlaceDetails(r, place) {
     if (state.current !== r || !$('#place-extras')) return;
