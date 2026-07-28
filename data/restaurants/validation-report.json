@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "checkedAt": "2026-07-28T07:59:48.686Z",
+  "checkedAt": "2026-07-28T08:58:38.421Z",
   "sourceUpdatedAt": "2026-07-28T07:55:19.041Z",
   "stats": {
     "regions": 16,
@@ -17,6 +17,8 @@
     "invalidPermitDateRows": 0,
     "futurePermitDateRows": 0,
     "idYearMismatchRows": 5128,
+    "containsPairs": 3538166,
+    "containsMissingRoutes": 0,
     "sourceQuarantinedRows": 625
   },
   "permitDate": {
