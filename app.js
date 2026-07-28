@@ -185,7 +185,8 @@
       const rows = await response.json();
       state.all = state.all.concat(enrich(rows.map(([name, category, address, phone]) => ({ name, category, address, phone }))));
       session.nextPage += 1;
-      session.done = session.nextPage >= session.totalPages;
+      session.done = session.nextPage > session.endPage;
+      break;
     }
   }
   async function startSearch(query) {
@@ -193,9 +194,10 @@
     if (!chars.length) { state.all = state.preview; state.searchSession = null; return; }
     if (!searchManifestPromise) searchManifestPromise = fetch('data/restaurants/search-pages/manifest.json?v=1').then(response => response.json());
     const manifest = await searchManifestPromise;
-    const bucket = (chars.reduce((value, char) => ((value * 31) + char.codePointAt(0)) >>> 0, 0) % 256).toString(16).padStart(2, '0');
+    const prefixKey = chars.map(char => char.codePointAt(0).toString(16)).join('-');
+    const entry = manifest.lookup[prefixKey];
     state.all = [];
-    state.searchSession = { bucket, nextPage: 0, totalPages: manifest.buckets[bucket] || 0, done: !manifest.buckets[bucket] };
+    state.searchSession = entry ? { bucket: entry.bucket, nextPage: entry.start, endPage: entry.end, done: false } : { done: true };
     await loadSearchResults(pageSize);
   }
   async function applySearch() {

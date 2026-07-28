@@ -20,13 +20,20 @@ for (const file of fs.readdirSync(sourceDir).filter(name => name.endsWith('.json
 
 fs.mkdirSync(outputDir, { recursive: true });
 for (const file of fs.readdirSync(outputDir).filter(name => name.endsWith('.json'))) fs.unlinkSync(path.join(outputDir, file));
-const manifest = {};
+const manifest = { buckets: {}, lookup: {} };
 for (const [bucket, rows] of buckets) {
   rows.sort((left, right) => key(left[0]).localeCompare(key(right[0]), 'ko'));
-  manifest[bucket] = Math.ceil(rows.length / pageSize);
-  for (let page = 0; page < manifest[bucket]; page += 1) {
+  manifest.buckets[bucket] = Math.ceil(rows.length / pageSize);
+  rows.forEach((row, index) => {
+    const prefixKey = [...key(row[0])].slice(0, 2).map(char => char.codePointAt(0).toString(16)).join('-');
+    const page = Math.floor(index / pageSize);
+    const entry = manifest.lookup[prefixKey] || { bucket, start: page, end: page };
+    entry.end = page;
+    manifest.lookup[prefixKey] = entry;
+  });
+  for (let page = 0; page < manifest.buckets[bucket]; page += 1) {
     fs.writeFileSync(path.join(outputDir, `${bucket}-${page}.json`), JSON.stringify(rows.slice(page * pageSize, (page + 1) * pageSize)));
   }
 }
-fs.writeFileSync(path.join(outputDir, 'manifest.json'), JSON.stringify({ version: 1, pageSize, buckets: manifest }));
-console.log(`${Object.keys(manifest).length}개 상호 색인 생성`);
+fs.writeFileSync(path.join(outputDir, 'manifest.json'), JSON.stringify({ version: 2, pageSize, ...manifest }));
+console.log(`${Object.keys(manifest.buckets).length}개 검색 조각 생성`);
