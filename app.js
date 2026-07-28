@@ -54,7 +54,7 @@
   const placeDetailCache = new Map();
   async function loadRegion(region) {
     const files = region.files || [region.file];
-    const responses = await Promise.all(files.map(file => fetch(`${fileUrl(file)}?v=20260728-3`)));
+    const responses = await Promise.all(files.map(file => fetch(`${fileUrl(file)}?v=20260728-4`)));
     const failed = responses.find(response => !response.ok);
     if (failed) throw Error(`${region.name} 데이터 응답 ${failed.status}`);
     return (await Promise.all(responses.map(response => response.json()))).flat();
@@ -138,6 +138,22 @@
     store.set('popularity', popularity);
   }
   function priceText(price) { return '₩'.repeat(Number(price)); }
+  function permitDateInfo(value) {
+    const match = String(value || '').match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    if (!match) return null;
+    const opened = new Date(`${value}T00:00:00`);
+    if (Number.isNaN(opened.getTime()) || opened > new Date()) return null;
+    const now = new Date();
+    let years = now.getFullYear() - opened.getFullYear();
+    let months = now.getMonth() - opened.getMonth();
+    if (now.getDate() < opened.getDate()) months -= 1;
+    if (months < 0) { years -= 1; months += 12; }
+    const duration = years > 0 ? `${years}년 ${months ? `${months}개월 ` : ''}영업` : `${Math.max(0, months)}개월 영업`;
+    return {
+      formatted: new Intl.DateTimeFormat('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' }).format(opened),
+      duration
+    };
+  }
   function fallbackImage(r) {
     const text = `${r.name} ${r.category}`.toLocaleLowerCase('ko-KR');
     if (/카페|커피|베이커|제과|디저트|케이크|빵|차\s|다방/.test(text)) return 'assets/food/cafe-ai.png';
@@ -170,12 +186,13 @@
     return rows.map(item => item.restaurant);
   }
   function card(r, index) {
+    const permit = permitDateInfo(r.permitDate);
     return `<article class="restaurant-card" tabindex="0" data-index="${index}" data-place-key="${Math.abs(hash(idOf(r)))}">
       <div class="listing-photo" data-place-photo style="background-image:url('${fallbackImage(r)}')"><span data-photo-badge>AI 대표 이미지</span></div>
       <div class="card-body"><div class="card-top"><span class="category">${escapeHtml(r.category || '음식점')}</span><button class="save ${isSaved(r) ? 'active' : ''}" data-save="${index}" type="button" aria-label="저장">♡</button></div>
       <div class="card-identity"><h3>${escapeHtml(r.name)}</h3></div><p class="address">${escapeHtml(r.address)}</p>
       <div class="score"><strong>★ ${r.rating}</strong><span>신뢰도 ${r.trust}%</span><span>${priceText(r.price)}</span></div>
-      <div class="tags"><span>${r.mood}</span><span>영업 정보 확인</span></div></div>
+      <div class="tags"><span>${r.mood}</span><span>${permit ? escapeHtml(permit.duration) : '영업 정보 확인'}</span></div></div>
     </article>`;
   }
   function render() {
@@ -276,7 +293,8 @@
       if (!searchPageCache.has(path)) searchPageCache.set(path, fetch(path).then(response => response.ok ? response.json() : []));
       const rows = await searchPageCache.get(path);
       if (!rows.length) { session.done = true; break; }
-      state.all = state.all.concat(enrich(rows.map(([name, category, address, phone]) => ({ name, category, address, phone }))));
+      state.all = state.all.concat(enrich(rows.map(([name, category, address, phone, permitDate, permitDateSource]) =>
+        ({ name, category, address, phone, permitDate, permitDateSource }))));
       session.nextPage += 1;
       session.done = session.nextPage > session.endPage;
     }
@@ -377,11 +395,13 @@
     const naverAddress = naverMapAddress(r.address);
     const naverQuery = encodeURIComponent(naverAddress);
     const fullQuery = encodeURIComponent(`${r.name} ${r.address || ''}`);
+    const permit = permitDateInfo(r.permitDate);
     $('#modal-content').innerHTML = `<div id="place-cover" class="detail-cover" style="background-image:url('${fallbackImage(r)}')"><span>AI 대표 이미지</span></div><div class="detail-hero"><span class="category">${escapeHtml(r.category || '음식점')}</span><h2 id="detail-title">${escapeHtml(r.name)}</h2><p>${escapeHtml(r.address)}</p>
       <div class="detail-score"><strong>★ ${r.rating}</strong><span>리뷰 신뢰도 ${r.trust}%</span><span>${priceText(r.price)} · ${r.mood}</span></div>
       <div class="detail-actions"><button id="detail-save" class="primary">${isSaved(r) ? '저장됨' : '♡ 저장'}</button><button id="add-list" class="ghost">리스트에 추가</button><button id="share" class="ghost">공유</button></div></div>
       <section id="place-extras" class="place-extras" aria-live="polite"><div class="place-loading">사진·가격·좌석 정보를 확인하는 중입니다.</div></section>
-      <div class="detail-grid"><section><h3>식당 정보</h3><dl><dt>주소</dt><dd>${escapeHtml(r.address)}</dd><dt>전화번호</dt><dd id="place-phone">${escapeHtml(r.phone || '정보 없음')}</dd><dt>영업시간</dt><dd id="place-hours">방문 전 지도 서비스에서 확인해 주세요.</dd></dl>
+      <div class="detail-grid"><section><h3>식당 정보</h3><dl><dt>주소</dt><dd>${escapeHtml(r.address)}</dd><dt>전화번호</dt><dd id="place-phone">${escapeHtml(r.phone || '정보 없음')}</dd><dt>영업 시작일</dt><dd>${permit ? `${escapeHtml(permit.formatted)} <small>공공 인허가 기록 확인</small>` : '공공데이터 확인 필요'}</dd><dt>영업 기간</dt><dd>${permit ? escapeHtml(permit.duration) : '계산할 수 없음'}</dd><dt>영업시간</dt><dd id="place-hours">방문 전 지도 서비스에서 확인해 주세요.</dd></dl>
+      <p class="data-source-note">영업 시작일은 ${escapeHtml(r.permitDateSource || '행정안전부 일반음식점 인허가 데이터')}의 식품위생 영업 인허가일 기준이며, 실제 첫 영업일과 다를 수 있습니다.</p>
       <div class="map-links"><a target="_blank" rel="noopener" href="https://map.naver.com/p/search/${naverQuery}" title="${escapeHtml(naverAddress)} 주소로 검색">네이버 지도 · 주소검색</a><a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${fullQuery}">Google 지도</a></div></section>
       <section class="review-section"><div class="review-head"><h3>사용자 리뷰 <small>${reviews.length}</small></h3><select id="review-sort"><option value="latest">최신순</option><option value="rating">별점순</option><option value="helpful">유용한순</option></select></div>
       <div class="trust-note">✓ 작성 리뷰는 기기에 저장됩니다. 방문 인증과 광고성 리뷰 자동 검토는 서버 연동 후 제공됩니다.</div>
@@ -485,7 +505,7 @@
   }));
 
   try {
-    const [regionsResponse, previewsResponse] = await Promise.all([fetch('data/restaurants/regions.json'), fetch('data/restaurants/previews.json')]);
+    const [regionsResponse, previewsResponse] = await Promise.all([fetch('data/restaurants/regions.json?v=20260728-4'), fetch('data/restaurants/previews.json?v=20260728-4')]);
     if (!regionsResponse.ok || !previewsResponse.ok) throw Error('목록 로드 실패');
     const regionData = await regionsResponse.json(), previews = await previewsResponse.json();
     window.__MEOKDANG_REGIONS__ = regionData.regions; state.preview = enrich(mixPreviews(previews)); state.all = state.preview;
