@@ -10,7 +10,7 @@ const stats = {
   regions: 0, sourceRows: 0, searchableRows: 0, quarantinedRows: 0, privateFacilityRows: 0,
   searchRows: 0, duplicateIds: 0, duplicatePlaces: 0, permitDateRows: 0,
   verifiedPermitDateRows: 0, missingPermitDateRows: 0, invalidPermitDateRows: 0,
-  futurePermitDateRows: 0, idYearMismatchRows: 0
+  futurePermitDateRows: 0, idYearMismatchRows: 0, containsPairs: 0, containsMissingRoutes: 0
 };
 const permitDateIssues = [];
 const sourceSignatures = new Map();
@@ -117,6 +117,10 @@ if (manifest?.total !== stats.sourceRows) errors.push(`전체 건수 불일치: 
 const searchDir = path.join(root, 'search-pages');
 const searchCounts = new Map();
 const routingManifests = new Map();
+const containsManifests = new Map();
+for (const file of fs.readdirSync(searchDir).filter(name => /^contains-[0-9a-f]{2}\.json$/.test(name))) {
+  containsManifests.set(file.slice(9, 11), readJson(path.join(searchDir, file)) || {});
+}
 for (const file of fs.readdirSync(searchDir).filter(name => /^[0-9a-f]{2}-\d+\.json$/.test(name))) {
   const rows = readJson(path.join(searchDir, file));
   if (!Array.isArray(rows)) continue;
@@ -128,6 +132,17 @@ for (const file of fs.readdirSync(searchDir).filter(name => /^[0-9a-f]{2}-\d+\.j
   for (const row of rows) {
     addCount(searchCounts, JSON.stringify(row));
     const chars = [...searchKey(row[0])];
+    const bigrams = new Set();
+    for (let index = 0; index < chars.length - 1; index += 1) bigrams.add(chars.slice(index, index + 2));
+    for (const pair of bigrams) {
+      stats.containsPairs += 1;
+      const routeKey = pair.map(char => char.codePointAt(0).toString(16)).join('-');
+      const shard = (pair.reduce((value, char) => ((value * 31) + char.codePointAt(0)) >>> 0, 0) % 256).toString(16).padStart(2, '0');
+      if (!containsManifests.get(shard)?.[routeKey]?.includes(`${bucket}-${page}`)) {
+        stats.containsMissingRoutes += 1;
+        if (stats.containsMissingRoutes <= 100) errors.push(`부분 이름 검색 라우팅 누락: ${row[0]} / ${file} / ${pair.join('')}`);
+      }
+    }
     for (const length of [2, 3]) {
       if (chars.length < length) continue;
       const prefix = chars.slice(0, length).map(char => char.codePointAt(0).toString(16)).join('-');
@@ -146,6 +161,7 @@ for (const [key, count] of sourceSignatures) {
 }
 for (const [key, count] of searchCounts) errors.push(`원본에 없는 검색 결과: ${key.slice(0, 160)} (${count}건)`);
 if (stats.searchRows !== stats.searchableRows) errors.push(`검색 인덱스 총 건수 불일치: 검색 가능 원본 ${stats.searchableRows}, 검색 ${stats.searchRows}`);
+if (stats.containsMissingRoutes) errors.push(`부분 이름 검색 라우팅 누락 합계: ${stats.containsMissingRoutes.toLocaleString('ko-KR')}건`);
 
 const updatedAt = new Date(manifest?.updatedAt || 0);
 const ageDays = Math.floor((Date.now() - updatedAt.getTime()) / 86400000);
