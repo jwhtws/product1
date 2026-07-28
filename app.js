@@ -160,29 +160,6 @@
       duration
     };
   }
-  function premisesInfo(r) {
-    const address = String(r.address || '');
-    const floorMatches = [...address.matchAll(/(지하\s*\d+|B\s*\d+|\d+)\s*층/gi)].map(match => {
-      const raw = match[1].replace(/\s+/g, '').toUpperCase();
-      if (raw.startsWith('지하')) return `지하 ${raw.replace('지하', '')}층`;
-      if (raw.startsWith('B')) return `지하 ${raw.slice(1)}층`;
-      return `${raw}층`;
-    });
-    const floors = [...new Set(floorMatches)];
-    const unit = address.match(/(?:^|[\s,(])([A-Za-z가-힣]?\d+(?:-\d+)?(?:A|B)?호)(?=$|[\s,)])/i)?.[1] || '';
-    const areaM2 = Number(r.facilityAreaM2);
-    const validArea = Number.isFinite(areaM2) && areaM2 > 0;
-    const pyeong = validArea ? areaM2 / 3.305785 : null;
-    const kitchenRatio = /카페|커피|다방|제과/.test(r.category || '') ? 0.24
-      : /횟집|복어|중국|탕류|식육|숯불/.test(r.category || '') ? 0.36 : 0.31;
-    const supportRatio = 0.14;
-    const diningRatio = 1 - kitchenRatio - supportRatio;
-    const seats = validArea ? {
-      min: Math.max(2, Math.floor(areaM2 * diningRatio / 1.8)),
-      max: Math.max(4, Math.floor(areaM2 * diningRatio / 1.35))
-    } : null;
-    return { floors, unit, location: [floors.join('·'), unit].filter(Boolean).join(' '), areaM2: validArea ? areaM2 : null, pyeong, kitchenRatio, supportRatio, diningRatio, seats };
-  }
   function buildingSitePlan() {
     return `<aside class="title-site-plan"><div class="plan-title"><strong>건물·대지</strong><span>개념도</span></div>
       <div class="site-plan" role="img" aria-label="대지와 건물 배치 개념도, 자동차 한 대와 사람 한 명">
