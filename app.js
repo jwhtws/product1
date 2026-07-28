@@ -122,6 +122,11 @@
     return rows.map(item => item.restaurant);
   }
   function card(r, index) {
+    if (r.external) return `<article class="restaurant-card external-card" tabindex="0" data-index="${index}">
+      <div class="card-top"><span class="category">외부 지도 검색</span></div>
+      <h3>${escapeHtml(r.name)}</h3><p class="address">공공데이터에 없는 장소입니다. 네이버 지도에서 최신 업체 정보를 확인하세요.</p>
+      <div class="score"><strong>네이버 지도에서 보기 →</strong></div>
+    </article>`;
     return `<article class="restaurant-card" tabindex="0" data-index="${index}">
       <div class="card-top"><span class="category">${escapeHtml(r.category || '음식점')}</span><button class="save ${isSaved(r) ? 'active' : ''}" data-save="${index}" type="button" aria-label="저장">♡</button></div>
       <h3>${escapeHtml(r.name)}</h3><p class="address">${escapeHtml(r.address)}</p>
@@ -237,6 +242,10 @@
       await ready;
       if (!window.__MEOKDANG_REGIONS__?.length) throw Error('검색 데이터 초기화 실패');
       await startSearch(state.filters.query);
+      if (state.filters.query && !filtered().length) {
+        const query = state.filters.query.trim();
+        state.all = [{ name: query, category: '지도 검색', address: '', phone: '', rating: '—', trust: 0, price: 1, mood: '최신 정보 확인', external: true }];
+      }
       recordPopularity(filtered().slice(0, 10));
       state.fullLoaded = false;
       state.progress = '';
@@ -281,6 +290,10 @@
   function reviewsFor(r) { return store.get('reviews', {})[idOf(r)] || []; }
   function openDetail(r) {
     state.current = r;
+    if (r.external) {
+      window.open(`https://map.naver.com/p/search/${encodeURIComponent(r.name)}`, '_blank', 'noopener');
+      return;
+    }
     const reviews = reviewsFor(r);
     const nameQuery = encodeURIComponent(r.name);
     const fullQuery = encodeURIComponent(`${r.name} ${r.address || ''}`);
