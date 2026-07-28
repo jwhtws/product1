@@ -14,7 +14,7 @@ for (const file of fs.readdirSync(sourceDir).filter(name => name.endsWith('.json
     if (!prefix.length) continue;
     const bucket = (prefix.reduce((value, char) => ((value * 31) + char.codePointAt(0)) >>> 0, 0) % 256).toString(16).padStart(2, '0');
     if (!buckets.has(bucket)) buckets.set(bucket, []);
-    buckets.get(bucket).push([row.name, row.category || '', row.address || '', row.phone || '']);
+    buckets.get(bucket).push([row.name, row.category || '', row.address || '', row.phone || '', row.permitDate || '', row.permitDateSource || '']);
   }
 }
 

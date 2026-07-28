@@ -40,7 +40,9 @@ function normalize(row) {
     name,
     category: clean(pick(row, 'uptaeNm', 'UPTAENM', '업태구분명', '업태명') || '음식점'),
     address,
-    phone: clean(pick(row, 'siteTel', 'SITETEL', '소재지전화', '전화번호'))
+    phone: clean(pick(row, 'siteTel', 'SITETEL', '소재지전화', '전화번호')),
+    permitDate: clean(pick(row, 'apvPermYmd', 'APVPERMYMD', '인허가일자', '허가일자')),
+    permitDateSource: '행정안전부 일반음식점 인허가 데이터'
   };
 }
 

@@ -34,7 +34,9 @@ function addRow(values) {
     name,
     category: clean(values[9] || values[30] || '음식점'),
     address,
-    phone: clean(values[33] || '')
+    phone: clean(values[33] || ''),
+    permitDate: clean(values[2] || ''),
+    permitDateSource: '행정안전부 일반음식점 인허가 데이터'
   };
 
   if (!groups.has(region)) groups.set(region, []);
@@ -104,5 +106,8 @@ writeFileSync(`${outputDir}/regions.json`, JSON.stringify({
   total: activeCount,
   regions
 }));
+writeFileSync(`${outputDir}/previews.json`, JSON.stringify(Object.fromEntries(
+  [...groups].map(([name, restaurants]) => [name, restaurants.slice(0, 20)])
+)));
 
 console.log(`완료: 영업 중 식당 ${activeCount.toLocaleString('ko-KR')}건, ${regions.length}개 지역`);
