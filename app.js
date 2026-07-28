@@ -202,6 +202,7 @@
     }));
     $('#empty-reset')?.addEventListener('click', resetFilters);
     renderHomeRankings();
+    enrichVisibleCards(rows);
   }
 
   async function fetchPlaceDetails(r) {
@@ -215,6 +216,23 @@
         .catch(() => null));
     }
     return placeDetailCache.get(key);
+  }
+  function applyRealPhoto(r, place) {
+    if (!place?.photoUrl) return;
+    $$(`[data-place-key="${Math.abs(hash(idOf(r)))}"]`).forEach(cardEl => {
+      const photo = cardEl.querySelector('[data-place-photo]');
+      if (!photo) return;
+      photo.style.backgroundImage = `url("${place.photoUrl.replace(/["\\]/g, '')}")`;
+      const badge = photo.querySelector('[data-photo-badge]');
+      if (badge) badge.textContent = '실제 검색 이미지';
+    });
+  }
+  function enrichVisibleCards(rows) {
+    $$('.restaurant-card').forEach(cardEl => {
+      const restaurant = rows[Number(cardEl.dataset.index)];
+      if (!restaurant) return;
+      fetchPlaceDetails(restaurant).then(place => applyRealPhoto(restaurant, place));
+    });
   }
 
   async function ensureAll() {
@@ -387,12 +405,7 @@
     if (place.photoUrl) {
       cover.style.backgroundImage = `url("${place.photoUrl.replace(/["\\]/g, '')}")`;
       cover.classList.add('loaded');
-      $$(`[data-place-key="${Math.abs(hash(idOf(r)))}"]`).forEach(cardEl => {
-        const photo = cardEl.querySelector('[data-place-photo]');
-        photo.style.backgroundImage = `url("${place.photoUrl.replace(/["\\]/g, '')}")`;
-        const badge = photo.querySelector('[data-photo-badge]');
-        if (badge) badge.textContent = '검색 이미지';
-      });
+      applyRealPhoto(r, place);
     }
     if (place.phone) $('#place-phone').textContent = place.phone;
     if (place.hours?.length) $('#place-hours').innerHTML = place.hours.map(escapeHtml).join('<br>');
