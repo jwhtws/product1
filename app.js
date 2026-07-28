@@ -2,6 +2,8 @@
   const $ = selector => document.querySelector(selector);
   const $$ = selector => [...document.querySelectorAll(selector)];
   const pageSize = 18;
+  let resolveReady;
+  const ready = new Promise(resolve => { resolveReady = resolve; });
   const state = {
     preview: [], all: [], fullLoaded: false, loading: null, page: 1,
     filters: { query: '', region: '', category: '', price: '', mood: '', sort: 'recommend' },
@@ -175,6 +177,8 @@
     render();
     $('#discover').scrollIntoView({ behavior: 'smooth', block: 'start' });
     try {
+      await ready;
+      if (!window.__MEOKDANG_REGIONS__?.length) throw Error('검색 데이터 초기화 실패');
       await ensureAll();
       state.progress = '';
       render();
@@ -290,5 +294,12 @@
     [...new Set(state.preview.map(r => r.category).filter(Boolean))].sort().forEach(c => $('#category-filter').insertAdjacentHTML('beforeend', `<option>${escapeHtml(c)}</option>`));
     const profile = store.get('profile', {}); if (profile.loggedIn) $('#auth-button').textContent = profile.name;
     updateSavedCount(); render();
-  } catch (error) { console.error(error); $('#app-state').textContent = '식당 데이터를 불러오지 못했습니다. 새로고침해 주세요.'; }
+    $('#search-button').disabled = false;
+    $('#search-button').textContent = '검색';
+    resolveReady();
+  } catch (error) {
+    console.error(error);
+    $('#app-state').textContent = '식당 데이터를 불러오지 못했습니다. 새로고침해 주세요.';
+    resolveReady();
+  }
 })();
