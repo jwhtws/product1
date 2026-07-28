@@ -1,4 +1,6 @@
 const GOOGLE_TEXT_SEARCH = 'https://places.googleapis.com/v1/places:searchText';
+const NAVER_LOCAL_SEARCH = 'https://openapi.naver.com/v1/search/local.json';
+const NAVER_IMAGE_SEARCH = 'https://openapi.naver.com/v1/search/image';
 
 const THIRTY_DAYS = 60 * 60 * 24 * 30;
 const json = (data, status = 200, cache = `public, max-age=${THIRTY_DAYS}`) =>
@@ -12,15 +14,96 @@ export async function onRequestGet(context) {
   const name = (url.searchParams.get('name') || '').trim();
   const address = (url.searchParams.get('address') || '').trim();
   if (!name || !address) return json({ error: 'name과 address가 필요합니다.' }, 400, 'no-store');
-  if (!context.env.GOOGLE_PLACES_API_KEY) {
-    return json({ error: 'GOOGLE_PLACES_API_KEY가 연결되지 않았습니다.' }, 503, 'no-store');
-  }
-
   const cache = caches.default;
   const cacheKey = new Request(`${url.origin}/api/restaurant?name=${encodeURIComponent(name)}&address=${encodeURIComponent(address)}`);
   const cached = await cache.match(cacheKey);
   if (cached) return cached;
 
+  if (context.env.NAVER_CLIENT_ID && context.env.NAVER_CLIENT_SECRET) {
+    const result = await fetchNaverPlace(context, name, address);
+    if (result) {
+      const outgoing = json(result);
+      context.waitUntil(cache.put(cacheKey, outgoing.clone()));
+      return outgoing;
+    }
+  }
+  if (!context.env.GOOGLE_PLACES_API_KEY) {
+    return json({ error: 'NAVER_CLIENT_ID와 NAVER_CLIENT_SECRET이 연결되지 않았습니다.' }, 503, 'no-store');
+  }
+
+  const result = await fetchGooglePlace(context, name, address);
+  if (!result) return json({ found: false }, 404);
+  const outgoing = json(result);
+  context.waitUntil(cache.put(cacheKey, outgoing.clone()));
+  return outgoing;
+}
+
+const stripHtml = value => String(value || '')
+  .replace(/<[^>]*>/g, '')
+  .replace(/&amp;/g, '&')
+  .replace(/&quot;/g, '"')
+  .replace(/&#39;/g, "'")
+  .trim();
+const key = value => stripHtml(value).toLocaleLowerCase('ko-KR').replace(/[^\p{L}\p{N}]+/gu, '');
+const addressCore = value => String(value || '').replace(/\s+/g, '').slice(0, 18);
+
+async function fetchNaverPlace(context, name, address) {
+  const headers = {
+    'X-Naver-Client-Id': context.env.NAVER_CLIENT_ID,
+    'X-Naver-Client-Secret': context.env.NAVER_CLIENT_SECRET
+  };
+  const localUrl = `${NAVER_LOCAL_SEARCH}?query=${encodeURIComponent(`${name} ${address}`)}&display=5&sort=random`;
+  const localResponse = await fetch(localUrl, { headers });
+  if (!localResponse.ok) return null;
+  const localData = await localResponse.json();
+  const nameKey = key(name);
+  const candidates = (localData.items || []).map(item => {
+    const title = stripHtml(item.title);
+    const titleKey = key(title);
+    const candidateAddress = item.roadAddress || item.address || '';
+    let score = titleKey === nameKey ? 100 : titleKey.includes(nameKey) || nameKey.includes(titleKey) ? 70 : 0;
+    if (addressCore(candidateAddress) === addressCore(address)) score += 100;
+    else if (key(candidateAddress).includes(key(address).slice(0, 12))) score += 50;
+    return { item, title, score };
+  }).sort((left, right) => right.score - left.score);
+  const match = candidates[0];
+  if (!match || match.score < 70) return null;
+
+  const matchedAddress = match.item.roadAddress || match.item.address || address;
+  const district = matchedAddress.split(/\s+/).slice(0, 3).join(' ');
+  const imageQuery = `${match.title} ${district} 음식점`;
+  const imageResponse = await fetch(`${NAVER_IMAGE_SEARCH}?query=${encodeURIComponent(imageQuery)}&display=10&sort=sim&filter=large`, { headers });
+  let image = null;
+  if (imageResponse.ok) {
+    const imageData = await imageResponse.json();
+    image = (imageData.items || []).find(item => {
+      const titleKey = key(item.title);
+      return titleKey.includes(nameKey) || nameKey.includes(titleKey);
+    }) || imageData.items?.[0] || null;
+  }
+  return {
+    found: true,
+    provider: 'naver',
+    displayName: match.title,
+    formattedAddress: matchedAddress,
+    photoUrl: image?.thumbnail || image?.link || null,
+    photoSource: image?.link || null,
+    photoSourceTitle: stripHtml(image?.title),
+    category: match.item.category,
+    naverPlaceUrl: match.item.link || `https://map.naver.com/p/search/${encodeURIComponent(matchedAddress)}`,
+    priceLevel: null,
+    priceRange: null,
+    hours: [],
+    phone: match.item.telephone || null,
+    businessStatus: null,
+    dineIn: null,
+    goodForGroups: null,
+    outdoorSeating: null,
+    reservable: null
+  };
+}
+
+async function fetchGooglePlace(context, name, address) {
   const response = await fetch(GOOGLE_TEXT_SEARCH, {
     method: 'POST',
     headers: {
@@ -36,17 +119,18 @@ export async function onRequestGet(context) {
     },
     body: JSON.stringify({ textQuery: `${name} ${address}`, languageCode: 'ko', regionCode: 'KR', maxResultCount: 1 })
   });
-  if (!response.ok) return json({ error: '장소 제공자 응답 오류' }, response.status, 'no-store');
+  if (!response.ok) return null;
 
   const data = await response.json();
   const place = data.places?.[0];
-  if (!place) return json({ found: false }, 404);
+  if (!place) return null;
   const photoName = place.photos?.[0]?.name;
   const priceRange = place.priceRange
     ? [place.priceRange.startPrice?.units, place.priceRange.endPrice?.units].filter(Boolean).map(Number).map(value => `${value.toLocaleString('ko-KR')}원`).join(' ~ ')
     : null;
-  const result = {
+  return {
     found: true,
+    provider: 'google',
     placeId: place.id,
     displayName: place.displayName?.text,
     formattedAddress: place.formattedAddress,
@@ -63,7 +147,4 @@ export async function onRequestGet(context) {
     outdoorSeating: place.outdoorSeating,
     reservable: place.reservable
   };
-  const outgoing = json(result);
-  context.waitUntil(cache.put(cacheKey, outgoing.clone()));
-  return outgoing;
 }

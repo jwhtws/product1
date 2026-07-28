@@ -386,9 +386,12 @@
       ['야외 좌석', place.outdoorSeating], ['예약', place.reservable]
     ];
     const price = place.priceRange || place.priceLevel || '가격 정보 없음';
-    $('#place-extras').innerHTML = `<article><span>메뉴·가격</span><strong>${escapeHtml(price)}</strong><small>${place.websiteUri ? `<a href="${escapeHtml(place.websiteUri)}" target="_blank" rel="noopener">공식 메뉴 확인</a>` : '등록된 메뉴 정보가 없습니다.'}</small></article>
+    const sourceLink = place.provider === 'naver'
+      ? (place.naverPlaceUrl ? `<a href="${escapeHtml(place.naverPlaceUrl)}" target="_blank" rel="noopener">네이버에서 메뉴 확인</a>` : '등록된 메뉴 정보가 없습니다.')
+      : (place.websiteUri ? `<a href="${escapeHtml(place.websiteUri)}" target="_blank" rel="noopener">공식 메뉴 확인</a>` : '등록된 메뉴 정보가 없습니다.');
+    $('#place-extras').innerHTML = `<article><span>메뉴·가격</span><strong>${escapeHtml(price)}</strong><small>${sourceLink}</small></article>
       <article><span>좌석·이용</span><div class="seat-features">${seats.map(([label, value]) => `<b class="${value === true ? 'yes' : value === false ? 'no' : ''}">${label}</b>`).join('')}</div><small>공개된 장소 편의정보 기준</small></article>
-      <article><span>영업 상태</span><strong>${place.businessStatus === 'OPERATIONAL' ? '영업 중' : place.businessStatus === 'CLOSED_PERMANENTLY' ? '폐업' : '확인 필요'}</strong><small>Google Places 제공 정보</small></article>`;
+      <article><span>영업 상태</span><strong>${place.businessStatus === 'OPERATIONAL' ? '영업 중' : place.businessStatus === 'CLOSED_PERMANENTLY' ? '폐업' : '확인 필요'}</strong><small>${place.provider === 'naver' ? '네이버 지역·이미지 검색 결과' : 'Google Places 제공 정보'}${place.photoSource ? ` · <a href="${escapeHtml(place.photoSource)}" target="_blank" rel="noopener">사진 원문</a>` : ''}</small></article>`;
   }
   function renderReviews() {
     const sort = $('#review-sort')?.value || 'latest';
