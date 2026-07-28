@@ -1,13 +1,13 @@
 (async function () {
   const $ = selector => document.querySelector(selector);
   const $$ = selector => [...document.querySelectorAll(selector)];
-  const pageSize = 18;
+  const pageSize = 10;
   let resolveReady;
   const ready = new Promise(resolve => { resolveReady = resolve; });
   const state = {
     preview: [], all: [], fullLoaded: false, loading: null, page: 1,
     filters: { query: '', region: '', category: '', price: '', mood: '', sort: 'recommend' },
-    current: null, progress: ''
+    current: null, progress: '', searchSession: null
   };
   const store = {
     get(key, fallback) { try { return JSON.parse(localStorage.getItem(`meokdang-${key}`)) ?? fallback; } catch { return fallback; } },
@@ -49,7 +49,7 @@
   const hash = value => [...String(value)].reduce((a, c) => ((a << 5) - a + c.charCodeAt(0)) | 0, 0);
   const idOf = restaurant => `${restaurant.name}|${restaurant.address}`;
   const fileUrl = file => `data/restaurants/${file.replace(/%/g, '%25')}`;
-  const searchShardCache = new Map();
+  let searchManifestPromise;
 
   function cleanName(value) {
     let name = String(value ?? '').trim();

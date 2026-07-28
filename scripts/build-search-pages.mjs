@@ -1,0 +1,32 @@
+import fs from 'node:fs';
+import path from 'node:path';
+
+const sourceDir = 'data/restaurants';
+const outputDir = path.join(sourceDir, 'search-pages');
+const ignored = new Set(['regions.json', 'previews.json']);
+const pageSize = 500;
+const key = value => String(value ?? '').toLocaleLowerCase('ko-KR').replace(/[^\p{L}\p{N}]+/gu, '');
+const buckets = new Map();
+
+for (const file of fs.readdirSync(sourceDir).filter(name => name.endsWith('.json') && !ignored.has(name))) {
+  for (const row of JSON.parse(fs.readFileSync(path.join(sourceDir, file), 'utf8'))) {
+    const prefix = [...key(row.name)].slice(0, 2);
+    if (!prefix.length) continue;
+    const bucket = prefix.map(char => char.codePointAt(0).toString(16)).join('-');
+    if (!buckets.has(bucket)) buckets.set(bucket, []);
+    buckets.get(bucket).push([row.name, row.category || '', row.address || '', row.phone || '']);
+  }
+}
+
+fs.mkdirSync(outputDir, { recursive: true });
+for (const file of fs.readdirSync(outputDir).filter(name => name.endsWith('.json'))) fs.unlinkSync(path.join(outputDir, file));
+const manifest = {};
+for (const [bucket, rows] of buckets) {
+  rows.sort((left, right) => key(left[0]).localeCompare(key(right[0]), 'ko'));
+  manifest[bucket] = Math.ceil(rows.length / pageSize);
+  for (let page = 0; page < manifest[bucket]; page += 1) {
+    fs.writeFileSync(path.join(outputDir, `${bucket}-${page}.json`), JSON.stringify(rows.slice(page * pageSize, (page + 1) * pageSize)));
+  }
+}
+fs.writeFileSync(path.join(outputDir, 'manifest.json'), JSON.stringify({ version: 1, pageSize, buckets: manifest }));
+console.log(`${Object.keys(manifest).length}개 상호 색인 생성`);
