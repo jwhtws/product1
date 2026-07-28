@@ -310,7 +310,7 @@
   }
   function submitReview(event) {
     event.preventDefault(); const data = new FormData(event.currentTarget), all = store.get('reviews', {}), id = idOf(state.current);
-    all[id] = all[id] || []; all[id].push({ id: Date.now(), author: store.get('profile', {}).name || '먹당 사용자', rating: Number(data.get('rating')), text: data.get('text'), helpful: 0, createdAt: Date.now() });
+    all[id] = all[id] || []; all[id].push({ id: Date.now(), author: store.get('profile', {}).name || 'mukdang.com 사용자', rating: Number(data.get('rating')), text: data.get('text'), helpful: 0, createdAt: Date.now() });
     store.set('reviews', all); event.currentTarget.reset(); renderReviews(); toast('리뷰를 등록했어요.');
   }
 
@@ -324,7 +324,7 @@
     content.innerHTML = `<h2 id="panel-title">나의 맛집 리스트</h2><div class="list-tabs">${Object.keys(lists).map(name => `<button data-list="${escapeHtml(name)}">${escapeHtml(name)} <span>${lists[name].length}</span></button>`).join('')}<button id="new-list">＋ 새 리스트</button></div><div id="saved-grid" class="saved-grid">${rows.map((r, i) => `<button data-saved="${i}"><strong>${escapeHtml(r.name)}</strong><small>${escapeHtml(r.address)}</small></button>`).join('') || '<p class="empty-reviews">저장한 식당이 없습니다.</p>'}</div><button id="share-list" class="ghost">현재 목록 공유</button>`;
     $$('[data-saved]').forEach(el => el.addEventListener('click', () => openDetail(rows[Number(el.dataset.saved)])));
     $('#new-list').addEventListener('click', () => { const name = prompt('새 리스트 이름을 입력하세요.'); if (!name?.trim()) return; const next = store.get('lists', {}); next[name.trim()] = next[name.trim()] || []; store.set('lists', next); renderSavedPanel(content); });
-    $('#share-list').addEventListener('click', () => shareText(`먹당 맛집 리스트: ${rows.map(r => r.name).join(', ') || '아직 비어 있어요'}`));
+    $('#share-list').addEventListener('click', () => shareText(`mukdang.com 맛집 리스트: ${rows.map(r => r.name).join(', ') || '아직 비어 있어요'}`));
   }
   function openListPicker(r) {
     const lists = store.get('lists', { '데이트 맛집': [], '가족 외식': [], '회식 장소': [] });
@@ -332,18 +332,18 @@
     if (!name?.trim()) return; lists[name.trim()] = lists[name.trim()] || []; if (!lists[name.trim()].includes(idOf(r))) lists[name.trim()].push(idOf(r)); store.set('lists', lists); toast(`‘${name.trim()}’ 리스트에 추가했어요.`);
   }
   function renderAuth(content) {
-    content.innerHTML = `<h2 id="panel-title">먹당 시작하기</h2><p class="panel-lead">로그인하면 여러 기기에서 취향과 리스트를 이어갈 수 있어요.</p><button id="social-login" class="social">간편 로그인 데모</button><div class="divider">또는</div><form id="email-login" class="profile-form"><label>이메일<input type="email" required placeholder="me@example.com"></label><label>이름<input required placeholder="먹당 사용자"></label><button class="primary">이메일로 시작</button></form><p class="fine">현재는 프론트엔드 데모로, 계정 정보가 이 브라우저에만 저장됩니다.</p>`;
-    $('#social-login').addEventListener('click', () => login('먹당 탐험가'));
+    content.innerHTML = `<h2 id="panel-title">mukdang.com 시작하기</h2><p class="panel-lead">로그인하면 여러 기기에서 취향과 리스트를 이어갈 수 있어요.</p><button id="social-login" class="social">간편 로그인 데모</button><div class="divider">또는</div><form id="email-login" class="profile-form"><label>이메일<input type="email" required placeholder="me@example.com"></label><label>이름<input required placeholder="mukdang.com 사용자"></label><button class="primary">이메일로 시작</button></form><p class="fine">현재는 프론트엔드 데모로, 계정 정보가 이 브라우저에만 저장됩니다.</p>`;
+    $('#social-login').addEventListener('click', () => login('mukdang 탐험가'));
     $('#email-login').addEventListener('submit', e => { e.preventDefault(); login(e.currentTarget.elements[1].value); });
   }
   function login(name) { store.set('profile', { name, loggedIn: true, badge: '새싹 리뷰어' }); $('#auth-button').textContent = name; closeModals(); toast('로그인했어요.'); }
   function renderMyPage(content) {
     const profile = store.get('profile', { name: '게스트', badge: '새싹 리뷰어' }), reviewCount = Object.values(store.get('reviews', {})).flat().length;
     content.innerHTML = `<h2 id="panel-title">마이페이지</h2><div class="profile-card"><div class="avatar">${escapeHtml(profile.name[0])}</div><div><strong>${escapeHtml(profile.name)}</strong><span>${profile.badge}</span></div></div><div class="my-stats"><div><strong>${reviewCount}</strong><span>리뷰</span></div><div><strong>${savedIds().length}</strong><span>저장</span></div></div><h3>프로필 설정</h3><form id="profile-form" class="profile-form"><label>닉네임<input name="name" value="${escapeHtml(profile.name)}"></label><label>소개<textarea name="bio" placeholder="나의 맛집 취향을 소개해 보세요.">${escapeHtml(profile.bio || '')}</textarea></label><label>선호 음식<select name="favorite"><option value="">선택 안 함</option>${['한식','일식','중식','양식','분식'].map(food => `<option ${profile.favorite === food ? 'selected' : ''}>${food}</option>`).join('')}</select></label><button class="primary">프로필 저장</button></form><h3>내 리뷰 관리</h3><p class="trust-note">작성한 리뷰 ${reviewCount}개 · 신뢰도 뱃지는 방문 인증 기능 연동 후 성장합니다.</p>`;
-    $('#profile-form').addEventListener('submit', e => { e.preventDefault(); const data = new FormData(e.currentTarget); const name = data.get('name') || '먹당 사용자'; store.set('profile', { name, loggedIn: Boolean(profile.loggedIn), badge: profile.badge || '새싹 리뷰어', bio: data.get('bio') || '', favorite: data.get('favorite') || '' }); $('#auth-button').textContent = name; toast('프로필을 저장했어요.'); });
+    $('#profile-form').addEventListener('submit', e => { e.preventDefault(); const data = new FormData(e.currentTarget); const name = data.get('name') || 'mukdang.com 사용자'; store.set('profile', { name, loggedIn: Boolean(profile.loggedIn), badge: profile.badge || '새싹 리뷰어', bio: data.get('bio') || '', favorite: data.get('favorite') || '' }); $('#auth-button').textContent = name; toast('프로필을 저장했어요.'); });
   }
   async function shareText(text) {
-    try { if (navigator.share) await navigator.share({ title: '먹당', text, url: location.href }); else { await navigator.clipboard.writeText(`${text}\n${location.href}`); toast('공유 내용을 복사했어요.'); } } catch {}
+    try { if (navigator.share) await navigator.share({ title: 'mukdang.com', text, url: location.href }); else { await navigator.clipboard.writeText(`${text}\n${location.href}`); toast('공유 내용을 복사했어요.'); } } catch {}
   }
 
   $('#search-button').addEventListener('click', applySearch);
