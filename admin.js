@@ -7,6 +7,7 @@
   };
   const escapeHtml = value => String(value ?? '').replace(/[&<>'"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[c]));
   let restaurantMeta = { total: 0, updatedAt: null, regions: [] };
+  let validationReport = null;
   let currentView = 'dashboard';
 
   function toast(message) {
@@ -88,8 +89,20 @@
     }));
   }
   function renderRestaurants() {
+    const validation = validationReport?.stats || {};
+    const verified = validation.verifiedPermitDateRows || 0;
+    const missing = validation.missingPermitDateRows || 0;
+    const invalid = (validation.invalidPermitDateRows || 0) + (validation.futurePermitDateRows || 0);
+    const coverage = restaurantMeta.total ? ((verified / restaurantMeta.total) * 100).toFixed(1) : '0.0';
+    const issues = validationReport?.permitDate?.issues || [];
+    const issueLabel = type => ({
+      missing: '인허가일 누락', invalid: '날짜 형식 오류', future: '미래 날짜',
+      'id-year-mismatch': '관리번호 연도 불일치'
+    }[type] || type);
     $('#admin-content').innerHTML = `${heading('DATA', '식당 데이터', '공공데이터와 검색 인덱스 상태입니다.')}
-      <div class="metrics"><article class="metric"><span>영업 중 식당</span><strong>${restaurantMeta.total.toLocaleString('ko-KR')}</strong><small>공식 인허가 기준</small></article><article class="metric"><span>지역</span><strong>${restaurantMeta.regions.length}</strong><small>전국 데이터</small></article><article class="metric"><span>비공개 시설 격리</span><strong>733</strong><small>구내·직원 식당 등</small></article><article class="metric"><span>자동 갱신</span><strong>매일</strong><small>00:00 KST</small></article></div>
+      <div class="metrics"><article class="metric"><span>영업 중 식당</span><strong>${restaurantMeta.total.toLocaleString('ko-KR')}</strong><small>공식 인허가 기준</small></article><article class="metric"><span>시작일 검증</span><strong>${verified.toLocaleString('ko-KR')}</strong><small>${coverage}% 날짜 형식·범위 통과</small></article><article class="metric"><span>시작일 누락</span><strong>${missing.toLocaleString('ko-KR')}</strong><small class="${missing ? 'metric-warning' : ''}">원본 공공데이터 기준</small></article><article class="metric"><span>날짜 오류</span><strong>${invalid.toLocaleString('ko-KR')}</strong><small class="${invalid ? 'metric-danger' : ''}">형식 오류·미래 날짜</small></article></div>
+      <article class="panel verification-note"><h2>영업 시작일 검증 기준</h2><p>행정안전부 일반음식점 인허가 데이터의 <b>인허가일</b>을 사용합니다. 날짜 형식, 실제 존재하는 날짜, 미래 날짜 여부를 자동 검사하고 관리번호의 연도와 다른 항목은 재확인 대상으로 분류합니다. 인허가일은 행정 기록이므로 실제 첫 영업일과 다를 수 있습니다.</p><div class="health-list"><div class="health-item"><span>최근 검증</span><b>${validationReport?.checkedAt ? new Date(validationReport.checkedAt).toLocaleString('ko-KR') : '보고서 생성 필요'}</b></div><div class="health-item"><span>검증 결과</span><b class="status ${validationReport?.ok === false ? 'warn' : ''}">${validationReport ? (validationReport.ok ? '통과' : '확인 필요') : '대기'}</b></div><div class="health-item"><span>관리번호 연도 불일치</span><b>${(validation.idYearMismatchRows || 0).toLocaleString('ko-KR')}건</b></div></div></article>
+      ${issues.length ? `<article class="panel" style="margin-top:14px"><h2>영업 시작일 재확인 목록 <small>최대 500건</small></h2><div class="table-wrap"><table><thead><tr><th>상태</th><th>식당</th><th>인허가일</th><th>관리번호</th><th>주소</th></tr></thead><tbody>${issues.map(row => `<tr><td><span class="status warn">${escapeHtml(issueLabel(row.type))}</span></td><td><strong>${escapeHtml(row.name)}</strong></td><td>${escapeHtml(row.permitDate || '없음')}</td><td>${escapeHtml(row.id || '-')}</td><td>${escapeHtml(row.address)}</td></tr>`).join('')}</tbody></table></div></article>` : ''}
       <article class="panel" style="margin-top:14px"><h2>지역별 식당 현황</h2><div class="table-wrap"><table><thead><tr><th>지역</th><th>식당 수</th><th>데이터 파일</th></tr></thead><tbody>${restaurantMeta.regions.map(region => `<tr><td><strong>${escapeHtml(region.name)}</strong></td><td>${region.count.toLocaleString('ko-KR')}</td><td>${(region.files || [region.file]).length}개 조각</td></tr>`).join('')}</tbody></table></div></article>`;
   }
   function renderLogs() {
@@ -114,6 +127,13 @@
   $('#menu-toggle').addEventListener('click', () => $('.sidebar').classList.toggle('open'));
   $$('[data-view]').forEach(button => button.addEventListener('click', () => render(button.dataset.view)));
   $('#today').textContent = new Date().toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' });
-  fetch('data/restaurants/regions.json').then(response => response.json()).then(data => { restaurantMeta = data; if (currentView === 'dashboard' || currentView === 'restaurants') render(); }).catch(() => {});
+  Promise.all([
+    fetch('data/restaurants/regions.json?v=20260728-4').then(response => response.json()),
+    fetch('data/restaurants/validation-report.json?v=20260728-4').then(response => response.ok ? response.json() : null)
+  ]).then(([data, report]) => {
+    restaurantMeta = data;
+    validationReport = report;
+    if (currentView === 'dashboard' || currentView === 'restaurants') render();
+  }).catch(() => {});
   if (sessionStorage.getItem('mukdang-admin-session')) enterAdmin();
 })();
