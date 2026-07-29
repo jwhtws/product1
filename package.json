@@ -1,0 +1,10 @@
+{
+  "name": "mukdang-product1",
+  "private": true,
+  "scripts": {
+    "check": "node scripts/validate-project.mjs",
+    "test": "npx playwright test",
+    "data:validate": "node scripts/validate-restaurant-data.mjs --report=data/restaurants/validation-report.json",
+    "data:rebuild-search": "node scripts/build-search-index.mjs && node scripts/build-search-pages.mjs"
+  }
+}

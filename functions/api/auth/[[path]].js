@@ -1,4 +1,4 @@
-import { body, clearCookie, createSession, currentUser, hashPassword, json, sessionCookie, verifyPassword } from '../../_lib/auth.js';
+import { body, clearCookie, clearFailures, createSession, currentUser, hashPassword, json, rateLimit, recordFailure, sessionCookie, verifyPassword } from '../../_lib/auth.js';
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -34,11 +34,16 @@ export async function onRequest(context) {
     ).bind(email, name, passwordData.hash, passwordData.salt, createdAt).run();
     user = { id: result.meta.last_row_id, email, name, role: 'member', status: 'active', created_at: createdAt };
   } else {
+    const attemptKey = `user-login:${email}`;
+    const limit = await rateLimit(context.env, attemptKey);
+    if (!limit.allowed) return json({ error: '로그인 시도가 너무 많습니다. 15분 후 다시 시도해 주세요.', code: 'RATE_LIMITED' }, 429);
     const record = await context.env.DB.prepare('SELECT * FROM users WHERE email = ?').bind(email).first();
     if (!record || !(await verifyPassword(password, record.password_salt, record.password_hash))) {
+      await recordFailure(context.env, attemptKey);
       return json({ error: '이메일 또는 비밀번호가 올바르지 않습니다.' }, 401);
     }
     if (record.status !== 'active') return json({ error: '정지된 계정입니다.' }, 403);
+    await clearFailures(context.env, attemptKey);
     user = { id: record.id, email: record.email, name: record.name, role: record.role, status: record.status, created_at: record.created_at };
   }
   const token = await createSession(context.env.SESSION_SECRET, { userId: user.id });
