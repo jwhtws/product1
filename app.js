@@ -254,7 +254,7 @@ import { buildingSitePlan } from './js/site-plan.js';
       target.classList.add('loaded');
     } catch {
       const status = target.querySelector('.gis-building-status');
-      if (status) status.textContent = 'VWorld 일시 장애 · 평면도는 신고면적 기준으로 표시';
+      if (status) status.textContent = 'VWorld 일시 장애 · 평면도는 공공 인허가 정보 기준 추정';
       const parking = target.querySelector('.parking-assessment');
       if (parking) parking.innerHTML = '<strong>주차 가능 여부 확인 필요</strong><span>VWorld 대지정보 장애로 현재 계산할 수 없음</span>';
     }
@@ -275,6 +275,13 @@ import { buildingSitePlan } from './js/site-plan.js';
       const left = a.restaurant, right = b.restaurant;
       if (f.sort === 'name') return left.name.localeCompare(right.name, 'ko');
       if (f.sort === 'rating') return right.rating - left.rating;
+      if (f.sort === 'tenure') {
+        const leftDate = Date.parse(left.permitDate || '');
+        const rightDate = Date.parse(right.permitDate || '');
+        if (Number.isFinite(leftDate) && Number.isFinite(rightDate)) return leftDate - rightDate;
+        if (Number.isFinite(leftDate)) return -1;
+        if (Number.isFinite(rightDate)) return 1;
+      }
       return (Number(isSaved(right)) - Number(isSaved(left))) ||
         ((popularity[idOf(right)] || 0) - (popularity[idOf(left)] || 0)) ||
         right.rating - left.rating;
