@@ -13,7 +13,6 @@ export function buildingSitePlan(r) {
     const buffet = /뷔페|패밀리레스토랑/.test(category);
     const kitchenRatio = cafe ? .22 : heavyKitchen ? .38 : buffet ? .32 : .29 + (seed % 5) * .012;
     const layout = cafe || buffet ? 'rear' : ['right', 'left', 'rear'][seed % 3];
-    const layoutLabel = { right: '측면 주방형', left: '역측면 주방형', rear: '후면 주방형' }[layout];
     const margin = Math.max(1.4, Math.min(3, Math.min(width, depth) * .15));
     const canvasWidth = Math.max(width + margin * 2, 11);
     const planX = (canvasWidth - width) / 2;
@@ -83,7 +82,6 @@ export function buildingSitePlan(r) {
         <g class="scale-person-silhouette" fill="#244a73" stroke="none" aria-label="키 1.7미터 사람"><circle cx="${personX.toFixed(2)}" cy="${(personBottom - 1.5).toFixed(2)}" r=".2"/><path d="M${personX.toFixed(2)} ${(personBottom - 1.3).toFixed(2)}l-.34.5.2.12.14-.2v.5l-.28.92h.22l.26-.62.26.62h.22l-.28-.92v-.5l.14.2.2-.12z"/></g>
       </svg></div><div class="plan-scale-key"><span>🚗 차량 4.5×1.8m</span><span>사람 키 1.7m</span></div>
       <div class="plan-legend"><span class="dining">1 홀</span><span class="kitchen">2 주방</span><span class="storage">3 창고</span><span class="restroom">4 화장실</span><span class="counter">5 카운터</span></div>
-      <dl class="building-facts"><div><dt>추정 크기·구조</dt><dd>약 ${width.toFixed(1)}×${depth.toFixed(1)}m · ${layoutLabel}</dd></div></dl>
       <div class="parking-assessment"><strong>주차 가능성 확인 중</strong><span>VWorld 대지·건축면적 조회 후 계산</span></div>
       <small>차량 4.5×1.8m·사람 1.7m를 동일 축척으로 표시 · 내부 구획과 가로세로 비율은 추정 예시</small><div class="gis-building-status">VWorld 건물정보 조회 중</div></aside>`;
   }

@@ -1,5 +1,5 @@
 import { api } from './js/api.js';
-import { buildingSitePlan } from './js/site-plan.js';
+import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
 
 (async function () {
   const $ = selector => document.querySelector(selector);
