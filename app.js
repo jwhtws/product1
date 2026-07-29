@@ -7,8 +7,17 @@
   const state = {
     preview: [], all: [], fullLoaded: false, loading: null, page: 1,
     filters: { query: '', region: '', category: '', price: '', mood: '', sort: 'recommend' },
-    current: null, progress: '', searchSession: null
+    current: null, progress: '', searchSession: null, serverUser: null, serverReviews: new Map()
   };
+  async function api(path, options = {}) {
+    const response = await fetch(path, {
+      ...options,
+      headers: { 'content-type': 'application/json', ...(options.headers || {}) }
+    });
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok) throw Object.assign(new Error(data.error || '서버 요청에 실패했습니다.'), { status: response.status });
+    return data;
+  }
   const store = {
     get(key, fallback) { try { return JSON.parse(localStorage.getItem(`meokdang-${key}`)) ?? fallback; } catch { return fallback; } },
     set(key, value) { localStorage.setItem(`meokdang-${key}`, JSON.stringify(value)); }
@@ -115,9 +124,7 @@
       `<button type="button" data-ranking-category="${name}"><b>${index + 1}</b><strong>${name}</strong><span>${note}</span></button>`
     ).join('');
 
-    const allReviews = Object.entries(store.get('reviews', {})).flatMap(([restaurantId, reviews]) =>
-      reviews.map(review => ({ ...review, restaurant: restaurantId.split('|')[0] }))
-    );
+    const allReviews = [...state.serverReviews.values()].flat();
     const reviewRows = (rows, emptyText) => rows.length ? rows.slice(0, 5).map((review, index) =>
       `<div class="ranking-review"><b>${index + 1}</b><div><strong>${escapeHtml(review.restaurant)}</strong><p>${escapeHtml(review.text)}</p></div><span>★ ${review.rating}</span></div>`
     ).join('') : `<p class="ranking-empty">${emptyText}</p>`;
@@ -560,8 +567,21 @@
   }
 
   function reviewsFor(r) {
-    const hidden = new Set(store.get('hidden-reviews', []).map(String));
-    return (store.get('reviews', {})[idOf(r)] || []).filter(review => !hidden.has(String(review.id)));
+    return state.serverReviews.get(idOf(r)) || [];
+  }
+  async function loadReviews(r) {
+    try {
+      const data = await api(`/api/reviews?restaurant=${encodeURIComponent(idOf(r))}`);
+      state.serverReviews.set(idOf(r), data.reviews);
+      if (state.current === r) {
+        const count = $('#review-count');
+        if (count) count.textContent = data.reviews.length;
+        renderReviews();
+      }
+      renderHomeRankings();
+    } catch {
+      if (state.current === r && $('#review-list')) $('#review-list').innerHTML = '<p class="empty-reviews">리뷰 서버에 연결할 수 없습니다.</p>';
+    }
   }
   function naverMapAddress(value) {
     return String(value || '')
@@ -586,8 +606,8 @@
       <div class="detail-grid"><section><h3>식당 정보</h3><dl><dt>주소</dt><dd>${escapeHtml(r.address)}</dd><dt>전화번호</dt><dd id="place-phone">${escapeHtml(r.phone || '정보 없음')}</dd><dt>영업 시작일</dt><dd>${permit ? `${escapeHtml(permit.formatted)} <small>공공 인허가 기록 확인</small>` : '공공데이터 확인 필요'}</dd><dt>영업 기간</dt><dd>${permit ? escapeHtml(permit.duration) : '계산할 수 없음'}</dd><dt>영업시간</dt><dd id="place-hours">방문 전 지도 서비스에서 확인해 주세요.</dd></dl>
       <p class="data-source-note">영업 시작일은 ${escapeHtml(r.permitDateSource || '행정안전부 일반음식점 인허가 데이터')}의 식품위생 영업 인허가일 기준이며, 실제 첫 영업일과 다를 수 있습니다.</p>
       <div class="map-links"><a target="_blank" rel="noopener" href="https://map.naver.com/p/search/${naverQuery}" title="${escapeHtml(naverAddress)} 주소로 검색">네이버 지도 · 주소검색</a><a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${fullQuery}">Google 지도</a></div></section>
-      <section class="review-section"><div class="review-head"><h3>사용자 리뷰 <small>${reviews.length}</small></h3><select id="review-sort"><option value="latest">최신순</option><option value="rating">별점순</option><option value="helpful">유용한순</option></select></div>
-      <div class="trust-note">✓ 작성 리뷰는 기기에 저장됩니다. 방문 인증과 광고성 리뷰 자동 검토는 서버 연동 후 제공됩니다.</div>
+      <section class="review-section"><div class="review-head"><h3>사용자 리뷰 <small id="review-count">${reviews.length}</small></h3><select id="review-sort"><option value="latest">최신순</option><option value="rating">별점순</option><option value="helpful">유용한순</option></select></div>
+      <div class="trust-note">✓ 리뷰는 Cloudflare 서버에 안전하게 저장되며 관리자 검토를 거칩니다.</div>
       <form id="review-form"><label>별점<select name="rating"><option value="5">5점</option><option value="4">4점</option><option value="3">3점</option><option value="2">2점</option><option value="1">1점</option></select></label><textarea name="text" required maxlength="500" placeholder="직접 경험한 맛과 분위기를 알려주세요."></textarea><label class="photo-label">사진 첨부<input name="photo" type="file" accept="image/*"></label><button class="primary" type="submit">리뷰 등록</button></form><div id="review-list"></div></section></div>`;
     $('#detail-modal').classList.add('open'); document.body.classList.add('locked');
     $('#detail-save').addEventListener('click', () => { toggleSaved(r); openDetail(r); });
@@ -596,6 +616,7 @@
     $('#review-sort').addEventListener('change', renderReviews);
     $('#review-form').addEventListener('submit', submitReview);
     renderReviews();
+    loadReviews(r);
     fetchPlaceDetails(r).then(place => renderPlaceDetails(r, place));
     loadBuildingSite(r.address);
   }
@@ -630,14 +651,26 @@
     const sort = $('#review-sort')?.value || 'latest';
     const reviews = [...reviewsFor(state.current)].sort((a, b) => sort === 'rating' ? b.rating - a.rating : sort === 'helpful' ? b.helpful - a.helpful : b.createdAt - a.createdAt);
     $('#review-list').innerHTML = reviews.length ? reviews.map(r => `<article class="review"><div><strong>${escapeHtml(r.author)}</strong><span class="verified">솔직 리뷰</span><time>${new Date(r.createdAt).toLocaleDateString('ko-KR')}</time></div><b>${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</b><p>${escapeHtml(r.text)}</p><button data-helpful="${r.id}" type="button">유용해요 ${r.helpful || 0}</button></article>`).join('') : '<p class="empty-reviews">첫 번째 솔직한 리뷰를 남겨주세요.</p>';
-    $$('[data-helpful]').forEach(el => el.addEventListener('click', () => {
-      const all = store.get('reviews', {}), target = all[idOf(state.current)].find(x => x.id === Number(el.dataset.helpful)); target.helpful = (target.helpful || 0) + 1; store.set('reviews', all); renderReviews(); renderHomeRankings();
+    $$('[data-helpful]').forEach(el => el.addEventListener('click', async () => {
+      try {
+        await api(`/api/reviews/${el.dataset.helpful}/helpful`, { method: 'POST' });
+        await loadReviews(state.current);
+      } catch (error) { toast(error.message); }
     }));
   }
-  function submitReview(event) {
-    event.preventDefault(); const data = new FormData(event.currentTarget), all = store.get('reviews', {}), id = idOf(state.current);
-    all[id] = all[id] || []; all[id].push({ id: Date.now(), author: store.get('profile', {}).name || 'mukdang.com 사용자', rating: Number(data.get('rating')), text: data.get('text'), helpful: 0, createdAt: Date.now() });
-    store.set('reviews', all); event.currentTarget.reset(); renderReviews(); renderHomeRankings(); toast('리뷰를 등록했어요.');
+  async function submitReview(event) {
+    event.preventDefault();
+    if (!state.serverUser) { toast('리뷰를 작성하려면 로그인해 주세요.'); return openPanel('auth'); }
+    const data = new FormData(event.currentTarget);
+    try {
+      await api('/api/reviews', { method: 'POST', body: JSON.stringify({
+        restaurantId: idOf(state.current), restaurantName: state.current.name,
+        rating: Number(data.get('rating')), text: data.get('text')
+      }) });
+      event.currentTarget.reset();
+      await loadReviews(state.current);
+      toast('리뷰를 서버에 등록했어요.');
+    } catch (error) { toast(error.message); }
   }
 
   function closeModals() { $$('.modal-backdrop').forEach(x => x.classList.remove('open')); document.body.classList.remove('locked'); }
@@ -658,15 +691,33 @@
     if (!name?.trim()) return; lists[name.trim()] = lists[name.trim()] || []; if (!lists[name.trim()].includes(idOf(r))) lists[name.trim()].push(idOf(r)); store.set('lists', lists); toast(`‘${name.trim()}’ 리스트에 추가했어요.`);
   }
   function renderAuth(content) {
-    content.innerHTML = `<h2 id="panel-title">mukdang.com 시작하기</h2><p class="panel-lead">로그인하면 여러 기기에서 취향과 리스트를 이어갈 수 있어요.</p><button id="social-login" class="social">간편 로그인 데모</button><div class="divider">또는</div><form id="email-login" class="profile-form"><label>이메일<input type="email" required placeholder="me@example.com"></label><label>이름<input required placeholder="mukdang.com 사용자"></label><button class="primary">이메일로 시작</button></form><p class="fine">현재는 프론트엔드 데모로, 계정 정보가 이 브라우저에만 저장됩니다.</p>`;
-    $('#social-login').addEventListener('click', () => login('mukdang 탐험가'));
-    $('#email-login').addEventListener('submit', e => { e.preventDefault(); login(e.currentTarget.elements[1].value); });
+    if (state.serverUser) {
+      content.innerHTML = `<h2 id="panel-title">로그인됨</h2><p class="panel-lead"><strong>${escapeHtml(state.serverUser.name)}</strong><br>${escapeHtml(state.serverUser.email)}</p><button id="server-logout" class="ghost">로그아웃</button>`;
+      $('#server-logout').addEventListener('click', async () => {
+        await api('/api/auth/logout', { method: 'POST' });
+        state.serverUser = null; $('#auth-button').textContent = '로그인'; closeModals(); toast('로그아웃했습니다.');
+      });
+      return;
+    }
+    content.innerHTML = `<h2 id="panel-title">mukdang.com 계정</h2><p class="panel-lead">서버 계정으로 로그인하면 리뷰를 안전하게 저장할 수 있어요.</p><form id="email-login" class="profile-form"><label>이메일<input name="email" type="email" required autocomplete="email" placeholder="me@example.com"></label><label>비밀번호<input name="password" type="password" required minlength="8" autocomplete="current-password" placeholder="8자 이상"></label><label>이름 <small>신규 가입 시 필요</small><input name="name" autocomplete="name" placeholder="mukdang.com 사용자"></label><div class="row-actions"><button class="primary" name="action" value="login">로그인</button><button class="ghost" name="action" value="register">회원가입</button></div></form><p class="fine">비밀번호는 서버에서 단방향 암호화되어 저장됩니다.</p>`;
+    $('#email-login').addEventListener('submit', async event => {
+      event.preventDefault();
+      const data = new FormData(event.currentTarget);
+      const action = event.submitter?.value || 'login';
+      try {
+        const result = await api(`/api/auth/${action}`, { method: 'POST', body: JSON.stringify({
+          email: data.get('email'), password: data.get('password'), name: data.get('name')
+        }) });
+        state.serverUser = result.user;
+        $('#auth-button').textContent = result.user.name;
+        closeModals(); toast(action === 'register' ? '회원가입했습니다.' : '로그인했습니다.');
+      } catch (error) { toast(error.message); }
+    });
   }
-  function login(name) { store.set('profile', { name, loggedIn: true, badge: '새싹 리뷰어' }); $('#auth-button').textContent = name; closeModals(); toast('로그인했어요.'); }
   function renderMyPage(content) {
-    const profile = store.get('profile', { name: '게스트', badge: '새싹 리뷰어' }), reviewCount = Object.values(store.get('reviews', {})).flat().length;
+    const profile = state.serverUser || { name: '게스트', badge: '새싹 리뷰어' }, reviewCount = [...state.serverReviews.values()].flat().filter(review => review.author === profile.name).length;
     content.innerHTML = `<h2 id="panel-title">마이페이지</h2><div class="profile-card"><div class="avatar">${escapeHtml(profile.name[0])}</div><div><strong>${escapeHtml(profile.name)}</strong><span>${profile.badge}</span></div></div><div class="my-stats"><div><strong>${reviewCount}</strong><span>리뷰</span></div><div><strong>${savedIds().length}</strong><span>저장</span></div></div><h3>프로필 설정</h3><form id="profile-form" class="profile-form"><label>닉네임<input name="name" value="${escapeHtml(profile.name)}"></label><label>소개<textarea name="bio" placeholder="나의 맛집 취향을 소개해 보세요.">${escapeHtml(profile.bio || '')}</textarea></label><label>선호 음식<select name="favorite"><option value="">선택 안 함</option>${['한식','일식','중식','양식','분식'].map(food => `<option ${profile.favorite === food ? 'selected' : ''}>${food}</option>`).join('')}</select></label><button class="primary">프로필 저장</button></form><h3>내 리뷰 관리</h3><p class="trust-note">작성한 리뷰 ${reviewCount}개 · 신뢰도 뱃지는 방문 인증 기능 연동 후 성장합니다.</p>`;
-    $('#profile-form').addEventListener('submit', e => { e.preventDefault(); const data = new FormData(e.currentTarget); const name = data.get('name') || 'mukdang.com 사용자'; store.set('profile', { name, loggedIn: Boolean(profile.loggedIn), badge: profile.badge || '새싹 리뷰어', bio: data.get('bio') || '', favorite: data.get('favorite') || '' }); $('#auth-button').textContent = name; toast('프로필을 저장했어요.'); });
+    $('#profile-form').addEventListener('submit', e => { e.preventDefault(); toast('프로필 수정 API는 다음 업데이트에서 제공됩니다.'); });
   }
   async function shareText(text) {
     try { if (navigator.share) await navigator.share({ title: 'mukdang.com', text, url: location.href }); else { await navigator.clipboard.writeText(`${text}\n${location.href}`); toast('공유 내용을 복사했어요.'); } } catch {}
@@ -696,7 +747,13 @@
     window.__MEOKDANG_REGIONS__ = regionData.regions; state.preview = enrich(mixPreviews(previews)); state.all = state.preview;
     regionData.regions.forEach(r => $('#region-filter').insertAdjacentHTML('beforeend', `<option value="${escapeHtml(r.name)}">${escapeHtml(r.name)}</option>`));
     [...new Set(state.preview.map(r => r.category).filter(Boolean))].sort().forEach(c => $('#category-filter').insertAdjacentHTML('beforeend', `<option>${escapeHtml(c)}</option>`));
-    const profile = store.get('profile', {}); if (profile.loggedIn) $('#auth-button').textContent = profile.name;
+    try {
+      const auth = await api('/api/auth/me');
+      state.serverUser = auth.user;
+      if (state.serverUser) $('#auth-button').textContent = state.serverUser.name;
+      const latest = await api('/api/reviews');
+      state.serverReviews.set('__latest__', latest.reviews);
+    } catch {}
     updateSavedCount(); render();
     $('#search-button').disabled = false;
     $('#search-button').textContent = '검색';

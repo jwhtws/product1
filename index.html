@@ -3,6 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <script>
+    if (location.hostname === 'jwhtws.github.io') {
+      location.replace(`https://product1-84t.pages.dev${location.pathname.replace(/^\/product1/, '')}${location.search}${location.hash}`);
+    }
+  </script>
   <meta name="description" content="먹당(mukdang.com)에서 전국 맛집을 빠르게 검색하고 신뢰도 높은 리뷰와 주소를 확인하세요.">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta property="og:type" content="website">
@@ -114,6 +119,6 @@
     <article class="modal panel-modal"><button class="modal-close" data-close type="button" aria-label="닫기">×</button><div id="panel-content"></div></article>
   </div>
   <div id="toast" class="toast" role="status"></div>
-  <script src="app.js?v=20260728-51" defer></script>
+  <script src="app.js?v=20260729-1" defer></script>
 </body>
 </html>

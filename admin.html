@@ -4,8 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="robots" content="noindex,nofollow">
+  <script>
+    if (location.hostname === 'jwhtws.github.io') {
+      location.replace(`https://product1-84t.pages.dev${location.pathname.replace(/^\/product1/, '')}${location.search}${location.hash}`);
+    }
+  </script>
   <title>mukdang.com Admin</title>
-  <link rel="stylesheet" href="admin.css?v=20260728-2">
+  <link rel="stylesheet" href="admin.css?v=20260729-1">
 </head>
 <body>
   <div id="admin-login" class="login-screen">
@@ -16,7 +21,7 @@
       <p>운영 데이터를 확인하고 회원과 리뷰를 관리합니다.</p>
       <label>관리자 코드<input name="code" type="password" autocomplete="current-password" required placeholder="관리자 코드 입력"></label>
       <button type="submit">로그인</button>
-      <small>현재는 프론트엔드 관리 데모입니다. 실제 운영 전 서버 인증 연결이 필요합니다.</small>
+      <small>Cloudflare 서버 인증으로 보호되는 관리자 콘솔입니다.</small>
     </form>
   </div>
 
@@ -46,6 +51,6 @@
     </main>
   </div>
   <div id="admin-toast" class="admin-toast" role="status"></div>
-  <script src="admin.js?v=20260728-2" defer></script>
+  <script src="admin.js?v=20260729-1" defer></script>
 </body>
 </html>
