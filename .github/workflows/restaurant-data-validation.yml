@@ -7,18 +7,33 @@ on:
 
 permissions:
   contents: write
+  issues: write
 
 concurrency:
   group: restaurant-data-refresh
   cancel-in-progress: false
 
 jobs:
-  validate:
+  refresh-and-validate:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
     steps:
       - name: 저장소 받기
         uses: actions/checkout@v4
+
+      - name: Node.js 준비
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: 갱신 인증키 확인
+        env:
+          DATA_GO_KR_SERVICE_KEY: ${{ secrets.DATA_GO_KR_SERVICE_KEY }}
+        run: |
+          if [ -z "$DATA_GO_KR_SERVICE_KEY" ]; then
+            echo "::error::DATA_GO_KR_SERVICE_KEY 저장소 Secret이 없어 일일 갱신을 실행할 수 없습니다."
+            exit 1
+          fi
 
       - name: 공식 일간 데이터로 개업·폐업 갱신
         env:
@@ -59,3 +74,28 @@ jobs:
           name: restaurant-validation-report
           path: data/restaurants/validation-report.json
           retention-days: 30
+
+      - name: 실패 알림 이슈 생성
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = '식당 데이터 일일 갱신 실패';
+            const body = [
+              `실행 시각: ${new Date().toISOString()}`,
+              `워크플로: ${context.workflow}`,
+              `실행 로그: https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+              '',
+              '공공데이터 갱신 또는 전수 검증이 실패했습니다. 원인이 해결될 때까지 기존 검증 완료 데이터는 보존됩니다.'
+            ].join('\n');
+            const { data: issues } = await github.rest.issues.listForRepo({
+              ...context.repo, state: 'open'
+            });
+            const existing = issues.find(issue => issue.title === title);
+            if (existing) {
+              await github.rest.issues.createComment({ ...context.repo, issue_number: existing.number, body });
+            } else {
+              await github.rest.issues.create({
+                ...context.repo, title, body
+              });
+            }

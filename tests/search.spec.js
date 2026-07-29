@@ -53,3 +53,14 @@ for (const example of [
       .toBeVisible({ timeout: 15000 });
   });
 }
+
+test('인허가일이 없는 실제 장소도 숨기지 않고 재확인 상태를 표시한다', async ({ page }) => {
+  await page.goto(process.env.TEST_BASE_URL || 'http://127.0.0.1:8765/', { waitUntil: 'domcontentloaded' });
+  await page.locator('#search-input').fill('또치');
+  await page.locator('#search-button').click();
+  const target = page.locator('.restaurant-card').filter({ hasText: '신도림테크노마트 10층 50호' }).first();
+  await expect(target).toContainText('인허가일 확인 중');
+  await target.click();
+  await expect(page.locator('.permit-highlight')).toContainText('공공 원장에 없음');
+  await expect(page.locator('.permit-highlight')).toContainText('매일 재확인');
+});

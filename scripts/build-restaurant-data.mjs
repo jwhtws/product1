@@ -47,12 +47,18 @@ function addRow(values) {
   if (!name || !address) return;
   const permitDateRaw = clean(values[2] || '');
   const permitDate = normalizeDate(permitDateRaw);
-  if (hasBrokenText(name) || hasBrokenText(address) || !permitDate) {
+  if (hasBrokenText(name) || hasBrokenText(address)) {
     quarantined.push({
-      type: !permitDate ? 'invalid-permit-date' : 'broken-text',
+      type: 'broken-text',
       id: clean(values[1] || ''), name, address, permitDate: permitDateRaw
     });
     return;
+  }
+  if (!permitDate) {
+    quarantined.push({
+      type: 'invalid-permit-date',
+      id: clean(values[1] || ''), name, address, permitDate: permitDateRaw
+    });
   }
 
   const region = address.split(' ')[0];
@@ -64,7 +70,7 @@ function addRow(values) {
     phone: clean(values[33] || ''),
     facilityAreaM2: normalizeArea(values[25] || values[5] || ''),
     permitDate,
-    permitDateSource: '행정안전부 일반음식점 인허가 데이터'
+    permitDateSource: permitDate ? '행정안전부 일반음식점 인허가 데이터' : ''
   };
 
   if (!groups.has(region)) groups.set(region, []);

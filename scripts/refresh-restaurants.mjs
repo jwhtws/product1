@@ -46,10 +46,11 @@ function normalize(row) {
   const id = clean(pick(row, 'mgtNo', 'MGTNO', '관리번호', '인허가번호'));
   const permitDateRaw = clean(pick(row, 'apvPermYmd', 'APVPERMYMD', '인허가일자', '허가일자'));
   const permitDate = normalizeDate(permitDateRaw);
-  if (hasBrokenText(name) || hasBrokenText(address) || !permitDate) {
-    quarantined.push({ type: !permitDate ? 'invalid-permit-date' : 'broken-text', id, name, address, permitDate: permitDateRaw });
+  if (hasBrokenText(name) || hasBrokenText(address)) {
+    quarantined.push({ type: 'broken-text', id, name, address, permitDate: permitDateRaw });
     return null;
   }
+  if (!permitDate) quarantined.push({ type: 'invalid-permit-date', id, name, address, permitDate: permitDateRaw });
 
   return {
     id,
@@ -58,7 +59,7 @@ function normalize(row) {
     address,
     phone: clean(pick(row, 'siteTel', 'SITETEL', '소재지전화', '전화번호')),
     permitDate,
-    permitDateSource: '행정안전부 일반음식점 인허가 데이터'
+    permitDateSource: permitDate ? '행정안전부 일반음식점 인허가 데이터' : ''
   };
 }
 
