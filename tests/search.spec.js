@@ -40,3 +40,16 @@ test('상호 중간 단어와 지점명으로도 공공데이터 식당을 찾�
   await expect(page.locator('#modal-content')).toContainText('효천황토장어');
   await expect(page.locator('#modal-content')).toContainText('2014년 2월 26일');
 });
+
+for (const example of [
+  { query: '또치', expected: '신도림테크노마트 10층 50호' },
+  { query: '미진', expected: '광화문 미진' }
+]) {
+  test(`두 글자 상호 검색: ${example.query} → ${example.expected}`, async ({ page }) => {
+    await page.goto(process.env.TEST_BASE_URL || 'http://127.0.0.1:8765/', { waitUntil: 'domcontentloaded' });
+    await page.locator('#search-input').fill(example.query);
+    await page.locator('#search-button').click();
+    await expect(page.locator('.restaurant-card').filter({ hasText: example.expected }).first())
+      .toBeVisible({ timeout: 15000 });
+  });
+}

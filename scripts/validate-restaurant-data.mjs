@@ -8,6 +8,7 @@ const errors = [];
 const warnings = [];
 const stats = {
   regions: 0, sourceRows: 0, searchableRows: 0, quarantinedRows: 0, privateFacilityRows: 0,
+  verifiedPlaceRows: 0,
   searchRows: 0, duplicateIds: 0, duplicatePlaces: 0, permitDateRows: 0,
   verifiedPermitDateRows: 0, missingPermitDateRows: 0, invalidPermitDateRows: 0,
   futurePermitDateRows: 0, idYearMismatchRows: 0, containsPairs: 0, containsMissingRoutes: 0
@@ -105,6 +106,28 @@ for (const region of manifest?.regions || []) {
     } else {
       stats.quarantinedRows += 1;
       warnings.push(`${where}: 검색 가능한 글자가 없는 식당명 격리 (${JSON.stringify(row.name)})`);
+    }
+  });
+}
+
+// Verified place-provider supplements cover public-license blind spots such as
+// tenant trade names that differ from the registered business name.
+const verifiedPlacesPath = path.join(root, 'verified-places.json');
+if (fs.existsSync(verifiedPlacesPath)) {
+  const rows = readJson(verifiedPlacesPath);
+  if (!Array.isArray(rows)) errors.push('verified-places.json은 배열이어야 합니다.');
+  else rows.forEach((row, index) => {
+    const where = `검증 장소 ${index + 1}번째`;
+    if (!row?.name?.trim()) errors.push(`${where}: 식당명 없음`);
+    if (!row?.address?.trim()) errors.push(`${where}: 주소 없음`);
+    if (!row?.placeDataSource?.trim() || !row?.placeSourceUrl?.trim() || !row?.verifiedDate?.trim()) {
+      errors.push(`${where}: 출처 URL 또는 검증일 없음`);
+    }
+    if (badText(row.name) || badText(row.address) || badText(row.category) || badText(row.phone)) errors.push(`${where}: 깨진 문자 포함`);
+    stats.verifiedPlaceRows += 1;
+    if (searchKey(row.name)) {
+      stats.searchableRows += 1;
+      addCount(sourceSignatures, signature(row));
     }
   });
 }

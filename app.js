@@ -35,11 +35,21 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     return (2 * overlap) / (leftPairs.length + Math.max(1, right.length - 1));
   }
   const branchlessKey = value => String(value || '').replace(/(?:본점|직영점|본관|메인점)$/u, '');
+  // Entity aliases are query intent signals, not plain substring synonyms.
+  // Keep this map deliberately narrow; aliases may be expanded from verified
+  // search analytics without changing the ranking algorithm.
+  const entityAliases = new Map([
+    ['미진', ['광화문미진']]
+  ]);
   function relevanceScore(query, restaurant) {
     const name = searchKey(restaurant.name);
     const address = searchKey(restaurant.address);
     const category = searchKey(restaurant.category);
     if (name === query) return 1000;
+    if (entityAliases.get(query)?.some(entity => name.startsWith(entity))) return 980;
+    // A complete suffix is often the actual brand people remember
+    // (e.g. "미진" -> "광화문미진"). Rank it above generic prefix matches.
+    if (name.endsWith(query)) return 950;
     if (name.startsWith(query)) return 920;
     if (name.includes(query)) return 850;
     if (initials(name).startsWith(query)) return 800;
@@ -57,6 +67,14 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
   }
   const hash = value => [...String(value)].reduce((a, c) => ((a << 5) - a + c.charCodeAt(0)) | 0, 0);
   const idOf = restaurant => `${restaurant.name}|${restaurant.address}`;
+  const roadAddressKey = value => searchKey(String(value || '').split(',')[0].replace(/\([^)]*\)/g, ' '));
+  const samePlace = (left, right) => {
+    if (searchKey(left.name) !== searchKey(right.name)) return false;
+    const leftAddress = roadAddressKey(left.address), rightAddress = roadAddressKey(right.address);
+    return leftAddress === rightAddress ||
+      (leftAddress.length >= 10 && rightAddress.startsWith(leftAddress)) ||
+      (rightAddress.length >= 10 && leftAddress.startsWith(rightAddress));
+  };
   const fileUrl = file => `data/restaurants/${file.replace(/%/g, '%25')}`;
   const searchManifestCache = new Map();
   const searchPageCache = new Map();
@@ -449,7 +467,9 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     const entry = manifest[keyFor(Math.min(3, chars.length))] || manifest[keyFor(Math.min(2, chars.length))];
     const prefixPages = new Set();
     if (entry) for (let page = entry.start; page <= entry.end; page += 1) prefixPages.add(`${bucket}-${page}`);
-    const containsPages = allChars.length >= 3
+    // Two-syllable Korean restaurant names are common. The old three-character
+    // minimum made valid middle-name matches unreachable at the index level.
+    const containsPages = allChars.length >= 2
       ? (await containsPagesFor(allChars)).filter(page => !prefixPages.has(page))
       : [];
     state.all = [];
@@ -462,6 +482,21 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
       done: !entry && !containsPages.length
     };
     await loadSearchResults(pageSize);
+  }
+  async function mergeLiveSearchResults(query) {
+    if (searchKey(query).length < 2) return;
+    try {
+      const response = await fetch(`/api/search?q=${encodeURIComponent(query)}`);
+      if (!response.ok) return;
+      const data = await response.json();
+      const liveRows = enrich(Array.isArray(data.results) ? data.results : []);
+      const uniqueLiveRows = liveRows.filter((row, index, rows) =>
+        !state.all.some(existing => samePlace(existing, row)) &&
+        rows.findIndex(candidate => samePlace(candidate, row)) === index);
+      state.all = uniqueLiveRows.concat(state.all);
+    } catch {
+      // Static public-license search remains available when a place provider fails.
+    }
   }
   async function prefetchSearch(query) {
     const chars = [...searchKey(query)].slice(0, 3);
@@ -488,6 +523,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
       await ready;
       if (!window.__MEOKDANG_REGIONS__?.length) throw Error('검색 데이터 초기화 실패');
       await startSearch(state.filters.query);
+      await mergeLiveSearchResults(state.filters.query);
       recordPopularity(filtered().slice(0, 10));
       if (state.filters.query) api('/api/events', { method: 'POST', body: JSON.stringify({ type: 'search', detail: state.filters.query }) }).catch(() => {});
       state.fullLoaded = false;
@@ -504,7 +540,10 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
   async function applyFilters() {
     ['region', 'category', 'price', 'sort'].forEach(key => { state.filters[key] = $(`#${key}-filter`).value; });
     state.page = 1;
-    if (state.filters.query) await startSearch(state.filters.query);
+    if (state.filters.query) {
+      await startSearch(state.filters.query);
+      await mergeLiveSearchResults(state.filters.query);
+    }
     else if (state.filters.region) {
       const region = window.__MEOKDANG_REGIONS__.find(item => item.name === state.filters.region);
       if (region) {
