@@ -127,7 +127,7 @@ async function fetchNaverPlace(context, name, address) {
 
   const matchedAddress = match.item.roadAddress || match.item.address || address;
   const district = matchedAddress.split(/\s+/).slice(0, 3).join(' ');
-  const imageQuery = `${match.title} ${matchedAddress} 음식점`;
+  const imageQuery = `${match.title} ${matchedAddress} 음식점 외관 간판`;
   const matchedTitleKey = key(match.title);
   const hints = locationHints(matchedAddress);
   let image = null;
