@@ -7,7 +7,8 @@
   const state = {
     preview: [], all: [], fullLoaded: false, loading: null, page: 1,
     filters: { query: '', region: '', category: '', price: '', mood: '', sort: 'recommend' },
-    current: null, progress: '', searchSession: null, serverUser: null, serverReviews: new Map()
+    current: null, progress: '', searchSession: null, serverUser: null, serverReviews: new Map(),
+    serverSaved: [], serverLists: {}, serverProfile: {}
   };
   async function api(path, options = {}) {
     const response = await fetch(path, {
@@ -111,7 +112,20 @@
     const el = $('#toast'); el.textContent = message; el.classList.add('show');
     clearTimeout(toast.timer); toast.timer = setTimeout(() => el.classList.remove('show'), 2200);
   }
-  function savedIds() { return store.get('saved', []); }
+  function savedIds() { return state.serverUser ? state.serverSaved : store.get('saved', []); }
+  async function saveUserData(key, value) {
+    if (!state.serverUser) return store.set(key, value);
+    await api(`/api/user-data/${key}`, { method: 'PUT', body: JSON.stringify({ value }) });
+  }
+  async function loadUserData() {
+    if (!state.serverUser) return;
+    const result = await api('/api/user-data');
+    state.serverSaved = Array.isArray(result.data.saved) ? result.data.saved : [];
+    state.serverLists = result.data.lists && typeof result.data.lists === 'object' ? result.data.lists : {};
+    state.serverProfile = result.data.profile && typeof result.data.profile === 'object' ? result.data.profile : {};
+    Object.assign(state.serverUser, state.serverProfile);
+    updateSavedCount();
+  }
   function isSaved(r) { return savedIds().includes(idOf(r)); }
   function updateSavedCount() { $('#saved-count').textContent = savedIds().length; }
   function renderHomeRankings() {
@@ -137,9 +151,12 @@
       target?.click();
     }));
   }
-  function toggleSaved(r) {
+  async function toggleSaved(r) {
     const saved = savedIds(), id = idOf(r), exists = saved.includes(id);
-    store.set('saved', exists ? saved.filter(x => x !== id) : [...saved, id]);
+    const next = exists ? saved.filter(x => x !== id) : [...saved, id];
+    if (state.serverUser) state.serverSaved = next;
+    await saveUserData('saved', next);
+    api('/api/events', { method: 'POST', body: JSON.stringify({ type: 'save', detail: `${exists ? '삭제' : '저장'}: ${r.name}` }) }).catch(() => {});
     updateSavedCount(); toast(exists ? '저장 목록에서 삭제했어요.' : '가고 싶은 곳에 저장했어요.'); render();
   }
   function recordPopularity(restaurants) {
@@ -527,6 +544,7 @@
       if (!window.__MEOKDANG_REGIONS__?.length) throw Error('검색 데이터 초기화 실패');
       await startSearch(state.filters.query);
       recordPopularity(filtered().slice(0, 10));
+      if (state.filters.query) api('/api/events', { method: 'POST', body: JSON.stringify({ type: 'search', detail: state.filters.query }) }).catch(() => {});
       state.fullLoaded = false;
       state.progress = '';
       render();
@@ -610,7 +628,7 @@
       <div class="trust-note">✓ 리뷰는 Cloudflare 서버에 안전하게 저장되며 관리자 검토를 거칩니다.</div>
       <form id="review-form"><label>별점<select name="rating"><option value="5">5점</option><option value="4">4점</option><option value="3">3점</option><option value="2">2점</option><option value="1">1점</option></select></label><textarea name="text" required maxlength="500" placeholder="직접 경험한 맛과 분위기를 알려주세요."></textarea><label class="photo-label">사진 첨부<input name="photo" type="file" accept="image/*"></label><button class="primary" type="submit">리뷰 등록</button></form><div id="review-list"></div></section></div>`;
     $('#detail-modal').classList.add('open'); document.body.classList.add('locked');
-    $('#detail-save').addEventListener('click', () => { toggleSaved(r); openDetail(r); });
+    $('#detail-save').addEventListener('click', async () => { await toggleSaved(r); openDetail(r); });
     $('#add-list').addEventListener('click', () => openListPicker(r));
     $('#share').addEventListener('click', () => shareText(`${r.name} · ${r.address}`));
     $('#review-sort').addEventListener('change', renderReviews);
@@ -679,16 +697,31 @@
     if (type === 'saved') renderSavedPanel(content); else if (type === 'mypage') renderMyPage(content); else renderAuth(content);
   }
   function renderSavedPanel(content) {
-    const saved = savedIds(), rows = state.all.filter(r => saved.includes(idOf(r))), lists = store.get('lists', { '가고 싶은 곳': saved });
+    const saved = savedIds(), rows = state.all.filter(r => saved.includes(idOf(r)));
+    const lists = state.serverUser ? state.serverLists : store.get('lists', { '가고 싶은 곳': saved });
     content.innerHTML = `<h2 id="panel-title">나의 맛집 리스트</h2><div class="list-tabs">${Object.keys(lists).map(name => `<button data-list="${escapeHtml(name)}">${escapeHtml(name)} <span>${lists[name].length}</span></button>`).join('')}<button id="new-list">＋ 새 리스트</button></div><div id="saved-grid" class="saved-grid">${rows.map((r, i) => `<button data-saved="${i}"><strong>${escapeHtml(r.name)}</strong><small>${escapeHtml(r.address)}</small></button>`).join('') || '<p class="empty-reviews">저장한 식당이 없습니다.</p>'}</div><button id="share-list" class="ghost">현재 목록 공유</button>`;
     $$('[data-saved]').forEach(el => el.addEventListener('click', () => openDetail(rows[Number(el.dataset.saved)])));
-    $('#new-list').addEventListener('click', () => { const name = prompt('새 리스트 이름을 입력하세요.'); if (!name?.trim()) return; const next = store.get('lists', {}); next[name.trim()] = next[name.trim()] || []; store.set('lists', next); renderSavedPanel(content); });
+    $('#new-list').addEventListener('click', async () => {
+      const name = prompt('새 리스트 이름을 입력하세요.'); if (!name?.trim()) return;
+      const next = state.serverUser ? { ...state.serverLists } : store.get('lists', {});
+      next[name.trim()] = next[name.trim()] || [];
+      if (state.serverUser) state.serverLists = next;
+      await saveUserData('lists', next);
+      api('/api/events', { method: 'POST', body: JSON.stringify({ type: 'list', detail: `리스트 생성: ${name.trim()}` }) }).catch(() => {});
+      renderSavedPanel(content);
+    });
     $('#share-list').addEventListener('click', () => shareText(`mukdang.com 맛집 리스트: ${rows.map(r => r.name).join(', ') || '아직 비어 있어요'}`));
   }
-  function openListPicker(r) {
-    const lists = store.get('lists', { '데이트 맛집': [], '가족 외식': [], '회식 장소': [] });
+  async function openListPicker(r) {
+    const lists = state.serverUser ? { ...state.serverLists } : store.get('lists', { '데이트 맛집': [], '가족 외식': [], '회식 장소': [] });
     const name = prompt(`추가할 리스트 이름을 입력하세요.\n${Object.keys(lists).join(' / ')}`, Object.keys(lists)[0] || '가고 싶은 곳');
-    if (!name?.trim()) return; lists[name.trim()] = lists[name.trim()] || []; if (!lists[name.trim()].includes(idOf(r))) lists[name.trim()].push(idOf(r)); store.set('lists', lists); toast(`‘${name.trim()}’ 리스트에 추가했어요.`);
+    if (!name?.trim()) return;
+    lists[name.trim()] = lists[name.trim()] || [];
+    if (!lists[name.trim()].includes(idOf(r))) lists[name.trim()].push(idOf(r));
+    if (state.serverUser) state.serverLists = lists;
+    await saveUserData('lists', lists);
+    api('/api/events', { method: 'POST', body: JSON.stringify({ type: 'list', detail: `${name.trim()}에 추가: ${r.name}` }) }).catch(() => {});
+    toast(`‘${name.trim()}’ 리스트에 추가했어요.`);
   }
   function renderAuth(content) {
     if (state.serverUser) {
@@ -709,6 +742,7 @@
           email: data.get('email'), password: data.get('password'), name: data.get('name')
         }) });
         state.serverUser = result.user;
+        await loadUserData();
         $('#auth-button').textContent = result.user.name;
         closeModals(); toast(action === 'register' ? '회원가입했습니다.' : '로그인했습니다.');
       } catch (error) { toast(error.message); }
@@ -716,8 +750,17 @@
   }
   function renderMyPage(content) {
     const profile = state.serverUser || { name: '게스트', badge: '새싹 리뷰어' }, reviewCount = [...state.serverReviews.values()].flat().filter(review => review.author === profile.name).length;
-    content.innerHTML = `<h2 id="panel-title">마이페이지</h2><div class="profile-card"><div class="avatar">${escapeHtml(profile.name[0])}</div><div><strong>${escapeHtml(profile.name)}</strong><span>${profile.badge}</span></div></div><div class="my-stats"><div><strong>${reviewCount}</strong><span>리뷰</span></div><div><strong>${savedIds().length}</strong><span>저장</span></div></div><h3>프로필 설정</h3><form id="profile-form" class="profile-form"><label>닉네임<input name="name" value="${escapeHtml(profile.name)}"></label><label>소개<textarea name="bio" placeholder="나의 맛집 취향을 소개해 보세요.">${escapeHtml(profile.bio || '')}</textarea></label><label>선호 음식<select name="favorite"><option value="">선택 안 함</option>${['한식','일식','중식','양식','분식'].map(food => `<option ${profile.favorite === food ? 'selected' : ''}>${food}</option>`).join('')}</select></label><button class="primary">프로필 저장</button></form><h3>내 리뷰 관리</h3><p class="trust-note">작성한 리뷰 ${reviewCount}개 · 신뢰도 뱃지는 방문 인증 기능 연동 후 성장합니다.</p>`;
-    $('#profile-form').addEventListener('submit', e => { e.preventDefault(); toast('프로필 수정 API는 다음 업데이트에서 제공됩니다.'); });
+    content.innerHTML = `<h2 id="panel-title">마이페이지</h2><div class="profile-card"><div class="avatar">${escapeHtml(profile.name[0])}</div><div><strong>${escapeHtml(profile.name)}</strong><span>${escapeHtml(profile.badge || '새싹 리뷰어')}</span></div></div><div class="my-stats"><div><strong>${reviewCount}</strong><span>리뷰</span></div><div><strong>${savedIds().length}</strong><span>저장</span></div></div><h3>프로필 설정</h3><form id="profile-form" class="profile-form"><label>닉네임<input name="name" value="${escapeHtml(profile.name)}"></label><label>소개<textarea name="bio" placeholder="나의 맛집 취향을 소개해 보세요.">${escapeHtml(profile.bio || '')}</textarea></label><label>선호 음식<select name="favorite"><option value="">선택 안 함</option>${['한식','일식','중식','양식','분식'].map(food => `<option ${profile.favorite === food ? 'selected' : ''}>${food}</option>`).join('')}</select></label><button class="primary">프로필 저장</button></form><h3>내 리뷰 관리</h3><p class="trust-note">작성한 리뷰 ${reviewCount}개 · 저장 데이터는 계정과 함께 서버에 보관됩니다.</p>`;
+    $('#profile-form').addEventListener('submit', async event => {
+      event.preventDefault();
+      if (!state.serverUser) return toast('로그인이 필요합니다.');
+      const data = new FormData(event.currentTarget);
+      const value = { name: data.get('name') || state.serverUser.name, bio: data.get('bio') || '', favorite: data.get('favorite') || '', badge: state.serverUser.badge || '새싹 리뷰어' };
+      state.serverProfile = value; Object.assign(state.serverUser, value);
+      await saveUserData('profile', value);
+      $('#auth-button').textContent = value.name;
+      toast('프로필을 서버에 저장했습니다.');
+    });
   }
   async function shareText(text) {
     try { if (navigator.share) await navigator.share({ title: 'mukdang.com', text, url: location.href }); else { await navigator.clipboard.writeText(`${text}\n${location.href}`); toast('공유 내용을 복사했어요.'); } } catch {}
@@ -750,7 +793,7 @@
     try {
       const auth = await api('/api/auth/me');
       state.serverUser = auth.user;
-      if (state.serverUser) $('#auth-button').textContent = state.serverUser.name;
+      if (state.serverUser) { await loadUserData(); $('#auth-button').textContent = state.serverUser.name; }
       const latest = await api('/api/reviews');
       state.serverReviews.set('__latest__', latest.reviews);
     } catch {}
