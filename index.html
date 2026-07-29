@@ -8,18 +8,18 @@
       location.replace(`https://product1-84t.pages.dev${location.pathname.replace(/^\/product1/, '')}${location.search}${location.hash}`);
     }
   </script>
-  <meta name="description" content="먹당(mukdang.com)에서 전국 맛집을 빠르게 검색하고 신뢰도 높은 리뷰와 주소를 확인하세요.">
+  <meta name="description" content="먹당(mukdang.com)에서 전국 맛집을 빠르게 검색하고 사용자 리뷰와 주소를 확인하세요.">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="mukdang.com">
   <meta property="og:title" content="mukdang.com | 먹당·전국 맛집 검색">
-  <meta property="og:description" content="전국 맛집을 빠르게 검색하고 신뢰도 높은 리뷰와 주소를 확인하세요.">
+  <meta property="og:description" content="전국 맛집을 빠르게 검색하고 사용자 리뷰와 주소를 확인하세요.">
   <meta property="og:url" content="https://product1-84t.pages.dev/">
   <link rel="canonical" href="https://product1-84t.pages.dev/">
   <title>mukdang.com | 먹당·전국 맛집 검색</title>
   <link rel="stylesheet" href="styles.css?v=20260729-24">
   <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"WebSite","name":"mukdang.com","alternateName":["먹당","묵당"],"url":"https://product1-84t.pages.dev/","description":"전국 맛집 검색과 신뢰도 높은 리뷰 서비스"}
+    {"@context":"https://schema.org","@type":"WebSite","name":"mukdang.com","alternateName":["먹당","묵당"],"url":"https://product1-84t.pages.dev/","description":"전국 맛집 검색과 사용자 리뷰 서비스"}
   </script>
 </head>
 <body>
@@ -68,8 +68,7 @@
         <label>지역<select id="region-filter"><option value="">전국</option></select></label>
         <label>음식 종류<select id="category-filter"><option value="">전체</option></select></label>
         <label>가격대<select id="price-filter"><option value="">전체</option><option value="1">₩ 가볍게</option><option value="2">₩₩ 보통</option><option value="3">₩₩₩ 특별하게</option></select></label>
-        <label>분위기<select id="mood-filter"><option value="">전체</option><option>혼밥</option><option>데이트</option><option>가족 외식</option><option>회식</option></select></label>
-        <label>정렬<select id="sort-filter"><option value="recommend">추천순</option><option value="trust">신뢰도순</option><option value="rating">별점순</option><option value="name">이름순</option></select></label>
+        <label>정렬<select id="sort-filter"><option value="recommend">추천순</option><option value="rating">별점순</option><option value="name">이름순</option></select></label>
         <button id="filter-reset" class="ghost" type="button">초기화</button>
       </div>
 
@@ -119,6 +118,6 @@
     <article class="modal panel-modal"><button class="modal-close" data-close type="button" aria-label="닫기">×</button><div id="panel-content"></div></article>
   </div>
   <div id="toast" class="toast" role="status"></div>
-  <script src="app.js?v=20260729-3" defer></script>
+  <script src="app.js?v=20260729-4" defer></script>
 </body>
 </html>

@@ -6,7 +6,7 @@
   const ready = new Promise(resolve => { resolveReady = resolve; });
   const state = {
     preview: [], all: [], fullLoaded: false, loading: null, page: 1,
-    filters: { query: '', region: '', category: '', price: '', mood: '', sort: 'recommend' },
+    filters: { query: '', region: '', category: '', price: '', sort: 'recommend' },
     current: null, progress: '', searchSession: null, serverUser: null, serverReviews: new Map(),
     serverSaved: [], serverLists: {}, serverProfile: {}
   };
@@ -100,7 +100,7 @@
     return list.filter(r => r.name && searchKey(r.name) && isPublicFacingRestaurant(r)).map(r => {
       const name = cleanName(r.name);
       const seed = Math.abs(hash(`${name}${r.address}`));
-      return { ...r, name, price: seed % 3 + 1, mood: ['혼밥', '데이트', '가족 외식', '회식'][seed % 4], rating: (3.6 + (seed % 14) / 10).toFixed(1), trust: 78 + seed % 21 };
+      return { ...r, name, price: seed % 3 + 1, rating: (3.6 + (seed % 14) / 10).toFixed(1) };
     });
   }
   function mixPreviews(data) {
@@ -415,8 +415,7 @@
       item.relevance > 0 &&
       (!f.region || item.restaurant.address?.startsWith(f.region)) &&
       (!f.category || item.restaurant.category?.includes(f.category)) &&
-      (!f.price || String(item.restaurant.price) === f.price) &&
-      (!f.mood || item.restaurant.mood === f.mood)
+      (!f.price || String(item.restaurant.price) === f.price)
     );
     const popularity = store.get('popularity', {});
     rows.sort((a, b) => {
@@ -424,10 +423,9 @@
       const left = a.restaurant, right = b.restaurant;
       if (f.sort === 'name') return left.name.localeCompare(right.name, 'ko');
       if (f.sort === 'rating') return right.rating - left.rating;
-      if (f.sort === 'trust') return right.trust - left.trust;
       return (Number(isSaved(right)) - Number(isSaved(left))) ||
         ((popularity[idOf(right)] || 0) - (popularity[idOf(left)] || 0)) ||
-        right.trust - left.trust;
+        right.rating - left.rating;
     });
     return rows.map(item => item.restaurant);
   }
@@ -438,8 +436,8 @@
       <div class="card-body"><div class="card-top"><span class="category">${escapeHtml(r.category || '음식점')}</span><button class="save ${isSaved(r) ? 'active' : ''}" data-save="${index}" type="button" aria-label="저장">♡</button></div>
       <div class="card-identity"><h3>${escapeHtml(r.name)}</h3></div><p class="address">${escapeHtml(r.address)}</p>
       ${permit ? `<div class="tenure-badge"><span>영업 기간</span><strong>${escapeHtml(permit.duration)}</strong></div>` : ''}
-      <div class="score"><strong>★ ${r.rating}</strong><span>신뢰도 ${r.trust}%</span><span>${priceText(r.price)}</span></div>
-      <div class="tags"><span>${r.mood}</span><span>${permit ? '인허가일 확인됨' : '영업 정보 확인'}</span></div></div>
+      <div class="score"><strong>★ ${r.rating}</strong><span>${priceText(r.price)}</span></div>
+      <div class="tags"><span>${permit ? '인허가일 확인됨' : '영업 정보 확인'}</span></div></div>
     </article>`;
   }
   function render() {
@@ -645,7 +643,7 @@
     }
   }
   async function applyFilters() {
-    ['region', 'category', 'price', 'mood', 'sort'].forEach(key => { state.filters[key] = $(`#${key}-filter`).value; });
+    ['region', 'category', 'price', 'sort'].forEach(key => { state.filters[key] = $(`#${key}-filter`).value; });
     state.page = 1;
     if (state.filters.query) await startSearch(state.filters.query);
     else if (state.filters.region) {
@@ -661,7 +659,7 @@
   }
   function resetFilters() {
     $('#search-input').value = ''; $$('#filters select').forEach(select => { select.selectedIndex = 0; });
-    state.filters = { query: '', region: '', category: '', price: '', mood: '', sort: 'recommend' };
+    state.filters = { query: '', region: '', category: '', price: '', sort: 'recommend' };
     state.searchSession = null; state.all = state.preview; state.page = 1; render();
   }
   function renderSuggestions() {
@@ -705,7 +703,7 @@
     const fullQuery = encodeURIComponent(`${r.name} ${r.address || ''}`);
     const permit = permitDateInfo(r.permitDate);
     $('#modal-content').innerHTML = `<div id="place-cover" class="detail-cover neutral-photo" data-category-label="${escapeHtml(categoryLabel(r))}"><span>${escapeHtml(categoryLabel(r))} · 사진 없음</span></div><div class="detail-hero"><div class="detail-heading"><div><span class="category">${escapeHtml(r.category || '음식점')}</span><h2 id="detail-title">${escapeHtml(r.name)}</h2><p>${escapeHtml(r.address)}</p></div>${buildingSitePlan(r)}</div>
-      <div class="detail-score"><strong>★ ${r.rating}</strong><span>리뷰 신뢰도 ${r.trust}%</span><span>${priceText(r.price)} · ${r.mood}</span></div>
+      <div class="detail-score"><strong>★ ${r.rating}</strong><span>${priceText(r.price)}</span></div>
       <div class="permit-highlight"><div><span>현재 영업 기간</span><b>${permit ? escapeHtml(permit.duration) : '확인 필요'}</b></div><div><span>영업 시작일</span><strong>${permit ? escapeHtml(permit.formatted) : '확인 필요'}</strong></div><small>행정안전부 식품위생 인허가일 기준 · 영업 기간은 매년 자동 갱신</small></div>
       <div class="detail-actions"><button id="detail-save" class="primary">${isSaved(r) ? '저장됨' : '♡ 저장'}</button><button id="add-list" class="ghost">리스트에 추가</button><button id="share" class="ghost">공유</button></div></div>
       <section id="place-extras" class="place-extras" aria-live="polite"><div class="place-loading">사진·가격·좌석 정보를 확인하는 중입니다.</div></section>
@@ -801,7 +799,7 @@
     $('#share-list').addEventListener('click', () => shareText(`mukdang.com 맛집 리스트: ${rows.map(r => r.name).join(', ') || '아직 비어 있어요'}`));
   }
   async function openListPicker(r) {
-    const lists = state.serverUser ? { ...state.serverLists } : store.get('lists', { '데이트 맛집': [], '가족 외식': [], '회식 장소': [] });
+    const lists = state.serverUser ? { ...state.serverLists } : store.get('lists', { '가고 싶은 곳': [] });
     const name = prompt(`추가할 리스트 이름을 입력하세요.\n${Object.keys(lists).join(' / ')}`, Object.keys(lists)[0] || '가고 싶은 곳');
     if (!name?.trim()) return;
     lists[name.trim()] = lists[name.trim()] || [];
