@@ -50,6 +50,11 @@ if (!Array.isArray(popupData.popups) || !Array.isArray(popupData.sources)) {
   console.error('popups.json 구조가 올바르지 않습니다.');
   process.exitCode = 1;
 }
+const curatedPopups = JSON.parse(readFileSync('data/curated-popups.json', 'utf8'));
+if (!Array.isArray(curatedPopups) || curatedPopups.some(row => !Array.isArray(row) || row.length !== 6)) {
+  console.error('curated-popups.json 구조가 올바르지 않습니다.');
+  process.exitCode = 1;
+}
 for (const popup of popupData.popups) {
   if (!popup.id || !popup.name || !/^\d{4}-\d{2}-\d{2}$/.test(popup.startDate) || !/^\d{4}-\d{2}-\d{2}$/.test(popup.endDate)) {
     console.error(`팝업 필수값이 올바르지 않습니다: ${popup.id || popup.name || '알 수 없음'}`);

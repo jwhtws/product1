@@ -175,11 +175,31 @@ async function existingRows() {
   }
 }
 
+async function collectCuratedOfficial() {
+  const rows = JSON.parse(await readFile('data/curated-popups.json', 'utf8'));
+  return rows.map(([id, name, venue, startDate, endDate, sourceUrl]) => ({
+    id,
+    name,
+    venue,
+    venueType: /아울렛|몰/u.test(venue) ? '쇼핑몰' : '백화점',
+    address: venue,
+    startDate,
+    endDate,
+    imageUrl: '',
+    sourceName: '롯데쇼핑 공식 통합검색',
+    sourceUrl,
+    sourceGrade: 'official-search',
+    firstSeenAt: today,
+    lastSeenAt: today
+  }));
+}
+
 const previous = await existingRows();
 const collectors = [
   ['현대백화점·현대아울렛', collectHyundai],
   ['신세계백화점', collectShinsegae],
-  ['스타필드·스타필드시티', collectStarfield]
+  ['스타필드·스타필드시티', collectStarfield],
+  ['롯데백화점·롯데아울렛·롯데몰', collectCuratedOfficial]
 ];
 const settled = await Promise.allSettled(collectors.map(([, collector]) => collector()));
 const collected = settled.flatMap(result => result.status === 'fulfilled' ? result.value : []);
@@ -190,7 +210,6 @@ const sources = collectors.map(([name], index) => ({
   message: settled[index].status === 'rejected' ? String(settled[index].reason?.message || settled[index].reason) : undefined
 }));
 sources.push(
-  { name: '롯데백화점·롯데아울렛·롯데몰', status: 'official-site-timeout', count: 0 },
   { name: '갤러리아·AK플라자·NC·뉴코아', status: 'no-public-popup-feed', count: 0 },
   { name: '이마트·트레이더스·롯데마트·홈플러스', status: 'no-public-popup-feed', count: 0 }
 );
