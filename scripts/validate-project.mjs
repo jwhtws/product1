@@ -60,6 +60,10 @@ for (const popup of popupData.popups) {
     console.error(`팝업 필수값이 올바르지 않습니다: ${popup.id || popup.name || '알 수 없음'}`);
     process.exitCode = 1;
   }
+  if (!popup.sourceUrl || !/^https:\/\//.test(popup.sourceUrl)) {
+    console.error(`팝업 출처 URL이 올바르지 않습니다: ${popup.id}`);
+    process.exitCode = 1;
+  }
 }
 
 const popupVenues = JSON.parse(readFileSync('data/popup-venues.json', 'utf8'));

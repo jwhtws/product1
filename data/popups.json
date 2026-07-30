@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-30T12:28:39.732Z",
+  "updatedAt": "2026-07-30T12:39:31.248Z",
   "sources": [
     {
       "name": "현대백화점·현대아울렛",
@@ -22,6 +22,11 @@
       "count": 29
     },
     {
+      "name": "팝가 쇼핑시설 F&B 공개 일정",
+      "status": "active",
+      "count": 21
+    },
+    {
       "name": "갤러리아·AK플라자·NC·뉴코아",
       "status": "no-public-popup-feed",
       "count": 0
@@ -34,12 +39,42 @@
   ],
   "coverage": {
     "nationwideVenueTotal": 1029,
-    "verifiedPopupVenueCount": 18,
+    "verifiedPopupVenueCount": 28,
     "officialFeedMonitoredCount": 88,
     "collectorNeededCount": 941,
     "disclaimer": "시설 원장은 전국 탐색 범위이며, 화면에는 공식 출처에서 시작일과 종료일을 확인한 푸드팝업만 표시합니다."
   },
   "popups": [
+    {
+      "id": "popga:8194",
+      "name": "글렌피딕 X 애스턴마틴 F1 팝업",
+      "venue": "더현대 서울",
+      "venueType": "쇼핑몰",
+      "address": "서울 영등포구 여의도동 22 더현대 서울 1층 & 지하 1층",
+      "startDate": "2026-08-06",
+      "endDate": "2026-08-17",
+      "imageUrl": "https://cdn.popga.co.kr/spot/8194/main/620b2530-53ff-496a-b3c5-3004cfd76c9d_1785072947266_thumbnail_MAIN_W480.webp",
+      "sourceName": "팝가 공개 팝업 일정",
+      "sourceUrl": "https://popga.co.kr/popup/8194",
+      "sourceGrade": "verified-directory",
+      "firstSeenAt": "2026-07-30",
+      "lastSeenAt": "2026-07-30"
+    },
+    {
+      "id": "popga:8254",
+      "name": "올리브베러 썸머 웰니스 스탑 @강남",
+      "venue": "코엑스",
+      "venueType": "쇼핑몰",
+      "address": "서울 강남구 삼성동 159 강남 코엑스 광장",
+      "startDate": "2026-08-01",
+      "endDate": "2026-08-02",
+      "imageUrl": "https://cdn.popga.co.kr/spot/8254/main/77e79ebd-0537-47d2-a957-f920b3f4ef18_1785372064923_thumbnail_MAIN_W480.webp",
+      "sourceName": "팝가 공개 팝업 일정",
+      "sourceUrl": "https://popga.co.kr/popup/8254",
+      "sourceGrade": "verified-directory",
+      "firstSeenAt": "2026-07-30",
+      "lastSeenAt": "2026-07-30"
+    },
     {
       "id": "hyundai:E7202607493841",
       "name": "[POP-UP] 우베리상하이모찌",
@@ -386,6 +421,21 @@
       "lastSeenAt": "2026-07-30"
     },
     {
+      "id": "popga:8173",
+      "name": "블랑케이크 팝업",
+      "venue": "AK PLAZA",
+      "venueType": "쇼핑몰",
+      "address": "서울 마포구 동교동 190-1 AK PLAZA 홍대 5F",
+      "startDate": "2026-07-24",
+      "endDate": "2026-08-06",
+      "imageUrl": "https://cdn.popga.co.kr/spot/8173/main/920af332-146b-4c2b-81e3-dc516865df93_1784883063370_thumbnail_MAIN_W480.webp",
+      "sourceName": "팝가 공개 팝업 일정",
+      "sourceUrl": "https://popga.co.kr/popup/8173",
+      "sourceGrade": "verified-directory",
+      "firstSeenAt": "2026-07-30",
+      "lastSeenAt": "2026-07-30"
+    },
+    {
       "id": "lotte:ansan:seoul-roll",
       "name": "서울롤 철판피자&튀일",
       "venue": "롯데백화점 안산점",
@@ -442,6 +492,21 @@
       "sourceName": "현대백화점 공식 쇼핑뉴스",
       "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E7902607492635&branchCd=B00179000&category=",
       "sourceGrade": "official",
+      "firstSeenAt": "2026-07-30",
+      "lastSeenAt": "2026-07-30"
+    },
+    {
+      "id": "popga:7726",
+      "name": "이베넛 팝업 @목동",
+      "venue": "현대백화점목동점",
+      "venueType": "백화점",
+      "address": "서울 양천구 목동동로 257 (목동, 현대하이페리온) 현대백화점목동점",
+      "startDate": "2026-07-24",
+      "endDate": "2026-07-30",
+      "imageUrl": "https://cdn.popga.co.kr/spot/7726/main/31d08bd1-baa8-463a-9d8c-eda58d2eb6e5_1782459558982_thumbnail_MAIN_W480.webp",
+      "sourceName": "팝가 공개 팝업 일정",
+      "sourceUrl": "https://popga.co.kr/popup/7726",
+      "sourceGrade": "verified-directory",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-07-30"
     },
@@ -521,6 +586,21 @@
       "lastSeenAt": "2026-07-30"
     },
     {
+      "id": "popga:8101",
+      "name": "파이벌 팝업 in 신세계 센텀시티",
+      "venue": "신세계백화점 센텀시티점",
+      "venueType": "백화점",
+      "address": "부산 해운대구 우동 1493 신세계백화점 센텀시티점 지하 1층",
+      "startDate": "2026-07-24",
+      "endDate": "2026-08-06",
+      "imageUrl": "https://cdn.popga.co.kr/spot/8101/main/a47c8cc8-5986-4ab4-a349-b2d8dbc8c748_1784793635741_thumbnail_MAIN_W480.webp",
+      "sourceName": "팝가 공개 팝업 일정",
+      "sourceUrl": "https://popga.co.kr/popup/8101",
+      "sourceGrade": "verified-directory",
+      "firstSeenAt": "2026-07-30",
+      "lastSeenAt": "2026-07-30"
+    },
+    {
       "id": "hyundai:E4602607494427",
       "name": "플러피",
       "venue": "더현대 대구",
@@ -536,6 +616,96 @@
       "lastSeenAt": "2026-07-30"
     },
     {
+      "id": "popga:8156",
+      "name": "피플웍스 X 신발원 팝업",
+      "venue": "더현대 서울",
+      "venueType": "쇼핑몰",
+      "address": "서울 영등포구 여의대로 108 (여의도동, 파크원) 더현대 서울",
+      "startDate": "2026-07-24",
+      "endDate": "2026-07-30",
+      "imageUrl": "https://cdn.popga.co.kr/spot/8156/main/42e765e8-bc3d-4197-b756-197d51a9a202_1784792589573_thumbnail_MAIN_W480.webp",
+      "sourceName": "팝가 공개 팝업 일정",
+      "sourceUrl": "https://popga.co.kr/popup/8156",
+      "sourceGrade": "verified-directory",
+      "firstSeenAt": "2026-07-30",
+      "lastSeenAt": "2026-07-30"
+    },
+    {
+      "id": "popga:8106",
+      "name": "한손한끼 팝업",
+      "venue": "용산 아이파크몰",
+      "venueType": "쇼핑몰",
+      "address": "서울 용산구 한강로3가 40-999 용산 아이파크몰 3F 도파민스테이션",
+      "startDate": "2026-07-24",
+      "endDate": "2026-08-06",
+      "imageUrl": "https://cdn.popga.co.kr/spot/8106/main/3ac8c9a4-f35a-4435-ba8b-01514a4b5c12_1784597386736_thumbnail_MAIN_W480.webp",
+      "sourceName": "팝가 공개 팝업 일정",
+      "sourceUrl": "https://popga.co.kr/popup/8106",
+      "sourceGrade": "verified-directory",
+      "firstSeenAt": "2026-07-30",
+      "lastSeenAt": "2026-07-30"
+    },
+    {
+      "id": "popga:8211",
+      "name": "노브랜드버거 X 카스 팝업 @강남",
+      "venue": "코엑스",
+      "venueType": "쇼핑몰",
+      "address": "서울 강남구 영동대로 513 (삼성동, 코엑스) 노브랜드 버거 코엑스점",
+      "startDate": "2026-07-22",
+      "endDate": "2026-08-23",
+      "imageUrl": "https://cdn.popga.co.kr/spot/8211/main/2b7d4239-2844-4804-9f92-2012123595ee_1785127999496_thumbnail_MAIN_W480.webp",
+      "sourceName": "팝가 공개 팝업 일정",
+      "sourceUrl": "https://popga.co.kr/popup/8211",
+      "sourceGrade": "verified-directory",
+      "firstSeenAt": "2026-07-30",
+      "lastSeenAt": "2026-07-30"
+    },
+    {
+      "id": "popga:8081",
+      "name": "프랑스루브르바게트 X 이즈나 팝업",
+      "venue": "롯데월드몰 잠실점",
+      "venueType": "쇼핑몰",
+      "address": "서울 송파구 올림픽로 300 (신천동, 롯데월드타워앤드롯데월드몰) 롯데월드몰 잠실점 에비뉴엘 B1 더크라운",
+      "startDate": "2026-07-22",
+      "endDate": "2026-08-12",
+      "imageUrl": "https://cdn.popga.co.kr/spot/8081/main/efca1a00-7905-40a6-8d78-a181328a32ed_1784510407753_thumbnail_MAIN_W480.webp",
+      "sourceName": "팝가 공개 팝업 일정",
+      "sourceUrl": "https://popga.co.kr/popup/8081",
+      "sourceGrade": "verified-directory",
+      "firstSeenAt": "2026-07-30",
+      "lastSeenAt": "2026-07-30"
+    },
+    {
+      "id": "popga:8027",
+      "name": "스트릿레스토랑파이터 셰프 릴레이 팝업",
+      "venue": "롯데백화점 잠실점",
+      "venueType": "백화점",
+      "address": "서울 송파구 올림픽로 240 (잠실동, 롯데월드) 롯데백화점 잠실점 B1F 오픈다이닝 팝업 행사장",
+      "startDate": "2026-07-17",
+      "endDate": "2026-09-17",
+      "imageUrl": "https://cdn.popga.co.kr/spot/8027/main/17941336-d5a1-4dc1-ab29-55ab281a40a6_1784097640282_thumbnail_MAIN_W480.webp",
+      "sourceName": "팝가 공개 팝업 일정",
+      "sourceUrl": "https://popga.co.kr/popup/8027",
+      "sourceGrade": "verified-directory",
+      "firstSeenAt": "2026-07-30",
+      "lastSeenAt": "2026-07-30"
+    },
+    {
+      "id": "popga:7961",
+      "name": "이모나리 팝업",
+      "venue": "홍대 AK플라자",
+      "venueType": "쇼핑몰",
+      "address": "서울 마포구 동교동 190-1 홍대 AK플라자 1층",
+      "startDate": "2026-07-17",
+      "endDate": "2026-07-30",
+      "imageUrl": "https://cdn.popga.co.kr/spot/7961/main/e9e49b06-e501-4d21-96c0-65553adc67d9_1783654032605_thumbnail_MAIN_W480.webp",
+      "sourceName": "팝가 공개 팝업 일정",
+      "sourceUrl": "https://popga.co.kr/popup/7961",
+      "sourceGrade": "verified-directory",
+      "firstSeenAt": "2026-07-30",
+      "lastSeenAt": "2026-07-30"
+    },
+    {
       "id": "lotte:incheon:french-louvre-baguette",
       "name": "프랑스루브르바게트",
       "venue": "롯데백화점 인천점",
@@ -547,6 +717,21 @@
       "sourceName": "롯데쇼핑 공식 통합검색",
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0344&searchTerm=POP-UP",
       "sourceGrade": "official-search",
+      "firstSeenAt": "2026-07-30",
+      "lastSeenAt": "2026-07-30"
+    },
+    {
+      "id": "popga:7813",
+      "name": "박뚜기 소금빵 팝업 @청주",
+      "venue": "커넥트현대 청주",
+      "venueType": "쇼핑몰",
+      "address": "충북 청주시 흥덕구 2순환로 1225 (가경동, 청주센트럴시티(터미널복합)) 커넥트현대 청주 G층",
+      "startDate": "2026-07-16",
+      "endDate": "2026-09-02",
+      "imageUrl": "https://cdn.popga.co.kr/spot/7813/main/14231df6-d34f-455c-b794-cf3b558dc2ef_1782905942727_thumbnail_MAIN_W480.webp",
+      "sourceName": "팝가 공개 팝업 일정",
+      "sourceUrl": "https://popga.co.kr/popup/7813",
+      "sourceGrade": "verified-directory",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-07-30"
     },
@@ -656,6 +841,51 @@
       "lastSeenAt": "2026-07-30"
     },
     {
+      "id": "popga:7757",
+      "name": "박뚜기 소금빵 X 요아정 팝업 @고양",
+      "venue": "스타필드점",
+      "venueType": "쇼핑몰",
+      "address": "경기 고양시 덕양구 고양대로 1955 (동산동, 스타필드 고양) 박뚜기 소금빵 고양 스타필드점 B1",
+      "startDate": "2026-07-07",
+      "endDate": "2026-08-07",
+      "imageUrl": "https://cdn.popga.co.kr/spot/7757/main/b1cf079b-2ac3-4dd5-b052-a941884b28b8_1782715230416_thumbnail_MAIN_W480.webp",
+      "sourceName": "팝가 공개 팝업 일정",
+      "sourceUrl": "https://popga.co.kr/popup/7757",
+      "sourceGrade": "verified-directory",
+      "firstSeenAt": "2026-07-30",
+      "lastSeenAt": "2026-07-30"
+    },
+    {
+      "id": "popga:7758",
+      "name": "박뚜기 소금빵 X 요아정 팝업 @대구",
+      "venue": "더현대 대구",
+      "venueType": "쇼핑몰",
+      "address": "대구 중구 계산동2가 200 박뚜기 소금빵 더현대 대구점 B1",
+      "startDate": "2026-07-07",
+      "endDate": "2026-08-07",
+      "imageUrl": "https://cdn.popga.co.kr/spot/7758/main/3b8d772f-3081-43d4-8624-99457dff2cd8_1782715335748_thumbnail_MAIN_W480.webp",
+      "sourceName": "팝가 공개 팝업 일정",
+      "sourceUrl": "https://popga.co.kr/popup/7758",
+      "sourceGrade": "verified-directory",
+      "firstSeenAt": "2026-07-30",
+      "lastSeenAt": "2026-07-30"
+    },
+    {
+      "id": "popga:7736",
+      "name": "짱구 이벤트 - 떡잎마을 수박 대소동",
+      "venue": "아이파크몰",
+      "venueType": "쇼핑몰",
+      "address": "서울 용산구 한강대로23길 55 (한강로3가, 용산역) 아이파크몰",
+      "startDate": "2026-07-06",
+      "endDate": "2026-07-31",
+      "imageUrl": "https://cdn.popga.co.kr/spot/7736/main/30b3e5b4-8ac3-4455-b58c-2f2db7b4b6d3_1782637263599_thumbnail_MAIN_W480.webp",
+      "sourceName": "팝가 공개 팝업 일정",
+      "sourceUrl": "https://popga.co.kr/popup/7736",
+      "sourceGrade": "verified-directory",
+      "firstSeenAt": "2026-07-30",
+      "lastSeenAt": "2026-07-30"
+    },
+    {
       "id": "lotte:cheongju:dongbong",
       "name": "동봉 에그타르트",
       "venue": "롯데아울렛 청주점",
@@ -667,6 +897,21 @@
       "sourceName": "롯데쇼핑 공식 통합검색",
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0342&searchTerm=POP-UP",
       "sourceGrade": "official-search",
+      "firstSeenAt": "2026-07-30",
+      "lastSeenAt": "2026-07-30"
+    },
+    {
+      "id": "popga:7782",
+      "name": "산해두화 또우화 팝업",
+      "venue": "더현대서울",
+      "venueType": "쇼핑몰",
+      "address": "서울 영등포구 여의도동 22 더현대서울 지하 1층 유리관",
+      "startDate": "2026-07-03",
+      "endDate": "2026-07-30",
+      "imageUrl": "https://cdn.popga.co.kr/spot/7782/main/6f13e147-6891-41a8-b0fd-05c821426d01_1782807141979_thumbnail_MAIN_W480.webp",
+      "sourceName": "팝가 공개 팝업 일정",
+      "sourceUrl": "https://popga.co.kr/popup/7782",
+      "sourceGrade": "verified-directory",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-07-30"
     },
@@ -701,6 +946,51 @@
       "lastSeenAt": "2026-07-30"
     },
     {
+      "id": "popga:7817",
+      "name": "치플레 팝업",
+      "venue": "아이파크몰",
+      "venueType": "쇼핑몰",
+      "address": "서울 용산구 한강대로23길 55 (한강로3가, 용산역) 아이파크몰 리빙파크 3층 도파민스테이션",
+      "startDate": "2026-07-01",
+      "endDate": "2026-07-30",
+      "imageUrl": "https://cdn.popga.co.kr/spot/7817/main/47ee713f-193b-4fc4-86ae-5b2e81c553e4_1782960341028_thumbnail_MAIN_W480.webp",
+      "sourceName": "팝가 공개 팝업 일정",
+      "sourceUrl": "https://popga.co.kr/popup/7817",
+      "sourceGrade": "verified-directory",
+      "firstSeenAt": "2026-07-30",
+      "lastSeenAt": "2026-07-30"
+    },
+    {
+      "id": "popga:7546",
+      "name": "말렌카 팝업 @안성",
+      "venue": "스타필드 안성점",
+      "venueType": "쇼핑몰",
+      "address": "경기 안성시 공도읍 서동대로 3930-39 (진사리, 스타필드 안성) 스타필드 안성점 3층 아트박스 앞 팝업존",
+      "startDate": "2026-06-05",
+      "endDate": "2026-09-03",
+      "imageUrl": "https://cdn.popga.co.kr/spot/7546/main/ee73fe0b-ca1a-4c5b-bb18-0ea8562bd070_1781505340858_thumbnail_MAIN_W480.webp",
+      "sourceName": "팝가 공개 팝업 일정",
+      "sourceUrl": "https://popga.co.kr/popup/7546",
+      "sourceGrade": "verified-directory",
+      "firstSeenAt": "2026-07-30",
+      "lastSeenAt": "2026-07-30"
+    },
+    {
+      "id": "popga:7545",
+      "name": "말렌카 팝업 @하남",
+      "venue": "스타필드 하남점",
+      "venueType": "쇼핑몰",
+      "address": "경기 하남시 미사대로 750 (신장동, 스타필드 하남) 스타필드 하남점 1층 신세계백화점 방면, 아프리카 앞 팝업존",
+      "startDate": "2026-06-05",
+      "endDate": "2026-08-25",
+      "imageUrl": "https://cdn.popga.co.kr/spot/7545/main/5b470b98-132b-4077-ae5b-3b1f3662d375_1781505104784_thumbnail_MAIN_W480.webp",
+      "sourceName": "팝가 공개 팝업 일정",
+      "sourceUrl": "https://popga.co.kr/popup/7545",
+      "sourceGrade": "verified-directory",
+      "firstSeenAt": "2026-07-30",
+      "lastSeenAt": "2026-07-30"
+    },
+    {
       "id": "lotte:nowon:rollsrolls",
       "name": "롤스롤스 불초밥",
       "venue": "롯데백화점 노원점",
@@ -712,6 +1002,21 @@
       "sourceName": "롯데쇼핑 공식 통합검색",
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=POP-UP",
       "sourceGrade": "official-search",
+      "firstSeenAt": "2026-07-30",
+      "lastSeenAt": "2026-07-30"
+    },
+    {
+      "id": "popga:6296",
+      "name": "픽베이크 팝업",
+      "venue": "롯데백화점 본점",
+      "venueType": "백화점",
+      "address": "서울 중구 남대문로 81 (소공동, 롯데백화점 본점) 롯데백화점 본점 지하 1층",
+      "startDate": "2026-01-10",
+      "endDate": "2026-07-31",
+      "imageUrl": "https://cdn.popga.co.kr/spot/6296/main/5a019c71-8a6a-4341-a068-3d61803e0362_1776055156708_thumbnail_MAIN_W480.webp",
+      "sourceName": "팝가 공개 팝업 일정",
+      "sourceUrl": "https://popga.co.kr/popup/6296",
+      "sourceGrade": "verified-directory",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-07-30"
     }
