@@ -53,8 +53,28 @@ CREATE TABLE IF NOT EXISTS auth_attempts (
   window_started INTEGER NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS email_verifications (
+  email TEXT PRIMARY KEY,
+  code_hash TEXT NOT NULL,
+  expires_at INTEGER NOT NULL,
+  attempts INTEGER NOT NULL DEFAULT 0,
+  created_at INTEGER NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS service_settings (
+  setting_key TEXT PRIMARY KEY,
+  setting_value TEXT NOT NULL,
+  updated_at INTEGER NOT NULL
+);
+
+INSERT OR IGNORE INTO service_settings (setting_key, setting_value, updated_at) VALUES
+  ('daily_review_limit', '5', 0),
+  ('restaurant_daily_review_limit', '1', 0),
+  ('duplicate_review_block', '1', 0);
+
 CREATE INDEX IF NOT EXISTS reviews_restaurant_idx ON reviews(restaurant_id, created_at DESC);
 CREATE INDEX IF NOT EXISTS reviews_user_idx ON reviews(user_id, created_at DESC);
 CREATE INDEX IF NOT EXISTS admin_logs_created_idx ON admin_logs(created_at DESC);
 CREATE INDEX IF NOT EXISTS activity_events_created_idx ON activity_events(created_at DESC);
 CREATE INDEX IF NOT EXISTS activity_events_type_idx ON activity_events(event_type, created_at DESC);
+CREATE UNIQUE INDEX IF NOT EXISTS users_name_unique_idx ON users(name COLLATE NOCASE);

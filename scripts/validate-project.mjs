@@ -45,4 +45,16 @@ if (!Number.isFinite(regions.total) || !Array.isArray(regions.regions) || !regio
   process.exitCode = 1;
 }
 
+const popupData = JSON.parse(readFileSync('data/popups.json', 'utf8'));
+if (!Array.isArray(popupData.popups) || !Array.isArray(popupData.sources)) {
+  console.error('popups.json 구조가 올바르지 않습니다.');
+  process.exitCode = 1;
+}
+for (const popup of popupData.popups) {
+  if (!popup.id || !popup.name || !/^\d{4}-\d{2}-\d{2}$/.test(popup.startDate) || !/^\d{4}-\d{2}-\d{2}$/.test(popup.endDate)) {
+    console.error(`팝업 필수값이 올바르지 않습니다: ${popup.id || popup.name || '알 수 없음'}`);
+    process.exitCode = 1;
+  }
+}
+
 if (!process.exitCode) console.log(`코드 ${javascript.length}개와 데이터 계약 검증 통과`);

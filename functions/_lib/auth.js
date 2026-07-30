@@ -23,6 +23,10 @@ async function hmac(secret, value) {
   return new Uint8Array(await crypto.subtle.sign('HMAC', key, encoder.encode(value)));
 }
 
+export async function hashToken(secret, value) {
+  return bytesToBase64Url(await hmac(secret, value));
+}
+
 export async function createSession(secret, payload, maxAge = 60 * 60 * 24 * 7) {
   const data = bytesToBase64Url(encoder.encode(JSON.stringify({ ...payload, exp: Math.floor(Date.now() / 1000) + maxAge })));
   const signature = bytesToBase64Url(await hmac(secret, data));

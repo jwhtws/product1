@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <script>
     if (location.hostname === 'jwhtws.github.io') {
-      location.replace(`https://product1-84t.pages.dev${location.pathname.replace(/^\/product1/, '')}${location.search}${location.hash}`);
+      location.replace(`https://mukdang.com${location.pathname.replace(/^\/product1/, '')}${location.search}${location.hash}`);
     }
   </script>
   <meta name="description" content="먹당(mukdang.com)에서 전국 맛집을 빠르게 검색하고 사용자 리뷰와 주소를 확인하세요.">
@@ -14,29 +14,41 @@
   <meta property="og:site_name" content="mukdang.com">
   <meta property="og:title" content="mukdang.com | 먹당·전국 맛집 검색">
   <meta property="og:description" content="전국 맛집을 빠르게 검색하고 사용자 리뷰와 주소를 확인하세요.">
-  <meta property="og:url" content="https://product1-84t.pages.dev/">
-  <link rel="canonical" href="https://product1-84t.pages.dev/">
+  <meta property="og:url" content="https://mukdang.com/">
+  <link rel="canonical" href="https://mukdang.com/">
   <title>mukdang.com | 먹당·전국 맛집 검색</title>
-  <link rel="stylesheet" href="styles.css?v=20260729-24">
+  <link rel="stylesheet" href="styles.css?v=20260730-9">
   <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"WebSite","name":"mukdang.com","alternateName":["먹당","묵당"],"url":"https://product1-84t.pages.dev/","description":"전국 맛집 검색과 사용자 리뷰 서비스"}
+    {"@context":"https://schema.org","@type":"WebSite","name":"mukdang.com","alternateName":["먹당","묵당"],"url":"https://mukdang.com/","description":"전국 맛집 검색과 사용자 리뷰 서비스"}
   </script>
 </head>
 <body>
   <header class="topbar shell">
     <a class="brand" href="./" data-home aria-label="mukdang.com 메인 화면">mukdang<span>.com</span></a>
-    <nav class="nav" aria-label="주요 메뉴">
-      <a href="#discover">맛집 찾기</a>
-      <button type="button" data-open-panel="saved">저장 목록 <span id="saved-count">0</span></button>
-      <button type="button" data-open-panel="mypage">마이페이지</button>
-    </nav>
-    <button id="auth-button" class="ghost" type="button">로그인</button>
+    <div class="header-menu">
+      <button id="menu-toggle" class="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="header-nav">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="header-nav" class="nav" aria-label="주요 메뉴" hidden>
+        <button id="auth-button" type="button">로그인</button>
+        <button type="button" data-open-panel="mypage">마이페이지</button>
+        <a href="#discover">맛집 찾기</a>
+        <button type="button" data-open-panel="saved">저장 목록 <span id="saved-count">0</span></button>
+        <button type="button" data-open-panel="contact">고객 문의</button>
+        <button id="menu-logout" type="button" hidden>로그아웃</button>
+        <button id="menu-delete-account" class="menu-danger" type="button" hidden>회원탈퇴</button>
+      </nav>
+    </div>
   </header>
 
   <main id="home">
     <section class="hero shell">
-      <h1><a class="hero-home" href="./" data-home>mukdang</a></h1>
-      <p class="hero-description">Eating place</p>
+      <h1 class="hero-slogan">광고 말고, 진짜 맛집.</h1>
+      <p class="hero-description">솔직한 리뷰로 오늘 먹고 싶은 곳을 편안하게 찾아보세요.</p>
+      <div class="search-mode" role="tablist" aria-label="검색 대상">
+        <button class="active" type="button" role="tab" aria-selected="true" data-search-mode="restaurant">식당</button>
+        <button type="button" role="tab" aria-selected="false" data-search-mode="popup">푸드 팝업</button>
+      </div>
       <div class="search-wrap">
         <div class="searchbar">
           <input id="search-input" type="search" placeholder="식당명, 지역, 음식 종류 검색" autocomplete="off" aria-label="맛집 검색">
@@ -44,17 +56,8 @@
         </div>
         <div id="suggestions" class="suggestions" role="listbox"></div>
       </div>
-      <div class="quick-categories" aria-label="인기 검색">
-        <span>인기 검색</span><button class="active" data-category="">전체</button><button data-category="한식">한식</button><button data-category="일식">일식</button>
-        <button data-category="중국식">중식</button><button data-category="경양식">양식</button><button data-category="카페">카페</button><button data-category="분식">분식</button>
-      </div>
-    </section>
-
-    <section class="trust-strip">
-      <div class="shell trust-grid">
-        <div><span>검색 지역</span><strong>전국 16개 시·도</strong></div>
-        <div><span>식당 정보</span><strong>공공데이터 기반</strong></div>
-        <div><span>나만의 맛집</span><strong>간편 저장</strong></div>
+      <div id="popular-quick-searches" class="quick-categories" aria-label="최근 30일 인기 검색 식당">
+        <span>인기 검색</span><small>검색 순위를 집계하고 있습니다.</small>
       </div>
     </section>
 
@@ -78,9 +81,9 @@
       <p class="source-note">공공데이터포털 전국 일반음식점 표준데이터 기준 · 추천 점수와 가격대는 탐색 편의를 위한 데모 값입니다.</p>
     </section>
 
-    <section class="home-rankings shell" aria-label="먹당 인기 정보">
+    <section id="home-rankings" class="home-rankings shell" aria-label="먹당 인기 정보">
       <article class="ranking-panel">
-        <h2>인기검색</h2>
+        <h2>인기 검색 식당 <small>최근 30일</small></h2>
         <div id="popular-searches" class="ranking-list"></div>
       </article>
       <article class="ranking-panel">
@@ -118,6 +121,6 @@
     <article class="modal panel-modal"><button class="modal-close" data-close type="button" aria-label="닫기">×</button><div id="panel-content"></div></article>
   </div>
   <div id="toast" class="toast" role="status"></div>
-  <script type="module" src="app.js?v=20260729-11"></script>
+  <script type="module" src="app.js?v=20260730-19"></script>
 </body>
 </html>

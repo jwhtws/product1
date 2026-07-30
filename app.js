@@ -10,14 +10,17 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
   const state = {
     preview: [], all: [], fullLoaded: false, loading: null, page: 1,
     filters: { query: '', region: '', category: '', price: '', sort: 'recommend' },
-    current: null, progress: '', searchSession: null, serverUser: null, serverReviews: new Map(),
-    serverSaved: [], serverLists: {}, serverProfile: {}
+    current: null, progress: '', searchSession: null, searchMode: 'restaurant', serverUser: null, serverReviews: new Map(),
+    serverSaved: [], serverLists: {}, serverProfile: {}, reviewSummaries: new Map(), popularRestaurantCount: 0, popularRestaurants: [],
+    popups: [], popupUpdatedAt: null
   };
   const store = {
     get(key, fallback) { try { return JSON.parse(localStorage.getItem(`meokdang-${key}`)) ?? fallback; } catch { return fallback; } },
     set(key, value) { localStorage.setItem(`meokdang-${key}`, JSON.stringify(value)); }
   };
   const escapeHtml = value => String(value ?? '').replace(/[&<>'"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[c]));
+  const apiOrigin = location.hostname.endsWith('github.io') ? 'https://mukdang.com' : '';
+  const publicApiUrl = path => `${apiOrigin}${path}`;
   const searchKey = value => String(value ?? '').toLocaleLowerCase('ko-KR').replace(/[^\p{L}\p{N}]+/gu, '');
   const initials = value => [...String(value ?? '')].map(char => {
     const code = char.charCodeAt(0) - 0xac00;
@@ -80,6 +83,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
   const searchPageCache = new Map();
   const containsManifestCache = new Map();
   const placeDetailCache = new Map();
+  let foodSearchCache;
   async function loadRegion(region) {
     const files = region.files || [region.file];
     const responses = await Promise.all(files.map(file => fetch(`${fileUrl(file)}?v=20260728-4`)));
@@ -120,6 +124,79 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     for (let i = 0; i < 20; i += 1) groups.forEach(group => group[i] && mixed.push(group[i]));
     return mixed;
   }
+  async function loadPopularRestaurants() {
+    let baseline = [];
+    try {
+      const baselineResponse = await fetch('data/popular-restaurants.json?v=20260730-1');
+      if (baselineResponse.ok) baseline = enrich(await baselineResponse.json());
+    } catch {}
+    if (baseline.length) {
+      state.popularRestaurantCount = baseline.length;
+      state.popularRestaurants = baseline;
+      state.preview = baseline.concat(state.preview.filter(restaurant =>
+        !baseline.some(candidate => samePlace(candidate, restaurant))
+      ));
+      state.all = state.preview;
+    }
+    try {
+      const response = await fetch(publicApiUrl('/api/events?type=popular-searches'));
+      if (!response.ok) return;
+      const data = await response.json();
+      const searches = Array.isArray(data.searches) ? data.searches.slice(0, 14) : [];
+      if (!searches.length) return;
+      const candidates = await Promise.all(searches.map(async search => {
+        const query = searchKey(search.query);
+        const local = state.preview.find(restaurant => relevance(query, restaurant) >= 850);
+        if (local) return { ...local, searchCount: search.count };
+        try {
+          const placeResponse = await fetch(publicApiUrl(`/api/search?q=${encodeURIComponent(search.query)}`));
+          if (!placeResponse.ok) return null;
+          const placeData = await placeResponse.json();
+          const match = (placeData.results || []).find(restaurant => relevance(query, restaurant) >= 850);
+          return match ? { ...match, searchCount: search.count } : null;
+        } catch {
+          return null;
+        }
+      }));
+      const popular = enrich(candidates.filter(Boolean)).filter((restaurant, index, rows) =>
+        rows.findIndex(candidate => samePlace(candidate, restaurant)) === index
+      );
+      if (!popular.length) return;
+      state.popularRestaurantCount = popular.length;
+      state.popularRestaurants = popular;
+      state.preview = popular.concat(state.preview.filter(restaurant =>
+        !popular.some(candidate => samePlace(candidate, restaurant))
+      ));
+      state.all = state.preview;
+    } catch {
+      // 검색 통계를 사용할 수 없을 때는 검증된 공공데이터 미리보기를 유지한다.
+    }
+  }
+  async function mergeFoodSearchResults(query) {
+    if (!foodSearchCache) {
+      foodSearchCache = fetch('data/food-search.json?v=20260730-1')
+        .then(response => response.ok ? response.json() : {});
+    }
+    const index = await foodSearchCache;
+    const queryKey = searchKey(query);
+    const equivalentFoods = [
+      ['돈가스', '돈까스'],
+      ['초밥', '스시'],
+      ['짜장면', '자장면']
+    ];
+    const queryFoods = new Set([queryKey]);
+    equivalentFoods.forEach(group => {
+      if (group.some(food => searchKey(food) === queryKey)) group.forEach(food => queryFoods.add(searchKey(food)));
+    });
+    const matchedFoods = Object.keys(index).filter(food => {
+      const foodKey = searchKey(food);
+      return [...queryFoods].some(candidate => candidate === foodKey || candidate.includes(foodKey) || foodKey.includes(candidate));
+    });
+    if (!matchedFoods.length) return;
+    const foodRows = enrich(matchedFoods.flatMap(food => index[food] || []));
+    const existing = new Set(state.all.map(idOf));
+    state.all = foodRows.filter(row => !existing.has(idOf(row))).concat(state.all);
+  }
   function toast(message) {
     const el = $('#toast'); el.textContent = message; el.classList.add('show');
     clearTimeout(toast.timer); toast.timer = setTimeout(() => el.classList.remove('show'), 2200);
@@ -141,14 +218,18 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
   function isSaved(r) { return savedIds().includes(idOf(r)); }
   function updateSavedCount() { $('#saved-count').textContent = savedIds().length; }
   function renderHomeRankings() {
-    const searches = [
-      ['한식', '든든한 한 끼'], ['카페', '커피와 디저트'], ['일식', '깔끔한 메뉴'],
-      ['중식', '오늘의 별미'], ['분식', '가볍게 즐기기']
-    ];
+    const searches = state.popularRestaurants.slice(0, 5);
+    const measuredSearches = state.popularRestaurants.filter(restaurant => Number(restaurant.searchCount) > 0).slice(0, 5);
+    const quickSearchEl = $('#popular-quick-searches');
+    if (quickSearchEl) quickSearchEl.innerHTML = measuredSearches.length
+      ? `<span>인기 검색</span>${measuredSearches.map(restaurant =>
+          `<button type="button" data-quick-restaurant="${escapeHtml(restaurant.name)}">${escapeHtml(restaurant.name)}</button>`
+        ).join('')}`
+      : '<span>인기 검색</span><small>검색 순위를 집계하고 있습니다.</small>';
     const searchEl = $('#popular-searches');
-    if (searchEl) searchEl.innerHTML = searches.map(([name, note], index) =>
-      `<button type="button" data-ranking-category="${name}"><b>${index + 1}</b><strong>${name}</strong><span>${note}</span></button>`
-    ).join('');
+    if (searchEl) searchEl.innerHTML = searches.length ? searches.map((restaurant, index) =>
+      `<button type="button" data-ranking-restaurant="${escapeHtml(restaurant.name)}"><b>${index + 1}</b><strong>${escapeHtml(restaurant.name)}</strong><span>${Number(restaurant.searchCount || 0).toLocaleString('ko-KR')}회 검색</span></button>`
+    ).join('') : '<p class="ranking-empty">검색 순위를 집계하고 있습니다.</p>';
 
     const allReviews = [...state.serverReviews.values()].flat();
     const reviewRows = (rows, emptyText) => rows.length ? rows.slice(0, 5).map((review, index) =>
@@ -157,10 +238,13 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     const latestEl = $('#latest-reviews'), popularEl = $('#popular-reviews');
     if (latestEl) latestEl.innerHTML = reviewRows([...allReviews].sort((a, b) => b.createdAt - a.createdAt), '아직 등록된 리뷰가 없습니다.');
     if (popularEl) popularEl.innerHTML = reviewRows([...allReviews].sort((a, b) => (b.helpful || 0) - (a.helpful || 0) || b.rating - a.rating), '유용한 리뷰가 곧 표시됩니다.');
-    $$('[data-ranking-category]').forEach(button => button.addEventListener('click', () => {
-      const category = button.dataset.rankingCategory;
-      const target = $$('[data-category]').find(item => item.dataset.category === category);
-      target?.click();
+    $$('[data-ranking-restaurant]').forEach(button => button.addEventListener('click', () => {
+      $('#search-input').value = button.dataset.rankingRestaurant;
+      applySearch();
+    }));
+    $$('[data-quick-restaurant]').forEach(button => button.addEventListener('click', () => {
+      $('#search-input').value = button.dataset.quickRestaurant;
+      applySearch();
     }));
   }
   async function toggleSaved(r) {
@@ -238,7 +322,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     const target = $('#building-site-plan');
     if (!target) return;
     try {
-      const response = await fetch(`/api/building?address=${encodeURIComponent(naverMapAddress(address))}`);
+      const response = await fetch(publicApiUrl(`/api/building?address=${encodeURIComponent(naverMapAddress(address))}`));
       if (!response.ok) throw Error(String(response.status));
       const data = await response.json();
       if (!data.found || !data.geometry) throw Error('not found');
@@ -291,6 +375,8 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     rows.sort((a, b) => {
       if (q && b.relevance !== a.relevance) return b.relevance - a.relevance;
       const left = a.restaurant, right = b.restaurant;
+      if (q && (right.liveSearchRank || 0) !== (left.liveSearchRank || 0)) return (right.liveSearchRank || 0) - (left.liveSearchRank || 0);
+      if (q && (right.foodSearchRank || 0) !== (left.foodSearchRank || 0)) return (right.foodSearchRank || 0) - (left.foodSearchRank || 0);
       if (f.sort === 'name') return left.name.localeCompare(right.name, 'ko');
       if (f.sort === 'rating') return right.rating - left.rating;
       if (f.sort === 'tenure') {
@@ -301,6 +387,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
         if (Number.isFinite(rightDate)) return 1;
       }
       return (Number(isSaved(right)) - Number(isSaved(left))) ||
+        ((right.searchCount || 0) - (left.searchCount || 0)) ||
         ((popularity[idOf(right)] || 0) - (popularity[idOf(left)] || 0)) ||
         right.rating - left.rating;
     });
@@ -308,20 +395,83 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
   }
   function card(r, index) {
     const permit = permitDateInfo(r.permitDate);
+    const reviewSummary = state.reviewSummaries.get(idOf(r));
+    const ratingText = reviewSummary?.count ? `★ ${reviewSummary.average.toFixed(1)}` : '리뷰 없음';
+    const ratingDetail = reviewSummary?.count ? `리뷰 ${reviewSummary.count}개` : '첫 리뷰를 기다려요';
     return `<article class="restaurant-card" tabindex="0" data-index="${index}" data-place-key="${Math.abs(hash(idOf(r)))}">
       <div class="listing-photo neutral-photo" data-place-photo data-category-label="${escapeHtml(categoryLabel(r))}"><span data-photo-badge>${escapeHtml(categoryLabel(r))} · 사진 없음</span></div>
       <div class="card-body"><div class="card-top"><span class="category">${escapeHtml(r.category || '음식점')}</span><button class="save ${isSaved(r) ? 'active' : ''}" data-save="${index}" type="button" aria-label="저장">♡</button></div>
       <div class="card-identity"><h3>${escapeHtml(r.name)}</h3></div><p class="address">${escapeHtml(r.address)}</p>
       <div class="tenure-badge"><span>영업 기간</span><strong>${permit ? escapeHtml(permit.duration) : '인허가일 확인 중'}</strong></div>
-      <div class="score"><strong>★ ${r.rating}</strong><span>${priceText(r.price)}</span></div>
+      <div class="score"><strong>${ratingText}</strong><span>${ratingDetail}</span><span>${priceText(r.price)}</span></div>
       <div class="tags"><span>${permit ? '인허가일 확인됨' : '영업 정보 확인'}</span></div></div>
     </article>`;
   }
+  const koreaToday = () => new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit'
+  }).format(new Date());
+  function popupStatus(popup) {
+    const today = koreaToday();
+    if (popup.endDate < today) return { key: 'ended', label: '영업종료' };
+    if (popup.startDate > today) return { key: 'upcoming', label: '오픈 예정' };
+    return { key: 'open', label: '영업중' };
+  }
+  function popupRows() {
+    const query = searchKey($('#search-input').value);
+    const order = { open: 0, upcoming: 1, ended: 2 };
+    return state.popups.filter(popup =>
+      !query || searchKey(`${popup.name} ${popup.venue} ${popup.address}`).includes(query)
+    ).sort((left, right) => {
+      const statusDiff = order[popupStatus(left).key] - order[popupStatus(right).key];
+      if (statusDiff) return statusDiff;
+      return popupStatus(left).key === 'ended'
+        ? right.endDate.localeCompare(left.endDate)
+        : left.startDate.localeCompare(right.startDate);
+    });
+  }
+  function popupCard(popup) {
+    const status = popupStatus(popup);
+    const image = popup.imageUrl
+      ? ` style="background-image:url('${escapeHtml(popup.imageUrl).replace(/'/g, '&#39;')}')"`
+      : '';
+    return `<article class="restaurant-card popup-card popup-${status.key}">
+      <a class="popup-source-link" href="${escapeHtml(popup.sourceUrl)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(popup.name)} 공식 정보 보기">
+        <div class="listing-photo ${image ? '' : 'neutral-photo'}"${image}><span class="popup-status">${status.label}</span></div>
+        <div class="card-body">
+          <div class="card-top"><span class="category">${escapeHtml(popup.venueType || '쇼핑시설')}</span><span class="verified-source">공식 확인</span></div>
+          <div class="card-identity"><h3>${escapeHtml(popup.name)}</h3></div>
+          <p class="address">${escapeHtml(popup.venue)}${popup.address && popup.address !== popup.venue ? ` · ${escapeHtml(popup.address)}` : ''}</p>
+          <div class="popup-period"><span>${escapeHtml(popup.startDate)}</span><b>—</b><span>${escapeHtml(popup.endDate)}</span></div>
+          <div class="tags"><span>${escapeHtml(popup.sourceName)}</span><span>마지막 확인 ${escapeHtml(popup.lastSeenAt)}</span></div>
+        </div>
+      </a>
+    </article>`;
+  }
   function render() {
+    const popupMode = state.searchMode === 'popup';
+    $('#filters').hidden = popupMode;
+    $('#filter-toggle').hidden = popupMode;
+    $('#popular-quick-searches').hidden = popupMode;
+    $('#home-rankings').hidden = popupMode;
+    $('.source-note').hidden = popupMode;
+    if (popupMode) {
+      const query = $('#search-input').value.trim();
+      const rows = popupRows();
+      const openCount = rows.filter(popup => popupStatus(popup).key === 'open').length;
+      $('#discover-title').textContent = query ? `‘${query}’ 푸드 팝업` : '푸드 팝업 일정';
+      $('#result-summary').textContent = `${rows.length.toLocaleString('ko-KR')}곳 · 현재 영업중 ${openCount.toLocaleString('ko-KR')}곳`;
+      $('#app-state').textContent = state.popupUpdatedAt
+        ? `공식 쇼핑시설 일정 기준 · ${new Date(state.popupUpdatedAt).toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' })} 갱신`
+        : '공식 팝업 일정을 불러오는 중입니다.';
+      $('#restaurant-grid').innerHTML = rows.map(popupCard).join('') ||
+        '<div class="empty popup-empty"><strong>조건에 맞는 푸드 팝업이 없습니다.</strong><p>공식 일정이 확인되면 매일 자동으로 추가됩니다.</p></div>';
+      $('#pager').innerHTML = '';
+      return;
+    }
     const rows = filtered(), pages = Math.max(1, Math.ceil(rows.length / pageSize));
     state.page = Math.min(state.page, pages);
     const start = (state.page - 1) * pageSize, shown = rows.slice(start, start + pageSize);
-    $('#result-summary').textContent = `${rows.length.toLocaleString('ko-KR')}곳 · ${state.fullLoaded ? '전국 전체 데이터' : '빠른 미리보기'}`;
+    $('#result-summary').textContent = `${rows.length.toLocaleString('ko-KR')}곳 · ${!state.filters.query && state.popularRestaurantCount ? '최근 30일 실제 검색량 순' : state.fullLoaded ? '전국 전체 데이터' : '빠른 미리보기'}`;
     $('#discover-title').textContent = state.filters.query ? '검색 결과' : '지금 많이 찾는 식당';
     $('#app-state').textContent = state.progress || (state.fullLoaded ? '카드를 눌러 상세 정보와 리뷰를 확인하세요.' : '검색하거나 필터를 적용하면 전국 전체 데이터를 불러옵니다.');
     $('#restaurant-grid').innerHTML = shown.map((r, i) => card(r, start + i)).join('') || '<div class="empty">조건에 맞는 식당이 없습니다.<br><button id="empty-reset" class="ghost">필터 초기화</button></div>';
@@ -347,7 +497,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
   async function fetchPlaceDetails(r) {
     const key = idOf(r);
     if (!placeDetailCache.has(key)) {
-      placeDetailCache.set(key, fetch(`/api/restaurant?name=${encodeURIComponent(r.name)}&address=${encodeURIComponent(naverMapAddress(r.address))}`)
+      placeDetailCache.set(key, fetch(publicApiUrl(`/api/restaurant?name=${encodeURIComponent(r.name)}&address=${encodeURIComponent(naverMapAddress(r.address))}`))
         .then(async response => {
           if (!response.ok) throw Error(`장소 상세정보 ${response.status}`);
           return response.json();
@@ -411,7 +561,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
   async function loadSearchResults(targetCount = pageSize) {
     const session = state.searchSession;
     if (!session || session.done) return;
-    while ((filtered().length < targetCount || session.containsPages.length) && !session.done) {
+    while (filtered().length < targetCount && !session.done) {
       let pageKey = '';
       if (!session.prefixLoaded && session.nextPage <= session.endPage) {
         pageKey = `${session.bucket}-${session.nextPage}`;
@@ -481,15 +631,19 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
       prefixLoaded: false,
       done: !entry && !containsPages.length
     };
-    await loadSearchResults(pageSize);
+    await loadSearchResults(pageSize * 5);
   }
   async function mergeLiveSearchResults(query) {
     if (searchKey(query).length < 2) return;
     try {
-      const response = await fetch(`/api/search?q=${encodeURIComponent(query)}`);
+      const response = await fetch(publicApiUrl(`/api/search?q=${encodeURIComponent(query)}`));
       if (!response.ok) return;
       const data = await response.json();
-      const liveRows = enrich(Array.isArray(data.results) ? data.results : []);
+      const results = Array.isArray(data.results) ? data.results : [];
+      const liveRows = enrich(results.map((restaurant, index) => ({
+        ...restaurant,
+        liveSearchRank: results.length - index
+      })));
       const uniqueLiveRows = liveRows.filter((row, index, rows) =>
         !state.all.some(existing => samePlace(existing, row)) &&
         rows.findIndex(candidate => samePlace(candidate, row)) === index);
@@ -513,6 +667,11 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
   }
   async function applySearch() {
     state.filters.query = $('#search-input').value.trim(); state.page = 1; $('#suggestions').innerHTML = '';
+    if (state.searchMode === 'popup') {
+      render();
+      $('#discover').scrollIntoView({ behavior: 'instant', block: 'start' });
+      return;
+    }
     const button = $('#search-button');
     button.disabled = true;
     button.textContent = '찾는 중';
@@ -523,6 +682,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
       await ready;
       if (!window.__MEOKDANG_REGIONS__?.length) throw Error('검색 데이터 초기화 실패');
       await startSearch(state.filters.query);
+      await mergeFoodSearchResults(state.filters.query);
       await mergeLiveSearchResults(state.filters.query);
       recordPopularity(filtered().slice(0, 10));
       if (state.filters.query) api('/api/events', { method: 'POST', body: JSON.stringify({ type: 'search', detail: state.filters.query }) }).catch(() => {});
@@ -563,6 +723,15 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
   function renderSuggestions() {
     const q = searchKey($('#search-input').value);
     if (!q) { $('#suggestions').innerHTML = ''; return; }
+    if (state.searchMode === 'popup') {
+      const matches = popupRows().slice(0, 7);
+      $('#suggestions').innerHTML = matches.map((popup, index) => `<button data-popup-suggestion="${index}" type="button"><strong>${escapeHtml(popup.name)}</strong><small>${escapeHtml(popup.venue)}</small></button>`).join('');
+      $$('[data-popup-suggestion]').forEach(el => el.addEventListener('click', () => {
+        $('#search-input').value = matches[Number(el.dataset.popupSuggestion)].name;
+        applySearch();
+      }));
+      return;
+    }
     const matches = state.all.filter(r => searchKey(`${r.name} ${r.address}`).includes(q)).slice(0, 7);
     $('#suggestions').innerHTML = matches.map((r, i) => `<button data-suggestion="${i}" type="button"><strong>${escapeHtml(r.name)}</strong><small>${escapeHtml(r.address)}</small></button>`).join('');
     $$('[data-suggestion]').forEach(el => el.addEventListener('click', () => { $('#search-input').value = matches[Number(el.dataset.suggestion)].name; applySearch(); }));
@@ -575,12 +744,14 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     try {
       const data = await api(`/api/reviews?restaurant=${encodeURIComponent(idOf(r))}`);
       state.serverReviews.set(idOf(r), data.reviews);
+      if (data.summary) state.reviewSummaries.set(idOf(r), data.summary);
       if (state.current === r) {
         const count = $('#review-count');
         if (count) count.textContent = data.reviews.length;
         renderReviews();
       }
       renderHomeRankings();
+      render();
     } catch {
       if (state.current === r && $('#review-list')) $('#review-list').innerHTML = '<p class="empty-reviews">리뷰 서버에 연결할 수 없습니다.</p>';
     }
@@ -611,7 +782,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
       <div class="map-links"><a target="_blank" rel="noopener" href="https://map.naver.com/p/search/${naverQuery}" title="${escapeHtml(naverAddress)} 주소로 검색">네이버 지도 · 주소검색</a><a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${fullQuery}">Google 지도</a></div></section>
       <section class="review-section"><div class="review-head"><h3>사용자 리뷰 <small id="review-count">${reviews.length}</small></h3><select id="review-sort"><option value="latest">최신순</option><option value="rating">별점순</option><option value="helpful">유용한순</option></select></div>
       <div class="trust-note">✓ 리뷰는 Cloudflare 서버에 안전하게 저장되며 관리자 검토를 거칩니다.</div>
-      <form id="review-form"><label>별점<select name="rating"><option value="5">5점</option><option value="4">4점</option><option value="3">3점</option><option value="2">2점</option><option value="1">1점</option></select></label><textarea name="text" required maxlength="500" placeholder="직접 경험한 맛과 분위기를 알려주세요."></textarea><label class="photo-label">사진 첨부<input name="photo" type="file" accept="image/*"></label><button class="primary" type="submit">리뷰 등록</button></form><div id="review-list"></div></section></div>`;
+      <form id="review-form"><label>별점<select name="rating"><option value="5">5점</option><option value="4">4점</option><option value="3">3점</option><option value="2">2점</option><option value="1">1점</option></select></label><textarea name="text" required maxlength="500" placeholder="직접 경험한 맛과 분위기를 알려주세요."></textarea><label class="photo-label">사진 첨부<input name="photo" type="file" accept="image/*"></label><button class="primary" type="submit">리뷰 등록</button><p id="review-submit-status" class="review-submit-status" aria-live="polite"></p></form><div id="review-list"></div></section></div>`;
     $('#detail-modal').classList.add('open'); document.body.classList.add('locked');
     $('#detail-save').addEventListener('click', async () => { await toggleSaved(r); openDetail(r); });
     $('#add-list').addEventListener('click', () => openListPicker(r));
@@ -662,33 +833,88 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
   function renderReviews() {
     const sort = $('#review-sort')?.value || 'latest';
     const reviews = [...reviewsFor(state.current)].sort((a, b) => sort === 'rating' ? b.rating - a.rating : sort === 'helpful' ? b.helpful - a.helpful : b.createdAt - a.createdAt);
-    $('#review-list').innerHTML = reviews.length ? reviews.map(r => `<article class="review"><div><strong>${escapeHtml(r.author)}</strong><span class="verified">솔직 리뷰</span><time>${new Date(r.createdAt).toLocaleDateString('ko-KR')}</time></div><b>${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</b><p>${escapeHtml(r.text)}</p><button data-helpful="${r.id}" type="button">유용해요 ${r.helpful || 0}</button></article>`).join('') : '<p class="empty-reviews">첫 번째 솔직한 리뷰를 남겨주세요.</p>';
+    $('#review-list').innerHTML = reviews.length ? reviews.map(r => `<article class="review"><div><strong>${escapeHtml(r.author)}</strong><span class="verified">솔직 리뷰</span><time>${new Date(r.createdAt).toLocaleDateString('ko-KR')}</time></div><b>${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</b><p>${escapeHtml(r.text)}</p><div class="review-actions"><button data-helpful="${r.id}" type="button">유용해요 ${r.helpful || 0}</button>${r.canEdit ? `<button data-edit-review="${r.id}" type="button">수정</button><button class="review-delete" data-delete-review="${r.id}" type="button">삭제</button>` : ''}</div></article>`).join('') : '<p class="empty-reviews">첫 번째 솔직한 리뷰를 남겨주세요.</p>';
     $$('[data-helpful]').forEach(el => el.addEventListener('click', async () => {
       try {
         await api(`/api/reviews/${el.dataset.helpful}/helpful`, { method: 'POST' });
         await loadReviews(state.current);
       } catch (error) { toast(error.message); }
     }));
+    $$('[data-edit-review]').forEach(el => el.addEventListener('click', async () => {
+      const review = reviews.find(item => item.id === Number(el.dataset.editReview));
+      if (!review) return;
+      const text = prompt('리뷰 내용을 수정해 주세요.', review.text);
+      if (text === null) return;
+      const ratingInput = prompt('별점을 1~5 사이 숫자로 입력해 주세요.', String(review.rating));
+      if (ratingInput === null) return;
+      try {
+        await api(`/api/reviews/${review.id}`, {
+          method: 'PATCH',
+          body: JSON.stringify({ text, rating: Number(ratingInput) })
+        });
+        await loadReviews(state.current);
+        render();
+        toast('리뷰를 수정했습니다.');
+      } catch (error) { toast(error.message); }
+    }));
+    $$('[data-delete-review]').forEach(el => el.addEventListener('click', async () => {
+      if (!confirm('이 리뷰를 삭제할까요? 삭제 후에는 되돌릴 수 없습니다.')) return;
+      try {
+        await api(`/api/reviews/${el.dataset.deleteReview}`, { method: 'DELETE' });
+        await loadReviews(state.current);
+        render();
+        toast('리뷰를 삭제했습니다.');
+      } catch (error) { toast(error.message); }
+    }));
   }
   async function submitReview(event) {
     event.preventDefault();
     if (!state.serverUser) { toast('리뷰를 작성하려면 로그인해 주세요.'); return openPanel('auth'); }
-    const data = new FormData(event.currentTarget);
+    const form = event.currentTarget;
+    const button = form.querySelector('button[type="submit"]');
+    const status = $('#review-submit-status');
+    const restaurant = state.current;
+    const data = new FormData(form);
+    button.disabled = true;
+    button.textContent = '등록 중…';
+    status.textContent = '';
     try {
-      await api('/api/reviews', { method: 'POST', body: JSON.stringify({
-        restaurantId: idOf(state.current), restaurantName: state.current.name,
+      const result = await api('/api/reviews', { method: 'POST', body: JSON.stringify({
+        restaurantId: idOf(restaurant), restaurantName: restaurant.name,
         rating: Number(data.get('rating')), text: data.get('text')
       }) });
-      event.currentTarget.reset();
-      await loadReviews(state.current);
+      const key = idOf(restaurant);
+      const currentReviews = state.serverReviews.get(key) || [];
+      state.serverReviews.set(key, [result.review, ...currentReviews.filter(review => review.id !== result.review.id)]);
+      form.reset();
+      if (state.current === restaurant) {
+        $('#review-count').textContent = state.serverReviews.get(key).length;
+        renderReviews();
+      }
+      renderHomeRankings();
+      status.textContent = '✓ 등록 완료';
       toast('리뷰를 서버에 등록했어요.');
-    } catch (error) { toast(error.message); }
+      loadReviews(restaurant).catch(() => {});
+    } catch (error) {
+      status.textContent = error.message;
+      toast(error.message);
+    } finally {
+      button.disabled = false;
+      button.textContent = '리뷰 등록';
+    }
   }
 
   function closeModals() { $$('.modal-backdrop').forEach(x => x.classList.remove('open')); document.body.classList.remove('locked'); }
   function openPanel(type) {
     const content = $('#panel-content'); $('#panel-modal').classList.add('open'); document.body.classList.add('locked');
-    if (type === 'saved') renderSavedPanel(content); else if (type === 'mypage') renderMyPage(content); else renderAuth(content);
+    if (type === 'saved') renderSavedPanel(content);
+    else if (type === 'mypage') renderMyPage(content);
+    else if (type === 'contact') renderContactPanel(content);
+    else renderAuth(content);
+  }
+  function renderContactPanel(content) {
+    const email = state.serverUser?.email || '';
+    content.innerHTML = `<h2 id="panel-title">고객 문의</h2><p class="panel-lead">이용 중 불편한 점이나 식당 정보 수정 요청을 보내주세요.</p><form class="profile-form customer-contact" action="https://formspree.io/f/mojgyppj" method="POST"><input type="hidden" name="_subject" value="먹당 고객 문의"><label>문의 유형<select name="문의유형" required><option value="">선택해 주세요</option><option>식당 정보 수정</option><option>리뷰 신고</option><option>회원·로그인</option><option>서비스 오류</option><option>기타</option></select></label><label>답변받을 이메일<input type="email" name="email" required autocomplete="email" value="${escapeHtml(email)}" placeholder="me@example.com"></label><label>문의 내용<textarea name="문의내용" required rows="6" maxlength="2000" placeholder="문의 내용을 자세히 적어주세요."></textarea></label><button class="primary" type="submit">문의 보내기</button></form><p class="fine">보내주신 내용은 문의 답변 목적으로만 사용됩니다.</p>`;
   }
   function renderSavedPanel(content) {
     const saved = savedIds(), rows = state.all.filter(r => saved.includes(idOf(r)));
@@ -721,30 +947,64 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     if (state.serverUser) {
       content.innerHTML = `<h2 id="panel-title">로그인됨</h2><p class="panel-lead"><strong>${escapeHtml(state.serverUser.name)}</strong><br>${escapeHtml(state.serverUser.email)}</p><button id="server-logout" class="ghost">로그아웃</button>`;
       $('#server-logout').addEventListener('click', async () => {
-        await api('/api/auth/logout', { method: 'POST' });
-        state.serverUser = null; $('#auth-button').textContent = '로그인'; closeModals(); toast('로그아웃했습니다.');
+        await logout();
       });
       return;
     }
-    content.innerHTML = `<h2 id="panel-title">mukdang.com 계정</h2><p class="panel-lead">서버 계정으로 로그인하면 리뷰를 안전하게 저장할 수 있어요.</p><form id="email-login" class="profile-form"><label>이메일<input name="email" type="email" required autocomplete="email" placeholder="me@example.com"></label><label>비밀번호<input name="password" type="password" required minlength="8" autocomplete="current-password" placeholder="8자 이상"></label><label>이름 <small>신규 가입 시 필요</small><input name="name" autocomplete="name" placeholder="mukdang.com 사용자"></label><div class="row-actions"><button class="primary" name="action" value="login">로그인</button><button class="ghost" name="action" value="register">회원가입</button></div></form><p class="fine">비밀번호는 서버에서 단방향 암호화되어 저장됩니다.</p>`;
-    $('#email-login').addEventListener('submit', async event => {
+    content.innerHTML = `<h2 id="panel-title">먹당 시작하기</h2><p class="panel-lead">솔직한 리뷰를 남기고 나만의 맛집을 저장하세요.</p><div class="auth-tabs" role="tablist"><button class="active" type="button" data-auth-tab="login">로그인</button><button type="button" data-auth-tab="register">회원가입</button></div><form id="email-login" class="profile-form auth-form" data-auth-form="login"><label>이메일<input name="email" type="email" required autocomplete="email" placeholder="me@example.com"></label><label>비밀번호<input name="password" type="password" required minlength="8" autocomplete="current-password" placeholder="8자 이상"></label><button class="primary" type="submit">로그인</button></form><form id="email-register" class="profile-form auth-form" data-auth-form="register" hidden><label><span>이메일</span><span class="email-code-row"><input name="email" type="email" required autocomplete="email" placeholder="me@example.com"><button id="request-email-code" class="ghost" type="button">인증번호 받기</button></span></label><p id="email-code-status" class="email-code-status" aria-live="polite"></p><label>인증번호<input name="code" inputmode="numeric" required minlength="4" maxlength="4" pattern="[0-9]{4}" autocomplete="one-time-code" placeholder="4자리 숫자"></label><label>닉네임 <small>문자, 숫자만 가능</small><input name="name" required maxlength="40" pattern="[\\p{L}\\p{N}]+" title="문자와 숫자만 입력해 주세요." autocomplete="nickname" placeholder="먹당에서 사용할 이름"></label><label>비밀번호<input name="password" type="password" required minlength="8" autocomplete="new-password" placeholder="8자 이상"></label><button class="primary" type="submit">인증하고 회원가입</button></form><p class="fine">인증번호는 10분 동안 유효합니다. 가입하면 이용약관 및 개인정보 처리방침에 동의하게 됩니다.</p>`;
+    $$('[data-auth-tab]').forEach(tab => tab.addEventListener('click', () => {
+      const mode = tab.dataset.authTab;
+      $$('[data-auth-tab]').forEach(button => button.classList.toggle('active', button === tab));
+      $$('[data-auth-form]').forEach(form => { form.hidden = form.dataset.authForm !== mode; });
+      content.querySelector(`[data-auth-form="${mode}"] input`)?.focus();
+    }));
+    $('#request-email-code').addEventListener('click', async event => {
+      const button = event.currentTarget;
+      const emailInput = $('#email-register input[name="email"]');
+      if (!emailInput.reportValidity()) return;
+      button.disabled = true;
+      button.textContent = '보내는 중';
+      try {
+        const result = await api('/api/auth/request-code', {
+          method: 'POST',
+          body: JSON.stringify({ email: emailInput.value })
+        });
+        $('#email-code-status').textContent = result.message;
+        $('#email-register input[name="code"]').focus();
+        let seconds = 60;
+        const timer = setInterval(() => {
+          seconds -= 1;
+          button.textContent = seconds > 0 ? `${seconds}초 후 재전송` : '인증번호 다시 받기';
+          if (seconds <= 0) {
+            clearInterval(timer);
+            button.disabled = false;
+          }
+        }, 1000);
+      } catch (error) {
+        button.disabled = false;
+        button.textContent = '인증번호 받기';
+        $('#email-code-status').textContent = error.message;
+        toast(error.message);
+      }
+    });
+    $$('.auth-form').forEach(form => form.addEventListener('submit', async event => {
       event.preventDefault();
       const data = new FormData(event.currentTarget);
-      const action = event.submitter?.value || 'login';
+      const action = event.currentTarget.dataset.authForm;
       try {
         const result = await api(`/api/auth/${action}`, { method: 'POST', body: JSON.stringify({
-          email: data.get('email'), password: data.get('password'), name: data.get('name')
+          email: data.get('email'), password: data.get('password'), name: data.get('name'), code: data.get('code')
         }) });
         state.serverUser = result.user;
         await loadUserData();
-        $('#auth-button').textContent = result.user.name;
+        syncAuthMenu();
         closeModals(); toast(action === 'register' ? '회원가입했습니다.' : '로그인했습니다.');
       } catch (error) { toast(error.message); }
-    });
+    }));
   }
   function renderMyPage(content) {
     const profile = state.serverUser || { name: '게스트', badge: '새싹 리뷰어' }, reviewCount = [...state.serverReviews.values()].flat().filter(review => review.author === profile.name).length;
-    content.innerHTML = `<h2 id="panel-title">마이페이지</h2><div class="profile-card"><div class="avatar">${escapeHtml(profile.name[0])}</div><div><strong>${escapeHtml(profile.name)}</strong><span>${escapeHtml(profile.badge || '새싹 리뷰어')}</span></div></div><div class="my-stats"><div><strong>${reviewCount}</strong><span>리뷰</span></div><div><strong>${savedIds().length}</strong><span>저장</span></div></div><h3>프로필 설정</h3><form id="profile-form" class="profile-form"><label>닉네임<input name="name" value="${escapeHtml(profile.name)}"></label><label>소개<textarea name="bio" placeholder="나의 맛집 취향을 소개해 보세요.">${escapeHtml(profile.bio || '')}</textarea></label><label>선호 음식<select name="favorite"><option value="">선택 안 함</option>${['한식','일식','중식','양식','분식'].map(food => `<option ${profile.favorite === food ? 'selected' : ''}>${food}</option>`).join('')}</select></label><button class="primary">프로필 저장</button></form><h3>내 리뷰 관리</h3><p class="trust-note">작성한 리뷰 ${reviewCount}개 · 저장 데이터는 계정과 함께 서버에 보관됩니다.</p>`;
+    content.innerHTML = `<h2 id="panel-title">마이페이지</h2><div class="profile-card"><div class="avatar">${escapeHtml(profile.name[0])}</div><div><strong>${escapeHtml(profile.name)}</strong><span>${escapeHtml(profile.badge || '새싹 리뷰어')}</span></div></div><div class="my-stats"><div><strong>${reviewCount}</strong><span>리뷰</span></div><div><strong>${savedIds().length}</strong><span>저장</span></div></div><h3>프로필 설정</h3><form id="profile-form" class="profile-form"><label>닉네임 <small>문자, 숫자만 가능</small><input name="name" required maxlength="40" pattern="[\\p{L}\\p{N}]+" title="문자와 숫자만 입력해 주세요." value="${escapeHtml(profile.name)}"></label><label>소개<textarea name="bio" placeholder="나의 맛집 취향을 소개해 보세요.">${escapeHtml(profile.bio || '')}</textarea></label><label>선호 음식<select name="favorite"><option value="">선택 안 함</option>${['한식','일식','중식','양식','분식'].map(food => `<option ${profile.favorite === food ? 'selected' : ''}>${food}</option>`).join('')}</select></label><button class="primary">프로필 저장</button></form><h3>내 리뷰 관리</h3><p class="trust-note">작성한 리뷰 ${reviewCount}개 · 저장 데이터는 계정과 함께 서버에 보관됩니다.</p>`;
     $('#profile-form').addEventListener('submit', async event => {
       event.preventDefault();
       if (!state.serverUser) return toast('로그인이 필요합니다.');
@@ -761,35 +1021,128 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
   }
 
   $('#search-button').addEventListener('click', applySearch);
+  $$('[data-search-mode]').forEach(button => button.addEventListener('click', () => {
+    state.searchMode = button.dataset.searchMode;
+    $$('[data-search-mode]').forEach(item => {
+      const active = item === button;
+      item.classList.toggle('active', active);
+      item.setAttribute('aria-selected', String(active));
+    });
+    $('#search-input').value = '';
+    $('#search-input').placeholder = state.searchMode === 'popup'
+      ? '팝업 이름, 브랜드, 지역 검색'
+      : '식당명, 지역, 음식 종류 검색';
+    $('#search-input').setAttribute('aria-label', state.searchMode === 'popup' ? '푸드 팝업 검색' : '맛집 검색');
+    render();
+  }));
   $('#search-input').addEventListener('input', () => { renderSuggestions(); prefetchSearch($('#search-input').value).catch(() => {}); });
   $('#search-input').addEventListener('keydown', e => e.key === 'Enter' && applySearch());
   $$('#filters select').forEach(el => el.addEventListener('change', applyFilters));
   $('#filter-reset').addEventListener('click', resetFilters);
   $('#filter-toggle').addEventListener('click', () => $('#filters').classList.toggle('open'));
-  $$('[data-category]').forEach(el => el.addEventListener('click', () => { $$('[data-category]').forEach(button => button.classList.toggle('active', button === el)); $('#category-filter').value = el.dataset.category; state.filters.category = el.dataset.category; state.searchSession = null; state.all = state.preview; render(); $('#discover').scrollIntoView(); }));
+  const menuToggle = $('#menu-toggle'), headerNav = $('#header-nav');
+  function syncAuthMenu() {
+    $('#auth-button').textContent = state.serverUser?.name || '로그인';
+    $('#menu-logout').hidden = !state.serverUser;
+    $('#menu-delete-account').hidden = !state.serverUser;
+  }
+  async function logout() {
+    try {
+      await api('/api/auth/logout', { method: 'POST' });
+      state.serverUser = null;
+      state.serverSaved = [];
+      state.serverLists = {};
+      state.serverProfile = {};
+      syncAuthMenu();
+      updateSavedCount();
+      closeModals();
+      toast('로그아웃했습니다.');
+    } catch (error) {
+      toast(error.message);
+    }
+  }
+  function closeHeaderMenu() {
+    headerNav.hidden = true;
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.setAttribute('aria-label', '메뉴 열기');
+  }
+  menuToggle.addEventListener('click', event => {
+    event.stopPropagation();
+    const willOpen = headerNav.hidden;
+    headerNav.hidden = !willOpen;
+    menuToggle.setAttribute('aria-expanded', String(willOpen));
+    menuToggle.setAttribute('aria-label', willOpen ? '메뉴 닫기' : '메뉴 열기');
+  });
+  headerNav.addEventListener('click', event => {
+    if (event.target.closest('a, button')) closeHeaderMenu();
+  });
+  document.addEventListener('click', event => {
+    if (!event.target.closest('.header-menu')) closeHeaderMenu();
+  });
   $$('[data-open-panel]').forEach(el => el.addEventListener('click', () => openPanel(el.dataset.openPanel)));
   $('#auth-button').addEventListener('click', () => openPanel('auth'));
+  $('#menu-logout').addEventListener('click', logout);
+  $('#menu-delete-account').addEventListener('click', async () => {
+    if (!state.serverUser) return;
+    const password = prompt('회원탈퇴를 확인하려면 현재 비밀번호를 입력해 주세요.');
+    if (password === null) return;
+    if (!password) return toast('비밀번호를 입력해 주세요.');
+    if (!confirm('회원정보, 작성한 리뷰와 저장 목록이 삭제됩니다. 정말 탈퇴할까요?')) return;
+    try {
+      await api('/api/auth/delete-account', {
+        method: 'POST',
+        body: JSON.stringify({ password })
+      });
+      state.serverUser = null;
+      state.serverSaved = [];
+      state.serverLists = {};
+      state.serverProfile = {};
+      syncAuthMenu();
+      updateSavedCount();
+      closeModals();
+      toast('회원탈퇴가 완료되었습니다.');
+    } catch (error) {
+      toast(error.message);
+    }
+  });
   $$('[data-close]').forEach(el => el.addEventListener('click', closeModals));
   $$('.modal-backdrop').forEach(el => el.addEventListener('click', e => e.target === el && closeModals()));
-  document.addEventListener('keydown', e => e.key === 'Escape' && closeModals());
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      closeHeaderMenu();
+      closeModals();
+    }
+  });
   $$('[data-home]').forEach(link => link.addEventListener('click', event => {
     event.preventDefault();
     window.location.assign(new URL('./', window.location.href));
   }));
 
   try {
-    const [regionsResponse, previewsResponse] = await Promise.all([fetch('data/restaurants/regions.json?v=20260728-4'), fetch('data/restaurants/previews.json?v=20260728-4')]);
+    const [regionsResponse, previewsResponse, popupsResponse] = await Promise.all([
+      fetch('data/restaurants/regions.json?v=20260728-4'),
+      fetch('data/restaurants/previews.json?v=20260728-4'),
+      fetch('data/popups.json?v=20260730-1')
+    ]);
     if (!regionsResponse.ok || !previewsResponse.ok) throw Error('목록 로드 실패');
     const regionData = await regionsResponse.json(), previews = await previewsResponse.json();
+    if (popupsResponse.ok) {
+      const popupData = await popupsResponse.json();
+      state.popups = Array.isArray(popupData.popups) ? popupData.popups : [];
+      state.popupUpdatedAt = popupData.updatedAt;
+    }
     window.__MEOKDANG_REGIONS__ = regionData.regions; state.preview = enrich(mixPreviews(previews)); state.all = state.preview;
+    await loadPopularRestaurants();
     regionData.regions.forEach(r => $('#region-filter').insertAdjacentHTML('beforeend', `<option value="${escapeHtml(r.name)}">${escapeHtml(r.name)}</option>`));
     [...new Set(state.preview.map(r => r.category).filter(Boolean))].sort().forEach(c => $('#category-filter').insertAdjacentHTML('beforeend', `<option>${escapeHtml(c)}</option>`));
     try {
       const auth = await api('/api/auth/me');
       state.serverUser = auth.user;
-      if (state.serverUser) { await loadUserData(); $('#auth-button').textContent = state.serverUser.name; }
+      if (state.serverUser) await loadUserData();
+      syncAuthMenu();
       const latest = await api('/api/reviews');
       state.serverReviews.set('__latest__', latest.reviews);
+      state.reviewSummaries = new Map(Object.entries(latest.summaries || {}));
     } catch {}
     updateSavedCount(); render();
     $('#search-button').disabled = false;

@@ -7,7 +7,8 @@ const json = (data, status = 200, cache = `public, max-age=${CACHE_SECONDS}`) =>
     status,
     headers: {
       'content-type': 'application/json; charset=utf-8',
-      'cache-control': cache
+      'cache-control': cache,
+      'access-control-allow-origin': '*'
     }
   });
 
@@ -17,6 +18,12 @@ const cleanAddress = value => String(value || '')
   .replace(/\s*\([^)]*\)\s*/g, ' ')
   .replace(/\s+/g, ' ')
   .trim();
+const vworldHeaders = domain => ({
+  accept: 'application/json',
+  origin: `https://${domain}`,
+  referer: `https://${domain}/`,
+  'user-agent': 'Mozilla/5.0 (compatible; Mukdang/1.0; +https://mukdang.com)'
+});
 
 export async function onRequestGet(context) {
   const url = new URL(context.request.url);
@@ -32,9 +39,10 @@ export async function onRequestGet(context) {
   if (cached) return cached;
 
   try {
-    const point = await geocode(address, context.env.VWORLD_API_KEY);
+    const vworldDomain = context.env.VWORLD_DOMAIN || 'mukdang.com';
+    const point = await geocode(address, context.env.VWORLD_API_KEY, vworldDomain);
     if (!point) return json({ found: false, reason: 'geocode' }, 404, 'public, max-age=86400');
-    const feature = await findBuilding(point, context.env.VWORLD_API_KEY, url.hostname);
+    const feature = await findBuilding(point, context.env.VWORLD_API_KEY, vworldDomain);
     if (!feature) return json({ found: false, point, reason: 'building' }, 404, 'public, max-age=86400');
 
     const properties = feature.properties || {};
@@ -64,7 +72,7 @@ export async function onRequestGet(context) {
   }
 }
 
-async function geocode(address, key) {
+async function geocode(address, key, domain) {
   let lastError = '';
   for (const type of ['road', 'parcel']) {
     const params = new URLSearchParams({
@@ -77,9 +85,10 @@ async function geocode(address, key) {
       simple: 'false',
       format: 'json',
       type,
-      key
+      key,
+      domain
     });
-    const response = await fetch(`${VWORLD_ADDRESS}?${params}`);
+    const response = await fetch(`${VWORLD_ADDRESS}?${params}`, { headers: vworldHeaders(domain) });
     if (!response.ok) {
       lastError = `HTTP ${response.status}`;
       continue;
@@ -114,7 +123,7 @@ async function findBuilding(point, key, domain) {
       size: '10',
       page: '1'
     });
-    const response = await fetch(`${VWORLD_DATA}?${params}`);
+    const response = await fetch(`${VWORLD_DATA}?${params}`, { headers: vworldHeaders(domain) });
     if (!response.ok) continue;
     const data = await response.json();
     const features = data?.response?.result?.featureCollection?.features || [];

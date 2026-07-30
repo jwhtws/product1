@@ -1,0 +1,49 @@
+name: 푸드 팝업 매일 갱신
+
+on:
+  schedule:
+    - cron: "20 21 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: food-popup-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: 공식 쇼핑시설 푸드 팝업 갱신
+        run: node scripts/refresh-food-popups.mjs
+      - name: 데이터 및 코드 검증
+        run: npm run check
+      - name: 변경사항 반영
+        run: |
+          if git diff --quiet data/popups.json; then
+            echo "팝업 변경 없음" >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/popups.json
+          git commit -m "data: 푸드 팝업 일간 갱신"
+          git push
+      - name: 실패 알림
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.create({
+              ...context.repo,
+              title: '푸드 팝업 일일 갱신 실패',
+              body: `실행 로그: https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`
+            });

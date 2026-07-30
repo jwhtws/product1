@@ -6,7 +6,11 @@ const ONE_DAY = 60 * 60 * 24;
 const json = (data, status = 200, cache = `public, max-age=${ONE_DAY}`) =>
   new Response(JSON.stringify(data), {
     status,
-    headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': cache }
+    headers: {
+      'content-type': 'application/json; charset=utf-8',
+      'cache-control': cache,
+      'access-control-allow-origin': '*'
+    }
   });
 const stripHtml = value => String(value || '')
   .replace(/<[^>]*>/g, '')

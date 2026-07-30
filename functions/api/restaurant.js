@@ -6,7 +6,11 @@ const THIRTY_DAYS = 60 * 60 * 24 * 30;
 const json = (data, status = 200, cache = `public, max-age=${THIRTY_DAYS}`) =>
   new Response(JSON.stringify(data), {
     status,
-    headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': cache }
+    headers: {
+      'content-type': 'application/json; charset=utf-8',
+      'cache-control': cache,
+      'access-control-allow-origin': '*'
+    }
   });
 
 export async function onRequestGet(context) {
