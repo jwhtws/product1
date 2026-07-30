@@ -10,7 +10,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
   const state = {
     preview: [], all: [], fullLoaded: false, loading: null, page: 1,
     filters: { query: '', region: '', category: '', price: '', sort: 'recommend' },
-    current: null, progress: '', searchSession: null, searchMode: 'restaurant', serverUser: null, serverReviews: new Map(),
+    current: null, progress: '', searchSession: null, searchMode: 'popup', serverUser: null, serverReviews: new Map(),
     serverSaved: [], serverLists: {}, serverProfile: {}, reviewSummaries: new Map(), popularRestaurantCount: 0, popularRestaurants: [],
     popups: [], popupUpdatedAt: null
   };
@@ -784,6 +784,9 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
       <div class="trust-note">✓ 리뷰는 Cloudflare 서버에 안전하게 저장되며 관리자 검토를 거칩니다.</div>
       <form id="review-form"><label>별점<select name="rating"><option value="5">5점</option><option value="4">4점</option><option value="3">3점</option><option value="2">2점</option><option value="1">1점</option></select></label><textarea name="text" required maxlength="500" placeholder="직접 경험한 맛과 분위기를 알려주세요."></textarea><label class="photo-label">사진 첨부<input name="photo" type="file" accept="image/*"></label><button class="primary" type="submit">리뷰 등록</button><p id="review-submit-status" class="review-submit-status" aria-live="polite"></p></form><div id="review-list"></div></section></div>`;
     $('#detail-modal').classList.add('open'); document.body.classList.add('locked');
+    if (history.state?.mukdangLayer !== 'detail') {
+      history.pushState({ ...history.state, mukdang: true, mukdangLayer: 'detail', searchMode: state.searchMode }, '');
+    }
     $('#detail-save').addEventListener('click', async () => { await toggleSaved(r); openDetail(r); });
     $('#add-list').addEventListener('click', () => openListPicker(r));
     $('#share').addEventListener('click', () => shareText(`${r.name} · ${r.address}`));
@@ -904,13 +907,23 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     }
   }
 
-  function closeModals() { $$('.modal-backdrop').forEach(x => x.classList.remove('open')); document.body.classList.remove('locked'); }
+  function closeModalsDirect() {
+    $$('.modal-backdrop').forEach(x => x.classList.remove('open'));
+    document.body.classList.remove('locked');
+  }
+  function closeModals() {
+    if (history.state?.mukdangLayer) history.back();
+    else closeModalsDirect();
+  }
   function openPanel(type) {
     const content = $('#panel-content'); $('#panel-modal').classList.add('open'); document.body.classList.add('locked');
     if (type === 'saved') renderSavedPanel(content);
     else if (type === 'mypage') renderMyPage(content);
     else if (type === 'contact') renderContactPanel(content);
     else renderAuth(content);
+    if (history.state?.mukdangLayer !== 'panel') {
+      history.pushState({ ...history.state, mukdang: true, mukdangLayer: 'panel', panelType: type, searchMode: state.searchMode }, '');
+    }
   }
   function renderContactPanel(content) {
     const email = state.serverUser?.email || '';
@@ -1020,11 +1033,10 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     try { if (navigator.share) await navigator.share({ title: 'mukdang.com', text, url: location.href }); else { await navigator.clipboard.writeText(`${text}\n${location.href}`); toast('공유 내용을 복사했어요.'); } } catch {}
   }
 
-  $('#search-button').addEventListener('click', applySearch);
-  $$('[data-search-mode]').forEach(button => button.addEventListener('click', () => {
-    state.searchMode = button.dataset.searchMode;
+  function selectSearchMode(mode, pushHistory = true) {
+    state.searchMode = mode;
     $$('[data-search-mode]').forEach(item => {
-      const active = item === button;
+      const active = item.dataset.searchMode === mode;
       item.classList.toggle('active', active);
       item.setAttribute('aria-selected', String(active));
     });
@@ -1034,7 +1046,12 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
       : '식당명, 지역, 음식 종류 검색';
     $('#search-input').setAttribute('aria-label', state.searchMode === 'popup' ? '푸드 팝업 검색' : '맛집 검색');
     render();
-  }));
+    if (pushHistory && history.state?.searchMode !== mode) {
+      history.pushState({ ...history.state, mukdang: true, mukdangLayer: null, searchMode: mode }, '');
+    }
+  }
+  $('#search-button').addEventListener('click', applySearch);
+  $$('[data-search-mode]').forEach(button => button.addEventListener('click', () => selectSearchMode(button.dataset.searchMode)));
   $('#search-input').addEventListener('input', () => { renderSuggestions(); prefetchSearch($('#search-input').value).catch(() => {}); });
   $('#search-input').addEventListener('keydown', e => e.key === 'Enter' && applySearch());
   $$('#filters select').forEach(el => el.addEventListener('change', applyFilters));
@@ -1113,6 +1130,20 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
       closeModals();
     }
   });
+  window.addEventListener('popstate', event => {
+    const next = event.state;
+    closeModalsDirect();
+    closeHeaderMenu();
+    if (!next?.mukdang) return;
+    if (next.searchMode && next.searchMode !== state.searchMode) selectSearchMode(next.searchMode, false);
+    if (next.mukdangLayer === 'detail' && state.current) {
+      $('#detail-modal').classList.add('open');
+      document.body.classList.add('locked');
+    } else if (next.mukdangLayer === 'panel') {
+      $('#panel-modal').classList.add('open');
+      document.body.classList.add('locked');
+    }
+  });
   $$('[data-home]').forEach(link => link.addEventListener('click', event => {
     event.preventDefault();
     window.location.assign(new URL('./', window.location.href));
@@ -1145,6 +1176,10 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
       state.reviewSummaries = new Map(Object.entries(latest.summaries || {}));
     } catch {}
     updateSavedCount(); render();
+    if (!history.state?.mukdang) {
+      history.replaceState({ mukdang: true, mukdangLayer: null, searchMode: 'popup', entryGuard: true }, '');
+      history.pushState({ mukdang: true, mukdangLayer: null, searchMode: 'popup' }, '');
+    }
     $('#search-button').disabled = false;
     $('#search-button').textContent = '검색';
     resolveReady();

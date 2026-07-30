@@ -46,12 +46,12 @@
       <h1 class="hero-slogan">광고 말고, 진짜 맛집.</h1>
       <p class="hero-description">솔직한 리뷰로 오늘 먹고 싶은 곳을 편안하게 찾아보세요.</p>
       <div class="search-mode" role="tablist" aria-label="검색 대상">
-        <button class="active" type="button" role="tab" aria-selected="true" data-search-mode="restaurant">식당</button>
-        <button type="button" role="tab" aria-selected="false" data-search-mode="popup">푸드 팝업</button>
+        <button type="button" role="tab" aria-selected="false" data-search-mode="restaurant">식당</button>
+        <button class="active" type="button" role="tab" aria-selected="true" data-search-mode="popup">푸드 팝업</button>
       </div>
       <div class="search-wrap">
         <div class="searchbar">
-          <input id="search-input" type="search" placeholder="식당명, 지역, 음식 종류 검색" autocomplete="off" aria-label="맛집 검색">
+          <input id="search-input" type="search" placeholder="팝업 이름, 브랜드, 지역 검색" autocomplete="off" aria-label="푸드 팝업 검색">
           <button id="search-button" class="primary" type="button" disabled>준비 중</button>
         </div>
         <div id="suggestions" class="suggestions" role="listbox"></div>
@@ -121,6 +121,6 @@
     <article class="modal panel-modal"><button class="modal-close" data-close type="button" aria-label="닫기">×</button><div id="panel-content"></div></article>
   </div>
   <div id="toast" class="toast" role="status"></div>
-  <script type="module" src="app.js?v=20260730-19"></script>
+  <script type="module" src="app.js?v=20260730-20"></script>
 </body>
 </html>
