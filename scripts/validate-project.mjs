@@ -62,4 +62,19 @@ for (const popup of popupData.popups) {
   }
 }
 
+const popupVenues = JSON.parse(readFileSync('data/popup-venues.json', 'utf8'));
+if (!Number.isFinite(popupVenues.total) || popupVenues.total !== popupVenues.venues?.length || popupVenues.total < 100) {
+  console.error('popup-venues.json 전국 시설 원장이 올바르지 않습니다.');
+  process.exitCode = 1;
+}
+if (popupVenues.venues.some(venue => !venue.id || !venue.name || !venue.kind || !venue.region)) {
+  console.error('popup-venues.json 시설 필수값이 누락됐습니다.');
+  process.exitCode = 1;
+}
+const popupCoverage = JSON.parse(readFileSync('data/popup-coverage.json', 'utf8'));
+if (popupCoverage.summary?.nationwideVenueTotal !== popupVenues.total || popupCoverage.venues?.length !== popupVenues.total) {
+  console.error('popup-coverage.json이 전국 시설 원장과 일치하지 않습니다.');
+  process.exitCode = 1;
+}
+
 if (!process.exitCode) console.log(`코드 ${javascript.length}개와 데이터 계약 검증 통과`);

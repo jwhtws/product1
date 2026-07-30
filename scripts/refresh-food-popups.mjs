@@ -175,6 +175,15 @@ async function existingRows() {
   }
 }
 
+async function popupVenueRegistry() {
+  try {
+    const data = JSON.parse(await readFile('data/popup-venues.json', 'utf8'));
+    return Array.isArray(data.venues) ? data.venues : [];
+  } catch {
+    return [];
+  }
+}
+
 async function collectCuratedOfficial() {
   const rows = JSON.parse(await readFile('data/curated-popups.json', 'utf8'));
   return rows.map(([id, name, venue, startDate, endDate, sourceUrl]) => ({
@@ -195,6 +204,7 @@ async function collectCuratedOfficial() {
 }
 
 const previous = await existingRows();
+const venueRegistry = await popupVenueRegistry();
 const collectors = [
   ['현대백화점·현대아울렛', collectHyundai],
   ['신세계백화점', collectShinsegae],
@@ -222,11 +232,49 @@ const popups = [...merged.values()]
   .filter(row => row.id && row.name && row.startDate && row.endDate)
   .sort((left, right) => right.startDate.localeCompare(left.startDate) || left.name.localeCompare(right.name, 'ko'));
 
+const collectorCoverageRules = [
+  ['현대백화점·현대아울렛', /(현대백화점|현대아울렛|현대프리미엄아울렛|더현대)/u],
+  ['신세계백화점', /신세계백화점/u],
+  ['스타필드·스타필드시티', /스타필드/u],
+  ['롯데백화점·롯데아울렛·롯데몰', /(롯데백화점|롯데아울렛|롯데프리미엄아울렛|롯데몰)/u]
+];
+const venueCoverage = venueRegistry.map(venue => {
+  const collector = collectorCoverageRules.find(([, pattern]) => pattern.test(venue.name))?.[0] || '';
+  const matchedPopups = popups.filter(popup => {
+    const venueName = clean(popup.venue).replace(/\s+/g, '');
+    const registryName = clean(venue.name).replace(/\s+/g, '');
+    return venueName && registryName && (venueName.includes(registryName) || registryName.includes(venueName));
+  }).length;
+  return {
+    venueId: venue.id,
+    name: venue.name,
+    region: venue.region,
+    kind: venue.kind,
+    collector: collector || null,
+    status: matchedPopups ? 'verified-popup-found' : collector ? 'official-feed-monitored' : 'collector-needed',
+    popupCount: matchedPopups
+  };
+});
+const coverageSummary = {
+  nationwideVenueTotal: venueCoverage.length,
+  verifiedPopupVenueCount: venueCoverage.filter(item => item.popupCount > 0).length,
+  officialFeedMonitoredCount: venueCoverage.filter(item => item.collector).length,
+  collectorNeededCount: venueCoverage.filter(item => !item.collector).length,
+  disclaimer: '시설 원장은 전국 탐색 범위이며, 화면에는 공식 출처에서 시작일과 종료일을 확인한 푸드팝업만 표시합니다.'
+};
+
 await mkdir(dirname(outputPath), { recursive: true });
 await writeFile(outputPath, `${JSON.stringify({
   updatedAt: new Date().toISOString(),
   sources,
+  coverage: coverageSummary,
   popups
 }, null, 2)}\n`);
+await writeFile('data/popup-coverage.json', `${JSON.stringify({
+  updatedAt: new Date().toISOString(),
+  summary: coverageSummary,
+  venues: venueCoverage
+}, null, 2)}\n`);
 console.log(`푸드 팝업 ${collected.length}건 확인 · 누적 ${popups.length}건 보존 · 기준일 ${today}`);
+console.log(`전국 시설 ${venueCoverage.length}곳 · 공식 피드 감시 ${coverageSummary.officialFeedMonitoredCount}곳 · 수집기 추가 필요 ${coverageSummary.collectorNeededCount}곳`);
 for (const source of sources) console.log(`- ${source.name}: ${source.status} (${source.count}건)`);
