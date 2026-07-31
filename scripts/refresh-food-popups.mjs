@@ -195,6 +195,38 @@ const akStores = [
   ['12', '금정'], ['13', '홍대'], ['14', '기흥'], ['15', '광명'], ['16', '금정'], ['17', '세종']
 ];
 
+const galleriaStores = [
+  ['luxuryhall', '갤러리아 명품관'], ['timeworld', '갤러리아 타임월드'],
+  ['gwanggyo', '갤러리아 광교'], ['centercity', '갤러리아 센터시티'], ['jinju', '갤러리아 진주']
+];
+
+async function collectGalleria() {
+  const rows = [];
+  for (const [slug, venue] of galleriaStores) {
+    const listUrl = `https://dept.galleria.co.kr/store-info/${slug}/promotion/shopping-news`;
+    const listResponse = await fetch(listUrl, { headers: { 'user-agent': 'mukdang-popup-indexer/1.0 (+https://mukdang.com)' }, signal: AbortSignal.timeout(20_000) });
+    if (!listResponse.ok) throw new Error(`갤러리아 ${venue} 응답 ${listResponse.status}`);
+    const listHtml = await listResponse.text();
+    const links = [...new Set([...listHtml.matchAll(new RegExp(`href="(/store-info/${slug}/promotion/shopping-news/c\\d+)"`, 'gi'))].map(match => match[1]))].slice(0, 80);
+    for (const path of links) {
+      const response = await fetch(`https://dept.galleria.co.kr${path}`, { headers: { 'user-agent': 'mukdang-popup-indexer/1.0 (+https://mukdang.com)' }, signal: AbortSignal.timeout(20_000) });
+      if (!response.ok) continue;
+      const html = await response.text();
+      const title = decodeHtml(html.match(/<article[\s\S]*?<h1 class="page-title">([\s\S]*?)<\/h1>/i)?.[1]);
+      const text = decodeHtml(html);
+      if (!title || !/팝업|POP[\s-]*UP/iu.test(text) || !foodWords.test(`${title} ${text}`)) continue;
+      const dates = [...text.matchAll(/(\d{4})\.(\d{2})\.(\d{2})[^\d]{0,12}(?:~|∼|-|–)[^\d]{0,4}(\d{4})\.(\d{2})\.(\d{2})/g)];
+      if (!dates.length) continue;
+      const date = dates[0];
+      const startDate = `${date[1]}-${date[2]}-${date[3]}`, endDate = `${date[4]}-${date[5]}-${date[6]}`;
+      if (new Date(`${endDate}T23:59:59+09:00`) < keepSince) continue;
+      const imageUrl = html.match(/<div class="article-detail">[\s\S]*?<img src="([^"]+)/i)?.[1] || '';
+      rows.push({ id: `galleria:${slug}:${path.split('/').pop()}`, name: title, venue, venueType: '백화점', address: venue, startDate, endDate, imageUrl, sourceName: '갤러리아 공식 쇼핑뉴스', sourceUrl: `https://dept.galleria.co.kr${path}`, sourceGrade: 'official', firstSeenAt: today, lastSeenAt: today });
+    }
+  }
+  return rows;
+}
+
 async function collectAkPlaza() {
   const rows = [];
   for (const [storeCode, storeName] of akStores) {
@@ -307,6 +339,7 @@ const collectors = [
   ['현대백화점·현대아울렛', collectHyundai],
   ['신세계백화점', collectShinsegae],
   ['스타필드·스타필드시티', collectStarfield],
+  ['갤러리아', collectGalleria],
   ['AK플라자', collectAkPlaza],
   ['롯데 공식 블로그', collectLotteOfficialBlog],
   ['롯데백화점·롯데아울렛·롯데몰', collectCuratedOfficial]
