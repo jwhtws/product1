@@ -628,6 +628,16 @@ const coverageSummary = {
   collectorNeededCount: venueCoverage.filter(item => !item.collector || !activeCollectorNames.has(item.collector)).length,
   disclaimer: '시설 원장은 전국 탐색 범위이며, 화면에는 공식 출처에서 시작일과 종료일을 확인한 푸드팝업만 표시합니다.'
 };
+const statusCounts = Object.fromEntries(['active', 'upcoming', 'ended'].map(status => [status, popups.filter(row => row.status === status).length]));
+const collectionStats = {
+  rawCollected: rawCollectedCount,
+  parsed: collected.length,
+  beforeDedup: beforeDedupCount,
+  duplicateRemoved: duplicateRemovedCount,
+  final: popups.length,
+  status: statusCounts,
+  failedSources: collectorErrors.map(source => source.name)
+};
 
 await mkdir(dirname(outputPath), { recursive: true });
 await writeFile(outputPath, `${JSON.stringify({
@@ -642,16 +652,6 @@ await writeFile('data/popup-coverage.json', `${JSON.stringify({
   summary: coverageSummary,
   venues: venueCoverage
 }, null, 2)}\n`);
-const statusCounts = Object.fromEntries(['active', 'upcoming', 'ended'].map(status => [status, popups.filter(row => row.status === status).length]));
-const collectionStats = {
-  rawCollected: rawCollectedCount,
-  parsed: collected.length,
-  beforeDedup: beforeDedupCount,
-  duplicateRemoved: duplicateRemovedCount,
-  final: popups.length,
-  status: statusCounts,
-  failedSources: collectorErrors.map(source => source.name)
-};
 console.log(`원본 수집 ${rawCollectedCount}건 · 파싱 성공 ${collected.length}건 · ID 병합 ${beforeDedupCount}건 · 중복 제거 ${duplicateRemovedCount}건 · 최종 ${popups.length}건`);
 console.log(`상태 집계 active=${statusCounts.active} upcoming=${statusCounts.upcoming} ended=${statusCounts.ended}`);
 console.log(`전국 시설 ${venueCoverage.length}곳 · 공식 피드 감시 ${coverageSummary.officialFeedMonitoredCount}곳 · 수집기 추가 필요 ${coverageSummary.collectorNeededCount}곳`);
