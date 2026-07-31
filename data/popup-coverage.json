@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-07-30T12:39:31.250Z",
+  "updatedAt": "2026-07-31T07:04:31.292Z",
   "summary": {
     "nationwideVenueTotal": 1029,
-    "verifiedPopupVenueCount": 28,
+    "verifiedPopupVenueCount": 18,
     "officialFeedMonitoredCount": 88,
     "collectorNeededCount": 941,
     "disclaimer": "시설 원장은 전국 탐색 범위이며, 화면에는 공식 출처에서 시작일과 종료일을 확인한 푸드팝업만 표시합니다."
@@ -1544,8 +1544,8 @@
       "region": "경기도",
       "kind": "복합쇼핑몰",
       "collector": "스타필드·스타필드시티",
-      "status": "verified-popup-found",
-      "popupCount": 1
+      "status": "official-feed-monitored",
+      "popupCount": 0
     },
     {
       "venueId": "localdata:4040000:2016404015507500002",
@@ -1553,8 +1553,8 @@
       "region": "경기도",
       "kind": "복합쇼핑몰",
       "collector": "스타필드·스타필드시티",
-      "status": "verified-popup-found",
-      "popupCount": 1
+      "status": "official-feed-monitored",
+      "popupCount": 0
     },
     {
       "venueId": "localdata:3860000:2019386053307500001",
@@ -2166,7 +2166,7 @@
       "kind": "백화점",
       "collector": "현대백화점·현대아울렛",
       "status": "verified-popup-found",
-      "popupCount": 2
+      "popupCount": 5
     },
     {
       "venueId": "localdata:3780000:2015378021907500001",
@@ -2382,7 +2382,7 @@
       "kind": "대형마트",
       "collector": null,
       "status": "verified-popup-found",
-      "popupCount": 2
+      "popupCount": 5
     },
     {
       "venueId": "localdata:3830000:2008383006207500001",
@@ -2489,8 +2489,8 @@
       "region": "경기도",
       "kind": "복합쇼핑몰",
       "collector": null,
-      "status": "verified-popup-found",
-      "popupCount": 1
+      "status": "collector-needed",
+      "popupCount": 0
     },
     {
       "venueId": "localdata:3910000:2009391018107500002",
@@ -2498,8 +2498,8 @@
       "region": "경기도",
       "kind": "백화점",
       "collector": null,
-      "status": "verified-popup-found",
-      "popupCount": 1
+      "status": "collector-needed",
+      "popupCount": 0
     },
     {
       "venueId": "localdata:3740000:2003374001107500002",
@@ -5586,7 +5586,7 @@
       "kind": "백화점",
       "collector": "롯데백화점·롯데아울렛·롯데몰",
       "status": "verified-popup-found",
-      "popupCount": 4
+      "popupCount": 3
     },
     {
       "venueId": "localdata:3230000:2014323019807500011",
@@ -5612,8 +5612,8 @@
       "region": "서울특별시",
       "kind": "백화점",
       "collector": "롯데백화점·롯데아울렛·롯데몰",
-      "status": "verified-popup-found",
-      "popupCount": 1
+      "status": "official-feed-monitored",
+      "popupCount": 0
     },
     {
       "venueId": "localdata:3050000:2010305010007500001",
@@ -5784,7 +5784,7 @@
       "kind": "쇼핑센터",
       "collector": null,
       "status": "verified-popup-found",
-      "popupCount": 2
+      "popupCount": 1
     },
     {
       "venueId": "localdata:3230000:2005323007807500003",
@@ -5999,8 +5999,8 @@
       "region": "서울특별시",
       "kind": "백화점",
       "collector": "신세계백화점",
-      "status": "verified-popup-found",
-      "popupCount": 1
+      "status": "official-feed-monitored",
+      "popupCount": 0
     },
     {
       "venueId": "localdata:3210000:2005321007607500007",
@@ -6053,8 +6053,8 @@
       "region": "서울특별시",
       "kind": "복합쇼핑몰",
       "collector": null,
-      "status": "verified-popup-found",
-      "popupCount": 2
+      "status": "collector-needed",
+      "popupCount": 0
     },
     {
       "venueId": "localdata:3010000:2016301013007500001",
@@ -6368,8 +6368,8 @@
       "region": "서울특별시",
       "kind": "복합쇼핑몰",
       "collector": null,
-      "status": "verified-popup-found",
-      "popupCount": 2
+      "status": "collector-needed",
+      "popupCount": 0
     },
     {
       "venueId": "localdata:3180000:2008318011707500003",
@@ -6503,8 +6503,8 @@
       "region": "서울특별시",
       "kind": "백화점",
       "collector": "현대백화점·현대아울렛",
-      "status": "verified-popup-found",
-      "popupCount": 1
+      "status": "official-feed-monitored",
+      "popupCount": 0
     },
     {
       "venueId": "localdata:3010000:2014301013007500017",
@@ -6692,8 +6692,8 @@
       "region": "서울특별시",
       "kind": "쇼핑센터",
       "collector": null,
-      "status": "verified-popup-found",
-      "popupCount": 1
+      "status": "collector-needed",
+      "popupCount": 0
     },
     {
       "venueId": "localdata:3180000:2020318023907500001",

@@ -166,68 +166,6 @@ async function collectShinsegae() {
   return rows;
 }
 
-const shoppingVenueWords = /(백화점|현대|롯데|신세계|AK\s*PLAZA|AK플라자|아울렛|아웃렛|쇼핑몰|월드몰|스타필드|코엑스|삼정타워|딜라이트\s*스퀘어|아이파크몰|NC|뉴코아|갤러리아|커넥트현대)/iu;
-
-function popgaVenue(row) {
-  const detail = clean(row.addressDetail);
-  const candidates = [
-    detail.match(/(신세계백화점\s*[^\s]+점)/u)?.[1],
-    detail.match(/(롯데백화점\s*[^\s]+점)/u)?.[1],
-    detail.match(/(롯데월드몰(?:\s*잠실점)?)/u)?.[1],
-    detail.match(/(현대백화점\s*[^\s]+점)/u)?.[1],
-    detail.match(/(더현대\s*(?:서울|대구))/u)?.[1],
-    detail.match(/(커넥트현대\s*[^\s]+)/u)?.[1],
-    detail.match(/(스타필드\s*[^\s]+(?:점)?)/u)?.[1],
-    detail.match(/((?:용산\s*)?아이파크몰)/u)?.[1],
-    detail.match(/((?:홍대\s*)?AK\s*PLAZA|AK\s*PLAZA\s*홍대|홍대\s*AK플라자)/iu)?.[1],
-    detail.match(/(삼정타워|딜라이트\s*스퀘어|코엑스)/iu)?.[1]
-  ].filter(Boolean);
-  return clean(candidates[0] || detail.replace(/\s+(?:B?\d+F?|지하|[0-9]+층).*$/u, '') || row.address);
-}
-
-async function collectPopga() {
-  const rows = [];
-  for (let page = 0; page < 10; page += 1) {
-    const params = new URLSearchParams({
-      size: '100',
-      page: String(page),
-      'periodTypes[0]': 'IN_PROGRESS',
-      'periodTypes[1]': 'READY',
-      'sorts[0].order': 'activated_at'
-    });
-    const payload = await fetchJson(`https://popga.co.kr/api/spots/search?${params}`);
-    const content = Array.isArray(payload.data?.content) ? payload.data.content : [];
-    for (const event of content) {
-      const categories = Array.isArray(event.categories) ? event.categories.map(category => clean(category.name)) : [];
-      const searchableVenue = clean(`${event.addressDetail} ${event.title}`);
-      if (!categories.includes('F&B') || !shoppingVenueWords.test(searchableVenue)) continue;
-      const startDate = clean(event.openDate);
-      const endDate = clean(event.closeDate);
-      if (!/^\d{4}-\d{2}-\d{2}$/.test(startDate) || !/^\d{4}-\d{2}-\d{2}$/.test(endDate)) continue;
-      if (new Date(`${endDate}T23:59:59+09:00`) < keepSince) continue;
-      const venue = popgaVenue(event);
-      rows.push({
-        id: `popga:${event.id}`,
-        name: clean(event.title),
-        venue,
-        venueType: /백화점/u.test(venue) ? '백화점' : '쇼핑몰',
-        address: clean(`${event.address} ${event.addressDetail}`),
-        startDate,
-        endDate,
-        imageUrl: String(event.file?.path || ''),
-        sourceName: '팝가 공개 팝업 일정',
-        sourceUrl: `https://popga.co.kr/popup/${encodeURIComponent(event.id)}`,
-        sourceGrade: 'verified-directory',
-        firstSeenAt: today,
-        lastSeenAt: today
-      });
-    }
-    const totalPages = Number(payload.data?.page?.totalPages || 1);
-    if (!content.length || page + 1 >= totalPages) break;
-  }
-  return rows;
-}
-
 async function existingRows() {
   try {
     const data = JSON.parse(await readFile(outputPath, 'utf8'));
@@ -271,8 +209,7 @@ const collectors = [
   ['현대백화점·현대아울렛', collectHyundai],
   ['신세계백화점', collectShinsegae],
   ['스타필드·스타필드시티', collectStarfield],
-  ['롯데백화점·롯데아울렛·롯데몰', collectCuratedOfficial],
-  ['팝가 쇼핑시설 F&B 공개 일정', collectPopga]
+  ['롯데백화점·롯데아울렛·롯데몰', collectCuratedOfficial]
 ];
 const settled = await Promise.allSettled(collectors.map(([, collector]) => collector()));
 const collected = settled.flatMap(result => result.status === 'fulfilled' ? result.value : []);
@@ -286,19 +223,10 @@ sources.push(
   { name: '갤러리아·AK플라자·NC·뉴코아', status: 'no-public-popup-feed', count: 0 },
   { name: '이마트·트레이더스·롯데마트·홈플러스', status: 'no-public-popup-feed', count: 0 }
 );
-const merged = new Map(previous.map(row => [row.id, row]));
+const merged = new Map(previous
+  .filter(row => ['official', 'official-search'].includes(row.sourceGrade))
+  .map(row => [row.id, row]));
 for (const row of collected) {
-  if (row.id.startsWith('popga:')) {
-    const normalizedName = clean(row.name).replace(/\s|팝업|POP[\s-]*UP/giu, '');
-    const duplicate = [...merged.values()].find(existing => {
-      const existingName = clean(existing.name).replace(/\s|팝업|POP[\s-]*UP/giu, '');
-      return normalizedName && existingName
-        && (normalizedName.includes(existingName) || existingName.includes(normalizedName))
-        && existing.startDate === row.startDate
-        && existing.endDate === row.endDate;
-    });
-    if (duplicate) continue;
-  }
   const old = merged.get(row.id);
   merged.set(row.id, { ...old, ...row, firstSeenAt: old?.firstSeenAt || row.firstSeenAt });
 }

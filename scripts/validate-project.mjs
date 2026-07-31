@@ -64,6 +64,10 @@ for (const popup of popupData.popups) {
     console.error(`팝업 출처 URL이 올바르지 않습니다: ${popup.id}`);
     process.exitCode = 1;
   }
+  if (!['official', 'official-search'].includes(popup.sourceGrade)) {
+    console.error(`팝업은 공식 출처만 허용됩니다: ${popup.id}`);
+    process.exitCode = 1;
+  }
 }
 
 const popupVenues = JSON.parse(readFileSync('data/popup-venues.json', 'utf8'));
