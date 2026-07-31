@@ -167,6 +167,39 @@ async function collectShinsegae() {
   return rows;
 }
 
+async function collectElandRetail() {
+  const indexUrl = 'https://www.elandretail.com/store01.do';
+  const indexResponse = await fetch(indexUrl, { headers: { 'user-agent': 'mukdang-popup-indexer/1.0 (+https://mukdang.com)' }, signal: AbortSignal.timeout(20_000) });
+  if (!indexResponse.ok) throw new Error(`이랜드 지점 목록 응답 ${indexResponse.status}`);
+  const indexHtml = await indexResponse.text();
+  const branches = [...new Map([...indexHtml.matchAll(/href="\/store01\.do\?branchID=(\d+)[^\"]*"[^>]*>([^<]{2,40})<\/a>/gi)].map(match => [match[1], decodeHtml(match[2])])).entries()];
+  const rows = [];
+  const results = await Promise.allSettled(branches.map(async ([branchId, venue]) => {
+    const url = `https://www.elandretail.com/news/smart_shopping_01.do?branchID=${branchId}&lang=000600KO`;
+    const response = await fetch(url, { headers: { 'user-agent': 'mukdang-popup-indexer/1.0 (+https://mukdang.com)' }, signal: AbortSignal.timeout(20_000) });
+    if (!response.ok) return;
+    const html = await response.text();
+    for (const blockMatch of html.matchAll(/<li[^>]*>[\s\S]*?evtID=([^&"]+)[\s\S]*?<\/li>/gi)) {
+      const block = blockMatch[0];
+      const text = decodeHtml(block);
+      if (!/(팝업|POP[\s-]*UP)/iu.test(text) || !foodWords.test(text) || nonHumanFood.test(text)) continue;
+      const dates = [...text.matchAll(/(20\d{2})\.(\d{2})\.(\d{2})\s*~?\s*(20\d{2})?\.?\s*(\d{2})\.(\d{2})/g)];
+      if (!dates.length) continue;
+      const date = dates[0];
+      const startDate = `${date[1]}-${date[2]}-${date[3]}`;
+      const endDate = `${date[4] || date[1]}-${date[5]}-${date[6]}`;
+      if (new Date(`${endDate}T23:59:59+09:00`) < keepSince) continue;
+      const eventId = blockMatch[1];
+      const title = decodeHtml(block.match(/<strong>([\s\S]*?)<\/strong>/i)?.[1]) || '이랜드 공식 행사';
+      const imageUrl = block.match(/<img[^>]+src="([^"]+)/i)?.[1] || '';
+      rows.push({ id: `eland:${branchId}:${eventId}`, name: title, venue, venueType: /아울렛|몰|NC|뉴코아/iu.test(venue) ? '쇼핑몰' : '백화점', address: venue, startDate, endDate, imageUrl: imageUrl.startsWith('http') ? imageUrl : `https://www.elandretail.com${imageUrl}`, sourceName: '이랜드리테일 공식 쇼핑뉴스', sourceUrl: `https://www.elandretail.com/news/smart_shopping_02.do?evtID=${encodeURIComponent(eventId)}&branchID=${branchId}&lang=000600KO`, sourceGrade: 'official', firstSeenAt: today, lastSeenAt: today });
+    }
+  }));
+  const failed = results.filter(result => result.status === 'rejected').length;
+  if (failed) console.warn(`이랜드리테일 지점 ${failed}곳 수집 실패`);
+  return rows;
+}
+
 // Some retailers do not expose a stable JSON API. Their official event pages
 // are still crawlable, so keep a conservative HTML adapter that only emits
 // rows when the page itself contains a popup/food keyword and an explicit date range.
@@ -210,7 +243,7 @@ const emartFeeds = [
 const lotteMartFeeds = [['lottemart:event', '롯데마트 공식 행사', 'https://company.lottemart.com/bc/event', '롯데마트 전점']];
 const homeplusFeeds = [['homeplus:event', '홈플러스 공식 행사', 'https://corporate.homeplus.co.kr/whatsnew/event', '홈플러스 전점']];
 
-const collectNc = () => collectOfficialHtmlFeeds('NC·뉴코아 공식 이벤트', '쇼핑몰', ncFeeds.map(([id, sourceName, url, venue]) => ({ id, sourceName, url, venue })));
+const collectNc = collectElandRetail;
 const collectIpark = () => collectOfficialHtmlFeeds('아이파크몰 공식 이벤트', '쇼핑몰', iparkFeeds.map(([id, sourceName, url, venue]) => ({ id, sourceName, url, venue })));
 const collectEmart = () => collectOfficialHtmlFeeds('이마트·트레이더스 공식 이벤트', '대형마트', emartFeeds.map(([id, sourceName, url, venue]) => ({ id, sourceName, url, venue })));
 const collectLotteMart = () => collectOfficialHtmlFeeds('롯데마트 공식 행사', '대형마트', lotteMartFeeds.map(([id, sourceName, url, venue]) => ({ id, sourceName, url, venue })));
