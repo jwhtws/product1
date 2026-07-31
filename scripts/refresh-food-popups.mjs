@@ -12,6 +12,7 @@ keepSince.setFullYear(keepSince.getFullYear() - 2);
 
 const foodWords = /(꽈배기|술빵|모찌|떡|빵|베이커리|디저트|케이크|쿠키|초콜릿|아이스크림|젤라또|도넛|마카롱|푸딩|타르트|약과|한과|카페|커피|차\b|티\b|음료|주스|맥주|와인|막걸리|포장마차|분식|김밥|라면|국수|냉면|만두|닭|치킨|고기|육회|곱창|족발|해산물|오징어|건어물|반찬|김치|식품|푸드|F&B|FNB|맛집|셰프|요리|농산|수산|축산)/iu;
 const nonHumanFood = /(반려|펫|강아지|고양이|사료)/u;
+const stableHash = value => [...String(value)].reduce((sum, char) => ((sum << 5) - sum + char.charCodeAt(0)) | 0, 0);
 
 function clean(value) {
   return String(value || '').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
@@ -184,6 +185,56 @@ async function popupVenueRegistry() {
   }
 }
 
+function xmlText(block, tag) {
+  const match = block.match(new RegExp(`<${tag}[^>]*>(?:<!\\[CDATA\\[)?([\\s\\S]*?)(?:\\]\\]>)?<\\/${tag}>`, 'i'));
+  return decodeHtml(match?.[1] || '');
+}
+
+async function collectLotteOfficialBlog() {
+  const response = await fetch('https://blog.lotte.co.kr/feed/', {
+    headers: { 'user-agent': 'mukdang-popup-indexer/1.0 (+https://mukdang.com)' },
+    signal: AbortSignal.timeout(20_000)
+  });
+  if (!response.ok) throw new Error(`롯데 공식 블로그 응답 ${response.status}`);
+  const xml = await response.text();
+  const rows = [];
+  for (const block of xml.matchAll(/<item>[\s\S]*?<\/item>/gi)) {
+    const item = block[0];
+    const title = clean(xmlText(item, 'title'));
+    const link = clean(xmlText(item, 'link'));
+    const text = `${title} ${clean(xmlText(item, 'description'))}`;
+    if (!/팝업|POP[\s-]*UP/iu.test(text) || !foodWords.test(text)) continue;
+    const dates = [...text.matchAll(/(\d{1,2})월\s*(\d{1,2})일[^\d]{0,12}(?:~|∼|-|–)[^\d]{0,4}(?:(\d{1,2})월\s*)?(\d{1,2})일/g)];
+    const venues = [...text.matchAll(/(롯데(?:프리미엄)?아울렛\s*[가-힣]+점|롯데백화점\s*[가-힣]+점|롯데월드몰|롯데몰\s*[가-힣]+점)/g)].map(match => match[1]);
+    if (!dates.length || !venues.length) continue;
+    const published = new Date(xmlText(item, 'pubDate'));
+    const year = Number.isFinite(published.getTime()) ? published.getFullYear() : currentYear;
+    for (const match of dates) {
+      const startMonth = Number(match[1]), startDay = Number(match[2]);
+      const endMonth = Number(match[3] || match[1]), endDay = Number(match[4]);
+      const startDate = `${year}-${String(startMonth).padStart(2, '0')}-${String(startDay).padStart(2, '0')}`;
+      const endDate = `${endMonth < startMonth ? year + 1 : year}-${String(endMonth).padStart(2, '0')}-${String(endDay).padStart(2, '0')}`;
+      if (new Date(`${endDate}T23:59:59+09:00`) < keepSince) continue;
+      for (const venue of [...new Set(venues)]) rows.push({
+        id: `lotte-blog:${stableHash(`${link}|${venue}|${startDate}`)}`,
+        name: title,
+        venue,
+        venueType: /아울렛|몰/u.test(venue) ? '쇼핑몰' : '백화점',
+        address: venue,
+        startDate,
+        endDate,
+        imageUrl: '',
+        sourceName: '롯데 공식 블로그',
+        sourceUrl: link,
+        sourceGrade: 'official',
+        firstSeenAt: today,
+        lastSeenAt: today
+      });
+    }
+  }
+  return rows;
+}
+
 async function collectCuratedOfficial() {
   const rows = JSON.parse(await readFile('data/curated-popups.json', 'utf8'));
   return rows.map(([id, name, venue, startDate, endDate, sourceUrl]) => ({
@@ -209,6 +260,7 @@ const collectors = [
   ['현대백화점·현대아울렛', collectHyundai],
   ['신세계백화점', collectShinsegae],
   ['스타필드·스타필드시티', collectStarfield],
+  ['롯데 공식 블로그', collectLotteOfficialBlog],
   ['롯데백화점·롯데아울렛·롯데몰', collectCuratedOfficial]
 ];
 const settled = await Promise.allSettled(collectors.map(([, collector]) => collector()));
