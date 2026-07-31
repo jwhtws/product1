@@ -1074,6 +1074,13 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
 
   function selectSearchMode(mode, pushHistory = true) {
     state.searchMode = mode;
+    state.page = 1;
+    if (mode === 'popup') {
+      ['popup-status-filter', 'popup-region-filter', 'popup-venue-filter', 'popup-sort-filter'].forEach(id => { const el = $(`#${id}`); if (el) el.selectedIndex = 0; });
+    } else {
+      ['region-filter', 'category-filter', 'price-filter', 'sort-filter'].forEach(id => { const el = $(`#${id}`); if (el) el.selectedIndex = 0; });
+      state.filters = { query: '', region: '', category: '', price: '', sort: 'recommend' };
+    }
     $$('[data-search-mode]').forEach(item => {
       const active = item.dataset.searchMode === mode;
       item.classList.toggle('active', active);
