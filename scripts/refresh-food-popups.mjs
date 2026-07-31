@@ -257,18 +257,26 @@ async function collectGalleria() {
       const listResponse = await fetch(listUrl, { headers: { 'user-agent': 'mukdang-popup-indexer/1.0 (+https://mukdang.com)' }, signal: AbortSignal.timeout(20_000) });
       if (!listResponse.ok) { console.warn(`갤러리아 ${venue} 응답 ${listResponse.status}`); continue; }
       const listHtml = await listResponse.text();
-      const links = [...new Set([...listHtml.matchAll(new RegExp(`href="(/store-info/${slug}/promotion/shopping-news/c\\d+)"`, 'gi'))].map(match => match[1]))].slice(0, 80);
+      const links = [...new Set([...listHtml.matchAll(new RegExp(`href="(/store-info/${slug}/promotion/shopping-news/c\\d+)(?:\\?[^\"]*)?"`, 'gi'))].map(match => match[1]))].slice(0, 80);
       for (const path of links) {
         const response = await fetch(`https://dept.galleria.co.kr${path}`, { headers: { 'user-agent': 'mukdang-popup-indexer/1.0 (+https://mukdang.com)' }, signal: AbortSignal.timeout(20_000) });
         if (!response.ok) continue;
         const html = await response.text();
         const title = decodeHtml(html.match(/<article[\s\S]*?<h1 class="page-title">([\s\S]*?)<\/h1>/i)?.[1]);
         const text = decodeHtml(html);
-        if (!title || !/팝업|POP[\s-]*UP/iu.test(text) || !foodWords.test(`${title} ${text}`)) continue;
-        const dates = [...text.matchAll(/(\d{4})\.(\d{2})\.(\d{2})[^\d]{0,12}(?:~|∼|-|–)[^\d]{0,4}(\d{4})\.(\d{2})\.(\d{2})/g)];
-        if (!dates.length) continue;
-        const date = dates[0];
-        const startDate = `${date[1]}-${date[2]}-${date[3]}`, endDate = `${date[4]}-${date[5]}-${date[6]}`;
+        const isPopup = /뉴오프닝|팝업|POP[\s-]*UP/iu.test(text);
+        if (!title || !isPopup || (!foodWords.test(`${title} ${text}`) && !/GOURMET|델리|푸드코트/iu.test(`${title} ${text}`))) continue;
+        const fullDates = [...text.matchAll(/(\d{4})\.(\d{2})\.(\d{2})[^\d]{0,12}(?:~|∼|-|–)[^\d]{0,4}(\d{4})\.(\d{2})\.(\d{2})/g)];
+        const shortDates = [...text.matchAll(/(\d{1,2})\.(\d{1,2})\s*[-~]\s*(?:(\d{1,2})\.)?(\d{1,2})/g)];
+        let startDate = '', endDate = '';
+        if (fullDates.length) {
+          const date = fullDates[0];
+          startDate = `${date[1]}-${date[2]}-${date[3]}`; endDate = `${date[4]}-${date[5]}-${date[6]}`;
+        } else if (shortDates.length) {
+          const date = shortDates[0];
+          startDate = eventDate(`${date[1]}.${date[2]}`); endDate = eventDate(`${date[3] || date[1]}.${date[4]}`);
+        }
+        if (!startDate || !endDate) continue;
         if (new Date(`${endDate}T23:59:59+09:00`) < keepSince) continue;
         const imageUrl = html.match(/<div class="article-detail">[\s\S]*?<img src="([^"]+)/i)?.[1] || '';
         rows.push({ id: `galleria:${slug}:${path.split('/').pop()}`, name: title, venue, venueType: '백화점', address: venue, startDate, endDate, imageUrl, sourceName: '갤러리아 공식 쇼핑뉴스', sourceUrl: `https://dept.galleria.co.kr${path}`, sourceGrade: 'official', firstSeenAt: today, lastSeenAt: today });
