@@ -1,11 +1,10 @@
 {
-  "updatedAt": "2026-07-31T07:17:52.252Z",
+  "updatedAt": "2026-07-31T07:29:55.109Z",
   "sources": [
     {
       "name": "현대백화점·현대아울렛",
-      "status": "error",
-      "count": 0,
-      "message": "fetch failed"
+      "status": "active",
+      "count": 16
     },
     {
       "name": "신세계백화점",
@@ -14,6 +13,11 @@
     },
     {
       "name": "스타필드·스타필드시티",
+      "status": "active",
+      "count": 0
+    },
+    {
+      "name": "AK플라자",
       "status": "active",
       "count": 0
     },
@@ -28,21 +32,53 @@
       "count": 30
     },
     {
-      "name": "갤러리아·AK플라자·NC·뉴코아",
-      "status": "no-public-popup-feed",
-      "count": 0
+      "name": "갤러리아",
+      "status": "adapter-needed",
+      "count": 0,
+      "officialUrl": "https://dept.galleria.co.kr"
     },
     {
-      "name": "이마트·트레이더스·롯데마트·홈플러스",
-      "status": "no-public-popup-feed",
-      "count": 0
+      "name": "AK플라자",
+      "status": "adapter-needed",
+      "count": 0,
+      "officialUrl": "https://www.akplaza.com/board/event/list"
+    },
+    {
+      "name": "NC·뉴코아",
+      "status": "adapter-needed",
+      "count": 0,
+      "officialUrl": "https://www.elandretail.com"
+    },
+    {
+      "name": "아이파크몰",
+      "status": "adapter-needed",
+      "count": 0,
+      "officialUrl": "https://www.hdc-iparkmall.com"
+    },
+    {
+      "name": "이마트·트레이더스",
+      "status": "adapter-needed",
+      "count": 0,
+      "officialUrl": "https://store.emart.com"
+    },
+    {
+      "name": "롯데마트",
+      "status": "adapter-needed",
+      "count": 0,
+      "officialUrl": "https://company.lottemart.com"
+    },
+    {
+      "name": "홈플러스",
+      "status": "adapter-needed",
+      "count": 0,
+      "officialUrl": "https://corporate.homeplus.co.kr"
     }
   ],
   "coverage": {
     "nationwideVenueTotal": 1029,
     "verifiedPopupVenueCount": 19,
-    "officialFeedMonitoredCount": 88,
-    "collectorNeededCount": 941,
+    "officialFeedMonitoredCount": 91,
+    "collectorNeededCount": 938,
     "disclaimer": "시설 원장은 전국 탐색 범위이며, 화면에는 공식 출처에서 시작일과 종료일을 확인한 푸드팝업만 표시합니다."
   },
   "popups": [
