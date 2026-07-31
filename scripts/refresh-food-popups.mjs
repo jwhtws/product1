@@ -190,6 +190,53 @@ function xmlText(block, tag) {
   return decodeHtml(match?.[1] || '');
 }
 
+const akStores = [
+  ['01', '수원'], ['02', '분당'], ['03', '평택'], ['04', '원주'],
+  ['12', '금정'], ['13', '홍대'], ['14', '기흥'], ['15', '광명'], ['16', '금정'], ['17', '세종']
+];
+
+async function collectAkPlaza() {
+  const rows = [];
+  for (const [storeCode, storeName] of akStores) {
+    const response = await fetch(`https://www.akplaza.com/board/event/list?store=${storeCode}`, {
+      headers: { 'user-agent': 'mukdang-popup-indexer/1.0 (+https://mukdang.com)' },
+      signal: AbortSignal.timeout(20_000)
+    });
+    if (!response.ok) throw new Error(`AK플라자 ${storeName} 응답 ${response.status}`);
+    const html = await response.text();
+    for (const match of html.matchAll(/<div class="posts-item"[\s\S]*?<\/div>\s*<\/div>\s*<\/div>\s*<\/div>/gi)) {
+      const block = match[0];
+      const title = decodeHtml(block.match(/class="posts-name"[^>]*>([\s\S]*?)<\/a>/i)?.[1]);
+      const summary = decodeHtml(block.match(/class="posts-summary"[^>]*>([\s\S]*?)<\/a>/i)?.[1]);
+      const imageUrl = block.match(/class="posts-thumbnail"[^>]*>[\s\S]*?src="([^"]+)/i)?.[1] || '';
+      const sequence = block.match(/view\((\d+)\)/i)?.[1];
+      const dates = [...block.matchAll(/(\d{4})\.(\d{2})\.(\d{2})\s*~\s*(\d{4})\.(\d{2})\.(\d{2})/g)];
+      const searchable = `${title} ${summary}`;
+      if (!title || !dates.length || !/팝업|POP[\s-]*UP/iu.test(searchable) || !foodWords.test(searchable)) continue;
+      const date = dates[0];
+      const startDate = `${date[1]}-${date[2]}-${date[3]}`;
+      const endDate = `${date[4]}-${date[5]}-${date[6]}`;
+      if (new Date(`${endDate}T23:59:59+09:00`) < keepSince) continue;
+      rows.push({
+        id: `ak:${storeCode}:${sequence || stableHash(title)}`,
+        name: title,
+        venue: `AK플라자 ${storeName}점`,
+        venueType: '백화점',
+        address: `AK플라자 ${storeName}점`,
+        startDate,
+        endDate,
+        imageUrl,
+        sourceName: 'AK플라자 공식 이벤트',
+        sourceUrl: `https://www.akplaza.com/board/event/list?store=${storeCode}`,
+        sourceGrade: 'official',
+        firstSeenAt: today,
+        lastSeenAt: today
+      });
+    }
+  }
+  return rows;
+}
+
 async function collectLotteOfficialBlog() {
   const response = await fetch('https://blog.lotte.co.kr/feed/', {
     headers: { 'user-agent': 'mukdang-popup-indexer/1.0 (+https://mukdang.com)' },
@@ -260,6 +307,7 @@ const collectors = [
   ['현대백화점·현대아울렛', collectHyundai],
   ['신세계백화점', collectShinsegae],
   ['스타필드·스타필드시티', collectStarfield],
+  ['AK플라자', collectAkPlaza],
   ['롯데 공식 블로그', collectLotteOfficialBlog],
   ['롯데백화점·롯데아울렛·롯데몰', collectCuratedOfficial]
 ];
