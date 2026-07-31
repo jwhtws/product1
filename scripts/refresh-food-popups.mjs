@@ -233,6 +233,55 @@ async function collectOfficialHtmlFeeds(sourceName, venueType, feeds) {
   return rows;
 }
 
+async function collectFromOfficialSitemaps(sourceName, venueType, domains) {
+  const rows = [];
+  const seen = new Set();
+  const candidateUrls = new Set();
+  for (const domain of domains) {
+    try {
+      const robots = await fetch(`https://${domain}/robots.txt`, { headers: { 'user-agent': 'mukdang-popup-indexer/1.0' }, signal: AbortSignal.timeout(15_000) });
+      const robotText = robots.ok ? await robots.text() : '';
+      const maps = [...robotText.matchAll(/Sitemap:\s*(https?:\/\/[^\s]+)/ig)].map(match => match[1]);
+      if (!maps.length) maps.push(`https://${domain}/sitemap.xml`, `https://${domain}/sitemap_index.xml`);
+      const queue = maps.slice(0, 4);
+      while (queue.length && seen.size < 40) {
+        const sitemapUrl = queue.shift(); if (seen.has(sitemapUrl)) continue; seen.add(sitemapUrl);
+        const response = await fetch(sitemapUrl, { headers: { 'user-agent': 'mukdang-popup-indexer/1.0' }, signal: AbortSignal.timeout(15_000) });
+        if (!response.ok) continue;
+        const xml = await response.text();
+        for (const match of xml.matchAll(/<loc>\s*(https?:\/\/[^<]+)\s*<\/loc>/gi)) {
+          const url = decodeHtml(match[1]);
+          if (/sitemap/i.test(url) && queue.length < 40) queue.push(url);
+          else if (/(event|news|popup|promotion|shopping|store|branch|campaign)/iu.test(url)) candidateUrls.add(url);
+        }
+      }
+    } catch (error) { console.warn(`${sourceName} 사이트맵 건너뜀: ${error.message}`); }
+  }
+  for (const url of [...candidateUrls].slice(0, 180)) {
+    try {
+      const response = await fetch(url, { headers: { 'user-agent': 'mukdang-popup-indexer/1.0' }, signal: AbortSignal.timeout(15_000) });
+      if (!response.ok) continue;
+      const html = await response.text();
+      const text = decodeHtml(html);
+      if (!foodWords.test(text) || nonHumanFood.test(text) || !/(팝업|POP[\s-]*UP|쇼핑뉴스|행사|이벤트)/iu.test(text)) continue;
+      const dates = [...text.matchAll(/(20\d{2})[.\-/년]\s*(\d{1,2})[.\-/월]\s*(\d{1,2})[^\d]{0,20}(?:~|∼|-|–|부터)[^\d]{0,12}(20\d{2})[.\-/년]\s*(\d{1,2})[.\-/월]\s*(\d{1,2})/g)];
+      if (!dates.length) continue;
+      const date = dates[0];
+      const startDate = `${date[1]}-${String(date[2]).padStart(2, '0')}-${String(date[3]).padStart(2, '0')}`;
+      const endDate = `${date[4] || date[1]}-${String(date[5]).padStart(2, '0')}-${String(date[6]).padStart(2, '0')}`;
+      if (new Date(`${endDate}T23:59:59+09:00`) < keepSince) continue;
+      const title = decodeHtml(html.match(/<meta[^>]+property=["']og:title["'][^>]+content=["']([^"']+)/i)?.[1] || html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i)?.[1] || '공식 행사');
+      const venue = decodeHtml(html.match(/(갤러리아|아이파크몰|이마트|트레이더스|롯데마트|홈플러스|NC|뉴코아)[^<]{0,30}(점|몰)/iu)?.[0] || new URL(url).hostname);
+      rows.push({ id: `sitemap:${stableHash(`${url}|${startDate}`)}`, name: title, venue, venueType, address: venue, startDate, endDate, imageUrl: html.match(/<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)/i)?.[1] || '', sourceName, sourceUrl: url, sourceGrade: 'official', firstSeenAt: today, lastSeenAt: today });
+    } catch (error) { /* individual official pages may block crawlers */ }
+  }
+  return rows;
+}
+
+const collectSitemapChains = () => collectFromOfficialSitemaps('공식 쇼핑몰·마트 사이트맵', '쇼핑몰', [
+  'www.hdc-iparkmall.com', 'store.emart.com', 'company.lottemart.com', 'corporate.homeplus.co.kr', 'www.akplaza.com'
+]);
+
 const ncFeeds = [
   ['nc:eland', 'NC·뉴코아 공식 이벤트', 'https://www.elandretail.com/event', 'NC백화점 전점'],
   ['nc:newcore', 'NC·뉴코아 공식 이벤트', 'https://www.elandretail.com/store/event', '뉴코아 전점']
@@ -440,6 +489,7 @@ const collectors = [
   ['이마트·트레이더스', collectEmart],
   ['롯데마트', collectLotteMart],
   ['홈플러스', collectHomeplus],
+  ['공식 쇼핑몰·마트 사이트맵', collectSitemapChains],
   ['롯데 공식 블로그', collectLotteOfficialBlog],
   ['롯데백화점·롯데아울렛·롯데몰', collectCuratedOfficial]
 ];
