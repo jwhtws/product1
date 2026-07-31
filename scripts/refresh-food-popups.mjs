@@ -182,7 +182,9 @@ async function collectElandRetail() {
     for (const blockMatch of html.matchAll(/<li[^>]*>[\s\S]*?evtID=([^&"]+)[\s\S]*?<\/li>/gi)) {
       const block = blockMatch[0];
       const text = decodeHtml(block);
-      if (!/(팝업|POP[\s-]*UP)/iu.test(text) || !foodWords.test(text) || nonHumanFood.test(text)) continue;
+      // 이랜드 지점 페이지는 카테고리를 별도로 표시하지 않고 제목/기간만
+      // 제공하는 경우가 있어, 식품 키워드가 명확한 공식 행사도 수집한다.
+      if (!foodWords.test(text) || nonHumanFood.test(text)) continue;
       const dates = [...text.matchAll(/(20\d{2})\.(\d{2})\.(\d{2})\s*~?\s*(20\d{2})?\.?\s*(\d{2})\.(\d{2})/g)];
       if (!dates.length) continue;
       const date = dates[0];
