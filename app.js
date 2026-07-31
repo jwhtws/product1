@@ -1050,6 +1050,17 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
       history.pushState({ ...history.state, mukdang: true, mukdangLayer: null, searchMode: mode }, '');
     }
   }
+  function armEntryHistory() {
+    const entryState = {
+      ...history.state,
+      mukdang: true,
+      mukdangLayer: null,
+      searchMode: state.searchMode,
+      entryGuard: true
+    };
+    history.replaceState(entryState, '');
+    history.pushState({ ...entryState, entryGuard: false }, '');
+  }
   $('#search-button').addEventListener('click', applySearch);
   $$('[data-search-mode]').forEach(button => button.addEventListener('click', () => selectSearchMode(button.dataset.searchMode)));
   $('#search-input').addEventListener('input', () => { renderSuggestions(); prefetchSearch($('#search-input').value).catch(() => {}); });
@@ -1136,6 +1147,10 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     closeHeaderMenu();
     if (!next?.mukdang) return;
     if (next.searchMode && next.searchMode !== state.searchMode) selectSearchMode(next.searchMode, false);
+    if (next.entryGuard) {
+      history.pushState({ ...next, entryGuard: false }, '');
+      return;
+    }
     if (next.mukdangLayer === 'detail' && state.current) {
       $('#detail-modal').classList.add('open');
       document.body.classList.add('locked');
@@ -1176,10 +1191,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
       state.reviewSummaries = new Map(Object.entries(latest.summaries || {}));
     } catch {}
     updateSavedCount(); render();
-    if (!history.state?.mukdang) {
-      history.replaceState({ mukdang: true, mukdangLayer: null, searchMode: 'popup', entryGuard: true }, '');
-      history.pushState({ mukdang: true, mukdangLayer: null, searchMode: 'popup' }, '');
-    }
+    armEntryHistory();
     $('#search-button').disabled = false;
     $('#search-button').textContent = '검색';
     resolveReady();

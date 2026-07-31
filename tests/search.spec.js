@@ -64,3 +64,17 @@ test('인허가일이 없는 실제 장소도 숨기지 않고 재확인 상태�
   await expect(page.locator('.permit-highlight')).toContainText('공공 원장에 없음');
   await expect(page.locator('.permit-highlight')).toContainText('매일 재확인');
 });
+
+test('뒤로가기는 사이트를 나가지 않고 이전 화면 단계만 닫는다', async ({ page }) => {
+  await page.goto(process.env.TEST_BASE_URL || 'http://127.0.0.1:8765/', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('#search-button')).toBeEnabled({ timeout: 15000 });
+  const appUrl = page.url();
+
+  await page.locator('[data-search-mode="restaurant"]').click();
+  await page.goBack();
+  await expect(page.locator('[data-search-mode="popup"]')).toHaveClass(/active/);
+
+  await page.goBack();
+  await expect(page).toHaveURL(appUrl);
+  await expect(page.locator('[data-search-mode="popup"]')).toHaveClass(/active/);
+});
