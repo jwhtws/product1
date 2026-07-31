@@ -167,6 +167,55 @@ async function collectShinsegae() {
   return rows;
 }
 
+// Some retailers do not expose a stable JSON API. Their official event pages
+// are still crawlable, so keep a conservative HTML adapter that only emits
+// rows when the page itself contains a popup/food keyword and an explicit date range.
+async function collectOfficialHtmlFeeds(sourceName, venueType, feeds) {
+  const rows = [];
+  for (const feed of feeds) {
+    try {
+      const response = await fetch(feed.url, { headers: { 'user-agent': 'mukdang-popup-indexer/1.0 (+https://mukdang.com)' }, signal: AbortSignal.timeout(20_000) });
+      if (!response.ok) continue;
+      const html = await response.text();
+      for (const blockMatch of html.matchAll(/<(?:article|li|tr|div)[^>]*>([\s\S]{0,12000}?)<\/(?:article|li|tr|div)>/gi)) {
+        const block = blockMatch[0];
+        const text = decodeHtml(block);
+        if (!/(팝업|POP[\s-]*UP)/iu.test(text) || !foodWords.test(text) || nonHumanFood.test(text)) continue;
+        const dates = [...text.matchAll(/(20\d{2})[.\-/년]\s*(\d{1,2})[.\-/월]\s*(\d{1,2})[^\d]{0,20}(?:~|∼|-|–|부터|~까지)[^\d]{0,12}(20\d{2})[.\-/년]\s*(\d{1,2})[.\-/월]\s*(\d{1,2})/g)];
+        if (!dates.length) continue;
+        const date = dates[0];
+        const startDate = `${date[1]}-${String(date[2]).padStart(2, '0')}-${String(date[3]).padStart(2, '0')}`;
+        const endDate = `${date[4]}-${String(date[5]).padStart(2, '0')}-${String(date[6]).padStart(2, '0')}`;
+        if (new Date(`${endDate}T23:59:59+09:00`) < keepSince) continue;
+        const link = block.match(/href=["']([^"']+)["']/i)?.[1] || feed.url;
+        const title = decodeHtml(block.match(/<(?:h[1-6]|strong|a)[^>]*>([\s\S]*?)<\/(?:h[1-6]|strong|a)>/i)?.[1]) || text.slice(0, 100);
+        if (title.length < 2) continue;
+        const sourceUrl = link.startsWith('http') ? link : new URL(link, feed.url).href;
+        rows.push({ id: `${feed.id}:${stableHash(`${sourceUrl}|${startDate}|${title}`)}`, name: title, venue: feed.venue, venueType, address: feed.venue, startDate, endDate, imageUrl: block.match(/<img[^>]+src=["']([^"']+)/i)?.[1] || '', sourceName, sourceUrl, sourceGrade: 'official', firstSeenAt: today, lastSeenAt: today });
+      }
+    } catch (error) { console.warn(`${sourceName} ${feed.venue} 건너뜀: ${error.message}`); }
+  }
+  return rows;
+}
+
+const ncFeeds = [
+  ['nc:eland', 'NC·뉴코아 공식 이벤트', 'https://www.elandretail.com/event', 'NC백화점 전점'],
+  ['nc:newcore', 'NC·뉴코아 공식 이벤트', 'https://www.elandretail.com/store/event', '뉴코아 전점']
+];
+const iparkFeeds = [['ipark:event', '아이파크몰 공식 이벤트', 'https://www.hdc-iparkmall.com/event', '아이파크몰 용산점']];
+const emartFeeds = [
+  ['emart:event', '이마트·트레이더스 공식 이벤트', 'https://store.emart.com/event/event.do', '이마트 전점'],
+  ['traders:event', '이마트·트레이더스 공식 이벤트', 'https://store.emart.com/event/traders.do', '트레이더스 전점']
+];
+const lotteMartFeeds = [['lottemart:event', '롯데마트 공식 행사', 'https://company.lottemart.com/bc/event', '롯데마트 전점']];
+const homeplusFeeds = [['homeplus:event', '홈플러스 공식 행사', 'https://corporate.homeplus.co.kr/whatsnew/event', '홈플러스 전점']];
+
+const collectNc = () => collectOfficialHtmlFeeds('NC·뉴코아 공식 이벤트', '쇼핑몰', ncFeeds.map(([id, sourceName, url, venue]) => ({ id, sourceName, url, venue })));
+const collectIpark = () => collectOfficialHtmlFeeds('아이파크몰 공식 이벤트', '쇼핑몰', iparkFeeds.map(([id, sourceName, url, venue]) => ({ id, sourceName, url, venue })));
+const collectEmart = () => collectOfficialHtmlFeeds('이마트·트레이더스 공식 이벤트', '대형마트', emartFeeds.map(([id, sourceName, url, venue]) => ({ id, sourceName, url, venue })));
+const collectLotteMart = () => collectOfficialHtmlFeeds('롯데마트 공식 행사', '대형마트', lotteMartFeeds.map(([id, sourceName, url, venue]) => ({ id, sourceName, url, venue })));
+const collectHomeplus = () => collectOfficialHtmlFeeds('홈플러스 공식 행사', '대형마트', homeplusFeeds.map(([id, sourceName, url, venue]) => ({ id, sourceName, url, venue })));
+
 async function existingRows() {
   try {
     const data = JSON.parse(await readFile(outputPath, 'utf8'));
@@ -343,6 +392,11 @@ const collectors = [
   ['스타필드·스타필드시티', collectStarfield],
   ['갤러리아', collectGalleria],
   ['AK플라자', collectAkPlaza],
+  ['NC·뉴코아', collectNc],
+  ['아이파크몰', collectIpark],
+  ['이마트·트레이더스', collectEmart],
+  ['롯데마트', collectLotteMart],
+  ['홈플러스', collectHomeplus],
   ['롯데 공식 블로그', collectLotteOfficialBlog],
   ['롯데백화점·롯데아울렛·롯데몰', collectCuratedOfficial]
 ];
@@ -354,15 +408,6 @@ const sources = collectors.map(([name], index) => ({
   count: settled[index].status === 'fulfilled' ? settled[index].value.length : 0,
   message: settled[index].status === 'rejected' ? String(settled[index].reason?.message || settled[index].reason) : undefined
 }));
-sources.push(
-  { name: '갤러리아', status: 'adapter-needed', count: 0, officialUrl: 'https://dept.galleria.co.kr' },
-  { name: 'AK플라자', status: 'adapter-needed', count: 0, officialUrl: 'https://www.akplaza.com/board/event/list' },
-  { name: 'NC·뉴코아', status: 'adapter-needed', count: 0, officialUrl: 'https://www.elandretail.com' },
-  { name: '아이파크몰', status: 'adapter-needed', count: 0, officialUrl: 'https://www.hdc-iparkmall.com' },
-  { name: '이마트·트레이더스', status: 'adapter-needed', count: 0, officialUrl: 'https://store.emart.com' },
-  { name: '롯데마트', status: 'adapter-needed', count: 0, officialUrl: 'https://company.lottemart.com' },
-  { name: '홈플러스', status: 'adapter-needed', count: 0, officialUrl: 'https://corporate.homeplus.co.kr' }
-);
 const collectorErrors = sources.filter(source => source.status === 'error');
 if (collectorErrors.length) {
   throw new Error(`공식 수집기 ${collectorErrors.length}개 실패: ${collectorErrors.map(source => source.name).join(', ')}`);
