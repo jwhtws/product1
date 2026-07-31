@@ -10,7 +10,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
   const state = {
     preview: [], all: [], fullLoaded: false, loading: null, page: 1,
     filters: { query: '', region: '', category: '', price: '', sort: 'recommend' },
-    current: null, progress: '', searchSession: null, searchMode: 'popup', serverUser: null, serverReviews: new Map(),
+    current: null, currentPopup: null, progress: '', searchSession: null, searchMode: 'popup', serverUser: null, serverReviews: new Map(),
     serverSaved: [], serverLists: {}, serverProfile: {}, reviewSummaries: new Map(), popularRestaurantCount: 0, popularRestaurants: [],
     popups: [], popupUpdatedAt: null
   };
@@ -434,8 +434,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     const image = popup.imageUrl
       ? ` style="background-image:url('${escapeHtml(popup.imageUrl).replace(/'/g, '&#39;')}')"`
       : '';
-    return `<article class="restaurant-card popup-card popup-${status.key}">
-      <a class="popup-source-link" href="${escapeHtml(popup.sourceUrl)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(popup.name)} 공식 정보 보기">
+    return `<article class="restaurant-card popup-card popup-${status.key}" tabindex="0" data-popup-id="${escapeHtml(popup.id)}">
         <div class="listing-photo ${image ? '' : 'neutral-photo'}"${image}><span class="popup-status">${status.label}</span></div>
         <div class="card-body">
           <div class="card-top"><span class="category">${escapeHtml(popup.venueType || '쇼핑시설')}</span><span class="verified-source">공식 확인</span></div>
@@ -444,8 +443,25 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
           <div class="popup-period"><span>${escapeHtml(popup.startDate)}</span><b>—</b><span>${escapeHtml(popup.endDate)}</span></div>
           <div class="tags"><span>${escapeHtml(popup.sourceName)}</span><span>마지막 확인 ${escapeHtml(popup.lastSeenAt)}</span></div>
         </div>
-      </a>
     </article>`;
+  }
+  function openPopupDetail(popup) {
+    state.current = null;
+    state.currentPopup = popup;
+    const status = popupStatus(popup);
+    const image = popup.imageUrl ? ` style="background-image:url('${escapeHtml(popup.imageUrl).replace(/'/g, '&#39;')}')"` : '';
+    const address = popup.address && popup.address !== popup.venue ? `${popup.venue} · ${popup.address}` : popup.venue;
+    const mapQuery = encodeURIComponent(popup.address || popup.venue);
+    $('#modal-content').innerHTML = `<div class="detail-cover popup-detail-cover ${image ? '' : 'neutral-photo'}"${image}><span>${status.label}</span></div>
+      <div class="detail-hero"><div class="detail-heading"><div><span class="category">${escapeHtml(popup.venueType || '쇼핑시설')}</span><h2 id="detail-title">${escapeHtml(popup.name)}</h2><p>${escapeHtml(address)}</p></div></div>
+      <div class="popup-detail-status popup-${status.key}"><strong>${status.label}</strong><span>${escapeHtml(popup.startDate)} — ${escapeHtml(popup.endDate)}</span></div>
+      <div class="detail-actions"><a class="primary" href="${escapeHtml(popup.sourceUrl)}" target="_blank" rel="noopener noreferrer">공식 정보 보기</a><button id="popup-share" class="ghost" type="button">공유</button></div></div>
+      <div class="detail-grid popup-detail-grid"><section><h3>팝업 정보</h3><dl><dt>장소</dt><dd>${escapeHtml(popup.venue)}</dd><dt>주소</dt><dd>${escapeHtml(popup.address || popup.venue)}</dd><dt>운영 기간</dt><dd>${escapeHtml(popup.startDate)} — ${escapeHtml(popup.endDate)}</dd><dt>정보 출처</dt><dd>${escapeHtml(popup.sourceName || '공식 일정')}</dd></dl><div class="map-links"><a target="_blank" rel="noopener" href="https://map.naver.com/p/search/${mapQuery}">네이버 지도에서 위치 보기</a><a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${mapQuery}">Google 지도</a></div></section><section><h3>일정 안내</h3><p class="data-source-note">공개된 공식 일정과 장소 정보를 기준으로 정리했습니다. 방문 전 공식 페이지에서 운영 시간과 입장 조건을 다시 확인해 주세요.</p><p class="data-source-note">마지막 확인일: ${escapeHtml(popup.lastSeenAt || popup.firstSeenAt || '확인 중')}</p></section></div>`;
+    $('#detail-modal').classList.add('open'); document.body.classList.add('locked');
+    if (history.state?.mukdangLayer !== 'detail') {
+      history.pushState({ ...history.state, mukdang: true, mukdangLayer: 'detail', detailType: 'popup', searchMode: state.searchMode }, '');
+    }
+    $('#popup-share').addEventListener('click', () => shareText(`${popup.name} · ${address}`));
   }
   function render() {
     const popupMode = state.searchMode === 'popup';
@@ -466,6 +482,11 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
       $('#restaurant-grid').innerHTML = rows.map(popupCard).join('') ||
         '<div class="empty popup-empty"><strong>조건에 맞는 푸드 팝업이 없습니다.</strong><p>공식 일정이 확인되면 매일 자동으로 추가됩니다.</p></div>';
       $('#pager').innerHTML = '';
+      $$('.popup-card').forEach(el => {
+        const popup = rows.find(item => item.id === el.dataset.popupId);
+        el.addEventListener('click', event => { if (!event.target.closest('a')) openPopupDetail(popup); });
+        el.addEventListener('keydown', event => { if (event.key === 'Enter') openPopupDetail(popup); });
+      });
       return;
     }
     const rows = filtered(), pages = Math.max(1, Math.ceil(rows.length / pageSize));
@@ -766,6 +787,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
   }
   function openDetail(r) {
     state.current = r;
+    state.currentPopup = null;
     const reviews = reviewsFor(r);
     const naverAddress = naverMapAddress(r.address);
     const naverQuery = encodeURIComponent(naverAddress);
@@ -1151,7 +1173,10 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
       history.pushState({ ...next, entryGuard: false }, '');
       return;
     }
-    if (next.mukdangLayer === 'detail' && state.current) {
+    if (next.mukdangLayer === 'detail' && next.detailType === 'popup' && state.currentPopup) {
+      $('#detail-modal').classList.add('open');
+      document.body.classList.add('locked');
+    } else if (next.mukdangLayer === 'detail' && state.current) {
       $('#detail-modal').classList.add('open');
       document.body.classList.add('locked');
     } else if (next.mukdangLayer === 'panel') {

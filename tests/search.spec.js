@@ -78,3 +78,15 @@ test('뒤로가기는 사이트를 나가지 않고 이전 화면 단계만 닫�
   await expect(page).toHaveURL(appUrl);
   await expect(page.locator('[data-search-mode="popup"]')).toHaveClass(/active/);
 });
+
+test('푸드 팝업은 썸네일 카드에서 상세 페이지로 이동한다', async ({ page }) => {
+  await page.goto(process.env.TEST_BASE_URL || 'http://127.0.0.1:8765/', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('#search-button')).toBeEnabled({ timeout: 15000 });
+  const popup = page.locator('.popup-card').first();
+  await expect(popup).toBeVisible();
+  await popup.click();
+  await expect(page.locator('#detail-modal')).toHaveClass(/open/);
+  await expect(page.locator('#modal-content')).toContainText('운영 기간');
+  await expect(page.locator('#modal-content .popup-detail-cover')).toBeVisible();
+  await expect(page.locator('#modal-content .site-plan')).toHaveCount(0);
+});
