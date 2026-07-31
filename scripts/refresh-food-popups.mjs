@@ -39,6 +39,29 @@ async function fetchJson(url) {
   return typeof payload === 'string' ? JSON.parse(payload) : payload;
 }
 
+async function fetchResilient(url, options = {}) {
+  let lastError;
+  for (let attempt = 0; attempt < 3; attempt += 1) {
+    try {
+      const response = await fetch(url, {
+        ...options,
+        headers: {
+          accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+          'accept-language': 'ko-KR,ko;q=0.9,en-US;q=0.7,en;q=0.5',
+          referer: new URL(url).origin + '/',
+          'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/126 Safari/537.36 mukdang-popup-indexer/1.0',
+          ...(options.headers || {})
+        },
+        signal: options.signal || AbortSignal.timeout(25_000)
+      });
+      if (response.ok || [401, 403, 404].includes(response.status)) return response;
+      lastError = new Error(`${url} 응답 ${response.status}`);
+    } catch (error) { lastError = error; }
+    await new Promise(resolve => setTimeout(resolve, 500 * (attempt + 1)));
+  }
+  throw lastError || new Error(`${url} 요청 실패`);
+}
+
 async function collectHyundai() {
   const rows = [];
   const base = 'https://www.ehyundai.com/newPortal/search/result.do';
@@ -239,14 +262,14 @@ async function collectFromOfficialSitemaps(sourceName, venueType, domains) {
   const candidateUrls = new Set();
   for (const domain of domains) {
     try {
-      const robots = await fetch(`https://${domain}/robots.txt`, { headers: { 'user-agent': 'mukdang-popup-indexer/1.0' }, signal: AbortSignal.timeout(15_000) });
+      const robots = await fetchResilient(`https://${domain}/robots.txt`);
       const robotText = robots.ok ? await robots.text() : '';
       const maps = [...robotText.matchAll(/Sitemap:\s*(https?:\/\/[^\s]+)/ig)].map(match => match[1]);
       if (!maps.length) maps.push(`https://${domain}/sitemap.xml`, `https://${domain}/sitemap_index.xml`);
       const queue = maps.slice(0, 4);
       while (queue.length && seen.size < 40) {
         const sitemapUrl = queue.shift(); if (seen.has(sitemapUrl)) continue; seen.add(sitemapUrl);
-        const response = await fetch(sitemapUrl, { headers: { 'user-agent': 'mukdang-popup-indexer/1.0' }, signal: AbortSignal.timeout(15_000) });
+        const response = await fetchResilient(sitemapUrl);
         if (!response.ok) continue;
         const xml = await response.text();
         for (const match of xml.matchAll(/<loc>\s*(https?:\/\/[^<]+)\s*<\/loc>/gi)) {
@@ -259,7 +282,7 @@ async function collectFromOfficialSitemaps(sourceName, venueType, domains) {
   }
   for (const url of [...candidateUrls].slice(0, 180)) {
     try {
-      const response = await fetch(url, { headers: { 'user-agent': 'mukdang-popup-indexer/1.0' }, signal: AbortSignal.timeout(15_000) });
+      const response = await fetchResilient(url);
       if (!response.ok) continue;
       const html = await response.text();
       const text = decodeHtml(html);
