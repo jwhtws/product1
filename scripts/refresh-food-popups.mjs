@@ -272,9 +272,18 @@ const sources = collectors.map(([name], index) => ({
   message: settled[index].status === 'rejected' ? String(settled[index].reason?.message || settled[index].reason) : undefined
 }));
 sources.push(
-  { name: '갤러리아·AK플라자·NC·뉴코아', status: 'no-public-popup-feed', count: 0 },
-  { name: '이마트·트레이더스·롯데마트·홈플러스', status: 'no-public-popup-feed', count: 0 }
+  { name: '갤러리아', status: 'adapter-needed', count: 0, officialUrl: 'https://dept.galleria.co.kr' },
+  { name: 'AK플라자', status: 'adapter-needed', count: 0, officialUrl: 'https://www.akplaza.com/board/event/list' },
+  { name: 'NC·뉴코아', status: 'adapter-needed', count: 0, officialUrl: 'https://www.elandretail.com' },
+  { name: '아이파크몰', status: 'adapter-needed', count: 0, officialUrl: 'https://www.hdc-iparkmall.com' },
+  { name: '이마트·트레이더스', status: 'adapter-needed', count: 0, officialUrl: 'https://store.emart.com' },
+  { name: '롯데마트', status: 'adapter-needed', count: 0, officialUrl: 'https://company.lottemart.com' },
+  { name: '홈플러스', status: 'adapter-needed', count: 0, officialUrl: 'https://corporate.homeplus.co.kr' }
 );
+const collectorErrors = sources.filter(source => source.status === 'error');
+if (collectorErrors.length) {
+  throw new Error(`공식 수집기 ${collectorErrors.length}개 실패: ${collectorErrors.map(source => source.name).join(', ')}`);
+}
 const merged = new Map(previous
   .filter(row => ['official', 'official-search'].includes(row.sourceGrade))
   .map(row => [row.id, row]));
@@ -290,8 +299,16 @@ const collectorCoverageRules = [
   ['현대백화점·현대아울렛', /(현대백화점|현대아울렛|현대프리미엄아울렛|더현대)/u],
   ['신세계백화점', /신세계백화점/u],
   ['스타필드·스타필드시티', /스타필드/u],
-  ['롯데백화점·롯데아울렛·롯데몰', /(롯데백화점|롯데아울렛|롯데프리미엄아울렛|롯데몰)/u]
+  ['롯데백화점·롯데아울렛·롯데몰', /(롯데백화점|롯데아울렛|롯데프리미엄아울렛|롯데몰)/u],
+  ['갤러리아', /갤러리아/u],
+  ['AK플라자', /AK플라자|에이케이플라자/iu],
+  ['NC·뉴코아', /NC|뉴코아/iu],
+  ['아이파크몰', /아이파크몰/u],
+  ['이마트·트레이더스', /이마트|트레이더스/u],
+  ['롯데마트', /롯데마트/u],
+  ['홈플러스', /홈플러스/u]
 ];
+const activeCollectorNames = new Set(collectors.map(([name]) => name));
 const venueCoverage = venueRegistry.map(venue => {
   const collector = collectorCoverageRules.find(([, pattern]) => pattern.test(venue.name))?.[0] || '';
   const matchedPopups = popups.filter(popup => {
@@ -305,15 +322,15 @@ const venueCoverage = venueRegistry.map(venue => {
     region: venue.region,
     kind: venue.kind,
     collector: collector || null,
-    status: matchedPopups ? 'verified-popup-found' : collector ? 'official-feed-monitored' : 'collector-needed',
+    status: matchedPopups ? 'verified-popup-found' : activeCollectorNames.has(collector) ? 'official-feed-monitored' : collector ? 'adapter-needed' : 'collector-needed',
     popupCount: matchedPopups
   };
 });
 const coverageSummary = {
   nationwideVenueTotal: venueCoverage.length,
   verifiedPopupVenueCount: venueCoverage.filter(item => item.popupCount > 0).length,
-  officialFeedMonitoredCount: venueCoverage.filter(item => item.collector).length,
-  collectorNeededCount: venueCoverage.filter(item => !item.collector).length,
+  officialFeedMonitoredCount: venueCoverage.filter(item => item.collector && activeCollectorNames.has(item.collector)).length,
+  collectorNeededCount: venueCoverage.filter(item => !item.collector || !activeCollectorNames.has(item.collector)).length,
   disclaimer: '시설 원장은 전국 탐색 범위이며, 화면에는 공식 출처에서 시작일과 종료일을 확인한 푸드팝업만 표시합니다.'
 };
 
