@@ -245,7 +245,10 @@ async function collectOfficialHtmlFeeds(sourceName, venueType, feeds) {
       for (const blockMatch of html.matchAll(/<(?:article|li|tr|div)[^>]*>([\s\S]{0,12000}?)<\/(?:article|li|tr|div)>/gi)) {
         const block = blockMatch[0];
         const text = decodeHtml(block);
-        if (!/(팝업|POP[\s-]*UP)/iu.test(text) || !foodWords.test(text) || nonHumanFood.test(text)) continue;
+        // Official boards often call these "식품행사" or "시식" rather than
+        // "팝업". Keep the source restriction, but accept an explicit food
+        // event keyword so those branch-level notices are not discarded.
+        if ((!/(팝업|POP[\s-]*UP)/iu.test(text) && !/(행사|이벤트|시식|쇼핑뉴스)/iu.test(text)) || !foodWords.test(text) || nonHumanFood.test(text)) continue;
         const dates = [...text.matchAll(/(20\d{2})[.\-/년]\s*(\d{1,2})[.\-/월]\s*(\d{1,2})[^\d]{0,20}(?:~|∼|-|–|부터|~까지)[^\d]{0,12}(20\d{2})[.\-/년]\s*(\d{1,2})[.\-/월]\s*(\d{1,2})/g)];
         if (!dates.length) continue;
         const date = dates[0];
@@ -319,10 +322,11 @@ const ncFeeds = [
 const iparkFeeds = [['ipark:event', '아이파크몰 공식 이벤트', 'https://www.hdc-iparkmall.com/event', '아이파크몰 용산점']];
 const emartFeeds = [
   ['emart:event', '이마트·트레이더스 공식 이벤트', 'https://store.emart.com/event/event.do', '이마트 전점'],
-  ['traders:event', '이마트·트레이더스 공식 이벤트', 'https://store.emart.com/event/traders.do', '트레이더스 전점']
+  ['traders:event', '이마트·트레이더스 공식 이벤트', 'https://store.emart.com/event/traders.do', '트레이더스 전점'],
+  ['emart:notice', '이마트 공식 공지사항', 'https://store.emart.com/news/notice_list.do', '이마트 전점']
 ];
-const lotteMartFeeds = [['lottemart:event', '롯데마트 공식 행사', 'https://company.lottemart.com/bc/event', '롯데마트 전점']];
-const homeplusFeeds = [['homeplus:event', '홈플러스 공식 행사', 'https://corporate.homeplus.co.kr/whatsnew/event', '홈플러스 전점']];
+const lotteMartFeeds = [['lottemart:event', '롯데마트 공식 행사', 'https://company.lottemart.com/en/event_list.asp', '롯데마트 전점']];
+const homeplusFeeds = [['homeplus:notice', '홈플러스 공식 공지사항', 'https://corporate.homeplus.co.kr/Business/Hyper_Notice.aspx', '홈플러스 전점']];
 
 const collectNc = collectElandRetail;
 const collectIpark = () => collectOfficialHtmlFeeds('아이파크몰 공식 이벤트', '쇼핑몰', iparkFeeds.map(([id, sourceName, url, venue]) => ({ id, sourceName, url, venue })));

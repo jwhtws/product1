@@ -412,9 +412,9 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
   }).format(new Date());
   function popupStatus(popup) {
     const today = koreaToday();
-    if (popup.endDate < today) return { key: 'ended', label: '영업종료' };
+    if (popup.endDate < today) return { key: 'ended', label: '종료' };
     if (popup.startDate > today) return { key: 'upcoming', label: '오픈 예정' };
-    return { key: 'open', label: '영업중' };
+    return { key: 'active', label: '영업 중' };
   }
   function popupRows() {
     const query = searchKey($('#search-input').value);
@@ -422,7 +422,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     const regionFilter = searchKey($('#popup-region-filter')?.value || '');
     const venueFilter = $('#popup-venue-filter')?.value || '';
     const sort = $('#popup-sort-filter')?.value || 'status';
-    const order = { active: 0, open: 0, upcoming: 1, ended: 2 };
+    const order = { active: 0, upcoming: 1, ended: 2 };
     return state.popups.filter(popup =>
       (!query || searchKey(`${popup.name} ${popup.brand || ''} ${popup.venue} ${popup.address} ${popup.region || ''}`).includes(query)) &&
       (!statusFilter || popupStatus(popup).key === statusFilter) &&
@@ -484,7 +484,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     if (popupMode) {
       const query = $('#search-input').value.trim();
       const rows = popupRows();
-      const activeCount = rows.filter(popup => popupStatus(popup).key === 'open').length;
+      const activeCount = rows.filter(popup => popupStatus(popup).key === 'active').length;
       const upcomingCount = rows.filter(popup => popupStatus(popup).key === 'upcoming').length;
       const endedCount = rows.filter(popup => popupStatus(popup).key === 'ended').length;
       const popupPages = Math.max(1, Math.ceil(rows.length / 24));
@@ -1075,12 +1075,8 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
   function selectSearchMode(mode, pushHistory = true) {
     state.searchMode = mode;
     state.page = 1;
-    if (mode === 'popup') {
-      ['popup-status-filter', 'popup-region-filter', 'popup-venue-filter', 'popup-sort-filter'].forEach(id => { const el = $(`#${id}`); if (el) el.selectedIndex = 0; });
-    } else {
-      ['region-filter', 'category-filter', 'price-filter', 'sort-filter'].forEach(id => { const el = $(`#${id}`); if (el) el.selectedIndex = 0; });
-      state.filters = { query: '', region: '', category: '', price: '', sort: 'recommend' };
-    }
+    // Restaurant and popup controls are independent. Keep each mode's
+    // selection when switching tabs instead of resetting the other mode.
     $$('[data-search-mode]').forEach(item => {
       const active = item.dataset.searchMode === mode;
       item.classList.toggle('active', active);
@@ -1218,7 +1214,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     const [regionsResponse, previewsResponse, popupsResponse] = await Promise.all([
       fetch('data/restaurants/regions.json?v=20260728-4'),
       fetch('data/restaurants/previews.json?v=20260728-4'),
-      fetch('data/popups.json?v=20260731-5')
+      fetch('data/popups.json?v=20260731-6')
     ]);
     if (!regionsResponse.ok || !previewsResponse.ok) throw Error('목록 로드 실패');
     const regionData = await regionsResponse.json(), previews = await previewsResponse.json();
