@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-07-31T08:14:20.108Z",
+  "updatedAt": "2026-07-31T08:24:28.024Z",
   "summary": {
     "nationwideVenueTotal": 1029,
-    "verifiedPopupVenueCount": 19,
+    "verifiedPopupVenueCount": 29,
     "officialFeedMonitoredCount": 550,
     "collectorNeededCount": 479,
     "disclaimer": "시설 원장은 전국 탐색 범위이며, 화면에는 공식 출처에서 시작일과 종료일을 확인한 푸드팝업만 표시합니다."
@@ -644,8 +644,8 @@
       "region": "경기도",
       "kind": "대형마트",
       "collector": "이마트·트레이더스",
-      "status": "official-feed-monitored",
-      "popupCount": 0
+      "status": "verified-popup-found",
+      "popupCount": 4
     },
     {
       "venueId": "localdata:4060000:2010406017607500001",
@@ -689,8 +689,8 @@
       "region": "경기도",
       "kind": "백화점",
       "collector": "현대백화점·현대아울렛",
-      "status": "official-feed-monitored",
-      "popupCount": 0
+      "status": "verified-popup-found",
+      "popupCount": 4
     },
     {
       "venueId": "localdata:3860000:2003386010707500006",
@@ -698,8 +698,8 @@
       "region": "경기도",
       "kind": "백화점",
       "collector": "현대백화점·현대아울렛",
-      "status": "official-feed-monitored",
-      "popupCount": 0
+      "status": "verified-popup-found",
+      "popupCount": 4
     },
     {
       "venueId": "localdata:5590000:2013559014807500001",
@@ -1175,8 +1175,8 @@
       "region": "경기도",
       "kind": "복합쇼핑몰",
       "collector": null,
-      "status": "collector-needed",
-      "popupCount": 0
+      "status": "verified-popup-found",
+      "popupCount": 4
     },
     {
       "venueId": "localdata:4030000:2019403018707500001",
@@ -1688,8 +1688,8 @@
       "region": "경기도",
       "kind": "대형마트",
       "collector": null,
-      "status": "collector-needed",
-      "popupCount": 0
+      "status": "verified-popup-found",
+      "popupCount": 4
     },
     {
       "venueId": "localdata:3940000:2000394000007500012",
@@ -2166,7 +2166,7 @@
       "kind": "백화점",
       "collector": "현대백화점·현대아울렛",
       "status": "verified-popup-found",
-      "popupCount": 5
+      "popupCount": 8
     },
     {
       "venueId": "localdata:3780000:2015378021907500001",
@@ -2382,7 +2382,7 @@
       "kind": "대형마트",
       "collector": "홈플러스",
       "status": "verified-popup-found",
-      "popupCount": 5
+      "popupCount": 8
     },
     {
       "venueId": "localdata:3830000:2008383006207500001",
@@ -4856,8 +4856,8 @@
       "region": "부산광역시",
       "kind": "쇼핑센터",
       "collector": null,
-      "status": "collector-needed",
-      "popupCount": 0
+      "status": "verified-popup-found",
+      "popupCount": 1
     },
     {
       "venueId": "localdata:3380000:2009338006207500001",
@@ -5234,8 +5234,8 @@
       "region": "서울특별시",
       "kind": "대형마트",
       "collector": "이마트·트레이더스",
-      "status": "official-feed-monitored",
-      "popupCount": 0
+      "status": "verified-popup-found",
+      "popupCount": 2
     },
     {
       "venueId": "localdata:3220000:2001322008307500026",
@@ -6260,8 +6260,8 @@
       "region": "서울특별시",
       "kind": "아울렛",
       "collector": null,
-      "status": "collector-needed",
-      "popupCount": 0
+      "status": "verified-popup-found",
+      "popupCount": 2
     },
     {
       "venueId": "localdata:3160000:2007316011707500018",
@@ -6485,8 +6485,8 @@
       "region": "서울특별시",
       "kind": "백화점",
       "collector": "현대백화점·현대아울렛",
-      "status": "official-feed-monitored",
-      "popupCount": 0
+      "status": "verified-popup-found",
+      "popupCount": 1
     },
     {
       "venueId": "localdata:3240000:1999324013907500001",
@@ -6494,8 +6494,8 @@
       "region": "서울특별시",
       "kind": "백화점",
       "collector": "현대백화점·현대아울렛",
-      "status": "official-feed-monitored",
-      "popupCount": 0
+      "status": "verified-popup-found",
+      "popupCount": 2
     },
     {
       "venueId": "localdata:3140000:2002314011407500001",

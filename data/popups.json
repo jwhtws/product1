@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-07-31T08:14:20.107Z",
+  "updatedAt": "2026-07-31T08:24:28.023Z",
   "sources": [
     {
       "name": "현대백화점·현대아울렛",
       "status": "active",
-      "count": 16
+      "count": 34
     },
     {
       "name": "신세계백화점",
@@ -67,9 +67,22 @@
       "count": 30
     }
   ],
+  "stats": {
+    "rawCollected": 64,
+    "parsed": 64,
+    "beforeDedup": 69,
+    "duplicateRemoved": 0,
+    "final": 69,
+    "status": {
+      "active": 52,
+      "upcoming": 7,
+      "ended": 10
+    },
+    "failedSources": []
+  },
   "coverage": {
     "nationwideVenueTotal": 1029,
-    "verifiedPopupVenueCount": 19,
+    "verifiedPopupVenueCount": 29,
     "officialFeedMonitoredCount": 550,
     "collectorNeededCount": 479,
     "disclaimer": "시설 원장은 전국 탐색 범위이며, 화면에는 공식 출처에서 시작일과 종료일을 확인한 푸드팝업만 표시합니다."
@@ -88,7 +101,72 @@
       "sourceUrl": "https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/c85942",
       "sourceGrade": "official",
       "firstSeenAt": "2026-07-31",
-      "lastSeenAt": "2026-07-31"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "upcoming"
+    },
+    {
+      "id": "hyundai:E2502607494582",
+      "name": "알뜰 장보기 주중 신선식품",
+      "venue": "울산점 동구",
+      "venueType": "백화점",
+      "address": "울산점 동구",
+      "startDate": "2026-08-04",
+      "endDate": "2026-08-06",
+      "imageUrl": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/30/b502815d-b45a-4edb-8ee0-a9e61decf082.jpg",
+      "sourceName": "현대백화점 공식 쇼핑뉴스",
+      "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2502607494582&branchCd=B00125000&category=",
+      "sourceGrade": "official",
+      "firstSeenAt": "2026-07-31",
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "upcoming"
+    },
+    {
+      "id": "hyundai:E4502607494319",
+      "name": "현대식품관 여름의 맛 평일 장보기 상품",
+      "venue": "킨텍스점",
+      "venueType": "백화점",
+      "address": "킨텍스점",
+      "startDate": "2026-08-03",
+      "endDate": "2026-08-06",
+      "imageUrl": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/01/39bc080b-73d1-4160-8c2a-af5ea8d11c84.jpg",
+      "sourceName": "현대백화점 공식 쇼핑뉴스",
+      "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4502607494319&branchCd=B00145000&category=",
+      "sourceGrade": "official",
+      "firstSeenAt": "2026-07-31",
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "upcoming"
+    },
+    {
+      "id": "hyundai:E4302607494630",
+      "name": "현대식품관 주중 특가",
+      "venue": "중동점",
+      "venueType": "백화점",
+      "address": "중동점",
+      "startDate": "2026-08-03",
+      "endDate": "2026-08-06",
+      "imageUrl": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/30/e99de611-19cc-4a97-b4ed-11a11182a921.jpg",
+      "sourceName": "현대백화점 공식 쇼핑뉴스",
+      "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4302607494630&branchCd=B00143000&category=",
+      "sourceGrade": "official",
+      "firstSeenAt": "2026-07-31",
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "upcoming"
     },
     {
       "id": "hyundai:E7402607494370",
@@ -103,7 +181,32 @@
       "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E7402607494370&branchCd=B00174000&category=",
       "sourceGrade": "official",
       "firstSeenAt": "2026-07-31",
-      "lastSeenAt": "2026-07-31"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "upcoming"
+    },
+    {
+      "id": "hyundai:E2402607493884",
+      "name": "건강식품 · 정관장 구매 시 사은 혜택",
+      "venue": "커넥트현대 부산",
+      "venueType": "백화점",
+      "address": "커넥트현대 부산",
+      "startDate": "2026-08-01",
+      "endDate": "2026-08-09",
+      "imageUrl": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202606/02/c65aaa66-fe78-4afc-bf01-9f324f766014.png",
+      "sourceName": "현대백화점 공식 쇼핑뉴스",
+      "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2402607493884&branchCd=B00124000&category=",
+      "sourceGrade": "official",
+      "firstSeenAt": "2026-07-31",
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "upcoming"
     },
     {
       "id": "lotte:blog:breath-bread:dongbusan",
@@ -113,12 +216,77 @@
       "address": "롯데몰 동부산점",
       "startDate": "2026-08-01",
       "endDate": "2026-08-02",
-      "imageUrl": "",
+      "imageUrl": null,
       "sourceName": "롯데쇼핑 공식 통합검색",
       "sourceUrl": "https://blog.lotte.co.kr/50904",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-31",
-      "lastSeenAt": "2026-07-31"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "upcoming"
+    },
+    {
+      "id": "hyundai:E4602607494433",
+      "name": "[디저트 카라반] 보정당",
+      "venue": "더현대 대구",
+      "venueType": "백화점",
+      "address": "더현대 대구",
+      "startDate": "2026-07-31",
+      "endDate": "2026-08-13",
+      "imageUrl": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/29/ab4c9e01-a0f3-48e9-af42-39d26cee34fe.jpg",
+      "sourceName": "현대백화점 공식 쇼핑뉴스",
+      "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4602607494433&branchCd=B00146000&category=",
+      "sourceGrade": "official",
+      "firstSeenAt": "2026-07-31",
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
+    },
+    {
+      "id": "hyundai:E4602607493810",
+      "name": "[디저트 카라반] 어썸팝콘",
+      "venue": "더현대 대구",
+      "venueType": "백화점",
+      "address": "더현대 대구",
+      "startDate": "2026-07-31",
+      "endDate": "2026-08-06",
+      "imageUrl": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202505/20/2f3e6c9e-b2c1-4e28-a2df-9a10651d1c6f.jpg",
+      "sourceName": "현대백화점 공식 쇼핑뉴스",
+      "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4602607493810&branchCd=B00146000&category=",
+      "sourceGrade": "official",
+      "firstSeenAt": "2026-07-31",
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
+    },
+    {
+      "id": "hyundai:E4302607493645",
+      "name": "[푸드파크] 위클리 팝업 뉴스",
+      "venue": "중동점",
+      "venueType": "백화점",
+      "address": "중동점",
+      "startDate": "2026-07-31",
+      "endDate": "2026-08-06",
+      "imageUrl": "https://img.ehyundai.com/files/derivedImage/fileValue/202607/29/7d85a36b-9bea-4bd1-b4e7-39dc53f939d5_02.png",
+      "sourceName": "현대백화점 공식 쇼핑뉴스",
+      "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4302607493645&branchCd=B00143000&category=",
+      "sourceGrade": "official",
+      "firstSeenAt": "2026-07-31",
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
     },
     {
       "id": "hyundai:E7202607493841",
@@ -133,7 +301,12 @@
       "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E7202607493841&branchCd=B00172000&category=",
       "sourceGrade": "official",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-07-31"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
     },
     {
       "id": "hyundai:E4502607494110",
@@ -148,7 +321,12 @@
       "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4502607494110&branchCd=B00145000&category=",
       "sourceGrade": "official",
       "firstSeenAt": "2026-07-31",
-      "lastSeenAt": "2026-07-31"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
     },
     {
       "id": "hyundai:E4502607494064",
@@ -163,7 +341,12 @@
       "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4502607494064&branchCd=B00145000&category=",
       "sourceGrade": "official",
       "firstSeenAt": "2026-07-31",
-      "lastSeenAt": "2026-07-31"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
     },
     {
       "id": "hyundai:E4602607493812",
@@ -178,7 +361,12 @@
       "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4602607493812&branchCd=B00146000&category=",
       "sourceGrade": "official",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-07-31"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
     },
     {
       "id": "lotte:global:neoguri-bagel",
@@ -188,12 +376,17 @@
       "address": "롯데백화점 건대스타시티점",
       "startDate": "2026-07-31",
       "endDate": "2026-08-06",
-      "imageUrl": "",
+      "imageUrl": null,
       "sourceName": "롯데쇼핑 공식 통합검색",
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?searchTerm=POP-UP",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-07-31"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
     },
     {
       "id": "hyundai:E2102607494369",
@@ -208,7 +401,32 @@
       "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2102607494369&branchCd=B00121000&category=",
       "sourceGrade": "official",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-07-31"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
+    },
+    {
+      "id": "hyundai:E1102607494209",
+      "name": "미담수제고로케 팝업 스토어",
+      "venue": "천호점",
+      "venueType": "백화점",
+      "address": "천호점",
+      "startDate": "2026-07-31",
+      "endDate": "2026-08-06",
+      "imageUrl": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202606/03/71e8a103-689a-47a2-bf53-b3334686ffe1.jpg",
+      "sourceName": "현대백화점 공식 쇼핑뉴스",
+      "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E1102607494209&branchCd=B00126000&category=",
+      "sourceGrade": "official",
+      "firstSeenAt": "2026-07-31",
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
     },
     {
       "id": "hyundai:E1102607494412",
@@ -223,7 +441,12 @@
       "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E1102607494412&branchCd=B00141000&category=",
       "sourceGrade": "official",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-07-31"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
     },
     {
       "id": "hyundai:E4602607493807",
@@ -238,7 +461,12 @@
       "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4602607493807&branchCd=B00146000&category=",
       "sourceGrade": "official",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-07-31"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
     },
     {
       "id": "hyundai:E1102607494403",
@@ -253,7 +481,12 @@
       "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E1102607494403&branchCd=B00141000&category=",
       "sourceGrade": "official",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-07-31"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
     },
     {
       "id": "lotte:ansan:salt-market",
@@ -263,12 +496,17 @@
       "address": "롯데백화점 안산점",
       "startDate": "2026-07-31",
       "endDate": "2026-08-13",
-      "imageUrl": "",
+      "imageUrl": null,
       "sourceName": "롯데쇼핑 공식 통합검색",
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0336&searchTerm=POP-UP",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-07-31"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
     },
     {
       "id": "hyundai:E4702607493441",
@@ -283,7 +521,32 @@
       "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4702607493441&branchCd=B00147000&category=",
       "sourceGrade": "official",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-07-31"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
+    },
+    {
+      "id": "hyundai:E2502607494565",
+      "name": "알뜰 장보기 주말 신선식품",
+      "venue": "울산점 동구",
+      "venueType": "백화점",
+      "address": "울산점 동구",
+      "startDate": "2026-07-31",
+      "endDate": "2026-08-02",
+      "imageUrl": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/30/3ba2e727-3073-4f71-90d0-7a181dc829ec.jpg",
+      "sourceName": "현대백화점 공식 쇼핑뉴스",
+      "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2502607494565&branchCd=B00125000&category=",
+      "sourceGrade": "official",
+      "firstSeenAt": "2026-07-31",
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
     },
     {
       "id": "hyundai:E2102607494345",
@@ -298,7 +561,12 @@
       "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2102607494345&branchCd=B00121000&category=",
       "sourceGrade": "official",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-07-31"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
     },
     {
       "id": "hyundai:E4602607493805",
@@ -313,7 +581,12 @@
       "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4602607493805&branchCd=B00146000&category=",
       "sourceGrade": "official",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-07-31"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
     },
     {
       "id": "hyundai:E2102607494378",
@@ -328,7 +601,32 @@
       "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2102607494378&branchCd=B00121000&category=",
       "sourceGrade": "official",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-07-31"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
+    },
+    {
+      "id": "hyundai:E2602607493878",
+      "name": "천호점 현대식품관 단독 장보기 혜택",
+      "venue": "천호점",
+      "venueType": "백화점",
+      "address": "천호점",
+      "startDate": "2026-07-31",
+      "endDate": "2026-08-02",
+      "imageUrl": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/27/f2cb9fa6-3237-420c-b50b-b4b78a0fb869.jpg",
+      "sourceName": "현대백화점 공식 쇼핑뉴스",
+      "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2602607493878&branchCd=B00126000&category=",
+      "sourceGrade": "official",
+      "firstSeenAt": "2026-07-31",
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
     },
     {
       "id": "hyundai:E4702607493437",
@@ -343,7 +641,152 @@
       "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4702607493437&branchCd=B00147000&category=",
       "sourceGrade": "official",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-07-31"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
+    },
+    {
+      "id": "hyundai:E4302607494641",
+      "name": "현대식품관 그로서리&생활용품",
+      "venue": "중동점",
+      "venueType": "백화점",
+      "address": "중동점",
+      "startDate": "2026-07-31",
+      "endDate": "2026-08-06",
+      "imageUrl": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/30/e99de611-19cc-4a97-b4ed-11a11182a921.jpg",
+      "sourceName": "현대백화점 공식 쇼핑뉴스",
+      "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4302607494641&branchCd=B00143000&category=",
+      "sourceGrade": "official",
+      "firstSeenAt": "2026-07-31",
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
+    },
+    {
+      "id": "hyundai:E2502607494562",
+      "name": "현대식품관 그로서리Ⅰ",
+      "venue": "울산점 동구",
+      "venueType": "백화점",
+      "address": "울산점 동구",
+      "startDate": "2026-07-31",
+      "endDate": "2026-08-06",
+      "imageUrl": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/30/1f1879bc-8e82-4bf6-b242-7381e1188360.jpg",
+      "sourceName": "현대백화점 공식 쇼핑뉴스",
+      "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2502607494562&branchCd=B00125000&category=",
+      "sourceGrade": "official",
+      "firstSeenAt": "2026-07-31",
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
+    },
+    {
+      "id": "hyundai:E2502607494563",
+      "name": "현대식품관 그로서리Ⅱ",
+      "venue": "울산점 동구",
+      "venueType": "백화점",
+      "address": "울산점 동구",
+      "startDate": "2026-07-31",
+      "endDate": "2026-08-06",
+      "imageUrl": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/30/f0128d85-e076-4d92-a511-3aa9c934e2ae.jpg",
+      "sourceName": "현대백화점 공식 쇼핑뉴스",
+      "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2502607494563&branchCd=B00125000&category=",
+      "sourceGrade": "official",
+      "firstSeenAt": "2026-07-31",
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
+    },
+    {
+      "id": "hyundai:E2702607494527",
+      "name": "현대식품관 알뜰장보기",
+      "venue": "신촌점",
+      "venueType": "백화점",
+      "address": "신촌점",
+      "startDate": "2026-07-31",
+      "endDate": "2026-08-06",
+      "imageUrl": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/30/de250b8b-d637-4fe2-b14d-58012372a228.jpg",
+      "sourceName": "현대백화점 공식 쇼핑뉴스",
+      "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2702607494527&branchCd=B00127000&category=",
+      "sourceGrade": "official",
+      "firstSeenAt": "2026-07-31",
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
+    },
+    {
+      "id": "hyundai:E4502607494315",
+      "name": "현대식품관 여름의 맛 여름 과일 한정 특가",
+      "venue": "킨텍스점",
+      "venueType": "백화점",
+      "address": "킨텍스점",
+      "startDate": "2026-07-31",
+      "endDate": "2026-08-02",
+      "imageUrl": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/01/39bc080b-73d1-4160-8c2a-af5ea8d11c84.jpg",
+      "sourceName": "현대백화점 공식 쇼핑뉴스",
+      "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4502607494315&branchCd=B00145000&category=",
+      "sourceGrade": "official",
+      "firstSeenAt": "2026-07-31",
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
+    },
+    {
+      "id": "hyundai:E4502607494317",
+      "name": "현대식품관 여름의 맛 주말 장보기 상품",
+      "venue": "킨텍스점",
+      "venueType": "백화점",
+      "address": "킨텍스점",
+      "startDate": "2026-07-31",
+      "endDate": "2026-08-02",
+      "imageUrl": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/01/39bc080b-73d1-4160-8c2a-af5ea8d11c84.jpg",
+      "sourceName": "현대백화점 공식 쇼핑뉴스",
+      "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4502607494317&branchCd=B00145000&category=",
+      "sourceGrade": "official",
+      "firstSeenAt": "2026-07-31",
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
+    },
+    {
+      "id": "hyundai:E4302607494605",
+      "name": "현대식품관 주말 특가",
+      "venue": "중동점",
+      "venueType": "백화점",
+      "address": "중동점",
+      "startDate": "2026-07-31",
+      "endDate": "2026-08-02",
+      "imageUrl": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/30/e99de611-19cc-4a97-b4ed-11a11182a921.jpg",
+      "sourceName": "현대백화점 공식 쇼핑뉴스",
+      "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4302607494605&branchCd=B00143000&category=",
+      "sourceGrade": "official",
+      "firstSeenAt": "2026-07-31",
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
     },
     {
       "id": "lotte:dongtan:manseok",
@@ -353,12 +796,17 @@
       "address": "롯데백화점 동탄점",
       "startDate": "2026-07-30",
       "endDate": "2026-08-02",
-      "imageUrl": "",
+      "imageUrl": null,
       "sourceName": "롯데쇼핑 공식 통합검색",
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=POP-UP",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-07-31"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
     },
     {
       "id": "hyundai:E4502607494259",
@@ -373,7 +821,12 @@
       "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4502607494259&branchCd=B00145000&category=",
       "sourceGrade": "official",
       "firstSeenAt": "2026-07-31",
-      "lastSeenAt": "2026-07-31"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
     },
     {
       "id": "lotte:dongtan:yoajung",
@@ -383,12 +836,17 @@
       "address": "롯데백화점 동탄점",
       "startDate": "2026-07-30",
       "endDate": "2026-08-12",
-      "imageUrl": "",
+      "imageUrl": null,
       "sourceName": "롯데쇼핑 공식 통합검색",
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=POP-UP",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-07-31"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
     },
     {
       "id": "hyundai:E4602607492936",
@@ -403,7 +861,32 @@
       "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4602607492936&branchCd=B00146000&category=",
       "sourceGrade": "official",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-07-31"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
+    },
+    {
+      "id": "hyundai:E4602607493809",
+      "name": "[디저트 카라반] 더옐롱",
+      "venue": "더현대 대구",
+      "venueType": "백화점",
+      "address": "더현대 대구",
+      "startDate": "2026-07-24",
+      "endDate": "2026-08-06",
+      "imageUrl": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/24/1eece98e-a959-43f6-9aaf-d1b87d84587c.jpg",
+      "sourceName": "현대백화점 공식 쇼핑뉴스",
+      "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4602607493809&branchCd=B00146000&category=",
+      "sourceGrade": "official",
+      "firstSeenAt": "2026-07-31",
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
     },
     {
       "id": "lotte:main:fresh-bread",
@@ -413,12 +896,17 @@
       "address": "롯데백화점 본점",
       "startDate": "2026-07-24",
       "endDate": "2026-08-06",
-      "imageUrl": "",
+      "imageUrl": null,
       "sourceName": "롯데쇼핑 공식 통합검색",
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0001&searchTerm=-",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-07-31"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
     },
     {
       "id": "lotte:main:glaceau",
@@ -428,12 +916,17 @@
       "address": "롯데백화점 본점",
       "startDate": "2026-07-24",
       "endDate": "2026-08-06",
-      "imageUrl": "",
+      "imageUrl": null,
       "sourceName": "롯데쇼핑 공식 통합검색",
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0001&searchTerm=%EC%95%84%EC%9D%B4%EC%8A%A4%ED%81%AC%EB%A6%BC",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-07-31"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
     },
     {
       "id": "lotte:incheon:damahon",
@@ -443,12 +936,17 @@
       "address": "롯데백화점 인천점",
       "startDate": "2026-07-24",
       "endDate": "2026-07-30",
-      "imageUrl": "",
+      "imageUrl": null,
       "sourceName": "롯데쇼핑 공식 통합검색",
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0344&searchTerm=POP-UP",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-07-31"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "ended"
     },
     {
       "id": "lotte:nowon:strawberry",
@@ -458,12 +956,17 @@
       "address": "롯데백화점 노원점",
       "startDate": "2026-07-24",
       "endDate": "2026-08-03",
-      "imageUrl": "",
+      "imageUrl": null,
       "sourceName": "롯데쇼핑 공식 통합검색",
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=POP-UP",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-07-31"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
     },
     {
       "id": "lotte:incheon:lusol",
@@ -473,12 +976,17 @@
       "address": "롯데백화점 인천점",
       "startDate": "2026-07-24",
       "endDate": "2026-07-30",
-      "imageUrl": "",
+      "imageUrl": null,
       "sourceName": "롯데쇼핑 공식 통합검색",
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0344&searchTerm=POP-UP",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-07-31"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "ended"
     },
     {
       "id": "lotte:main:milbit",
@@ -488,12 +996,17 @@
       "address": "롯데백화점 본점",
       "startDate": "2026-07-24",
       "endDate": "2026-08-06",
-      "imageUrl": "",
+      "imageUrl": null,
       "sourceName": "롯데쇼핑 공식 통합검색",
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0001&searchTerm=-",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-07-31"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
     },
     {
       "id": "lotte:dongtan:bacha-coffee",
@@ -503,12 +1016,17 @@
       "address": "롯데백화점 동탄점",
       "startDate": "2026-07-24",
       "endDate": "2026-09-30",
-      "imageUrl": "",
+      "imageUrl": null,
       "sourceName": "롯데쇼핑 공식 통합검색",
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=POP-UP",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-07-31"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
     },
     {
       "id": "lotte:ansan:seoul-roll",
@@ -518,12 +1036,17 @@
       "address": "롯데백화점 안산점",
       "startDate": "2026-07-24",
       "endDate": "2026-07-30",
-      "imageUrl": "",
+      "imageUrl": null,
       "sourceName": "롯데쇼핑 공식 통합검색",
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0336&searchTerm=POP-UP",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-07-31"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "ended"
     },
     {
       "id": "lotte:ansan:susu",
@@ -533,12 +1056,17 @@
       "address": "롯데백화점 안산점",
       "startDate": "2026-07-24",
       "endDate": "2026-07-30",
-      "imageUrl": "",
+      "imageUrl": null,
       "sourceName": "롯데쇼핑 공식 통합검색",
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0336&searchTerm=POP-UP",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-07-31"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "ended"
     },
     {
       "id": "lotte:nowon:arenut",
@@ -548,12 +1076,17 @@
       "address": "롯데백화점 노원점",
       "startDate": "2026-07-24",
       "endDate": "2026-08-03",
-      "imageUrl": "",
+      "imageUrl": null,
       "sourceName": "롯데쇼핑 공식 통합검색",
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=POP-UP",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-07-31"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
     },
     {
       "id": "hyundai:E7902607492635",
@@ -568,7 +1101,12 @@
       "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E7902607492635&branchCd=B00179000&category=",
       "sourceGrade": "official",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-07-30"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "ended"
     },
     {
       "id": "hyundai:E4502607492893",
@@ -583,7 +1121,12 @@
       "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4502607492893&branchCd=B00145000&category=",
       "sourceGrade": "official",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-07-30"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "ended"
     },
     {
       "id": "lotte:centum:potato-bread",
@@ -593,12 +1136,17 @@
       "address": "롯데백화점 센텀시티점",
       "startDate": "2026-07-24",
       "endDate": "2026-08-06",
-      "imageUrl": "",
+      "imageUrl": null,
       "sourceName": "롯데쇼핑 공식 통합검색",
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0027&searchTerm=POP-UP",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-07-31"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
     },
     {
       "id": "lotte:nowon:home-meal",
@@ -608,12 +1156,17 @@
       "address": "롯데백화점 노원점",
       "startDate": "2026-07-24",
       "endDate": "2026-08-03",
-      "imageUrl": "",
+      "imageUrl": null,
       "sourceName": "롯데쇼핑 공식 통합검색",
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=POP-UP",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-07-31"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
     },
     {
       "id": "lotte:dongtan:findhere",
@@ -623,12 +1176,17 @@
       "address": "롯데백화점 동탄점",
       "startDate": "2026-07-24",
       "endDate": "2026-07-30",
-      "imageUrl": "",
+      "imageUrl": null,
       "sourceName": "롯데쇼핑 공식 통합검색",
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=POP-UP",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-07-31"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "ended"
     },
     {
       "id": "lotte:dongtan:cheongju-mandu",
@@ -638,12 +1196,17 @@
       "address": "롯데백화점 동탄점",
       "startDate": "2026-07-24",
       "endDate": "2026-07-30",
-      "imageUrl": "",
+      "imageUrl": null,
       "sourceName": "롯데쇼핑 공식 통합검색",
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=POP-UP",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-07-31"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "ended"
     },
     {
       "id": "hyundai:E4602607494427",
@@ -658,7 +1221,12 @@
       "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4602607494427&branchCd=B00146000&category=",
       "sourceGrade": "official",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-07-30"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
     },
     {
       "id": "lotte:incheon:french-louvre-baguette",
@@ -668,12 +1236,17 @@
       "address": "롯데백화점 인천점",
       "startDate": "2026-07-17",
       "endDate": "2026-08-13",
-      "imageUrl": "",
+      "imageUrl": null,
       "sourceName": "롯데쇼핑 공식 통합검색",
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0344&searchTerm=POP-UP",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-07-31"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
     },
     {
       "id": "lotte:dongtan:yummy-fruta",
@@ -683,12 +1256,17 @@
       "address": "롯데백화점 동탄점",
       "startDate": "2026-07-16",
       "endDate": "2026-10-15",
-      "imageUrl": "",
+      "imageUrl": null,
       "sourceName": "롯데쇼핑 공식 통합검색",
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=POP-UP",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-07-31"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
     },
     {
       "id": "lotte:jamsil:honey",
@@ -698,12 +1276,17 @@
       "address": "롯데월드몰",
       "startDate": "2026-07-15",
       "endDate": "2026-08-09",
-      "imageUrl": "",
+      "imageUrl": null,
       "sourceName": "롯데쇼핑 공식 통합검색",
       "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000546957",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-07-31"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
     },
     {
       "id": "hyundai:E4502607491294",
@@ -718,7 +1301,12 @@
       "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4502607491294&branchCd=B00145000&category=",
       "sourceGrade": "official",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-07-30"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
     },
     {
       "id": "lotte:dongtan:tokyoberry",
@@ -728,12 +1316,17 @@
       "address": "롯데백화점 동탄점",
       "startDate": "2026-07-10",
       "endDate": "2026-07-30",
-      "imageUrl": "",
+      "imageUrl": null,
       "sourceName": "롯데쇼핑 공식 통합검색",
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=POP-UP",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-07-31"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "ended"
     },
     {
       "id": "lotte:nowon:bagelist",
@@ -743,12 +1336,17 @@
       "address": "롯데백화점 노원점",
       "startDate": "2026-07-10",
       "endDate": "2026-08-06",
-      "imageUrl": "",
+      "imageUrl": null,
       "sourceName": "롯데쇼핑 공식 통합검색",
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=POP-UP",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-07-31"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
     },
     {
       "id": "lotte:dongtan:siopanya",
@@ -758,12 +1356,17 @@
       "address": "롯데백화점 동탄점",
       "startDate": "2026-07-10",
       "endDate": "2026-08-06",
-      "imageUrl": "",
+      "imageUrl": null,
       "sourceName": "롯데쇼핑 공식 통합검색",
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=POP-UP",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-07-31"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
     },
     {
       "id": "lotte:centum:fishcake",
@@ -773,12 +1376,17 @@
       "address": "롯데백화점 센텀시티점",
       "startDate": "2026-07-10",
       "endDate": "2026-07-30",
-      "imageUrl": "",
+      "imageUrl": null,
       "sourceName": "롯데쇼핑 공식 통합검색",
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0027&searchTerm=POP-UP",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-07-31"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "ended"
     },
     {
       "id": "lotte:cheongju:dongbong",
@@ -788,12 +1396,17 @@
       "address": "롯데아울렛 청주점",
       "startDate": "2026-07-03",
       "endDate": "2026-08-06",
-      "imageUrl": "",
+      "imageUrl": null,
       "sourceName": "롯데쇼핑 공식 통합검색",
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0342&searchTerm=POP-UP",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-07-31"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
     },
     {
       "id": "lotte:cheongju:ojisan-cheesecake",
@@ -803,12 +1416,17 @@
       "address": "롯데아울렛 청주점",
       "startDate": "2026-07-03",
       "endDate": "2026-08-06",
-      "imageUrl": "",
+      "imageUrl": null,
       "sourceName": "롯데쇼핑 공식 통합검색",
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0342&searchTerm=POP-UP",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-07-31"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
     },
     {
       "id": "lotte:nowon:maison-once-year",
@@ -818,12 +1436,17 @@
       "address": "롯데백화점 노원점",
       "startDate": "2026-07-01",
       "endDate": "2026-08-03",
-      "imageUrl": "",
+      "imageUrl": null,
       "sourceName": "롯데쇼핑 공식 통합검색",
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=POP-UP",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-07-31"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
     },
     {
       "id": "lotte:nowon:rollsrolls",
@@ -833,12 +1456,17 @@
       "address": "롯데백화점 노원점",
       "startDate": "2026-06-01",
       "endDate": "2026-08-03",
-      "imageUrl": "",
+      "imageUrl": null,
       "sourceName": "롯데쇼핑 공식 통합검색",
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=POP-UP",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-07-31"
+      "lastSeenAt": "2026-07-31",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-07-31",
+      "status": "active"
     }
   ]
 }
