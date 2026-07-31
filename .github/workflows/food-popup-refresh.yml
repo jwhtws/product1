@@ -23,6 +23,7 @@ jobs:
         with:
           node-version: 22
       - name: 전국 쇼핑시설 팝업 탐색 원장 갱신
+        continue-on-error: true
         run: node scripts/refresh-popup-venues.mjs
       - name: 공식 쇼핑시설 푸드 팝업 갱신
         run: node scripts/refresh-food-popups.mjs
