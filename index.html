@@ -74,6 +74,12 @@
         <label>정렬<select id="sort-filter"><option value="recommend">추천순</option><option value="tenure">영업기간순</option><option value="rating">별점순</option><option value="name">이름순</option></select></label>
         <button id="filter-reset" class="ghost" type="button">초기화</button>
       </div>
+      <div id="popup-filters" class="filters popup-filters" hidden>
+        <label>상태<select id="popup-status-filter"><option value="">전체</option><option value="active">영업 중</option><option value="upcoming">오픈 예정</option><option value="ended">종료</option></select></label>
+        <label>지역<select id="popup-region-filter"><option value="">전국</option></select></label>
+        <label>장소 유형<select id="popup-venue-filter"><option value="">전체</option><option value="백화점">백화점</option><option value="쇼핑몰">쇼핑몰</option><option value="대형마트">대형마트</option></select></label>
+        <label>정렬<select id="popup-sort-filter"><option value="status">영업 중·오픈 예정 우선</option><option value="ending">종료 임박순</option><option value="newest">신규 등록순</option><option value="start">시작일순</option></select></label>
+      </div>
 
       <div id="app-state" class="state">잠시만 기다려 주세요.</div>
       <div id="restaurant-grid" class="grid" aria-live="polite"></div>
@@ -121,6 +127,6 @@
     <article class="modal panel-modal"><button class="modal-close" data-close type="button" aria-label="닫기">×</button><div id="panel-content"></div></article>
   </div>
   <div id="toast" class="toast" role="status"></div>
-  <script type="module" src="app.js?v=20260731-3"></script>
+  <script type="module" src="app.js?v=20260731-4"></script>
 </body>
 </html>

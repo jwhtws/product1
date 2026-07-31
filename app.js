@@ -418,10 +418,20 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
   }
   function popupRows() {
     const query = searchKey($('#search-input').value);
-    const order = { open: 0, upcoming: 1, ended: 2 };
+    const statusFilter = $('#popup-status-filter')?.value || '';
+    const regionFilter = searchKey($('#popup-region-filter')?.value || '');
+    const venueFilter = $('#popup-venue-filter')?.value || '';
+    const sort = $('#popup-sort-filter')?.value || 'status';
+    const order = { active: 0, open: 0, upcoming: 1, ended: 2 };
     return state.popups.filter(popup =>
-      !query || searchKey(`${popup.name} ${popup.venue} ${popup.address}`).includes(query)
+      (!query || searchKey(`${popup.name} ${popup.brand || ''} ${popup.venue} ${popup.address} ${popup.region || ''}`).includes(query)) &&
+      (!statusFilter || popupStatus(popup).key === statusFilter) &&
+      (!regionFilter || searchKey(popup.region || popup.address || '').includes(regionFilter)) &&
+      (!venueFilter || (popup.venueType || '') === venueFilter)
     ).sort((left, right) => {
+      if (sort === 'ending') return left.endDate.localeCompare(right.endDate);
+      if (sort === 'newest') return String(right.lastVerifiedAt || right.lastSeenAt || '').localeCompare(String(left.lastVerifiedAt || left.lastSeenAt || '')) || right.startDate.localeCompare(left.startDate);
+      if (sort === 'start') return left.startDate.localeCompare(right.startDate);
       const statusDiff = order[popupStatus(left).key] - order[popupStatus(right).key];
       if (statusDiff) return statusDiff;
       return popupStatus(left).key === 'ended'
@@ -466,6 +476,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
   function render() {
     const popupMode = state.searchMode === 'popup';
     $('#filters').hidden = popupMode;
+    $('#popup-filters').hidden = !popupMode;
     $('#filter-toggle').hidden = popupMode;
     $('#popular-quick-searches').hidden = popupMode;
     $('#home-rankings').hidden = popupMode;
@@ -473,15 +484,21 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     if (popupMode) {
       const query = $('#search-input').value.trim();
       const rows = popupRows();
-      const openCount = rows.filter(popup => popupStatus(popup).key === 'open').length;
+      const activeCount = rows.filter(popup => popupStatus(popup).key === 'open').length;
+      const upcomingCount = rows.filter(popup => popupStatus(popup).key === 'upcoming').length;
+      const endedCount = rows.filter(popup => popupStatus(popup).key === 'ended').length;
+      const popupPages = Math.max(1, Math.ceil(rows.length / 24));
+      state.page = Math.min(state.page, popupPages);
+      const shown = rows.slice((state.page - 1) * 24, state.page * 24);
       $('#discover-title').textContent = query ? `‘${query}’ 푸드 팝업` : '푸드 팝업 일정';
-      $('#result-summary').textContent = `${rows.length.toLocaleString('ko-KR')}곳 · 현재 영업중 ${openCount.toLocaleString('ko-KR')}곳`;
+      $('#result-summary').textContent = `${rows.length.toLocaleString('ko-KR')}건 · 영업 중 ${activeCount.toLocaleString('ko-KR')} · 오픈 예정 ${upcomingCount.toLocaleString('ko-KR')} · 종료 ${endedCount.toLocaleString('ko-KR')}`;
       $('#app-state').textContent = state.popupUpdatedAt
         ? `공식 쇼핑시설 일정 기준 · ${new Date(state.popupUpdatedAt).toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' })} 갱신`
         : '공식 팝업 일정을 불러오는 중입니다.';
-      $('#restaurant-grid').innerHTML = rows.map(popupCard).join('') ||
+      $('#restaurant-grid').innerHTML = shown.map(popupCard).join('') ||
         '<div class="empty popup-empty"><strong>조건에 맞는 푸드 팝업이 없습니다.</strong><p>공식 일정이 확인되면 매일 자동으로 추가됩니다.</p></div>';
-      $('#pager').innerHTML = '';
+      $('#pager').innerHTML = popupPages > 1 ? `<button data-popup-page="-1" ${state.page === 1 ? 'disabled' : ''}>이전</button><span>${state.page} / ${popupPages}</span><button data-popup-page="1" ${state.page === popupPages ? 'disabled' : ''}>다음</button>` : '';
+      $$('[data-popup-page]').forEach(button => button.addEventListener('click', () => { state.page = Math.max(1, Math.min(popupPages, state.page + Number(button.dataset.popupPage))); render(); }));
       $$('.popup-card').forEach(el => {
         const popup = rows.find(item => item.id === el.dataset.popupId);
         el.addEventListener('click', event => { if (!event.target.closest('a')) openPopupDetail(popup); });
@@ -737,7 +754,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     render();
   }
   function resetFilters() {
-    $('#search-input').value = ''; $$('#filters select').forEach(select => { select.selectedIndex = 0; });
+    $('#search-input').value = ''; $$('#filters select, #popup-filters select').forEach(select => { select.selectedIndex = 0; });
     state.filters = { query: '', region: '', category: '', price: '', sort: 'recommend' };
     state.searchSession = null; state.all = state.preview; state.page = 1; render();
   }
@@ -1088,6 +1105,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
   $('#search-input').addEventListener('input', () => { renderSuggestions(); prefetchSearch($('#search-input').value).catch(() => {}); });
   $('#search-input').addEventListener('keydown', e => e.key === 'Enter' && applySearch());
   $$('#filters select').forEach(el => el.addEventListener('change', applyFilters));
+  $$('#popup-filters select').forEach(el => el.addEventListener('change', () => { state.page = 1; render(); }));
   $('#filter-reset').addEventListener('click', resetFilters);
   $('#filter-toggle').addEventListener('click', () => $('#filters').classList.toggle('open'));
   const menuToggle = $('#menu-toggle'), headerNav = $('#header-nav');
@@ -1201,6 +1219,8 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
       const popupData = await popupsResponse.json();
       state.popups = Array.isArray(popupData.popups) ? popupData.popups : [];
       state.popupUpdatedAt = popupData.updatedAt;
+      const popupRegions = [...new Set(state.popups.map(item => item.region || String(item.address || '').split(' ')[0]).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'ko'));
+      popupRegions.forEach(region => $('#popup-region-filter').insertAdjacentHTML('beforeend', `<option value="${escapeHtml(region)}">${escapeHtml(region)}</option>`));
     }
     window.__MEOKDANG_REGIONS__ = regionData.regions; state.preview = enrich(mixPreviews(previews)); state.all = state.preview;
     await loadPopularRestaurants();

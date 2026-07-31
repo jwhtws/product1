@@ -19,6 +19,8 @@ function clean(value) {
 }
 
 function eventDate(part, reference = new Date(`${today}T00:00:00+09:00`)) {
+  const full = String(part || '').match(/(20\d{2})[.\-/](\d{1,2})[.\-/](\d{1,2})/);
+  if (full) return `${full[1]}-${String(full[2]).padStart(2, '0')}-${String(full[3]).padStart(2, '0')}`;
   const match = String(part || '').match(/(\d{1,2})\.(\d{1,2})/);
   if (!match) return '';
   const month = Number(match[1]), day = Number(match[2]);
@@ -64,16 +66,20 @@ async function fetchResilient(url, options = {}) {
 
 async function collectHyundai() {
   const rows = [];
+  const seen = new Set();
   const base = 'https://www.ehyundai.com/newPortal/search/result.do';
-  for (let page = 1; page <= 50; page += 1) {
+  for (const searchWord of ['pop up', '식품', '푸드', '베이커리', '디저트', '카페', '커피', '떡', '빵', '분식']) {
+   for (let page = 1; page <= 50; page += 1) {
     const params = new URLSearchParams({
-      searchWord: 'pop up', code: '', splitCode: '', convertCheck: 'false',
+      searchWord, code: '', splitCode: '', convertCheck: 'false',
       salesPage: '1', storePage: '1', eventPage: String(page), culturePage: '1',
       menuPage: '1', faqPage: '1', eventSearchPage: '1', eventWinnerSearchPage: '1'
     });
     const data = await fetchJson(`${base}?${params}`);
     const events = Array.isArray(data.eventList) ? data.eventList : [];
     for (const event of events) {
+      if (seen.has(event.EVNT_CRD_CD)) continue;
+      seen.add(event.EVNT_CRD_CD);
       const searchable = clean(`${event.EVNT_CRD_NM} ${event.BRAND_NM} ${event.TITL}`);
       if (!foodWords.test(searchable) || nonHumanFood.test(searchable)) continue;
       const startDate = eventDate(event.EVNT_STRT_DT);
@@ -98,6 +104,7 @@ async function collectHyundai() {
       });
     }
     if (!events.length || page * 4 >= Number(data.eventCount || 0)) break;
+   }
   }
   return rows;
 }
@@ -518,6 +525,7 @@ const collectors = [
 ];
 const settled = await Promise.allSettled(collectors.map(([, collector]) => collector()));
 const collected = settled.flatMap(result => result.status === 'fulfilled' ? result.value : []);
+const rawCollectedCount = collected.length;
 const sources = collectors.map(([name], index) => ({
   name,
   status: settled[index].status === 'fulfilled' ? 'active' : 'error',
@@ -525,19 +533,62 @@ const sources = collectors.map(([name], index) => ({
   message: settled[index].status === 'rejected' ? String(settled[index].reason?.message || settled[index].reason) : undefined
 }));
 const collectorErrors = sources.filter(source => source.status === 'error');
-if (collectorErrors.length) {
-  throw new Error(`공식 수집기 ${collectorErrors.length}개 실패: ${collectorErrors.map(source => source.name).join(', ')}`);
+if (collectorErrors.length) console.warn(`공식 수집기 ${collectorErrors.length}개 실패: ${collectorErrors.map(source => source.name).join(', ')} · 기존 데이터 보존`);
+
+function normalizedUrl(value) {
+  try {
+    const url = new URL(String(value || ''));
+    for (const key of [...url.searchParams.keys()]) if (/^(utm_|fbclid|gclid|ref|source)/iu.test(key)) url.searchParams.delete(key);
+    url.hash = '';
+    return url.toString();
+  } catch { return String(value || ''); }
+}
+function normalizedText(value) { return clean(value).replace(/(?:\[?POP[\s-]*UP(?: STORE)?\]?|팝업스토어?)/giu, '').replace(/\s+/g, '').toLowerCase(); }
+function derivedStatus(row) {
+  if (row.endDate < today) return 'ended';
+  if (row.startDate > today) return 'upcoming';
+  return 'active';
+}
+function normalizePopup(row) {
+  const normalized = {
+    ...row,
+    name: clean(row.name),
+    brand: row.brand ? clean(row.brand) : null,
+    venue: clean(row.venue),
+    address: row.address ? clean(row.address) : null,
+    region: row.region ? clean(row.region) : null,
+    category: row.category || 'food-popup',
+    sourceUrl: normalizedUrl(row.sourceUrl),
+    imageUrl: row.imageUrl || null,
+    lastVerifiedAt: today,
+    lastSeenAt: today
+  };
+  normalized.status = derivedStatus(normalized);
+  return normalized;
 }
 const merged = new Map(previous
   .filter(row => ['official', 'official-search'].includes(row.sourceGrade))
-  .map(row => [row.id, row]));
+  .map(row => [row.id, normalizePopup(row)]));
 for (const row of collected) {
-  const old = merged.get(row.id);
-  merged.set(row.id, { ...old, ...row, firstSeenAt: old?.firstSeenAt || row.firstSeenAt });
+  const normalized = normalizePopup(row);
+  const old = merged.get(normalized.id);
+  merged.set(normalized.id, { ...old, ...normalized, firstSeenAt: old?.firstSeenAt || normalized.firstSeenAt });
 }
-const popups = [...merged.values()]
+const beforeDedupCount = merged.size;
+const deduped = new Map();
+for (const row of merged.values()) {
+  const identity = `${normalizedText(row.brand || row.name)}|${normalizedText(row.venue)}|${row.startDate}|${row.endDate}`;
+  const old = deduped.get(identity);
+  if (!old || (row.sourceGrade === 'official' && old.sourceGrade !== 'official')) deduped.set(identity, row);
+}
+const duplicateRemovedCount = beforeDedupCount - deduped.size;
+const popups = [...deduped.values()]
   .filter(row => row.id && row.name && row.startDate && row.endDate)
   .sort((left, right) => right.startDate.localeCompare(left.startDate) || left.name.localeCompare(right.name, 'ko'));
+
+if (previous.length >= 10 && popups.length < previous.length * 0.8) {
+  throw new Error(`수집 결과 급감 보호: 기존 ${previous.length}건 → ${popups.length}건 (20% 이상 감소), 파일 반영 중단`);
+}
 
 const collectorCoverageRules = [
   ['현대백화점·현대아울렛', /(현대백화점|현대아울렛|현대프리미엄아울렛|더현대)/u],
@@ -582,6 +633,7 @@ await mkdir(dirname(outputPath), { recursive: true });
 await writeFile(outputPath, `${JSON.stringify({
   updatedAt: new Date().toISOString(),
   sources,
+  stats: collectionStats,
   coverage: coverageSummary,
   popups
 }, null, 2)}\n`);
@@ -590,6 +642,17 @@ await writeFile('data/popup-coverage.json', `${JSON.stringify({
   summary: coverageSummary,
   venues: venueCoverage
 }, null, 2)}\n`);
-console.log(`푸드 팝업 ${collected.length}건 확인 · 누적 ${popups.length}건 보존 · 기준일 ${today}`);
+const statusCounts = Object.fromEntries(['active', 'upcoming', 'ended'].map(status => [status, popups.filter(row => row.status === status).length]));
+const collectionStats = {
+  rawCollected: rawCollectedCount,
+  parsed: collected.length,
+  beforeDedup: beforeDedupCount,
+  duplicateRemoved: duplicateRemovedCount,
+  final: popups.length,
+  status: statusCounts,
+  failedSources: collectorErrors.map(source => source.name)
+};
+console.log(`원본 수집 ${rawCollectedCount}건 · 파싱 성공 ${collected.length}건 · ID 병합 ${beforeDedupCount}건 · 중복 제거 ${duplicateRemovedCount}건 · 최종 ${popups.length}건`);
+console.log(`상태 집계 active=${statusCounts.active} upcoming=${statusCounts.upcoming} ended=${statusCounts.ended}`);
 console.log(`전국 시설 ${venueCoverage.length}곳 · 공식 피드 감시 ${coverageSummary.officialFeedMonitoredCount}곳 · 수집기 추가 필요 ${coverageSummary.collectorNeededCount}곳`);
 for (const source of sources) console.log(`- ${source.name}: ${source.status} (${source.count}건)`);
