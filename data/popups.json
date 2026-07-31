@@ -1,10 +1,11 @@
 {
-  "updatedAt": "2026-07-31T07:15:27.071Z",
+  "updatedAt": "2026-07-31T07:17:52.252Z",
   "sources": [
     {
       "name": "현대백화점·현대아울렛",
-      "status": "active",
-      "count": 16
+      "status": "error",
+      "count": 0,
+      "message": "fetch failed"
     },
     {
       "name": "신세계백화점",
@@ -24,7 +25,7 @@
     {
       "name": "롯데백화점·롯데아울렛·롯데몰",
       "status": "active",
-      "count": 29
+      "count": 30
     },
     {
       "name": "갤러리아·AK플라자·NC·뉴코아",
@@ -39,7 +40,7 @@
   ],
   "coverage": {
     "nationwideVenueTotal": 1029,
-    "verifiedPopupVenueCount": 18,
+    "verifiedPopupVenueCount": 19,
     "officialFeedMonitoredCount": 88,
     "collectorNeededCount": 941,
     "disclaimer": "시설 원장은 전국 탐색 범위이며, 화면에는 공식 출처에서 시작일과 종료일을 확인한 푸드팝업만 표시합니다."
@@ -57,6 +58,21 @@
       "sourceName": "현대백화점 공식 쇼핑뉴스",
       "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E7402607494370&branchCd=B00174000&category=",
       "sourceGrade": "official",
+      "firstSeenAt": "2026-07-31",
+      "lastSeenAt": "2026-07-31"
+    },
+    {
+      "id": "lotte:blog:breath-bread:dongbusan",
+      "name": "세븐셀렉트 숨결통식빵 팝업",
+      "venue": "롯데몰 동부산점",
+      "venueType": "쇼핑몰",
+      "address": "롯데몰 동부산점",
+      "startDate": "2026-08-01",
+      "endDate": "2026-08-02",
+      "imageUrl": "",
+      "sourceName": "롯데쇼핑 공식 통합검색",
+      "sourceUrl": "https://blog.lotte.co.kr/50904",
+      "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-31",
       "lastSeenAt": "2026-07-31"
     },
