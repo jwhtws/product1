@@ -412,30 +412,43 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
   }).format(new Date());
   function popupStatus(popup) {
     const today = koreaToday();
-    if (popup.endDate < today) return { key: 'ended', label: '종료' };
+    if (popup.endDate && popup.endDate < today) return { key: 'ended', label: '종료' };
     if (popup.startDate > today) return { key: 'upcoming', label: '오픈 예정' };
     return { key: 'active', label: '영업 중' };
   }
+  function popupFoodType(popup) {
+    const text = searchKey(`${popup.name} ${popup.brand || ''}`);
+    if (/(베이커리|빵|베이글|케이크|쿠키|도넛|타르트|디저트|마카롱|아이스크림|젤라또|초콜릿)/u.test(text)) return 'bakery';
+    if (/(카페|커피|음료|주스|차|티|라떼|와인|맥주)/u.test(text)) return 'drink';
+    if (/(떡|약과|한과|모찌)/u.test(text)) return 'tteok';
+    if (/(꽈배기|간식)/u.test(text)) return 'snack';
+    if (/(분식|김밥|만두|닭강정|치킨|국수|라면|고기|족발|맛집|식사)/u.test(text)) return 'meal';
+    return 'grocery';
+  }
   function popupRows() {
     const query = searchKey($('#search-input').value);
-    const statusFilter = $('#popup-status-filter')?.value || '';
+    const foodFilter = $('#popup-food-filter')?.value || '';
     const regionFilter = searchKey($('#popup-region-filter')?.value || '');
     const venueFilter = $('#popup-venue-filter')?.value || '';
-    const sort = $('#popup-sort-filter')?.value || 'status';
+    const sort = $('#popup-sort-filter')?.value || 'food';
     const order = { active: 0, upcoming: 1, ended: 2 };
     return state.popups.filter(popup =>
       (!query || searchKey(`${popup.name} ${popup.brand || ''} ${popup.venue} ${popup.address} ${popup.region || ''}`).includes(query)) &&
-      (!statusFilter || popupStatus(popup).key === statusFilter) &&
+      (!foodFilter || popupFoodType(popup) === foodFilter) &&
       (!regionFilter || searchKey(popup.region || popup.address || '').includes(regionFilter)) &&
       (!venueFilter || (popup.venueType || '') === venueFilter)
     ).sort((left, right) => {
-      if (sort === 'ending') return left.endDate.localeCompare(right.endDate);
+      if (sort === 'food') {
+        const typeOrder = { bakery: 0, drink: 1, tteok: 2, snack: 3, meal: 4, grocery: 5 };
+        return (typeOrder[popupFoodType(left)] - typeOrder[popupFoodType(right)]) || left.name.localeCompare(right.name, 'ko');
+      }
+      if (sort === 'ending') return (left.endDate || '9999-12-31').localeCompare(right.endDate || '9999-12-31');
       if (sort === 'newest') return String(right.lastVerifiedAt || right.lastSeenAt || '').localeCompare(String(left.lastVerifiedAt || left.lastSeenAt || '')) || right.startDate.localeCompare(left.startDate);
       if (sort === 'start') return left.startDate.localeCompare(right.startDate);
       const statusDiff = order[popupStatus(left).key] - order[popupStatus(right).key];
       if (statusDiff) return statusDiff;
       return popupStatus(left).key === 'ended'
-        ? right.endDate.localeCompare(left.endDate)
+        ? (right.endDate || '').localeCompare(left.endDate || '')
         : left.startDate.localeCompare(right.startDate);
     });
   }
@@ -447,11 +460,11 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     return `<article class="restaurant-card popup-card popup-${status.key}" tabindex="0" data-popup-id="${escapeHtml(popup.id)}">
         <div class="listing-photo ${image ? '' : 'neutral-photo'}"${image}><span class="popup-status">${status.label}</span></div>
         <div class="card-body">
-          <div class="card-top"><span class="category">${escapeHtml(popup.venueType || '쇼핑시설')}</span><span class="verified-source">공식 확인</span></div>
+          <div class="card-top"><span class="category">${escapeHtml(popup.venueType || '쇼핑시설')}</span><span class="popup-food-type">${escapeHtml(({ bakery: '베이커리·디저트', drink: '카페·음료', tteok: '떡', snack: '간식', meal: '식사·분식', grocery: '식품 행사' })[popupFoodType(popup)])}</span></div>
           <div class="card-identity"><h3>${escapeHtml(popup.name)}</h3></div>
           <p class="address">${escapeHtml(popup.venue)}${popup.address && popup.address !== popup.venue ? ` · ${escapeHtml(popup.address)}` : ''}</p>
-          <div class="popup-period"><span>${escapeHtml(popup.startDate)}</span><b>—</b><span>${escapeHtml(popup.endDate)}</span></div>
-          <div class="tags"><span>${escapeHtml(popup.sourceName)}</span><span>마지막 확인 ${escapeHtml(popup.lastSeenAt)}</span></div>
+          <div class="popup-period"><span>${escapeHtml(popup.startDate)}</span><b>—</b><span>${escapeHtml(popup.endDate || '종료일 확인 중')}</span></div>
+          <div class="tags"><span>마지막 확인 ${escapeHtml(popup.lastSeenAt)}</span></div>
         </div>
     </article>`;
   }
@@ -464,9 +477,9 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     const mapQuery = encodeURIComponent(popup.address || popup.venue);
     $('#modal-content').innerHTML = `<div class="detail-cover popup-detail-cover ${image ? '' : 'neutral-photo'}"${image}><span>${status.label}</span></div>
       <div class="detail-hero"><div class="detail-heading"><div><span class="category">${escapeHtml(popup.venueType || '쇼핑시설')}</span><h2 id="detail-title">${escapeHtml(popup.name)}</h2><p>${escapeHtml(address)}</p></div></div>
-      <div class="popup-detail-status popup-${status.key}"><strong>${status.label}</strong><span>${escapeHtml(popup.startDate)} — ${escapeHtml(popup.endDate)}</span></div>
+      <div class="popup-detail-status popup-${status.key}"><strong>${status.label}</strong><span>${escapeHtml(popup.startDate)} — ${escapeHtml(popup.endDate || '종료일 확인 중')}</span></div>
       <div class="detail-actions"><a class="primary" href="${escapeHtml(popup.sourceUrl)}" target="_blank" rel="noopener noreferrer">공식 정보 보기</a><button id="popup-share" class="ghost" type="button">공유</button></div></div>
-      <div class="detail-grid popup-detail-grid"><section><h3>팝업 정보</h3><dl><dt>장소</dt><dd>${escapeHtml(popup.venue)}</dd><dt>주소</dt><dd>${escapeHtml(popup.address || popup.venue)}</dd><dt>운영 기간</dt><dd>${escapeHtml(popup.startDate)} — ${escapeHtml(popup.endDate)}</dd><dt>정보 출처</dt><dd>${escapeHtml(popup.sourceName || '공식 일정')}</dd></dl><div class="map-links"><a target="_blank" rel="noopener" href="https://map.naver.com/p/search/${mapQuery}">네이버 지도에서 위치 보기</a><a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${mapQuery}">Google 지도</a></div></section><section><h3>일정 안내</h3><p class="data-source-note">공개된 공식 일정과 장소 정보를 기준으로 정리했습니다. 방문 전 공식 페이지에서 운영 시간과 입장 조건을 다시 확인해 주세요.</p><p class="data-source-note">마지막 확인일: ${escapeHtml(popup.lastSeenAt || popup.firstSeenAt || '확인 중')}</p></section></div>`;
+      <div class="detail-grid popup-detail-grid"><section><h3>팝업 정보</h3><dl><dt>장소</dt><dd>${escapeHtml(popup.venue)}</dd><dt>주소</dt><dd>${escapeHtml(popup.address || popup.venue)}</dd><dt>운영 기간</dt><dd>${escapeHtml(popup.startDate)} — ${escapeHtml(popup.endDate || '종료일 확인 중')}</dd></dl><div class="map-links"><a target="_blank" rel="noopener" href="https://map.naver.com/p/search/${mapQuery}">네이버 지도에서 위치 보기</a><a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${mapQuery}">Google 지도</a></div></section><section><h3>일정 안내</h3><p class="data-source-note">공개된 행사 일정과 장소 정보를 기준으로 정리했습니다. 방문 전 행사 페이지에서 운영 시간과 입장 조건을 다시 확인해 주세요.</p><p class="data-source-note">마지막 확인일: ${escapeHtml(popup.lastSeenAt || popup.firstSeenAt || '확인 중')}</p></section></div>`;
     $('#detail-modal').classList.add('open'); document.body.classList.add('locked');
     if (history.state?.mukdangLayer !== 'detail') {
       history.pushState({ ...history.state, mukdang: true, mukdangLayer: 'detail', detailType: 'popup', searchMode: state.searchMode }, '');
@@ -475,8 +488,14 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
   }
   function render() {
     const popupMode = state.searchMode === 'popup';
-    $('#filters').hidden = popupMode;
-    $('#popup-filters').hidden = !popupMode;
+    const restaurantFilters = $('#filters');
+    const popupFilters = $('#popup-filters');
+    restaurantFilters.hidden = popupMode;
+    popupFilters.hidden = !popupMode;
+    // `display:grid` is defined by the global filter style, so also set the
+    // inline display value to guarantee only the active mode's controls show.
+    restaurantFilters.style.display = popupMode ? 'none' : '';
+    popupFilters.style.display = popupMode ? '' : 'none';
     $('#filter-toggle').hidden = popupMode;
     $('#popular-quick-searches').hidden = popupMode;
     $('#home-rankings').hidden = popupMode;
@@ -1109,6 +1128,11 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
   $('#search-input').addEventListener('keydown', e => e.key === 'Enter' && applySearch());
   $$('#filters select').forEach(el => el.addEventListener('change', applyFilters));
   $$('#popup-filters select').forEach(el => el.addEventListener('change', () => { state.page = 1; render(); }));
+  $('#popup-filter-reset').addEventListener('click', () => {
+    $$('#popup-filters select').forEach(select => { select.selectedIndex = 0; });
+    state.page = 1;
+    render();
+  });
   $('#filter-reset').addEventListener('click', resetFilters);
   $('#filter-toggle').addEventListener('click', () => $('#filters').classList.toggle('open'));
   const menuToggle = $('#menu-toggle'), headerNav = $('#header-nav');
@@ -1214,7 +1238,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     const [regionsResponse, previewsResponse, popupsResponse] = await Promise.all([
       fetch('data/restaurants/regions.json?v=20260728-4'),
       fetch('data/restaurants/previews.json?v=20260728-4'),
-      fetch('data/popups.json?v=20260731-6')
+      fetch('data/popups.json?v=20260802-1')
     ]);
     if (!regionsResponse.ok || !previewsResponse.ok) throw Error('목록 로드 실패');
     const regionData = await regionsResponse.json(), previews = await previewsResponse.json();
@@ -1222,7 +1246,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
       const popupData = await popupsResponse.json();
       state.popups = Array.isArray(popupData.popups) ? popupData.popups : [];
       state.popupUpdatedAt = popupData.updatedAt;
-      const popupRegions = [...new Set(state.popups.map(item => item.region || String(item.address || '').split(' ')[0]).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'ko'));
+      const popupRegions = [...new Set(state.popups.map(item => item.region).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'ko'));
       popupRegions.forEach(region => $('#popup-region-filter').insertAdjacentHTML('beforeend', `<option value="${escapeHtml(region)}">${escapeHtml(region)}</option>`));
     }
     window.__MEOKDANG_REGIONS__ = regionData.regions; state.preview = enrich(mixPreviews(previews)); state.all = state.preview;

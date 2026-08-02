@@ -75,10 +75,11 @@
         <button id="filter-reset" class="ghost" type="button">초기화</button>
       </div>
       <div id="popup-filters" class="filters popup-filters" aria-label="푸드 팝업 필터 및 정렬" hidden>
-        <label>상태<select id="popup-status-filter"><option value="">전체</option><option value="active">영업 중</option><option value="upcoming">오픈 예정</option><option value="ended">종료</option></select></label>
+        <label>음식 유형<select id="popup-food-filter"><option value="">전체</option><option value="bakery">베이커리·디저트</option><option value="drink">카페·음료</option><option value="tteok">떡</option><option value="snack">간식</option><option value="meal">식사·분식</option><option value="grocery">식품 행사</option></select></label>
         <label>지역<select id="popup-region-filter"><option value="">전국</option></select></label>
         <label>장소 유형<select id="popup-venue-filter"><option value="">전체</option><option value="백화점">백화점</option><option value="쇼핑몰">쇼핑몰</option><option value="대형마트">대형마트</option></select></label>
-        <label>정렬<select id="popup-sort-filter"><option value="status">영업 중·오픈 예정 우선</option><option value="ending">종료 임박순</option><option value="newest">신규 등록순</option><option value="start">시작일순</option></select></label>
+        <label>정렬<select id="popup-sort-filter"><option value="food">음식 유형순</option><option value="status">영업 중·오픈 예정 우선</option><option value="ending">종료 임박순</option><option value="newest">신규 등록순</option><option value="start">시작일순</option></select></label>
+        <button id="popup-filter-reset" class="ghost" type="button">정렬·필터 초기화</button>
       </div>
 
       <div id="app-state" class="state">잠시만 기다려 주세요.</div>
@@ -127,6 +128,6 @@
     <article class="modal panel-modal"><button class="modal-close" data-close type="button" aria-label="닫기">×</button><div id="panel-content"></div></article>
   </div>
   <div id="toast" class="toast" role="status"></div>
-  <script type="module" src="app.js?v=20260731-5"></script>
+  <script type="module" src="app.js?v=20260802-1"></script>
 </body>
 </html>
