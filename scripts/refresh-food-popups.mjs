@@ -228,11 +228,19 @@ function decodeHtml(value) {
 }
 
 const shinsegaeStores = [
-  ['SC00002', '강남점'], ['SC00006', '광주신세계'], ['SC00011', '김해점'],
-  ['SC00013', '대구신세계'], ['SC00060', '대전신세계 Art & Science'], ['SC00005', '마산점'],
-  ['SC00001', '본점'], ['SC00008', '센텀시티점'], ['SC00012', '스타필드 하남점'],
-  ['SC00007', '사우스시티점'], ['SC00010', '의정부점'],
-  ['SC00009', '천안아산점'], ['SC00003', '타임스퀘어점']
+  ['SC00002', '강남점', '서울특별시 서초구 신반포로 176'],
+  ['SC00006', '광주신세계', '광주광역시 서구 무진대로 932'],
+  ['SC00011', '김해점', '경상남도 김해시 김해대로 2232'],
+  ['SC00013', '대구신세계', '대구광역시 동구 동부로 149'],
+  ['SC00060', '대전신세계 Art & Science', '대전광역시 유성구 엑스포로 1'],
+  ['SC00005', '마산점', '경상남도 창원시 마산합포구 합포로 251'],
+  ['SC00001', '본점', '서울특별시 중구 소공로 63'],
+  ['SC00008', '센텀시티점', '부산광역시 해운대구 센텀남대로 35'],
+  ['SC00012', '스타필드 하남점', '경기도 하남시 미사대로 750'],
+  ['SC00007', '사우스시티점', '경기도 용인시 수지구 포은대로 536'],
+  ['SC00010', '의정부점', '경기도 의정부시 평화로 525'],
+  ['SC00009', '천안아산점', '충청남도 천안시 동남구 만남로 43'],
+  ['SC00003', '타임스퀘어점', '서울특별시 영등포구 영중로 9']
 ];
 
 function shinsegaeDate(value) {
@@ -241,7 +249,7 @@ function shinsegaeDate(value) {
 
 async function collectShinsegaeShoppingNews() {
   const rows = [];
-  const results = await Promise.allSettled(shinsegaeStores.map(async ([storeCd, fallbackName]) => {
+  const results = await Promise.allSettled(shinsegaeStores.map(async ([storeCd, fallbackName, roadAddress]) => {
     const url = `https://www.shinsegae.com/shopping/ajaxList.do?mainCd=02&storeCd=${storeCd}`;
     const payload = await fetchJson(url);
     const cards = Array.isArray(payload.shoppingInfoList?.page) ? payload.shoppingInfoList.page : [];
@@ -262,7 +270,7 @@ async function collectShinsegaeShoppingNews() {
       rows.push({
         id: `shinsegae-shopping:${storeCd}:${card.id}`,
         name: clean(card.title1), venue, venueType: '백화점',
-        address: clean(`${venue} ${card.viewNm || ''} ${card.floorNm || ''}`),
+        address: clean(`${roadAddress} · ${venue} ${card.viewNm || ''} ${card.floorNm || ''}`),
         startDate, endDate,
         imageUrl: imagePath.startsWith('http') ? imagePath : `https://www.shinsegae.com${imagePath}`,
         sourceName: '신세계백화점 공식 쇼핑뉴스',

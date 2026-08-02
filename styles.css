@@ -93,8 +93,8 @@
 .popup-card{cursor:pointer}
 .popup-detail-cover{background-color:#eee;background-position:center;background-size:cover}
 .popup-detail-status{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 26px;padding:15px 17px;border:1px solid var(--line);border-radius:14px;background:#faf9f5}
-.popup-detail-status strong{font-size:16px}.popup-detail-status span{color:var(--muted);font-size:12px;font-weight:800}
-.popup-detail-status.popup-open strong{color:var(--green)}.popup-detail-status.popup-upcoming strong{color:#2867d3}.popup-detail-status.popup-ended strong{color:#777}
+.popup-detail-status strong{font-size:17px}.popup-detail-status span{color:var(--green);font-size:17px;font-weight:900}
+.popup-detail-status.popup-active strong{color:var(--green)}.popup-detail-status.popup-upcoming strong{color:#2867d3}.popup-detail-status.popup-ended strong{color:#777}
 .popup-detail-grid{margin-top:4px}
 .popup-detail-grid .data-source-note{margin:0 0 12px}
 .detail-actions a.primary{display:inline-flex;align-items:center;text-decoration:none}
@@ -102,8 +102,8 @@
 .popup-upcoming .popup-status{background:#2867d3}.popup-ended .popup-status{background:#666}
 .popup-ended .listing-photo{filter:grayscale(.8);opacity:.72}.popup-ended .card-body{opacity:.72}
 .verified-source{color:#198754;font-size:11px;font-weight:900}
-.popup-period{display:flex;align-items:center;gap:7px;margin:13px 0;color:var(--ink);font-size:12px;font-weight:800}
-.popup-period b{color:#b8b8b1}.popup-card .tags{flex-wrap:wrap}
+.popup-period{display:inline-flex;align-items:center;margin:15px 0 2px;padding:9px 12px;border-radius:10px;background:#edf8f0;color:var(--green);font-size:16px;font-weight:900;letter-spacing:-.03em}
+.popup-detail-period{color:var(--green)!important;font-size:16px;font-weight:900}.popup-card .tags{flex-wrap:wrap}
 .review-actions{display:flex;gap:6px;align-items:center}.review-actions .review-delete{color:#c2413b;background:#fff1f0}.review-submit-status{grid-column:1/-1;min-height:18px;margin:0;color:var(--green);font-size:12px;font-weight:800}
 
 /* 편안하고 검색에 집중되는 홈 화면 */
@@ -131,3 +131,5 @@
   .search-mode{margin-bottom:12px}.search-mode button{min-width:98px;padding:8px 13px;font-size:12px}
   .review-promise{margin-top:15px}
 }
+/* Keep the restaurant and popup filter panels mutually exclusive. */
+.filters[hidden]{display:none!important}

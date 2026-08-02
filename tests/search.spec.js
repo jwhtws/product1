@@ -86,7 +86,10 @@ test('푸드 팝업은 썸네일 카드에서 상세 페이지로 이동한다',
   await expect(popup).toBeVisible();
   await popup.click();
   await expect(page.locator('#detail-modal')).toHaveClass(/open/);
-  await expect(page.locator('#modal-content')).toContainText('운영 기간');
+  await expect(page.locator('#modal-content')).toContainText('메뉴');
+  await expect(page.locator('#modal-content')).toContainText('리뷰');
+  await expect(page.locator('#modal-content')).toContainText('도로명주소');
+  await expect(page.locator('#modal-content')).toContainText('영업일자');
   await expect(page.locator('#modal-content .popup-detail-cover')).toBeVisible();
   await expect(page.locator('#modal-content .site-plan')).toHaveCount(0);
 });
