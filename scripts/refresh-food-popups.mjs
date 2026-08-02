@@ -699,6 +699,19 @@ function derivedStatus(row) {
   if (row.startDate > today) return 'upcoming';
   return 'active';
 }
+function officialMenuItems(row) {
+  if (Array.isArray(row.menuItems) && row.menuItems.length) return row.menuItems.map(clean).filter(Boolean);
+  let title = clean(row.name)
+    .replace(/^\[(?:POP[\s-]*UP(?: STORE)?|팝업스토어?|디저트 카라반|푸드파크)\]\s*/iu, '')
+    .replace(/\s*(?:팝업(?:\s*스토어)?|POP[\s-]*UP(?:\s*STORE)?|신규\s*오픈|NEW\s*OPEN|NOW\s*OPEN|OPEN)\s*$/iu, '')
+    .replace(/^\[([^\]]+)\]$/u, '$1');
+  const exactOfficialMenus = new Map([
+    ['lotte:blog:breath-bread:dongbusan', ['세븐셀렉트 숨결통식빵']]
+  ]);
+  if (exactOfficialMenus.has(row.id)) return exactOfficialMenus.get(row.id);
+  if (/^(?:위클리\s*)?팝업\s*뉴스$/u.test(title)) return [];
+  return [...new Set(title.split(/\s*(?:&|\/|\+|·)\s*/u).map(item => clean(item).replace(/^\[|\]$/g, '')).filter(item => item.length >= 2))].slice(0, 8);
+}
 function popupRegion(row) {
   if (row.region) return clean(row.region);
   const text = `${row.address || ''} ${row.venue || ''}`;
@@ -751,6 +764,8 @@ function normalizePopup(row) {
     address,
     region: popupRegion({ ...row, address }),
     category: row.category || 'food-popup',
+    menuItems: officialMenuItems(row),
+    menuSource: row.menuSource || 'official-event-text',
     sourceUrl: normalizedUrl(row.sourceUrl),
     imageUrl: row.imageUrl || null,
     lastVerifiedAt: today,

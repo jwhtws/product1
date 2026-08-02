@@ -440,6 +440,9 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     };
     return `${format(popup.startDate)} ~ ${popup.endDate ? format(popup.endDate) : '종료일 미정'}`;
   }
+  function popupMenuItems(popup) {
+    return Array.isArray(popup.menuItems) ? popup.menuItems : [];
+  }
   function popupRows() {
     const query = searchKey($('#search-input').value);
     const foodFilter = $('#popup-food-filter')?.value || '';
@@ -494,7 +497,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
       <div class="detail-hero"><div class="detail-heading"><div><span class="category">${escapeHtml(popup.venueType || '쇼핑시설')}</span><h2 id="detail-title">${escapeHtml(popup.name)}</h2><p>${escapeHtml(address)}</p></div></div>
       <div class="popup-detail-status popup-${status.key}"><strong>${status.label}</strong><span>${escapeHtml(popupPeriodLabel(popup))}</span></div>
       <div class="detail-actions"><a class="primary" href="${escapeHtml(popup.sourceUrl)}" target="_blank" rel="noopener noreferrer">공식 정보 보기</a><button id="popup-share" class="ghost" type="button">공유</button></div></div>
-      <div class="detail-grid popup-detail-grid"><section><h3>메뉴</h3><dl><dt>팝업·브랜드</dt><dd>${escapeHtml(popup.brand || popup.name)}</dd><dt>음식 유형</dt><dd>${escapeHtml(({ bakery: '베이커리·디저트', drink: '카페·음료', tteok: '떡', snack: '간식', meal: '식사·분식', grocery: '식품 행사' })[popupFoodType(popup)])}</dd><dt>백화점·지점</dt><dd>${escapeHtml(popup.venue)}</dd><dt>도로명주소</dt><dd>${escapeHtml(popup.address || popup.venue)}</dd><dt>영업일자</dt><dd class="popup-detail-period">${escapeHtml(popupPeriodLabel(popup))}</dd></dl><p class="data-source-note">판매 메뉴와 가격은 행사별로 달라질 수 있으니 공식 정보에서 확인해 주세요.</p><div class="map-links"><a target="_blank" rel="noopener" href="https://map.naver.com/p/search/${mapQuery}">네이버 지도에서 위치 보기</a><a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${mapQuery}">Google 지도</a></div></section><section class="review-section"><div class="review-head"><h3>리뷰 <small id="review-count">${reviews.length}</small></h3><select id="review-sort"><option value="latest">최신순</option><option value="rating">별점순</option><option value="helpful">유용한순</option></select></div><div class="trust-note">✓ 직접 방문한 팝업 경험을 남겨주세요.</div><form id="review-form"><label>별점<select name="rating"><option value="5">5점</option><option value="4">4점</option><option value="3">3점</option><option value="2">2점</option><option value="1">1점</option></select></label><textarea name="text" required maxlength="500" placeholder="메뉴, 맛, 대기시간을 알려주세요."></textarea><button class="primary" type="submit">리뷰 등록</button><p id="review-submit-status" class="review-submit-status" aria-live="polite"></p></form><div id="review-list"></div></section></div>`;
+      <div class="detail-grid popup-detail-grid"><section class="popup-location-section"><h3>팝업 정보</h3><dl><dt>백화점·지점</dt><dd>${escapeHtml(popup.venue)}</dd><dt>도로명주소</dt><dd>${escapeHtml(popup.address || popup.venue)}</dd><dt>영업일자</dt><dd class="popup-detail-period">${escapeHtml(popupPeriodLabel(popup))}</dd></dl><div class="map-links"><a target="_blank" rel="noopener" href="https://map.naver.com/p/search/${mapQuery}">네이버 지도에서 위치 보기</a><a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${mapQuery}">Google 지도</a></div></section><div class="popup-detail-right"><section class="popup-menu-section"><h3>메뉴</h3>${popupMenuItems(popup).length ? `<ul class="popup-menu-list">${popupMenuItems(popup).map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul>` : '<p class="popup-menu-empty">공식 사이트에 텍스트 메뉴가 공개되지 않았습니다.</p>'}<p class="data-source-note">공식 행사명·브랜드 필드에 텍스트로 공개된 품목만 표시합니다. 가격은 공식 상세 이미지에서 확인해 주세요.</p></section><section class="review-section popup-review-section"><div class="review-head"><h3>리뷰 <small id="review-count">${reviews.length}</small></h3><select id="review-sort"><option value="latest">최신순</option><option value="rating">별점순</option><option value="helpful">유용한순</option></select></div><div class="trust-note">✓ 직접 방문한 팝업 경험을 남겨주세요.</div><form id="review-form"><label>별점<select name="rating"><option value="5">5점</option><option value="4">4점</option><option value="3">3점</option><option value="2">2점</option><option value="1">1점</option></select></label><textarea name="text" required maxlength="500" placeholder="메뉴, 맛, 대기시간을 알려주세요."></textarea><button class="primary" type="submit">리뷰 등록</button><p id="review-submit-status" class="review-submit-status" aria-live="polite"></p></form><div id="review-list"></div></section></div></div>`;
     $('#detail-modal').classList.add('open'); document.body.classList.add('locked');
     if (history.state?.mukdangLayer !== 'detail') {
       history.pushState({ ...history.state, mukdang: true, mukdangLayer: 'detail', detailType: 'popup', searchMode: state.searchMode }, '');
@@ -1257,7 +1260,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     const [regionsResponse, previewsResponse, popupsResponse] = await Promise.all([
       fetch('data/restaurants/regions.json?v=20260728-4'),
       fetch('data/restaurants/previews.json?v=20260728-4'),
-      fetch('data/popups.json?v=20260802-3')
+      fetch('data/popups.json?v=20260802-4')
     ]);
     if (!regionsResponse.ok || !previewsResponse.ok) throw Error('목록 로드 실패');
     const regionData = await regionsResponse.json(), previews = await previewsResponse.json();
