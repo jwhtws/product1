@@ -95,6 +95,14 @@ for (const popup of popupData.popups) {
       process.exitCode = 1;
     }
   }
+  if (popup.id.startsWith('lotte:') && popup.imageSource === 'fallback-food-photo') {
+    console.error(`롯데 AI 대체 이미지를 공식 사진으로 저장할 수 없습니다: ${popup.id}`);
+    process.exitCode = 1;
+  }
+  if (popup.id.startsWith('lotte:') && !popup.id.startsWith('lotte:blog:') && popup.menuSource === 'official-event-text' && popup.menus?.length) {
+    console.error(`롯데 행사명을 실제 메뉴로 저장할 수 없습니다: ${popup.id}`);
+    process.exitCode = 1;
+  }
 }
 
 const popupVenues = JSON.parse(readFileSync('data/popup-venues.json', 'utf8'));

@@ -98,6 +98,24 @@ function uniqueMenus(menus) {
     .slice(0, 30);
 }
 
+function lotteDetailImage(html, baseUrl) {
+  const source = String(html || '').replace(/\\u002F/giu, '/').replace(/\\\//gu, '/');
+  const candidates = [
+    ...[...source.matchAll(/<meta[^>]+(?:property|name)=["'](?:og:image|twitter:image)["'][^>]+content=["']([^"']+)/giu)].map(match => match[1]),
+    ...[...source.matchAll(/["'](?:imageUrl|imgUrl|imgPath|pcImgUrl|mblImgUrl|shpgNewsImgUrl|dtlImgUrl)["']\s*:\s*["']([^"']+)/giu)].map(match => match[1]),
+    ...[...source.matchAll(/<img[^>]+(?:data-src|src)=["']([^"']+)/giu)].map(match => match[1])
+  ];
+  for (const candidate of candidates) {
+    const value = decodeHtml(candidate).replace(/&amp;/giu, '&');
+    if (!value || /(?:logo|icon|spinner|loading|blank|qr|arrow|button|common\/images)/iu.test(value)) continue;
+    try {
+      const resolved = new URL(value, baseUrl).href;
+      if (/\.(?:jpe?g|png|webp)(?:\?|$)/iu.test(resolved) || /image|img|cdn/iu.test(resolved)) return resolved;
+    } catch {}
+  }
+  return '';
+}
+
 function parsePricedLines(value) {
   const menus = [];
   for (const line of String(value || '').replace(/<br\s*\/?\s*>/giu, '\n').split(/\r?\n/u)) {
@@ -732,7 +750,7 @@ async function collectCuratedOfficial() {
       const response = await fetchResilient(sourceUrl);
       if (response.ok) {
         const html = await response.text();
-        imageUrl = html.match(/<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)/i)?.[1] || '';
+        imageUrl = lotteDetailImage(html, sourceUrl);
         let detailHtml = /\/shpgnews\/shpgnewsDetail/iu.test(sourceUrl) ? html : '';
         if (!detailHtml) {
           const brandKey = normalizedText(name).slice(0, 8);
@@ -746,7 +764,22 @@ async function collectCuratedOfficial() {
             }
           }
         }
+        if (!detailHtml) {
+          const brandKey = normalizedText(name).slice(0, 8);
+          for (const match of html.matchAll(/SNM\d{10,}/gu)) {
+            const nearby = decodeHtml(html.slice(Math.max(0, match.index - 1800), match.index + 1800));
+            if (brandKey && !normalizedText(nearby).includes(brandKey)) continue;
+            const detailUrl = `https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=${match[0]}`;
+            const detailResponse = await fetchResilient(detailUrl);
+            if (detailResponse.ok) {
+              detailHtml = await detailResponse.text();
+              sourceUrl = detailUrl;
+            }
+            break;
+          }
+        }
         if (detailHtml) {
+          imageUrl = lotteDetailImage(detailHtml, sourceUrl) || imageUrl;
           const lines = detailHtml.replace(/<br\s*\/?\s*>/giu, '\n').replace(/<\/p>|<\/div>|<\/li>|<\/h[1-6]>/giu, '\n')
             .split(/\r?\n/u).map(decodeHtml).filter(Boolean);
           const extracted = [];
@@ -762,10 +795,6 @@ async function collectCuratedOfficial() {
         }
       }
     } catch {}
-    const fallbackImage = /(모찌|어묵|초밥|만두)/u.test(name) ? 'assets/food/japanese-ai.png'
-      : /(베이글|빵|베이커리|타르트|케이크|피자)/u.test(name) ? 'assets/food/western-ai.png'
-        : /(커피|주스|빙수|아이스크림|과일청|잼)/u.test(name) ? 'assets/food/cafe-ai.png'
-          : 'assets/food/korean-ai.png';
     return {
     id,
     name,
@@ -774,8 +803,8 @@ async function collectCuratedOfficial() {
     address: venue,
     startDate,
     endDate,
-    imageUrl: imageUrl || fallbackImage,
-    imageSource: imageUrl ? 'official-detail' : 'fallback-food-photo',
+    imageUrl: imageUrl || null,
+    imageSource: imageUrl ? 'official-detail' : 'official-image-unavailable',
     sourceName: '롯데쇼핑 행사 페이지',
     sourceUrl,
     sourceGrade: 'official-search',
@@ -843,6 +872,7 @@ function officialMenuItems(row) {
     ['lotte:blog:breath-bread:dongbusan', ['세븐셀렉트 숨결통식빵']]
   ]);
   if (exactOfficialMenus.has(row.id)) return exactOfficialMenus.get(row.id);
+  if (/^lotte:/u.test(row.id)) return [];
   if (/^(?:위클리\s*)?팝업\s*뉴스$/u.test(title)) return [];
   return [...new Set(title.split(/\s*(?:&|\/|\+|·)\s*/u).map(item => clean(item).replace(/^\[|\]$/g, '')).filter(item => item.length >= 2))].slice(0, 8);
 }

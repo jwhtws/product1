@@ -92,6 +92,7 @@
 .popup-empty strong{display:block;margin-bottom:10px;color:var(--ink);font-size:19px}.popup-empty p{margin:0 0 8px}.popup-empty small{font-size:11px}
 .popup-source-link{display:block;height:100%;color:inherit;text-decoration:none}
 .popup-card .listing-photo{position:relative;background-position:center;background-size:cover}
+.popup-photo-missing{background:#eeeae1!important}.popup-photo-missing:before{content:'사진';position:absolute;inset:0;display:grid;place-items:center;color:#aaa398;font-size:24px;font-weight:900}.popup-photo-missing small{position:absolute;left:10px;right:10px;bottom:10px;padding:6px 7px;border-radius:7px;background:rgba(255,255,255,.88);color:#6f6a61;font-size:9px;font-weight:800;text-align:center}.popup-photo-missing .popup-status{z-index:1}
 .popup-card{cursor:pointer}
 .popup-detail-cover{background-color:#eee;background-position:center;background-size:cover}
 .popup-detail-status{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 26px;padding:15px 17px;border:1px solid var(--line);border-radius:14px;background:#faf9f5}
