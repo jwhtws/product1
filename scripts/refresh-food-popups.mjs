@@ -14,6 +14,7 @@ const keepSince = new Date(`${today}T00:00:00+09:00`);
 keepSince.setFullYear(keepSince.getFullYear() - 2);
 
 const foodWords = /(꽈배기|술빵|모찌|떡|빵|베이커리|디저트|케이크|쿠키|초콜릿|아이스크림|젤라또|도넛|마카롱|푸딩|타르트|약과|한과|카페|커피|차\b|티\b|음료|주스|맥주|와인|막걸리|포장마차|분식|김밥|라면|국수|냉면|만두|닭|치킨|고기|육회|곱창|족발|해산물|오징어|건어물|반찬|김치|식품|푸드|F&B|FNB|맛집|셰프|요리|농산|수산|축산)/iu;
+const popupWords = /(팝업(?:\s*스토어)?|POP[\s-]*UP(?:\s*STORE)?|카라반)/iu;
 const nonHumanFood = /(반려|펫|강아지|고양이|사료)/u;
 const stableHash = value => [...String(value)].reduce((sum, char) => ((sum << 5) - sum + char.charCodeAt(0)) | 0, 0);
 
@@ -107,18 +108,20 @@ async function collectHyundai() {
       if (seen.has(event.EVNT_CRD_CD)) continue;
       seen.add(event.EVNT_CRD_CD);
       const searchable = clean(`${event.EVNT_CRD_NM} ${event.BRAND_NM} ${event.TITL}`);
-      if (!foodWords.test(searchable) || nonHumanFood.test(searchable)) continue;
+      if (!popupWords.test(searchable) || !foodWords.test(searchable) || nonHumanFood.test(searchable)) continue;
       const startDate = eventDate(event.EVNT_STRT_DT);
       const endDate = eventDate(event.EVNT_END_DT);
       if (!startDate || !endDate || new Date(`${endDate}T23:59:59+09:00`) < keepSince) continue;
       const name = clean(event.EVNT_CRD_NM).replace(/^\[(?:POP[\s-]*UP STORE|팝업스토어)\]\s*/iu, '');
       const branchCode = `B001${event.STORE_CD}00`;
+      const storeName = clean(event.STORE_NM);
+      const venue = /(현대|더현대|커넥트)/u.test(storeName) ? storeName : `현대백화점 ${storeName}`;
       rows.push({
         id: `hyundai:${event.EVNT_CRD_CD}`,
         name,
-        venue: clean(event.STORE_NM),
+        venue,
         venueType: /아울렛/u.test(event.STORE_NM) ? '쇼핑몰' : '백화점',
-        address: clean(event.STORE_NM),
+        address: venue,
         startDate,
         endDate,
         imageUrl: String(event.EVNT_IMG || ''),
@@ -131,44 +134,6 @@ async function collectHyundai() {
     }
     if (!events.length || page * 4 >= Number(data.eventCount || 0)) break;
    }
-  }
-  return rows;
-}
-
-// Official mall calendars are inconsistent, so supplement them with Popga's
-// public F&B popup directory. This is what supplies venues such as Shinsegae
-// Centum/Times Square when the mall's own page does not expose a crawlable
-// event list.
-const shoppingVenueWords = /(백화점|현대|롯데|신세계|AK\s*PLAZA|AK플라자|아울렛|아웃렛|쇼핑몰|월드몰|타임스퀘어|스타필드|코엑스|아이파크몰|NC|뉴코아|갤러리아|커넥트현대)/iu;
-function popgaVenue(row) {
-  const detail = clean(row.addressDetail);
-  const candidates = [
-    detail.match(/(신세계백화점\s*[^\s]+점)/u)?.[1], detail.match(/(롯데백화점\s*[^\s]+점)/u)?.[1],
-    detail.match(/(롯데월드몰(?:\s*잠실점)?)/u)?.[1], detail.match(/(현대백화점\s*[^\s]+점)/u)?.[1],
-    detail.match(/(더현대\s*(?:서울|대구))/u)?.[1], detail.match(/(타임스퀘어)/u)?.[1],
-    detail.match(/(커넥트현대\s*[^\s]+)/u)?.[1], detail.match(/(스타필드\s*[^\s]+(?:점)?)/u)?.[1],
-    detail.match(/((?:용산\s*)?아이파크몰)/u)?.[1], detail.match(/(AK\s*PLAZA[^,]*)/iu)?.[1],
-    detail.match(/(갤러리아\s*[^\s]+점)/u)?.[1]
-  ].filter(Boolean);
-  return clean(candidates[0] || detail.replace(/\s+(?:B?\d+F?|지하|[0-9]+층).*$/u, '') || row.address);
-}
-async function collectPopga() {
-  const rows = [];
-  for (let page = 0; page < 10; page += 1) {
-    const params = new URLSearchParams({ size: '100', page: String(page), 'periodTypes[0]': 'IN_PROGRESS', 'periodTypes[1]': 'READY', 'sorts[0].order': 'activated_at' });
-    const payload = await fetchJson(`https://popga.co.kr/api/spots/search?${params}`);
-    const content = Array.isArray(payload.data?.content) ? payload.data.content : [];
-    for (const event of content) {
-      const categories = Array.isArray(event.categories) ? event.categories.map(category => clean(category.name)) : [];
-      const searchable = clean(`${event.addressDetail} ${event.title}`);
-      if (!categories.includes('F&B') || !shoppingVenueWords.test(searchable)) continue;
-      const startDate = clean(event.openDate), endDate = clean(event.closeDate);
-      if (!/^\d{4}-\d{2}-\d{2}$/.test(startDate) || !/^\d{4}-\d{2}-\d{2}$/.test(endDate) || new Date(`${endDate}T23:59:59+09:00`) < keepSince) continue;
-      const venue = popgaVenue(event);
-      rows.push({ id: `popga:${event.id}`, name: clean(event.title), venue, venueType: /백화점/u.test(venue) ? '백화점' : '쇼핑몰', address: clean(`${event.address} ${event.addressDetail}`), startDate, endDate, imageUrl: String(event.file?.path || ''), sourceName: '팝가 공개 팝업 일정', sourceUrl: `https://popga.co.kr/popup/${encodeURIComponent(event.id)}`, sourceGrade: 'verified-directory', firstSeenAt: today, lastSeenAt: today });
-    }
-    const totalPages = Number(payload.data?.page?.totalPages || 1);
-    if (!content.length || page + 1 >= totalPages) break;
   }
   return rows;
 }
@@ -255,7 +220,7 @@ async function collectShinsegaeShoppingNews() {
     const cards = Array.isArray(payload.shoppingInfoList?.page) ? payload.shoppingInfoList.page : [];
     for (const card of cards) {
       const searchable = clean(`${card.title1} ${card.brandNm} ${card.badge1} ${card.genreNm} ${card.floorNm} ${card.content1}`);
-      if (!foodWords.test(searchable) || nonHumanFood.test(searchable)) continue;
+      if (!popupWords.test(searchable) || !foodWords.test(searchable) || nonHumanFood.test(searchable)) continue;
       const startDate = shinsegaeDate(card.startDt);
       const endDate = shinsegaeDate(card.endDt);
       if (!card.id || !startDate || !endDate || new Date(`${endDate}T23:59:59+09:00`) < keepSince) continue;
@@ -363,7 +328,7 @@ async function collectElandRetail() {
       const text = decodeHtml(block);
       // 이랜드 지점 페이지는 카테고리를 별도로 표시하지 않고 제목/기간만
       // 제공하는 경우가 있어, 식품 키워드가 명확한 공식 행사도 수집한다.
-      if (!foodWords.test(text) || nonHumanFood.test(text)) continue;
+      if (!popupWords.test(text) || !foodWords.test(text) || nonHumanFood.test(text)) continue;
       const dates = [...text.matchAll(/(20\d{2})\.(\d{2})\.(\d{2})\s*~?\s*(20\d{2})?\.?\s*(\d{2})\.(\d{2})/g)];
       if (!dates.length) continue;
       const date = dates[0];
@@ -406,7 +371,7 @@ async function collectOfficialHtmlFeeds(sourceName, venueType, feeds) {
         // Official boards often call these "식품행사" or "시식" rather than
         // "팝업". Keep the source restriction, but accept an explicit food
         // event keyword so those branch-level notices are not discarded.
-        if ((!/(팝업|POP[\s-]*UP)/iu.test(text) && !/(행사|이벤트|시식|쇼핑뉴스)/iu.test(text)) || !foodWords.test(text) || nonHumanFood.test(text)) continue;
+        if (!popupWords.test(text) || !foodWords.test(text) || nonHumanFood.test(text)) continue;
         const range = dateRange(text);
         if (!range) continue;
         const { startDate, endDate } = range;
@@ -452,14 +417,14 @@ async function collectFromOfficialSitemaps(sourceName, venueType, domains) {
       if (!response.ok) continue;
       const html = await response.text();
       const text = decodeHtml(html);
-      if (!foodWords.test(text) || nonHumanFood.test(text) || !/(팝업|POP[\s-]*UP|쇼핑뉴스|행사|이벤트)/iu.test(text)) continue;
+      const title = decodeHtml(html.match(/<meta[^>]+property=["']og:title["'][^>]+content=["']([^"']+)/i)?.[1] || html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i)?.[1] || '');
+      if (!title || !popupWords.test(title) || !foodWords.test(text) || nonHumanFood.test(text)) continue;
       const dates = [...text.matchAll(/(20\d{2})[.\-/년]\s*(\d{1,2})[.\-/월]\s*(\d{1,2})[^\d]{0,20}(?:~|∼|-|–|부터)[^\d]{0,12}(20\d{2})[.\-/년]\s*(\d{1,2})[.\-/월]\s*(\d{1,2})/g)];
       if (!dates.length) continue;
       const date = dates[0];
       const startDate = `${date[1]}-${String(date[2]).padStart(2, '0')}-${String(date[3]).padStart(2, '0')}`;
       const endDate = `${date[4] || date[1]}-${String(date[5]).padStart(2, '0')}-${String(date[6]).padStart(2, '0')}`;
       if (new Date(`${endDate}T23:59:59+09:00`) < keepSince) continue;
-      const title = decodeHtml(html.match(/<meta[^>]+property=["']og:title["'][^>]+content=["']([^"']+)/i)?.[1] || html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i)?.[1] || '공식 행사');
       const venue = decodeHtml(html.match(/(갤러리아|신세계백화점|타임스퀘어|아이파크몰|이마트|트레이더스|롯데마트|홈플러스|NC|뉴코아)[^<]{0,30}(점|몰|백화점)?/iu)?.[0] || new URL(url).hostname);
       rows.push({ id: `sitemap:${stableHash(`${url}|${startDate}`)}`, name: title, venue, venueType, address: venue, startDate, endDate, imageUrl: html.match(/<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)/i)?.[1] || '', sourceName, sourceUrl: url, sourceGrade: 'official', firstSeenAt: today, lastSeenAt: today });
     } catch (error) { /* individual official pages may block crawlers */ }
@@ -692,7 +657,6 @@ const previous = await existingRows();
 const venueRegistry = await popupVenueRegistry();
 const collectors = [
   ['현대백화점·현대아울렛', collectHyundai],
-  ['팝가 쇼핑시설 F&B 공개 일정', collectPopga],
   ['신세계백화점', collectShinsegae],
   ['스타필드·스타필드시티', collectStarfield],
   ['갤러리아', collectGalleria],
@@ -753,14 +717,39 @@ function popupRegion(row) {
   ];
   return rules.find(([, pattern]) => pattern.test(text))?.[0] || null;
 }
+function venueIdentity(value) {
+  return clean(value).replace(/\(주\)|㈜|주식회사|\s|[·.,()]/gu, '').toLowerCase();
+}
+function registeredVenueAddress(row) {
+  const current = clean(row.address);
+  if (/(특별시|광역시|특별자치도|특별자치시|경기도|강원도|충청|전라|경상|제주)\s/u.test(current)) return current;
+  const knownAddresses = new Map([
+    ['현대프리미엄아울렛 송도점', '인천광역시 연수구 송도국제대로 123'],
+    ['더현대 대구', '대구광역시 중구 달구벌대로 2077'],
+    ['현대백화점 압구정본점', '서울특별시 강남구 압구정로 165'],
+    ['롯데백화점 안산점', '경기도 안산시 단원구 고잔1길 12'],
+    ['롯데백화점 인천점', '인천광역시 미추홀구 연남로 35'],
+    ['롯데아울렛 청주점', '충청북도 청주시 흥덕구 2순환로 1004']
+  ]);
+  if (knownAddresses.has(row.venue)) return `${knownAddresses.get(row.venue)} · ${row.venue}`;
+  const key = venueIdentity(row.venue);
+  if (!key) return current || null;
+  const candidates = venueRegistry.filter(venue => {
+    const registryKey = venueIdentity(venue.name);
+    return registryKey === key || registryKey.includes(key) || key.includes(registryKey);
+  });
+  const match = candidates.sort((left, right) => venueIdentity(right.name).length - venueIdentity(left.name).length)[0];
+  return match?.address ? clean(`${match.address} · ${row.venue}`) : current || null;
+}
 function normalizePopup(row) {
+  const address = registeredVenueAddress(row);
   const normalized = {
     ...row,
     name: clean(row.name),
     brand: row.brand ? clean(row.brand) : null,
     venue: clean(row.venue),
-    address: row.address ? clean(row.address) : null,
-    region: popupRegion(row),
+    address,
+    region: popupRegion({ ...row, address }),
     category: row.category || 'food-popup',
     sourceUrl: normalizedUrl(row.sourceUrl),
     imageUrl: row.imageUrl || null,
@@ -770,8 +759,19 @@ function normalizePopup(row) {
   normalized.status = derivedStatus(normalized);
   return normalized;
 }
-const merged = new Map(previous
-  .filter(row => ['official', 'official-search', 'verified-directory'].includes(row.sourceGrade))
+const collectedIds = new Set(collected.map(row => row.id));
+const refreshedIdRules = [
+  ['현대백화점·현대아울렛', /^hyundai:/u],
+  ['신세계백화점', /^shinsegae(?:-shopping)?:/u],
+  ['NC·뉴코아', /^eland:/u],
+  ['공식 쇼핑몰·마트 사이트맵', /^sitemap:/u]
+];
+const fulfilledCollectorNames = new Set(collectors.filter((_collector, index) => settled[index].status === 'fulfilled').map(([name]) => name));
+const retainedPrevious = previous.filter(row => !refreshedIdRules.some(([collectorName, pattern]) =>
+  fulfilledCollectorNames.has(collectorName) && pattern.test(row.id) && !collectedIds.has(row.id)
+));
+const merged = new Map(retainedPrevious
+  .filter(row => ['official', 'official-search'].includes(row.sourceGrade))
   .map(row => [row.id, normalizePopup(row)]));
 for (const row of collected) {
   const normalized = normalizePopup(row);
@@ -791,8 +791,9 @@ const popups = [...deduped.values()]
   .filter(row => !row.endDate || row.endDate >= row.startDate)
   .sort((left, right) => right.startDate.localeCompare(left.startDate) || left.name.localeCompare(right.name, 'ko'));
 
-if (previous.length >= 10 && popups.length < previous.length * 0.8) {
-  throw new Error(`수집 결과 급감 보호: 기존 ${previous.length}건 → ${popups.length}건 (20% 이상 감소), 파일 반영 중단`);
+const retainedOfficialCount = retainedPrevious.filter(row => ['official', 'official-search'].includes(row.sourceGrade)).length;
+if (retainedOfficialCount >= 10 && popups.length < retainedOfficialCount * 0.8) {
+  throw new Error(`공식 수집 결과 급감 보호: 정책상 유지 대상 ${retainedOfficialCount}건 → ${popups.length}건 (20% 이상 감소), 파일 반영 중단`);
 }
 
 const collectorCoverageRules = [
