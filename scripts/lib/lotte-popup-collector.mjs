@@ -16,16 +16,19 @@ function officialImage(html, baseUrl, decodeHtml) {
     ...[...source.matchAll(/["'](?:imageUrl|imgUrl|imgPath|pcImgUrl|mblImgUrl|shpgNewsImgUrl|dtlImgUrl)["']\s*:\s*["']([^"']+)/giu)].map(match => match[1]),
     ...[...source.matchAll(/<img[^>]+(?:data-src|src)=["']([^"']+)/giu)].map(match => match[1])
   ];
+  const expectedNewsId = new URL(baseUrl).searchParams.get('shpgNewsNo') || '';
+  const resolvedCandidates = [];
   for (const candidate of candidates) {
     const value = decodeHtml(candidate).replace(/&amp;/giu, '&');
     if (!value || /(?:logo|icon|spinner|loading|blank|default\.png|qr|arrow|button|appicon|metatag)/iu.test(value)) continue;
     try {
       const resolved = new URL(value, baseUrl).href;
-      if (/minfo\.lotteshopping\.com\/content\/news\//iu.test(resolved)) return resolved;
-      if (/\.(?:jpe?g|png|webp)(?:\?|$)/iu.test(resolved)) return resolved;
+      if (/minfo\.lotteshopping\.com\/content\/news\//iu.test(resolved)) resolvedCandidates.push(resolved);
+      else if (/\.(?:jpe?g|png|webp)(?:\?|$)/iu.test(resolved)) resolvedCandidates.push(resolved);
     } catch {}
   }
-  return '';
+  if (expectedNewsId) return resolvedCandidates.find(url => url.includes(`/${expectedNewsId}/`)) || '';
+  return resolvedCandidates[0] || '';
 }
 
 function detailMenus(html, decodeHtml, clean, uniqueMenus) {
@@ -39,6 +42,7 @@ function detailMenus(html, decodeHtml, clean, uniqueMenus) {
     const name = lines.slice(Math.max(0, index - 6), index).reverse().find(line =>
       line.length >= 2 && line.length <= 60
       && !/^(?:Image|쇼핑뉴스|브랜드명|제품명|가격|행사 종료)$/iu.test(line)
+      && !/^\([^)]*(?:kg|g|ml|l)\)$/iu.test(line)
       && !/^#|^\d{1,2}\.\d{1,2}/u.test(line));
     if (name) menus.push({ name, price: price.replace(/\s+/gu, '') });
   }
@@ -91,7 +95,8 @@ export async function collectLottePopups({ rows, previous, today, fetchResilient
           }
         }
         const foundImage = officialImage(detailHtml || searchHtml, sourceUrl, decodeHtml);
-        if (foundImage) imageUrl = foundImage;
+        if (detailHtml) imageUrl = foundImage;
+        else if (foundImage) imageUrl = foundImage;
         if (detailHtml) {
           const foundMenus = detailMenus(detailHtml, decodeHtml, clean, uniqueMenus);
           if (foundMenus.length) { menus = foundMenus; menuSource = 'official-detail'; }
