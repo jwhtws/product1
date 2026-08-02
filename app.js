@@ -427,8 +427,8 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
   }
   function popupFallbackImage(popup) {
     const images = {
-      bakery: 'assets/food/cafe-ai.png', drink: 'assets/food/cafe-ai.png',
-      tteok: 'assets/food/korean-ai.png', snack: 'assets/food/korean-ai.png',
+      bakery: 'assets/food/western-ai.png', drink: 'assets/food/cafe-ai.png',
+      tteok: 'assets/food/japanese-ai.png', snack: 'assets/food/korean-ai.png',
       meal: 'assets/food/korean-ai.png', grocery: 'assets/food/korean-ai.png'
     };
     return images[popupFoodType(popup)];
@@ -1261,7 +1261,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     const [regionsResponse, previewsResponse, popupsResponse] = await Promise.all([
       fetch('data/restaurants/regions.json?v=20260728-4'),
       fetch('data/restaurants/previews.json?v=20260728-4'),
-      fetch('data/popups.json?v=20260802-6')
+      fetch('data/popups.json?v=20260802-7')
     ]);
     if (!regionsResponse.ok || !previewsResponse.ok) throw Error('목록 로드 실패');
     const regionData = await regionsResponse.json(), previews = await previewsResponse.json();

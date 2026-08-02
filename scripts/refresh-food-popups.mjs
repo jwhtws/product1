@@ -745,6 +745,10 @@ async function collectCuratedOfficial() {
         }
       }
     } catch {}
+    const fallbackImage = /(모찌|어묵|초밥|만두)/u.test(name) ? 'assets/food/japanese-ai.png'
+      : /(베이글|빵|베이커리|타르트|케이크|피자)/u.test(name) ? 'assets/food/western-ai.png'
+        : /(커피|주스|빙수|아이스크림|과일청|잼)/u.test(name) ? 'assets/food/cafe-ai.png'
+          : 'assets/food/korean-ai.png';
     return {
     id,
     name,
@@ -753,7 +757,8 @@ async function collectCuratedOfficial() {
     address: venue,
     startDate,
     endDate,
-    imageUrl,
+    imageUrl: imageUrl || fallbackImage,
+    imageSource: imageUrl ? 'official-detail' : 'fallback-food-photo',
     sourceName: '롯데쇼핑 행사 페이지',
     sourceUrl,
     sourceGrade: 'official-search',

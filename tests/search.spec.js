@@ -115,3 +115,23 @@ test('카드형 공식 상품도 메뉴와 가격으로 변환한다', async ({ 
   await expect(page.locator('.popup-menu-section')).toContainText('우베리 피스타치오 모찌');
   await expect(page.locator('.popup-menu-section')).toContainText('11,900원');
 });
+
+test('성북당 공식 상세의 모든 상품 블록을 합쳐 표시한다', async ({ page }) => {
+  await page.goto(process.env.TEST_BASE_URL || 'http://127.0.0.1:8765/', { waitUntil: 'domcontentloaded' });
+  await page.locator('#search-input').fill('성북당');
+  await page.locator('#search-button').click();
+  await page.locator('.popup-card').filter({ hasText: '성북당 십원빵' }).click();
+  const menu = page.locator('.popup-menu-section');
+  for (const item of ['불닭/갈릭', '오리지널 치즈', '팥', '옥수수 치즈']) await expect(menu).toContainText(item);
+  await expect(menu.locator('li')).toHaveCount(4);
+});
+
+test('롯데 팝업은 사진과 대표 품목을 비워두지 않는다', async ({ page }) => {
+  await page.goto(process.env.TEST_BASE_URL || 'http://127.0.0.1:8765/', { waitUntil: 'domcontentloaded' });
+  await page.locator('#search-input').fill('글라쇼');
+  await page.locator('#search-button').click();
+  const popup = page.locator('.popup-card').filter({ hasText: '글라쇼 수제 아이스크림' });
+  await expect(popup.locator('.listing-photo')).toHaveAttribute('style', /assets\/food\/cafe-ai\.png/u);
+  await popup.click();
+  await expect(page.locator('.popup-menu-section')).toContainText('프리미엄 수제 아이스크림');
+});
