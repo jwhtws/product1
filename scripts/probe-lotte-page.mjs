@@ -12,4 +12,15 @@ const scripts = [...html.matchAll(/<script[^>]+src=["']([^"']+)/giu)].map(match 
 const apiPaths = [...new Set([...html.matchAll(/["']([^"']*(?:api|search|shpgnews)[^"']*)["']/giu)].map(match => match[1]).filter(value => value.length < 500))];
 const images = [...new Set([...html.matchAll(/(?:src|data-src|imageUrl|imgUrl|imgPath)["']?\s*(?:=|:)\s*["']([^"']+)/giu)].map(match => match[1]))];
 const newsIds = [...new Set([...html.matchAll(/SNM\d{10,}/gu)].map(match => match[0]))];
-console.log(JSON.stringify({ status: response.status, finalUrl: response.url, length: html.length, scripts, apiPaths: apiPaths.slice(0, 100), images: images.slice(0, 100), newsIds, sample: html.slice(0, 2000) }, null, 2));
+const contexts = newsIds.map(id => {
+  const index = html.indexOf(id);
+  return { id, context: html.slice(Math.max(0, index - 1500), index + 1800) };
+});
+const details = [];
+for (const id of newsIds) {
+  const detailUrl = `https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=${id}`;
+  const detailResponse = await fetch(detailUrl, { headers: { 'user-agent': 'Mozilla/5.0 Chrome/126 Safari/537.36' }, signal: AbortSignal.timeout(30_000) });
+  const detailHtml = await detailResponse.text();
+  details.push({ id, status: detailResponse.status, length: detailHtml.length, images: [...new Set([...detailHtml.matchAll(/(?:src|data-src)=["']([^"']+)/giu)].map(match => match[1]))].slice(0, 30), text: detailHtml.replace(/<[^>]*>/gu, ' ').replace(/\s+/gu, ' ').slice(0, 3000) });
+}
+console.log(JSON.stringify({ status: response.status, finalUrl: response.url, length: html.length, scripts, apiPaths: apiPaths.slice(0, 100), images: images.slice(0, 100), newsIds, contexts, details }, null, 2));
