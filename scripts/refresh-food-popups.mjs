@@ -704,10 +704,27 @@ async function collectLotteOfficialBlog() {
 
 async function collectCuratedOfficial() {
   const rows = JSON.parse(await readFile('data/curated-popups.json', 'utf8'));
+  const lotteStoreCodes = new Map([
+    ['롯데백화점 본점', '0001'],
+    ['롯데백화점 노원점', '0022'],
+    ['롯데백화점 센텀시티점', '0027'],
+    ['롯데백화점 건대스타시티점', '0028'],
+    ['롯데백화점 안산점', '0336'],
+    ['롯데아울렛 청주점', '0342'],
+    ['롯데백화점 인천점', '0344'],
+    ['롯데백화점 동탄점', '0399']
+  ]);
   const officialSearchMenus = new Map([
     ['lotte:main:glaceau', [{ name: '프리미엄 수제 아이스크림', price: '' }]]
   ]);
-  const enriched = await Promise.all(rows.map(async ([id, name, venue, startDate, endDate, sourceUrl]) => {
+  const enriched = await Promise.all(rows.map(async ([id, name, venue, startDate, endDate, rawSourceUrl]) => {
+    let sourceUrl = rawSourceUrl;
+    if (/\/search\/searchResult/iu.test(sourceUrl) && lotteStoreCodes.has(venue)) {
+      const officialSearch = new URL(sourceUrl);
+      officialSearch.searchParams.set('cstrCd', lotteStoreCodes.get(venue));
+      officialSearch.searchParams.set('searchTerm', clean(name));
+      sourceUrl = officialSearch.href;
+    }
     let imageUrl = '';
     let menus = officialSearchMenus.get(id) || [];
     let menuSource = menus.length ? 'official-search-result' : '';

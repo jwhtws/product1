@@ -135,3 +135,14 @@ test('롯데 팝업은 사진과 대표 품목을 비워두지 않는다', async
   await popup.click();
   await expect(page.locator('.popup-menu-section')).toContainText('프리미엄 수제 아이스크림');
 });
+
+test('롯데 공식 링크는 표시 지점과 같은 지점 코드를 사용한다', async ({ page }) => {
+  await page.goto(process.env.TEST_BASE_URL || 'http://127.0.0.1:8765/', { waitUntil: 'domcontentloaded' });
+  await page.locator('#search-input').fill('너구리베이글');
+  await page.locator('#search-button').click();
+  await page.locator('.popup-card').filter({ hasText: '너구리베이글' }).click();
+  const official = page.locator('.detail-actions a.primary');
+  await expect(official).toHaveAttribute('href', /cstrCd=0028/u);
+  await expect(official).toHaveAttribute('href', /searchTerm=%EB%84%88%EA%B5%AC%EB%A6%AC%EB%B2%A0%EC%9D%B4%EA%B8%80/u);
+  await expect(page.locator('#modal-content')).toContainText('롯데백화점 건대스타시티점');
+});

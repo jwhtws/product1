@@ -55,6 +55,12 @@ if (!Array.isArray(curatedPopups) || curatedPopups.some(row => !Array.isArray(ro
   console.error('curated-popups.json 구조가 올바르지 않습니다.');
   process.exitCode = 1;
 }
+const lotteVenueCodes = new Map([
+  ['롯데백화점 본점', '0001'], ['롯데백화점 노원점', '0022'],
+  ['롯데백화점 센텀시티점', '0027'], ['롯데백화점 건대스타시티점', '0028'],
+  ['롯데백화점 안산점', '0336'], ['롯데아울렛 청주점', '0342'],
+  ['롯데백화점 인천점', '0344'], ['롯데백화점 동탄점', '0399']
+]);
 for (const popup of popupData.popups) {
   if (!popup.id || !popup.name || !/^\d{4}-\d{2}-\d{2}$/.test(popup.startDate) || (popup.endDate && !/^\d{4}-\d{2}-\d{2}$/.test(popup.endDate))) {
     console.error(`팝업 필수값이 올바르지 않습니다: ${popup.id || popup.name || '알 수 없음'}`);
@@ -67,6 +73,17 @@ for (const popup of popupData.popups) {
   if (!['official', 'official-search'].includes(popup.sourceGrade)) {
     console.error(`팝업은 공식 출처만 허용됩니다: ${popup.id}`);
     process.exitCode = 1;
+  }
+  if (popup.id.startsWith('lotte:') && /\/search\/searchResult/u.test(popup.sourceUrl) && lotteVenueCodes.has(popup.venue)) {
+    const source = new URL(popup.sourceUrl);
+    if (source.searchParams.get('cstrCd') !== lotteVenueCodes.get(popup.venue)) {
+      console.error(`롯데 표시 지점과 공식 링크 지점 코드가 다릅니다: ${popup.id}`);
+      process.exitCode = 1;
+    }
+    if (source.searchParams.get('searchTerm') !== popup.name) {
+      console.error(`롯데 공식 링크가 해당 팝업명으로 검색되지 않습니다: ${popup.id}`);
+      process.exitCode = 1;
+    }
   }
 }
 
