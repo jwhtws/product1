@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-02T12:50:52.055Z",
+  "updatedAt": "2026-08-02T14:01:15.046Z",
   "sources": [
     {
       "name": "현대백화점·현대아울렛",
@@ -9,7 +9,7 @@
     {
       "name": "신세계백화점",
       "status": "active",
-      "count": 14
+      "count": 13
     },
     {
       "name": "스타필드·스타필드시티",
@@ -68,13 +68,13 @@
     }
   ],
   "stats": {
-    "rawCollected": 66,
-    "parsed": 66,
-    "beforeDedup": 66,
+    "rawCollected": 65,
+    "parsed": 65,
+    "beforeDedup": 65,
     "duplicateRemoved": 0,
-    "final": 66,
+    "final": 65,
     "status": {
-      "active": 58,
+      "active": 57,
       "upcoming": 0,
       "ended": 8
     },
@@ -201,18 +201,18 @@
       "brand": null,
       "region": "경기도",
       "category": "food-popup",
-      "lastVerifiedAt": "2026-08-02",
-      "status": "active",
-      "menuItems": [
-        "555크림"
-      ],
-      "menuSource": "official-event-text",
       "menus": [
         {
           "name": "555크림",
           "price": ""
         }
-      ]
+      ],
+      "menuItems": [
+        "555크림"
+      ],
+      "menuSource": "official-event-text",
+      "lastVerifiedAt": "2026-08-02",
+      "status": "active"
     },
     {
       "id": "hyundai:E4602607494433",
@@ -387,13 +387,28 @@
       "lastVerifiedAt": "2026-08-02",
       "status": "active",
       "menuItems": [
-        "우베리상하이모찌"
+        "우베리 피스타치오 모찌",
+        "망고 치케 모찌",
+        "메로나 모찌",
+        "양즈깐루"
       ],
-      "menuSource": "official-event-text",
+      "menuSource": "official-detail",
       "menus": [
         {
-          "name": "우베리상하이모찌",
-          "price": ""
+          "name": "우베리 피스타치오 모찌",
+          "price": "11,900원"
+        },
+        {
+          "name": "망고 치케 모찌",
+          "price": "9,900원"
+        },
+        {
+          "name": "메로나 모찌",
+          "price": "9,900원"
+        },
+        {
+          "name": "양즈깐루",
+          "price": "5,900원"
         }
       ]
     },
@@ -418,7 +433,9 @@
       "status": "active",
       "menuItems": [
         "육개장 (800g/팩)",
-        "늘봄 갈비탕 (1kg/팩)"
+        "늘봄 갈비탕 (1kg/팩)",
+        "낙지롱칩 (순한맛/1봉)",
+        "낙지롱칩 (매운맛/1봉)"
       ],
       "menuSource": "official-detail",
       "menus": [
@@ -429,6 +446,14 @@
         {
           "name": "늘봄 갈비탕 (1kg/팩)",
           "price": "15,000원"
+        },
+        {
+          "name": "낙지롱칩 (순한맛/1봉)",
+          "price": "6,000원"
+        },
+        {
+          "name": "낙지롱칩 (매운맛/1봉)",
+          "price": "6,000원"
         }
       ]
     },
@@ -453,7 +478,8 @@
       "status": "active",
       "menuItems": [
         "기백삼계탕 1팩(1kg)",
-        "기백삼계탕 2팩(2kg)"
+        "기백삼계탕 2팩(2kg)",
+        "흑미 막걸리 술빵"
       ],
       "menuSource": "official-detail",
       "menus": [
@@ -464,6 +490,10 @@
         {
           "name": "기백삼계탕 2팩(2kg)",
           "price": "32,000원"
+        },
+        {
+          "name": "흑미 막걸리 술빵",
+          "price": "9,900원"
         }
       ]
     },
@@ -487,13 +517,28 @@
       "lastVerifiedAt": "2026-08-02",
       "status": "active",
       "menuItems": [
-        "쫀득감자볼"
+        "쫀득감자볼",
+        "세트 메뉴",
+        "쫀득 감자 핫도그",
+        "한우대창떡볶이"
       ],
       "menuSource": "official-detail",
       "menus": [
         {
           "name": "쫀득감자볼",
           "price": "4,900원"
+        },
+        {
+          "name": "세트 메뉴",
+          "price": "20,000원"
+        },
+        {
+          "name": "쫀득 감자 핫도그",
+          "price": "7,900원"
+        },
+        {
+          "name": "한우대창떡볶이",
+          "price": "9,900원"
         }
       ]
     },
@@ -582,13 +627,28 @@
       "lastVerifiedAt": "2026-08-02",
       "status": "active",
       "menuItems": [
-        "미담수제고로케"
+        "직화불고기 고로케",
+        "부추가득고로케",
+        "콘크림치즈스노우 고로케",
+        "새우 고로케"
       ],
-      "menuSource": "official-event-text",
+      "menuSource": "official-detail",
       "menus": [
         {
-          "name": "미담수제고로케",
-          "price": ""
+          "name": "직화불고기 고로케",
+          "price": "4,500원"
+        },
+        {
+          "name": "부추가득고로케",
+          "price": "4,500원"
+        },
+        {
+          "name": "콘크림치즈스노우 고로케",
+          "price": "4,500원"
+        },
+        {
+          "name": "새우 고로케",
+          "price": "4,500원"
         }
       ]
     },
@@ -612,13 +672,28 @@
       "lastVerifiedAt": "2026-08-02",
       "status": "active",
       "menuItems": [
-        "봄날엔 약과"
+        "우리밀 약과",
+        "초코퐁당 요거꿀떡",
+        "초코퐁당 두바이쫀득떡 카라멜쿠키",
+        "초코퐁당 초코초코 롤케이크"
       ],
-      "menuSource": "official-event-text",
+      "menuSource": "official-detail",
       "menus": [
         {
-          "name": "봄날엔 약과",
-          "price": ""
+          "name": "우리밀 약과",
+          "price": "13,000원"
+        },
+        {
+          "name": "초코퐁당 요거꿀떡",
+          "price": "18,000원"
+        },
+        {
+          "name": "초코퐁당 두바이쫀득떡 카라멜쿠키",
+          "price": "18,000원"
+        },
+        {
+          "name": "초코퐁당 초코초코 롤케이크",
+          "price": "28,000원"
         }
       ]
     },
@@ -727,12 +802,27 @@
       "lastVerifiedAt": "2026-08-02",
       "status": "active",
       "menuItems": [
-        "불닭/갈릭"
+        "불닭/갈릭",
+        "오리지널 치즈",
+        "팥",
+        "옥수수 치즈"
       ],
       "menuSource": "official-detail",
       "menus": [
         {
           "name": "불닭/갈릭",
+          "price": "4,000원"
+        },
+        {
+          "name": "오리지널 치즈",
+          "price": "4,000원"
+        },
+        {
+          "name": "팥",
+          "price": "4,000원"
+        },
+        {
+          "name": "옥수수 치즈",
           "price": "4,000원"
         }
       ]
@@ -1117,13 +1207,33 @@
       "lastVerifiedAt": "2026-08-02",
       "status": "active",
       "menuItems": [
-        "모락절미"
+        "시그니처 호박절미",
+        "진한 쑥절미",
+        "고소한 흑임자절미",
+        "클래식 콩절미",
+        "선물세트"
       ],
-      "menuSource": "official-event-text",
+      "menuSource": "official-detail",
       "menus": [
         {
-          "name": "모락절미",
-          "price": ""
+          "name": "시그니처 호박절미",
+          "price": "12,000원"
+        },
+        {
+          "name": "진한 쑥절미",
+          "price": "12,000원"
+        },
+        {
+          "name": "고소한 흑임자절미",
+          "price": "12,000원"
+        },
+        {
+          "name": "클래식 콩절미",
+          "price": "12,000원"
+        },
+        {
+          "name": "선물세트",
+          "price": "40,000원"
         }
       ]
     },
@@ -1176,16 +1286,6 @@
       "sourceGrade": "official",
       "firstSeenAt": "2026-08-02",
       "lastSeenAt": "2026-08-02",
-      "brand": null,
-      "region": "서울특별시",
-      "category": "food-popup",
-      "lastVerifiedAt": "2026-08-02",
-      "status": "active",
-      "menuItems": [
-        "번 2종 각",
-        "생크림번 4종 각"
-      ],
-      "menuSource": "official-detail",
       "menus": [
         {
           "name": "번 2종 각",
@@ -1195,7 +1295,17 @@
           "name": "생크림번 4종 각",
           "price": "6,000원"
         }
-      ]
+      ],
+      "menuSource": "official-detail",
+      "brand": null,
+      "region": "서울특별시",
+      "category": "food-popup",
+      "menuItems": [
+        "번 2종 각",
+        "생크림번 4종 각"
+      ],
+      "lastVerifiedAt": "2026-08-02",
+      "status": "active"
     },
     {
       "id": "shinsegae-shopping:SC00010:8568467",
@@ -1217,13 +1327,28 @@
       "lastVerifiedAt": "2026-08-02",
       "status": "active",
       "menuItems": [
-        "본투비클래식"
+        "에그타르트",
+        "블랙 에그타르트",
+        "브라운치즈 에그타르트",
+        "밀크 에그타르트"
       ],
-      "menuSource": "official-event-text",
+      "menuSource": "official-detail",
       "menus": [
         {
-          "name": "본투비클래식",
-          "price": ""
+          "name": "에그타르트",
+          "price": "4,500원"
+        },
+        {
+          "name": "블랙 에그타르트",
+          "price": "4,500원"
+        },
+        {
+          "name": "브라운치즈 에그타르트",
+          "price": "4,500원"
+        },
+        {
+          "name": "밀크 에그타르트",
+          "price": "4,500원"
         }
       ]
     },
@@ -1258,36 +1383,6 @@
       ]
     },
     {
-      "id": "shinsegae-shopping:SC00010:8570898",
-      "name": "[아타라] 팝업 스토어",
-      "venue": "신세계백화점 의정부점",
-      "venueType": "백화점",
-      "address": "경기도 의정부시 평화로 525 · 신세계백화점 의정부점 백화점 3층",
-      "startDate": "2026-07-30",
-      "endDate": "2026-08-06",
-      "imageUrl": "https://www.shinsegae.com/cms12/SC00010/info/shopping/brndsingle/__icsFiles/afieldfile/2026/07/28/01-20260723083426-20260723083427.jpg",
-      "sourceName": "신세계백화점 공식 쇼핑뉴스",
-      "sourceUrl": "https://www.shinsegae.com/shopping/view.do?mainCd=02&pageLink=%2Fcms12%2FSC00010%2Finfo%2Fshopping%2Fbrndsingle%2F8570898_4597.txt&contentDtlCd=01&contentId=8570898&storeCd=SC00010&brandCd=UB0004288",
-      "sourceGrade": "official",
-      "firstSeenAt": "2026-08-02",
-      "lastSeenAt": "2026-08-02",
-      "brand": null,
-      "region": "경기도",
-      "category": "food-popup",
-      "lastVerifiedAt": "2026-08-02",
-      "status": "active",
-      "menuItems": [
-        "아타라"
-      ],
-      "menuSource": "official-event-text",
-      "menus": [
-        {
-          "name": "아타라",
-          "price": ""
-        }
-      ]
-    },
-    {
       "id": "shinsegae-shopping:SC00003:8576848",
       "name": "[오늘구움] POP-UP",
       "venue": "신세계백화점 타임스퀘어점",
@@ -1301,21 +1396,21 @@
       "sourceGrade": "official",
       "firstSeenAt": "2026-08-02",
       "lastSeenAt": "2026-08-02",
-      "brand": null,
-      "region": "서울특별시",
-      "category": "food-popup",
-      "lastVerifiedAt": "2026-08-02",
-      "status": "active",
-      "menuItems": [
-        "요거트 산도 2종 각"
-      ],
-      "menuSource": "official-detail",
       "menus": [
         {
           "name": "요거트 산도 2종 각",
           "price": "9,500원"
         }
-      ]
+      ],
+      "menuSource": "official-detail",
+      "brand": null,
+      "region": "서울특별시",
+      "category": "food-popup",
+      "menuItems": [
+        "요거트 산도 2종 각"
+      ],
+      "lastVerifiedAt": "2026-08-02",
+      "status": "active"
     },
     {
       "id": "shinsegae-shopping:SC00003:8576849",
@@ -1477,13 +1572,28 @@
       "lastVerifiedAt": "2026-08-02",
       "status": "active",
       "menuItems": [
+        "빵고미",
+        "빵고미",
+        "빵고미",
         "빵고미"
       ],
-      "menuSource": "official-event-text",
+      "menuSource": "official-detail",
       "menus": [
         {
           "name": "빵고미",
-          "price": ""
+          "price": "36,000원"
+        },
+        {
+          "name": "빵고미",
+          "price": "16,500원"
+        },
+        {
+          "name": "빵고미",
+          "price": "58,000원"
+        },
+        {
+          "name": "빵고미",
+          "price": "32,500원"
         }
       ]
     },
@@ -2062,6 +2172,7 @@
         "탕종식빵 (개)",
         "멜론/타코/야끼소바 시오빵 (각/개)",
         "쪽파/명란/갈릭 시오빵 (각/개)",
+        "두바이 시오빵 (개)",
         "과일산도 (개)"
       ],
       "menuSource": "official-detail",
@@ -2085,6 +2196,10 @@
         {
           "name": "쪽파/명란/갈릭 시오빵 (각/개)",
           "price": "6,000원"
+        },
+        {
+          "name": "두바이 시오빵 (개)",
+          "price": "9,000원"
         },
         {
           "name": "과일산도 (개)",
@@ -2479,18 +2594,18 @@
       "brand": null,
       "region": "경기도",
       "category": "food-popup",
-      "lastVerifiedAt": "2026-08-02",
-      "status": "active",
-      "menuItems": [
-        "청23"
-      ],
-      "menuSource": "official-event-text",
       "menus": [
         {
           "name": "청23",
           "price": ""
         }
-      ]
+      ],
+      "menuItems": [
+        "청23"
+      ],
+      "menuSource": "official-event-text",
+      "lastVerifiedAt": "2026-08-02",
+      "status": "active"
     },
     {
       "id": "lotte:nowon:rollsrolls",

@@ -13,7 +13,7 @@ const currentYear = Number(today.slice(0, 4));
 const keepSince = new Date(`${today}T00:00:00+09:00`);
 keepSince.setFullYear(keepSince.getFullYear() - 2);
 
-const foodWords = /(꽈배기|술빵|모찌|떡|빵|베이커리|디저트|케이크|쿠키|초콜릿|아이스크림|젤라또|도넛|마카롱|푸딩|타르트|약과|한과|카페|커피|차\b|티\b|음료|주스|맥주|와인|막걸리|포장마차|분식|김밥|라면|국수|냉면|만두|닭|치킨|고기|육회|곱창|족발|해산물|오징어|건어물|반찬|김치|식품|푸드|F&B|FNB|맛집|셰프|요리|농산|수산|축산)/iu;
+const foodWords = /(꽈배기|술빵|모찌|떡|절미|빵|베이커리|디저트|케이크|쿠키|초콜릿|아이스크림|젤라또|도넛|마카롱|푸딩|타르트|약과|한과|카페|커피|차\b|티\b|음료|주스|맥주|와인|막걸리|포장마차|분식|김밥|라면|국수|냉면|만두|닭|치킨|고기|육회|곱창|족발|해산물|오징어|건어물|반찬|김치|식품|푸드|F&B|FNB|맛집|셰프|요리|농산|수산|축산)/iu;
 const popupWords = /(팝업(?:\s*스토어)?|POP[\s-]*UP(?:\s*STORE)?|카라반)/iu;
 const nonHumanFood = /(반려|펫|강아지|고양이|사료)/u;
 const stableHash = value => [...String(value)].reduce((sum, char) => ((sum << 5) - sum + char.charCodeAt(0)) | 0, 0);
@@ -102,7 +102,7 @@ function parsePricedLines(value) {
   const menus = [];
   for (const line of String(value || '').replace(/<br\s*\/?\s*>/giu, '\n').split(/\r?\n/u)) {
     const text = decodeHtml(line).replace(/^[-–—•·*]\s*/u, '').trim();
-    const match = text.match(/^(.+?)\s+([\d,]+\s*원)(?:\s|$)/u);
+    const match = text.match(/^(.+?)\s+([\d,]+\s*원)/u);
     if (match) menus.push({ name: clean(match[1]), price: clean(match[2]) });
   }
   return uniqueMenus(menus);
@@ -115,6 +115,13 @@ function parseHyundaiMenus(html) {
     const name = decodeHtml(block.match(/<th\b[^>]*scope=["']row["'][^>]*>([\s\S]*?)<\/th>/iu)?.[1]
       || block.match(/<caption[^>]*>([\s\S]*?)<\/caption>/iu)?.[1]).replace(/제품목록\s*$/u, '');
     const price = decodeHtml(block.match(/<strong[^>]*>\s*([\d,]+\s*원)\s*<\/strong>/iu)?.[1]);
+    if (name && price) menus.push({ name, price });
+  }
+  for (const figure of String(html || '').matchAll(/<figure\b[^>]*>[\s\S]*?<\/figure>/giu)) {
+    const block = figure[0];
+    const name = decodeHtml(block.match(/<dd\b[^>]*class=["'][^"']*p_brandNm[^"']*["'][^>]*>([\s\S]*?)<\/dd>/iu)?.[1]
+      || block.match(/<dd\b[^>]*class=["'][^"']*p_productNm[^"']*["'][^>]*>([\s\S]*?)<\/dd>/iu)?.[1]);
+    const price = decodeHtml(block.match(/<dd\b[^>]*class=["'][^"']*p_productPrc[^"']*["'][^>]*>[\s\S]*?([\d,]+\s*원)[\s\S]*?<\/dd>/iu)?.[1]);
     if (name && price) menus.push({ name, price });
   }
   return uniqueMenus(menus);
@@ -249,6 +256,23 @@ function shinsegaeDate(value) {
   return String(value || '').match(/^(20\d{2})-(\d{2})-(\d{2})/)?.[0] || '';
 }
 
+async function shinsegaeDetailMenus(pageLink) {
+  const detailResponse = await fetchResilient(new URL(pageLink, 'https://www.shinsegae.com').href);
+  if (!detailResponse.ok) return [];
+  const detailText = (await detailResponse.text()).replace(/^\uFEFF/u, '');
+  let menuText = '';
+  try {
+    const detail = JSON.parse(detailText);
+    menuText = [detail.evt_sub_nm, detail.sub_img_1_ex, detail.sub_img_2_ex, detail.sub_img_3_ex].filter(Boolean).join('\n');
+  } catch {
+    // Some official Shinsegae `.txt` responses contain literal line breaks
+    // inside a JSON string.
+    menuText = [...detailText.matchAll(/"(?:evt_sub_nm|sub_img_\d+_ex)"\s*:\s*"([\s\S]*?)"\s*,\s*"[A-Za-z0-9_]+"\s*:/gu)]
+      .map(match => match[1]).join('\n');
+  }
+  return parsePricedLines(menuText);
+}
+
 async function collectShinsegaeShoppingNews() {
   const rows = [];
   const results = await Promise.allSettled(shinsegaeStores.map(async ([storeCd, fallbackName, roadAddress]) => {
@@ -271,21 +295,7 @@ async function collectShinsegaeShoppingNews() {
       const imagePath = String(card.imgUrl2 || card.imgUrl1 || '');
       let menus = [];
       try {
-        const detailResponse = await fetchResilient(new URL(pageLink, 'https://www.shinsegae.com').href);
-        if (detailResponse.ok) {
-          const detailText = (await detailResponse.text()).replace(/^\uFEFF/u, '');
-          let menuText = '';
-          try {
-            const detail = JSON.parse(detailText);
-            menuText = detail.evt_sub_nm || '';
-          } catch {
-            // Some official Shinsegae `.txt` responses contain literal line
-            // breaks inside a JSON string. Extract that field without
-            // discarding the otherwise valid official detail response.
-            menuText = detailText.match(/"evt_sub_nm"\s*:\s*"([\s\S]*?)"\s*,\s*"content1"/u)?.[1] || '';
-          }
-          menus = parsePricedLines(menuText);
-        }
+        menus = await shinsegaeDetailMenus(pageLink);
       } catch {}
       rows.push({
         id: `shinsegae-shopping:${storeCd}:${card.id}`,
@@ -303,7 +313,20 @@ async function collectShinsegaeShoppingNews() {
   const failures = results.filter(result => result.status === 'rejected');
   if (failures.length === shinsegaeStores.length) throw failures[0].reason;
   if (failures.length) console.warn(`신세계 지점별 쇼핑뉴스 ${failures.length}곳 수집 실패`);
-  return rows;
+  // The detail host throttles bursts. Retry missing cards serially so one
+  // temporary response does not turn a published menu back into a title-only
+  // fallback.
+  for (const row of rows.filter(item => !item.menus?.length)) {
+    try {
+      const pageLink = new URL(row.sourceUrl).searchParams.get('pageLink');
+      const menus = await shinsegaeDetailMenus(pageLink);
+      if (menus.length) Object.assign(row, { menus, menuSource: 'official-detail' });
+    } catch {}
+  }
+  return rows.filter(row => {
+    const detailedProducts = (row.menus || []).map(menu => menu.name).join(' ');
+    return !detailedProducts || !/(샴푸|헤어오일|헤어|탈모|화장품|세럼|마스크팩|스킨케어|향수)/u.test(detailedProducts);
+  });
 }
 
 async function collectShinsegae() {
@@ -686,11 +709,40 @@ async function collectCuratedOfficial() {
   ]);
   const enriched = await Promise.all(rows.map(async ([id, name, venue, startDate, endDate, sourceUrl]) => {
     let imageUrl = '';
+    let menus = officialSearchMenus.get(id) || [];
+    let menuSource = menus.length ? 'official-search-result' : '';
     try {
       const response = await fetchResilient(sourceUrl);
       if (response.ok) {
         const html = await response.text();
         imageUrl = html.match(/<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)/i)?.[1] || '';
+        let detailHtml = /\/shpgnews\/shpgnewsDetail/iu.test(sourceUrl) ? html : '';
+        if (!detailHtml) {
+          const brandKey = normalizedText(name).slice(0, 8);
+          for (const link of html.matchAll(/(?:href=)?["']([^"']*\/shpgnews\/shpgnewsDetail\?[^"']*shpgNewsNo=[^"'&\\]+[^"']*)["']/giu)) {
+            const nearby = decodeHtml(html.slice(Math.max(0, link.index - 1800), link.index + 1800));
+            if (!brandKey || normalizedText(nearby).includes(brandKey)) {
+              const detailUrl = new URL(link[1].replace(/\\u0026|&amp;/giu, '&'), sourceUrl).href;
+              const detailResponse = await fetchResilient(detailUrl);
+              if (detailResponse.ok) detailHtml = await detailResponse.text();
+              break;
+            }
+          }
+        }
+        if (detailHtml) {
+          const lines = detailHtml.replace(/<br\s*\/?\s*>/giu, '\n').replace(/<\/p>|<\/div>|<\/li>|<\/h[1-6]>/giu, '\n')
+            .split(/\r?\n/u).map(decodeHtml).filter(Boolean);
+          const extracted = [];
+          for (let index = 0; index < lines.length; index += 1) {
+            const price = lines[index].match(/^([\d,]+)\s*원$/u)?.[0];
+            if (!price) continue;
+            const candidate = lines.slice(Math.max(0, index - 6), index).reverse().find(line =>
+              line.length >= 2 && line.length <= 60 && !/^(Image|쇼핑뉴스|브랜드명|제품명|가격|행사 종료)$/iu.test(line) && !/^#|\d{1,2}\.\d{1,2}/u.test(line));
+            if (candidate) extracted.push({ name: candidate, price: price.replace(/\s+/gu, '') });
+          }
+          const officialMenus = uniqueMenus(extracted);
+          if (officialMenus.length) { menus = officialMenus; menuSource = 'official-detail'; }
+        }
       }
     } catch {}
     return {
@@ -707,7 +759,7 @@ async function collectCuratedOfficial() {
     sourceGrade: 'official-search',
     firstSeenAt: today,
     lastSeenAt: today,
-    ...(officialSearchMenus.has(id) ? { menus: officialSearchMenus.get(id), menuSource: 'official-search-result' } : {})
+    ...(menus.length ? { menus, menuSource } : {})
     };
   }));
   return enriched;

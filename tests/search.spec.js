@@ -104,3 +104,14 @@ test('공식 상세 페이지의 대표메뉴와 가격을 표시한다', async 
   await expect(page.locator('.popup-menu-section')).toContainText('초코칩 씬쿠키');
   await expect(page.locator('.popup-menu-section')).toContainText('3,300원');
 });
+
+test('카드형 공식 상품도 메뉴와 가격으로 변환한다', async ({ page }) => {
+  await page.goto(process.env.TEST_BASE_URL || 'http://127.0.0.1:8765/', { waitUntil: 'domcontentloaded' });
+  await page.locator('#search-input').fill('우베리');
+  await page.locator('#search-button').click();
+  const popup = page.locator('.popup-card').filter({ hasText: '우베리상하이모찌' }).first();
+  await expect(popup).toBeVisible({ timeout: 15000 });
+  await popup.click();
+  await expect(page.locator('.popup-menu-section')).toContainText('우베리 피스타치오 모찌');
+  await expect(page.locator('.popup-menu-section')).toContainText('11,900원');
+});
