@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-02T16:54:57.970Z",
+  "updatedAt": "2026-08-02T17:56:53.262Z",
   "sources": [
     {
       "name": "현대백화점·현대아울렛",
@@ -163,7 +163,7 @@
       "startDate": "2026-08-01",
       "endDate": "2026-08-02",
       "imageUrl": "https://lotteblog.s3.ap-northeast-2.amazonaws.com/wp-content/uploads/2026/06/%EB%A1%AF%EB%8D%B0%EC%A7%80%EC%A3%BC_%EC%88%A8%EA%B2%B0%ED%86%B5%EC%8B%9D%EB%B9%B5%ED%8C%9D%EC%97%85_344x260-1-300x227.jpg",
-      "sourceName": "롯데쇼핑 행사 페이지",
+      "sourceName": "롯데쇼핑 공식 행사",
       "sourceUrl": "https://blog.lotte.co.kr/50904",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-31",
@@ -551,9 +551,9 @@
       "address": "서울특별시 광진구 능동로 92 (자양동) · 롯데백화점 건대스타시티점",
       "startDate": "2026-07-31",
       "endDate": "2026-08-06",
-      "imageUrl": null,
-      "sourceName": "롯데쇼핑 행사 페이지",
-      "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0028&searchTerm=%EB%84%88%EA%B5%AC%EB%A6%AC%EB%B2%A0%EC%9D%B4%EA%B8%80",
+      "imageUrl": "https://minfo.lotteshopping.com/content/news/202407/SNM00000000000387996/20240715153135420_8.jpeg",
+      "sourceName": "롯데쇼핑 공식 행사",
+      "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549198",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-03",
@@ -562,10 +562,42 @@
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-03",
       "status": "active",
-      "menuItems": [],
-      "menuSource": "official-event-text",
-      "menus": [],
-      "imageSource": "official-image-unavailable"
+      "menuItems": [
+        "블루베리 베이글",
+        "바질 베이글",
+        "올리브치즈 베이글",
+        "갈릭 퐁당 베이글",
+        "할라피뇨 에멘탈 베이글",
+        "무화과 베이글"
+      ],
+      "menuSource": "official-detail",
+      "menus": [
+        {
+          "name": "블루베리 베이글",
+          "price": "4,000원"
+        },
+        {
+          "name": "바질 베이글",
+          "price": "4,000원"
+        },
+        {
+          "name": "올리브치즈 베이글",
+          "price": "4,200원"
+        },
+        {
+          "name": "갈릭 퐁당 베이글",
+          "price": "4,500원"
+        },
+        {
+          "name": "할라피뇨 에멘탈 베이글",
+          "price": "4,200원"
+        },
+        {
+          "name": "무화과 베이글",
+          "price": "4,200원"
+        }
+      ],
+      "imageSource": "official-detail"
     },
     {
       "id": "hyundai:E2102607494369",
@@ -830,9 +862,9 @@
       "address": "경기도 안산시 단원구 고잔1길 12 · 롯데백화점 안산점",
       "startDate": "2026-07-31",
       "endDate": "2026-08-13",
-      "imageUrl": null,
-      "sourceName": "롯데쇼핑 행사 페이지",
-      "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0336&searchTerm=%EC%86%8C%EA%B8%88%EC%83%81%ED%9A%8C",
+      "imageUrl": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547912/20260721093655326_9.jpeg",
+      "sourceName": "롯데쇼핑 공식 행사",
+      "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000547912",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-03",
@@ -841,10 +873,32 @@
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-03",
       "status": "active",
-      "menuItems": [],
-      "menuSource": "official-event-text",
-      "menus": [],
-      "imageSource": "official-image-unavailable"
+      "menuItems": [
+        "소금빵 아이스크림",
+        "플레인 소금빵",
+        "통밀 소금빵",
+        "찹쌀 소금빵"
+      ],
+      "menuSource": "official-detail",
+      "menus": [
+        {
+          "name": "소금빵 아이스크림",
+          "price": "7,000원"
+        },
+        {
+          "name": "플레인 소금빵",
+          "price": "3,800원"
+        },
+        {
+          "name": "통밀 소금빵",
+          "price": "4,800원"
+        },
+        {
+          "name": "찹쌀 소금빵",
+          "price": "4,800원"
+        }
+      ],
+      "imageSource": "official-detail"
     },
     {
       "id": "hyundai:E4702607493441",
@@ -1445,7 +1499,7 @@
       "startDate": "2026-07-30",
       "endDate": "2026-08-02",
       "imageUrl": null,
-      "sourceName": "롯데쇼핑 행사 페이지",
+      "sourceName": "롯데쇼핑 공식 행사",
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EB%A7%8C%EC%84%9D%EB%8B%AD%EA%B0%95%EC%A0%95",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
@@ -1468,9 +1522,9 @@
       "address": "경기도 화성시 동탄구 동탄역로 160, 동탄역 롯데캐슬 (여울동) · 롯데백화점 동탄점",
       "startDate": "2026-07-30",
       "endDate": "2026-08-12",
-      "imageUrl": null,
-      "sourceName": "롯데쇼핑 행사 페이지",
-      "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%9A%94%EC%95%84%EC%A0%95+%EC%BB%B5%EB%B9%99%EC%88%98",
+      "imageUrl": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000549036/2026072812105940_5.jpeg",
+      "sourceName": "롯데쇼핑 공식 행사",
+      "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549036",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-03",
@@ -1479,10 +1533,37 @@
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-03",
       "status": "active",
-      "menuItems": [],
-      "menuSource": "official-event-text",
-      "menus": [],
-      "imageSource": "official-image-unavailable"
+      "menuItems": [
+        "생망고 컵빙수",
+        "팥 컵빙수",
+        "리얼 수박 컵빙수",
+        "브륄레 컵빙수",
+        "딥초코 컵빙수"
+      ],
+      "menuSource": "official-detail",
+      "menus": [
+        {
+          "name": "생망고 컵빙수",
+          "price": "6,800원"
+        },
+        {
+          "name": "팥 컵빙수",
+          "price": "3,800원"
+        },
+        {
+          "name": "리얼 수박 컵빙수",
+          "price": "4,800원"
+        },
+        {
+          "name": "브륄레 컵빙수",
+          "price": "4,300원"
+        },
+        {
+          "name": "딥초코 컵빙수",
+          "price": "6,800원"
+        }
+      ],
+      "imageSource": "official-detail"
     },
     {
       "id": "hyundai:E4602607492936",
@@ -1622,33 +1703,9 @@
       "address": "서울특별시 중구 남대문로 81 (소공동) · 롯데백화점 본점",
       "startDate": "2026-07-24",
       "endDate": "2026-08-06",
-      "imageUrl": null,
-      "sourceName": "롯데쇼핑 행사 페이지",
-      "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0001&searchTerm=%EA%B0%93%EA%B5%AC%EC%9A%B4%EB%B9%B5%EA%B3%B5%EC%9E%A5",
-      "sourceGrade": "official-search",
-      "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-08-03",
-      "brand": null,
-      "region": "서울특별시",
-      "category": "food-popup",
-      "lastVerifiedAt": "2026-08-03",
-      "status": "active",
-      "menuItems": [],
-      "menuSource": "official-event-text",
-      "menus": [],
-      "imageSource": "official-image-unavailable"
-    },
-    {
-      "id": "lotte:main:glaceau",
-      "name": "글라쇼 수제 아이스크림",
-      "venue": "롯데백화점 본점",
-      "venueType": "백화점",
-      "address": "서울특별시 중구 남대문로 81 (소공동) · 롯데백화점 본점",
-      "startDate": "2026-07-24",
-      "endDate": "2026-08-06",
-      "imageUrl": null,
-      "sourceName": "롯데쇼핑 행사 페이지",
-      "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0001&searchTerm=%EA%B8%80%EB%9D%BC%EC%87%BC+%EC%88%98%EC%A0%9C+%EC%95%84%EC%9D%B4%EC%8A%A4%ED%81%AC%EB%A6%BC",
+      "imageUrl": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000548665/20260727111443394_3.jpeg",
+      "sourceName": "롯데쇼핑 공식 행사",
+      "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000548665",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-03",
@@ -1658,16 +1715,92 @@
       "lastVerifiedAt": "2026-08-03",
       "status": "active",
       "menuItems": [
-        "프리미엄 수제 아이스크림"
+        "소금빵",
+        "애플소금빵",
+        "초코소금빵",
+        "인절미소금빵"
       ],
-      "menuSource": "official-search-result",
+      "menuSource": "official-detail",
       "menus": [
         {
-          "name": "프리미엄 수제 아이스크림",
-          "price": ""
+          "name": "소금빵",
+          "price": "3,500원"
+        },
+        {
+          "name": "애플소금빵",
+          "price": "5,500원"
+        },
+        {
+          "name": "초코소금빵",
+          "price": "5,500원"
+        },
+        {
+          "name": "인절미소금빵",
+          "price": "5,500원"
         }
       ],
-      "imageSource": "official-image-unavailable"
+      "imageSource": "official-detail"
+    },
+    {
+      "id": "lotte:main:glaceau",
+      "name": "글라쇼 수제 아이스크림",
+      "venue": "롯데백화점 본점",
+      "venueType": "백화점",
+      "address": "서울특별시 중구 남대문로 81 (소공동) · 롯데백화점 본점",
+      "startDate": "2026-07-24",
+      "endDate": "2026-08-06",
+      "imageUrl": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000533681/20260722190911672_2.jpeg",
+      "sourceName": "롯데쇼핑 공식 행사",
+      "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000533681",
+      "sourceGrade": "official-search",
+      "firstSeenAt": "2026-07-30",
+      "lastSeenAt": "2026-08-03",
+      "brand": null,
+      "region": "서울특별시",
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-08-03",
+      "status": "active",
+      "menuItems": [
+        "소금빵&아이스크림",
+        "자몽망고 요거트 아이스크림",
+        "바질 치즈 아이스크림",
+        "호두곶감 아이스크림",
+        "쁘띠 아이스 케이크",
+        "클래식 아포가토",
+        "순우유 팥빙수"
+      ],
+      "menuSource": "official-detail",
+      "menus": [
+        {
+          "name": "소금빵&아이스크림",
+          "price": "7,000원"
+        },
+        {
+          "name": "자몽망고 요거트 아이스크림",
+          "price": "9,800원"
+        },
+        {
+          "name": "바질 치즈 아이스크림",
+          "price": "8,800원"
+        },
+        {
+          "name": "호두곶감 아이스크림",
+          "price": "9,800원"
+        },
+        {
+          "name": "쁘띠 아이스 케이크",
+          "price": "15,900원"
+        },
+        {
+          "name": "클래식 아포가토",
+          "price": "6,100원"
+        },
+        {
+          "name": "순우유 팥빙수",
+          "price": "9,800원"
+        }
+      ],
+      "imageSource": "official-detail"
     },
     {
       "id": "lotte:incheon:damahon",
@@ -1678,7 +1811,7 @@
       "startDate": "2026-07-24",
       "endDate": "2026-07-30",
       "imageUrl": null,
-      "sourceName": "롯데쇼핑 행사 페이지",
+      "sourceName": "롯데쇼핑 공식 행사",
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0344&searchTerm=%EB%8B%B4%EC%95%84%ED%97%8C+%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84+%EB%AA%A8%EC%B0%8C",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
@@ -1701,9 +1834,9 @@
       "address": "서울특별시 노원구 동일로 1414 (상계동) · 롯데백화점 노원점",
       "startDate": "2026-07-24",
       "endDate": "2026-08-03",
-      "imageUrl": null,
-      "sourceName": "롯데쇼핑 행사 페이지",
-      "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=%EB%8F%99%ED%99%94%EC%86%8D%EB%94%B8%EA%B8%B0+%EA%B3%BC%EC%9D%BC%EC%B2%AD%26%EC%9E%BC",
+      "imageUrl": "https://minfo.lotteshopping.com/content/news/202604/SNM00000000000530497/20260428165516181_6.jpeg",
+      "sourceName": "롯데쇼핑 공식 행사",
+      "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000548018",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-03",
@@ -1712,10 +1845,32 @@
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-03",
       "status": "active",
-      "menuItems": [],
-      "menuSource": "official-event-text",
-      "menus": [],
-      "imageSource": "official-image-unavailable"
+      "menuItems": [
+        "알룰로스 딸기잼 (200g)",
+        "수제 딸기청 (500g)",
+        "블루베리청 (500g)",
+        "망고청 (500g)"
+      ],
+      "menuSource": "official-detail",
+      "menus": [
+        {
+          "name": "알룰로스 딸기잼 (200g)",
+          "price": "8,900원"
+        },
+        {
+          "name": "수제 딸기청 (500g)",
+          "price": "9,900원"
+        },
+        {
+          "name": "블루베리청 (500g)",
+          "price": "13,900원"
+        },
+        {
+          "name": "망고청 (500g)",
+          "price": "11,900원"
+        }
+      ],
+      "imageSource": "official-detail"
     },
     {
       "id": "lotte:incheon:lusol",
@@ -1726,7 +1881,7 @@
       "startDate": "2026-07-24",
       "endDate": "2026-07-30",
       "imageUrl": null,
-      "sourceName": "롯데쇼핑 행사 페이지",
+      "sourceName": "롯데쇼핑 공식 행사",
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0344&searchTerm=%EB%A3%A8%EC%86%94+%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84+%EC%9D%B4%EC%9C%A0%EC%8B%9D",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
@@ -1750,7 +1905,7 @@
       "startDate": "2026-07-24",
       "endDate": "2026-08-06",
       "imageUrl": null,
-      "sourceName": "롯데쇼핑 행사 페이지",
+      "sourceName": "롯데쇼핑 공식 행사",
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0001&searchTerm=%EB%B0%80%EB%B9%9B+%ED%81%AC%EB%A6%BC%EC%B9%98%EC%A6%88%EB%B9%B5",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
@@ -1773,9 +1928,9 @@
       "address": "경기도 화성시 동탄구 동탄역로 160, 동탄역 롯데캐슬 (여울동) · 롯데백화점 동탄점",
       "startDate": "2026-07-24",
       "endDate": "2026-09-30",
-      "imageUrl": null,
-      "sourceName": "롯데쇼핑 행사 페이지",
-      "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EB%B0%94%EC%83%A4%EC%BB%A4%ED%94%BC",
+      "imageUrl": "https://minfo.lotteshopping.com/content/news/202605/SNM00000000000531614/20260507104705644_2.jpeg",
+      "sourceName": "롯데쇼핑 공식 행사",
+      "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-03",
@@ -1784,10 +1939,72 @@
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-03",
       "status": "active",
-      "menuItems": [],
-      "menuSource": "official-event-text",
-      "menus": [],
-      "imageSource": "official-image-unavailable"
+      "menuItems": [
+        "밀라노 모닝 커피 드립백(12개입)",
+        "1910 커피 드립백 (12개입)",
+        "캐러멜로 모닝 커피 드립백 (12개입)",
+        "톨테카 초콜릿 커피 드립백 (12개입)",
+        "마운트 케냐 커피 드립백 (12개입)",
+        "네비게이터 커피 드립백 세트(25개입)",
+        "익스플로러 커피 드립백 세트(25개입)",
+        "어쏘티트 커피 드립백 세트(25개입)",
+        "노마드컬렉션 밀라노 모닝 커피 원두 250g",
+        "노마드컬렉션 1910 커피 원두 250g",
+        "노마드컬렉션 아이 러브 파리 커피 원두 250g",
+        "노마드컬렉션 블루마운틴 월렌포드 커피 원두 250g"
+      ],
+      "menuSource": "official-detail",
+      "menus": [
+        {
+          "name": "밀라노 모닝 커피 드립백(12개입)",
+          "price": "42,000원"
+        },
+        {
+          "name": "1910 커피 드립백 (12개입)",
+          "price": "42,000원"
+        },
+        {
+          "name": "캐러멜로 모닝 커피 드립백 (12개입)",
+          "price": "42,000원"
+        },
+        {
+          "name": "톨테카 초콜릿 커피 드립백 (12개입)",
+          "price": "42,000원"
+        },
+        {
+          "name": "마운트 케냐 커피 드립백 (12개입)",
+          "price": "42,000원"
+        },
+        {
+          "name": "네비게이터 커피 드립백 세트(25개입)",
+          "price": "84,000원"
+        },
+        {
+          "name": "익스플로러 커피 드립백 세트(25개입)",
+          "price": "84,000원"
+        },
+        {
+          "name": "어쏘티트 커피 드립백 세트(25개입)",
+          "price": "84,000원"
+        },
+        {
+          "name": "노마드컬렉션 밀라노 모닝 커피 원두 250g",
+          "price": "65,000원"
+        },
+        {
+          "name": "노마드컬렉션 1910 커피 원두 250g",
+          "price": "65,000원"
+        },
+        {
+          "name": "노마드컬렉션 아이 러브 파리 커피 원두 250g",
+          "price": "65,000원"
+        },
+        {
+          "name": "노마드컬렉션 블루마운틴 월렌포드 커피 원두 250g",
+          "price": "540,000원"
+        }
+      ],
+      "imageSource": "official-detail"
     },
     {
       "id": "lotte:ansan:seoul-roll",
@@ -1798,7 +2015,7 @@
       "startDate": "2026-07-24",
       "endDate": "2026-07-30",
       "imageUrl": null,
-      "sourceName": "롯데쇼핑 행사 페이지",
+      "sourceName": "롯데쇼핑 공식 행사",
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0336&searchTerm=%EC%84%9C%EC%9A%B8%EB%A1%A4+%EC%B2%A0%ED%8C%90%ED%94%BC%EC%9E%90%26%ED%8A%80%EC%9D%BC",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
@@ -1822,7 +2039,7 @@
       "startDate": "2026-07-24",
       "endDate": "2026-07-30",
       "imageUrl": null,
-      "sourceName": "롯데쇼핑 행사 페이지",
+      "sourceName": "롯데쇼핑 공식 행사",
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0336&searchTerm=%EC%88%98%EC%88%98%EB%8C%80%EC%9E%A5%EA%B5%B0+%EC%A0%84%ED%86%B5%EA%B0%84%EC%8B%9D",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
@@ -1845,9 +2062,9 @@
       "address": "서울특별시 노원구 동일로 1414 (상계동) · 롯데백화점 노원점",
       "startDate": "2026-07-24",
       "endDate": "2026-08-03",
-      "imageUrl": null,
-      "sourceName": "롯데쇼핑 행사 페이지",
-      "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=%EC%95%84%EB%A5%B4%EB%84%9B+%EC%88%98%EC%A0%9C+%ED%94%BC%EC%B9%B8%26%ED%98%B8%EB%91%90",
+      "imageUrl": "https://minfo.lotteshopping.com/content/news/202506/SNM00000000000459927/20250604120401221_9.jpeg",
+      "sourceName": "롯데쇼핑 공식 행사",
+      "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000548015",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-03",
@@ -1856,10 +2073,32 @@
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-03",
       "status": "active",
-      "menuItems": [],
-      "menuSource": "official-event-text",
-      "menus": [],
-      "imageSource": "official-image-unavailable"
+      "menuItems": [
+        "호두스몰박스 4팩",
+        "호두 미디움박스 7팩",
+        "페이퍼팩",
+        "리본 선물박스"
+      ],
+      "menuSource": "official-detail",
+      "menus": [
+        {
+          "name": "호두스몰박스 4팩",
+          "price": "6,800원"
+        },
+        {
+          "name": "호두 미디움박스 7팩",
+          "price": "11,700원"
+        },
+        {
+          "name": "페이퍼팩",
+          "price": "19,500원"
+        },
+        {
+          "name": "리본 선물박스",
+          "price": "24,500원"
+        }
+      ],
+      "imageSource": "official-detail"
     },
     {
       "id": "lotte:centum:potato-bread",
@@ -1869,9 +2108,9 @@
       "address": "부산광역시 해운대구 센텀남대로 59 (우동) · 롯데백화점 센텀시티점",
       "startDate": "2026-07-24",
       "endDate": "2026-08-06",
-      "imageUrl": null,
-      "sourceName": "롯데쇼핑 행사 페이지",
-      "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0027&searchTerm=%EC%A0%95%EB%82%A8%EB%AF%B8%EB%AA%85%EA%B3%BC+%EA%B5%AC%ED%99%A9%EC%9E%91%EB%AC%BC%EB%B9%B5",
+      "imageUrl": "https://minfo.lotteshopping.com/content/news/202507/SNM00000000000470512/20250723190429244_4.jpeg",
+      "sourceName": "롯데쇼핑 공식 행사",
+      "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000546299",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-03",
@@ -1880,10 +2119,47 @@
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-03",
       "status": "active",
-      "menuItems": [],
-      "menuSource": "official-event-text",
-      "menus": [],
-      "imageSource": "official-image-unavailable"
+      "menuItems": [
+        "감자빵(1EA)",
+        "고구마빵(1EA)",
+        "옥수수빵(1EA)",
+        "단호박빵(1EA)",
+        "밤빵(1EA)",
+        "단감빵(1EA)",
+        "구황작물 수확세트(10개입)"
+      ],
+      "menuSource": "official-detail",
+      "menus": [
+        {
+          "name": "감자빵(1EA)",
+          "price": "3,800원"
+        },
+        {
+          "name": "고구마빵(1EA)",
+          "price": "3,800원"
+        },
+        {
+          "name": "옥수수빵(1EA)",
+          "price": "3,800원"
+        },
+        {
+          "name": "단호박빵(1EA)",
+          "price": "3,800원"
+        },
+        {
+          "name": "밤빵(1EA)",
+          "price": "3,800원"
+        },
+        {
+          "name": "단감빵(1EA)",
+          "price": "3,800원"
+        },
+        {
+          "name": "구황작물 수확세트(10개입)",
+          "price": "35,000원"
+        }
+      ],
+      "imageSource": "official-detail"
     },
     {
       "id": "lotte:nowon:home-meal",
@@ -1893,9 +2169,9 @@
       "address": "서울특별시 노원구 동일로 1414 (상계동) · 롯데백화점 노원점",
       "startDate": "2026-07-24",
       "endDate": "2026-08-03",
-      "imageUrl": null,
-      "sourceName": "롯데쇼핑 행사 페이지",
-      "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=%EC%A7%91%EB%B0%A5%EC%9E%A5%EC%9D%B8+%EA%B5%AD%ED%83%95%EB%A5%98",
+      "imageUrl": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547993/20260720181243581_6.jpeg",
+      "sourceName": "롯데쇼핑 공식 행사",
+      "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000547993",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-03",
@@ -1904,10 +2180,42 @@
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-03",
       "status": "active",
-      "menuItems": [],
-      "menuSource": "official-event-text",
-      "menus": [],
-      "imageSource": "official-image-unavailable"
+      "menuItems": [
+        "(1.2kg)",
+        "(700g)",
+        "(800g)",
+        "(1kg)",
+        "(1kg)",
+        "(500g)"
+      ],
+      "menuSource": "official-detail",
+      "menus": [
+        {
+          "name": "(1.2kg)",
+          "price": "9,000원"
+        },
+        {
+          "name": "(700g)",
+          "price": "8,000원"
+        },
+        {
+          "name": "(800g)",
+          "price": "11,000원"
+        },
+        {
+          "name": "(1kg)",
+          "price": "9,000원"
+        },
+        {
+          "name": "(1kg)",
+          "price": "10,000원"
+        },
+        {
+          "name": "(500g)",
+          "price": "6,500원"
+        }
+      ],
+      "imageSource": "official-detail"
     },
     {
       "id": "lotte:dongtan:findhere",
@@ -1918,7 +2226,7 @@
       "startDate": "2026-07-24",
       "endDate": "2026-07-30",
       "imageUrl": null,
-      "sourceName": "롯데쇼핑 행사 페이지",
+      "sourceName": "롯데쇼핑 공식 행사",
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%B0%BE%EB%8B%A4%EB%B3%B4%EB%8B%88%EC%97%AC%EA%B8%B0+%EA%B1%B4%EC%96%B4%EB%AC%BC%C2%B7%EA%B1%B4%EA%B0%95%EC%B9%A9",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
@@ -1942,7 +2250,7 @@
       "startDate": "2026-07-24",
       "endDate": "2026-07-30",
       "imageUrl": null,
-      "sourceName": "롯데쇼핑 행사 페이지",
+      "sourceName": "롯데쇼핑 공식 행사",
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%B2%AD%EC%A3%BC%EB%AF%B8%EC%B9%9C%EB%A7%8C%EB%91%90",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
@@ -2120,9 +2428,9 @@
       "address": "인천광역시 미추홀구 연남로 35 · 롯데백화점 인천점",
       "startDate": "2026-07-17",
       "endDate": "2026-08-13",
-      "imageUrl": null,
-      "sourceName": "롯데쇼핑 행사 페이지",
-      "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0344&searchTerm=%ED%94%84%EB%9E%91%EC%8A%A4%EB%A3%A8%EB%B8%8C%EB%A5%B4%EB%B0%94%EA%B2%8C%ED%8A%B8",
+      "imageUrl": "https://minfo.lotteshopping.com/content/news/202606/SNM00000000000540432/20260625113904433_2.jpeg",
+      "sourceName": "롯데쇼핑 공식 행사",
+      "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000547297",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-03",
@@ -2131,10 +2439,47 @@
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-03",
       "status": "active",
-      "menuItems": [],
-      "menuSource": "official-event-text",
-      "menus": [],
-      "imageSource": "official-image-unavailable"
+      "menuItems": [
+        "바게트 샌드위치",
+        "부들 크림빵",
+        "루브르 뮤지엄",
+        "뺑스위스",
+        "초코범벅 바게트",
+        "왁뿌메론소금빵",
+        "왁뿌망고소금빵"
+      ],
+      "menuSource": "official-detail",
+      "menus": [
+        {
+          "name": "바게트 샌드위치",
+          "price": "11,500원"
+        },
+        {
+          "name": "부들 크림빵",
+          "price": "8,800원"
+        },
+        {
+          "name": "루브르 뮤지엄",
+          "price": "7,800원"
+        },
+        {
+          "name": "뺑스위스",
+          "price": "5,800원"
+        },
+        {
+          "name": "초코범벅 바게트",
+          "price": "7,300원"
+        },
+        {
+          "name": "왁뿌메론소금빵",
+          "price": "6,800원"
+        },
+        {
+          "name": "왁뿌망고소금빵",
+          "price": "6,800원"
+        }
+      ],
+      "imageSource": "official-detail"
     },
     {
       "id": "lotte:dongtan:yummy-fruta",
@@ -2144,9 +2489,9 @@
       "address": "경기도 화성시 동탄구 동탄역로 160, 동탄역 롯데캐슬 (여울동) · 롯데백화점 동탄점",
       "startDate": "2026-07-16",
       "endDate": "2026-10-15",
-      "imageUrl": null,
-      "sourceName": "롯데쇼핑 행사 페이지",
-      "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%95%BC%EB%AF%B8%ED%91%B8%EB%A3%A8%EB%94%B0+%EC%B0%A9%EC%A6%99%EC%A3%BC%EC%8A%A4",
+      "imageUrl": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547195/20260715171108398_1.jpeg",
+      "sourceName": "롯데쇼핑 공식 행사",
+      "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000547195",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-03",
@@ -2155,10 +2500,32 @@
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-03",
       "status": "active",
-      "menuItems": [],
-      "menuSource": "official-event-text",
-      "menus": [],
-      "imageSource": "official-image-unavailable"
+      "menuItems": [
+        "오렌지 주스 R",
+        "오자몽주스 R",
+        "시트러스 비타민 주스 R",
+        "자몽주스 R"
+      ],
+      "menuSource": "official-detail",
+      "menus": [
+        {
+          "name": "오렌지 주스 R",
+          "price": "7,900원"
+        },
+        {
+          "name": "오자몽주스 R",
+          "price": "7,900원"
+        },
+        {
+          "name": "시트러스 비타민 주스 R",
+          "price": "7,900원"
+        },
+        {
+          "name": "자몽주스 R",
+          "price": "7,900원"
+        }
+      ],
+      "imageSource": "official-detail"
     },
     {
       "id": "lotte:jamsil:honey",
@@ -2168,8 +2535,8 @@
       "address": "서울특별시 송파구 올림픽로 300 (신천동) · 롯데월드몰",
       "startDate": "2026-07-15",
       "endDate": "2026-08-09",
-      "imageUrl": null,
-      "sourceName": "롯데쇼핑 행사 페이지",
+      "imageUrl": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000546957/20260714212145994_1.jpeg",
+      "sourceName": "롯데쇼핑 공식 행사",
       "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000546957",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
@@ -2182,7 +2549,7 @@
       "menuItems": [],
       "menuSource": "official-event-text",
       "menus": [],
-      "imageSource": "official-image-unavailable"
+      "imageSource": "official-detail"
     },
     {
       "id": "lotte:dongtan:tokyoberry",
@@ -2193,7 +2560,7 @@
       "startDate": "2026-07-10",
       "endDate": "2026-07-30",
       "imageUrl": null,
-      "sourceName": "롯데쇼핑 행사 페이지",
+      "sourceName": "롯데쇼핑 공식 행사",
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EB%8F%84%EC%BF%84%EB%B2%A0%EB%A6%AC+%EC%83%9D%EA%B3%BC%EC%9D%BC%EB%AA%A8%EC%B0%8C",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
@@ -2217,7 +2584,7 @@
       "startDate": "2026-07-10",
       "endDate": "2026-08-06",
       "imageUrl": null,
-      "sourceName": "롯데쇼핑 행사 페이지",
+      "sourceName": "롯데쇼핑 공식 행사",
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=%EB%B2%A0%EC%9D%B4%EA%B8%80%EB%A6%AC%EC%8A%A4%ED%8A%B8%C2%B7%EB%9D%BC%ED%81%AC%EB%A3%A8%EB%9C%A8",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
@@ -2240,9 +2607,9 @@
       "address": "경기도 화성시 동탄구 동탄역로 160, 동탄역 롯데캐슬 (여울동) · 롯데백화점 동탄점",
       "startDate": "2026-07-10",
       "endDate": "2026-08-06",
-      "imageUrl": null,
-      "sourceName": "롯데쇼핑 행사 페이지",
-      "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%8B%9C%EC%98%A4%ED%8C%A1%EC%95%BC+%EC%86%8C%EA%B8%88%EB%B9%B5",
+      "imageUrl": "https://minfo.lotteshopping.com/content/news/202503/SNM00000000000441803/20250323204355565_5.jpeg",
+      "sourceName": "롯데쇼핑 공식 행사",
+      "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000543235",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-03",
@@ -2251,10 +2618,47 @@
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-03",
       "status": "active",
-      "menuItems": [],
-      "menuSource": "official-event-text",
-      "menus": [],
-      "imageSource": "official-image-unavailable"
+      "menuItems": [
+        "클래식 소금빵",
+        "명란 소금빵",
+        "트러플 소금빵",
+        "쿠키 소금빵",
+        "초코 소금빵",
+        "프렌치 소금빵",
+        "쑥쿠키 소금빵"
+      ],
+      "menuSource": "official-detail",
+      "menus": [
+        {
+          "name": "클래식 소금빵",
+          "price": "3,500원"
+        },
+        {
+          "name": "명란 소금빵",
+          "price": "4,500원"
+        },
+        {
+          "name": "트러플 소금빵",
+          "price": "4,500원"
+        },
+        {
+          "name": "쿠키 소금빵",
+          "price": "4,500원"
+        },
+        {
+          "name": "초코 소금빵",
+          "price": "4,500원"
+        },
+        {
+          "name": "프렌치 소금빵",
+          "price": "4,500원"
+        },
+        {
+          "name": "쑥쿠키 소금빵",
+          "price": "4,800원"
+        }
+      ],
+      "imageSource": "official-detail"
     },
     {
       "id": "lotte:centum:fishcake",
@@ -2265,7 +2669,7 @@
       "startDate": "2026-07-10",
       "endDate": "2026-07-30",
       "imageUrl": null,
-      "sourceName": "롯데쇼핑 행사 페이지",
+      "sourceName": "롯데쇼핑 공식 행사",
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0027&searchTerm=%EC%8B%9D%ED%92%88%EA%B4%80+%EC%88%98%EC%A0%9C%EC%96%B4%EB%AC%B5",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
@@ -2288,9 +2692,9 @@
       "address": "충청북도 청주시 흥덕구 2순환로 1004 · 롯데아울렛 청주점",
       "startDate": "2026-07-03",
       "endDate": "2026-08-06",
-      "imageUrl": null,
-      "sourceName": "롯데쇼핑 행사 페이지",
-      "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0342&searchTerm=%EB%8F%99%EB%B4%89+%EC%97%90%EA%B7%B8%ED%83%80%EB%A5%B4%ED%8A%B8",
+      "imageUrl": "https://minfo.lotteshopping.com/content/news/202606/SNM00000000000543073/20260625131239774_1.jpeg",
+      "sourceName": "롯데쇼핑 공식 행사",
+      "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000543073",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-03",
@@ -2299,10 +2703,42 @@
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-03",
       "status": "active",
-      "menuItems": [],
-      "menuSource": "official-event-text",
-      "menus": [],
-      "imageSource": "official-image-unavailable"
+      "menuItems": [
+        "에그타르트",
+        "콘 타르트",
+        "애플파이",
+        "말차 타르트",
+        "얼그레이 타르트",
+        "트러플 타르트"
+      ],
+      "menuSource": "official-detail",
+      "menus": [
+        {
+          "name": "에그타르트",
+          "price": "3,800원"
+        },
+        {
+          "name": "콘 타르트",
+          "price": "4,000원"
+        },
+        {
+          "name": "애플파이",
+          "price": "4,000원"
+        },
+        {
+          "name": "말차 타르트",
+          "price": "4,200원"
+        },
+        {
+          "name": "얼그레이 타르트",
+          "price": "4,200원"
+        },
+        {
+          "name": "트러플 타르트",
+          "price": "4,500원"
+        }
+      ],
+      "imageSource": "official-detail"
     },
     {
       "id": "lotte:cheongju:ojisan-cheesecake",
@@ -2312,9 +2748,9 @@
       "address": "충청북도 청주시 흥덕구 2순환로 1004 · 롯데아울렛 청주점",
       "startDate": "2026-07-03",
       "endDate": "2026-08-06",
-      "imageUrl": null,
-      "sourceName": "롯데쇼핑 행사 페이지",
-      "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0342&searchTerm=%EC%98%A4%EC%A7%80%EC%83%81+%EC%B9%98%EC%A6%88%EC%BC%80%EC%9D%B4%ED%81%AC",
+      "imageUrl": "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000509439/20260127090749624_7.jpeg",
+      "sourceName": "롯데쇼핑 공식 행사",
+      "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000542058",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-03",
@@ -2326,7 +2762,7 @@
       "menuItems": [],
       "menuSource": "official-event-text",
       "menus": [],
-      "imageSource": "official-image-unavailable"
+      "imageSource": "official-detail"
     },
     {
       "id": "lotte:nowon:maison-once-year",
@@ -2336,9 +2772,9 @@
       "address": "서울특별시 노원구 동일로 1414 (상계동) · 롯데백화점 노원점",
       "startDate": "2026-07-01",
       "endDate": "2026-08-03",
-      "imageUrl": null,
-      "sourceName": "롯데쇼핑 행사 페이지",
-      "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=%EB%A9%94%EC%A2%85%EC%9B%90%EC%8A%A4%EC%9D%B4%EC%96%B4+%EC%BC%80%EC%9D%B4%ED%81%AC",
+      "imageUrl": "https://minfo.lotteshopping.com/content/news/202507/SNM00000000000470286/20250731135233966_9.jpeg",
+      "sourceName": "롯데쇼핑 공식 행사",
+      "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000470286",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-03",
@@ -2347,10 +2783,27 @@
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-03",
       "status": "active",
-      "menuItems": [],
-      "menuSource": "official-event-text",
-      "menus": [],
-      "imageSource": "official-image-unavailable"
+      "menuItems": [
+        "생망고 케이크 (1호)",
+        "망고듬뿍 케이크 (1호)",
+        "딸망고 케이크 (1호)"
+      ],
+      "menuSource": "official-detail",
+      "menus": [
+        {
+          "name": "생망고 케이크 (1호)",
+          "price": "49,000원"
+        },
+        {
+          "name": "망고듬뿍 케이크 (1호)",
+          "price": "48,000원"
+        },
+        {
+          "name": "딸망고 케이크 (1호)",
+          "price": "51,000원"
+        }
+      ],
+      "imageSource": "official-detail"
     },
     {
       "id": "shinsegae-shopping:SC00010:8464018",
@@ -2390,9 +2843,9 @@
       "address": "서울특별시 노원구 동일로 1414 (상계동) · 롯데백화점 노원점",
       "startDate": "2026-06-01",
       "endDate": "2026-08-03",
-      "imageUrl": null,
-      "sourceName": "롯데쇼핑 행사 페이지",
-      "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=%EB%A1%A4%EC%8A%A4%EB%A1%A4%EC%8A%A4+%EB%B6%88%EC%B4%88%EB%B0%A5",
+      "imageUrl": "https://minfo.lotteshopping.com/content/news/202605/SNM00000000000536429/20260528170140437_4.jpeg",
+      "sourceName": "롯데쇼핑 공식 행사",
+      "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000536429",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-03",
@@ -2401,10 +2854,37 @@
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-03",
       "status": "active",
-      "menuItems": [],
-      "menuSource": "official-event-text",
-      "menus": [],
-      "imageSource": "official-image-unavailable"
+      "menuItems": [
+        "쇠고기 불초밥(1팩)",
+        "새우 불초밥(1팩)",
+        "유부 롤초밥(1팩)",
+        "다마고츠쿠네(1개)",
+        "새우 에그롤(1개)"
+      ],
+      "menuSource": "official-detail",
+      "menus": [
+        {
+          "name": "쇠고기 불초밥(1팩)",
+          "price": "12,900원"
+        },
+        {
+          "name": "새우 불초밥(1팩)",
+          "price": "13,900원"
+        },
+        {
+          "name": "유부 롤초밥(1팩)",
+          "price": "7,900원"
+        },
+        {
+          "name": "다마고츠쿠네(1개)",
+          "price": "4,500원"
+        },
+        {
+          "name": "새우 에그롤(1개)",
+          "price": "4,500원"
+        }
+      ],
+      "imageSource": "official-detail"
     }
   ]
 }
