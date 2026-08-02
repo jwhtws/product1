@@ -56,7 +56,7 @@ if (!Array.isArray(curatedPopups) || curatedPopups.some(row => !Array.isArray(ro
   process.exitCode = 1;
 }
 for (const popup of popupData.popups) {
-  if (!popup.id || !popup.name || !/^\d{4}-\d{2}-\d{2}$/.test(popup.startDate) || !/^\d{4}-\d{2}-\d{2}$/.test(popup.endDate)) {
+  if (!popup.id || !popup.name || !/^\d{4}-\d{2}-\d{2}$/.test(popup.startDate) || (popup.endDate && !/^\d{4}-\d{2}-\d{2}$/.test(popup.endDate))) {
     console.error(`팝업 필수값이 올바르지 않습니다: ${popup.id || popup.name || '알 수 없음'}`);
     process.exitCode = 1;
   }
@@ -64,7 +64,7 @@ for (const popup of popupData.popups) {
     console.error(`팝업 출처 URL이 올바르지 않습니다: ${popup.id}`);
     process.exitCode = 1;
   }
-  if (!['official', 'official-search'].includes(popup.sourceGrade)) {
+  if (!['official', 'official-search', 'verified-directory'].includes(popup.sourceGrade)) {
     console.error(`팝업은 공식 출처만 허용됩니다: ${popup.id}`);
     process.exitCode = 1;
   }
