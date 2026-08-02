@@ -60,7 +60,10 @@ export async function collectLottePopups({ rows, previous, today, fetchResilient
   const previousById = new Map(previous.map(row => [row.id, row]));
   const results = [];
   let verified = 0;
-  for (const [id, name, venue, startDate, endDate, rawSourceUrl] of rows) {
+  let cursor = 0;
+  async function worker() {
+   while (cursor < rows.length) {
+    const [id, name, venue, startDate, endDate, rawSourceUrl] = rows[cursor++];
     let searchUrl = rawSourceUrl;
     if (/\/search\/searchResult/iu.test(searchUrl) && storeCodes.has(venue)) {
       const url = new URL(searchUrl);
@@ -105,7 +108,9 @@ export async function collectLottePopups({ rows, previous, today, fetchResilient
       firstSeenAt: old?.firstSeenAt || today, lastSeenAt: today,
       ...(menus.length ? { menus, menuSource } : {})
     });
+   }
   }
+  await Promise.all(Array.from({ length: Math.min(8, rows.length) }, () => worker()));
   console.log(`롯데 전용 수집기: ${rows.length}건 중 공식 페이지 ${verified}건 응답`);
   return results;
 }
