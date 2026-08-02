@@ -95,3 +95,12 @@ test('푸드 팝업은 썸네일 카드에서 상세 페이지로 이동한다',
   await expect(page.locator('#modal-content .popup-detail-cover')).toBeVisible();
   await expect(page.locator('#modal-content .site-plan')).toHaveCount(0);
 });
+
+test('공식 상세 페이지의 대표메뉴와 가격을 표시한다', async ({ page }) => {
+  await page.goto(process.env.TEST_BASE_URL || 'http://127.0.0.1:8765/', { waitUntil: 'domcontentloaded' });
+  const popup = page.locator('.popup-card').filter({ hasText: '3층 다락빵' }).first();
+  await expect(popup).toBeVisible({ timeout: 15000 });
+  await popup.click();
+  await expect(page.locator('.popup-menu-section')).toContainText('초코칩 씬쿠키');
+  await expect(page.locator('.popup-menu-section')).toContainText('3,300원');
+});

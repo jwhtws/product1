@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-02T12:29:02.133Z",
+  "updatedAt": "2026-08-02T12:50:52.055Z",
   "sources": [
     {
       "name": "현대백화점·현대아울렛",
@@ -119,9 +119,40 @@
       "lastVerifiedAt": "2026-08-02",
       "status": "active",
       "menuItems": [
-        "보따리제과점"
+        "오리지널 로티번",
+        "버터 로티번",
+        "로티 소금빵",
+        "오리지널 로티번 세트(3개입)",
+        "버터 로티번 세트(3개입)",
+        "로티 소금빵 세트(3개입)"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-detail",
+      "menus": [
+        {
+          "name": "오리지널 로티번",
+          "price": "4,000원"
+        },
+        {
+          "name": "버터 로티번",
+          "price": "4,500원"
+        },
+        {
+          "name": "로티 소금빵",
+          "price": "4,000원"
+        },
+        {
+          "name": "오리지널 로티번 세트(3개입)",
+          "price": "10,000원"
+        },
+        {
+          "name": "버터 로티번 세트(3개입)",
+          "price": "12,000원"
+        },
+        {
+          "name": "로티 소금빵 세트(3개입)",
+          "price": "10,000원"
+        }
+      ]
     },
     {
       "id": "lotte:blog:breath-bread:dongbusan",
@@ -145,7 +176,13 @@
       "menuItems": [
         "세븐셀렉트 숨결통식빵"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-event-text",
+      "menus": [
+        {
+          "name": "세븐셀렉트 숨결통식빵",
+          "price": ""
+        }
+      ]
     },
     {
       "id": "shinsegae-shopping:SC00012:8578550",
@@ -169,7 +206,13 @@
       "menuItems": [
         "555크림"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-event-text",
+      "menus": [
+        {
+          "name": "555크림",
+          "price": ""
+        }
+      ]
     },
     {
       "id": "hyundai:E4602607494433",
@@ -191,9 +234,70 @@
       "lastVerifiedAt": "2026-08-02",
       "status": "active",
       "menuItems": [
-        "보정당"
+        "초콜렛쿠키",
+        "르뱅쿠키",
+        "얼그레이쿠키",
+        "머랭쿠키",
+        "플레인스콘",
+        "치즈스콘",
+        "옥수수스콘",
+        "얼그레이스콘",
+        "초코스콘",
+        "레몬마들렌",
+        "초코마들렌",
+        "바닐라마들렌"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-detail",
+      "menus": [
+        {
+          "name": "초콜렛쿠키",
+          "price": "3,900원"
+        },
+        {
+          "name": "르뱅쿠키",
+          "price": "3,900원"
+        },
+        {
+          "name": "얼그레이쿠키",
+          "price": "3,900원"
+        },
+        {
+          "name": "머랭쿠키",
+          "price": "6,000원"
+        },
+        {
+          "name": "플레인스콘",
+          "price": "3,900원"
+        },
+        {
+          "name": "치즈스콘",
+          "price": "3,900원"
+        },
+        {
+          "name": "옥수수스콘",
+          "price": "3,900원"
+        },
+        {
+          "name": "얼그레이스콘",
+          "price": "3,900원"
+        },
+        {
+          "name": "초코스콘",
+          "price": "3,900원"
+        },
+        {
+          "name": "레몬마들렌",
+          "price": "3,000원"
+        },
+        {
+          "name": "초코마들렌",
+          "price": "3,000원"
+        },
+        {
+          "name": "바닐라마들렌",
+          "price": "3,000원"
+        }
+      ]
     },
     {
       "id": "hyundai:E4602607493810",
@@ -215,9 +319,30 @@
       "lastVerifiedAt": "2026-08-02",
       "status": "active",
       "menuItems": [
-        "어썸팝콘"
+        "어썸팝콘 카라멜",
+        "어썸팝콘 초코",
+        "어썸팝콘 클래식솔트",
+        "어썸팝콘 말차"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-detail",
+      "menus": [
+        {
+          "name": "어썸팝콘 카라멜",
+          "price": "7,500원"
+        },
+        {
+          "name": "어썸팝콘 초코",
+          "price": "7,500원"
+        },
+        {
+          "name": "어썸팝콘 클래식솔트",
+          "price": "7,500원"
+        },
+        {
+          "name": "어썸팝콘 말차",
+          "price": "7,500원"
+        }
+      ]
     },
     {
       "id": "hyundai:E4302607493645",
@@ -239,7 +364,8 @@
       "lastVerifiedAt": "2026-08-02",
       "status": "active",
       "menuItems": [],
-      "menuSource": "official-event-text"
+      "menuSource": "official-event-text",
+      "menus": []
     },
     {
       "id": "hyundai:E7202607493841",
@@ -263,7 +389,13 @@
       "menuItems": [
         "우베리상하이모찌"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-event-text",
+      "menus": [
+        {
+          "name": "우베리상하이모찌",
+          "price": ""
+        }
+      ]
     },
     {
       "id": "hyundai:E4502607494110",
@@ -285,10 +417,20 @@
       "lastVerifiedAt": "2026-08-02",
       "status": "active",
       "menuItems": [
-        "31건어물",
-        "늘봄"
+        "육개장 (800g/팩)",
+        "늘봄 갈비탕 (1kg/팩)"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-detail",
+      "menus": [
+        {
+          "name": "육개장 (800g/팩)",
+          "price": "12,000원"
+        },
+        {
+          "name": "늘봄 갈비탕 (1kg/팩)",
+          "price": "15,000원"
+        }
+      ]
     },
     {
       "id": "hyundai:E4502607494064",
@@ -310,10 +452,20 @@
       "lastVerifiedAt": "2026-08-02",
       "status": "active",
       "menuItems": [
-        "강릉막걸리술빵",
-        "기백삼계탕"
+        "기백삼계탕 1팩(1kg)",
+        "기백삼계탕 2팩(2kg)"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-detail",
+      "menus": [
+        {
+          "name": "기백삼계탕 1팩(1kg)",
+          "price": "17,000원"
+        },
+        {
+          "name": "기백삼계탕 2팩(2kg)",
+          "price": "32,000원"
+        }
+      ]
     },
     {
       "id": "hyundai:E4602607493812",
@@ -335,9 +487,15 @@
       "lastVerifiedAt": "2026-08-02",
       "status": "active",
       "menuItems": [
-        "광안제일분식"
+        "쫀득감자볼"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-detail",
+      "menus": [
+        {
+          "name": "쫀득감자볼",
+          "price": "4,900원"
+        }
+      ]
     },
     {
       "id": "lotte:global:neoguri-bagel",
@@ -361,7 +519,13 @@
       "menuItems": [
         "너구리베이글"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-event-text",
+      "menus": [
+        {
+          "name": "너구리베이글",
+          "price": ""
+        }
+      ]
     },
     {
       "id": "hyundai:E2102607494369",
@@ -383,9 +547,20 @@
       "lastVerifiedAt": "2026-08-02",
       "status": "active",
       "menuItems": [
-        "모찌트리"
+        "딸기 모찌",
+        "생초콜릿 모찌"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-detail",
+      "menus": [
+        {
+          "name": "딸기 모찌",
+          "price": "4,500원"
+        },
+        {
+          "name": "생초콜릿 모찌",
+          "price": "4,500원"
+        }
+      ]
     },
     {
       "id": "hyundai:E1102607494209",
@@ -409,7 +584,13 @@
       "menuItems": [
         "미담수제고로케"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-event-text",
+      "menus": [
+        {
+          "name": "미담수제고로케",
+          "price": ""
+        }
+      ]
     },
     {
       "id": "hyundai:E1102607494412",
@@ -433,7 +614,13 @@
       "menuItems": [
         "봄날엔 약과"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-event-text",
+      "menus": [
+        {
+          "name": "봄날엔 약과",
+          "price": ""
+        }
+      ]
     },
     {
       "id": "hyundai:E4602607493807",
@@ -455,9 +642,70 @@
       "lastVerifiedAt": "2026-08-02",
       "status": "active",
       "menuItems": [
-        "샘실떡방"
+        "참모싯잎 동부 송편",
+        "참모싯잎 통동부 송편",
+        "참모싯잎 흑임자 송편",
+        "참모싯잎 개떡",
+        "샘실 쑥 개떡",
+        "인절미",
+        "참모싯잎 인절미",
+        "쑥 인절미",
+        "찹쌀떡",
+        "전통 찹쌀떡",
+        "쑥 찹쌀떡",
+        "참모싯잎 찹쌀떡"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-detail",
+      "menus": [
+        {
+          "name": "참모싯잎 동부 송편",
+          "price": "7,000원"
+        },
+        {
+          "name": "참모싯잎 통동부 송편",
+          "price": "7,000원"
+        },
+        {
+          "name": "참모싯잎 흑임자 송편",
+          "price": "7,000원"
+        },
+        {
+          "name": "참모싯잎 개떡",
+          "price": "7,000원"
+        },
+        {
+          "name": "샘실 쑥 개떡",
+          "price": "7,000원"
+        },
+        {
+          "name": "인절미",
+          "price": "15,000원"
+        },
+        {
+          "name": "참모싯잎 인절미",
+          "price": "10,000원"
+        },
+        {
+          "name": "쑥 인절미",
+          "price": "10,000원"
+        },
+        {
+          "name": "찹쌀떡",
+          "price": "15,000원"
+        },
+        {
+          "name": "전통 찹쌀떡",
+          "price": "10,000원"
+        },
+        {
+          "name": "쑥 찹쌀떡",
+          "price": "10,000원"
+        },
+        {
+          "name": "참모싯잎 찹쌀떡",
+          "price": "10,000원"
+        }
+      ]
     },
     {
       "id": "hyundai:E1102607494403",
@@ -479,9 +727,15 @@
       "lastVerifiedAt": "2026-08-02",
       "status": "active",
       "menuItems": [
-        "성북당 십원빵"
+        "불닭/갈릭"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-detail",
+      "menus": [
+        {
+          "name": "불닭/갈릭",
+          "price": "4,000원"
+        }
+      ]
     },
     {
       "id": "lotte:ansan:salt-market",
@@ -505,7 +759,13 @@
       "menuItems": [
         "소금상회"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-event-text",
+      "menus": [
+        {
+          "name": "소금상회",
+          "price": ""
+        }
+      ]
     },
     {
       "id": "hyundai:E4702607493441",
@@ -527,9 +787,35 @@
       "lastVerifiedAt": "2026-08-02",
       "status": "active",
       "menuItems": [
-        "스탠다드번"
+        "모카번",
+        "카라멜번",
+        "밀크번",
+        "앙버터번",
+        "메이플 버터"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-detail",
+      "menus": [
+        {
+          "name": "모카번",
+          "price": "4,000원"
+        },
+        {
+          "name": "카라멜번",
+          "price": "5,600원"
+        },
+        {
+          "name": "밀크번",
+          "price": "5,800원"
+        },
+        {
+          "name": "앙버터번",
+          "price": "5,800원"
+        },
+        {
+          "name": "메이플 버터",
+          "price": "1,500원"
+        }
+      ]
     },
     {
       "id": "hyundai:E2102607494345",
@@ -551,9 +837,20 @@
       "lastVerifiedAt": "2026-08-02",
       "status": "active",
       "menuItems": [
-        "엄지네 포장마차"
+        "꼬막 무침",
+        "꼬막 비빔밥"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-detail",
+      "menus": [
+        {
+          "name": "꼬막 무침",
+          "price": "35,000원"
+        },
+        {
+          "name": "꼬막 비빔밥",
+          "price": "37,000원"
+        }
+      ]
     },
     {
       "id": "hyundai:E4602607493805",
@@ -575,9 +872,85 @@
       "lastVerifiedAt": "2026-08-02",
       "status": "active",
       "menuItems": [
-        "이스터서울"
+        "플레인 휘낭시에",
+        "솔티드카라멜 휘낭시에",
+        "마카다미아 휘낭시에",
+        "피칸 휘낭시에",
+        "무화과크림치즈 휘낭시에",
+        "솔트아몬드초코 휘낭시에",
+        "레몬 휘낭시에",
+        "다크초콜릿 티그레",
+        "화이트초콜릿 티그레",
+        "말차초콜릿 티그레",
+        "얼그레이초콜릿 티그레",
+        "딸기초콜릿 티그레",
+        "피스타치오초콜릿 티그레",
+        "레몬초콜릿 티그레",
+        "모카초콜릿 티그레"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-detail",
+      "menus": [
+        {
+          "name": "플레인 휘낭시에",
+          "price": "3,400원"
+        },
+        {
+          "name": "솔티드카라멜 휘낭시에",
+          "price": "3,600원"
+        },
+        {
+          "name": "마카다미아 휘낭시에",
+          "price": "4,000원"
+        },
+        {
+          "name": "피칸 휘낭시에",
+          "price": "3,900원"
+        },
+        {
+          "name": "무화과크림치즈 휘낭시에",
+          "price": "4,000원"
+        },
+        {
+          "name": "솔트아몬드초코 휘낭시에",
+          "price": "3,900원"
+        },
+        {
+          "name": "레몬 휘낭시에",
+          "price": "3,900원"
+        },
+        {
+          "name": "다크초콜릿 티그레",
+          "price": "4,000원"
+        },
+        {
+          "name": "화이트초콜릿 티그레",
+          "price": "4,000원"
+        },
+        {
+          "name": "말차초콜릿 티그레",
+          "price": "4,000원"
+        },
+        {
+          "name": "얼그레이초콜릿 티그레",
+          "price": "4,000원"
+        },
+        {
+          "name": "딸기초콜릿 티그레",
+          "price": "4,000원"
+        },
+        {
+          "name": "피스타치오초콜릿 티그레",
+          "price": "4,000원"
+        },
+        {
+          "name": "레몬초콜릿 티그레",
+          "price": "4,000원"
+        },
+        {
+          "name": "모카초콜릿 티그레",
+          "price": "4,000원"
+        }
+      ]
     },
     {
       "id": "hyundai:E2102607494378",
@@ -599,10 +972,20 @@
       "lastVerifiedAt": "2026-08-02",
       "status": "active",
       "menuItems": [
-        "찹쌀꽈배기",
-        "술빵"
+        "찹쌀도너츠(5개)",
+        "전통쌀술빵(1봉)"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-detail",
+      "menus": [
+        {
+          "name": "찹쌀도너츠(5개)",
+          "price": "10,000원"
+        },
+        {
+          "name": "전통쌀술빵(1봉)",
+          "price": "12,000원"
+        }
+      ]
     },
     {
       "id": "hyundai:E4702607493437",
@@ -624,9 +1007,25 @@
       "lastVerifiedAt": "2026-08-02",
       "status": "active",
       "menuItems": [
-        "토실이쌀밤빵"
+        "토실이 쌀 왕밤빵",
+        "토실이 쌀 알밤빵",
+        "토실이 쌀 핫도그"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-detail",
+      "menus": [
+        {
+          "name": "토실이 쌀 왕밤빵",
+          "price": "12,000원"
+        },
+        {
+          "name": "토실이 쌀 알밤빵",
+          "price": "8,000원"
+        },
+        {
+          "name": "토실이 쌀 핫도그",
+          "price": "4,000원"
+        }
+      ]
     },
     {
       "id": "galleria:gwanggyo:c85945",
@@ -650,7 +1049,13 @@
       "menuItems": [
         "G.LAB"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-event-text",
+      "menus": [
+        {
+          "name": "G.LAB",
+          "price": ""
+        }
+      ]
     },
     {
       "id": "shinsegae-shopping:SC00003:8578435",
@@ -672,9 +1077,25 @@
       "lastVerifiedAt": "2026-08-02",
       "status": "active",
       "menuItems": [
-        "3층 다락빵"
+        "초코칩 씬쿠키(개)",
+        "쫀득 쿠키바(12-13종) (개)",
+        "두바이 필링 샌드쿠키 (개)"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-detail",
+      "menus": [
+        {
+          "name": "초코칩 씬쿠키(개)",
+          "price": "3,300원"
+        },
+        {
+          "name": "쫀득 쿠키바(12-13종) (개)",
+          "price": "3,600원"
+        },
+        {
+          "name": "두바이 필링 샌드쿠키 (개)",
+          "price": "7,900원"
+        }
+      ]
     },
     {
       "id": "shinsegae-shopping:SC00010:8568366",
@@ -698,7 +1119,13 @@
       "menuItems": [
         "모락절미"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-event-text",
+      "menus": [
+        {
+          "name": "모락절미",
+          "price": ""
+        }
+      ]
     },
     {
       "id": "shinsegae-shopping:SC00003:8576847",
@@ -720,9 +1147,20 @@
       "lastVerifiedAt": "2026-08-02",
       "status": "active",
       "menuItems": [
-        "모찌트리"
+        "모찌 (말차초코 / 카스테라) 각",
+        "모찌 (딸기 / 바스크 치즈케이크) 각"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-detail",
+      "menus": [
+        {
+          "name": "모찌 (말차초코 / 카스테라) 각",
+          "price": "4,000원"
+        },
+        {
+          "name": "모찌 (딸기 / 바스크 치즈케이크) 각",
+          "price": "4,500원"
+        }
+      ]
     },
     {
       "id": "shinsegae-shopping:SC00003:8577774",
@@ -744,9 +1182,20 @@
       "lastVerifiedAt": "2026-08-02",
       "status": "active",
       "menuItems": [
-        "모카블루스"
+        "번 2종 각",
+        "생크림번 4종 각"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-detail",
+      "menus": [
+        {
+          "name": "번 2종 각",
+          "price": "5,000원"
+        },
+        {
+          "name": "생크림번 4종 각",
+          "price": "6,000원"
+        }
+      ]
     },
     {
       "id": "shinsegae-shopping:SC00010:8568467",
@@ -770,7 +1219,13 @@
       "menuItems": [
         "본투비클래식"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-event-text",
+      "menus": [
+        {
+          "name": "본투비클래식",
+          "price": ""
+        }
+      ]
     },
     {
       "id": "shinsegae-shopping:SC00010:8527508",
@@ -792,9 +1247,15 @@
       "lastVerifiedAt": "2026-08-02",
       "status": "active",
       "menuItems": [
-        "삼부자닭발"
+        "대표메뉴 및 가격 : 직화튤립/직화무뼈 닭발 각"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-detail",
+      "menus": [
+        {
+          "name": "대표메뉴 및 가격 : 직화튤립/직화무뼈 닭발 각",
+          "price": "13,000원"
+        }
+      ]
     },
     {
       "id": "shinsegae-shopping:SC00010:8570898",
@@ -818,7 +1279,13 @@
       "menuItems": [
         "아타라"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-event-text",
+      "menus": [
+        {
+          "name": "아타라",
+          "price": ""
+        }
+      ]
     },
     {
       "id": "shinsegae-shopping:SC00003:8576848",
@@ -840,9 +1307,15 @@
       "lastVerifiedAt": "2026-08-02",
       "status": "active",
       "menuItems": [
-        "오늘구움"
+        "요거트 산도 2종 각"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-detail",
+      "menus": [
+        {
+          "name": "요거트 산도 2종 각",
+          "price": "9,500원"
+        }
+      ]
     },
     {
       "id": "shinsegae-shopping:SC00003:8576849",
@@ -864,9 +1337,20 @@
       "lastVerifiedAt": "2026-08-02",
       "status": "active",
       "menuItems": [
-        "TDBD] 더데일리브레드"
+        "데일리식빵 M",
+        "스트로베리 생식빵"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-detail",
+      "menus": [
+        {
+          "name": "데일리식빵 M",
+          "price": "7,000원"
+        },
+        {
+          "name": "스트로베리 생식빵",
+          "price": "9,000원"
+        }
+      ]
     },
     {
       "id": "lotte:dongtan:manseok",
@@ -890,7 +1374,13 @@
       "menuItems": [
         "만석닭강정"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-event-text",
+      "menus": [
+        {
+          "name": "만석닭강정",
+          "price": ""
+        }
+      ]
     },
     {
       "id": "hyundai:E4502607494259",
@@ -912,9 +1402,30 @@
       "lastVerifiedAt": "2026-08-02",
       "status": "active",
       "menuItems": [
-        "만석닭강정"
+        "보통맛 뼈",
+        "보통맛 순살",
+        "매운맛 뼈",
+        "매운맛 순살"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-detail",
+      "menus": [
+        {
+          "name": "보통맛 뼈",
+          "price": "20,000원"
+        },
+        {
+          "name": "보통맛 순살",
+          "price": "21,000원"
+        },
+        {
+          "name": "매운맛 뼈",
+          "price": "21,000원"
+        },
+        {
+          "name": "매운맛 순살",
+          "price": "22,000원"
+        }
+      ]
     },
     {
       "id": "lotte:dongtan:yoajung",
@@ -938,7 +1449,13 @@
       "menuItems": [
         "요아정 컵빙수"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-event-text",
+      "menus": [
+        {
+          "name": "요아정 컵빙수",
+          "price": ""
+        }
+      ]
     },
     {
       "id": "hyundai:E4602607492936",
@@ -962,7 +1479,13 @@
       "menuItems": [
         "빵고미"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-event-text",
+      "menus": [
+        {
+          "name": "빵고미",
+          "price": ""
+        }
+      ]
     },
     {
       "id": "hyundai:E4602607493809",
@@ -984,9 +1507,70 @@
       "lastVerifiedAt": "2026-08-02",
       "status": "active",
       "menuItems": [
-        "더옐롱"
+        "성주꿀참외빵 낱개",
+        "성주꿀참외빵 6개입",
+        "성주꿀참외빵 12개입",
+        "참외 소프트아이스크림(컵/콘)",
+        "복숭아 소프트아이스크림(컵/콘)",
+        "성주참외수제청 (210ml)",
+        "무설탕 참외잼/(150g/280g)",
+        "무설탕 자몽잼/(150g/280g)",
+        "무설탕 고구마잼/(150g/280g)",
+        "무설탕 유자잼/(150g/280g)",
+        "옐롱 얼그레이 참외잼 (280g)",
+        "옐롱 애플로즈힙 참외잼 / (280g)"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-detail",
+      "menus": [
+        {
+          "name": "성주꿀참외빵 낱개",
+          "price": "2,500원"
+        },
+        {
+          "name": "성주꿀참외빵 6개입",
+          "price": "12,000원"
+        },
+        {
+          "name": "성주꿀참외빵 12개입",
+          "price": "19,200원"
+        },
+        {
+          "name": "참외 소프트아이스크림(컵/콘)",
+          "price": "4,500원"
+        },
+        {
+          "name": "복숭아 소프트아이스크림(컵/콘)",
+          "price": "5,000원"
+        },
+        {
+          "name": "성주참외수제청 (210ml)",
+          "price": "5,000원"
+        },
+        {
+          "name": "무설탕 참외잼/(150g/280g)",
+          "price": "5,000원"
+        },
+        {
+          "name": "무설탕 자몽잼/(150g/280g)",
+          "price": "6,500원"
+        },
+        {
+          "name": "무설탕 고구마잼/(150g/280g)",
+          "price": "6,500원"
+        },
+        {
+          "name": "무설탕 유자잼/(150g/280g)",
+          "price": "6,500원"
+        },
+        {
+          "name": "옐롱 얼그레이 참외잼 (280g)",
+          "price": "12,000원"
+        },
+        {
+          "name": "옐롱 애플로즈힙 참외잼 / (280g)",
+          "price": "12,000원"
+        }
+      ]
     },
     {
       "id": "lotte:main:fresh-bread",
@@ -1010,7 +1594,13 @@
       "menuItems": [
         "갓구운빵공장"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-event-text",
+      "menus": [
+        {
+          "name": "갓구운빵공장",
+          "price": ""
+        }
+      ]
     },
     {
       "id": "lotte:main:glaceau",
@@ -1032,9 +1622,15 @@
       "lastVerifiedAt": "2026-08-02",
       "status": "active",
       "menuItems": [
-        "글라쇼 수제 아이스크림"
+        "프리미엄 수제 아이스크림"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-search-result",
+      "menus": [
+        {
+          "name": "프리미엄 수제 아이스크림",
+          "price": ""
+        }
+      ]
     },
     {
       "id": "lotte:incheon:damahon",
@@ -1058,7 +1654,13 @@
       "menuItems": [
         "담아헌 프리미엄 모찌"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-event-text",
+      "menus": [
+        {
+          "name": "담아헌 프리미엄 모찌",
+          "price": ""
+        }
+      ]
     },
     {
       "id": "lotte:nowon:strawberry",
@@ -1082,7 +1684,13 @@
       "menuItems": [
         "동화속딸기 과일청"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-event-text",
+      "menus": [
+        {
+          "name": "동화속딸기 과일청",
+          "price": ""
+        }
+      ]
     },
     {
       "id": "lotte:incheon:lusol",
@@ -1106,7 +1714,13 @@
       "menuItems": [
         "루솔 프리미엄 이유식"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-event-text",
+      "menus": [
+        {
+          "name": "루솔 프리미엄 이유식",
+          "price": ""
+        }
+      ]
     },
     {
       "id": "lotte:main:milbit",
@@ -1130,7 +1744,13 @@
       "menuItems": [
         "밀빛 크림치즈빵"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-event-text",
+      "menus": [
+        {
+          "name": "밀빛 크림치즈빵",
+          "price": ""
+        }
+      ]
     },
     {
       "id": "lotte:dongtan:bacha-coffee",
@@ -1154,7 +1774,13 @@
       "menuItems": [
         "바샤커피"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-event-text",
+      "menus": [
+        {
+          "name": "바샤커피",
+          "price": ""
+        }
+      ]
     },
     {
       "id": "lotte:ansan:seoul-roll",
@@ -1179,7 +1805,17 @@
         "서울롤 철판피자",
         "튀일"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-event-text",
+      "menus": [
+        {
+          "name": "서울롤 철판피자",
+          "price": ""
+        },
+        {
+          "name": "튀일",
+          "price": ""
+        }
+      ]
     },
     {
       "id": "lotte:ansan:susu",
@@ -1203,7 +1839,13 @@
       "menuItems": [
         "수수대장군 전통간식"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-event-text",
+      "menus": [
+        {
+          "name": "수수대장군 전통간식",
+          "price": ""
+        }
+      ]
     },
     {
       "id": "lotte:nowon:arenut",
@@ -1228,7 +1870,17 @@
         "아르넛 수제 피칸",
         "호두"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-event-text",
+      "menus": [
+        {
+          "name": "아르넛 수제 피칸",
+          "price": ""
+        },
+        {
+          "name": "호두",
+          "price": ""
+        }
+      ]
     },
     {
       "id": "lotte:centum:potato-bread",
@@ -1252,7 +1904,13 @@
       "menuItems": [
         "정남미명과 구황작물빵"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-event-text",
+      "menus": [
+        {
+          "name": "정남미명과 구황작물빵",
+          "price": ""
+        }
+      ]
     },
     {
       "id": "lotte:nowon:home-meal",
@@ -1276,7 +1934,13 @@
       "menuItems": [
         "집밥장인 국탕류"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-event-text",
+      "menus": [
+        {
+          "name": "집밥장인 국탕류",
+          "price": ""
+        }
+      ]
     },
     {
       "id": "lotte:dongtan:findhere",
@@ -1301,7 +1965,17 @@
         "찾다보니여기 건어물",
         "건강칩"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-event-text",
+      "menus": [
+        {
+          "name": "찾다보니여기 건어물",
+          "price": ""
+        },
+        {
+          "name": "건강칩",
+          "price": ""
+        }
+      ]
     },
     {
       "id": "lotte:dongtan:cheongju-mandu",
@@ -1325,7 +1999,13 @@
       "menuItems": [
         "청주미친만두"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-event-text",
+      "menus": [
+        {
+          "name": "청주미친만두",
+          "price": ""
+        }
+      ]
     },
     {
       "id": "shinsegae-shopping:SC00010:8560469",
@@ -1347,9 +2027,15 @@
       "lastVerifiedAt": "2026-08-02",
       "status": "active",
       "menuItems": [
-        "떼구르르베이커리"
+        "대표메뉴 및 가격 : 아그작케이크 애플망고/복숭아 각"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-detail",
+      "menus": [
+        {
+          "name": "대표메뉴 및 가격 : 아그작케이크 애플망고/복숭아 각",
+          "price": "13,500원"
+        }
+      ]
     },
     {
       "id": "shinsegae-shopping:SC00003:8568278",
@@ -1371,9 +2057,40 @@
       "lastVerifiedAt": "2026-08-02",
       "status": "active",
       "menuItems": [
-        "시오사쿠"
+        "오사카 시오빵 (개)",
+        "시오빵 러스크 (개)",
+        "탕종식빵 (개)",
+        "멜론/타코/야끼소바 시오빵 (각/개)",
+        "쪽파/명란/갈릭 시오빵 (각/개)",
+        "과일산도 (개)"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-detail",
+      "menus": [
+        {
+          "name": "오사카 시오빵 (개)",
+          "price": "4,000원"
+        },
+        {
+          "name": "시오빵 러스크 (개)",
+          "price": "5,000원"
+        },
+        {
+          "name": "탕종식빵 (개)",
+          "price": "6,500원"
+        },
+        {
+          "name": "멜론/타코/야끼소바 시오빵 (각/개)",
+          "price": "6,500원"
+        },
+        {
+          "name": "쪽파/명란/갈릭 시오빵 (각/개)",
+          "price": "6,000원"
+        },
+        {
+          "name": "과일산도 (개)",
+          "price": "8,200원"
+        }
+      ]
     },
     {
       "id": "shinsegae-shopping:SC00010:8516545",
@@ -1395,9 +2112,50 @@
       "lastVerifiedAt": "2026-08-02",
       "status": "active",
       "menuItems": [
-        "봄날엔]여수언니 디저트"
+        "우리밀 약과(10개입)",
+        "우리밀 미니약과(400g)",
+        "우리밀 미니약과(100g)",
+        "구름크림떡(6개입)",
+        "초코초꾸떡(6개입)",
+        "요거꿀떡(6개입)",
+        "초코퐁당 요거꿀떡/초코초꾸떡/구름크림떡/스타치오떡/피넛버터떡 6개입 각",
+        "초코퐁당 초코초코 롤케이크"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-detail",
+      "menus": [
+        {
+          "name": "우리밀 약과(10개입)",
+          "price": "13,000원"
+        },
+        {
+          "name": "우리밀 미니약과(400g)",
+          "price": "15,000원"
+        },
+        {
+          "name": "우리밀 미니약과(100g)",
+          "price": "5,500원"
+        },
+        {
+          "name": "구름크림떡(6개입)",
+          "price": "15,000원"
+        },
+        {
+          "name": "초코초꾸떡(6개입)",
+          "price": "15,000원"
+        },
+        {
+          "name": "요거꿀떡(6개입)",
+          "price": "15,000원"
+        },
+        {
+          "name": "초코퐁당 요거꿀떡/초코초꾸떡/구름크림떡/스타치오떡/피넛버터떡 6개입 각",
+          "price": "18,000원"
+        },
+        {
+          "name": "초코퐁당 초코초코 롤케이크",
+          "price": "28,000원"
+        }
+      ]
     },
     {
       "id": "lotte:incheon:french-louvre-baguette",
@@ -1421,7 +2179,13 @@
       "menuItems": [
         "프랑스루브르바게트"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-event-text",
+      "menus": [
+        {
+          "name": "프랑스루브르바게트",
+          "price": ""
+        }
+      ]
     },
     {
       "id": "lotte:dongtan:yummy-fruta",
@@ -1445,7 +2209,13 @@
       "menuItems": [
         "야미푸루따 착즙주스"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-event-text",
+      "menus": [
+        {
+          "name": "야미푸루따 착즙주스",
+          "price": ""
+        }
+      ]
     },
     {
       "id": "lotte:jamsil:honey",
@@ -1469,7 +2239,13 @@
       "menuItems": [
         "안상규벌꿀"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-event-text",
+      "menus": [
+        {
+          "name": "안상규벌꿀",
+          "price": ""
+        }
+      ]
     },
     {
       "id": "lotte:dongtan:tokyoberry",
@@ -1493,7 +2269,13 @@
       "menuItems": [
         "도쿄베리 생과일모찌"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-event-text",
+      "menus": [
+        {
+          "name": "도쿄베리 생과일모찌",
+          "price": ""
+        }
+      ]
     },
     {
       "id": "lotte:nowon:bagelist",
@@ -1518,7 +2300,17 @@
         "베이글리스트",
         "라크루뜨"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-event-text",
+      "menus": [
+        {
+          "name": "베이글리스트",
+          "price": ""
+        },
+        {
+          "name": "라크루뜨",
+          "price": ""
+        }
+      ]
     },
     {
       "id": "lotte:dongtan:siopanya",
@@ -1542,7 +2334,13 @@
       "menuItems": [
         "시오팡야 소금빵"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-event-text",
+      "menus": [
+        {
+          "name": "시오팡야 소금빵",
+          "price": ""
+        }
+      ]
     },
     {
       "id": "lotte:centum:fishcake",
@@ -1566,7 +2364,13 @@
       "menuItems": [
         "식품관 수제어묵"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-event-text",
+      "menus": [
+        {
+          "name": "식품관 수제어묵",
+          "price": ""
+        }
+      ]
     },
     {
       "id": "lotte:cheongju:dongbong",
@@ -1590,7 +2394,13 @@
       "menuItems": [
         "동봉 에그타르트"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-event-text",
+      "menus": [
+        {
+          "name": "동봉 에그타르트",
+          "price": ""
+        }
+      ]
     },
     {
       "id": "lotte:cheongju:ojisan-cheesecake",
@@ -1614,7 +2424,13 @@
       "menuItems": [
         "오지상 치즈케이크"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-event-text",
+      "menus": [
+        {
+          "name": "오지상 치즈케이크",
+          "price": ""
+        }
+      ]
     },
     {
       "id": "lotte:nowon:maison-once-year",
@@ -1638,7 +2454,13 @@
       "menuItems": [
         "메종원스이어 케이크"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-event-text",
+      "menus": [
+        {
+          "name": "메종원스이어 케이크",
+          "price": ""
+        }
+      ]
     },
     {
       "id": "shinsegae-shopping:SC00010:8464018",
@@ -1662,7 +2484,13 @@
       "menuItems": [
         "청23"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-event-text",
+      "menus": [
+        {
+          "name": "청23",
+          "price": ""
+        }
+      ]
     },
     {
       "id": "lotte:nowon:rollsrolls",
@@ -1686,7 +2514,13 @@
       "menuItems": [
         "롤스롤스 불초밥"
       ],
-      "menuSource": "official-event-text"
+      "menuSource": "official-event-text",
+      "menus": [
+        {
+          "name": "롤스롤스 불초밥",
+          "price": ""
+        }
+      ]
     }
   ]
 }

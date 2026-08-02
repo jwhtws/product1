@@ -91,6 +91,35 @@ async function fetchResilient(url, options = {}) {
   }
 }
 
+function uniqueMenus(menus) {
+  const seen = new Set();
+  return menus.map(menu => ({ name: clean(menu?.name), price: clean(menu?.price) }))
+    .filter(menu => menu.name && !seen.has(`${menu.name}|${menu.price}`) && seen.add(`${menu.name}|${menu.price}`))
+    .slice(0, 30);
+}
+
+function parsePricedLines(value) {
+  const menus = [];
+  for (const line of String(value || '').replace(/<br\s*\/?\s*>/giu, '\n').split(/\r?\n/u)) {
+    const text = decodeHtml(line).replace(/^[-–—•·*]\s*/u, '').trim();
+    const match = text.match(/^(.+?)\s+([\d,]+\s*원)(?:\s|$)/u);
+    if (match) menus.push({ name: clean(match[1]), price: clean(match[2]) });
+  }
+  return uniqueMenus(menus);
+}
+
+function parseHyundaiMenus(html) {
+  const menus = [];
+  for (const table of String(html || '').matchAll(/<table\b[^>]*class=["'][^"']*\bproduct\b[^"']*["'][^>]*>[\s\S]*?<\/table>/giu)) {
+    const block = table[0];
+    const name = decodeHtml(block.match(/<th\b[^>]*scope=["']row["'][^>]*>([\s\S]*?)<\/th>/iu)?.[1]
+      || block.match(/<caption[^>]*>([\s\S]*?)<\/caption>/iu)?.[1]).replace(/제품목록\s*$/u, '');
+    const price = decodeHtml(block.match(/<strong[^>]*>\s*([\d,]+\s*원)\s*<\/strong>/iu)?.[1]);
+    if (name && price) menus.push({ name, price });
+  }
+  return uniqueMenus(menus);
+}
+
 async function collectHyundai() {
   const rows = [];
   const seen = new Set();
@@ -135,7 +164,15 @@ async function collectHyundai() {
     if (!events.length || page * 4 >= Number(data.eventCount || 0)) break;
    }
   }
-  return rows;
+  const detailed = await Promise.all(rows.map(async row => {
+    try {
+      const response = await fetchResilient(row.sourceUrl);
+      if (!response.ok) return row;
+      const menus = parseHyundaiMenus(await response.text());
+      return menus.length ? { ...row, menus, menuSource: 'official-detail' } : row;
+    } catch { return row; }
+  }));
+  return detailed;
 }
 
 const starfieldVenues = [
@@ -232,6 +269,24 @@ async function collectShinsegaeShoppingNews() {
         storeCd, brandCd: String(card.brandCd || '')
       });
       const imagePath = String(card.imgUrl2 || card.imgUrl1 || '');
+      let menus = [];
+      try {
+        const detailResponse = await fetchResilient(new URL(pageLink, 'https://www.shinsegae.com').href);
+        if (detailResponse.ok) {
+          const detailText = (await detailResponse.text()).replace(/^\uFEFF/u, '');
+          let menuText = '';
+          try {
+            const detail = JSON.parse(detailText);
+            menuText = detail.evt_sub_nm || '';
+          } catch {
+            // Some official Shinsegae `.txt` responses contain literal line
+            // breaks inside a JSON string. Extract that field without
+            // discarding the otherwise valid official detail response.
+            menuText = detailText.match(/"evt_sub_nm"\s*:\s*"([\s\S]*?)"\s*,\s*"content1"/u)?.[1] || '';
+          }
+          menus = parsePricedLines(menuText);
+        }
+      } catch {}
       rows.push({
         id: `shinsegae-shopping:${storeCd}:${card.id}`,
         name: clean(card.title1), venue, venueType: '백화점',
@@ -240,7 +295,8 @@ async function collectShinsegaeShoppingNews() {
         imageUrl: imagePath.startsWith('http') ? imagePath : `https://www.shinsegae.com${imagePath}`,
         sourceName: '신세계백화점 공식 쇼핑뉴스',
         sourceUrl: `https://www.shinsegae.com/shopping/view.do?${sourceParams}`,
-        sourceGrade: 'official', firstSeenAt: today, lastSeenAt: today
+        sourceGrade: 'official', firstSeenAt: today, lastSeenAt: today,
+        ...(menus.length ? { menus, menuSource: 'official-detail' } : {})
       });
     }
   }));
@@ -625,6 +681,9 @@ async function collectLotteOfficialBlog() {
 
 async function collectCuratedOfficial() {
   const rows = JSON.parse(await readFile('data/curated-popups.json', 'utf8'));
+  const officialSearchMenus = new Map([
+    ['lotte:main:glaceau', [{ name: '프리미엄 수제 아이스크림', price: '' }]]
+  ]);
   const enriched = await Promise.all(rows.map(async ([id, name, venue, startDate, endDate, sourceUrl]) => {
     let imageUrl = '';
     try {
@@ -647,7 +706,8 @@ async function collectCuratedOfficial() {
     sourceUrl,
     sourceGrade: 'official-search',
     firstSeenAt: today,
-    lastSeenAt: today
+    lastSeenAt: today,
+    ...(officialSearchMenus.has(id) ? { menus: officialSearchMenus.get(id), menuSource: 'official-search-result' } : {})
     };
   }));
   return enriched;
@@ -756,6 +816,10 @@ function registeredVenueAddress(row) {
 }
 function normalizePopup(row) {
   const address = registeredVenueAddress(row);
+  const fallbackItems = officialMenuItems(row);
+  const menus = uniqueMenus(Array.isArray(row.menus) && row.menus.length
+    ? row.menus
+    : fallbackItems.map(name => ({ name, price: '' })));
   const normalized = {
     ...row,
     name: clean(row.name),
@@ -764,7 +828,8 @@ function normalizePopup(row) {
     address,
     region: popupRegion({ ...row, address }),
     category: row.category || 'food-popup',
-    menuItems: officialMenuItems(row),
+    menus,
+    menuItems: menus.map(menu => menu.name),
     menuSource: row.menuSource || 'official-event-text',
     sourceUrl: normalizedUrl(row.sourceUrl),
     imageUrl: row.imageUrl || null,
