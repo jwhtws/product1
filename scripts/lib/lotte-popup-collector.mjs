@@ -57,6 +57,7 @@ function matchingNewsId(html, name, normalizedText, decodeHtml) {
 }
 
 export async function collectLottePopups({ rows, previous, today, fetchResilient, clean, decodeHtml, uniqueMenus, normalizedText }) {
+  const fetchLotte = url => fetchResilient(url, { attempts: 1, timeoutMs: 12_000, curlMaxTime: 12 });
   const previousById = new Map(previous.map(row => [row.id, row]));
   const results = [];
   let verified = 0;
@@ -77,7 +78,7 @@ export async function collectLottePopups({ rows, previous, today, fetchResilient
     let menus = knownMenus.get(id) || (old?.menuSource === 'official-detail' ? old.menus : []);
     let menuSource = knownMenus.has(id) ? 'official-search-result' : (menus.length ? 'official-detail' : '');
     try {
-      const response = await fetchResilient(searchUrl);
+      const response = await fetchLotte(searchUrl);
       if (response.ok) {
         const searchHtml = await response.text();
         let detailHtml = /\/shpgnews\/shpgnewsDetail/iu.test(searchUrl) ? searchHtml : '';
@@ -85,7 +86,7 @@ export async function collectLottePopups({ rows, previous, today, fetchResilient
           const newsId = matchingNewsId(searchHtml, name, normalizedText, decodeHtml);
           if (newsId) {
             sourceUrl = `https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=${newsId}`;
-            const detailResponse = await fetchResilient(sourceUrl);
+            const detailResponse = await fetchLotte(sourceUrl);
             if (detailResponse.ok) detailHtml = await detailResponse.text();
           }
         }

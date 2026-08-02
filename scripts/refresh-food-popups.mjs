@@ -62,19 +62,20 @@ async function fetchJson(url) {
 }
 
 async function fetchResilient(url, options = {}) {
+  const { attempts = 3, timeoutMs = 25_000, curlMaxTime = 25, ...fetchOptions } = options;
   let lastError;
-  for (let attempt = 0; attempt < 3; attempt += 1) {
+  for (let attempt = 0; attempt < attempts; attempt += 1) {
     try {
       const response = await fetch(url, {
-        ...options,
+        ...fetchOptions,
         headers: {
           accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
           'accept-language': 'ko-KR,ko;q=0.9,en-US;q=0.7,en;q=0.5',
           referer: new URL(url).origin + '/',
           'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/126 Safari/537.36 mukdang-popup-indexer/1.0',
-          ...(options.headers || {})
+          ...(fetchOptions.headers || {})
         },
-        signal: options.signal || AbortSignal.timeout(25_000)
+        signal: fetchOptions.signal || AbortSignal.timeout(timeoutMs)
       });
       if (response.ok || [401, 403, 404].includes(response.status)) return response;
       lastError = new Error(`${url} 응답 ${response.status}`);
@@ -85,7 +86,7 @@ async function fetchResilient(url, options = {}) {
   // normal browser-like curl request. Use curl only as a bounded fallback;
   // no proxy, login, captcha, or robots bypass is performed.
   try {
-    const result = await execFileAsync('curl', ['-L', '--fail', '--silent', '--show-error', '--max-time', '25', '-A', 'mukdang-popup-indexer/1.0 (+https://mukdang.com)', url], { maxBuffer: 8 * 1024 * 1024 });
+    const result = await execFileAsync('curl', ['-L', '--fail', '--silent', '--show-error', '--max-time', String(curlMaxTime), '-A', 'mukdang-popup-indexer/1.0 (+https://mukdang.com)', url], { maxBuffer: 8 * 1024 * 1024 });
     return new Response(result.stdout, { status: 200, headers: { 'content-type': 'text/html; charset=utf-8' } });
   } catch (error) {
     throw lastError || error || new Error(`${url} 요청 실패`);
