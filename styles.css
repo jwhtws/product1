@@ -105,10 +105,8 @@
 .popup-ended .listing-photo{filter:grayscale(.8);opacity:.72}.popup-ended .card-body{opacity:.72}
 .verified-source{color:#198754;font-size:11px;font-weight:900}
 .popup-period{display:inline-flex;align-items:center;margin:15px 0 2px;padding:9px 12px;border-radius:10px;background:#edf8f0;color:var(--green);font-size:16px;font-weight:900;letter-spacing:-.03em}
-.popup-location-primary{margin-top:13px}.popup-location-primary>span{display:block;margin-bottom:5px;color:var(--green);font-size:10px;font-weight:900}.popup-location-primary h3{margin:0;color:#123f2d;font-size:22px;line-height:1.25;letter-spacing:-.055em}.popup-location-primary b{display:inline-block;margin-top:7px;padding:5px 8px;border-radius:6px;background:#dff2e7;color:#175b3c;font-size:11px}.popup-address{margin-top:7px;padding-left:2px;color:#777;font-size:11px}.popup-event-name{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:start;gap:8px;margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}.popup-event-name span{padding:3px 6px;border-radius:5px;background:#f2f0ea;color:var(--muted);font-size:9px;font-weight:900;white-space:nowrap}.popup-event-name strong{font-size:14px;line-height:1.4}.popup-detail-venue{display:grid;gap:6px;margin-top:15px;padding:16px;border:2px solid #9fd1b3;border-radius:13px;background:#edf7f1}.popup-detail-venue span{color:var(--green);font-size:10px;font-weight:900}.popup-detail-venue strong{color:#123f2d;font-size:22px;line-height:1.25;letter-spacing:-.045em}.popup-detail-venue b{width:max-content;padding:5px 8px;border-radius:6px;background:#d7edde;color:#175b3c;font-size:11px}.popup-detail-venue small{color:var(--muted);font-size:11px;line-height:1.45}
 .popup-detail-period{color:var(--green)!important;font-size:16px;font-weight:900}.popup-card .tags{flex-wrap:wrap}
-body{font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif}
-.popup-location-primary>span{margin-bottom:6px;font-weight:750;letter-spacing:.08em}.popup-location-primary h3{color:#102b20;font-family:Pretendard,sans-serif;font-size:27px;font-weight:900;line-height:1.18;letter-spacing:-.065em;word-break:keep-all}.popup-location-primary b{font-weight:750}.popup-address{color:#85837d;font-size:10px;font-weight:450}.popup-event-name span{font-weight:700}.popup-event-name strong{font-size:13px;font-weight:600;line-height:1.45}.popup-detail-venue span{font-weight:750;letter-spacing:.07em}.popup-detail-venue strong{color:#102b20;font-family:Pretendard,sans-serif;font-size:30px;font-weight:900;line-height:1.16;letter-spacing:-.065em;word-break:keep-all}.popup-detail-venue b{font-weight:750}.popup-detail-venue small{color:#77756f;font-size:10px;font-weight:450}
+.popup-card-address,.popup-detail-address{font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",sans-serif}.popup-card-address strong,.popup-detail-address strong{color:#353530;font-size:16px;font-weight:850;letter-spacing:-.035em}.popup-card-address span,.popup-detail-address span{color:#8b8982;font-size:11px;font-weight:450;letter-spacing:-.015em}.popup-detail-address{margin:0;color:var(--muted);line-height:1.6}.popup-detail-address strong{font-size:17px}
 .review-actions{display:flex;gap:6px;align-items:center}.review-actions .review-delete{color:#c2413b;background:#fff1f0}.review-submit-status{grid-column:1/-1;min-height:18px;margin:0;color:var(--green);font-size:12px;font-weight:800}
 
 /* 편안하고 검색에 집중되는 홈 화면 */
@@ -135,7 +133,7 @@ body{font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Ne
   .searchbar input{padding:17px 14px}
   .search-mode{margin-bottom:12px}.search-mode button{min-width:98px;padding:8px 13px;font-size:12px}
   .review-promise{margin-top:15px}
-  .popup-location-primary h3{font-size:22px}.popup-detail-venue strong{font-size:24px}
+  .popup-card-address strong{font-size:14px}.popup-card-address span{font-size:10px}.popup-detail-address strong{font-size:15px}
 }
 /* Keep the restaurant and popup filter panels mutually exclusive. */
 .filters[hidden]{display:none!important}

@@ -444,23 +444,6 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     if (Array.isArray(popup.menus)) return popup.menus;
     return Array.isArray(popup.menuItems) ? popup.menuItems.map(name => ({ name, price: '' })) : [];
   }
-  function popupStreetAddress(popup) {
-    const address = String(popup.address || '').trim();
-    const venue = String(popup.venue || '').trim();
-    if (!address) return '';
-    if (!venue) return address;
-    return address.split(' · ')[0].trim();
-  }
-  function popupFloorLocation(popup) {
-    const address = String(popup.address || '').trim();
-    const venue = String(popup.venue || '').trim();
-    const separator = address.indexOf(' · ');
-    if (separator < 0 || !venue) return '';
-    const venueDetail = address.slice(separator + 3).trim();
-    if (!venueDetail.startsWith(venue)) return '';
-    const detail = venueDetail.slice(venue.length).trim();
-    return detail && detail !== venue ? detail : '';
-  }
   function popupRows() {
     const query = searchKey($('#search-input').value);
     const foodFilter = $('#popup-food-filter')?.value || '';
@@ -496,9 +479,8 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
         <div class="listing-photo"${image}><span class="popup-status">${status.label}</span></div>
         <div class="card-body">
           <div class="card-top"><span class="category">${escapeHtml(popup.venueType || '쇼핑시설')}</span><span class="popup-food-type">${escapeHtml(({ bakery: '베이커리·디저트', drink: '카페·음료', tteok: '떡', snack: '간식', meal: '식사·분식', grocery: '식품 행사' })[popupFoodType(popup)])}</span></div>
-          <div class="popup-location-primary"><span>팝업 위치</span><h3>📍 ${escapeHtml(popup.venue)}</h3>${popupFloorLocation(popup) ? `<b>${escapeHtml(popupFloorLocation(popup))}</b>` : ''}</div>
-          ${popupStreetAddress(popup) ? `<p class="address popup-address">${escapeHtml(popupStreetAddress(popup))}</p>` : ''}
-          <div class="popup-event-name"><span>행사명</span><strong>${escapeHtml(popup.name)}</strong></div>
+          <div class="card-identity"><h3>${escapeHtml(popup.name)}</h3></div>
+          <p class="address popup-card-address"><strong>${escapeHtml(popup.venue)}</strong>${popup.address && popup.address !== popup.venue ? ` <span>· ${escapeHtml(popup.address)}</span>` : ''}</p>
           <div class="popup-period">${escapeHtml(popupPeriodLabel(popup))}</div>
         </div>
     </article>`;
@@ -509,12 +491,11 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     const status = popupStatus(popup);
     const imageUrl = popup.imageUrl || popupFallbackImage(popup);
     const image = ` style="background-image:url('${escapeHtml(imageUrl).replace(/'/g, '&#39;')}')"`;
-    const streetAddress = popupStreetAddress(popup);
-    const address = streetAddress ? `${popup.venue} · ${streetAddress}` : popup.venue;
+    const address = popup.address && popup.address !== popup.venue ? `${popup.venue} · ${popup.address}` : popup.venue;
     const mapQuery = encodeURIComponent(popup.address || popup.venue);
     const reviews = reviewsFor(popup);
     $('#modal-content').innerHTML = `<div class="detail-cover popup-detail-cover"${image}><span>${status.label}</span></div>
-      <div class="detail-hero"><div class="detail-heading"><div><span class="category">${escapeHtml(popup.venueType || '쇼핑시설')}</span><h2 id="detail-title">${escapeHtml(popup.name)}</h2><div class="popup-detail-venue"><span>이 팝업은 여기서 열려요</span><strong>📍 ${escapeHtml(popup.venue)}</strong>${popupFloorLocation(popup) ? `<b>${escapeHtml(popupFloorLocation(popup))}</b>` : ''}${streetAddress ? `<small>${escapeHtml(streetAddress)}</small>` : ''}</div></div></div>
+      <div class="detail-hero"><div class="detail-heading"><div><span class="category">${escapeHtml(popup.venueType || '쇼핑시설')}</span><h2 id="detail-title">${escapeHtml(popup.name)}</h2><p class="popup-detail-address"><strong>${escapeHtml(popup.venue)}</strong>${popup.address && popup.address !== popup.venue ? ` <span>· ${escapeHtml(popup.address)}</span>` : ''}</p></div></div>
       <div class="popup-detail-status popup-${status.key}"><strong>${status.label}</strong><span>${escapeHtml(popupPeriodLabel(popup))}</span></div>
       <div class="detail-actions"><a class="primary" href="${escapeHtml(popup.sourceUrl)}" target="_blank" rel="noopener noreferrer">공식 정보 보기</a><button id="popup-share" class="ghost" type="button">공유</button></div></div>
       <div class="detail-grid popup-detail-grid"><section class="popup-location-section"><h3>팝업 정보</h3><dl><dt>백화점·지점</dt><dd>${escapeHtml(popup.venue)}</dd><dt>도로명주소</dt><dd>${escapeHtml(popup.address || popup.venue)}</dd><dt>영업일자</dt><dd class="popup-detail-period">${escapeHtml(popupPeriodLabel(popup))}</dd></dl><div class="map-links"><a target="_blank" rel="noopener" href="https://map.naver.com/p/search/${mapQuery}">네이버 지도에서 위치 보기</a><a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${mapQuery}">Google 지도</a></div></section><div class="popup-detail-right"><section class="popup-menu-section"><h3>메뉴</h3>${popupMenus(popup).length ? `<ul class="popup-menu-list">${popupMenus(popup).map(item => `<li><span>${escapeHtml(item.name || item)}</span>${item.price ? `<strong>${escapeHtml(item.price)}</strong>` : ''}</li>`).join('')}</ul>` : '<p class="popup-menu-empty">공식 사이트에 텍스트 메뉴가 공개되지 않았습니다.</p>'}<p class="data-source-note">${popup.menuSource === 'official-detail' ? '공식 상세 페이지에 공개된 대표메뉴와 가격입니다.' : '공식 사이트에 공개된 대표 품목이며, 가격은 공개된 경우에만 표시합니다.'}</p></section><section class="review-section popup-review-section"><div class="review-head"><h3>리뷰 <small id="review-count">${reviews.length}</small></h3><select id="review-sort"><option value="latest">최신순</option><option value="rating">별점순</option><option value="helpful">유용한순</option></select></div><div class="trust-note">✓ 직접 방문한 팝업 경험을 남겨주세요.</div><form id="review-form"><label>별점<select name="rating"><option value="5">5점</option><option value="4">4점</option><option value="3">3점</option><option value="2">2점</option><option value="1">1점</option></select></label><textarea name="text" required maxlength="500" placeholder="메뉴, 맛, 대기시간을 알려주세요."></textarea><button class="primary" type="submit">리뷰 등록</button><p id="review-submit-status" class="review-submit-status" aria-live="polite"></p></form><div id="review-list"></div></section></div></div>`;
