@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-02T17:56:53.262Z",
+  "updatedAt": "2026-08-02T18:04:21.981Z",
   "sources": [
     {
       "name": "현대백화점·현대아울렛",
@@ -551,7 +551,7 @@
       "address": "서울특별시 광진구 능동로 92 (자양동) · 롯데백화점 건대스타시티점",
       "startDate": "2026-07-31",
       "endDate": "2026-08-06",
-      "imageUrl": "https://minfo.lotteshopping.com/content/news/202407/SNM00000000000387996/20240715153135420_8.jpeg",
+      "imageUrl": null,
       "sourceName": "롯데쇼핑 공식 행사",
       "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549198",
       "sourceGrade": "official-search",
@@ -597,7 +597,7 @@
           "price": "4,200원"
         }
       ],
-      "imageSource": "official-detail"
+      "imageSource": "official-image-unavailable"
     },
     {
       "id": "hyundai:E2102607494369",
@@ -1834,7 +1834,7 @@
       "address": "서울특별시 노원구 동일로 1414 (상계동) · 롯데백화점 노원점",
       "startDate": "2026-07-24",
       "endDate": "2026-08-03",
-      "imageUrl": "https://minfo.lotteshopping.com/content/news/202604/SNM00000000000530497/20260428165516181_6.jpeg",
+      "imageUrl": null,
       "sourceName": "롯데쇼핑 공식 행사",
       "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000548018",
       "sourceGrade": "official-search",
@@ -1870,7 +1870,7 @@
           "price": "11,900원"
         }
       ],
-      "imageSource": "official-detail"
+      "imageSource": "official-image-unavailable"
     },
     {
       "id": "lotte:incheon:lusol",
@@ -1928,7 +1928,7 @@
       "address": "경기도 화성시 동탄구 동탄역로 160, 동탄역 롯데캐슬 (여울동) · 롯데백화점 동탄점",
       "startDate": "2026-07-24",
       "endDate": "2026-09-30",
-      "imageUrl": "https://minfo.lotteshopping.com/content/news/202605/SNM00000000000531614/20260507104705644_2.jpeg",
+      "imageUrl": null,
       "sourceName": "롯데쇼핑 공식 행사",
       "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
       "sourceGrade": "official-search",
@@ -2004,7 +2004,7 @@
           "price": "540,000원"
         }
       ],
-      "imageSource": "official-detail"
+      "imageSource": "official-image-unavailable"
     },
     {
       "id": "lotte:ansan:seoul-roll",
@@ -2062,7 +2062,7 @@
       "address": "서울특별시 노원구 동일로 1414 (상계동) · 롯데백화점 노원점",
       "startDate": "2026-07-24",
       "endDate": "2026-08-03",
-      "imageUrl": "https://minfo.lotteshopping.com/content/news/202506/SNM00000000000459927/20250604120401221_9.jpeg",
+      "imageUrl": null,
       "sourceName": "롯데쇼핑 공식 행사",
       "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000548015",
       "sourceGrade": "official-search",
@@ -2098,7 +2098,7 @@
           "price": "24,500원"
         }
       ],
-      "imageSource": "official-detail"
+      "imageSource": "official-image-unavailable"
     },
     {
       "id": "lotte:centum:potato-bread",
@@ -2108,7 +2108,7 @@
       "address": "부산광역시 해운대구 센텀남대로 59 (우동) · 롯데백화점 센텀시티점",
       "startDate": "2026-07-24",
       "endDate": "2026-08-06",
-      "imageUrl": "https://minfo.lotteshopping.com/content/news/202507/SNM00000000000470512/20250723190429244_4.jpeg",
+      "imageUrl": null,
       "sourceName": "롯데쇼핑 공식 행사",
       "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000546299",
       "sourceGrade": "official-search",
@@ -2159,7 +2159,7 @@
           "price": "35,000원"
         }
       ],
-      "imageSource": "official-detail"
+      "imageSource": "official-image-unavailable"
     },
     {
       "id": "lotte:nowon:home-meal",
@@ -2181,37 +2181,47 @@
       "lastVerifiedAt": "2026-08-03",
       "status": "active",
       "menuItems": [
-        "(1.2kg)",
-        "(700g)",
-        "(800g)",
-        "(1kg)",
-        "(1kg)",
-        "(500g)"
+        "참이맛 감자탕 블랙",
+        "참이맛 감자탕 레드",
+        "참이맛 순살 감자탕 블랙",
+        "가마솥 갈비탕 블랙",
+        "영양삼계탕 블랙",
+        "남한산성 능이삼계탕",
+        "얼큰 장터국 블랙",
+        "얼큰 육개장 블랙"
       ],
       "menuSource": "official-detail",
       "menus": [
         {
-          "name": "(1.2kg)",
+          "name": "참이맛 감자탕 블랙",
           "price": "9,000원"
         },
         {
-          "name": "(700g)",
+          "name": "참이맛 감자탕 레드",
+          "price": "9,000원"
+        },
+        {
+          "name": "참이맛 순살 감자탕 블랙",
           "price": "8,000원"
         },
         {
-          "name": "(800g)",
+          "name": "가마솥 갈비탕 블랙",
           "price": "11,000원"
         },
         {
-          "name": "(1kg)",
+          "name": "영양삼계탕 블랙",
           "price": "9,000원"
         },
         {
-          "name": "(1kg)",
+          "name": "남한산성 능이삼계탕",
           "price": "10,000원"
         },
         {
-          "name": "(500g)",
+          "name": "얼큰 장터국 블랙",
+          "price": "6,500원"
+        },
+        {
+          "name": "얼큰 육개장 블랙",
           "price": "6,500원"
         }
       ],
@@ -2428,7 +2438,7 @@
       "address": "인천광역시 미추홀구 연남로 35 · 롯데백화점 인천점",
       "startDate": "2026-07-17",
       "endDate": "2026-08-13",
-      "imageUrl": "https://minfo.lotteshopping.com/content/news/202606/SNM00000000000540432/20260625113904433_2.jpeg",
+      "imageUrl": null,
       "sourceName": "롯데쇼핑 공식 행사",
       "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000547297",
       "sourceGrade": "official-search",
@@ -2479,7 +2489,7 @@
           "price": "6,800원"
         }
       ],
-      "imageSource": "official-detail"
+      "imageSource": "official-image-unavailable"
     },
     {
       "id": "lotte:dongtan:yummy-fruta",
@@ -2607,7 +2617,7 @@
       "address": "경기도 화성시 동탄구 동탄역로 160, 동탄역 롯데캐슬 (여울동) · 롯데백화점 동탄점",
       "startDate": "2026-07-10",
       "endDate": "2026-08-06",
-      "imageUrl": "https://minfo.lotteshopping.com/content/news/202503/SNM00000000000441803/20250323204355565_5.jpeg",
+      "imageUrl": null,
       "sourceName": "롯데쇼핑 공식 행사",
       "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000543235",
       "sourceGrade": "official-search",
@@ -2658,7 +2668,7 @@
           "price": "4,800원"
         }
       ],
-      "imageSource": "official-detail"
+      "imageSource": "official-image-unavailable"
     },
     {
       "id": "lotte:centum:fishcake",
@@ -2748,7 +2758,7 @@
       "address": "충청북도 청주시 흥덕구 2순환로 1004 · 롯데아울렛 청주점",
       "startDate": "2026-07-03",
       "endDate": "2026-08-06",
-      "imageUrl": "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000509439/20260127090749624_7.jpeg",
+      "imageUrl": null,
       "sourceName": "롯데쇼핑 공식 행사",
       "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000542058",
       "sourceGrade": "official-search",
@@ -2762,7 +2772,7 @@
       "menuItems": [],
       "menuSource": "official-event-text",
       "menus": [],
-      "imageSource": "official-detail"
+      "imageSource": "official-image-unavailable"
     },
     {
       "id": "lotte:nowon:maison-once-year",
