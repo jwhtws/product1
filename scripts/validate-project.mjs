@@ -50,6 +50,16 @@ if (!Array.isArray(popupData.popups) || !Array.isArray(popupData.sources)) {
   console.error('popups.json 구조가 올바르지 않습니다.');
   process.exitCode = 1;
 }
+const robots = readFileSync('robots.txt', 'utf8');
+const sitemap = readFileSync('sitemap.xml', 'utf8');
+if (!robots.includes('Sitemap: https://mukdang.com/sitemap.xml') || !sitemap.includes('<loc>https://mukdang.com/food-popups/')) {
+  console.error('검색엔진 사이트맵 도메인 또는 푸드 팝업 URL이 올바르지 않습니다.');
+  process.exitCode = 1;
+}
+if (!statSync('food-popups').isDirectory() || !statSync('restaurant-reviews').isDirectory()) {
+  console.error('검색엔진 상세 페이지가 생성되지 않았습니다. npm run seo:build를 실행하세요.');
+  process.exitCode = 1;
+}
 const curatedPopups = JSON.parse(readFileSync('data/curated-popups.json', 'utf8'));
 if (!Array.isArray(curatedPopups) || curatedPopups.some(row => !Array.isArray(row) || row.length !== 6)) {
   console.error('curated-popups.json 구조가 올바르지 않습니다.');

@@ -12,7 +12,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     filters: { query: '', region: '', category: '', price: '', sort: 'recommend' },
     current: null, currentPopup: null, progress: '', searchSession: null, searchMode: 'popup', serverUser: null, serverReviews: new Map(),
     serverSaved: [], serverLists: {}, serverProfile: {}, reviewSummaries: new Map(), popularRestaurantCount: 0, popularRestaurants: [],
-    popups: [], popupUpdatedAt: null
+    popups: [], popupUpdatedAt: null, seoRestaurantIds: new Set()
   };
   const store = {
     get(key, fallback) { try { return JSON.parse(localStorage.getItem(`meokdang-${key}`)) ?? fallback; } catch { return fallback; } },
@@ -69,6 +69,9 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     return Math.max(relevanceScore(query, restaurant), core && core !== query ? relevanceScore(core, restaurant) : 0);
   }
   const hash = value => [...String(value)].reduce((a, c) => ((a << 5) - a + c.charCodeAt(0)) | 0, 0);
+  const seoSlug = (label, id) => `${String(label).normalize('NFKC').toLocaleLowerCase('ko-KR').replace(/[^\p{L}\p{N}]+/gu, '-').replace(/^-|-$/g, '').slice(0, 70)}-${Math.abs(hash(id))}`;
+  const popupSeoUrl = popup => `/food-popups/${seoSlug(`${popup.name}-${popup.venue}`, popup.id)}/`;
+  const restaurantSeoUrl = restaurant => `/restaurant-reviews/${seoSlug(`${restaurant.name}-${restaurant.address}`, restaurant.id || `${restaurant.name}-${restaurant.address}`)}/`;
   const idOf = restaurant => `${restaurant.name}|${restaurant.address}`;
   const roadAddressKey = value => searchKey(String(value || '').split(',')[0].replace(/\([^)]*\)/g, ' '));
   const samePlace = (left, right) => {
@@ -132,6 +135,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     } catch {}
     if (baseline.length) {
       state.popularRestaurantCount = baseline.length;
+      state.seoRestaurantIds = new Set(baseline.map(restaurant => idOf(restaurant)));
       state.popularRestaurants = baseline;
       state.preview = baseline.concat(state.preview.filter(restaurant =>
         !baseline.some(candidate => samePlace(candidate, restaurant))
@@ -401,7 +405,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     return `<article class="restaurant-card" tabindex="0" data-index="${index}" data-place-key="${Math.abs(hash(idOf(r)))}">
       <div class="listing-photo neutral-photo" data-place-photo data-category-label="${escapeHtml(categoryLabel(r))}"><span data-photo-badge>${escapeHtml(categoryLabel(r))} · 사진 없음</span></div>
       <div class="card-body"><div class="card-top"><span class="category">${escapeHtml(r.category || '음식점')}</span><button class="save ${isSaved(r) ? 'active' : ''}" data-save="${index}" type="button" aria-label="저장">♡</button></div>
-      <div class="card-identity"><h3>${escapeHtml(r.name)}</h3></div><p class="address">${escapeHtml(r.address)}</p>
+      <div class="card-identity"><h3>${state.seoRestaurantIds.has(idOf(r)) ? `<a class="seo-detail-link" href="${escapeHtml(restaurantSeoUrl(r))}">${escapeHtml(r.name)}</a>` : escapeHtml(r.name)}</h3></div><p class="address">${escapeHtml(r.address)}</p>
       <div class="tenure-badge"><span>영업 기간</span><strong>${permit ? escapeHtml(permit.duration) : '인허가일 확인 중'}</strong></div>
       <div class="score"><strong>${ratingText}</strong><span>${ratingDetail}</span><span>${priceText(r.price)}</span></div>
       <div class="tags"><span>${permit ? '인허가일 확인됨' : '영업 정보 확인'}</span></div></div>
@@ -479,7 +483,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
         <div class="listing-photo"${image}><span class="popup-status">${status.label}</span></div>
         <div class="card-body">
           <div class="card-top"><span class="category">${escapeHtml(popup.venueType || '쇼핑시설')}</span><span class="popup-food-type">${escapeHtml(({ bakery: '베이커리·디저트', drink: '카페·음료', tteok: '떡', snack: '간식', meal: '식사·분식', grocery: '식품 행사' })[popupFoodType(popup)])}</span></div>
-          <div class="card-identity"><h3>${escapeHtml(popup.name)}</h3></div>
+          <div class="card-identity"><h3><a class="seo-detail-link" href="${escapeHtml(popupSeoUrl(popup))}">${escapeHtml(popup.name)}</a></h3></div>
           <p class="address popup-card-address"><strong>${escapeHtml(popup.venue)}</strong>${popup.address && popup.address !== popup.venue ? ` <span>· ${escapeHtml(popup.address)}</span>` : ''}</p>
           <div class="popup-period">${escapeHtml(popupPeriodLabel(popup))}</div>
         </div>
@@ -558,7 +562,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     const mayHaveMore = state.searchSession && !state.searchSession.done;
     $('#pager').innerHTML = rows.length > pageSize || mayHaveMore ? `<button data-page="-1" ${state.page === 1 ? 'disabled' : ''}>이전</button><span>${state.page} / ${mayHaveMore ? '…' : pages}</span><button data-page="1" ${state.page === pages && !mayHaveMore ? 'disabled' : ''}>다음</button>` : '';
     $$('.restaurant-card').forEach(el => {
-      el.addEventListener('click', e => { if (!e.target.closest('[data-save]')) openDetail(rows[Number(el.dataset.index)]); });
+      el.addEventListener('click', e => { if (!e.target.closest('[data-save], a')) openDetail(rows[Number(el.dataset.index)]); });
       el.addEventListener('keydown', e => e.key === 'Enter' && openDetail(rows[Number(el.dataset.index)]));
     });
     $$('[data-save]').forEach(el => el.addEventListener('click', () => toggleSaved(rows[Number(el.dataset.save)])));
