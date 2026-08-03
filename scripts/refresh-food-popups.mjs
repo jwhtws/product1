@@ -5,6 +5,7 @@ import { promisify } from 'node:util';
 import { collectLottePopups } from './lib/lotte-popup-collector.mjs';
 
 const outputPath = process.argv.find(value => value.startsWith('--output='))?.slice(9) || 'data/popups.json';
+const lotteOnly = process.argv.includes('--lotte-only');
 const execFileAsync = promisify(execFile);
 const now = new Date();
 const today = new Intl.DateTimeFormat('en-CA', {
@@ -706,12 +707,12 @@ async function collectLotteOfficialBlog() {
 
 async function collectCuratedOfficial() {
   const rows = JSON.parse(await readFile('data/curated-popups.json', 'utf8'));
-  return collectLottePopups({ rows, previous, today, fetchResilient, clean, decodeHtml, uniqueMenus, normalizedText });
+  return collectLottePopups({ rows, previous, today, fetchResilient, clean, decodeHtml, uniqueMenus, normalizedText, fast: lotteOnly });
 }
 
 const previous = await existingRows();
 const venueRegistry = await popupVenueRegistry();
-const collectors = [
+const allCollectors = [
   ['현대백화점·현대아울렛', collectHyundai],
   ['신세계백화점', collectShinsegae],
   ['스타필드·스타필드시티', collectStarfield],
@@ -726,6 +727,11 @@ const collectors = [
   ['롯데 공식 블로그', collectLotteOfficialBlog],
   ['롯데백화점·롯데아울렛·롯데몰', collectCuratedOfficial]
 ];
+// Incident repair path: refresh the curated Lotte feed without waiting for
+// every national retailer adapter. Existing rows from other sources remain.
+const collectors = lotteOnly
+  ? allCollectors.filter(([name]) => name === '롯데백화점·롯데아울렛·롯데몰')
+  : allCollectors;
 const settled = await Promise.allSettled(collectors.map(([, collector]) => collector()));
 const collected = settled.flatMap(result => result.status === 'fulfilled' ? result.value : []);
 const rawCollectedCount = collected.length;
@@ -932,11 +938,13 @@ await writeFile(outputPath, `${JSON.stringify({
   coverage: coverageSummary,
   popups
 }, null, 2)}\n`);
-await writeFile('data/popup-coverage.json', `${JSON.stringify({
-  updatedAt: new Date().toISOString(),
-  summary: coverageSummary,
-  venues: venueCoverage
-}, null, 2)}\n`);
+if (!lotteOnly) {
+  await writeFile('data/popup-coverage.json', `${JSON.stringify({
+    updatedAt: new Date().toISOString(),
+    summary: coverageSummary,
+    venues: venueCoverage
+  }, null, 2)}\n`);
+}
 console.log(`원본 수집 ${rawCollectedCount}건 · 파싱 성공 ${collected.length}건 · ID 병합 ${beforeDedupCount}건 · 중복 제거 ${duplicateRemovedCount}건 · 최종 ${popups.length}건`);
 console.log(`상태 집계 active=${statusCounts.active} upcoming=${statusCounts.upcoming} ended=${statusCounts.ended}`);
 console.log(`전국 시설 ${venueCoverage.length}곳 · 공식 피드 감시 ${coverageSummary.officialFeedMonitoredCount}곳 · 수집기 추가 필요 ${coverageSummary.collectorNeededCount}곳`);

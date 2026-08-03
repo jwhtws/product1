@@ -4,6 +4,15 @@ on:
   schedule:
     - cron: "20 21 * * *"
   workflow_dispatch:
+    inputs:
+      scope:
+        description: "갱신 범위"
+        required: true
+        default: "all"
+        type: choice
+        options:
+          - all
+          - lotte-only
 
 permissions:
   contents: write
@@ -23,10 +32,11 @@ jobs:
         with:
           node-version: 22
       - name: 전국 쇼핑시설 팝업 탐색 원장 갱신
+        if: github.event_name != 'workflow_dispatch' || inputs.scope != 'lotte-only'
         continue-on-error: true
         run: node scripts/refresh-popup-venues.mjs
       - name: 공식 쇼핑시설 푸드 팝업 갱신
-        run: node scripts/refresh-food-popups.mjs
+        run: node scripts/refresh-food-popups.mjs ${{ github.event_name == 'workflow_dispatch' && inputs.scope == 'lotte-only' && '--lotte-only' || '' }}
       - name: 검색엔진 상세 페이지와 사이트맵 갱신
         run: npm run seo:build
       - name: 데이터 및 코드 검증

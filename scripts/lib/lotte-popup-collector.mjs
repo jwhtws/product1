@@ -9,12 +9,15 @@ const knownMenus = new Map([
   ['lotte:main:glaceau', [{ name: '프리미엄 수제 아이스크림', price: '' }]]
 ]);
 
-function officialImage(html, baseUrl, decodeHtml) {
+export function officialImage(html, baseUrl, decodeHtml) {
   const source = String(html || '').replace(/\\u002F/giu, '/').replace(/\\\//gu, '/');
   const candidates = [
     ...[...source.matchAll(/<meta[^>]+(?:property|name)=["'](?:og:image|twitter:image)["'][^>]+content=["']([^"']+)/giu)].map(match => match[1]),
     ...[...source.matchAll(/["'](?:imageUrl|imgUrl|imgPath|pcImgUrl|mblImgUrl|shpgNewsImgUrl|dtlImgUrl)["']\s*:\s*["']([^"']+)/giu)].map(match => match[1]),
-    ...[...source.matchAll(/<img[^>]+(?:data-src|src)=["']([^"']+)/giu)].map(match => match[1])
+    ...[...source.matchAll(/<img[^>]+(?:data-src|data-original|src)=["']([^"']+)/giu)].map(match => match[1]),
+    ...[...source.matchAll(/<(?:img|source)[^>]+srcset=["']([^"']+)/giu)].flatMap(match => match[1].split(',').map(value => value.trim().split(/\s+/u)[0])),
+    ...[...source.matchAll(/(?:background(?:-image)?\s*:|url\()\s*(?:url\()?\s*["']?([^"')\s]+\.(?:jpe?g|png|webp)(?:\?[^"')\s]*)?)/giu)].map(match => match[1]),
+    ...[...source.matchAll(/https?:\\?\/\\?\/[^"'<>\s)]+\.(?:jpe?g|png|webp)(?:\?[^"'<>\s)]*)?/giu)].map(match => match[0])
   ];
   const expectedNewsId = new URL(baseUrl).searchParams.get('shpgNewsNo') || '';
   const resolvedCandidates = [];
@@ -60,11 +63,14 @@ function matchingNewsId(html, name, normalizedText, decodeHtml) {
   return matches.length === 1 ? matches[0][0] : '';
 }
 
-export async function collectLottePopups({ rows, previous, today, fetchResilient, clean, decodeHtml, uniqueMenus, normalizedText }) {
-  const fetchLotte = url => fetchResilient(url, { attempts: 1, timeoutMs: 12_000, curlMaxTime: 12 });
+export async function collectLottePopups({ rows, previous, today, fetchResilient, clean, decodeHtml, uniqueMenus, normalizedText, fast = false }) {
+  const requestSeconds = fast ? 5 : 12;
+  const fetchLotte = url => fetchResilient(url, { attempts: 1, timeoutMs: requestSeconds * 1_000, curlMaxTime: requestSeconds });
   const previousById = new Map(previous.map(row => [row.id, row]));
   const results = [];
   let verified = 0;
+  let detailMatched = 0;
+  let imageMatched = 0;
   let cursor = 0;
   async function worker() {
    while (cursor < rows.length) {
@@ -95,8 +101,16 @@ export async function collectLottePopups({ rows, previous, today, fetchResilient
           }
         }
         const foundImage = officialImage(detailHtml || searchHtml, sourceUrl, decodeHtml);
-        if (detailHtml) imageUrl = foundImage;
+        if (detailHtml) {
+          detailMatched += 1;
+          // A former event image must never leak into a newly matched detail
+          // page. Preserve only an already verified image for this exact news ID.
+          const newsId = new URL(sourceUrl).searchParams.get('shpgNewsNo') || '';
+          const oldMatchesDetail = newsId && String(imageUrl || '').includes(`/${newsId}/`);
+          imageUrl = foundImage || (oldMatchesDetail ? imageUrl : '');
+        }
         else if (foundImage) imageUrl = foundImage;
+        if (imageUrl) imageMatched += 1;
         if (detailHtml) {
           const foundMenus = detailMenus(detailHtml, decodeHtml, clean, uniqueMenus);
           if (foundMenus.length) { menus = foundMenus; menuSource = 'official-detail'; }
@@ -116,7 +130,8 @@ export async function collectLottePopups({ rows, previous, today, fetchResilient
     });
    }
   }
-  await Promise.all(Array.from({ length: Math.min(8, rows.length) }, () => worker()));
-  console.log(`롯데 전용 수집기: ${rows.length}건 중 공식 페이지 ${verified}건 응답`);
+  const concurrency = fast ? 16 : 8;
+  await Promise.all(Array.from({ length: Math.min(concurrency, rows.length) }, () => worker()));
+  console.log(`롯데 전용 수집기: ${rows.length}건 · 공식 응답 ${verified}건 · 상세 연결 ${detailMatched}건 · 행사 ID 일치 사진 ${imageMatched}건 · 사진 미제공 ${rows.length - imageMatched}건`);
   return results;
 }
