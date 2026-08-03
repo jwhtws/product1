@@ -9,7 +9,7 @@ const knownMenus = new Map([
   ['lotte:main:glaceau', [{ name: '프리미엄 수제 아이스크림', price: '' }]]
 ]);
 
-export function officialImage(html, baseUrl, decodeHtml) {
+export function officialImages(html, baseUrl, decodeHtml) {
   const source = String(html || '').replace(/\\u002F/giu, '/').replace(/\\\//gu, '/');
   const candidates = [
     ...[...source.matchAll(/<meta[^>]+(?:property|name)=["'](?:og:image|twitter:image)["'][^>]+content=["']([^"']+)/giu)].map(match => match[1]),
@@ -30,17 +30,22 @@ export function officialImage(html, baseUrl, decodeHtml) {
       else if (/\.(?:jpe?g|png|webp)(?:\?|$)/iu.test(resolved)) resolvedCandidates.push(resolved);
     } catch {}
   }
+  const unique = [...new Set(resolvedCandidates)];
   if (expectedNewsId) {
-    const exact = resolvedCandidates.find(url => url.includes(`/${expectedNewsId}/`));
-    if (exact) return exact;
+    const official = unique.filter(url => /minfo\.lotteshopping\.com\/content\/news\//iu.test(url));
+    const exact = official.filter(url => url.includes(`/${expectedNewsId}/`));
     // Lotte legitimately reuses an older shopping-news asset when publishing
     // a new detail page for the same brand. A detail page represents exactly
     // one event, so its first official news asset is safe even when the asset
     // path contains the older SNM id. This fallback must not be used on the
     // multi-event search page below.
-    return resolvedCandidates.find(url => /minfo\.lotteshopping\.com\/content\/news\//iu.test(url)) || '';
+    return [...new Set([...exact, ...official])].slice(0, 12);
   }
-  return resolvedCandidates[0] || '';
+  return unique.slice(0, 12);
+}
+
+export function officialImage(html, baseUrl, decodeHtml) {
+  return officialImages(html, baseUrl, decodeHtml)[0] || '';
 }
 
 function detailMenus(html, decodeHtml, clean, uniqueMenus) {
@@ -104,6 +109,7 @@ export async function collectLottePopups({ rows, previous, today, fetchResilient
     const old = previousById.get(id);
     let sourceUrl = searchUrl;
     let imageUrl = old?.imageSource === 'official-detail' ? old.imageUrl : '';
+    let officialImageUrls = Array.isArray(old?.officialImageUrls) ? old.officialImageUrls : (imageUrl ? [imageUrl] : []);
     let menus = knownMenus.get(id) || (old?.menuSource === 'official-detail' ? old.menus : []);
     let menuSource = knownMenus.has(id) ? 'official-search-result' : (menus.length ? 'official-detail' : '');
     try {
@@ -143,13 +149,15 @@ export async function collectLottePopups({ rows, previous, today, fetchResilient
                 // mis-associated detail page (for example 밀빛 → 톰포드).
                 sourceUrl = searchUrl;
                 imageUrl = '';
+                officialImageUrls = [];
               }
             }
           }
         }
         // Search pages contain many unrelated cards. Only a validated,
         // single-event detail page may contribute an image.
-        const foundImage = detailHtml ? officialImage(detailHtml, sourceUrl, decodeHtml) : '';
+        const foundImages = detailHtml ? officialImages(detailHtml, sourceUrl, decodeHtml) : [];
+        const foundImage = foundImages[0] || '';
         if (detailHtml) {
           detailMatched += 1;
           // Prefer the image published by this single-event detail page. Lotte
@@ -157,6 +165,7 @@ export async function collectLottePopups({ rows, previous, today, fetchResilient
           const newsId = new URL(sourceUrl).searchParams.get('shpgNewsNo') || '';
           const oldMatchesDetail = newsId && String(imageUrl || '').includes(`/${newsId}/`);
           imageUrl = foundImage || (oldMatchesDetail ? imageUrl : '');
+          if (foundImages.length) officialImageUrls = foundImages;
         }
         else if (foundImage) imageUrl = foundImage;
         if (imageUrl) imageMatched += 1;
@@ -172,6 +181,7 @@ export async function collectLottePopups({ rows, previous, today, fetchResilient
     results.push({
       id, name, venue, venueType: /아울렛|몰/u.test(venue) ? '쇼핑몰' : '백화점', address: venue,
       startDate, endDate, imageUrl: imageUrl || null,
+      ...(officialImageUrls.length ? { officialImageUrls } : {}),
       imageSource: imageUrl ? 'official-detail' : 'official-image-unavailable',
       sourceName: '롯데쇼핑 공식 행사', sourceUrl, sourceGrade: 'official-search',
       firstSeenAt: old?.firstSeenAt || today, lastSeenAt: today,
