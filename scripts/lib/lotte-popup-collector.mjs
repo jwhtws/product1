@@ -30,7 +30,16 @@ export function officialImage(html, baseUrl, decodeHtml) {
       else if (/\.(?:jpe?g|png|webp)(?:\?|$)/iu.test(resolved)) resolvedCandidates.push(resolved);
     } catch {}
   }
-  if (expectedNewsId) return resolvedCandidates.find(url => url.includes(`/${expectedNewsId}/`)) || '';
+  if (expectedNewsId) {
+    const exact = resolvedCandidates.find(url => url.includes(`/${expectedNewsId}/`));
+    if (exact) return exact;
+    // Lotte legitimately reuses an older shopping-news asset when publishing
+    // a new detail page for the same brand. A detail page represents exactly
+    // one event, so its first official news asset is safe even when the asset
+    // path contains the older SNM id. This fallback must not be used on the
+    // multi-event search page below.
+    return resolvedCandidates.find(url => /minfo\.lotteshopping\.com\/content\/news\//iu.test(url)) || '';
+  }
   return resolvedCandidates[0] || '';
 }
 
@@ -103,8 +112,8 @@ export async function collectLottePopups({ rows, previous, today, fetchResilient
         const foundImage = officialImage(detailHtml || searchHtml, sourceUrl, decodeHtml);
         if (detailHtml) {
           detailMatched += 1;
-          // A former event image must never leak into a newly matched detail
-          // page. Preserve only an already verified image for this exact news ID.
+          // Prefer the image published by this single-event detail page. Lotte
+          // may reuse an older SNM asset id for the same brand.
           const newsId = new URL(sourceUrl).searchParams.get('shpgNewsNo') || '';
           const oldMatchesDetail = newsId && String(imageUrl || '').includes(`/${newsId}/`);
           imageUrl = foundImage || (oldMatchesDetail ? imageUrl : '');
