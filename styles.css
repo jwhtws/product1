@@ -110,6 +110,7 @@
 .popup-detail-period{color:var(--green)!important;font-size:16px;font-weight:900}.popup-card .tags{flex-wrap:wrap}
 .popup-card-address,.popup-detail-address{font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",sans-serif}.popup-card-address strong,.popup-detail-address strong{color:#353530;font-size:16px;font-weight:850;letter-spacing:-.035em}.popup-card-address span,.popup-detail-address span{color:#8b8982;font-size:11px;font-weight:450;letter-spacing:-.015em}.popup-detail-address{margin:0;color:var(--muted);line-height:1.6}.popup-detail-address strong{font-size:17px}
 .review-actions{display:flex;gap:6px;align-items:center}.review-actions .review-delete{color:#c2413b;background:#fff1f0}.review-submit-status{grid-column:1/-1;min-height:18px;margin:0;color:var(--green);font-size:12px;font-weight:800}
+.review-photo{display:block;margin:10px 0 12px;border-radius:12px;overflow:hidden;background:#f3f1ec}.review-photo img{display:block;width:100%;max-height:420px;object-fit:cover}.photo-label input{display:block;margin:6px 0 0;max-width:220px;font-size:11px}
 
 /* 편안하고 검색에 집중되는 홈 화면 */
 .topbar{height:76px}

@@ -16,6 +16,7 @@ CREATE TABLE IF NOT EXISTS reviews (
   restaurant_name TEXT NOT NULL,
   rating INTEGER NOT NULL CHECK (rating BETWEEN 1 AND 5),
   text TEXT NOT NULL,
+  photo_key TEXT,
   helpful INTEGER NOT NULL DEFAULT 0,
   hidden INTEGER NOT NULL DEFAULT 0,
   created_at INTEGER NOT NULL,

@@ -1,5 +1,7 @@
 import { body, currentUser, json } from '../../_lib/auth.js';
 
+const photoUrl = key => key ? `/api/review-photos/${key.split('/').map(encodeURIComponent).join('/')}` : null;
+
 const row = (value, viewerId = null) => ({
   id: value.id,
   author: value.author,
@@ -7,6 +9,7 @@ const row = (value, viewerId = null) => ({
   restaurantName: value.restaurant_name,
   rating: value.rating,
   text: value.text,
+  photoUrl: photoUrl(value.photo_key),
   helpful: value.helpful,
   createdAt: value.created_at,
   canEdit: Number(value.user_id) === Number(viewerId)
@@ -16,6 +19,23 @@ const validReview = data => {
   const rating = Number(data.rating);
   const text = String(data.text || '').trim().slice(0, 1000);
   return { rating, text, valid: Boolean(text) && Number.isInteger(rating) && rating >= 1 && rating <= 5 };
+};
+
+const reviewPhoto = data => {
+  const encoded = String(data?.data || '');
+  const mime = String(data?.mime || '').toLowerCase();
+  if (!encoded && !mime) return null;
+  if (!['image/jpeg', 'image/png', 'image/webp'].includes(mime) || !/^[A-Za-z0-9+/]+={0,2}$/.test(encoded)) {
+    throw new Error('INVALID_REVIEW_PHOTO');
+  }
+  const binary = atob(encoded);
+  if (!binary.length || binary.length > 2 * 1024 * 1024) throw new Error('INVALID_REVIEW_PHOTO');
+  const bytes = Uint8Array.from(binary, character => character.charCodeAt(0));
+  const validMagic = mime === 'image/jpeg' ? bytes[0] === 0xff && bytes[1] === 0xd8
+    : mime === 'image/png' ? bytes.slice(0, 4).every((value, index) => value === [0x89, 0x50, 0x4e, 0x47][index])
+      : String.fromCharCode(...bytes.slice(0, 4)) === 'RIFF' && String.fromCharCode(...bytes.slice(8, 12)) === 'WEBP';
+  if (!validMagic) throw new Error('INVALID_REVIEW_PHOTO');
+  return { bytes, mime, extension: mime === 'image/png' ? 'png' : mime === 'image/webp' ? 'webp' : 'jpg' };
 };
 
 async function reviewSettings(env) {
@@ -76,6 +96,10 @@ export async function onRequest(context) {
     if (!restaurantId || !restaurantName || !valid) {
       return json({ error: '리뷰 내용을 확인해 주세요.' }, 400);
     }
+    let photo = null;
+    try { photo = reviewPhoto(data.photo); }
+    catch { return json({ error: '사진은 JPG, PNG, WebP 형식으로 2MB 이하만 등록할 수 있습니다.' }, 400); }
+    if (photo && !context.env.REVIEW_PHOTOS) return json({ error: '사진 저장소가 준비되지 않았습니다.' }, 503);
     const createdAt = Date.now();
     const limits = await reviewSettings(context.env);
     if (limits.duplicateBlock) {
@@ -98,10 +122,18 @@ export async function onRequest(context) {
     if (Number(restaurantDailyCount?.count) >= limits.restaurantDailyLimit) {
       return json({ error: `같은 식당에는 하루에 최대 ${limits.restaurantDailyLimit}개까지 등록할 수 있습니다.`, code: 'RESTAURANT_DAILY_REVIEW_LIMIT' }, 409);
     }
-    const result = await context.env.DB.prepare(
-      'INSERT INTO reviews (user_id, restaurant_id, restaurant_name, rating, text, created_at) VALUES (?, ?, ?, ?, ?, ?)'
-    ).bind(user.id, restaurantId, restaurantName, rating, text, createdAt).run();
-    return json({ review: { id: result.meta.last_row_id, author: user.name, restaurant: restaurantId, restaurantName, rating, text, helpful: 0, createdAt, canEdit: true } }, 201);
+    const photoKey = photo ? `reviews/${user.id}/${crypto.randomUUID()}.${photo.extension}` : null;
+    if (photo) await context.env.REVIEW_PHOTOS.put(photoKey, photo.bytes.buffer, { metadata: { contentType: photo.mime } });
+    let result;
+    try {
+      result = await context.env.DB.prepare(
+        'INSERT INTO reviews (user_id, restaurant_id, restaurant_name, rating, text, photo_key, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)'
+      ).bind(user.id, restaurantId, restaurantName, rating, text, photoKey, createdAt).run();
+    } catch (error) {
+      if (photoKey) await context.env.REVIEW_PHOTOS.delete(photoKey);
+      throw error;
+    }
+    return json({ review: { id: result.meta.last_row_id, author: user.name, restaurant: restaurantId, restaurantName, rating, text, photoUrl: photoUrl(photoKey), helpful: 0, createdAt, canEdit: true } }, 201);
   }
 
   const review = path.match(/^(\d+)$/);
@@ -130,10 +162,11 @@ export async function onRequest(context) {
     const user = await currentUser(context);
     if (!user) return json({ error: '로그인이 필요합니다.' }, 401);
     const existing = await context.env.DB.prepare(
-      'SELECT id FROM reviews WHERE id = ? AND user_id = ? AND hidden = 0'
+      'SELECT id, photo_key FROM reviews WHERE id = ? AND user_id = ? AND hidden = 0'
     ).bind(Number(review[1]), user.id).first();
     if (!existing) return json({ error: '본인이 작성한 리뷰만 삭제할 수 있습니다.' }, 403);
     await context.env.DB.prepare('UPDATE reviews SET hidden = 1 WHERE id = ? AND user_id = ?').bind(Number(review[1]), user.id).run();
+    if (existing.photo_key && context.env.REVIEW_PHOTOS) await context.env.REVIEW_PHOTOS.delete(existing.photo_key);
     return json({ ok: true });
   }
 

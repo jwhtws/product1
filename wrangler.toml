@@ -6,3 +6,7 @@ pages_build_output_dir = "."
 binding = "DB"
 database_name = "mukdang-db"
 database_id = "fb1de00f-129f-4261-9755-5accfb29edbf"
+
+[[kv_namespaces]]
+binding = "REVIEW_PHOTOS"
+id = "10362e72648f4c33ade87adf1e34bb0a"

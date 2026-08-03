@@ -504,7 +504,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
       <div class="detail-hero"><div class="detail-heading"><div><span class="category">${escapeHtml(popup.venueType || '쇼핑시설')}</span><h2 id="detail-title">${escapeHtml(popup.name)}</h2><p class="popup-detail-address"><strong>${escapeHtml(popup.venue)}</strong>${popup.address && popup.address !== popup.venue ? ` <span>· ${escapeHtml(popup.address)}</span>` : ''}</p></div></div>
       <div class="popup-detail-status popup-${status.key}"><strong>${status.label}</strong><span>${escapeHtml(popupPeriodLabel(popup))}</span></div>
       <div class="detail-actions"><a class="primary" href="${escapeHtml(popup.sourceUrl)}" target="_blank" rel="noopener noreferrer">공식 정보 보기</a><button id="popup-share" class="ghost" type="button">공유</button></div></div>
-      <div class="detail-grid popup-detail-grid"><section class="popup-location-section"><h3>팝업 정보</h3><dl><dt>백화점·지점</dt><dd>${escapeHtml(popup.venue)}</dd><dt>도로명주소</dt><dd>${escapeHtml(popup.address || popup.venue)}</dd><dt>영업일자</dt><dd class="popup-detail-period">${escapeHtml(popupPeriodLabel(popup))}</dd></dl><div class="map-links"><a target="_blank" rel="noopener" href="https://map.naver.com/p/search/${mapQuery}">네이버 지도에서 위치 보기</a><a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${mapQuery}">Google 지도</a></div></section><div class="popup-detail-right"><section class="popup-menu-section"><h3>메뉴</h3>${popupMenus(popup).length ? `<ul class="popup-menu-list">${popupMenus(popup).map(item => `<li><span>${escapeHtml(item.name || item)}</span>${item.price ? `<strong>${escapeHtml(item.price)}</strong>` : ''}</li>`).join('')}</ul>` : '<p class="popup-menu-empty">공식 사이트에 텍스트 메뉴가 공개되지 않았습니다.</p>'}<p class="data-source-note">${popupMenus(popup).length ? (popup.menuSource === 'official-detail' ? '공식 상세 페이지에 공개된 대표메뉴와 가격입니다.' : '공식 검색 결과에 공개된 대표 품목입니다.') : '공식 페이지에 메뉴명과 가격이 추가되면 자동으로 반영됩니다.'}</p></section><section class="review-section popup-review-section"><div class="review-head"><h3>리뷰 <small id="review-count">${reviews.length}</small></h3><select id="review-sort"><option value="latest">최신순</option><option value="rating">별점순</option><option value="helpful">유용한순</option></select></div><div class="trust-note">✓ 직접 방문한 팝업 경험을 남겨주세요.</div><form id="review-form"><label>별점<select name="rating"><option value="5">5점</option><option value="4">4점</option><option value="3">3점</option><option value="2">2점</option><option value="1">1점</option></select></label><textarea name="text" required maxlength="500" placeholder="메뉴, 맛, 대기시간을 알려주세요."></textarea><button class="primary" type="submit">리뷰 등록</button><p id="review-submit-status" class="review-submit-status" aria-live="polite"></p></form><div id="review-list"></div></section></div></div>`;
+      <div class="detail-grid popup-detail-grid"><section class="popup-location-section"><h3>팝업 정보</h3><dl><dt>백화점·지점</dt><dd>${escapeHtml(popup.venue)}</dd><dt>도로명주소</dt><dd>${escapeHtml(popup.address || popup.venue)}</dd><dt>영업일자</dt><dd class="popup-detail-period">${escapeHtml(popupPeriodLabel(popup))}</dd></dl><div class="map-links"><a target="_blank" rel="noopener" href="https://map.naver.com/p/search/${mapQuery}">네이버 지도에서 위치 보기</a><a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${mapQuery}">Google 지도</a></div></section><div class="popup-detail-right"><section class="popup-menu-section"><h3>메뉴</h3>${popupMenus(popup).length ? `<ul class="popup-menu-list">${popupMenus(popup).map(item => `<li><span>${escapeHtml(item.name || item)}</span>${item.price ? `<strong>${escapeHtml(item.price)}</strong>` : ''}</li>`).join('')}</ul>` : '<p class="popup-menu-empty">공식 사이트에 텍스트 메뉴가 공개되지 않았습니다.</p>'}<p class="data-source-note">${popupMenus(popup).length ? (popup.menuSource === 'official-detail' ? '공식 상세 페이지에 공개된 대표메뉴와 가격입니다.' : '공식 검색 결과에 공개된 대표 품목입니다.') : '공식 페이지에 메뉴명과 가격이 추가되면 자동으로 반영됩니다.'}</p></section><section class="review-section popup-review-section"><div class="review-head"><h3>리뷰 <small id="review-count">${reviews.length}</small></h3><select id="review-sort"><option value="latest">최신순</option><option value="rating">별점순</option><option value="helpful">유용한순</option></select></div><div class="trust-note">✓ 직접 방문한 팝업 경험을 남겨주세요.</div><form id="review-form"><label>별점<select name="rating"><option value="5">5점</option><option value="4">4점</option><option value="3">3점</option><option value="2">2점</option><option value="1">1점</option></select></label><label class="photo-label">사진 첨부<input name="photo" type="file" accept="image/jpeg,image/png,image/webp"></label><textarea name="text" required maxlength="500" placeholder="메뉴, 맛, 대기시간을 알려주세요."></textarea><button class="primary" type="submit">리뷰 등록</button><p id="review-submit-status" class="review-submit-status" aria-live="polite"></p></form><div id="review-list"></div></section></div></div>`;
     $('#detail-modal').classList.add('open'); document.body.classList.add('locked');
     if (history.state?.mukdangLayer !== 'detail') {
       history.pushState({ ...history.state, mukdang: true, mukdangLayer: 'detail', detailType: 'popup', searchMode: state.searchMode }, '');
@@ -923,7 +923,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
   function renderReviews() {
     const sort = $('#review-sort')?.value || 'latest';
     const reviews = [...reviewsFor(state.current)].sort((a, b) => sort === 'rating' ? b.rating - a.rating : sort === 'helpful' ? b.helpful - a.helpful : b.createdAt - a.createdAt);
-    $('#review-list').innerHTML = reviews.length ? reviews.map(r => `<article class="review"><div><strong>${escapeHtml(r.author)}</strong><span class="verified">솔직 리뷰</span><time>${new Date(r.createdAt).toLocaleDateString('ko-KR')}</time></div><b>${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</b><p>${escapeHtml(r.text)}</p><div class="review-actions"><button data-helpful="${r.id}" type="button">유용해요 ${r.helpful || 0}</button>${r.canEdit ? `<button data-edit-review="${r.id}" type="button">수정</button><button class="review-delete" data-delete-review="${r.id}" type="button">삭제</button>` : ''}</div></article>`).join('') : '<p class="empty-reviews">첫 번째 솔직한 리뷰를 남겨주세요.</p>';
+    $('#review-list').innerHTML = reviews.length ? reviews.map(r => `<article class="review"><div><strong>${escapeHtml(r.author)}</strong><span class="verified">솔직 리뷰</span><time>${new Date(r.createdAt).toLocaleDateString('ko-KR')}</time></div><b>${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</b><p>${escapeHtml(r.text)}</p>${r.photoUrl ? `<a class="review-photo" href="${escapeHtml(r.photoUrl)}" target="_blank" rel="noopener"><img src="${escapeHtml(r.photoUrl)}" alt="${escapeHtml(r.author)}님의 리뷰 사진" loading="lazy"></a>` : ''}<div class="review-actions"><button data-helpful="${r.id}" type="button">유용해요 ${r.helpful || 0}</button>${r.canEdit ? `<button data-edit-review="${r.id}" type="button">수정</button><button class="review-delete" data-delete-review="${r.id}" type="button">삭제</button>` : ''}</div></article>`).join('') : '<p class="empty-reviews">첫 번째 솔직한 리뷰를 남겨주세요.</p>';
     $$('[data-helpful]').forEach(el => el.addEventListener('click', async () => {
       try {
         await api(`/api/reviews/${el.dataset.helpful}/helpful`, { method: 'POST' });
@@ -969,9 +969,10 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     button.textContent = '등록 중…';
     status.textContent = '';
     try {
+      const photo = await prepareReviewPhoto(data.get('photo'));
       const result = await api('/api/reviews', { method: 'POST', body: JSON.stringify({
         restaurantId: idOf(restaurant), restaurantName: restaurant.name,
-        rating: Number(data.get('rating')), text: data.get('text')
+        rating: Number(data.get('rating')), text: data.get('text'), photo
       }) });
       const key = idOf(restaurant);
       const currentReviews = state.serverReviews.get(key) || [];
@@ -992,6 +993,28 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
       button.disabled = false;
       button.textContent = '리뷰 등록';
     }
+  }
+
+  async function prepareReviewPhoto(file) {
+    if (!(file instanceof File) || !file.size) return null;
+    if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type)) throw new Error('JPG, PNG, WebP 사진만 첨부할 수 있습니다.');
+    if (file.size > 8 * 1024 * 1024) throw new Error('원본 사진은 8MB 이하만 첨부할 수 있습니다.');
+    const bitmap = await createImageBitmap(file);
+    const scale = Math.min(1, 1600 / Math.max(bitmap.width, bitmap.height));
+    const canvas = document.createElement('canvas');
+    canvas.width = Math.max(1, Math.round(bitmap.width * scale));
+    canvas.height = Math.max(1, Math.round(bitmap.height * scale));
+    canvas.getContext('2d').drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+    bitmap.close();
+    const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/jpeg', 0.82));
+    if (!blob || blob.size > 2 * 1024 * 1024) throw new Error('사진을 2MB 이하로 줄여 다시 시도해 주세요.');
+    const dataUrl = await new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = () => reject(new Error('사진을 읽지 못했습니다.'));
+      reader.readAsDataURL(blob);
+    });
+    return { mime: 'image/jpeg', data: String(dataUrl).split(',')[1] };
   }
 
   function closeModalsDirect() {
