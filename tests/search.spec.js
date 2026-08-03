@@ -96,6 +96,23 @@ test('푸드 팝업은 썸네일 카드에서 상세 페이지로 이동한다',
   await expect(page.locator('#modal-content .site-plan')).toHaveCount(0);
 });
 
+test('팝업 사진과 이름 클릭은 동일한 상세 화면을 연다', async ({ page }) => {
+  await page.goto(process.env.TEST_BASE_URL || 'http://127.0.0.1:8765/', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('#search-button')).toBeEnabled({ timeout: 15000 });
+  const card = page.locator('.popup-card').first();
+  const expectedName = (await card.locator('h3').textContent()).trim();
+
+  await card.locator('.listing-photo').click();
+  await expect(page.locator('#detail-modal')).toHaveClass(/open/u);
+  await expect(page.locator('#detail-title')).toHaveText(expectedName);
+  await page.locator('#detail-modal [data-close]').click();
+
+  await card.locator('h3 a').click();
+  await expect(page.locator('#detail-modal')).toHaveClass(/open/u);
+  await expect(page.locator('#detail-title')).toHaveText(expectedName);
+  await expect(page).toHaveURL(/\/$/u);
+});
+
 test('종료일이 지난 팝업은 카드와 상세 화면에 종료로 표시한다', async ({ page }) => {
   await page.goto(process.env.TEST_BASE_URL || 'http://127.0.0.1:8765/', { waitUntil: 'domcontentloaded' });
   await expect(page.locator('#search-button')).toBeEnabled({ timeout: 15000 });

@@ -551,7 +551,14 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
       $$('[data-popup-page]').forEach(button => button.addEventListener('click', () => { state.page = Math.max(1, Math.min(popupPages, state.page + Number(button.dataset.popupPage))); render(); }));
       $$('.popup-card').forEach(el => {
         const popup = rows.find(item => item.id === el.dataset.popupId);
-        el.addEventListener('click', event => { if (!event.target.closest('a')) openPopupDetail(popup); });
+        el.addEventListener('click', event => {
+          const link = event.target.closest('a');
+          // Keep the crawlable URL for open-in-new-tab, but make an ordinary
+          // name click behave exactly like a photo/card click.
+          if (link && (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)) return;
+          if (link) event.preventDefault();
+          openPopupDetail(popup);
+        });
         el.addEventListener('keydown', event => { if (event.key === 'Enter') openPopupDetail(popup); });
       });
       return;
