@@ -198,3 +198,27 @@ test('롯데 공식 링크는 표시 지점과 같은 지점 코드를 사용한
   await expect(official).toHaveAttribute('href', /searchTerm=%EB%84%88%EA%B5%AC%EB%A6%AC%EB%B2%A0%EC%9D%B4%EA%B8%80/u);
   await expect(page.locator('#modal-content')).toContainText('롯데백화점 건대스타시티점');
 });
+
+test('모바일에서 푸드 팝업 필터를 열고 적용한다', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto(process.env.TEST_BASE_URL || 'http://127.0.0.1:8765/', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('#search-button')).toBeEnabled({ timeout: 15000 });
+  await expect(page.locator('#popup-filters')).not.toBeVisible();
+  await page.locator('#filter-toggle').click();
+  await expect(page.locator('#popup-filters')).toBeVisible();
+  await expect(page.locator('#filter-toggle')).toHaveAttribute('aria-expanded', 'true');
+  await page.locator('#popup-food-filter').selectOption('bakery');
+  await expect(page.locator('.popup-card').first()).toBeVisible();
+});
+
+test('상세 화면은 이전 스크롤 위치와 무관하게 맨 위에서 열린다', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto(process.env.TEST_BASE_URL || 'http://127.0.0.1:8765/', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('#search-button')).toBeEnabled({ timeout: 15000 });
+  await page.locator('.popup-card').first().click();
+  const modal = page.locator('#detail-modal .modal');
+  await modal.evaluate(element => { element.scrollTop = element.scrollHeight; });
+  await page.locator('#detail-modal [data-close]').click();
+  await page.locator('.popup-card').nth(1).click();
+  await expect.poll(() => modal.evaluate(element => element.scrollTop)).toBe(0);
+});
