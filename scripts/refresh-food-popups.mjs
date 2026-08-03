@@ -255,22 +255,10 @@ async function collectStarfield() {
   // Starfield Suwon publishes its rotating food popups in the official floor
   // guide/Bites Place rather than the event API. Keep that official roster in
   // the same collector so an empty event API does not hide the whole venue.
+  // The floor guide labels many tenants as "new", which is not enough to
+  // classify them as popups. Only Intelligentsia is explicitly marked 팝업.
   const suwonFoodPopups = [
-    ['albam-bread', '알밤알밤빵', '2026-06-05'],
-    ['gongju-tteok', '원조공주떡집', '2026-06-05'],
-    ['little-bite-more', '리틀바잇모어', '2026-06-09'],
-    ['seoul-bread-palette', '서울브레드팔레트', '2026-06-09'],
-    ['sorimsa', '소림사', '2026-06-09'],
-    ['oberkampf', '오베르캄프', '2026-06-09'],
-    ['jack-jack', '잭잭', '2026-06-09'],
-    ['jjonduek-square', '쫀득네모네', '2026-06-09'],
-    ['gimbap-boss', '김밥대장x원할머니(보쌈김밥)', '2026-06-09'],
-    ['tteokbokqueen', '떡볶퀸의 보물상자', '2026-06-09'],
-    ['myeonsangho-refine', '면상호X리파인', '2026-06-09'],
-    ['chicken-gangjeong-workshop', '박은영X닭강정공방', '2026-06-09'],
-    ['chef-hwang-guo', '황진선 셰프X구오', '2026-06-09'],
-    ['intelligentsia', '인텔리젠시아 커피', '2026-06-11'],
-    ['no-big-deal', '노빅딜', '2026-06-18']
+    ['intelligentsia', '인텔리젠시아 커피', '2026-06-11']
   ];
   const suwonSourceUrl = 'https://www.starfield.co.kr/suwon/tenant/floorInfo';
   for (const [key, name, startDate] of suwonFoodPopups) {
@@ -633,16 +621,8 @@ const galleriaStores = [
 
 async function collectGalleria() {
   const rows = [];
-  // Official detail snapshot supplied by the branch's NEWOPENING_POPUP list.
-  // The page publishes an opening date and image but no closing date, so keep
-  // endDate empty instead of inventing one.
-  rows.push({
-    id: 'galleria:gwanggyo:c85945', name: 'G.LAB', venue: '갤러리아 광교',
-    venueType: '백화점', address: '갤러리아 광교', startDate: '2026-07-31', endDate: '',
-    imageUrl: 'https://cdndept.galleria.co.kr//image/dept/edm-content/2026/G0731_5s.jpg',
-    sourceName: '갤러리아 쇼핑뉴스', sourceUrl: 'https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/c85945?qCategory=NEWOPENING_POPUP',
-    sourceGrade: 'official', firstSeenAt: today, lastSeenAt: today
-  });
+  // G.LAB is a popup venue, not a food brand. Emit only the named brands
+  // published inside an official G.LAB schedule.
   const timeworldDessertSource = 'https://dept.galleria.co.kr/store-info/timeworld/promotion/shopping-news/c85834?qCategory=NEWOPENING_POPUP';
   const timeworldDessertImage = 'https://cdndept.galleria.co.kr//image/dept/edm-content/2026/T0731_20.jpg';
   rows.push(

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-03T03:41:24.302Z",
+  "updatedAt": "2026-08-03T03:45:19.699Z",
   "sources": [
     {
       "name": "현대백화점·현대아울렛",
@@ -14,12 +14,12 @@
     {
       "name": "스타필드·스타필드시티",
       "status": "active",
-      "count": 15
+      "count": 1
     },
     {
       "name": "갤러리아",
       "status": "active",
-      "count": 3
+      "count": 2
     },
     {
       "name": "AK플라자",
@@ -68,20 +68,20 @@
     }
   ],
   "stats": {
-    "rawCollected": 3,
-    "parsed": 3,
-    "beforeDedup": 100,
+    "rawCollected": 2,
+    "parsed": 2,
+    "beforeDedup": 85,
     "duplicateRemoved": 0,
-    "final": 100,
+    "final": 85,
     "status": {
-      "active": 90,
+      "active": 75,
       "upcoming": 0,
       "ended": 10
     },
     "photos": {
-      "popupCount": 78,
-      "imageCount": 284,
-      "missingCount": 22
+      "popupCount": 77,
+      "imageCount": 283,
+      "missingCount": 8
     },
     "failedSources": [],
     "emptySources": [
@@ -2200,39 +2200,6 @@
       ],
       "lastVerifiedAt": "2026-08-03",
       "status": "active"
-    },
-    {
-      "id": "galleria:gwanggyo:c85945",
-      "name": "G.LAB",
-      "venue": "갤러리아 광교",
-      "venueType": "백화점",
-      "address": "경기도 수원시 영통구 광교중앙로 124, 갤러리아 광교 (하동) · 갤러리아 광교",
-      "startDate": "2026-07-31",
-      "endDate": "",
-      "imageUrl": "https://cdndept.galleria.co.kr//image/dept/edm-content/2026/G0731_5s.jpg",
-      "sourceName": "갤러리아 쇼핑뉴스",
-      "sourceUrl": "https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/c85945?qCategory=NEWOPENING_POPUP",
-      "sourceGrade": "official",
-      "firstSeenAt": "2026-07-31",
-      "lastSeenAt": "2026-08-03",
-      "brand": null,
-      "region": "경기도",
-      "category": "food-popup",
-      "lastVerifiedAt": "2026-08-03",
-      "status": "active",
-      "menuItems": [
-        "G.LAB"
-      ],
-      "menuSource": "official-event-text",
-      "menus": [
-        {
-          "name": "G.LAB",
-          "price": ""
-        }
-      ],
-      "officialImageUrls": [
-        "https://cdndept.galleria.co.kr//image/dept/edm-content/2026/G0731_5s.jpg"
-      ]
     },
     {
       "id": "shinsegae-shopping:SC00003:8578435",
@@ -4423,36 +4390,6 @@
       ]
     },
     {
-      "id": "starfield:suwon:bites-place:no-big-deal",
-      "name": "노빅딜",
-      "venue": "스타필드 수원",
-      "venueType": "쇼핑몰",
-      "address": "경기도 수원시 장안구 수성로 175 · 스타필드 수원",
-      "startDate": "2026-06-18",
-      "endDate": "",
-      "imageUrl": null,
-      "sourceName": "스타필드 수원 공식 층별안내·바이츠 플레이스",
-      "sourceUrl": "https://www.starfield.co.kr/suwon/tenant/floorInfo",
-      "sourceGrade": "official",
-      "firstSeenAt": "2026-08-03",
-      "lastSeenAt": "2026-08-03",
-      "brand": null,
-      "region": "경기도",
-      "category": "food-popup",
-      "menus": [
-        {
-          "name": "노빅딜",
-          "price": ""
-        }
-      ],
-      "menuItems": [
-        "노빅딜"
-      ],
-      "menuSource": "official-event-text",
-      "lastVerifiedAt": "2026-08-03",
-      "status": "active"
-    },
-    {
       "id": "starfield:suwon:bites-place:intelligentsia",
       "name": "인텔리젠시아 커피",
       "venue": "스타필드 수원",
@@ -4477,396 +4414,6 @@
       ],
       "menuItems": [
         "인텔리젠시아 커피"
-      ],
-      "menuSource": "official-event-text",
-      "lastVerifiedAt": "2026-08-03",
-      "status": "active"
-    },
-    {
-      "id": "starfield:suwon:bites-place:gimbap-boss",
-      "name": "김밥대장x원할머니(보쌈김밥)",
-      "venue": "스타필드 수원",
-      "venueType": "쇼핑몰",
-      "address": "경기도 수원시 장안구 수성로 175 · 스타필드 수원",
-      "startDate": "2026-06-09",
-      "endDate": "",
-      "imageUrl": null,
-      "sourceName": "스타필드 수원 공식 층별안내·바이츠 플레이스",
-      "sourceUrl": "https://www.starfield.co.kr/suwon/tenant/floorInfo",
-      "sourceGrade": "official",
-      "firstSeenAt": "2026-08-03",
-      "lastSeenAt": "2026-08-03",
-      "brand": null,
-      "region": "경기도",
-      "category": "food-popup",
-      "menus": [
-        {
-          "name": "김밥대장x원할머니(보쌈김밥)",
-          "price": ""
-        }
-      ],
-      "menuItems": [
-        "김밥대장x원할머니(보쌈김밥)"
-      ],
-      "menuSource": "official-event-text",
-      "lastVerifiedAt": "2026-08-03",
-      "status": "active"
-    },
-    {
-      "id": "starfield:suwon:bites-place:tteokbokqueen",
-      "name": "떡볶퀸의 보물상자",
-      "venue": "스타필드 수원",
-      "venueType": "쇼핑몰",
-      "address": "경기도 수원시 장안구 수성로 175 · 스타필드 수원",
-      "startDate": "2026-06-09",
-      "endDate": "",
-      "imageUrl": null,
-      "sourceName": "스타필드 수원 공식 층별안내·바이츠 플레이스",
-      "sourceUrl": "https://www.starfield.co.kr/suwon/tenant/floorInfo",
-      "sourceGrade": "official",
-      "firstSeenAt": "2026-08-03",
-      "lastSeenAt": "2026-08-03",
-      "brand": null,
-      "region": "경기도",
-      "category": "food-popup",
-      "menus": [
-        {
-          "name": "떡볶퀸의 보물상자",
-          "price": ""
-        }
-      ],
-      "menuItems": [
-        "떡볶퀸의 보물상자"
-      ],
-      "menuSource": "official-event-text",
-      "lastVerifiedAt": "2026-08-03",
-      "status": "active"
-    },
-    {
-      "id": "starfield:suwon:bites-place:little-bite-more",
-      "name": "리틀바잇모어",
-      "venue": "스타필드 수원",
-      "venueType": "쇼핑몰",
-      "address": "경기도 수원시 장안구 수성로 175 · 스타필드 수원",
-      "startDate": "2026-06-09",
-      "endDate": "",
-      "imageUrl": null,
-      "sourceName": "스타필드 수원 공식 층별안내·바이츠 플레이스",
-      "sourceUrl": "https://www.starfield.co.kr/suwon/tenant/floorInfo",
-      "sourceGrade": "official",
-      "firstSeenAt": "2026-08-03",
-      "lastSeenAt": "2026-08-03",
-      "brand": null,
-      "region": "경기도",
-      "category": "food-popup",
-      "menus": [
-        {
-          "name": "리틀바잇모어",
-          "price": ""
-        }
-      ],
-      "menuItems": [
-        "리틀바잇모어"
-      ],
-      "menuSource": "official-event-text",
-      "lastVerifiedAt": "2026-08-03",
-      "status": "active"
-    },
-    {
-      "id": "starfield:suwon:bites-place:myeonsangho-refine",
-      "name": "면상호X리파인",
-      "venue": "스타필드 수원",
-      "venueType": "쇼핑몰",
-      "address": "경기도 수원시 장안구 수성로 175 · 스타필드 수원",
-      "startDate": "2026-06-09",
-      "endDate": "",
-      "imageUrl": null,
-      "sourceName": "스타필드 수원 공식 층별안내·바이츠 플레이스",
-      "sourceUrl": "https://www.starfield.co.kr/suwon/tenant/floorInfo",
-      "sourceGrade": "official",
-      "firstSeenAt": "2026-08-03",
-      "lastSeenAt": "2026-08-03",
-      "brand": null,
-      "region": "경기도",
-      "category": "food-popup",
-      "menus": [
-        {
-          "name": "면상호X리파인",
-          "price": ""
-        }
-      ],
-      "menuItems": [
-        "면상호X리파인"
-      ],
-      "menuSource": "official-event-text",
-      "lastVerifiedAt": "2026-08-03",
-      "status": "active"
-    },
-    {
-      "id": "starfield:suwon:bites-place:chicken-gangjeong-workshop",
-      "name": "박은영X닭강정공방",
-      "venue": "스타필드 수원",
-      "venueType": "쇼핑몰",
-      "address": "경기도 수원시 장안구 수성로 175 · 스타필드 수원",
-      "startDate": "2026-06-09",
-      "endDate": "",
-      "imageUrl": null,
-      "sourceName": "스타필드 수원 공식 층별안내·바이츠 플레이스",
-      "sourceUrl": "https://www.starfield.co.kr/suwon/tenant/floorInfo",
-      "sourceGrade": "official",
-      "firstSeenAt": "2026-08-03",
-      "lastSeenAt": "2026-08-03",
-      "brand": null,
-      "region": "경기도",
-      "category": "food-popup",
-      "menus": [
-        {
-          "name": "박은영X닭강정공방",
-          "price": ""
-        }
-      ],
-      "menuItems": [
-        "박은영X닭강정공방"
-      ],
-      "menuSource": "official-event-text",
-      "lastVerifiedAt": "2026-08-03",
-      "status": "active"
-    },
-    {
-      "id": "starfield:suwon:bites-place:seoul-bread-palette",
-      "name": "서울브레드팔레트",
-      "venue": "스타필드 수원",
-      "venueType": "쇼핑몰",
-      "address": "경기도 수원시 장안구 수성로 175 · 스타필드 수원",
-      "startDate": "2026-06-09",
-      "endDate": "",
-      "imageUrl": null,
-      "sourceName": "스타필드 수원 공식 층별안내·바이츠 플레이스",
-      "sourceUrl": "https://www.starfield.co.kr/suwon/tenant/floorInfo",
-      "sourceGrade": "official",
-      "firstSeenAt": "2026-08-03",
-      "lastSeenAt": "2026-08-03",
-      "brand": null,
-      "region": "경기도",
-      "category": "food-popup",
-      "menus": [
-        {
-          "name": "서울브레드팔레트",
-          "price": ""
-        }
-      ],
-      "menuItems": [
-        "서울브레드팔레트"
-      ],
-      "menuSource": "official-event-text",
-      "lastVerifiedAt": "2026-08-03",
-      "status": "active"
-    },
-    {
-      "id": "starfield:suwon:bites-place:sorimsa",
-      "name": "소림사",
-      "venue": "스타필드 수원",
-      "venueType": "쇼핑몰",
-      "address": "경기도 수원시 장안구 수성로 175 · 스타필드 수원",
-      "startDate": "2026-06-09",
-      "endDate": "",
-      "imageUrl": null,
-      "sourceName": "스타필드 수원 공식 층별안내·바이츠 플레이스",
-      "sourceUrl": "https://www.starfield.co.kr/suwon/tenant/floorInfo",
-      "sourceGrade": "official",
-      "firstSeenAt": "2026-08-03",
-      "lastSeenAt": "2026-08-03",
-      "brand": null,
-      "region": "경기도",
-      "category": "food-popup",
-      "menus": [
-        {
-          "name": "소림사",
-          "price": ""
-        }
-      ],
-      "menuItems": [
-        "소림사"
-      ],
-      "menuSource": "official-event-text",
-      "lastVerifiedAt": "2026-08-03",
-      "status": "active"
-    },
-    {
-      "id": "starfield:suwon:bites-place:oberkampf",
-      "name": "오베르캄프",
-      "venue": "스타필드 수원",
-      "venueType": "쇼핑몰",
-      "address": "경기도 수원시 장안구 수성로 175 · 스타필드 수원",
-      "startDate": "2026-06-09",
-      "endDate": "",
-      "imageUrl": null,
-      "sourceName": "스타필드 수원 공식 층별안내·바이츠 플레이스",
-      "sourceUrl": "https://www.starfield.co.kr/suwon/tenant/floorInfo",
-      "sourceGrade": "official",
-      "firstSeenAt": "2026-08-03",
-      "lastSeenAt": "2026-08-03",
-      "brand": null,
-      "region": "경기도",
-      "category": "food-popup",
-      "menus": [
-        {
-          "name": "오베르캄프",
-          "price": ""
-        }
-      ],
-      "menuItems": [
-        "오베르캄프"
-      ],
-      "menuSource": "official-event-text",
-      "lastVerifiedAt": "2026-08-03",
-      "status": "active"
-    },
-    {
-      "id": "starfield:suwon:bites-place:jack-jack",
-      "name": "잭잭",
-      "venue": "스타필드 수원",
-      "venueType": "쇼핑몰",
-      "address": "경기도 수원시 장안구 수성로 175 · 스타필드 수원",
-      "startDate": "2026-06-09",
-      "endDate": "",
-      "imageUrl": null,
-      "sourceName": "스타필드 수원 공식 층별안내·바이츠 플레이스",
-      "sourceUrl": "https://www.starfield.co.kr/suwon/tenant/floorInfo",
-      "sourceGrade": "official",
-      "firstSeenAt": "2026-08-03",
-      "lastSeenAt": "2026-08-03",
-      "brand": null,
-      "region": "경기도",
-      "category": "food-popup",
-      "menus": [
-        {
-          "name": "잭잭",
-          "price": ""
-        }
-      ],
-      "menuItems": [
-        "잭잭"
-      ],
-      "menuSource": "official-event-text",
-      "lastVerifiedAt": "2026-08-03",
-      "status": "active"
-    },
-    {
-      "id": "starfield:suwon:bites-place:jjonduek-square",
-      "name": "쫀득네모네",
-      "venue": "스타필드 수원",
-      "venueType": "쇼핑몰",
-      "address": "경기도 수원시 장안구 수성로 175 · 스타필드 수원",
-      "startDate": "2026-06-09",
-      "endDate": "",
-      "imageUrl": null,
-      "sourceName": "스타필드 수원 공식 층별안내·바이츠 플레이스",
-      "sourceUrl": "https://www.starfield.co.kr/suwon/tenant/floorInfo",
-      "sourceGrade": "official",
-      "firstSeenAt": "2026-08-03",
-      "lastSeenAt": "2026-08-03",
-      "brand": null,
-      "region": "경기도",
-      "category": "food-popup",
-      "menus": [
-        {
-          "name": "쫀득네모네",
-          "price": ""
-        }
-      ],
-      "menuItems": [
-        "쫀득네모네"
-      ],
-      "menuSource": "official-event-text",
-      "lastVerifiedAt": "2026-08-03",
-      "status": "active"
-    },
-    {
-      "id": "starfield:suwon:bites-place:chef-hwang-guo",
-      "name": "황진선 셰프X구오",
-      "venue": "스타필드 수원",
-      "venueType": "쇼핑몰",
-      "address": "경기도 수원시 장안구 수성로 175 · 스타필드 수원",
-      "startDate": "2026-06-09",
-      "endDate": "",
-      "imageUrl": null,
-      "sourceName": "스타필드 수원 공식 층별안내·바이츠 플레이스",
-      "sourceUrl": "https://www.starfield.co.kr/suwon/tenant/floorInfo",
-      "sourceGrade": "official",
-      "firstSeenAt": "2026-08-03",
-      "lastSeenAt": "2026-08-03",
-      "brand": null,
-      "region": "경기도",
-      "category": "food-popup",
-      "menus": [
-        {
-          "name": "황진선 셰프X구오",
-          "price": ""
-        }
-      ],
-      "menuItems": [
-        "황진선 셰프X구오"
-      ],
-      "menuSource": "official-event-text",
-      "lastVerifiedAt": "2026-08-03",
-      "status": "active"
-    },
-    {
-      "id": "starfield:suwon:bites-place:albam-bread",
-      "name": "알밤알밤빵",
-      "venue": "스타필드 수원",
-      "venueType": "쇼핑몰",
-      "address": "경기도 수원시 장안구 수성로 175 · 스타필드 수원",
-      "startDate": "2026-06-05",
-      "endDate": "",
-      "imageUrl": null,
-      "sourceName": "스타필드 수원 공식 층별안내·바이츠 플레이스",
-      "sourceUrl": "https://www.starfield.co.kr/suwon/tenant/floorInfo",
-      "sourceGrade": "official",
-      "firstSeenAt": "2026-08-03",
-      "lastSeenAt": "2026-08-03",
-      "brand": null,
-      "region": "경기도",
-      "category": "food-popup",
-      "menus": [
-        {
-          "name": "알밤알밤빵",
-          "price": ""
-        }
-      ],
-      "menuItems": [
-        "알밤알밤빵"
-      ],
-      "menuSource": "official-event-text",
-      "lastVerifiedAt": "2026-08-03",
-      "status": "active"
-    },
-    {
-      "id": "starfield:suwon:bites-place:gongju-tteok",
-      "name": "원조공주떡집",
-      "venue": "스타필드 수원",
-      "venueType": "쇼핑몰",
-      "address": "경기도 수원시 장안구 수성로 175 · 스타필드 수원",
-      "startDate": "2026-06-05",
-      "endDate": "",
-      "imageUrl": null,
-      "sourceName": "스타필드 수원 공식 층별안내·바이츠 플레이스",
-      "sourceUrl": "https://www.starfield.co.kr/suwon/tenant/floorInfo",
-      "sourceGrade": "official",
-      "firstSeenAt": "2026-08-03",
-      "lastSeenAt": "2026-08-03",
-      "brand": null,
-      "region": "경기도",
-      "category": "food-popup",
-      "menus": [
-        {
-          "name": "원조공주떡집",
-          "price": ""
-        }
-      ],
-      "menuItems": [
-        "원조공주떡집"
       ],
       "menuSource": "official-event-text",
       "lastVerifiedAt": "2026-08-03",
