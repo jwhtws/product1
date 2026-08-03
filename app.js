@@ -1289,10 +1289,15 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
   }));
 
   try {
+    // The popup feed is rebuilt every morning. Use the deployment's stable
+    // endpoint with a Seoul-date cache key so a new daily file is visible
+    // immediately without requiring a hand-edited asset version.
+    const popupFeedUrl = new URL('https://product1-84t.pages.dev/data/popups.json');
+    popupFeedUrl.searchParams.set('v', String(Date.now()));
     const [regionsResponse, previewsResponse, popupsResponse] = await Promise.all([
       fetch('data/restaurants/regions.json?v=20260728-4'),
       fetch('data/restaurants/previews.json?v=20260728-4'),
-      fetch('https://product1-84t.pages.dev/data/popups-20260803-10.json')
+      fetch(popupFeedUrl, { cache: 'no-store' })
     ]);
     if (!regionsResponse.ok || !previewsResponse.ok) throw Error('목록 로드 실패');
     const regionData = await regionsResponse.json(), previews = await previewsResponse.json();

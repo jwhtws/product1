@@ -6,6 +6,7 @@ import { collectLottePopups } from './lib/lotte-popup-collector.mjs';
 
 const outputPath = process.argv.find(value => value.startsWith('--output='))?.slice(9) || 'data/popups.json';
 const lotteOnly = process.argv.includes('--lotte-only');
+const strictCollectors = process.argv.includes('--strict');
 const retailerScope = process.argv.find(value => value.startsWith('--retailer='))?.slice(11)
   || (lotteOnly ? 'lotte' : '');
 const execFileAsync = promisify(execFile);
@@ -855,6 +856,9 @@ const outputSources = retailerScope
   : sources;
 const collectorErrors = sources.filter(source => source.status === 'error');
 if (collectorErrors.length) console.warn(`공식 수집기 ${collectorErrors.length}개 실패: ${collectorErrors.map(source => source.name).join(', ')} · 기존 데이터 보존`);
+if (strictCollectors && collectorErrors.length) {
+  throw new Error(`공식 수집기 실패로 일일 반영 중단: ${collectorErrors.map(source => source.name).join(', ')}`);
+}
 
 function normalizedUrl(value) {
   try {
@@ -983,7 +987,7 @@ const refreshedIdRules = [
 // issue than proof that every event disappeared. Preserve the last known rows
 // in that case; the full scheduled audit can retire genuinely removed cards.
 const fulfilledCollectorNames = new Set(collectors
-  .filter((_collector, index) => settled[index].status === 'fulfilled' && (!retailerScope || settled[index].value.length))
+  .filter((_collector, index) => settled[index].status === 'fulfilled' && settled[index].value.length)
   .map(([name]) => name));
 const retainedPrevious = previous.filter(row => !refreshedIdRules.some(([collectorName, pattern]) =>
   fulfilledCollectorNames.has(collectorName) && pattern.test(row.id) && !collectedIds.has(row.id)

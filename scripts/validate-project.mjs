@@ -50,6 +50,12 @@ if (!Array.isArray(popupData.popups) || !Array.isArray(popupData.sources)) {
   console.error('popups.json 구조가 올바르지 않습니다.');
   process.exitCode = 1;
 }
+const seoulToday = new Intl.DateTimeFormat('en-CA', {
+  timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit'
+}).format(new Date());
+const expectedPopupStatus = popup => popup.endDate && popup.endDate < seoulToday
+  ? 'ended'
+  : popup.startDate > seoulToday ? 'upcoming' : 'active';
 const robots = readFileSync('robots.txt', 'utf8');
 const sitemap = readFileSync('sitemap.xml', 'utf8');
 if (!robots.includes('Sitemap: https://mukdang.com/sitemap.xml') || !sitemap.includes('<loc>https://mukdang.com/food-popups/')) {
@@ -78,6 +84,10 @@ for (const popup of popupData.popups) {
   }
   if (!popup.sourceUrl || !/^https:\/\//.test(popup.sourceUrl)) {
     console.error(`팝업 출처 URL이 올바르지 않습니다: ${popup.id}`);
+    process.exitCode = 1;
+  }
+  if (popup.status !== expectedPopupStatus(popup)) {
+    console.error(`팝업 종료 상태가 날짜와 일치하지 않습니다: ${popup.id} (${popup.status} → ${expectedPopupStatus(popup)})`);
     process.exitCode = 1;
   }
   if (!['official', 'official-search'].includes(popup.sourceGrade)) {
@@ -118,6 +128,17 @@ for (const popup of popupData.popups) {
     console.error(`롯데 행사명을 실제 메뉴로 저장할 수 없습니다: ${popup.id}`);
     process.exitCode = 1;
   }
+}
+
+const calculatedStatusStats = Object.fromEntries(['active', 'upcoming', 'ended']
+  .map(status => [status, popupData.popups.filter(row => expectedPopupStatus(row) === status).length]));
+if (JSON.stringify(popupData.stats?.status) !== JSON.stringify(calculatedStatusStats)) {
+  console.error('popups.json 상태 집계가 실제 시작일·종료일과 일치하지 않습니다.');
+  process.exitCode = 1;
+}
+if (!app.includes("label: '종료'") || !app.includes('popup-${status.key}')) {
+  console.error('종료된 팝업의 화면 표시가 누락됐습니다.');
+  process.exitCode = 1;
 }
 
 const calculatedPhotoStats = {

@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-08-03T02:50:46.610Z",
+  "updatedAt": "2026-08-03T04:50:17.545Z",
   "summary": {
     "nationwideVenueTotal": 1029,
-    "verifiedPopupVenueCount": 19,
-    "officialFeedMonitoredCount": 81,
-    "collectorNeededCount": 948,
+    "verifiedPopupVenueCount": 23,
+    "officialFeedMonitoredCount": 95,
+    "collectorNeededCount": 934,
     "disclaimer": "시설 원장은 전국 탐색 범위이며, 화면에는 공식 출처에서 시작일과 종료일을 확인한 푸드팝업만 표시합니다."
   },
   "venues": [
@@ -266,8 +266,8 @@
       "region": "경기도",
       "kind": "복합쇼핑몰",
       "collector": "스타필드·스타필드시티",
-      "status": "adapter-needed",
-      "popupCount": 0
+      "status": "verified-popup-found",
+      "popupCount": 1
     },
     {
       "venueId": "localdata:4050000:2009405024007500002",
@@ -482,7 +482,7 @@
       "region": "경기도",
       "kind": "대형마트",
       "collector": "스타필드·스타필드시티",
-      "status": "adapter-needed",
+      "status": "official-feed-monitored",
       "popupCount": 0
     },
     {
@@ -491,7 +491,7 @@
       "region": "경기도",
       "kind": "대형마트",
       "collector": "스타필드·스타필드시티",
-      "status": "adapter-needed",
+      "status": "official-feed-monitored",
       "popupCount": 0
     },
     {
@@ -500,7 +500,7 @@
       "region": "경기도",
       "kind": "대형마트",
       "collector": "스타필드·스타필드시티",
-      "status": "adapter-needed",
+      "status": "official-feed-monitored",
       "popupCount": 0
     },
     {
@@ -1508,7 +1508,7 @@
       "region": "경기도",
       "kind": "복합쇼핑몰",
       "collector": "스타필드·스타필드시티",
-      "status": "adapter-needed",
+      "status": "official-feed-monitored",
       "popupCount": 0
     },
     {
@@ -1517,7 +1517,7 @@
       "region": "경기도",
       "kind": "쇼핑센터",
       "collector": "스타필드·스타필드시티",
-      "status": "adapter-needed",
+      "status": "official-feed-monitored",
       "popupCount": 0
     },
     {
@@ -1526,7 +1526,7 @@
       "region": "경기도",
       "kind": "쇼핑센터",
       "collector": "스타필드·스타필드시티",
-      "status": "adapter-needed",
+      "status": "official-feed-monitored",
       "popupCount": 0
     },
     {
@@ -1535,7 +1535,7 @@
       "region": "경기도",
       "kind": "쇼핑센터",
       "collector": "스타필드·스타필드시티",
-      "status": "adapter-needed",
+      "status": "official-feed-monitored",
       "popupCount": 0
     },
     {
@@ -1544,7 +1544,7 @@
       "region": "경기도",
       "kind": "복합쇼핑몰",
       "collector": "스타필드·스타필드시티",
-      "status": "adapter-needed",
+      "status": "official-feed-monitored",
       "popupCount": 0
     },
     {
@@ -1562,7 +1562,7 @@
       "region": "경기도",
       "kind": "복합쇼핑몰",
       "collector": "스타필드·스타필드시티",
-      "status": "adapter-needed",
+      "status": "official-feed-monitored",
       "popupCount": 0
     },
     {
@@ -2166,7 +2166,7 @@
       "kind": "백화점",
       "collector": "현대백화점·현대아울렛",
       "status": "verified-popup-found",
-      "popupCount": 2
+      "popupCount": 4
     },
     {
       "venueId": "localdata:3780000:2015378021907500001",
@@ -3011,7 +3011,7 @@
       "region": "경상남도",
       "kind": "복합쇼핑몰",
       "collector": "스타필드·스타필드시티",
-      "status": "adapter-needed",
+      "status": "official-feed-monitored",
       "popupCount": 0
     },
     {
@@ -3920,8 +3920,8 @@
       "region": "대전광역시",
       "kind": "백화점",
       "collector": "갤러리아",
-      "status": "official-feed-monitored",
-      "popupCount": 0
+      "status": "verified-popup-found",
+      "popupCount": 2
     },
     {
       "venueId": "localdata:3660000:1996366001507500026",
@@ -4748,7 +4748,7 @@
       "region": "부산광역시",
       "kind": "쇼핑센터",
       "collector": "스타필드·스타필드시티",
-      "status": "adapter-needed",
+      "status": "official-feed-monitored",
       "popupCount": 0
     },
     {
@@ -6467,8 +6467,8 @@
       "region": "서울특별시",
       "kind": "백화점",
       "collector": "현대백화점·현대아울렛",
-      "status": "official-feed-monitored",
-      "popupCount": 0
+      "status": "verified-popup-found",
+      "popupCount": 1
     },
     {
       "venueId": "localdata:3070000:2001307013407500001",
@@ -6818,8 +6818,8 @@
       "region": "울산광역시",
       "kind": "백화점",
       "collector": "현대백화점·현대아울렛",
-      "status": "official-feed-monitored",
-      "popupCount": 0
+      "status": "verified-popup-found",
+      "popupCount": 3
     },
     {
       "venueId": "localdata:3690000:2006369006007500002",
@@ -7304,7 +7304,7 @@
       "region": "인천광역시",
       "kind": "복합쇼핑몰",
       "collector": "스타필드·스타필드시티",
-      "status": "adapter-needed",
+      "status": "official-feed-monitored",
       "popupCount": 0
     },
     {
@@ -9177,7 +9177,7 @@
       "kind": "백화점",
       "collector": "현대백화점·현대아울렛",
       "status": "verified-popup-found",
-      "popupCount": 2
+      "popupCount": 8
     },
     {
       "venueId": "localdata:4390000:2020439021407500001",
