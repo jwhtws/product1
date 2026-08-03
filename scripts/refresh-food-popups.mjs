@@ -647,6 +647,26 @@ async function collectGalleria() {
       sourceGrade: 'official', firstSeenAt: today, lastSeenAt: today
     }
   );
+  const gwanggyoSchedules = [
+    ['c85958:yoodongbu', '유동부치아바타', '2026-07-31', '2026-08-13', 'c85958', 'G0731_5.jpg'],
+    ['c85958:longmadame', '롱마담 에그타르트', '2026-07-31', '2026-08-13', 'c85958', 'G0731_5.jpg'],
+    ['c85958:kickstaco', '킥스타코', '2026-07-31', '2026-08-06', 'c85958', 'G0731_5.jpg'],
+    ['c85958:takonottaco', '타코낫타코', '2026-07-31', '2026-08-13', 'c85958', 'G0731_5.jpg'],
+    ['c85957:ageujak', '떼구르르 베이커리(아그작케이크)', '2026-07-31', '2026-08-20', 'c85957', 'G0731_4.jpg'],
+    ['c85957:tdbd', '더데일리브레드(TDBD)', '2026-07-31', '2026-10-31', 'c85957', 'G0731_4.jpg'],
+    ['c85957:oneulmojji', '오늘모찌', '2026-07-17', '2026-10-31', 'c85957', 'G0731_4.jpg'],
+    ['c85957:hanwoomyeongga', '한우명가', '2026-07-10', '2026-08-06', 'c85957', 'G0731_4.jpg']
+  ];
+  for (const [key, name, startDate, endDate, cardId, imageName] of gwanggyoSchedules) {
+    const sourceUrl = `https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/${cardId}?qCategory=PRODUCT_EVENT`;
+    const imageUrl = `https://cdndept.galleria.co.kr//image/dept/edm-content/2026/${imageName}`;
+    rows.push({
+      id: `galleria:gwanggyo:${key}`, name, venue: '갤러리아 광교', venueType: '백화점',
+      address: '경기도 수원시 영통구 광교중앙로 124 · 갤러리아 광교 B1F GOURMET494',
+      startDate, endDate, imageUrl, officialImageUrls: [imageUrl], sourceName: '갤러리아 공식 쇼핑뉴스',
+      sourceUrl, sourceGrade: 'official', firstSeenAt: today, lastSeenAt: today
+    });
+  }
   for (const [slug, venue] of galleriaStores) {
     try {
       const listUrl = `https://dept.galleria.co.kr/store-info/${slug}/promotion/shopping-news?qCategory=NEWOPENING_POPUP`;
