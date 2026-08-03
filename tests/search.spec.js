@@ -124,6 +124,16 @@ test('종료일이 지난 팝업은 카드와 상세 화면에 종료로 표시�
   await expect(page.locator('#result-summary')).toContainText(/종료\s+\d+/u);
 });
 
+test('종료된 팝업은 모든 정렬에서 영업 중 팝업 뒤로 배치한다', async ({ page }) => {
+  await page.goto(process.env.TEST_BASE_URL || 'http://127.0.0.1:8765/', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('#search-button')).toBeEnabled({ timeout: 15000 });
+  for (const sort of ['food', 'status', 'ending', 'newest', 'start']) {
+    await page.locator('#popup-sort-filter').selectOption(sort);
+    await expect(page.locator('.popup-card')).toHaveCount(24);
+    await expect(page.locator('.popup-card.popup-ended')).toHaveCount(0);
+  }
+});
+
 test('공식 상세 페이지의 대표메뉴와 가격을 표시한다', async ({ page }) => {
   await page.goto(process.env.TEST_BASE_URL || 'http://127.0.0.1:8765/', { waitUntil: 'domcontentloaded' });
   const popup = page.locator('.popup-card').filter({ hasText: '3층 다락빵' }).first();

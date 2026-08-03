@@ -461,6 +461,12 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
       (!regionFilter || searchKey(popup.region || popup.address || '').includes(regionFilter)) &&
       (!venueFilter || (popup.venueType || '') === venueFilter)
     ).sort((left, right) => {
+      // Closed events always belong after active/upcoming events, regardless
+      // of the user's secondary sort choice.
+      const leftStatus = popupStatus(left).key;
+      const rightStatus = popupStatus(right).key;
+      const endedDiff = Number(leftStatus === 'ended') - Number(rightStatus === 'ended');
+      if (endedDiff) return endedDiff;
       if (sort === 'food') {
         const typeOrder = { bakery: 0, drink: 1, tteok: 2, snack: 3, meal: 4, grocery: 5 };
         return (typeOrder[popupFoodType(left)] - typeOrder[popupFoodType(right)]) || left.name.localeCompare(right.name, 'ko');
@@ -468,9 +474,9 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
       if (sort === 'ending') return (left.endDate || '9999-12-31').localeCompare(right.endDate || '9999-12-31');
       if (sort === 'newest') return String(right.lastVerifiedAt || right.lastSeenAt || '').localeCompare(String(left.lastVerifiedAt || left.lastSeenAt || '')) || right.startDate.localeCompare(left.startDate);
       if (sort === 'start') return left.startDate.localeCompare(right.startDate);
-      const statusDiff = order[popupStatus(left).key] - order[popupStatus(right).key];
+      const statusDiff = order[leftStatus] - order[rightStatus];
       if (statusDiff) return statusDiff;
-      return popupStatus(left).key === 'ended'
+      return leftStatus === 'ended'
         ? (right.endDate || '').localeCompare(left.endDate || '')
         : left.startDate.localeCompare(right.startDate);
     });
