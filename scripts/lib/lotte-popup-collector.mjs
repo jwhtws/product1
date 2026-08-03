@@ -72,6 +72,13 @@ function matchingNewsId(html, name, normalizedText, decodeHtml) {
   return matches.length === 1 ? matches[0][0] : '';
 }
 
+function searchTerms(name, clean) {
+  const full = clean(name);
+  const brand = clean(full.split(/[\s·&/+()[\]-]+/u)[0]);
+  const compact = clean(full.replace(/[·&/+()[\]-]/gu, ' '));
+  return [...new Set([full, brand, compact].filter(term => term.length >= 2))];
+}
+
 export async function collectLottePopups({ rows, previous, today, fetchResilient, clean, decodeHtml, uniqueMenus, normalizedText, fast = false }) {
   const requestSeconds = fast ? 5 : 12;
   const fetchLotte = url => fetchResilient(url, { attempts: 1, timeoutMs: requestSeconds * 1_000, curlMaxTime: requestSeconds });
@@ -80,6 +87,7 @@ export async function collectLottePopups({ rows, previous, today, fetchResilient
   let verified = 0;
   let detailMatched = 0;
   let imageMatched = 0;
+  let simplifiedSearchMatched = 0;
   let cursor = 0;
   async function worker() {
    while (cursor < rows.length) {
@@ -99,10 +107,27 @@ export async function collectLottePopups({ rows, previous, today, fetchResilient
     try {
       const response = await fetchLotte(searchUrl);
       if (response.ok) {
-        const searchHtml = await response.text();
+        let searchHtml = await response.text();
         let detailHtml = /\/shpgnews\/shpgnewsDetail/iu.test(searchUrl) ? searchHtml : '';
         if (!detailHtml) {
-          const newsId = matchingNewsId(searchHtml, name, normalizedText, decodeHtml);
+          let newsId = matchingNewsId(searchHtml, name, normalizedText, decodeHtml);
+          if (!newsId && /\/search\/searchResult/iu.test(searchUrl)) {
+            for (const term of searchTerms(name, clean).slice(1)) {
+              try {
+                const fallbackUrl = new URL(searchUrl);
+                fallbackUrl.searchParams.set('searchTerm', term);
+                const fallbackResponse = await fetchLotte(fallbackUrl.href);
+                if (!fallbackResponse.ok) continue;
+                const fallbackHtml = await fallbackResponse.text();
+                newsId = matchingNewsId(fallbackHtml, term, normalizedText, decodeHtml);
+                if (newsId) {
+                  searchHtml = fallbackHtml;
+                  simplifiedSearchMatched += 1;
+                  break;
+                }
+              } catch {}
+            }
+          }
           if (newsId) {
             sourceUrl = `https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=${newsId}`;
             const detailResponse = await fetchLotte(sourceUrl);
@@ -141,6 +166,6 @@ export async function collectLottePopups({ rows, previous, today, fetchResilient
   }
   const concurrency = fast ? 16 : 8;
   await Promise.all(Array.from({ length: Math.min(concurrency, rows.length) }, () => worker()));
-  console.log(`롯데 전용 수집기: ${rows.length}건 · 공식 응답 ${verified}건 · 상세 연결 ${detailMatched}건 · 행사 ID 일치 사진 ${imageMatched}건 · 사진 미제공 ${rows.length - imageMatched}건`);
+  console.log(`롯데 전용 수집기: ${rows.length}건 · 공식 응답 ${verified}건 · 축약 검색 적중 ${simplifiedSearchMatched}건 · 상세 연결 ${detailMatched}건 · 공식 사진 ${imageMatched}건 · 사진 미제공 ${rows.length - imageMatched}건`);
   return results;
 }
