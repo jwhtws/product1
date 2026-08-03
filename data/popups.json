@@ -1,6 +1,66 @@
 {
-  "updatedAt": "2026-08-03T02:15:39.970Z",
+  "updatedAt": "2026-08-03T02:28:03.610Z",
   "sources": [
+    {
+      "name": "현대백화점·현대아울렛",
+      "status": "active",
+      "count": 20
+    },
+    {
+      "name": "신세계백화점",
+      "status": "active",
+      "count": 13
+    },
+    {
+      "name": "스타필드·스타필드시티",
+      "status": "no-results",
+      "count": 0
+    },
+    {
+      "name": "갤러리아",
+      "status": "active",
+      "count": 1
+    },
+    {
+      "name": "AK플라자",
+      "status": "no-results",
+      "count": 0
+    },
+    {
+      "name": "NC·뉴코아",
+      "status": "no-results",
+      "count": 0
+    },
+    {
+      "name": "아이파크몰",
+      "status": "no-results",
+      "count": 0
+    },
+    {
+      "name": "이마트·트레이더스",
+      "status": "no-results",
+      "count": 0
+    },
+    {
+      "name": "롯데마트",
+      "status": "no-results",
+      "count": 0
+    },
+    {
+      "name": "홈플러스",
+      "status": "no-results",
+      "count": 0
+    },
+    {
+      "name": "공식 쇼핑몰·마트 사이트맵",
+      "status": "no-results",
+      "count": 0
+    },
+    {
+      "name": "롯데 공식 블로그",
+      "status": "no-results",
+      "count": 0
+    },
     {
       "name": "롯데백화점·롯데아울렛·롯데몰",
       "status": "active",
@@ -8,8 +68,8 @@
     }
   ],
   "stats": {
-    "rawCollected": 30,
-    "parsed": 30,
+    "rawCollected": 64,
+    "parsed": 64,
     "beforeDedup": 64,
     "duplicateRemoved": 0,
     "final": 64,
@@ -19,13 +79,23 @@
       "ended": 10
     },
     "failedSources": [],
-    "emptySources": []
+    "emptySources": [
+      "스타필드·스타필드시티",
+      "AK플라자",
+      "NC·뉴코아",
+      "아이파크몰",
+      "이마트·트레이더스",
+      "롯데마트",
+      "홈플러스",
+      "공식 쇼핑몰·마트 사이트맵",
+      "롯데 공식 블로그"
+    ]
   },
   "coverage": {
     "nationwideVenueTotal": 1029,
     "verifiedPopupVenueCount": 19,
-    "officialFeedMonitoredCount": 47,
-    "collectorNeededCount": 982,
+    "officialFeedMonitoredCount": 81,
+    "collectorNeededCount": 948,
     "disclaimer": "시설 원장은 전국 탐색 범위이며, 화면에는 공식 출처에서 시작일과 종료일을 확인한 푸드팝업만 표시합니다."
   },
   "popups": [
@@ -82,6 +152,9 @@
           "name": "로티 소금빵 세트(3개입)",
           "price": "10,000원"
         }
+      ],
+      "officialImageUrls": [
+        "https://img.ehyundai.com/files/derivedImage/fileValue/202602/05/4c8a3b46-4002-44ab-b684-c0512784fa21_02.jpg"
       ]
     },
     {
@@ -146,7 +219,10 @@
       ],
       "menuSource": "official-event-text",
       "lastVerifiedAt": "2026-08-03",
-      "status": "active"
+      "status": "active",
+      "officialImageUrls": [
+        "https://www.shinsegae.com/cms12/SC00012/info/shopping/brndintg/__icsFiles/afieldfile/2026/07/30/0729appha7.jpg"
+      ]
     },
     {
       "id": "hyundai:E4602607494433",
@@ -231,6 +307,9 @@
           "name": "바닐라마들렌",
           "price": "3,000원"
         }
+      ],
+      "officialImageUrls": [
+        "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/29/ab4c9e01-a0f3-48e9-af42-39d26cee34fe.jpg"
       ]
     },
     {
@@ -276,6 +355,9 @@
           "name": "어썸팝콘 말차",
           "price": "7,500원"
         }
+      ],
+      "officialImageUrls": [
+        "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202505/20/2f3e6c9e-b2c1-4e28-a2df-9a10651d1c6f.jpg"
       ]
     },
     {
@@ -299,7 +381,10 @@
       "status": "active",
       "menuItems": [],
       "menuSource": "official-event-text",
-      "menus": []
+      "menus": [],
+      "officialImageUrls": [
+        "https://img.ehyundai.com/files/derivedImage/fileValue/202607/29/7d85a36b-9bea-4bd1-b4e7-39dc53f939d5_02.png"
+      ]
     },
     {
       "id": "hyundai:E7202607493841",
@@ -344,6 +429,9 @@
           "name": "양즈깐루",
           "price": "5,900원"
         }
+      ],
+      "officialImageUrls": [
+        "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/27/84be0425-adc8-4876-8b00-bcb697faba64.jpg"
       ]
     },
     {
@@ -389,6 +477,9 @@
           "name": "낙지롱칩 (매운맛/1봉)",
           "price": "6,000원"
         }
+      ],
+      "officialImageUrls": [
+        "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202405/29/364a4c2e-5b61-484b-9793-10c6dd8d8a90.jpg"
       ]
     },
     {
@@ -429,6 +520,9 @@
           "name": "흑미 막걸리 술빵",
           "price": "9,900원"
         }
+      ],
+      "officialImageUrls": [
+        "https://img.ehyundai.com/files/derivedImage/fileValue/202607/28/5ce222b8-bddd-499c-a2ca-af85fe9becfb_02.JPG"
       ]
     },
     {
@@ -474,6 +568,9 @@
           "name": "한우대창떡볶이",
           "price": "9,900원"
         }
+      ],
+      "officialImageUrls": [
+        "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202605/07/af102d29-cd2e-4566-a7bf-d44b269adf5b.JPG"
       ]
     },
     {
@@ -575,6 +672,9 @@
           "name": "생초콜릿 모찌",
           "price": "4,500원"
         }
+      ],
+      "officialImageUrls": [
+        "https://img.ehyundai.com/files/derivedImage/fileValue/202410/01/a53f6ce9-132f-438e-82e3-ff2b603b871b_02.jpg"
       ]
     },
     {
@@ -620,6 +720,9 @@
           "name": "새우 고로케",
           "price": "4,500원"
         }
+      ],
+      "officialImageUrls": [
+        "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202606/03/71e8a103-689a-47a2-bf53-b3334686ffe1.jpg"
       ]
     },
     {
@@ -665,6 +768,9 @@
           "name": "초코퐁당 초코초코 롤케이크",
           "price": "28,000원"
         }
+      ],
+      "officialImageUrls": [
+        "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202512/16/fcd2a73e-6512-4051-a531-b991d1b40176.jpg"
       ]
     },
     {
@@ -750,6 +856,9 @@
           "name": "참모싯잎 찹쌀떡",
           "price": "10,000원"
         }
+      ],
+      "officialImageUrls": [
+        "https://img.ehyundai.com/files/derivedImage/fileValue/202509/16/73533c6d-af3e-4d70-90a6-6aca89f7f0c2_02.jpg"
       ]
     },
     {
@@ -795,6 +904,9 @@
           "name": "옥수수 치즈",
           "price": "4,000원"
         }
+      ],
+      "officialImageUrls": [
+        "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202606/23/5f6f6349-5f91-42df-9b02-9ad233b5bcea.jpg"
       ]
     },
     {
@@ -898,6 +1010,9 @@
           "name": "메이플 버터",
           "price": "1,500원"
         }
+      ],
+      "officialImageUrls": [
+        "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/27/5efe933f-942a-4dc1-85f1-3b71f0a5ffbe.jpg"
       ]
     },
     {
@@ -933,6 +1048,9 @@
           "name": "꼬막 비빔밥",
           "price": "37,000원"
         }
+      ],
+      "officialImageUrls": [
+        "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202403/27/8e1238df-c06c-49e6-90de-4fee94b19b49.jpg"
       ]
     },
     {
@@ -1033,6 +1151,9 @@
           "name": "모카초콜릿 티그레",
           "price": "4,000원"
         }
+      ],
+      "officialImageUrls": [
+        "https://img.ehyundai.com/files/derivedImage/fileValue/202601/12/02242f51-eaf4-4562-81ba-a7c54658efb0_02.jpg"
       ]
     },
     {
@@ -1068,6 +1189,9 @@
           "name": "전통쌀술빵(1봉)",
           "price": "12,000원"
         }
+      ],
+      "officialImageUrls": [
+        "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/29/f6df6add-f716-4e76-a12a-21682eb3bcb8.png"
       ]
     },
     {
@@ -1108,6 +1232,9 @@
           "name": "토실이 쌀 핫도그",
           "price": "4,000원"
         }
+      ],
+      "officialImageUrls": [
+        "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202507/17/61b47e0c-4b4b-49b8-a806-57bcc7c0c866.jpg"
       ]
     },
     {
@@ -1138,6 +1265,9 @@
           "name": "G.LAB",
           "price": ""
         }
+      ],
+      "officialImageUrls": [
+        "https://cdndept.galleria.co.kr//image/dept/edm-content/2026/G0731_5s.jpg"
       ]
     },
     {
@@ -1178,6 +1308,9 @@
           "name": "두바이 필링 샌드쿠키 (개)",
           "price": "7,900원"
         }
+      ],
+      "officialImageUrls": [
+        "https://www.shinsegae.com/cms12/SC00003/info/shopping/brndsingle/__icsFiles/afieldfile/2026/07/30/9OhjECYHAYbA.jpg"
       ]
     },
     {
@@ -1228,6 +1361,9 @@
           "name": "선물세트",
           "price": "40,000원"
         }
+      ],
+      "officialImageUrls": [
+        "https://www.shinsegae.com/cms12/SC00010/info/shopping/brndsingle/__icsFiles/afieldfile/2026/07/28/Y2XYViknuGR1.jpg"
       ]
     },
     {
@@ -1263,6 +1399,9 @@
           "name": "모찌 (딸기 / 바스크 치즈케이크) 각",
           "price": "4,500원"
         }
+      ],
+      "officialImageUrls": [
+        "https://www.shinsegae.com/cms12/SC00003/info/shopping/brndsingle/__icsFiles/afieldfile/2026/07/29/07OMpbg6EAc5.jpg"
       ]
     },
     {
@@ -1298,7 +1437,10 @@
         "생크림번 4종 각"
       ],
       "lastVerifiedAt": "2026-08-03",
-      "status": "active"
+      "status": "active",
+      "officialImageUrls": [
+        "https://www.shinsegae.com/cms12/SC00003/info/shopping/brndsingle/__icsFiles/afieldfile/2026/07/30/1785221242320-20260730083324-20260730083326_1.png"
+      ]
     },
     {
       "id": "shinsegae-shopping:SC00010:8568467",
@@ -1343,6 +1485,9 @@
           "name": "밀크 에그타르트",
           "price": "4,500원"
         }
+      ],
+      "officialImageUrls": [
+        "https://www.shinsegae.com/cms12/SC00010/info/shopping/brndsingle/__icsFiles/afieldfile/2026/07/28/FsKSmNqHiPHt.jpg"
       ]
     },
     {
@@ -1373,6 +1518,9 @@
           "name": "대표메뉴 및 가격 : 직화튤립/직화무뼈 닭발 각",
           "price": "13,000원"
         }
+      ],
+      "officialImageUrls": [
+        "https://www.shinsegae.com/cms12/SC00010/info/shopping/brndsingle/__icsFiles/afieldfile/2026/07/07/FVwlGtRaGbVO.jpg"
       ]
     },
     {
@@ -1403,7 +1551,10 @@
         "요거트 산도 2종 각"
       ],
       "lastVerifiedAt": "2026-08-03",
-      "status": "active"
+      "status": "active",
+      "officialImageUrls": [
+        "https://www.shinsegae.com/cms12/SC00003/info/shopping/brndsingle/__icsFiles/afieldfile/2026/07/29/KakaoTalk_20260728_103700658_03-20260729075945-20260729075947_1.png"
+      ]
     },
     {
       "id": "shinsegae-shopping:SC00003:8576849",
@@ -1438,6 +1589,9 @@
           "name": "스트로베리 생식빵",
           "price": "9,000원"
         }
+      ],
+      "officialImageUrls": [
+        "https://www.shinsegae.com/cms12/SC00003/info/shopping/brndsingle/__icsFiles/afieldfile/2026/07/29/W8axzSnpSQ2R.jpg"
       ]
     },
     {
@@ -1570,6 +1724,9 @@
           "name": "빵고미",
           "price": "32,500원"
         }
+      ],
+      "officialImageUrls": [
+        "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/21/2174e7a9-d619-4620-9d83-14280f60eee7.png"
       ]
     },
     {
@@ -1655,6 +1812,9 @@
           "name": "옐롱 애플로즈힙 참외잼 / (280g)",
           "price": "12,000원"
         }
+      ],
+      "officialImageUrls": [
+        "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/24/1eece98e-a959-43f6-9aaf-d1b87d84587c.jpg"
       ]
     },
     {
@@ -2396,6 +2556,9 @@
           "name": "대표메뉴 및 가격 : 아그작케이크 애플망고/복숭아 각",
           "price": "13,500원"
         }
+      ],
+      "officialImageUrls": [
+        "https://www.shinsegae.com/cms12/SC00010/info/shopping/brndsingle/__icsFiles/afieldfile/2026/07/28/J6rsTxPCb1E6.jpg"
       ]
     },
     {
@@ -2456,6 +2619,9 @@
           "name": "과일산도 (개)",
           "price": "8,200원"
         }
+      ],
+      "officialImageUrls": [
+        "https://www.shinsegae.com/cms12/SC00003/info/shopping/brndsingle/__icsFiles/afieldfile/2026/07/18/SIOSAKU33-20260718055548-20260718055550_1.png"
       ]
     },
     {
@@ -2521,6 +2687,9 @@
           "name": "초코퐁당 초코초코 롤케이크",
           "price": "28,000원"
         }
+      ],
+      "officialImageUrls": [
+        "https://www.shinsegae.com/cms12/SC00010/info/shopping/brndsingle/__icsFiles/afieldfile/2026/07/03/055A0041-20260703123934-20260703123935_1.jpg"
       ]
     },
     {
@@ -3161,7 +3330,10 @@
       ],
       "menuSource": "official-event-text",
       "lastVerifiedAt": "2026-08-03",
-      "status": "active"
+      "status": "active",
+      "officialImageUrls": [
+        "https://www.shinsegae.com/cms12/SC00010/info/shopping/brndintg/__icsFiles/afieldfile/2026/06/25/260626_po_ui_.jpg"
+      ]
     },
     {
       "id": "lotte:nowon:rollsrolls",
