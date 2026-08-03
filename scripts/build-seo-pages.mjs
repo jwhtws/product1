@@ -15,6 +15,28 @@ function layout({ title, description, canonical, body, schema, image }) {
   return `<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escapeHtml(title)}</title><meta name="description" content="${escapeHtml(description)}"><link rel="canonical" href="${canonical}"><meta property="og:type" content="article"><meta property="og:site_name" content="먹당"><meta property="og:title" content="${escapeHtml(title)}"><meta property="og:description" content="${escapeHtml(description)}"><meta property="og:url" content="${canonical}">${imageTag}<script type="application/ld+json">${JSON.stringify(schema).replace(/</g, '\\u003c')}</script><style>:root{font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",sans-serif;color:#171714;background:#f7f5ef}*{box-sizing:border-box}body{margin:0}header,main,footer{width:min(760px,calc(100% - 32px));margin:auto}header{padding:24px 0}header a{color:#171714;font-size:24px;font-weight:900;text-decoration:none}header a span{color:#f05a2a}main{padding:28px;background:#fff;border:1px solid #e7e4dc;border-radius:22px;box-shadow:0 18px 50px rgba(35,31,20,.08)}.eyebrow{color:#247a52;font-size:12px;font-weight:900}h1{margin:10px 0 16px;font-size:clamp(28px,6vw,42px);line-height:1.16;letter-spacing:-.06em}.lead{color:#706f69;line-height:1.7}.facts{display:grid;gap:12px;margin:26px 0;padding:20px;border-radius:15px;background:#f7f5ef}.facts div{display:grid;gap:4px}.facts span{color:#706f69;font-size:11px;font-weight:800}.facts strong{font-size:16px;line-height:1.5}.menu{padding-left:20px;line-height:1.8}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px}.actions a{padding:11px 14px;border-radius:10px;background:#171714;color:#fff;font-size:13px;font-weight:800;text-decoration:none}.actions a.secondary{background:#edf7f1;color:#175b3c}footer{padding:28px 0;color:#706f69;font-size:11px}@media(max-width:560px){main{padding:22px 18px}}</style></head><body><header><a href="/"><span>먹</span>당</a></header><main>${body}</main><footer>공식 일정과 공공 인허가 정보를 바탕으로 제공하며 방문 전 공식 정보를 확인해 주세요.</footer></body></html>`;
 }
 
+const seoulToday = new Intl.DateTimeFormat('en-CA', {
+  timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit'
+}).format(new Date());
+const dateAfter = (date, days) => {
+  const value = new Date(`${date}T00:00:00+09:00`);
+  value.setUTCDate(value.getUTCDate() + days);
+  return value.toISOString().slice(0, 10);
+};
+const weekEnd = dateAfter(seoulToday, 6);
+const regionRoutes = new Map([
+  ['서울특별시', ['seoul', '서울']], ['경기도', ['gyeonggi', '경기']],
+  ['인천광역시', ['incheon', '인천']], ['부산광역시', ['busan', '부산']],
+  ['대구광역시', ['daegu', '대구']], ['대전광역시', ['daejeon', '대전']],
+  ['울산광역시', ['ulsan', '울산']], ['충청북도', ['chungbuk', '충북']]
+]);
+const retailerRoutes = [
+  ['lotte', '롯데', popup => /롯데/u.test(popup.venue)],
+  ['hyundai', '현대', popup => /현대/u.test(popup.venue)],
+  ['shinsegae', '신세계', popup => /신세계/u.test(popup.venue)],
+  ['galleria', '갤러리아', popup => /갤러리아/u.test(popup.venue)]
+];
+
 function writePage(route, html) {
   const directory = path.join('.', route);
   fs.mkdirSync(directory, { recursive: true });
@@ -34,7 +56,7 @@ for (const popup of popupData.popups) {
   const menuHtml = menus.length ? `<h2>대표 메뉴</h2><ul class="menu">${menus.map(item => `<li>${escapeHtml(item.name || item)}${item.price ? ` · <strong>${escapeHtml(item.price)}</strong>` : ''}</li>`).join('')}</ul>` : '';
   const body = `<span class="eyebrow">${escapeHtml(popup.venueType || '쇼핑시설')} 푸드 팝업</span><h1>${escapeHtml(popup.name)}</h1><p class="lead"><strong>${escapeHtml(popup.venue)}</strong>에서 진행되는 푸드 팝업입니다. 일정과 위치를 확인하고 방문하세요.</p><section class="facts"><div><span>백화점·지점</span><strong>${escapeHtml(popup.venue)}</strong></div><div><span>주소</span><strong>${escapeHtml(popup.address || popup.venue)}</strong></div><div><span>운영 기간</span><strong>${escapeHtml(period)}</strong></div></section>${menuHtml}<div class="actions"><a href="${escapeHtml(popup.sourceUrl)}" rel="noopener noreferrer">공식 정보 확인</a><a class="secondary" href="/">다른 푸드 팝업 보기</a></div>`;
   writePage(route, layout({ title: `${popup.name} | ${popup.venue} 푸드 팝업 일정`, description, canonical, body, schema, image: popup.imageUrl }));
-  popupLinks.push({ route, title: `${popup.name} · ${popup.venue}`, lastmod: popup.lastVerifiedAt || popupData.updatedAt?.slice(0, 10) });
+  popupLinks.push({ route, title: `${popup.name} · ${popup.venue}`, lastmod: popup.lastVerifiedAt || popupData.updatedAt?.slice(0, 10), popup });
 }
 
 const restaurantLinks = [];
@@ -48,11 +70,32 @@ for (const restaurant of restaurants) {
   restaurantLinks.push({ route, title: `${restaurant.name} · ${restaurant.address}` });
 }
 
-const listing = (title, description, links) => layout({ title, description, canonical: `${origin}/${links === popupLinks ? 'food-popups' : 'restaurant-reviews'}/`, schema: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: title, url: `${origin}/${links === popupLinks ? 'food-popups' : 'restaurant-reviews'}/` }, body: `<span class="eyebrow">먹당 검색 가이드</span><h1>${title}</h1><p class="lead">${description}</p><ul class="menu">${links.map(item => `<li><a href="${item.route}">${escapeHtml(item.title)}</a></li>`).join('')}</ul>` });
-fs.writeFileSync('food-popups/index.html', listing('전국 푸드 팝업 일정', '백화점과 쇼핑몰에서 열리는 최신 푸드 팝업의 기간과 지점을 확인하세요.', popupLinks));
-fs.writeFileSync('restaurant-reviews/index.html', listing('식당 리뷰와 주소', '먹당에서 많이 찾는 식당의 위치와 방문자 리뷰 정보를 확인하세요.', restaurantLinks));
+const listing = ({ title, description, links, route, intro = '', backHref = '/food-popups/', backLabel = '전국 푸드 팝업 보기' }) => layout({
+  title, description, canonical: `${origin}${route}`,
+  schema: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: title, description, url: `${origin}${route}` },
+  body: `<span class="eyebrow">먹당 검색 가이드</span><h1>${escapeHtml(title)}</h1><p class="lead">${escapeHtml(description)}</p>${intro ? `<p class="lead">${escapeHtml(intro)}</p>` : ''}<ul class="menu">${links.map(item => `<li><a href="${item.route}">${escapeHtml(item.title)}</a></li>`).join('')}</ul><div class="actions"><a class="secondary" href="${backHref}">${escapeHtml(backLabel)}</a></div>`
+});
+fs.writeFileSync('food-popups/index.html', listing({ title: '전국 푸드 팝업 일정 | 먹당', description: '백화점과 쇼핑몰에서 열리는 최신 푸드 팝업의 기간과 지점을 확인하세요.', links: popupLinks, route: '/food-popups/' }));
+fs.writeFileSync('restaurant-reviews/index.html', listing({ title: '전국 맛집 리뷰와 주소 | 먹당', description: '먹당에서 많이 찾는 전국 맛집의 위치와 방문자 리뷰 정보를 확인하세요.', links: restaurantLinks, route: '/restaurant-reviews/', backHref: '/', backLabel: '먹당에서 맛집 찾기' }));
 
-const urls = [{ route: '/', lastmod: popupData.updatedAt?.slice(0, 10) }, { route: '/food-popups/', lastmod: popupData.updatedAt?.slice(0, 10) }, { route: '/restaurant-reviews/' }, ...popupLinks, ...restaurantLinks];
+const landingLinks = [];
+const createLanding = (route, title, description, links, intro) => {
+  if (!links.length) return;
+  writePage(route, listing({ title, description, links, route: `/${route}/`, intro }));
+  landingLinks.push({ route: `/${route}/`, lastmod: popupData.updatedAt?.slice(0, 10) });
+};
+const thisWeek = popupLinks.filter(({ popup }) => popup.startDate <= weekEnd && (!popup.endDate || popup.endDate >= seoulToday));
+createLanding('food-popups/this-week', '이번 주 푸드 팝업 일정 | 먹당', `오늘부터 7일 안에 방문할 수 있는 전국 푸드 팝업 ${thisWeek.length}개의 장소와 기간을 확인하세요.`, thisWeek, `기준일은 ${seoulToday}이며 종료일과 공식 일정을 매일 갱신합니다.`);
+for (const [region, [routeName, label]] of regionRoutes) {
+  const links = popupLinks.filter(({ popup }) => popup.region === region && (!popup.endDate || popup.endDate >= seoulToday));
+  createLanding(`food-popups/${routeName}`, `${label} 푸드 팝업 일정 | 먹당`, `${label} 백화점과 쇼핑몰에서 진행 중이거나 곧 열리는 푸드 팝업 ${links.length}개의 기간과 장소를 확인하세요.`, links, '공식 행사 정보를 기준으로 운영 기간, 지점과 대표 메뉴를 정리했습니다.');
+}
+for (const [routeName, label, matches] of retailerRoutes) {
+  const links = popupLinks.filter(({ popup }) => matches(popup) && (!popup.endDate || popup.endDate >= seoulToday));
+  createLanding(`food-popups/${routeName}`, `${label}백화점 푸드 팝업 일정 | 먹당`, `${label} 계열 백화점과 쇼핑몰에서 진행 중이거나 곧 열리는 푸드 팝업 ${links.length}개의 기간과 지점을 확인하세요.`, links, '각 행사 상세 페이지에서 주소, 운영 기간과 공식 출처를 확인할 수 있습니다.');
+}
+
+const urls = [{ route: '/', lastmod: popupData.updatedAt?.slice(0, 10) }, { route: '/food-popups/', lastmod: popupData.updatedAt?.slice(0, 10) }, { route: '/restaurant-reviews/' }, ...landingLinks, ...popupLinks, ...restaurantLinks];
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(item => `  <url><loc>${origin}${item.route}</loc>${item.lastmod ? `<lastmod>${item.lastmod}</lastmod>` : ''}</url>`).join('\n')}\n</urlset>\n`;
 fs.writeFileSync('sitemap.xml', sitemap);
 console.log(`SEO 페이지 ${popupLinks.length}개 팝업, ${restaurantLinks.length}개 식당 생성`);
