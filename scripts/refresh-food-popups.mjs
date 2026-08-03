@@ -823,6 +823,19 @@ function normalizePopup(row) {
   const menus = uniqueMenus(Array.isArray(row.menus) && row.menus.length
     ? row.menus
     : fallbackItems.map(name => ({ name, price: '' })));
+  // Every retailer's official representative image belongs in the same
+  // gallery contract. Retailer adapters may add more detail-page images, but
+  // no official source should be excluded merely because it is not Lotte.
+  let normalizedImageUrl = '';
+  try {
+    const rawImageUrl = String(row.imageUrl || '').trim();
+    const resolved = rawImageUrl ? new URL(rawImageUrl, row.sourceUrl).href : '';
+    if (/^https:\/\//iu.test(resolved)) normalizedImageUrl = resolved;
+  } catch {}
+  const officialImageUrls = [...new Set([
+    ...(Array.isArray(row.officialImageUrls) ? row.officialImageUrls : []),
+    normalizedImageUrl
+  ].map(value => String(value || '').trim()).filter(value => /^https:\/\//iu.test(value)))].slice(0, 12);
   const normalized = {
     ...row,
     name: clean(row.name),
@@ -835,7 +848,8 @@ function normalizePopup(row) {
     menuItems: menus.map(menu => menu.name),
     menuSource: row.menuSource || 'official-event-text',
     sourceUrl: normalizedUrl(row.sourceUrl),
-    imageUrl: row.imageUrl || null,
+    imageUrl: normalizedImageUrl || null,
+    ...(officialImageUrls.length ? { officialImageUrls } : {}),
     lastVerifiedAt: today,
     lastSeenAt: today
   };
