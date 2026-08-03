@@ -764,10 +764,19 @@ const allCollectors = [
 const retailerCollectorNames = new Map([
   ['hyundai', new Set(['현대백화점·현대아울렛'])],
   ['shinsegae', new Set(['신세계백화점'])],
-  ['lotte', new Set(['롯데백화점·롯데아울렛·롯데몰'])]
+  ['lotte', new Set(['롯데 공식 블로그', '롯데백화점·롯데아울렛·롯데몰'])],
+  ['starfield', new Set(['스타필드·스타필드시티'])],
+  ['galleria', new Set(['갤러리아'])],
+  ['akplaza', new Set(['AK플라자'])],
+  ['eland', new Set(['NC·뉴코아'])],
+  ['ipark', new Set(['아이파크몰'])],
+  ['emart', new Set(['이마트·트레이더스'])],
+  ['lottemart', new Set(['롯데마트'])],
+  ['homeplus', new Set(['홈플러스'])],
+  ['malls', new Set(['공식 쇼핑몰·마트 사이트맵'])]
 ]);
 if (retailerScope && !retailerCollectorNames.has(retailerScope)) {
-  throw new Error(`지원하지 않는 --retailer 값: ${retailerScope} (hyundai, shinsegae, lotte 중 선택)`);
+  throw new Error(`지원하지 않는 --retailer 값: ${retailerScope} (${[...retailerCollectorNames.keys()].join(', ')} 중 선택)`);
 }
 const scopedCollectorNames = retailerCollectorNames.get(retailerScope);
 const collectors = scopedCollectorNames
@@ -904,10 +913,22 @@ const collectedIds = new Set(collected.map(row => row.id));
 const refreshedIdRules = [
   ['현대백화점·현대아울렛', /^hyundai:/u],
   ['신세계백화점', /^shinsegae(?:-shopping)?:/u],
+  ['스타필드·스타필드시티', /^starfield:/u],
+  ['갤러리아', /^galleria:/u],
+  ['AK플라자', /^ak:/u],
   ['NC·뉴코아', /^eland:/u],
+  ['아이파크몰', /^ipark:/u],
+  ['이마트·트레이더스', /^(?:emart|traders):/u],
+  ['롯데마트', /^lottemart:/u],
+  ['홈플러스', /^homeplus:/u],
   ['공식 쇼핑몰·마트 사이트맵', /^sitemap:/u]
 ];
-const fulfilledCollectorNames = new Set(collectors.filter((_collector, index) => settled[index].status === 'fulfilled').map(([name]) => name));
+// A scoped repair returning zero rows is more likely a temporary parser/feed
+// issue than proof that every event disappeared. Preserve the last known rows
+// in that case; the full scheduled audit can retire genuinely removed cards.
+const fulfilledCollectorNames = new Set(collectors
+  .filter((_collector, index) => settled[index].status === 'fulfilled' && (!retailerScope || settled[index].value.length))
+  .map(([name]) => name));
 const retainedPrevious = previous.filter(row => !refreshedIdRules.some(([collectorName, pattern]) =>
   fulfilledCollectorNames.has(collectorName) && pattern.test(row.id) && !collectedIds.has(row.id)
 ));
