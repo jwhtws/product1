@@ -252,6 +252,35 @@ async function collectStarfield() {
       console.warn(`스타필드 ${venue} 수집 건너뜀: ${error.message}`);
     }
   }));
+  // Starfield Suwon publishes its rotating food popups in the official floor
+  // guide/Bites Place rather than the event API. Keep that official roster in
+  // the same collector so an empty event API does not hide the whole venue.
+  const suwonFoodPopups = [
+    ['albam-bread', '알밤알밤빵', '2026-06-05'],
+    ['gongju-tteok', '원조공주떡집', '2026-06-05'],
+    ['little-bite-more', '리틀바잇모어', '2026-06-09'],
+    ['seoul-bread-palette', '서울브레드팔레트', '2026-06-09'],
+    ['sorimsa', '소림사', '2026-06-09'],
+    ['oberkampf', '오베르캄프', '2026-06-09'],
+    ['jack-jack', '잭잭', '2026-06-09'],
+    ['jjonduek-square', '쫀득네모네', '2026-06-09'],
+    ['gimbap-boss', '김밥대장x원할머니(보쌈김밥)', '2026-06-09'],
+    ['tteokbokqueen', '떡볶퀸의 보물상자', '2026-06-09'],
+    ['myeonsangho-refine', '면상호X리파인', '2026-06-09'],
+    ['chicken-gangjeong-workshop', '박은영X닭강정공방', '2026-06-09'],
+    ['chef-hwang-guo', '황진선 셰프X구오', '2026-06-09'],
+    ['intelligentsia', '인텔리젠시아 커피', '2026-06-11'],
+    ['no-big-deal', '노빅딜', '2026-06-18']
+  ];
+  const suwonSourceUrl = 'https://www.starfield.co.kr/suwon/tenant/floorInfo';
+  for (const [key, name, startDate] of suwonFoodPopups) {
+    rows.push({
+      id: `starfield:suwon:bites-place:${key}`, name, venue: '스타필드 수원', venueType: '쇼핑몰',
+      address: '경기도 수원시 장안구 수성로 175 · 스타필드 수원', startDate, endDate: '', imageUrl: '',
+      sourceName: '스타필드 수원 공식 층별안내·바이츠 플레이스', sourceUrl: suwonSourceUrl,
+      sourceGrade: 'official', firstSeenAt: today, lastSeenAt: today
+    });
+  }
   return rows;
 }
 
@@ -614,6 +643,30 @@ async function collectGalleria() {
     sourceName: '갤러리아 쇼핑뉴스', sourceUrl: 'https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/c85945?qCategory=NEWOPENING_POPUP',
     sourceGrade: 'official', firstSeenAt: today, lastSeenAt: today
   });
+  const timeworldDessertSource = 'https://dept.galleria.co.kr/store-info/timeworld/promotion/shopping-news/c85834?qCategory=NEWOPENING_POPUP';
+  const timeworldDessertImage = 'https://cdndept.galleria.co.kr//image/dept/edm-content/2026/T0731_20.jpg';
+  rows.push(
+    {
+      id: 'galleria:timeworld:c85834:dessert-planet', name: '디저트플래닛', venue: '갤러리아 타임월드',
+      venueType: '백화점', address: '갤러리아 타임월드 B2F G-LAB', startDate: '2026-07-24', endDate: '2026-08-06',
+      imageUrl: timeworldDessertImage, officialImageUrls: [timeworldDessertImage],
+      menus: [
+        { name: '마블 글레이즈 크로넛', price: '4,000원' }, { name: '우유생크림 크로넛', price: '5,500원' },
+        { name: '오레오 크로넛', price: '6,000원' }, { name: '두바이 크로플', price: '7,500원' }
+      ], menuSource: 'official-detail', sourceName: '갤러리아 공식 쇼핑뉴스', sourceUrl: timeworldDessertSource,
+      sourceGrade: 'official', firstSeenAt: today, lastSeenAt: today
+    },
+    {
+      id: 'galleria:timeworld:c85834:beatzel', name: '바잇첼', venue: '갤러리아 타임월드',
+      venueType: '백화점', address: '갤러리아 타임월드 B2F', startDate: '2026-07-24', endDate: '2026-08-06',
+      imageUrl: timeworldDessertImage, officialImageUrls: [timeworldDessertImage],
+      menus: [
+        { name: '솔트 프레즐', price: '4,700원' }, { name: '크림치즈 프레즐', price: '5,800원' },
+        { name: '시그니처 토마콘 프레즐', price: '6,300원' }
+      ], menuSource: 'official-detail', sourceName: '갤러리아 공식 쇼핑뉴스', sourceUrl: timeworldDessertSource,
+      sourceGrade: 'official', firstSeenAt: today, lastSeenAt: today
+    }
+  );
   for (const [slug, venue] of galleriaStores) {
     try {
       const listUrl = `https://dept.galleria.co.kr/store-info/${slug}/promotion/shopping-news?qCategory=NEWOPENING_POPUP`;
