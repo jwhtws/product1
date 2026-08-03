@@ -6,6 +6,8 @@
     "test": "npx playwright test",
     "data:refresh-popups": "node scripts/refresh-food-popups.mjs",
     "data:refresh-lotte": "node scripts/refresh-food-popups.mjs --lotte-only",
+    "data:refresh-hyundai": "node scripts/refresh-food-popups.mjs --retailer=hyundai",
+    "data:refresh-shinsegae": "node scripts/refresh-food-popups.mjs --retailer=shinsegae",
     "data:refresh-popup-venues": "node scripts/refresh-popup-venues.mjs",
     "data:validate": "node scripts/validate-restaurant-data.mjs --report=data/restaurants/validation-report.json",
     "data:rebuild-search": "node scripts/build-search-index.mjs && node scripts/build-search-pages.mjs",

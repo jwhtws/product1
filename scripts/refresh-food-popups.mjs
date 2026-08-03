@@ -6,6 +6,8 @@ import { collectLottePopups } from './lib/lotte-popup-collector.mjs';
 
 const outputPath = process.argv.find(value => value.startsWith('--output='))?.slice(9) || 'data/popups.json';
 const lotteOnly = process.argv.includes('--lotte-only');
+const retailerScope = process.argv.find(value => value.startsWith('--retailer='))?.slice(11)
+  || (lotteOnly ? 'lotte' : '');
 const execFileAsync = promisify(execFile);
 const now = new Date();
 const today = new Intl.DateTimeFormat('en-CA', {
@@ -567,6 +569,15 @@ async function existingRows() {
   }
 }
 
+async function existingSources() {
+  try {
+    const data = JSON.parse(await readFile(outputPath, 'utf8'));
+    return Array.isArray(data.sources) ? data.sources : [];
+  } catch {
+    return [];
+  }
+}
+
 async function popupVenueRegistry() {
   try {
     const data = JSON.parse(await readFile('data/popup-venues.json', 'utf8'));
@@ -727,10 +738,11 @@ async function collectLotteOfficialBlog() {
 
 async function collectCuratedOfficial() {
   const rows = JSON.parse(await readFile('data/curated-popups.json', 'utf8'));
-  return collectLottePopups({ rows, previous, today, fetchResilient, clean, decodeHtml, uniqueMenus, normalizedText, fast: lotteOnly });
+  return collectLottePopups({ rows, previous, today, fetchResilient, clean, decodeHtml, uniqueMenus, normalizedText, fast: retailerScope === 'lotte' });
 }
 
 const previous = await existingRows();
+const previousSources = await existingSources();
 const venueRegistry = await popupVenueRegistry();
 const allCollectors = [
   ['현대백화점·현대아울렛', collectHyundai],
@@ -747,10 +759,19 @@ const allCollectors = [
   ['롯데 공식 블로그', collectLotteOfficialBlog],
   ['롯데백화점·롯데아울렛·롯데몰', collectCuratedOfficial]
 ];
-// Incident repair path: refresh the curated Lotte feed without waiting for
-// every national retailer adapter. Existing rows from other sources remain.
-const collectors = lotteOnly
-  ? allCollectors.filter(([name]) => name === '롯데백화점·롯데아울렛·롯데몰')
+// Incident repair path: refresh one retailer without waiting for every
+// national adapter. Existing rows from collectors outside the scope remain.
+const retailerCollectorNames = new Map([
+  ['hyundai', new Set(['현대백화점·현대아울렛'])],
+  ['shinsegae', new Set(['신세계백화점'])],
+  ['lotte', new Set(['롯데백화점·롯데아울렛·롯데몰'])]
+]);
+if (retailerScope && !retailerCollectorNames.has(retailerScope)) {
+  throw new Error(`지원하지 않는 --retailer 값: ${retailerScope} (hyundai, shinsegae, lotte 중 선택)`);
+}
+const scopedCollectorNames = retailerCollectorNames.get(retailerScope);
+const collectors = scopedCollectorNames
+  ? allCollectors.filter(([name]) => scopedCollectorNames.has(name))
   : allCollectors;
 const settled = await Promise.allSettled(collectors.map(([, collector]) => collector()));
 const collected = settled.flatMap(result => result.status === 'fulfilled' ? result.value : []);
@@ -764,6 +785,9 @@ const sources = collectors.map(([name], index) => ({
   count: settled[index].status === 'fulfilled' ? settled[index].value.length : 0,
   message: settled[index].status === 'rejected' ? String(settled[index].reason?.message || settled[index].reason) : undefined
 }));
+const outputSources = retailerScope
+  ? [...new Map([...previousSources, ...sources].map(source => [source.name, source])).values()]
+  : sources;
 const collectorErrors = sources.filter(source => source.status === 'error');
 if (collectorErrors.length) console.warn(`공식 수집기 ${collectorErrors.length}개 실패: ${collectorErrors.map(source => source.name).join(', ')} · 기존 데이터 보존`);
 
@@ -927,7 +951,7 @@ const collectorCoverageRules = [
   ['홈플러스', /홈플러스/u],
   ['타임스퀘어', /타임스퀘어/u]
 ];
-const activeCollectorNames = new Set(sources.filter(source => source.status === 'active').map(source => source.name));
+const activeCollectorNames = new Set(outputSources.filter(source => source.status === 'active').map(source => source.name));
 const venueCoverage = venueRegistry.map(venue => {
   const collector = collectorCoverageRules.find(([, pattern]) => pattern.test(venue.name))?.[0] || '';
   const matchedPopups = popups.filter(popup => {
@@ -960,19 +984,24 @@ const collectionStats = {
   duplicateRemoved: duplicateRemovedCount,
   final: popups.length,
   status: statusCounts,
+  photos: {
+    popupCount: popups.filter(row => row.officialImageUrls?.length).length,
+    imageCount: popups.reduce((sum, row) => sum + (row.officialImageUrls?.length || 0), 0),
+    missingCount: popups.filter(row => !row.officialImageUrls?.length).length
+  },
   failedSources: collectorErrors.map(source => source.name),
-  emptySources: sources.filter(source => source.status === 'no-results').map(source => source.name)
+  emptySources: outputSources.filter(source => source.status === 'no-results').map(source => source.name)
 };
 
 await mkdir(dirname(outputPath), { recursive: true });
 await writeFile(outputPath, `${JSON.stringify({
   updatedAt: new Date().toISOString(),
-  sources,
+  sources: outputSources,
   stats: collectionStats,
   coverage: coverageSummary,
   popups
 }, null, 2)}\n`);
-if (!lotteOnly) {
+if (!retailerScope) {
   await writeFile('data/popup-coverage.json', `${JSON.stringify({
     updatedAt: new Date().toISOString(),
     summary: coverageSummary,
@@ -981,5 +1010,6 @@ if (!lotteOnly) {
 }
 console.log(`원본 수집 ${rawCollectedCount}건 · 파싱 성공 ${collected.length}건 · ID 병합 ${beforeDedupCount}건 · 중복 제거 ${duplicateRemovedCount}건 · 최종 ${popups.length}건`);
 console.log(`상태 집계 active=${statusCounts.active} upcoming=${statusCounts.upcoming} ended=${statusCounts.ended}`);
+console.log(`공식 사진 팝업 ${collectionStats.photos.popupCount}/${popups.length}건 · 사진 ${collectionStats.photos.imageCount}장 · 미확보 ${collectionStats.photos.missingCount}건`);
 console.log(`전국 시설 ${venueCoverage.length}곳 · 공식 피드 감시 ${coverageSummary.officialFeedMonitoredCount}곳 · 수집기 추가 필요 ${coverageSummary.collectorNeededCount}곳`);
 for (const source of sources) console.log(`- ${source.name}: ${source.status} (${source.count}건)`);

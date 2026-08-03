@@ -84,6 +84,21 @@ for (const popup of popupData.popups) {
     console.error(`팝업은 공식 출처만 허용됩니다: ${popup.id}`);
     process.exitCode = 1;
   }
+  if (popup.imageUrl && !/^https:\/\//u.test(popup.imageUrl)) {
+    console.error(`팝업 대표 사진 URL이 올바르지 않습니다: ${popup.id}`);
+    process.exitCode = 1;
+  }
+  if (popup.officialImageUrls !== undefined) {
+    const photos = popup.officialImageUrls;
+    if (!Array.isArray(photos) || photos.length > 12 || photos.some(url => !/^https:\/\//u.test(url)) || new Set(photos).size !== photos.length) {
+      console.error(`팝업 공식 사진 목록이 올바르지 않습니다: ${popup.id}`);
+      process.exitCode = 1;
+    }
+    if (popup.imageUrl && !photos.includes(popup.imageUrl)) {
+      console.error(`팝업 대표 사진이 공식 사진 목록에서 누락됐습니다: ${popup.id}`);
+      process.exitCode = 1;
+    }
+  }
   if (popup.id.startsWith('lotte:') && /\/search\/searchResult/u.test(popup.sourceUrl) && lotteVenueCodes.has(popup.venue)) {
     const source = new URL(popup.sourceUrl);
     if (source.searchParams.get('cstrCd') !== lotteVenueCodes.get(popup.venue)) {
@@ -103,6 +118,16 @@ for (const popup of popupData.popups) {
     console.error(`롯데 행사명을 실제 메뉴로 저장할 수 없습니다: ${popup.id}`);
     process.exitCode = 1;
   }
+}
+
+const calculatedPhotoStats = {
+  popupCount: popupData.popups.filter(row => row.officialImageUrls?.length).length,
+  imageCount: popupData.popups.reduce((sum, row) => sum + (row.officialImageUrls?.length || 0), 0),
+  missingCount: popupData.popups.filter(row => !row.officialImageUrls?.length).length
+};
+if (JSON.stringify(popupData.stats?.photos) !== JSON.stringify(calculatedPhotoStats)) {
+  console.error('popups.json 공식 사진 집계가 실제 데이터와 일치하지 않습니다.');
+  process.exitCode = 1;
 }
 
 const popupVenues = JSON.parse(readFileSync('data/popup-venues.json', 'utf8'));

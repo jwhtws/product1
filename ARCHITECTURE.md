@@ -39,3 +39,12 @@
 ## 대용량 데이터
 
 원본 CSV는 배포하지 않는다. 배포에는 분할 JSON과 검색 인덱스만 포함한다. 데이터 갱신은 GitHub Actions에서 검증 후 커밋하며, 실패한 데이터는 배포하지 않는다.
+
+## 푸드 팝업 운영
+
+- 전체 정기 갱신: `npm run data:refresh-popups`
+- 장애 시 빠른 부분 갱신: `npm run data:refresh-lotte`, `npm run data:refresh-hyundai`, `npm run data:refresh-shinsegae`
+- 부분 갱신은 선택한 유통사의 행과 수집 상태만 교체하며 다른 유통사의 데이터와 메타정보를 보존한다.
+- 대표사진과 상세 음식 사진은 모두 `officialImageUrls` 계약으로 관리한다. URL 형식, 중복, 대표사진 포함 여부와 전체 사진 집계는 `npm run check`에서 검증한다.
+- GitHub Actions 수동 실행 시 `scope`로 유통사를 선택할 수 있다. 매일 예약 실행은 전국 시설 원장, 전체 공식 수집기, SEO 페이지, 데이터 검증 순서로 처리한다.
+- 배포 완료 판정은 Git 푸시가 아니라 `mukdang.com`에서 새 데이터와 캐시 버전을 확인한 시점으로 한다.
