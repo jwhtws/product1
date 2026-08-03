@@ -66,10 +66,12 @@ function matchingNewsId(html, name, normalizedText, decodeHtml) {
   const compactKey = key.slice(0, Math.min(8, key.length));
   const matches = [...String(html || '').matchAll(/SNM\d{10,}/gu)];
   for (const match of matches) {
-    const context = decodeHtml(html.slice(Math.max(0, match.index - 2600), match.index + 2600));
+    // Keep the context inside one result card. A wider window can mix the
+    // searched brand title with an adjacent card's news id.
+    const context = decodeHtml(html.slice(Math.max(0, match.index - 700), match.index + 700));
     if (compactKey && normalizedText(context).includes(compactKey)) return match[0];
   }
-  return matches.length === 1 ? matches[0][0] : '';
+  return '';
 }
 
 function searchTerms(name, clean) {
@@ -131,10 +133,23 @@ export async function collectLottePopups({ rows, previous, today, fetchResilient
           if (newsId) {
             sourceUrl = `https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=${newsId}`;
             const detailResponse = await fetchLotte(sourceUrl);
-            if (detailResponse.ok) detailHtml = await detailResponse.text();
+            if (detailResponse.ok) {
+              const candidateDetailHtml = await detailResponse.text();
+              const brand = searchTerms(name, clean)[1] || searchTerms(name, clean)[0];
+              if (brand && normalizedText(candidateDetailHtml).includes(normalizedText(brand))) {
+                detailHtml = candidateDetailHtml;
+              } else {
+                // Reject and erase an image retained from a previously
+                // mis-associated detail page (for example 밀빛 → 톰포드).
+                sourceUrl = searchUrl;
+                imageUrl = '';
+              }
+            }
           }
         }
-        const foundImage = officialImage(detailHtml || searchHtml, sourceUrl, decodeHtml);
+        // Search pages contain many unrelated cards. Only a validated,
+        // single-event detail page may contribute an image.
+        const foundImage = detailHtml ? officialImage(detailHtml, sourceUrl, decodeHtml) : '';
         if (detailHtml) {
           detailMatched += 1;
           // Prefer the image published by this single-event detail page. Lotte
