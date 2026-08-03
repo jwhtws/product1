@@ -96,6 +96,6 @@ for (const [routeName, label, matches] of retailerRoutes) {
 }
 
 const urls = [{ route: '/', lastmod: popupData.updatedAt?.slice(0, 10) }, { route: '/food-popups/', lastmod: popupData.updatedAt?.slice(0, 10) }, { route: '/restaurant-reviews/' }, ...landingLinks, ...popupLinks, ...restaurantLinks];
-const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(item => `  <url><loc>${origin}${item.route}</loc>${item.lastmod ? `<lastmod>${item.lastmod}</lastmod>` : ''}</url>`).join('\n')}\n</urlset>\n`;
+const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(item => `  <url><loc>${new URL(item.route, origin).href}</loc>${item.lastmod ? `<lastmod>${item.lastmod}</lastmod>` : ''}</url>`).join('\n')}\n</urlset>\n`;
 fs.writeFileSync('sitemap.xml', sitemap);
 console.log(`SEO 페이지 ${popupLinks.length}개 팝업, ${restaurantLinks.length}개 식당 생성`);

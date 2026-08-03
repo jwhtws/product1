@@ -62,6 +62,11 @@ if (!robots.includes('Sitemap: https://mukdang.com/sitemap.xml') || !sitemap.inc
   console.error('검색엔진 사이트맵 도메인 또는 푸드 팝업 URL이 올바르지 않습니다.');
   process.exitCode = 1;
 }
+const sitemapLocations = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(match => match[1]);
+if (!sitemapLocations.length || sitemapLocations.some(location => /[^\x00-\x7F]/u.test(location))) {
+  console.error('사이트맵 URL은 네이버 호환 퍼센트 인코딩 형식이어야 합니다.');
+  process.exitCode = 1;
+}
 if (!statSync('food-popups').isDirectory() || !statSync('restaurant-reviews').isDirectory()) {
   console.error('검색엔진 상세 페이지가 생성되지 않았습니다. npm run seo:build를 실행하세요.');
   process.exitCode = 1;
