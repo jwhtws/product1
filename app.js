@@ -448,6 +448,13 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     if (Array.isArray(popup.menus)) return popup.menus;
     return Array.isArray(popup.menuItems) ? popup.menuItems.map(name => ({ name, price: '' })) : [];
   }
+  function popupLocationLabel(popup) {
+    const region = popup.region || '';
+    const address = String(popup.address || '');
+    const district = address.match(/(?:특별시|광역시|특별자치시|특별자치도|도)\s+([가-힣]+(?:시|군|구))/u)?.[1] || '';
+    return [region, district].filter((value, index, values) => value && values.indexOf(value) === index).join(' ')
+      || region || '지역 확인 중';
+  }
   function popupRows() {
     const query = searchKey($('#search-input').value);
     const foodFilter = $('#popup-food-filter')?.value || '';
@@ -491,6 +498,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
         <div class="card-body">
           <div class="card-top"><span class="category">${escapeHtml(popup.venueType || '쇼핑시설')}</span><span class="popup-food-type">${escapeHtml(({ bakery: '베이커리·디저트', drink: '카페·음료', tteok: '떡', snack: '간식', meal: '식사·분식', grocery: '식품 행사' })[popupFoodType(popup)])}</span></div>
           <div class="card-identity"><h3><a class="seo-detail-link" href="${escapeHtml(popupSeoUrl(popup))}">${escapeHtml(popup.name)}</a></h3></div>
+          <div class="popup-region-badge">${escapeHtml(popupLocationLabel(popup))}</div>
           <p class="address popup-card-address"><strong>${escapeHtml(popup.venue)}</strong>${popup.address && popup.address !== popup.venue ? ` <span>· ${escapeHtml(popup.address)}</span>` : ''}</p>
           <div class="popup-period">${escapeHtml(popupPeriodLabel(popup))}</div>
         </div>
@@ -509,7 +517,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     const officialFoodPhotos = [...new Set([...(Array.isArray(popup.officialImageUrls) ? popup.officialImageUrls : []), popup.imageUrl].filter(Boolean))].slice(0, 12);
     const officialPhotoGallery = officialFoodPhotos.length ? `<section class="official-food-photos"><div><h3>공식 음식 사진</h3><small>공식 상세 페이지 제공</small></div><div class="official-food-photo-grid">${officialFoodPhotos.map((url, index) => `<a href="${escapeHtml(url)}" target="_blank" rel="noopener"><img src="${escapeHtml(url)}" alt="${escapeHtml(popup.name)} 공식 음식 사진 ${index + 1}" loading="lazy"></a>`).join('')}</div></section>` : '';
     $('#modal-content').innerHTML = `<div class="detail-cover popup-detail-cover${officialImageMissing ? ' popup-photo-missing' : ''}"${image}><span>${officialImageMissing ? '롯데 공식 사진 미공개' : status.label}</span></div>
-      <div class="detail-hero"><div class="detail-heading"><div><span class="category">${escapeHtml(popup.venueType || '쇼핑시설')}</span><h2 id="detail-title">${escapeHtml(popup.name)}</h2><p class="popup-detail-address"><strong>${escapeHtml(popup.venue)}</strong>${popup.address && popup.address !== popup.venue ? ` <span>· ${escapeHtml(popup.address)}</span>` : ''}</p></div></div>
+      <div class="detail-hero"><div class="detail-heading"><div><span class="category">${escapeHtml(popup.venueType || '쇼핑시설')}</span><h2 id="detail-title">${escapeHtml(popup.name)}</h2><div class="popup-region-badge popup-detail-region">${escapeHtml(popupLocationLabel(popup))}</div><p class="popup-detail-address"><strong>${escapeHtml(popup.venue)}</strong>${popup.address && popup.address !== popup.venue ? ` <span>· ${escapeHtml(popup.address)}</span>` : ''}</p></div></div>
       <div class="popup-detail-status popup-${status.key}"><strong>${status.label}</strong><span>${escapeHtml(popupPeriodLabel(popup))}</span></div>
       <div class="detail-actions"><a class="primary" href="${escapeHtml(popup.sourceUrl)}" target="_blank" rel="noopener noreferrer">공식 정보 보기</a><button id="popup-share" class="ghost" type="button">공유</button></div></div>
       <div class="detail-grid popup-detail-grid"><section class="popup-location-section"><h3>팝업 정보</h3><dl><dt>백화점·지점</dt><dd>${escapeHtml(popup.venue)}</dd><dt>도로명주소</dt><dd>${escapeHtml(popup.address || popup.venue)}</dd><dt>영업일자</dt><dd class="popup-detail-period">${escapeHtml(popupPeriodLabel(popup))}</dd></dl><div class="map-links"><a target="_blank" rel="noopener" href="https://map.naver.com/p/search/${mapQuery}">네이버 지도에서 위치 보기</a><a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${mapQuery}">Google 지도</a></div></section><div class="popup-detail-right"><section class="popup-menu-section"><h3>메뉴</h3>${popupMenus(popup).length ? `<ul class="popup-menu-list">${popupMenus(popup).map(item => `<li><span>${escapeHtml(item.name || item)}</span>${item.price ? `<strong>${escapeHtml(item.price)}</strong>` : ''}</li>`).join('')}</ul>` : '<p class="popup-menu-empty">공식 사이트에 텍스트 메뉴가 공개되지 않았습니다.</p>'}<p class="data-source-note">${popupMenus(popup).length ? (popup.menuSource === 'official-detail' ? '공식 상세 페이지에 공개된 대표메뉴와 가격입니다.' : '공식 검색 결과에 공개된 대표 품목입니다.') : '공식 페이지에 메뉴명과 가격이 추가되면 자동으로 반영됩니다.'}</p></section>${officialPhotoGallery}<section class="review-section popup-review-section"><div class="review-head"><h3>리뷰 <small id="review-count">${reviews.length}</small></h3><select id="review-sort"><option value="latest">최신순</option><option value="rating">별점순</option><option value="helpful">유용한순</option></select></div><div class="trust-note">✓ 직접 방문한 팝업 경험을 남겨주세요.</div><form id="review-form"><label>별점<select name="rating"><option value="5">5점</option><option value="4">4점</option><option value="3">3점</option><option value="2">2점</option><option value="1">1점</option></select></label><label class="photo-label">사진 첨부<input name="photo" type="file" accept="image/jpeg,image/png,image/webp"></label><textarea name="text" required maxlength="500" placeholder="메뉴, 맛, 대기시간을 알려주세요."></textarea><button class="primary" type="submit">리뷰 등록</button><p id="review-submit-status" class="review-submit-status" aria-live="polite"></p></form><div id="review-list"></div></section></div></div>`;

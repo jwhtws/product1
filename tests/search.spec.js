@@ -134,6 +134,20 @@ test('종료된 팝업은 모든 정렬에서 영업 중 팝업 뒤로 배치한
   }
 });
 
+test('팝업 카드에서 시·도 지역을 굵고 명확하게 표시한다', async ({ page }) => {
+  await page.goto(process.env.TEST_BASE_URL || 'http://127.0.0.1:8765/', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('#search-button')).toBeEnabled({ timeout: 15000 });
+  const badge = page.locator('.popup-card .popup-region-badge').first();
+  await expect(badge).toBeVisible();
+  await expect(badge).toContainText(/(특별시|광역시|특별자치도|경기도|충청북도)/u);
+  const typography = await badge.evaluate(element => {
+    const style = getComputedStyle(element);
+    return { fontSize: parseFloat(style.fontSize), fontWeight: Number(style.fontWeight) };
+  });
+  expect(typography.fontSize).toBeGreaterThanOrEqual(13);
+  expect(typography.fontWeight).toBeGreaterThanOrEqual(800);
+});
+
 test('공식 상세 페이지의 대표메뉴와 가격을 표시한다', async ({ page }) => {
   await page.goto(process.env.TEST_BASE_URL || 'http://127.0.0.1:8765/', { waitUntil: 'domcontentloaded' });
   const popup = page.locator('.popup-card').filter({ hasText: '3층 다락빵' }).first();

@@ -110,6 +110,7 @@
 .popup-period{display:inline-flex;align-items:center;margin:15px 0 2px;padding:9px 12px;border-radius:10px;background:#edf8f0;color:var(--green);font-size:16px;font-weight:900;letter-spacing:-.03em}
 .popup-detail-period{color:var(--green)!important;font-size:16px;font-weight:900}.popup-card .tags{flex-wrap:wrap}
 .popup-card-address,.popup-detail-address{font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",sans-serif}.popup-card-address strong,.popup-detail-address strong{color:#353530;font-size:16px;font-weight:850;letter-spacing:-.035em}.popup-card-address span,.popup-detail-address span{color:#8b8982;font-size:11px;font-weight:450;letter-spacing:-.015em}.popup-detail-address{margin:0;color:var(--muted);line-height:1.6}.popup-detail-address strong{font-size:17px}
+.popup-region-badge{display:inline-flex;align-items:center;margin:0 0 8px;padding:6px 9px;border:1px solid #cfe3d6;border-radius:8px;background:#edf7f1;color:#175b3c;font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",sans-serif;font-size:14px;font-weight:900;line-height:1;letter-spacing:-.025em}.popup-detail-region{margin:0 0 10px;font-size:15px}
 .review-actions{display:flex;gap:6px;align-items:center}.review-actions .review-delete{color:#c2413b;background:#fff1f0}.review-submit-status{grid-column:1/-1;min-height:18px;margin:0;color:var(--green);font-size:12px;font-weight:800}
 .review-photo{display:block;margin:10px 0 12px;border-radius:12px;overflow:hidden;background:#f3f1ec}.review-photo img{display:block;width:100%;max-height:420px;object-fit:cover}.photo-label input{display:block;margin:6px 0 0;max-width:220px;font-size:11px}
 
@@ -137,7 +138,7 @@
   .searchbar input{padding:17px 14px}
   .search-mode{margin-bottom:12px}.search-mode button{min-width:98px;padding:8px 13px;font-size:12px}
   .review-promise{margin-top:15px}
-  .popup-card-address strong{font-size:14px}.popup-card-address span{font-size:10px}.popup-detail-address strong{font-size:15px}
+  .popup-card-address strong{font-size:14px}.popup-card-address span{font-size:10px}.popup-region-badge{font-size:13px;padding:6px 8px}.popup-detail-address strong{font-size:15px}
 }
 /* Keep the restaurant and popup filter panels mutually exclusive. */
 .filters[hidden]{display:none!important}
