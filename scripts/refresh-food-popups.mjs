@@ -130,6 +130,20 @@ function parseHyundaiMenus(html) {
   return uniqueMenus(menus);
 }
 
+function parseHyundaiImageUrls(html, sourceUrl) {
+  const urls = [];
+  for (const match of String(html || '').matchAll(/(?:src|data-src)=["']([^"']+)["']/giu)) {
+    const raw = match[1].replace(/&amp;/giu, '&').trim();
+    try {
+      const url = new URL(raw, sourceUrl);
+      if (!/^(?:imgprism|img)\.ehyundai\.com$/iu.test(url.hostname)) continue;
+      if (!/(?:derivedImage\/fileValue|ItemNmPrcTypeInf\/imgPath)/iu.test(url.pathname)) continue;
+      urls.push(url.href);
+    } catch {}
+  }
+  return [...new Set(urls)].slice(0, 12);
+}
+
 async function collectHyundai() {
   const rows = [];
   const seen = new Set();
@@ -178,8 +192,14 @@ async function collectHyundai() {
     try {
       const response = await fetchResilient(row.sourceUrl);
       if (!response.ok) return row;
-      const menus = parseHyundaiMenus(await response.text());
-      return menus.length ? { ...row, menus, menuSource: 'official-detail' } : row;
+      const html = await response.text();
+      const menus = parseHyundaiMenus(html);
+      const officialImageUrls = parseHyundaiImageUrls(html, row.sourceUrl);
+      return {
+        ...row,
+        ...(menus.length ? { menus, menuSource: 'official-detail' } : {}),
+        ...(officialImageUrls.length ? { officialImageUrls } : {})
+      };
     } catch { return row; }
   }));
   return detailed;
