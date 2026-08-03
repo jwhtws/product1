@@ -624,12 +624,15 @@ async function collectGalleria() {
   // G.LAB is a popup venue, not a food brand. Emit only the named brands
   // published inside an official G.LAB schedule.
   const timeworldDessertSource = 'https://dept.galleria.co.kr/store-info/timeworld/promotion/shopping-news/c85834?qCategory=NEWOPENING_POPUP';
-  const timeworldDessertImage = 'https://cdndept.galleria.co.kr//image/dept/edm-content/2026/T0731_20.jpg';
+  const timeworldDessertImages = {
+    dessertPlanet: 'https://product1-84t.pages.dev/assets/popups/galleria/timeworld-dessert-planet.jpg',
+    beatzel: 'https://product1-84t.pages.dev/assets/popups/galleria/timeworld-beatzel.jpg'
+  };
   rows.push(
     {
       id: 'galleria:timeworld:c85834:dessert-planet', name: '디저트플래닛', venue: '갤러리아 타임월드',
       venueType: '백화점', address: '갤러리아 타임월드 B2F G-LAB', startDate: '2026-07-24', endDate: '2026-08-06',
-      imageUrl: timeworldDessertImage, officialImageUrls: [timeworldDessertImage],
+      imageUrl: timeworldDessertImages.dessertPlanet, officialImageUrls: [timeworldDessertImages.dessertPlanet],
       menus: [
         { name: '마블 글레이즈 크로넛', price: '4,000원' }, { name: '우유생크림 크로넛', price: '5,500원' },
         { name: '오레오 크로넛', price: '6,000원' }, { name: '두바이 크로플', price: '7,500원' }
@@ -639,7 +642,7 @@ async function collectGalleria() {
     {
       id: 'galleria:timeworld:c85834:beatzel', name: '바잇첼', venue: '갤러리아 타임월드',
       venueType: '백화점', address: '갤러리아 타임월드 B2F', startDate: '2026-07-24', endDate: '2026-08-06',
-      imageUrl: timeworldDessertImage, officialImageUrls: [timeworldDessertImage],
+      imageUrl: timeworldDessertImages.beatzel, officialImageUrls: [timeworldDessertImages.beatzel],
       menus: [
         { name: '솔트 프레즐', price: '4,700원' }, { name: '크림치즈 프레즐', price: '5,800원' },
         { name: '시그니처 토마콘 프레즐', price: '6,300원' }
@@ -648,18 +651,18 @@ async function collectGalleria() {
     }
   );
   const gwanggyoSchedules = [
-    ['c85958:yoodongbu', '유동부치아바타', '2026-07-31', '2026-08-13', 'c85958', 'G0731_5.jpg'],
-    ['c85958:longmadame', '롱마담 에그타르트', '2026-07-31', '2026-08-13', 'c85958', 'G0731_5.jpg'],
-    ['c85958:kickstaco', '킥스타코', '2026-07-31', '2026-08-06', 'c85958', 'G0731_5.jpg'],
-    ['c85958:takonottaco', '타코낫타코', '2026-07-31', '2026-08-13', 'c85958', 'G0731_5.jpg'],
-    ['c85957:ageujak', '떼구르르 베이커리(아그작케이크)', '2026-07-31', '2026-08-20', 'c85957', 'G0731_4.jpg'],
-    ['c85957:tdbd', '더데일리브레드(TDBD)', '2026-07-31', '2026-10-31', 'c85957', 'G0731_4.jpg'],
-    ['c85957:oneulmojji', '오늘모찌', '2026-07-17', '2026-10-31', 'c85957', 'G0731_4.jpg'],
-    ['c85957:hanwoomyeongga', '한우명가', '2026-07-10', '2026-08-06', 'c85957', 'G0731_4.jpg']
+    ['c85958:yoodongbu', '유동부치아바타', '2026-07-31', '2026-08-13', 'c85958', 'gwanggyo-yoodongbu.jpg'],
+    ['c85958:longmadame', '롱마담 에그타르트', '2026-07-31', '2026-08-13', 'c85958', 'gwanggyo-longmadame.jpg'],
+    ['c85958:kickstaco', '킥스타코', '2026-07-31', '2026-08-06', 'c85958', 'gwanggyo-kickstaco.jpg'],
+    ['c85958:takonottaco', '타코낫타코', '2026-07-31', '2026-08-13', 'c85958', 'gwanggyo-takonottaco.jpg'],
+    ['c85957:ageujak', '떼구르르 베이커리(아그작케이크)', '2026-07-31', '2026-08-20', 'c85957', 'gwanggyo-ageujak.jpg'],
+    ['c85957:tdbd', '더데일리브레드(TDBD)', '2026-07-31', '2026-10-31', 'c85957', 'gwanggyo-tdbd.jpg'],
+    ['c85957:oneulmojji', '오늘모찌', '2026-07-17', '2026-10-31', 'c85957', 'gwanggyo-oneulmojji.jpg'],
+    ['c85957:hanwoomyeongga', '한우명가', '2026-07-10', '2026-08-06', 'c85957', 'gwanggyo-hanwoomyeongga.jpg']
   ];
   for (const [key, name, startDate, endDate, cardId, imageName] of gwanggyoSchedules) {
     const sourceUrl = `https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/${cardId}?qCategory=PRODUCT_EVENT`;
-    const imageUrl = `https://cdndept.galleria.co.kr//image/dept/edm-content/2026/${imageName}`;
+    const imageUrl = `https://product1-84t.pages.dev/assets/popups/galleria/${imageName}`;
     rows.push({
       id: `galleria:gwanggyo:${key}`, name, venue: '갤러리아 광교', venueType: '백화점',
       address: '경기도 수원시 영통구 광교중앙로 124 · 갤러리아 광교 B1F GOURMET494',
