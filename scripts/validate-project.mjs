@@ -2,7 +2,7 @@ import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
 import { join } from 'node:path';
 
-const roots = ['app.js', 'js', 'functions', 'scripts'];
+const roots = ['app.js', 'js', 'functions', 'scripts', 'design-system', 'component-showcase'];
 const javascript = [];
 
 function collect(path) {
@@ -29,6 +29,18 @@ for (const required of ['type="module"', 'app.js?v=', 'styles.css?v=']) {
     console.error(`index.html 필수 항목 누락: ${required}`);
     process.exitCode = 1;
   }
+}
+
+for (const file of [
+  'design-system/theme.css', 'design-system/components.css', 'design-system/components.js',
+  'design-system/README.md', 'component-showcase/index.html', 'component-showcase/showcase.css',
+  ...['color', 'spacing', 'radius', 'shadow', 'typography', 'animation', 'breakpoints', 'zindex'].map(name => `design-system/tokens/${name}.ts`)
+]) {
+  try { statSync(file); } catch { console.error(`디자인 시스템 필수 파일 누락: ${file}`); process.exitCode = 1; }
+}
+const showcase = readFileSync('component-showcase/index.html', 'utf8');
+for (const required of ['design-system/theme.css', 'design-system/components.css', 'showcase.js', 'data-modal-open', 'aria-selected']) {
+  if (!showcase.includes(required)) { console.error(`컴포넌트 쇼케이스 필수 항목 누락: ${required}`); process.exitCode = 1; }
 }
 
 const app = readFileSync('app.js', 'utf8');

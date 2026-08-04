@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="먹당 디자인 시스템 컴포넌트 쇼케이스">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Mukdang Design System</title>
+  <link rel="stylesheet" href="../design-system/theme.css">
+  <link rel="stylesheet" href="../design-system/components.css">
+  <link rel="stylesheet" href="showcase.css">
+</head>
+<body>
+  <header class="showcase-nav">
+    <a class="showcase-logo" href="../" aria-label="먹당 홈">mukdang<span>.com</span></a>
+    <nav aria-label="쇼케이스 메뉴"><a href="#tokens">토큰</a><a href="#components">컴포넌트</a><button id="theme-toggle" class="md-button md-button--outline" type="button" aria-pressed="false">다크 모드</button></nav>
+  </header>
+  <main>
+    <section class="intro"><span class="md-badge">FOUNDATION v1.0</span><h1>익숙하고 따뜻한<br>먹당의 공통 언어</h1><p>맛집과 팝업을 빠르게 탐색하도록 명료한 정보 구조, 넉넉한 터치 영역, 음식의 온도를 닮은 색을 사용합니다.</p></section>
+
+    <section id="tokens" class="showcase-section"><div class="md-section-header"><div><h2>Design Tokens</h2><p>Light 기본, Dark 확장 준비</p></div></div>
+      <h3>Color</h3><div class="swatches"><div style="--swatch:var(--md-color-primary)"><i></i><b>Primary / Red</b><code>#C9342F</code></div><div style="--swatch:var(--md-color-accent)"><i></i><b>Accent / Orange</b><code>#F36B35</code></div><div style="--swatch:var(--md-color-success)"><i></i><b>Success</b><code>#18794E</code></div><div style="--swatch:var(--md-color-warning)"><i></i><b>Warning</b><code>#A15C00</code></div><div style="--swatch:var(--md-color-error)"><i></i><b>Error</b><code>#B42318</code></div><div style="--swatch:var(--md-color-info)"><i></i><b>Info</b><code>#175CD3</code></div></div>
+      <div class="token-grid"><article><h3>Typography</h3><p class="type-display">Display 맛있는 발견</p><h1>H1 오늘의 맛집</h1><h2>H2 푸드 팝업</h2><h3>H3 서울 성수동</h3><p>Body 솔직한 리뷰로 좋은 식당을 찾아보세요.</p><small>Caption 공식 출처로 확인했어요.</small></article><article><h3>Spacing · Radius · Shadow</h3><div class="spacing-demo"><i></i><i></i><i></i><i></i><i></i></div><div class="radius-demo"><i></i><i></i><i></i><i></i></div><div class="shadow-demo"><i>S1</i><i>S2</i><i>S3</i><i>S4</i></div></article></div>
+    </section>
+
+    <section id="components" class="showcase-section"><div class="md-section-header"><div><h2>Components</h2><p>상태와 접근성을 포함한 재사용 단위</p></div></div>
+      <article class="demo"><h3>Button</h3><div class="demo-row"><button class="md-button md-button--primary">Primary</button><button class="md-button md-button--secondary">Secondary</button><button class="md-button md-button--outline">Outline</button><button class="md-button md-button--ghost">Ghost</button><button class="md-button md-button--danger">Danger</button><button class="md-button md-button--primary" disabled>Disabled</button><button id="loading-button" class="md-button md-button--primary">Loading</button></div></article>
+      <article class="demo"><h3>Card</h3><div class="card-grid"><div class="md-card md-card--popup" tabindex="0"><span class="md-badge md-badge--success">영업 중</span><h3>성수 디저트 팝업</h3><p>8월 4일까지 · 성동구</p></div><div class="md-card md-card--brand"><small>BRAND</small><h3>오래 기억할 맛</h3><p>브랜드 이야기 카드</p></div><div class="md-card md-card--region"><small>REGION</small><h3>서울</h3><p>1,248곳의 발견</p></div><div class="md-card md-card--category"><div class="food-icon" aria-hidden="true">🍜</div><h3>면 요리</h3></div><div class="md-card md-card--mini"><b>Mini card</b><p>간결한 정보</p></div><div class="md-card md-card--hero"><small>EDITOR'S PICK</small><h3>이번 주의 특별한 한 끼</h3><p>먹당이 공식 정보를 확인했어요.</p></div></div></article>
+      <article class="demo"><h3>Chip · Badge · Tag · Rating · Avatar</h3><div class="demo-row"><button class="md-chip" aria-pressed="false">성수</button><button class="md-chip" aria-pressed="true">디저트</button><span class="md-badge">마감 임박</span><span class="md-badge md-badge--success">공식 확인</span><span class="md-tag">#데이트</span><span class="md-rating" aria-label="평점 4.8점">★ 4.8</span><span class="md-avatar" aria-label="사용자 민지">민</span></div></article>
+      <article class="demo"><h3>Input · Search</h3><div class="form-grid"><label class="md-field">식당 이름<input class="md-input" placeholder="이름을 입력하세요"></label><label class="md-field is-error">이메일<input class="md-input" value="wrong@" aria-invalid="true" aria-describedby="email-error"><span id="email-error" class="md-field__message">올바른 이메일을 입력해 주세요.</span></label><form class="md-search" role="search"><label class="sr-only" for="demo-search">맛집 검색</label><input id="demo-search" class="md-input" type="search" placeholder="지역, 메뉴, 식당 검색"><button class="md-button md-button--primary" type="submit">검색</button></form></div></article>
+      <article class="demo"><h3>Tab · Navigation</h3><div class="md-tabs" role="tablist" data-md-tabs><button class="md-tab" role="tab" aria-selected="true">식당</button><button class="md-tab" role="tab" aria-selected="false">푸드 팝업</button></div><nav class="md-top-nav" aria-label="상단 예시"><b>mukdang</b><div><a href="#components">탐색</a><a href="#components">저장</a></div></nav><nav class="md-bottom-nav" aria-label="하단 예시"><a href="#components" aria-current="page">홈</a><a href="#components">검색</a><a href="#components">저장</a><a href="#components">내 정보</a></nav></article>
+      <article class="demo"><h3>Modal · Toast</h3><div class="demo-row"><button class="md-button md-button--outline" data-modal-open="demo-modal">Modal 열기</button><button id="toast-button" class="md-button md-button--outline">Toast 보기</button></div></article>
+      <article class="demo"><h3>Loading · Skeleton · Divider · Section Header</h3><div class="md-loading" role="status" aria-label="불러오는 중"></div><div class="skeleton-stack" aria-label="콘텐츠 불러오는 중" aria-busy="true"><div class="md-skeleton"></div><div class="md-skeleton"></div><div class="md-skeleton"></div></div><hr class="md-divider"><div class="md-section-header"><div><h2>새로 발견한 곳</h2><p>공식 정보가 업데이트됐어요.</p></div><a class="md-button md-button--ghost" href="#components">전체 보기</a></div></article>
+    </section>
+  </main>
+  <dialog id="demo-modal" class="md-modal" aria-labelledby="modal-title"><div class="md-modal__body"><h2 id="modal-title">저장할까요?</h2><p>이 식당을 저장 목록에 추가합니다.</p><div class="md-modal__actions"><button class="md-button md-button--ghost" data-modal-close>취소</button><button class="md-button md-button--primary" data-modal-close>저장</button></div></div></dialog>
+  <script type="module" src="showcase.js"></script>
+</body></html>

@@ -1,0 +1,21 @@
+@font-face{font-family:Pretendard;src:url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/woff2/PretendardVariable.woff2') format('woff2-variations');font-weight:45 920;font-style:normal;font-display:swap}
+:root{
+  color-scheme:light;
+  --md-color-primary:#c9342f;--md-color-red:#c9342f;--md-color-accent:#f36b35;
+  --md-color-background:#f8f7f4;--md-color-surface:#fff;--md-color-border:#dedcd5;
+  --md-color-success:#18794e;--md-color-warning:#a15c00;--md-color-error:#b42318;--md-color-info:#175cd3;--md-on-primary:#fff;--md-on-error:#fff;
+  --md-gray-0:#fff;--md-gray-50:#f8f7f4;--md-gray-100:#f0efeb;--md-gray-200:#dedcd5;--md-gray-300:#c2bfb7;--md-gray-400:#96928a;--md-gray-500:#706c65;--md-gray-600:#54514b;--md-gray-700:#3b3935;--md-gray-800:#272622;--md-gray-900:#171714;
+  --md-space-1:4px;--md-space-2:8px;--md-space-3:12px;--md-space-4:16px;--md-space-5:20px;--md-space-6:24px;--md-space-8:32px;--md-space-10:40px;--md-space-12:48px;--md-space-16:64px;--md-space-20:80px;
+  --md-radius-sm:4px;--md-radius-md:8px;--md-radius-lg:12px;--md-radius-xl:16px;--md-radius-2xl:20px;--md-radius-3xl:24px;--md-radius-full:999px;
+  --md-shadow-s1:0 1px 2px rgba(23,23,20,.08);--md-shadow-s2:0 4px 14px rgba(23,23,20,.09);--md-shadow-s3:0 12px 32px rgba(23,23,20,.12);--md-shadow-s4:0 24px 64px rgba(23,23,20,.18);
+  --md-font:Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",sans-serif;
+  --md-duration-fast:120ms;--md-duration-normal:200ms;--md-duration-slow:320ms;
+  --md-ease-hover:cubic-bezier(.2,0,0,1);--md-ease-press:cubic-bezier(.3,0,1,1);
+  --md-focus-ring:0 0 0 3px rgba(201,52,47,.28);
+  --md-z-sticky:100;--md-z-dropdown:200;--md-z-overlay:400;--md-z-modal:500;--md-z-toast:600;
+  /* Legacy aliases allow gradual adoption without changing existing components. */
+  --ink:var(--md-gray-900);--muted:var(--md-gray-500);--line:var(--md-color-border);--paper:var(--md-color-background);--card:var(--md-color-surface);--green:var(--md-color-success);
+}
+[data-theme="dark"]{color-scheme:dark;--md-color-primary:#ff716b;--md-color-red:#ff716b;--md-color-accent:#ff8a54;--md-color-background:#121210;--md-color-surface:#1d1c19;--md-color-border:#3c3a35;--md-color-success:#5bd19b;--md-color-warning:#f6c453;--md-color-error:#ff8a80;--md-color-info:#84adff;--md-on-primary:#121210;--md-on-error:#121210;--md-gray-0:#121210;--md-gray-50:#1d1c19;--md-gray-100:#272622;--md-gray-200:#3c3a35;--md-gray-300:#54514b;--md-gray-400:#706c65;--md-gray-500:#96928a;--md-gray-600:#b7b3aa;--md-gray-700:#d3d0c8;--md-gray-800:#e8e6e0;--md-gray-900:#faf9f6;--md-focus-ring:0 0 0 3px rgba(255,113,107,.35)}
+@media(prefers-color-scheme:dark){[data-theme="system"]{color-scheme:dark;--md-color-primary:#ff716b;--md-color-accent:#ff8a54;--md-color-background:#121210;--md-color-surface:#1d1c19;--md-color-border:#3c3a35;--md-color-success:#5bd19b;--md-color-warning:#f6c453;--md-color-error:#ff8a80;--md-color-info:#84adff;--md-on-primary:#121210;--md-on-error:#121210;--md-gray-0:#121210;--md-gray-50:#1d1c19;--md-gray-100:#272622;--md-gray-200:#3c3a35;--md-gray-500:#96928a;--md-gray-900:#faf9f6}}
+@media(prefers-reduced-motion:reduce){*,:before,:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
