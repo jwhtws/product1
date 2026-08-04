@@ -467,6 +467,12 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     const days = popupDayDiff(popup.endDate);
     return days === null ? '상시' : days === 0 ? '오늘 종료' : `D-${days}`;
   }
+  function isNewPopup(popup) {
+    const registeredAt = popup.firstSeenAt || popup.registeredAt || popup.createdAt;
+    if (!/^\d{4}-\d{2}-\d{2}$/u.test(String(registeredAt || ''))) return false;
+    const age = -popupDayDiff(registeredAt);
+    return age >= 0 && age <= 6;
+  }
   function popupFallbackImage(popup) {
     const images = {
       bakery: 'assets/food/western-ai.png', drink: 'assets/food/cafe-ai.png',
@@ -501,8 +507,6 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     const sort = $('#popup-sort-filter')?.value || 'food';
     const order = { active: 0, upcoming: 1, ended: 2 };
     const today = koreaToday();
-    const weekStart = new Date(`${today}T00:00:00Z`); weekStart.setUTCDate(weekStart.getUTCDate() - 6);
-    const weekStartLabel = weekStart.toISOString().slice(0, 10);
     return state.popups.filter(popup =>
       (!query || searchKey(`${popup.name} ${popup.brand || ''} ${popup.venue} ${popup.address} ${popup.region || ''}`).includes(query)) &&
       (!foodFilter || popupFoodType(popup) === foodFilter) &&
@@ -511,7 +515,6 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
       (!state.popupHomeCategoryFilter || popupHomeCategory(popup) === state.popupHomeCategoryFilter) &&
       (!state.popupRetailerFilter || popupRetailer(popup) === state.popupRetailerFilter) &&
       (state.popupQuickFilter !== 'ending-today' || popup.endDate === today) &&
-      (state.popupQuickFilter !== 'new-week' || String(popup.firstSeenAt || popup.lastSeenAt || '') >= weekStartLabel) &&
       (state.popupQuickFilter !== 'nearby' || !state.nearbyRegion || searchKey(popup.region || popup.address || '').includes(searchKey(state.nearbyRegion)))
     ).sort((left, right) => {
       // Closed events always belong after active/upcoming events, regardless
@@ -557,7 +560,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     return `<article class="md-card md-card--popup discovery-popup-card popup-${status.key}" tabindex="0" data-home-popup-id="${escapeHtml(popup.id)}">
       <div class="discovery-popup-image">
         <img src="${escapeHtml(imageUrl)}" alt="${escapeHtml(popup.name)}" width="560" height="360" ${index > 1 ? 'loading="lazy"' : 'fetchpriority="high"'} decoding="async">
-        <span class="md-badge ${status.key === 'active' ? 'md-badge--success' : ''}">${escapeHtml(status.label)}</span>
+        <div class="discovery-popup-badges"><span class="md-badge ${status.key === 'active' ? 'md-badge--success' : ''}">${escapeHtml(status.label)}</span>${isNewPopup(popup) ? '<span class="md-badge popup-new-badge">NEW</span>' : ''}</div>
         <button class="popup-save ${saved ? 'is-saved' : ''}" type="button" data-home-save="${escapeHtml(popup.id)}" aria-label="${escapeHtml(popup.name)} ${saved ? '저장 취소' : '저장'}" aria-pressed="${String(saved)}">${saved ? '♥' : '♡'}</button>
       </div>
       <div class="discovery-popup-body">
@@ -585,11 +588,9 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     }
     const active = state.popups.filter(popup => popupStatus(popup).key === 'active');
     const today = koreaToday();
-    const weekStart = new Date(`${today}T00:00:00Z`); weekStart.setUTCDate(weekStart.getUTCDate() - 6);
-    const weekStartLabel = weekStart.toISOString().slice(0, 10);
     const endingToday = active.filter(popup => popup.endDate === today);
-    const newThisWeek = state.popups.filter(popup => String(popup.firstSeenAt || popup.lastSeenAt || '') >= weekStartLabel && popupStatus(popup).key !== 'ended')
-      .sort((a, b) => String(b.firstSeenAt || '').localeCompare(String(a.firstSeenAt || '')));
+    const allAvailable = state.popups.filter(popup => ['active', 'upcoming'].includes(popupStatus(popup).key))
+      .sort((a, b) => (a.endDate || '9999-12-31').localeCompare(b.endDate || '9999-12-31') || a.startDate.localeCompare(b.startDate));
     const discovery = [...active].sort((a, b) => (a.endDate || '9999-12-31').localeCompare(b.endDate || '9999-12-31') || String(b.firstSeenAt || '').localeCompare(String(a.firstSeenAt || '')));
     const nearby = state.nearbyRegion ? active.filter(popup => searchKey(popup.region || popup.address || '').includes(searchKey(state.nearbyRegion))) : [];
     const regionOptions = [
@@ -605,7 +606,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     root.innerHTML = [
       discoveryRail('today-discovery', '오늘의 발견', '실제 종료 임박·최신 공식 일정 순', discovery),
       discoveryRail('ending-today', '오늘 종료', '오늘이 지나기 전에 만날 수 있어요', endingToday),
-      discoveryRail('new-this-week', '이번 주 신규', '최근 7일 안에 처음 확인된 일정', newThisWeek),
+      discoveryRail('all-popups', '전체 푸드팝업', `진행 중·오픈 예정 ${allAvailable.length.toLocaleString('ko-KR')}개`, allAvailable),
       nearby.length ? discoveryRail('nearby-popups', `${state.nearbyRegion} 근처`, '선택한 지역에서 진행 중인 팝업', nearby) : `<section class="popup-discovery-section nearby-empty" id="nearby-popups"><div class="md-section-header"><div><h2>내 주변</h2><p>위치 권한 없이 지역을 선택해 찾아보세요.</p></div></div><button type="button" data-popup-quick="nearby" class="nearby-empty-action">지역 선택하기</button></section>`,
       `<section class="popup-discovery-section taxonomy-section" id="region-discovery"><div class="md-section-header"><div><h2>지역별</h2><p>현재 팝업이 있는 지역만 보여드려요.</p></div></div><div class="discovery-taxonomy">${regionOptions.map(item => `<button type="button" data-region-filter="${escapeHtml(item.value)}"><strong>${item.label}</strong><span>${item.count}개</span></button>`).join('')}</div></section>`,
       `<section class="popup-discovery-section taxonomy-section" id="category-discovery"><div class="md-section-header"><div><h2>카테고리별</h2><p>오늘 끌리는 메뉴로 골라보세요.</p></div></div><div class="discovery-taxonomy">${categoryOptions.map(item => `<button type="button" data-category-filter="${item.key}"><strong>${item.label}</strong><span>${item.count}개</span></button>`).join('')}</div></section>`,
@@ -614,6 +615,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
       `<section class="all-popup-cta"><div><span class="md-badge md-badge--success">LIVE</span><h2>전체 푸드 팝업</h2><p>지역과 장소, 음식 유형으로 더 자세히 찾아보세요.</p></div><button class="md-button md-button--primary" type="button" data-show-all-popups>전체 팝업 보기</button></section>`
     ].join('');
     bindPopupDiscovery();
+    syncNearbyControls();
   }
   function bindPopupDiscovery() {
     const root = $('#popup-home-content');
@@ -633,12 +635,28 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     [...root.querySelectorAll('[data-retailer-filter]')].forEach(button => button.addEventListener('click', () => showPopupResults({ retailer: button.dataset.retailerFilter })));
     [...root.querySelectorAll('[data-brand-filter]')].forEach(button => button.addEventListener('click', () => showPopupResults({ query: button.dataset.brandFilter })));
     [...root.querySelectorAll('[data-section-more]')].forEach(button => button.addEventListener('click', () => {
-      const filters = { 'ending-today': { quick: 'ending-today' }, 'new-this-week': { quick: 'new-week' }, 'nearby-popups': { quick: 'nearby' } };
+      const filters = { 'ending-today': { quick: 'ending-today' }, 'all-popups': {}, 'nearby-popups': { quick: 'nearby' } };
       showPopupResults(filters[button.dataset.sectionMore] || {});
     }));
     $('[data-show-all-popups]')?.addEventListener('click', () => showPopupResults({}));
   }
-  function showPopupResults({ quick = '', region = '', homeCategory = '', retailer = '', query = '' } = {}) {
+  function updateNearbyUrl(region = '') {
+    const url = new URL(location.href);
+    if (region) url.searchParams.set('nearby', region);
+    else url.searchParams.delete('nearby');
+    history.replaceState({ ...history.state, nearbyRegion: region || null }, '', `${url.pathname}${url.search}${url.hash}`);
+  }
+  function syncNearbyControls() {
+    const active = state.popupQuickFilter === 'nearby' && Boolean(state.nearbyRegion);
+    $$('[data-popup-quick="nearby"]').forEach(button => {
+      button.classList.toggle('is-active', active);
+      button.classList.toggle('md-button--primary', active);
+      button.setAttribute('aria-pressed', String(active));
+      const detail = button.querySelector('small');
+      if (detail) detail.textContent = active ? `${state.nearbyRegion} · 해제하려면 다시 선택` : '지역으로 가까이';
+    });
+  }
+  function showPopupResults({ quick = '', region = '', homeCategory = '', retailer = '', query = '', clearNearby = true } = {}) {
     state.popupQuickFilter = quick;
     state.popupHomeCategoryFilter = homeCategory;
     state.popupRetailerFilter = retailer;
@@ -647,19 +665,42 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     $('#popup-region-filter').value = region;
     $('#popup-food-filter').value = '';
     $('#popup-venue-filter').value = '';
-    if (quick === 'nearby') state.nearbyRegion = region || state.nearbyRegion;
+    if (quick === 'nearby') {
+      state.nearbyRegion = region || state.nearbyRegion;
+      if (state.nearbyRegion) {
+        store.set('nearby-region', state.nearbyRegion);
+        updateNearbyUrl(state.nearbyRegion);
+      }
+    } else if (clearNearby) {
+      state.nearbyRegion = '';
+      $('#nearby-region').value = '';
+      updateNearbyUrl('');
+    }
     render();
+    syncNearbyControls();
     $('#discover').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
   function handlePopupQuick(action) {
     if (action === 'nearby') {
+      if (state.popupQuickFilter === 'nearby' && state.nearbyRegion) {
+        $('#nearby-region-picker').hidden = true;
+        showPopupResults({ clearNearby: true });
+        return;
+      }
+      const rememberedRegion = state.nearbyRegion || store.get('nearby-region', '');
+      if (rememberedRegion && [...$('#nearby-region').options].some(option => option.value === rememberedRegion)) {
+        $('#nearby-region').value = rememberedRegion;
+        state.nearbyRegion = rememberedRegion;
+        showPopupResults({ quick: 'nearby', region: rememberedRegion, clearNearby: false });
+        return;
+      }
       const picker = $('#nearby-region-picker');
       picker.hidden = false;
       $('#nearby-region').focus();
       picker.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       return;
     }
-    showPopupResults({ quick: action });
+    showPopupResults({ quick: action === 'all' ? '' : action });
   }
   function openPopupDetail(popup) {
     state.current = popup;
@@ -715,7 +756,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
       const popupPages = Math.max(1, Math.ceil(rows.length / 24));
       state.page = Math.min(state.page, popupPages);
       const shown = rows.slice((state.page - 1) * 24, state.page * 24);
-      const quickTitles = { 'ending-today': '오늘 종료하는 푸드 팝업', 'new-week': '이번 주 신규 푸드 팝업', nearby: `${state.nearbyRegion || '선택 지역'} 푸드 팝업` };
+      const quickTitles = { 'ending-today': '오늘 종료하는 푸드 팝업', nearby: `${state.nearbyRegion || '선택 지역'} 푸드 팝업` };
       $('#discover-title').textContent = query ? `‘${query}’ 푸드 팝업` : state.popupHomeCategoryFilter ? `${popupCategoryLabels[state.popupHomeCategoryFilter]} 푸드 팝업` : state.popupRetailerFilter ? '선택한 쇼핑시설의 푸드 팝업' : quickTitles[state.popupQuickFilter] || '전체 푸드 팝업';
       $('#result-summary').textContent = `${rows.length.toLocaleString('ko-KR')}건 · 영업 중 ${activeCount.toLocaleString('ko-KR')} · 오픈 예정 ${upcomingCount.toLocaleString('ko-KR')} · 종료 ${endedCount.toLocaleString('ko-KR')}`;
       $('#app-state').textContent = state.popupUpdatedAt
@@ -942,6 +983,8 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
       state.popupQuickFilter = '';
       state.popupHomeCategoryFilter = '';
       state.popupRetailerFilter = '';
+      state.nearbyRegion = '';
+      updateNearbyUrl('');
       render();
       $('#discover').scrollIntoView({ behavior: 'instant', block: 'start' });
       return;
@@ -993,6 +1036,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     $('#search-input').value = ''; $$('#filters select, #popup-filters select').forEach(select => { select.selectedIndex = 0; });
     state.filters = { query: '', region: '', category: '', price: '', sort: 'recommend' };
     state.popupQuickFilter = ''; state.popupHomeCategoryFilter = ''; state.popupRetailerFilter = ''; state.nearbyRegion = '';
+    updateNearbyUrl('');
     state.searchSession = null; state.all = state.preview; state.page = 1; render();
   }
   function renderSuggestions() {
@@ -1369,7 +1413,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
   $('#search-input').addEventListener('input', () => { renderSuggestions(); prefetchSearch($('#search-input').value).catch(() => {}); });
   $('#search-input').addEventListener('keydown', e => e.key === 'Enter' && applySearch());
   $$('#filters select').forEach(el => el.addEventListener('change', applyFilters));
-  $$('#popup-filters select').forEach(el => el.addEventListener('change', () => { state.popupQuickFilter = ''; state.popupHomeCategoryFilter = ''; state.popupRetailerFilter = ''; state.page = 1; render(); }));
+  $$('#popup-filters select').forEach(el => el.addEventListener('change', () => { state.popupQuickFilter = ''; state.popupHomeCategoryFilter = ''; state.popupRetailerFilter = ''; state.nearbyRegion = ''; updateNearbyUrl(''); state.page = 1; render(); syncNearbyControls(); }));
   $('#popup-filter-reset').addEventListener('click', () => {
     $$('#popup-filters select').forEach(select => { select.selectedIndex = 0; });
     state.page = 1;
@@ -1382,8 +1426,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     if (!region) return toast('지역을 먼저 선택해 주세요.');
     state.nearbyRegion = region;
     $('#nearby-region-picker').hidden = true;
-    renderPopupDiscovery();
-    showPopupResults({ quick: 'nearby', region });
+    showPopupResults({ quick: 'nearby', region, clearNearby: false });
   });
   $('#header-search').addEventListener('click', () => { $('#search-input').focus(); $('#search-input').scrollIntoView({ behavior: 'smooth', block: 'center' }); });
   $('#header-account').addEventListener('click', () => openPanel(state.serverUser ? 'mypage' : 'auth'));
@@ -1525,6 +1568,16 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
         $('#popup-region-filter').insertAdjacentHTML('beforeend', option);
         $('#nearby-region').insertAdjacentHTML('beforeend', option);
       });
+      const nearbyFromUrl = new URL(location.href).searchParams.get('nearby') || '';
+      if (popupRegions.includes(nearbyFromUrl)) {
+        state.nearbyRegion = nearbyFromUrl;
+        state.popupQuickFilter = 'nearby';
+        $('#nearby-region').value = nearbyFromUrl;
+        $('#popup-region-filter').value = nearbyFromUrl;
+        store.set('nearby-region', nearbyFromUrl);
+      } else if (nearbyFromUrl) {
+        updateNearbyUrl('');
+      }
     }
     window.__MEOKDANG_REGIONS__ = regionData.regions; state.preview = enrich(mixPreviews(previews)); state.all = state.preview;
     await loadPopularRestaurants();

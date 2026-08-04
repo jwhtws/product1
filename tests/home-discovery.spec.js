@@ -20,20 +20,37 @@ test('팝업 discovery 홈의 핵심 탐색과 저장, 상세 진입이 동작�
   await expect(page.locator('#detail-modal')).toHaveClass(/open/u);
   await page.locator('#detail-modal [data-close]').click();
 
-  await page.locator('[data-popup-quick="new-week"]').first().click();
-  await expect(page.locator('#discover-title')).toHaveText('이번 주 신규 푸드 팝업');
+  await expect(page.locator('#new-this-week')).toHaveCount(0);
+  await expect(page.locator('#all-popups .discovery-popup-card').first()).toBeVisible();
+  await expect(page.locator('#all-popups .popup-new-badge').first()).toHaveText('NEW');
+  await page.locator('#all-popups [data-section-more]').click();
+  await expect(page.locator('#discover-title')).toHaveText('전체 푸드 팝업');
   expect(errors).toEqual([]);
 });
 
-test('내 주변은 위치 권한 없이 지역 선택으로 필터한다', async ({ page }) => {
+test('내 주변은 지역 선택 후 ON/OFF 토글되고 URL과 결과가 복원된다', async ({ page }) => {
   await page.goto(homeUrl, { waitUntil: 'domcontentloaded' });
   await expect(page.locator('#active-popup-count')).toContainText(/\d+개/u, { timeout: 15000 });
   await page.locator('.popup-quick-actions [data-popup-quick="nearby"]').click();
   await expect(page.locator('#nearby-region-picker')).toBeVisible();
-  const region = await page.locator('#nearby-region option').nth(1).getAttribute('value');
+  const region = await page.locator('#nearby-region option').last().getAttribute('value');
   await page.locator('#nearby-region').selectOption(region);
   await page.locator('#nearby-apply').click();
   await expect(page.locator('#discover-title')).toContainText(region);
+  const nearbyToggle = page.locator('.popup-quick-actions [data-popup-quick="nearby"]');
+  await expect(nearbyToggle).toHaveAttribute('aria-pressed', 'true');
+  await expect(nearbyToggle).toHaveClass(/md-button--primary/u);
+  await expect(page).toHaveURL(new RegExp(`nearby=${encodeURIComponent(region)}`, 'u'));
+  const filteredSummary = await page.locator('#result-summary').textContent();
+
+  await page.reload({ waitUntil: 'domcontentloaded' });
+  await expect(page.locator('#active-popup-count')).toContainText(/\d+개/u, { timeout: 15000 });
+  await expect(page.locator('.popup-quick-actions [data-popup-quick="nearby"]')).toHaveAttribute('aria-pressed', 'true');
+  await page.locator('.popup-quick-actions [data-popup-quick="nearby"]').click();
+  await expect(page.locator('.popup-quick-actions [data-popup-quick="nearby"]')).toHaveAttribute('aria-pressed', 'false');
+  await expect(page).not.toHaveURL(/nearby=/u);
+  await expect(page.locator('#discover-title')).toHaveText('전체 푸드 팝업');
+  await expect(page.locator('#result-summary')).not.toHaveText(filteredSummary);
 });
 
 for (const width of [320, 375, 390, 768, 1440]) {
