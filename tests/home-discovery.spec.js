@@ -53,6 +53,17 @@ test('내 주변은 지역 선택 후 ON/OFF 토글되고 URL과 결과가 복�
   await expect(page.locator('#result-summary')).not.toHaveText(filteredSummary);
 });
 
+test('내 주변 지역 선택창은 버튼을 다시 누르면 닫힌다', async ({ page }) => {
+  await page.goto(homeUrl, { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('#active-popup-count')).toContainText(/\d+개/u, { timeout: 15000 });
+  const nearbyToggle = page.locator('.popup-quick-actions [data-popup-quick="nearby"]');
+  await nearbyToggle.click();
+  await expect(page.locator('#nearby-region-picker')).toBeVisible();
+  await nearbyToggle.click();
+  await expect(page.locator('#nearby-region-picker')).toBeHidden();
+  await expect(nearbyToggle).toHaveAttribute('aria-pressed', 'false');
+});
+
 for (const width of [320, 375, 390, 768, 1440]) {
   test(`${width}px에서 홈 레이아웃이 화면 밖으로 넘치지 않는다`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });

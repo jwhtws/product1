@@ -682,8 +682,14 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
   }
   function handlePopupQuick(action) {
     if (action === 'nearby') {
+      const picker = $('#nearby-region-picker');
+      if (!picker.hidden) {
+        picker.hidden = true;
+        syncNearbyControls();
+        return;
+      }
       if (state.popupQuickFilter === 'nearby' && state.nearbyRegion) {
-        $('#nearby-region-picker').hidden = true;
+        picker.hidden = true;
         showPopupResults({ clearNearby: true });
         return;
       }
@@ -694,7 +700,6 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
         showPopupResults({ quick: 'nearby', region: rememberedRegion, clearNearby: false });
         return;
       }
-      const picker = $('#nearby-region-picker');
       picker.hidden = false;
       $('#nearby-region').focus();
       picker.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
