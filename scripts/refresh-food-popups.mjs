@@ -3,6 +3,10 @@ import { dirname } from 'node:path';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import { collectLottePopups } from './lib/lotte-popup-collector.mjs';
+import { safelyBuildAndWritePopupRunReport } from './lib/popup-run-report.mjs';
+
+const runStartedAt = new Date().toISOString();
+const runId = `food-popups-${runStartedAt.replace(/[-:.TZ]/gu, '')}-${process.pid}`;
 
 const outputPath = process.argv.find(value => value.startsWith('--output='))?.slice(9) || 'data/popups.json';
 const lotteOnly = process.argv.includes('--lotte-only');
@@ -839,7 +843,18 @@ const scopedCollectorNames = retailerCollectorNames.get(retailerScope);
 const collectors = scopedCollectorNames
   ? allCollectors.filter(([name]) => scopedCollectorNames.has(name))
   : allCollectors;
-const settled = await Promise.allSettled(collectors.map(([, collector]) => collector()));
+const sourceRuns = await Promise.all(collectors.map(async ([source, collector]) => {
+  const startedAt = new Date().toISOString();
+  try {
+    const rows = await collector();
+    return { source, rows, startedAt, finishedAt: new Date().toISOString() };
+  } catch (error) {
+    return { source, rows: [], error, startedAt, finishedAt: new Date().toISOString() };
+  }
+}));
+const settled = sourceRuns.map(run => run.error
+  ? { status: 'rejected', reason: run.error }
+  : { status: 'fulfilled', value: run.rows });
 const collected = settled.flatMap(result => result.status === 'fulfilled' ? result.value : []);
 const rawCollectedCount = collected.length;
 const sources = collectors.map(([name], index) => ({
@@ -857,6 +872,11 @@ const outputSources = retailerScope
 const collectorErrors = sources.filter(source => source.status === 'error');
 if (collectorErrors.length) console.warn(`공식 수집기 ${collectorErrors.length}개 실패: ${collectorErrors.map(source => source.name).join(', ')} · 기존 데이터 보존`);
 if (strictCollectors && collectorErrors.length) {
+  const finishedAt = new Date().toISOString();
+  await safelyBuildAndWritePopupRunReport({
+    runId, scope: retailerScope || 'all', startedAt: runStartedAt, finishedAt,
+    sourceRuns, normalize: row => row, identity: row => String(row?.id || ''), finalRows: collected
+  });
   throw new Error(`공식 수집기 실패로 일일 반영 중단: ${collectorErrors.map(source => source.name).join(', ')}`);
 }
 
@@ -1089,6 +1109,17 @@ if (!retailerScope) {
     venues: venueCoverage
   }, null, 2)}\n`);
 }
+const runFinishedAt = new Date().toISOString();
+await safelyBuildAndWritePopupRunReport({
+  runId,
+  scope: retailerScope || 'all',
+  startedAt: runStartedAt,
+  finishedAt: runFinishedAt,
+  sourceRuns,
+  normalize: normalizePopup,
+  identity: row => `${normalizedText(row.brand || row.name)}|${normalizedText(row.venue)}|${row.startDate}|${row.endDate}`,
+  finalRows: popups
+});
 console.log(`원본 수집 ${rawCollectedCount}건 · 파싱 성공 ${collected.length}건 · ID 병합 ${beforeDedupCount}건 · 중복 제거 ${duplicateRemovedCount}건 · 최종 ${popups.length}건`);
 console.log(`상태 집계 active=${statusCounts.active} upcoming=${statusCounts.upcoming} ended=${statusCounts.ended}`);
 console.log(`공식 사진 팝업 ${collectionStats.photos.popupCount}/${popups.length}건 · 사진 ${collectionStats.photos.imageCount}장 · 미확보 ${collectionStats.photos.missingCount}건`);
