@@ -18,14 +18,26 @@
   <link rel="canonical" href="https://mukdang.com/">
   <title>mukdang.com | 먹당·전국 맛집 검색</title>
   <link rel="stylesheet" href="design-system/theme.css?v=1">
-  <link rel="stylesheet" href="styles.css?v=20260803-4">
+  <link rel="stylesheet" href="design-system/components.css?v=1">
+  <link rel="stylesheet" href="styles.css?v=20260804-home-1">
   <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"WebSite","name":"mukdang.com","alternateName":["먹당","묵당"],"url":"https://mukdang.com/","description":"전국 맛집 검색과 사용자 리뷰 서비스"}
   </script>
 </head>
 <body>
-  <header class="topbar shell">
+  <header class="topbar shell discovery-topbar">
     <a class="brand" href="./" data-home aria-label="mukdang.com 메인 화면">mukdang<span>.com</span></a>
+    <nav class="desktop-discovery-nav" aria-label="푸드 팝업 탐색">
+      <button type="button" data-home-filter="region">지역</button>
+      <button type="button" data-home-filter="category">카테고리</button>
+      <button type="button" data-home-filter="brand">브랜드</button>
+      <button type="button" data-home-filter="calendar">캘린더</button>
+    </nav>
+    <div class="header-quick-actions">
+      <button class="header-action" id="header-search" type="button" aria-label="검색창으로 이동">⌕<span>검색</span></button>
+      <button class="header-action" type="button" data-open-panel="saved" aria-label="저장 목록 열기">♡<span>저장 <b id="saved-count">0</b></span></button>
+      <button class="header-action" id="header-account" type="button" aria-label="로그인 또는 마이페이지 열기">●<span>내 정보</span></button>
+    </div>
     <div class="header-menu">
       <button id="menu-toggle" class="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="header-nav">
         <span></span><span></span><span></span>
@@ -34,7 +46,7 @@
         <button id="auth-button" type="button">로그인</button>
         <button type="button" data-open-panel="mypage">마이페이지</button>
         <a href="#discover">맛집 찾기</a>
-        <button type="button" data-open-panel="saved">저장 목록 <span id="saved-count">0</span></button>
+        <button type="button" data-open-panel="saved">저장 목록</button>
         <button type="button" data-open-panel="contact">고객 문의</button>
         <button id="menu-logout" type="button" hidden>로그아웃</button>
         <button id="menu-delete-account" class="menu-danger" type="button" hidden>회원탈퇴</button>
@@ -43,9 +55,10 @@
   </header>
 
   <main id="home">
-    <section class="hero shell">
-      <h1 class="hero-slogan">광고 말고, 진짜 맛집.</h1>
-      <p class="hero-description">솔직한 리뷰로 오늘 먹고 싶은 곳을 편안하게 찾아보세요.</p>
+    <section class="hero shell popup-discovery-hero">
+      <span class="hero-kicker"><i aria-hidden="true"></i><strong id="active-popup-count">공식 일정을 불러오는 중</strong></span>
+      <h1 class="hero-slogan">오늘 갈 푸드팝업</h1>
+      <p class="hero-description">전국 백화점, 쇼핑몰, 브랜드 팝업을 한곳에서</p>
       <div class="search-mode" role="tablist" aria-label="검색 대상">
         <button type="button" role="tab" aria-selected="false" data-search-mode="restaurant">식당</button>
         <button class="active" type="button" role="tab" aria-selected="true" data-search-mode="popup">푸드 팝업</button>
@@ -60,9 +73,23 @@
       <div id="popular-quick-searches" class="quick-categories" aria-label="최근 30일 인기 검색 식당">
         <span>인기 검색</span><small>검색 순위를 집계하고 있습니다.</small>
       </div>
+      <div class="popup-quick-actions" aria-label="빠른 팝업 탐색">
+        <button type="button" data-popup-quick="ending-today"><span aria-hidden="true">⌛</span><strong>오늘 종료</strong><small>놓치기 전에 확인</small></button>
+        <button type="button" data-popup-quick="nearby"><span aria-hidden="true">⌖</span><strong>내 주변</strong><small>지역으로 가까이</small></button>
+        <button type="button" data-popup-quick="new-week"><span aria-hidden="true">✦</span><strong>이번 주 신규</strong><small>새로 등록된 일정</small></button>
+      </div>
+      <div id="nearby-region-picker" class="nearby-region-picker" hidden>
+        <label for="nearby-region">내 주변 지역 선택</label>
+        <select id="nearby-region"><option value="">지역을 선택하세요</option></select>
+        <button class="md-button md-button--primary" id="nearby-apply" type="button">이 지역 보기</button>
+      </div>
     </section>
 
-    <section id="discover" class="shell discover">
+    <section id="popup-home" class="popup-home shell" aria-label="푸드 팝업 둘러보기">
+      <div id="popup-home-content" aria-live="polite"><div class="popup-home-loading"><span class="md-loading" role="status" aria-label="팝업 불러오는 중"></span><p>오늘의 팝업을 정리하고 있어요.</p></div></div>
+    </section>
+
+    <section id="discover" class="shell discover all-popup-results">
       <div class="section-head">
         <div><span class="eyebrow">오늘의 인기 맛집</span><h2 id="discover-title">지금 많이 찾는 식당</h2><p id="result-summary">식당 정보를 불러오는 중입니다.</p></div>
         <button id="filter-toggle" class="filter-toggle" type="button" aria-expanded="false">필터</button>
@@ -105,6 +132,13 @@
     </section>
   </main>
 
+  <nav class="mobile-bottom-nav" aria-label="모바일 주요 메뉴">
+    <a href="#home" aria-current="page"><span aria-hidden="true">⌂</span>홈</a>
+    <button type="button" data-bottom-action="search"><span aria-hidden="true">⌕</span>검색</button>
+    <button type="button" data-bottom-action="saved"><span aria-hidden="true">♡</span>저장</button>
+    <button type="button" data-bottom-action="account"><span aria-hidden="true">●</span>내 정보</button>
+  </nav>
+
   <footer class="footer">
     <div class="footer-brand"><strong>mukdang.com</strong><span>Find a table you can trust.</span></div>
     <nav class="footer-seo-links" aria-label="검색 가이드"><a href="/food-popups/">푸드 팝업 일정</a><a href="/restaurant-reviews/">식당 리뷰</a></nav>
@@ -130,6 +164,6 @@
     <article class="modal panel-modal"><button class="modal-close" data-close type="button" aria-label="닫기">×</button><div id="panel-content"></div></article>
   </div>
   <div id="toast" class="toast" role="status"></div>
-  <script type="module" src="app.js?v=20260803-15"></script>
+  <script type="module" src="app.js?v=20260804-home-1"></script>
 </body>
 </html>
