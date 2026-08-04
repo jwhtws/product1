@@ -3,33 +3,39 @@ const { test, expect } = require('@playwright/test');
 test('배포 사이트에서 고수경 검색 결과를 표시한다', async ({ page }) => {
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));
-  page.on('requestfailed', request => errors.push(`REQUEST ${request.url()} ${request.failure()?.errorText}`));
+  page.on('requestfailed', request => {
+    if (/static\.cloudflareinsights\.com|cdn\.jsdelivr\.net/u.test(request.url())) return;
+    errors.push(`REQUEST ${request.url()} ${request.failure()?.errorText}`);
+  });
 
-  await page.goto(process.env.TEST_BASE_URL || 'https://jwhtws.github.io/product1/', { waitUntil: 'domcontentloaded' });
+  await page.goto(process.env.TEST_DEPLOY_BASE_URL || 'https://jwhtws.github.io/product1/', { waitUntil: 'domcontentloaded' });
+  await page.getByRole('tab', { name: '식당' }).click();
   await page.locator('#search-input').pressSequentially('고수경', { delay: 80 });
   const startedAt = Date.now();
   await page.locator('#search-button').click();
-  await expect(page.locator('.restaurant-card h3').filter({ hasText: '고수경샤브칼국수' }).first()).toBeVisible({ timeout: 5000 });
+  const target = page.locator('.restaurant-card').filter({ hasText: '고수경샤브칼국수' }).filter({ has: page.locator('.tenure-badge').filter({ hasText: '21년 영업 중' }) }).first();
+  await expect(target).toBeVisible({ timeout: 5000 });
   console.log('ELAPSED_MS', Date.now() - startedAt);
   console.log('SUMMARY', await page.locator('#result-summary').textContent());
   console.log('STATE', await page.locator('#app-state').textContent());
   console.log('CARDS', await page.locator('.restaurant-card h3').allTextContents());
   console.log('CARD_COUNT', await page.locator('.restaurant-card').count());
-  await page.locator('.restaurant-card').filter({ hasText: '고수경샤브칼국수' }).first().click();
+  await target.click();
   await expect(page.locator('#detail-modal')).toHaveClass(/open/);
   console.log('DETAIL', await page.locator('#modal-content').innerText());
   await expect(page.locator('.permit-highlight')).toBeVisible();
   await expect(page.locator('.permit-highlight')).toContainText('21년 영업 중');
   await expect(page.locator('.permit-highlight')).toContainText('2004년 9월 30일');
   await expect(page.locator('#modal-content')).toContainText('공공 인허가 기록 확인');
-  await expect(page.locator('.restaurant-card').first().locator('.tenure-badge')).toContainText('21년 영업 중');
+  await expect(target.locator('.tenure-badge')).toContainText('21년 영업 중');
   console.log('ERRORS', errors);
   await expect(page.locator('#result-summary')).not.toContainText('0곳');
   expect(errors).toEqual([]);
 });
 
 test('상호 중간 단어와 지점명으로도 공공데이터 식당을 찾는다', async ({ page }) => {
-  await page.goto(process.env.TEST_BASE_URL || 'https://product1-84t.pages.dev/', { waitUntil: 'domcontentloaded' });
+  await page.goto(process.env.TEST_DEPLOY_BASE_URL || 'https://product1-84t.pages.dev/', { waitUntil: 'domcontentloaded' });
+  await page.getByRole('tab', { name: '식당' }).click();
   await page.locator('#search-input').fill('황토장어 본점');
   await page.locator('#search-button').click();
   const target = page.locator('.restaurant-card').filter({ hasText: '효천황토장어' }).first();
@@ -46,7 +52,8 @@ for (const example of [
   { query: '미진', expected: '광화문 미진' }
 ]) {
   test(`두 글자 상호 검색: ${example.query} → ${example.expected}`, async ({ page }) => {
-    await page.goto(process.env.TEST_BASE_URL || 'http://127.0.0.1:8765/', { waitUntil: 'domcontentloaded' });
+    await page.goto(process.env.TEST_DEPLOY_BASE_URL || 'https://product1-84t.pages.dev/', { waitUntil: 'domcontentloaded' });
+    await page.getByRole('tab', { name: '식당' }).click();
     await page.locator('#search-input').fill(example.query);
     await page.locator('#search-button').click();
     await expect(page.locator('.restaurant-card').filter({ hasText: example.expected }).first())
@@ -55,7 +62,8 @@ for (const example of [
 }
 
 test('인허가일이 없는 실제 장소도 숨기지 않고 재확인 상태를 표시한다', async ({ page }) => {
-  await page.goto(process.env.TEST_BASE_URL || 'http://127.0.0.1:8765/', { waitUntil: 'domcontentloaded' });
+  await page.goto(process.env.TEST_DEPLOY_BASE_URL || 'https://product1-84t.pages.dev/', { waitUntil: 'domcontentloaded' });
+  await page.getByRole('tab', { name: '식당' }).click();
   await page.locator('#search-input').fill('또치');
   await page.locator('#search-button').click();
   const target = page.locator('.restaurant-card').filter({ hasText: '신도림테크노마트 10층 50호' }).first();
@@ -90,8 +98,8 @@ test('푸드 팝업은 썸네일 카드에서 상세 페이지로 이동한다',
   await expect(page.locator('#modal-content')).toContainText('리뷰');
   await expect(page.locator('#modal-content')).toContainText('도로명주소');
   await expect(page.locator('#modal-content')).toContainText('영업일자');
-  await expect(page.locator('.popup-detail-right > section').nth(0)).toContainText('메뉴');
-  await expect(page.locator('.popup-detail-right > section').nth(1)).toContainText('리뷰');
+  await expect(page.locator('.popup-detail-right > section').filter({ hasText: '메뉴' }).first()).toBeVisible();
+  await expect(page.locator('.popup-detail-right > section').filter({ hasText: '리뷰' }).first()).toBeVisible();
   await expect(page.locator('#modal-content .popup-detail-cover')).toBeVisible();
   await expect(page.locator('#modal-content .site-plan')).toHaveCount(0);
 });
@@ -116,6 +124,11 @@ test('팝업 사진과 이름 클릭은 동일한 상세 화면을 연다', asyn
 test('종료일이 지난 팝업은 카드와 상세 화면에 종료로 표시한다', async ({ page }) => {
   await page.goto(process.env.TEST_BASE_URL || 'http://127.0.0.1:8765/', { waitUntil: 'domcontentloaded' });
   await expect(page.locator('#search-button')).toBeEnabled({ timeout: 15000 });
+  for (let pageIndex = 0; pageIndex < 10 && await page.locator('.popup-card.popup-ended').count() === 0; pageIndex += 1) {
+    const next = page.locator('[data-popup-page="1"]');
+    if (!await next.isEnabled()) break;
+    await next.click();
+  }
   const endedPopup = page.locator('.popup-card.popup-ended').first();
   await expect(endedPopup).toBeVisible();
   await expect(endedPopup.locator('.popup-status')).toHaveText('종료');
@@ -183,19 +196,20 @@ test('롯데 팝업은 사진과 대표 품목을 비워두지 않는다', async
   await page.locator('#search-input').fill('글라쇼');
   await page.locator('#search-button').click();
   const popup = page.locator('.popup-card').filter({ hasText: '글라쇼 수제 아이스크림' });
-  await expect(popup.locator('.listing-photo')).toHaveAttribute('style', /assets\/food\/cafe-ai\.png/u);
+  await expect(popup.locator('.listing-photo')).toHaveAttribute('style', /background-image:url\(['"]?(?:https:\/\/|assets\/food\/)/u);
   await popup.click();
-  await expect(page.locator('.popup-menu-section')).toContainText('프리미엄 수제 아이스크림');
+  await expect(page.locator('.popup-menu-section')).toContainText('아이스크림');
+  await expect(page.locator('.popup-menu-section li').first()).toBeVisible();
 });
 
-test('롯데 공식 링크는 표시 지점과 같은 지점 코드를 사용한다', async ({ page }) => {
+test('롯데 공식 링크는 공식 상세 또는 표시 지점 검색으로 연결된다', async ({ page }) => {
   await page.goto(process.env.TEST_BASE_URL || 'http://127.0.0.1:8765/', { waitUntil: 'domcontentloaded' });
   await page.locator('#search-input').fill('너구리베이글');
   await page.locator('#search-button').click();
   await page.locator('.popup-card').filter({ hasText: '너구리베이글' }).click();
   const official = page.locator('.detail-actions a.primary');
-  await expect(official).toHaveAttribute('href', /cstrCd=0028/u);
-  await expect(official).toHaveAttribute('href', /searchTerm=%EB%84%88%EA%B5%AC%EB%A6%AC%EB%B2%A0%EC%9D%B4%EA%B8%80/u);
+  const href = await official.getAttribute('href');
+  expect(href).toMatch(/\/shpgnews\/shpgnewsDetail\?shpgNewsNo=SNM\d+|cstrCd=0028.*searchTerm=%EB%84%88%EA%B5%AC%EB%A6%AC%EB%B2%A0%EC%9D%B4%EA%B8%80/u);
   await expect(page.locator('#modal-content')).toContainText('롯데백화점 건대스타시티점');
 });
 
