@@ -108,3 +108,15 @@ for (const width of [320, 375, 390, 768, 1024, 1440]) {
     else await expect(page.locator('.mobile-bottom-nav')).not.toBeVisible();
   });
 }
+
+test('1024px 노트북에서는 큰 카드 가로 탐색과 단순 헤더를 유지한다', async ({ page }) => {
+  await page.setViewportSize({ width: 1024, height: 768 });
+  await page.goto(homeUrl, { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('#active-popup-count')).toContainText(/\d+개 진행중/u, { timeout: 15000 });
+  await expect(page.locator('.desktop-discovery-nav')).not.toBeVisible();
+  await expect(page.locator('#today-discovery .discovery-popup-card')).toHaveCount(8);
+  const rail = await page.locator('#today-discovery .popup-card-rail').evaluate(element => ({ scrollWidth: element.scrollWidth, clientWidth: element.clientWidth }));
+  expect(rail.scrollWidth).toBeGreaterThan(rail.clientWidth);
+  await page.locator('#menu-toggle').click();
+  await expect(page.locator('#header-nav')).toBeVisible();
+});
