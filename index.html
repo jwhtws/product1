@@ -58,14 +58,14 @@
     <section class="hero shell popup-discovery-hero">
       <span class="hero-kicker"><i aria-hidden="true"></i><strong id="active-popup-count">공식 일정을 불러오는 중</strong></span>
       <h1 class="hero-slogan">오늘 갈 푸드팝업</h1>
-      <p class="hero-description">전국 백화점, 쇼핑몰, 브랜드 팝업을 한곳에서</p>
+      <p class="hero-description"><span>전국 백화점,</span><span>쇼핑몰,</span><span>브랜드 팝업을</span><span>한곳에서</span></p>
       <div class="search-mode" role="tablist" aria-label="검색 대상">
         <button type="button" role="tab" aria-selected="false" data-search-mode="restaurant">식당</button>
         <button class="active" type="button" role="tab" aria-selected="true" data-search-mode="popup">푸드 팝업</button>
       </div>
       <div class="search-wrap">
         <div class="searchbar">
-          <input id="search-input" type="search" placeholder="팝업 이름, 브랜드, 지역 검색" autocomplete="off" aria-label="푸드 팝업 검색">
+          <input id="search-input" type="search" placeholder="브랜드, 장소, 지역 검색" autocomplete="off" aria-label="푸드 팝업 검색">
           <button id="search-button" class="primary" type="button" disabled>준비 중</button>
         </div>
         <div id="suggestions" class="suggestions" role="listbox"></div>
@@ -76,7 +76,7 @@
       <div class="popup-quick-actions" aria-label="빠른 팝업 탐색">
         <button type="button" data-popup-quick="ending-today"><span aria-hidden="true">⌛</span><strong>오늘 종료</strong><small>놓치기 전에 확인</small></button>
         <button type="button" data-popup-quick="nearby" aria-pressed="false"><span aria-hidden="true">⌖</span><strong>내 주변</strong><small>지역으로 가까이</small></button>
-        <button type="button" data-popup-quick="all"><span aria-hidden="true">☷</span><strong>전체 팝업</strong><small>진행 중·오픈 예정</small></button>
+        <button type="button" data-popup-quick="calendar"><span aria-hidden="true">▣</span><strong>캘린더</strong><small>전체 일정 보기</small></button>
       </div>
       <div id="nearby-region-picker" class="nearby-region-picker" hidden>
         <label for="nearby-region">내 주변 지역 선택</label>
@@ -86,12 +86,12 @@
     </section>
 
     <section id="popup-home" class="popup-home shell" aria-label="푸드 팝업 둘러보기">
-      <div id="popup-home-content" aria-live="polite"><div class="popup-home-loading"><span class="md-loading" role="status" aria-label="팝업 불러오는 중"></span><p>오늘의 팝업을 정리하고 있어요.</p></div></div>
+      <div id="popup-home-content" aria-live="polite"><div class="popup-home-skeleton" aria-label="팝업 불러오는 중" aria-busy="true"><div class="skeleton-popup-card"><span class="md-skeleton"></span><i class="md-skeleton"></i><i class="md-skeleton"></i></div><div class="skeleton-popup-card"><span class="md-skeleton"></span><i class="md-skeleton"></i><i class="md-skeleton"></i></div><div class="skeleton-popup-card"><span class="md-skeleton"></span><i class="md-skeleton"></i><i class="md-skeleton"></i></div></div></div>
     </section>
 
     <section id="discover" class="shell discover all-popup-results">
       <div class="section-head">
-        <div><span class="eyebrow">오늘의 인기 맛집</span><h2 id="discover-title">지금 많이 찾는 식당</h2><p id="result-summary">식당 정보를 불러오는 중입니다.</p></div>
+        <div><span class="eyebrow">전체 일정</span><h2 id="discover-title">전체 푸드 팝업</h2><p id="result-summary">팝업 정보를 불러오는 중입니다.</p></div>
         <button id="filter-toggle" class="filter-toggle" type="button" aria-expanded="false">필터</button>
       </div>
 
@@ -164,6 +164,6 @@
     <article class="modal panel-modal"><button class="modal-close" data-close type="button" aria-label="닫기">×</button><div id="panel-content"></div></article>
   </div>
   <div id="toast" class="toast" role="status"></div>
-  <script type="module" src="app.js?v=20260804-home-3"></script>
+  <script type="module" src="app.js?v=20260804-v2-1"></script>
 </body>
 </html>
