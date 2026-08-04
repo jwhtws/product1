@@ -4,7 +4,8 @@
   "scripts": {
     "check": "node scripts/validate-project.mjs",
     "build": "npm run check",
-    "test": "npx playwright test",
+    "test": "node --test tests/data-source-registry.test.mjs && npx playwright test",
+    "audit:data-sources": "node scripts/audit-data-sources.mjs",
     "data:refresh-popups": "node scripts/refresh-food-popups.mjs",
     "data:refresh-lotte": "node scripts/refresh-food-popups.mjs --lotte-only",
     "data:refresh-hyundai": "node scripts/refresh-food-popups.mjs --retailer=hyundai",
