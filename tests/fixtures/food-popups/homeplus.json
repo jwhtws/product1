@@ -1,0 +1,105 @@
+{
+  "metadata": {
+    "sourceUrl": "https://corporate.homeplus.co.kr/Business/Hyper_Notice.aspx",
+    "collectedAt": "2026-08-04",
+    "sanitized": true,
+    "fixtureTypes": [
+      "valid-list",
+      "valid-detail",
+      "empty-list",
+      "malformed",
+      "expired-event",
+      "non-food-event",
+      "non-popup-food-sale",
+      "duplicate-source-item"
+    ]
+  },
+  "sourceId": "homeplus",
+  "sourceName": "홈플러스 공식 공지",
+  "detail": {
+    "sourceItemId": "evt-100",
+    "title": "여름 디저트 팝업",
+    "brand": "먹당베이커리",
+    "venue": "홈플러스 강서점",
+    "startDate": "2026-08-01",
+    "endDate": "2026-08-31",
+    "sourceUrl": "https://corporate.homeplus.co.kr/Business/Hyper_Notice.aspx?id=evt-100",
+    "imageUrl": "https://images.example.test/popup.jpg",
+    "description": "베이커리 푸드 팝업",
+    "menu": "크루아상 5,000원"
+  },
+  "emptyList": {
+    "items": []
+  },
+  "malformed": {
+    "blocked": false
+  },
+  "items": [
+    {
+      "sourceItemId": "evt-100",
+      "title": "여름 디저트 팝업",
+      "brand": "먹당베이커리",
+      "venue": "홈플러스 강서점",
+      "startDate": "2026-08-01",
+      "endDate": "2026-08-31",
+      "sourceUrl": "https://corporate.homeplus.co.kr/Business/Hyper_Notice.aspx?id=evt-100",
+      "imageUrl": "https://images.example.test/popup.jpg",
+      "description": "베이커리 푸드 팝업"
+    },
+    {
+      "sourceItemId": "evt-100",
+      "title": "여름 디저트 팝업",
+      "brand": "먹당베이커리",
+      "venue": "홈플러스 강서점",
+      "startDate": "2026-08-01",
+      "endDate": "2026-08-31",
+      "sourceUrl": "https://corporate.homeplus.co.kr/Business/Hyper_Notice.aspx?id=evt-100",
+      "imageUrl": "https://images.example.test/popup.jpg",
+      "description": "베이커리 푸드 팝업"
+    },
+    {
+      "sourceItemId": "expired",
+      "title": "여름 디저트 팝업",
+      "brand": "먹당베이커리",
+      "venue": "홈플러스 강서점",
+      "startDate": "2026-06-01",
+      "endDate": "2026-07-01",
+      "sourceUrl": "https://corporate.homeplus.co.kr/Business/Hyper_Notice.aspx?id=evt-100",
+      "imageUrl": "https://images.example.test/popup.jpg",
+      "description": "베이커리 푸드 팝업"
+    },
+    {
+      "sourceItemId": "non-food",
+      "title": "패션 팝업",
+      "brand": "의류브랜드",
+      "venue": "홈플러스 강서점",
+      "startDate": "2026-08-01",
+      "endDate": "2026-08-31",
+      "sourceUrl": "https://corporate.homeplus.co.kr/Business/Hyper_Notice.aspx?id=evt-100",
+      "imageUrl": "https://images.example.test/popup.jpg",
+      "description": "의류 팝업"
+    },
+    {
+      "sourceItemId": "sale",
+      "title": "여름 베이커리 할인전",
+      "brand": "먹당베이커리",
+      "venue": "홈플러스 강서점",
+      "startDate": "2026-08-01",
+      "endDate": "2026-08-31",
+      "sourceUrl": "https://corporate.homeplus.co.kr/Business/Hyper_Notice.aspx?id=evt-100",
+      "imageUrl": "https://images.example.test/popup.jpg",
+      "description": "식품 할인 행사"
+    },
+    {
+      "sourceItemId": "bad-date",
+      "title": "여름 디저트 팝업",
+      "brand": "먹당베이커리",
+      "venue": "홈플러스 강서점",
+      "startDate": "2026/08/01",
+      "endDate": "2026-08-31",
+      "sourceUrl": "https://corporate.homeplus.co.kr/Business/Hyper_Notice.aspx?id=evt-100",
+      "imageUrl": "https://images.example.test/popup.jpg",
+      "description": "베이커리 푸드 팝업"
+    }
+  ]
+}

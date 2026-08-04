@@ -4,7 +4,7 @@
   "scripts": {
     "check": "node scripts/validate-project.mjs",
     "build": "npm run check",
-    "test": "node --test tests/data-source-registry.test.mjs && npx playwright test",
+    "test": "node --test scripts/lib/*.test.mjs tests/*.test.mjs tests/collectors/*.test.mjs && npx playwright test",
     "audit:data-sources": "node scripts/audit-data-sources.mjs",
     "data:refresh-popups": "node scripts/refresh-food-popups.mjs",
     "data:refresh-lotte": "node scripts/refresh-food-popups.mjs --lotte-only",

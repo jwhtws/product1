@@ -3,7 +3,15 @@ import { dirname } from 'node:path';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import { collectLottePopups } from './lib/lotte-popup-collector.mjs';
-import { safelyBuildAndWritePopupRunReport } from './lib/popup-run-report.mjs';
+import { selectCollectors } from './collectors/registry.mjs';
+import { assertNotBlockedPage, hardenedFetch } from './lib/hardened-fetch.mjs';
+import {
+  createCollectorStats,
+  mergeCollectorStats,
+  normalizeCollectorResult,
+  recordCollectorRejection,
+  safelyBuildAndWritePopupRunReport
+} from './lib/popup-run-report.mjs';
 
 const runStartedAt = new Date().toISOString();
 const runId = `food-popups-${runStartedAt.replace(/[-:.TZ]/gu, '')}-${process.pid}`;
@@ -60,12 +68,10 @@ function dateRange(value) {
 }
 
 async function fetchJson(url) {
-  const response = await fetch(url, {
-    headers: { 'user-agent': 'mukdang-popup-indexer/1.0 (+https://mukdang.com)' },
-    signal: AbortSignal.timeout(20_000)
-  });
-  if (!response.ok) throw new Error(`${url} 응답 ${response.status}`);
-  const payload = await response.json();
+  const response = await hardenedFetch(url, { timeoutMs: 20_000, retries: 2 });
+  const text = await response.text();
+  assertNotBlockedPage(text, new URL(url).hostname);
+  const payload = JSON.parse(text);
   return typeof payload === 'string' ? JSON.parse(payload) : payload;
 }
 
@@ -74,7 +80,7 @@ async function fetchResilient(url, options = {}) {
   let lastError;
   for (let attempt = 0; attempt < attempts; attempt += 1) {
     try {
-      const response = await fetch(url, {
+      const response = await hardenedFetch(url, {
         ...fetchOptions,
         headers: {
           accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
@@ -83,7 +89,7 @@ async function fetchResilient(url, options = {}) {
           'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/126 Safari/537.36 mukdang-popup-indexer/1.0',
           ...(fetchOptions.headers || {})
         },
-        signal: fetchOptions.signal || AbortSignal.timeout(timeoutMs)
+        timeoutMs, retries: 0, requestIntervalMs: 100
       });
       if (response.ok || [401, 403, 404].includes(response.status)) return response;
       lastError = new Error(`${url} 응답 ${response.status}`);
@@ -154,6 +160,7 @@ function parseHyundaiImageUrls(html, sourceUrl) {
 async function collectHyundai() {
   const rows = [];
   const seen = new Set();
+  const stats = createCollectorStats();
   const base = 'https://www.ehyundai.com/newPortal/search/result.do';
   for (const searchWord of ['pop up', '식품', '푸드', '베이커리', '디저트', '카페', '커피', '떡', '빵', '분식']) {
    for (let page = 1; page <= 50; page += 1) {
@@ -165,13 +172,17 @@ async function collectHyundai() {
     const data = await fetchJson(`${base}?${params}`);
     const events = Array.isArray(data.eventList) ? data.eventList : [];
     for (const event of events) {
-      if (seen.has(event.EVNT_CRD_CD)) continue;
+      stats.discoveredCount += 1;
+      if (seen.has(event.EVNT_CRD_CD)) { recordCollectorRejection(stats, 'duplicate_source_item'); continue; }
       seen.add(event.EVNT_CRD_CD);
       const searchable = clean(`${event.EVNT_CRD_NM} ${event.BRAND_NM} ${event.TITL}`);
-      if (!popupWords.test(searchable) || !foodWords.test(searchable) || nonHumanFood.test(searchable)) continue;
+      if (!popupWords.test(searchable)) { recordCollectorRejection(stats, 'not_popup'); continue; }
+      if (!foodWords.test(searchable)) { recordCollectorRejection(stats, 'not_food'); continue; }
+      if (nonHumanFood.test(searchable)) { recordCollectorRejection(stats, 'non_human_food'); continue; }
       const startDate = eventDate(event.EVNT_STRT_DT);
       const endDate = eventDate(event.EVNT_END_DT);
-      if (!startDate || !endDate || new Date(`${endDate}T23:59:59+09:00`) < keepSince) continue;
+      if (!startDate || !endDate) { recordCollectorRejection(stats, 'invalid_date'); continue; }
+      if (new Date(`${endDate}T23:59:59+09:00`) < keepSince) { recordCollectorRejection(stats, 'expired'); continue; }
       const name = clean(event.EVNT_CRD_NM).replace(/^\[(?:POP[\s-]*UP STORE|팝업스토어)\]\s*/iu, '');
       const branchCode = `B001${event.STORE_CD}00`;
       const storeName = clean(event.STORE_NM);
@@ -209,7 +220,7 @@ async function collectHyundai() {
       };
     } catch { return row; }
   }));
-  return detailed;
+  return { rows: detailed, stats };
 }
 
 const starfieldVenues = [
@@ -221,6 +232,8 @@ const starfieldVenues = [
 
 async function collectStarfield() {
   const rows = [];
+  const stats = createCollectorStats();
+  const seen = new Set();
   await Promise.all(starfieldVenues.map(async ([slug, venue]) => {
     try {
     const firstUrl = `https://www.starfield.co.kr/api/${slug}/event/eventList.do?evt_gbn=event&lang=ko&pageIndex=1`;
@@ -231,12 +244,18 @@ async function collectStarfield() {
       payloads.push(await fetchJson(`${firstUrl.replace(/pageIndex=1$/, `pageIndex=${page}`)}`));
     }
     for (const event of payloads.flatMap(payload => payload.data || [])) {
+      stats.discoveredCount += 1;
+      const sourceId = `${slug}:${event.evt_seq}`;
+      if (seen.has(sourceId)) { recordCollectorRejection(stats, 'duplicate_source_item'); continue; }
+      seen.add(sourceId);
       const searchable = clean(`${event.evt_titl} ${event.evt_titl_en} ${event.evt_dtl_cntn || ''}`);
-      if (!/(팝업|POP[\s-]*UP)/iu.test(searchable) || !foodWords.test(searchable) || nonHumanFood.test(searchable)) continue;
+      if (!/(팝업|POP[\s-]*UP)/iu.test(searchable)) { recordCollectorRejection(stats, 'not_popup'); continue; }
+      if (!foodWords.test(searchable)) { recordCollectorRejection(stats, 'not_food'); continue; }
+      if (nonHumanFood.test(searchable)) { recordCollectorRejection(stats, 'non_human_food'); continue; }
       const startDate = String(event.evt_strt_dt || '').slice(0, 10).replace(/\./g, '-');
       const endDate = String(event.evt_end_dt || '').slice(0, 10).replace(/\./g, '-');
-      if (!/^\d{4}-\d{2}-\d{2}$/.test(startDate) || !/^\d{4}-\d{2}-\d{2}$/.test(endDate)) continue;
-      if (new Date(`${endDate}T23:59:59+09:00`) < keepSince) continue;
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(startDate) || !/^\d{4}-\d{2}-\d{2}$/.test(endDate)) { recordCollectorRejection(stats, 'invalid_date'); continue; }
+      if (new Date(`${endDate}T23:59:59+09:00`) < keepSince) { recordCollectorRejection(stats, 'expired'); continue; }
       rows.push({
         id: `starfield:${slug}:${event.evt_seq}`,
         name: clean(event.evt_titl),
@@ -267,6 +286,7 @@ async function collectStarfield() {
   ];
   const suwonSourceUrl = 'https://www.starfield.co.kr/suwon/tenant/floorInfo';
   for (const [key, name, startDate] of suwonFoodPopups) {
+    stats.discoveredCount += 1;
     rows.push({
       id: `starfield:suwon:bites-place:${key}`, name, venue: '스타필드 수원', venueType: '쇼핑몰',
       address: '경기도 수원시 장안구 수성로 175 · 스타필드 수원', startDate, endDate: '', imageUrl: '',
@@ -274,7 +294,7 @@ async function collectStarfield() {
       sourceGrade: 'official', firstSeenAt: today, lastSeenAt: today
     });
   }
-  return rows;
+  return { rows, stats };
 }
 
 function decodeHtml(value) {
@@ -322,16 +342,25 @@ async function shinsegaeDetailMenus(pageLink) {
 
 async function collectShinsegaeShoppingNews() {
   const rows = [];
+  const stats = createCollectorStats();
+  const seen = new Set();
   const results = await Promise.allSettled(shinsegaeStores.map(async ([storeCd, fallbackName, roadAddress]) => {
     const url = `https://www.shinsegae.com/shopping/ajaxList.do?mainCd=02&storeCd=${storeCd}`;
     const payload = await fetchJson(url);
     const cards = Array.isArray(payload.shoppingInfoList?.page) ? payload.shoppingInfoList.page : [];
     for (const card of cards) {
+      stats.discoveredCount += 1;
+      const sourceId = `${storeCd}:${card.id}`;
+      if (seen.has(sourceId)) { recordCollectorRejection(stats, 'duplicate_source_item'); continue; }
+      seen.add(sourceId);
       const searchable = clean(`${card.title1} ${card.brandNm} ${card.badge1} ${card.genreNm} ${card.floorNm} ${card.content1}`);
-      if (!popupWords.test(searchable) || !foodWords.test(searchable) || nonHumanFood.test(searchable)) continue;
+      if (!popupWords.test(searchable)) { recordCollectorRejection(stats, 'not_popup'); continue; }
+      if (!foodWords.test(searchable)) { recordCollectorRejection(stats, 'not_food'); continue; }
+      if (nonHumanFood.test(searchable)) { recordCollectorRejection(stats, 'non_human_food'); continue; }
       const startDate = shinsegaeDate(card.startDt);
       const endDate = shinsegaeDate(card.endDt);
-      if (!card.id || !startDate || !endDate || new Date(`${endDate}T23:59:59+09:00`) < keepSince) continue;
+      if (!card.id || !startDate || !endDate) { recordCollectorRejection(stats, 'invalid_date'); continue; }
+      if (new Date(`${endDate}T23:59:59+09:00`) < keepSince) { recordCollectorRejection(stats, 'expired'); continue; }
       const venue = `\uc2e0\uc138\uacc4\ubc31\ud654\uc810 ${fallbackName}`;
       const pageLink = String(card.link || '');
       const sourceParams = new URLSearchParams({
@@ -370,10 +399,13 @@ async function collectShinsegaeShoppingNews() {
       if (menus.length) Object.assign(row, { menus, menuSource: 'official-detail' });
     } catch {}
   }
-  return rows.filter(row => {
+  const filteredRows = rows.filter(row => {
     const detailedProducts = (row.menus || []).map(menu => menu.name).join(' ');
-    return !detailedProducts || !/(샴푸|헤어오일|헤어|탈모|화장품|세럼|마스크팩|스킨케어|향수)/u.test(detailedProducts);
+    const accepted = !detailedProducts || !/(샴푸|헤어오일|헤어|탈모|화장품|세럼|마스크팩|스킨케어|향수)/u.test(detailedProducts);
+    if (!accepted) recordCollectorRejection(stats, 'not_food');
+    return accepted;
   });
+  return { rows: filteredRows, stats };
 }
 
 async function collectShinsegae() {
@@ -382,8 +414,11 @@ async function collectShinsegae() {
   if (!response.ok) throw new Error(`${url} 응답 ${response.status}`);
   const html = await response.text();
   const rows = [];
+  const stats = createCollectorStats();
+  const seenSourceIds = new Set();
   let parseFailures = 0;
   for (const match of html.matchAll(/<li[^>]*class=["'][^"']*gu_link_hover[^"']*["'][\s\S]*?<\/li>/gi)) {
+    stats.discoveredCount += 1;
     const block = match[0];
     const seq = block.match(/(?:eventSeq|eventSEQ)=(\d+)/i)?.[1];
     const name = decodeHtml(block.match(/class=["'][^"']*cnt_tit[^"']*["'][^>]*>([\s\S]*?)<\/div>/i)?.[1]);
@@ -392,10 +427,18 @@ async function collectShinsegae() {
     const dates = [...dateText.matchAll(/(\d{4})\.(\d{2})\.(\d{2})/g)].map(parts => `${parts[1]}-${parts[2]}-${parts[3]}`);
     const imagePath = block.match(/background:\s*url\(['"]?([^'")]+)/)?.[1] || '';
     const searchable = decodeHtml(block);
-    if (!seq || !name || dates.length < 2 || !foodWords.test(searchable) || nonHumanFood.test(searchable)) {
+    let reason = '';
+    if (seq && seenSourceIds.has(seq)) reason = 'duplicate_source_item';
+    else if (!name) reason = 'missing_name';
+    else if (!seq || dates.length < 2) reason = 'invalid_date';
+    else if (!foodWords.test(searchable)) reason = 'not_food';
+    else if (nonHumanFood.test(searchable)) reason = 'non_human_food';
+    if (reason) {
+      recordCollectorRejection(stats, reason);
       parseFailures += 1;
       continue;
     }
+    seenSourceIds.add(seq);
     rows.push({
       id: `shinsegae:${seq}`,
       name,
@@ -416,14 +459,26 @@ async function collectShinsegae() {
   // (or no longer exposes the date/title classes), inspect event links and
   // their nearby card text instead of returning an unexplained empty feed.
   if (!rows.length) {
+    // This is an alternate parser for the same page, not a second set of
+    // source cards. Replace the failed legacy-parser measurements so each
+    // card receives only one primary outcome in the report.
+    stats.discoveredCount = 0;
+    stats.rejectionReasons = {};
     const seen = new Set();
     for (const link of html.matchAll(/<a\b[^>]+href=["']([^"']*(?:event|shopping)[^"']*)["'][^>]*>/giu)) {
+      stats.discoveredCount += 1;
       const block = html.slice(Math.max(0, link.index - 1800), Math.min(html.length, link.index + 4500));
       const seq = block.match(/(?:eventSeq|eventSEQ)[=:/](\d+)/i)?.[1] || link[1].match(/(?:eventSeq|eventSEQ)[=:/](\d+)/i)?.[1];
       const range = dateRange(block);
       const searchable = decodeHtml(block);
       const title = decodeHtml(block.match(/<(?:h[1-6]|strong|a)[^>]*>([\s\S]*?)<\/(?:h[1-6]|strong|a)>/i)?.[1]);
-      if (!seq || seen.has(seq) || !title || !range || !foodWords.test(searchable) || nonHumanFood.test(searchable)) continue;
+      let reason = '';
+      if (seq && seen.has(seq)) reason = 'duplicate_source_item';
+      else if (!title) reason = 'missing_name';
+      else if (!seq || !range) reason = 'invalid_date';
+      else if (!foodWords.test(searchable)) reason = 'not_food';
+      else if (nonHumanFood.test(searchable)) reason = 'non_human_food';
+      if (reason) { recordCollectorRejection(stats, reason); continue; }
       seen.add(seq);
       rows.push({
         id: `shinsegae:${seq}`, name: title, venue: '신세계백화점 전점', venueType: '백화점', address: '신세계백화점 전점',
@@ -432,9 +487,11 @@ async function collectShinsegae() {
       });
     }
   }
-  const shoppingNewsRows = await collectShinsegaeShoppingNews();
+  const shoppingNewsResult = await collectShinsegaeShoppingNews();
+  const { rows: shoppingNewsRows, stats: shoppingNewsStats } = normalizeCollectorResult(shoppingNewsResult);
+  mergeCollectorStats(stats, shoppingNewsStats);
   console.log(`신세계 전점 이벤트 ${rows.length}건 · 지점별 쇼핑뉴스 ${shoppingNewsRows.length}건 · 파싱 실패/비식품 ${parseFailures}건`);
-  return [...rows, ...shoppingNewsRows];
+  return { rows: [...rows, ...shoppingNewsRows], stats };
 }
 
 async function collectElandRetail() {
@@ -515,8 +572,12 @@ async function collectOfficialHtmlFeeds(sourceName, venueType, feeds) {
 
 async function collectFromOfficialSitemaps(sourceName, venueType, domains) {
   const rows = [];
+  const stats = createCollectorStats();
   const seen = new Set();
   const candidateUrls = new Set();
+  const allowedDomains = new Set(domains);
+  let sitemapResponses = 0;
+  let sitemapLocations = 0;
   for (const domain of domains) {
     try {
       const robots = await fetchResilient(`https://${domain}/robots.txt`);
@@ -529,8 +590,13 @@ async function collectFromOfficialSitemaps(sourceName, venueType, domains) {
         const response = await fetchResilient(sitemapUrl);
         if (!response.ok) continue;
         const xml = await response.text();
+        sitemapResponses += 1;
         for (const match of xml.matchAll(/<loc>\s*(https?:\/\/[^<]+)\s*<\/loc>/gi)) {
           const url = decodeHtml(match[1]);
+          let hostname = '';
+          try { hostname = new URL(url).hostname; } catch { recordCollectorRejection(stats, 'invalid_url'); continue; }
+          if (!allowedDomains.has(hostname)) { recordCollectorRejection(stats, 'outside_allowed_domain'); continue; }
+          sitemapLocations += 1;
           if (/sitemap/i.test(url) && queue.length < 40) queue.push(url);
           else if (/(event|news|popup|promotion|shopping|store|branch|campaign)/iu.test(url)) candidateUrls.add(url);
         }
@@ -539,23 +605,33 @@ async function collectFromOfficialSitemaps(sourceName, venueType, domains) {
   }
   for (const url of [...candidateUrls].slice(0, 180)) {
     try {
+      if (!allowedDomains.has(new URL(url).hostname)) { recordCollectorRejection(stats, 'outside_allowed_domain'); continue; }
       const response = await fetchResilient(url);
       if (!response.ok) continue;
+      stats.fetchedCount += 1;
+      stats.discoveredCount += 1;
       const html = await response.text();
       const text = decodeHtml(html);
       const title = decodeHtml(html.match(/<meta[^>]+property=["']og:title["'][^>]+content=["']([^"']+)/i)?.[1] || html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i)?.[1] || '');
-      if (!title || !popupWords.test(title) || !foodWords.test(text) || nonHumanFood.test(text)) continue;
+      if (!title) { recordCollectorRejection(stats, 'missing_name'); continue; }
+      if (!popupWords.test(title)) { recordCollectorRejection(stats, 'not_popup'); continue; }
+      if (!foodWords.test(text) || nonHumanFood.test(text)) { recordCollectorRejection(stats, 'not_food'); continue; }
       const dates = [...text.matchAll(/(20\d{2})[.\-/년]\s*(\d{1,2})[.\-/월]\s*(\d{1,2})[^\d]{0,20}(?:~|∼|-|–|부터)[^\d]{0,12}(20\d{2})[.\-/년]\s*(\d{1,2})[.\-/월]\s*(\d{1,2})/g)];
-      if (!dates.length) continue;
+      if (!dates.length) { recordCollectorRejection(stats, 'invalid_date'); continue; }
       const date = dates[0];
       const startDate = `${date[1]}-${String(date[2]).padStart(2, '0')}-${String(date[3]).padStart(2, '0')}`;
       const endDate = `${date[4] || date[1]}-${String(date[5]).padStart(2, '0')}-${String(date[6]).padStart(2, '0')}`;
-      if (new Date(`${endDate}T23:59:59+09:00`) < keepSince) continue;
+      if (new Date(`${endDate}T23:59:59+09:00`) < keepSince) { recordCollectorRejection(stats, 'expired'); continue; }
       const venue = decodeHtml(html.match(/(갤러리아|신세계백화점|타임스퀘어|아이파크몰|이마트|트레이더스|롯데마트|홈플러스|NC|뉴코아)[^<]{0,30}(점|몰|백화점)?/iu)?.[0] || new URL(url).hostname);
       rows.push({ id: `sitemap:${stableHash(`${url}|${startDate}`)}`, name: title, venue, venueType, address: venue, startDate, endDate, imageUrl: html.match(/<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)/i)?.[1] || '', sourceName, sourceUrl: url, sourceGrade: 'official', firstSeenAt: today, lastSeenAt: today });
     } catch (error) { /* individual official pages may block crawlers */ }
   }
-  return rows;
+  return {
+    rows, stats,
+    sourceHealth: sitemapResponses > 0 && sitemapLocations === 0
+      ? { status: 'source_structure_changed', message: 'sitemap 응답에 loc 구조가 없음', checkedAt: new Date().toISOString() }
+      : { status: rows.length ? 'success_with_items' : 'success_empty', message: rows.length ? `${rows.length}건 파싱` : '정상 sitemap, 승인 항목 없음', checkedAt: new Date().toISOString() }
+  };
 }
 
 const collectSitemapChains = () => collectFromOfficialSitemaps('공식 쇼핑몰·마트 사이트맵', '쇼핑몰', [
@@ -626,6 +702,8 @@ const galleriaStores = [
 
 async function collectGalleria() {
   const rows = [];
+  const stats = createCollectorStats();
+  const seenSourceIds = new Set();
   // G.LAB is a popup venue, not a food brand. Emit only the named brands
   // published inside an official G.LAB schedule.
   const timeworldDessertSource = 'https://dept.galleria.co.kr/store-info/timeworld/promotion/shopping-news/c85834?qCategory=NEWOPENING_POPUP';
@@ -675,6 +753,7 @@ async function collectGalleria() {
       sourceUrl, sourceGrade: 'official', firstSeenAt: today, lastSeenAt: today
     });
   }
+  stats.discoveredCount = rows.length;
   for (const [slug, venue] of galleriaStores) {
     try {
       const listUrl = `https://dept.galleria.co.kr/store-info/${slug}/promotion/shopping-news?qCategory=NEWOPENING_POPUP`;
@@ -685,11 +764,17 @@ async function collectGalleria() {
       for (const path of links) {
         const response = await fetchResilient(`https://dept.galleria.co.kr${path}?qCategory=NEWOPENING_POPUP`);
         if (!response.ok) continue;
+        stats.discoveredCount += 1;
+        const sourceId = `${slug}:${path.split('/').pop()}`;
+        if (seenSourceIds.has(sourceId)) { recordCollectorRejection(stats, 'duplicate_source_item'); continue; }
+        seenSourceIds.add(sourceId);
         const html = await response.text();
         const title = decodeHtml(html.match(/<article[\s\S]*?<h1 class="page-title">([\s\S]*?)<\/h1>/i)?.[1] || html.match(/<meta[^>]+property=["']og:title["'][^>]+content=["']([^"']+)/i)?.[1]);
         const text = decodeHtml(`${html} ${html.match(/<meta[^>]+property=["']og:description["'][^>]+content=["']([^"']+)/i)?.[1] || ''}`);
         const isPopup = /뉴오프닝|팝업|POP[\s-]*UP/iu.test(text);
-        if (!title || !isPopup || (!foodWords.test(`${title} ${text}`) && !/GOURMET|델리|푸드코트/iu.test(`${title} ${text}`))) continue;
+        if (!title) { recordCollectorRejection(stats, 'missing_name'); continue; }
+        if (!isPopup) { recordCollectorRejection(stats, 'not_popup'); continue; }
+        if (!foodWords.test(`${title} ${text}`) && !/GOURMET|델리|푸드코트/iu.test(`${title} ${text}`)) { recordCollectorRejection(stats, 'not_food'); continue; }
         const fullDates = [...text.matchAll(/(\d{4})\.(\d{2})\.(\d{2})[^\d]{0,12}(?:~|∼|-|–)[^\d]{0,4}(\d{4})\.(\d{2})\.(\d{2})/g)];
         const shortDates = [...text.matchAll(/(\d{1,2})\.(\d{1,2})\s*[-~]\s*(?:(\d{1,2})\.)?(\d{1,2})/g)];
         let startDate = '', endDate = '';
@@ -700,14 +785,14 @@ async function collectGalleria() {
           const date = shortDates[0];
           startDate = eventDate(`${date[1]}.${date[2]}`); endDate = eventDate(`${date[3] || date[1]}.${date[4]}`);
         }
-        if (!startDate) continue;
-        if (endDate && new Date(`${endDate}T23:59:59+09:00`) < keepSince) continue;
+        if (!startDate) { recordCollectorRejection(stats, 'invalid_date'); continue; }
+        if (endDate && new Date(`${endDate}T23:59:59+09:00`) < keepSince) { recordCollectorRejection(stats, 'expired'); continue; }
         const imageUrl = html.match(/<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)/i)?.[1] || html.match(/<div class="article-detail">[\s\S]*?<img src="([^"]+)/i)?.[1] || '';
         rows.push({ id: `galleria:${slug}:${path.split('/').pop()}`, name: title, venue, venueType: '백화점', address: venue, startDate, endDate, imageUrl, sourceName: '갤러리아 공식 쇼핑뉴스', sourceUrl: `https://dept.galleria.co.kr${path}`, sourceGrade: 'official', firstSeenAt: today, lastSeenAt: today });
       }
     } catch (error) { console.warn(`갤러리아 ${venue} 수집 건너뜀: ${error.message}`); }
   }
-  return rows;
+  return { rows, stats };
 }
 
 async function collectAkPlaza() {
@@ -822,32 +907,12 @@ const allCollectors = [
 ];
 // Incident repair path: refresh one retailer without waiting for every
 // national adapter. Existing rows from collectors outside the scope remain.
-const retailerCollectorNames = new Map([
-  ['hyundai', new Set(['현대백화점·현대아울렛'])],
-  ['shinsegae', new Set(['신세계백화점'])],
-  ['lotte', new Set(['롯데 공식 블로그', '롯데백화점·롯데아울렛·롯데몰'])],
-  ['starfield', new Set(['스타필드·스타필드시티'])],
-  ['galleria', new Set(['갤러리아'])],
-  ['akplaza', new Set(['AK플라자'])],
-  ['eland', new Set(['NC·뉴코아'])],
-  ['ipark', new Set(['아이파크몰'])],
-  ['emart', new Set(['이마트·트레이더스'])],
-  ['lottemart', new Set(['롯데마트'])],
-  ['homeplus', new Set(['홈플러스'])],
-  ['malls', new Set(['공식 쇼핑몰·마트 사이트맵'])]
-]);
-if (retailerScope && !retailerCollectorNames.has(retailerScope)) {
-  throw new Error(`지원하지 않는 --retailer 값: ${retailerScope} (${[...retailerCollectorNames.keys()].join(', ')} 중 선택)`);
-}
-const scopedCollectorNames = retailerCollectorNames.get(retailerScope);
-const collectors = scopedCollectorNames
-  ? allCollectors.filter(([name]) => scopedCollectorNames.has(name))
-  : allCollectors;
+const collectors = selectCollectors(allCollectors, retailerScope);
 const sourceRuns = await Promise.all(collectors.map(async ([source, collector]) => {
   const startedAt = new Date().toISOString();
   try {
-    const rows = await collector();
-    return { source, rows, startedAt, finishedAt: new Date().toISOString() };
+    const { rows, stats, sourceHealth } = normalizeCollectorResult(await collector());
+    return { source, rows, stats, sourceHealth, startedAt, finishedAt: new Date().toISOString() };
   } catch (error) {
     return { source, rows: [], error, startedAt, finishedAt: new Date().toISOString() };
   }

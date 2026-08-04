@@ -91,6 +91,8 @@ SNS는 공식 브랜드 계정만 후보가 될 수 있다. 이 단계에서 SNS
 
 ### Batch 1 — 현재 active collector 보완
 
+상태: **2026-08-04 완료**. 구현·검증 상세는 `docs/BATCH1_COLLECTOR_HARDENING.md`를 따른다. Times Square 공통 sitemap adapter는 안전장치와 fixture 검증을 완료했지만 실운영 근거 부족으로 `partial`을 유지한다.
+
 - 출처: 12개 active source와 공통 sitemap adapter
 - 난이도: 중
 - 기여: 신규 건수보다 누락·오탐 감소와 운영 가시성 향상

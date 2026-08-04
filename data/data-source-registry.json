@@ -59,15 +59,19 @@
       ],
       "currentCollector": "현대백화점·현대아울렛",
       "collectorFile": "scripts/refresh-food-popups.mjs",
-      "testFile": null,
+      "testFile": "tests/collectors/hyundai.test.mjs",
       "lastVerifiedAt": "2026-08-04",
       "verificationEvidence": [
         "https://www.ehyundai.com/newPortal/SN/SN_0201000.do",
-        "scripts/refresh-food-popups.mjs"
+        "scripts/refresh-food-popups.mjs",
+        "tests/fixtures/food-popups/hyundai.json",
+        "tests/collectors/hyundai.test.mjs",
+        "tests/collector-dispatch.test.mjs",
+        "tests/popup-run-report.test.mjs"
       ],
       "priorityScore": 91,
       "priorityReason": "관련성 30/30 + 등록량 18/20 + 공식성 15/15 + 안정성 13/15 + 유지보수 9/10 + 지역 5/5 + 미커버 1/5",
-      "notes": "현재 npm run data:refresh-hyundai로 부분 실행 가능. 공통 실행은 npm run data:refresh-popups."
+      "notes": "현재 npm run data:refresh-hyundai로 부분 실행 가능. 공통 실행은 npm run data:refresh-popups. Batch 1 fixture parser 계약, 부분 실행 dispatch, source health 및 anomaly 회귀 테스트 연결. active 상태 유지."
     },
     {
       "id": "lotte-department-outlet-mall",
@@ -105,15 +109,19 @@
       ],
       "currentCollector": "롯데백화점·롯데아울렛·롯데몰",
       "collectorFile": "scripts/lib/lotte-popup-collector.mjs",
-      "testFile": null,
+      "testFile": "tests/collectors/lotte.test.mjs",
       "lastVerifiedAt": "2026-08-04",
       "verificationEvidence": [
         "https://www.lotteshopping.com/shoppingNews",
-        "scripts/lib/lotte-popup-collector.mjs"
+        "scripts/lib/lotte-popup-collector.mjs",
+        "tests/fixtures/food-popups/lotte.json",
+        "tests/collectors/lotte.test.mjs",
+        "tests/collector-dispatch.test.mjs",
+        "tests/popup-run-report.test.mjs"
       ],
       "priorityScore": 89,
       "priorityReason": "관련성 30/30 + 등록량 18/20 + 공식성 15/15 + 안정성 13/15 + 유지보수 7/10 + 지역 5/5 + 미커버 1/5",
-      "notes": "현재 npm run data:refresh-lotte로 부분 실행 가능. 공통 실행은 npm run data:refresh-popups."
+      "notes": "현재 npm run data:refresh-lotte로 부분 실행 가능. 공통 실행은 npm run data:refresh-popups. Batch 1 fixture parser 계약, 부분 실행 dispatch, source health 및 anomaly 회귀 테스트 연결. active 상태 유지."
     },
     {
       "id": "shinsegae-department-store",
@@ -165,15 +173,19 @@
       ],
       "currentCollector": "신세계백화점",
       "collectorFile": "scripts/refresh-food-popups.mjs",
-      "testFile": null,
+      "testFile": "tests/collectors/shinsegae.test.mjs",
       "lastVerifiedAt": "2026-08-04",
       "verificationEvidence": [
         "https://www.shinsegae.com/shopping/event/list.do",
-        "scripts/refresh-food-popups.mjs"
+        "scripts/refresh-food-popups.mjs",
+        "tests/fixtures/food-popups/shinsegae.json",
+        "tests/collectors/shinsegae.test.mjs",
+        "tests/collector-dispatch.test.mjs",
+        "tests/popup-run-report.test.mjs"
       ],
       "priorityScore": 89,
       "priorityReason": "관련성 30/30 + 등록량 18/20 + 공식성 15/15 + 안정성 13/15 + 유지보수 7/10 + 지역 5/5 + 미커버 1/5",
-      "notes": "현재 npm run data:refresh-shinsegae로 부분 실행 가능. 공통 실행은 npm run data:refresh-popups."
+      "notes": "현재 npm run data:refresh-shinsegae로 부분 실행 가능. 공통 실행은 npm run data:refresh-popups. Batch 1 fixture parser 계약, 부분 실행 dispatch, source health 및 anomaly 회귀 테스트 연결. active 상태 유지."
     },
     {
       "id": "galleria-department-store",
@@ -219,15 +231,19 @@
       ],
       "currentCollector": "갤러리아",
       "collectorFile": "scripts/refresh-food-popups.mjs",
-      "testFile": null,
+      "testFile": "tests/collectors/galleria.test.mjs",
       "lastVerifiedAt": "2026-08-04",
       "verificationEvidence": [
         "https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news",
-        "scripts/refresh-food-popups.mjs"
+        "scripts/refresh-food-popups.mjs",
+        "tests/fixtures/food-popups/galleria.json",
+        "tests/collectors/galleria.test.mjs",
+        "tests/collector-dispatch.test.mjs",
+        "tests/popup-run-report.test.mjs"
       ],
       "priorityScore": 89,
       "priorityReason": "관련성 30/30 + 등록량 18/20 + 공식성 15/15 + 안정성 13/15 + 유지보수 7/10 + 지역 5/5 + 미커버 1/5",
-      "notes": "현재 npm run data:refresh-galleria로 부분 실행 가능. 공통 실행은 npm run data:refresh-popups."
+      "notes": "현재 npm run data:refresh-galleria로 부분 실행 가능. 공통 실행은 npm run data:refresh-popups. Batch 1 fixture parser 계약, 부분 실행 dispatch, source health 및 anomaly 회귀 테스트 연결. active 상태 유지."
     },
     {
       "id": "ak-plaza",
@@ -271,15 +287,19 @@
       ],
       "currentCollector": "AK플라자",
       "collectorFile": "scripts/refresh-food-popups.mjs",
-      "testFile": null,
+      "testFile": "tests/collectors/akplaza.test.mjs",
       "lastVerifiedAt": "2026-08-04",
       "verificationEvidence": [
         "https://www.akplaza.com/board/event/list",
-        "scripts/refresh-food-popups.mjs"
+        "scripts/refresh-food-popups.mjs",
+        "tests/fixtures/food-popups/akplaza.json",
+        "tests/collectors/akplaza.test.mjs",
+        "tests/collector-dispatch.test.mjs",
+        "tests/popup-run-report.test.mjs"
       ],
       "priorityScore": 85,
       "priorityReason": "관련성 30/30 + 등록량 14/20 + 공식성 15/15 + 안정성 13/15 + 유지보수 7/10 + 지역 5/5 + 미커버 1/5",
-      "notes": "현재 npm run data:refresh-akplaza로 부분 실행 가능. 공통 실행은 npm run data:refresh-popups."
+      "notes": "현재 npm run data:refresh-akplaza로 부분 실행 가능. 공통 실행은 npm run data:refresh-popups. Batch 1 fixture parser 계약, 부분 실행 dispatch, source health 및 anomaly 회귀 테스트 연결. active 상태 유지."
     },
     {
       "id": "eland-retail",
@@ -317,15 +337,19 @@
       ],
       "currentCollector": "NC·뉴코아",
       "collectorFile": "scripts/refresh-food-popups.mjs",
-      "testFile": null,
+      "testFile": "tests/collectors/eland.test.mjs",
       "lastVerifiedAt": "2026-08-04",
       "verificationEvidence": [
         "https://www.elandretail.com/event",
-        "scripts/refresh-food-popups.mjs"
+        "scripts/refresh-food-popups.mjs",
+        "tests/fixtures/food-popups/eland.json",
+        "tests/collectors/eland.test.mjs",
+        "tests/collector-dispatch.test.mjs",
+        "tests/popup-run-report.test.mjs"
       ],
       "priorityScore": 85,
       "priorityReason": "관련성 30/30 + 등록량 14/20 + 공식성 15/15 + 안정성 13/15 + 유지보수 7/10 + 지역 5/5 + 미커버 1/5",
-      "notes": "현재 npm run data:refresh-eland로 부분 실행 가능. 공통 실행은 npm run data:refresh-popups."
+      "notes": "현재 npm run data:refresh-eland로 부분 실행 가능. 공통 실행은 npm run data:refresh-popups. Batch 1 fixture parser 계약, 부분 실행 dispatch, source health 및 anomaly 회귀 테스트 연결. active 상태 유지."
     },
     {
       "id": "shinsegae-simon-premium-outlets",
@@ -885,15 +909,19 @@
       ],
       "currentCollector": "스타필드·스타필드시티",
       "collectorFile": "scripts/refresh-food-popups.mjs",
-      "testFile": null,
+      "testFile": "tests/collectors/starfield.test.mjs",
       "lastVerifiedAt": "2026-08-04",
       "verificationEvidence": [
         "https://www.starfield.co.kr/hanam/eventBenefit/events",
-        "scripts/refresh-food-popups.mjs"
+        "scripts/refresh-food-popups.mjs",
+        "tests/fixtures/food-popups/starfield.json",
+        "tests/collectors/starfield.test.mjs",
+        "tests/collector-dispatch.test.mjs",
+        "tests/popup-run-report.test.mjs"
       ],
       "priorityScore": 91,
       "priorityReason": "관련성 30/30 + 등록량 18/20 + 공식성 15/15 + 안정성 13/15 + 유지보수 9/10 + 지역 5/5 + 미커버 1/5",
-      "notes": "현재 npm run data:refresh-starfield로 부분 실행 가능. 공통 실행은 npm run data:refresh-popups."
+      "notes": "현재 npm run data:refresh-starfield로 부분 실행 가능. 공통 실행은 npm run data:refresh-popups. Batch 1 fixture parser 계약, 부분 실행 dispatch, source health 및 anomaly 회귀 테스트 연결. active 상태 유지."
     },
     {
       "id": "ipark-mall",
@@ -931,15 +959,19 @@
       ],
       "currentCollector": "아이파크몰",
       "collectorFile": "scripts/refresh-food-popups.mjs",
-      "testFile": null,
+      "testFile": "tests/collectors/ipark.test.mjs",
       "lastVerifiedAt": "2026-08-04",
       "verificationEvidence": [
         "https://www.hdc-iparkmall.com/event",
-        "scripts/refresh-food-popups.mjs"
+        "scripts/refresh-food-popups.mjs",
+        "tests/fixtures/food-popups/ipark.json",
+        "tests/collectors/ipark.test.mjs",
+        "tests/collector-dispatch.test.mjs",
+        "tests/popup-run-report.test.mjs"
       ],
       "priorityScore": 82,
       "priorityReason": "관련성 30/30 + 등록량 14/20 + 공식성 15/15 + 안정성 13/15 + 유지보수 7/10 + 지역 2/5 + 미커버 1/5",
-      "notes": "현재 npm run data:refresh-ipark로 부분 실행 가능. 공통 실행은 npm run data:refresh-popups."
+      "notes": "현재 npm run data:refresh-ipark로 부분 실행 가능. 공통 실행은 npm run data:refresh-popups. Batch 1 fixture parser 계약, 부분 실행 dispatch, source health 및 anomaly 회귀 테스트 연결. active 상태 유지."
     },
     {
       "id": "times-square",
@@ -960,7 +992,7 @@
       "foodPopupRelevance": 30,
       "expectedVolume": "high",
       "updateFrequency": "irregular",
-      "stability": "unknown",
+      "stability": "medium",
       "maintenanceCost": "unknown",
       "legalRisk": "low",
       "robotsStatus": "unknown",
@@ -970,12 +1002,17 @@
       "fieldsAvailable": [],
       "currentCollector": "공식 쇼핑몰·마트 사이트맵",
       "collectorFile": "scripts/refresh-food-popups.mjs",
-      "testFile": null,
-      "lastVerifiedAt": null,
-      "verificationEvidence": [],
+      "testFile": "tests/collectors/sitemap-adapter.test.mjs",
+      "lastVerifiedAt": "2026-08-04",
+      "verificationEvidence": [
+        "tests/fixtures/food-popups/sitemap-adapter.json",
+        "tests/collectors/sitemap-adapter.test.mjs",
+        "tests/collector-dispatch.test.mjs",
+        "tests/popup-run-report.test.mjs"
+      ],
       "priorityScore": 83,
       "priorityReason": "관련성 30/30 + 등록량 18/20 + 공식성 15/15 + 안정성 8/15 + 유지보수 7/10 + 지역 2/5 + 미커버 3/5",
-      "notes": "공식 출처 후보의 존재와 이벤트 구조·robots·이용조건을 후속 검증해야 함."
+      "notes": "공식 출처 후보의 존재와 이벤트 구조·robots·이용조건을 후속 검증해야 함. Batch 1 fixture parser 계약, 부분 실행 dispatch, source health 및 anomaly 회귀 테스트 연결. 공통 sitemap adapter는 도메인·구조 검증을 보강했으나 source별 실운영 검증 부족으로 partial 유지."
     },
     {
       "id": "ifc-mall",
@@ -1807,15 +1844,19 @@
       ],
       "currentCollector": "이마트·트레이더스",
       "collectorFile": "scripts/refresh-food-popups.mjs",
-      "testFile": null,
+      "testFile": "tests/collectors/emart.test.mjs",
       "lastVerifiedAt": "2026-08-04",
       "verificationEvidence": [
         "https://store.emart.com/event/event.do",
-        "scripts/refresh-food-popups.mjs"
+        "scripts/refresh-food-popups.mjs",
+        "tests/fixtures/food-popups/emart.json",
+        "tests/collectors/emart.test.mjs",
+        "tests/collector-dispatch.test.mjs",
+        "tests/popup-run-report.test.mjs"
       ],
       "priorityScore": 85,
       "priorityReason": "관련성 30/30 + 등록량 14/20 + 공식성 15/15 + 안정성 13/15 + 유지보수 7/10 + 지역 5/5 + 미커버 1/5",
-      "notes": "현재 npm run data:refresh-emart로 부분 실행 가능. 공통 실행은 npm run data:refresh-popups."
+      "notes": "현재 npm run data:refresh-emart로 부분 실행 가능. 공통 실행은 npm run data:refresh-popups. Batch 1 fixture parser 계약, 부분 실행 dispatch, source health 및 anomaly 회귀 테스트 연결. active 상태 유지."
     },
     {
       "id": "lotte-mart",
@@ -1853,15 +1894,19 @@
       ],
       "currentCollector": "롯데마트",
       "collectorFile": "scripts/refresh-food-popups.mjs",
-      "testFile": null,
+      "testFile": "tests/collectors/lottemart.test.mjs",
       "lastVerifiedAt": "2026-08-04",
       "verificationEvidence": [
         "https://company.lottemart.com/en/event_list.asp",
-        "scripts/refresh-food-popups.mjs"
+        "scripts/refresh-food-popups.mjs",
+        "tests/fixtures/food-popups/lottemart.json",
+        "tests/collectors/lottemart.test.mjs",
+        "tests/collector-dispatch.test.mjs",
+        "tests/popup-run-report.test.mjs"
       ],
       "priorityScore": 85,
       "priorityReason": "관련성 30/30 + 등록량 14/20 + 공식성 15/15 + 안정성 13/15 + 유지보수 7/10 + 지역 5/5 + 미커버 1/5",
-      "notes": "현재 npm run data:refresh-lottemart로 부분 실행 가능. 공통 실행은 npm run data:refresh-popups."
+      "notes": "현재 npm run data:refresh-lottemart로 부분 실행 가능. 공통 실행은 npm run data:refresh-popups. Batch 1 fixture parser 계약, 부분 실행 dispatch, source health 및 anomaly 회귀 테스트 연결. active 상태 유지."
     },
     {
       "id": "homeplus",
@@ -1899,15 +1944,19 @@
       ],
       "currentCollector": "홈플러스",
       "collectorFile": "scripts/refresh-food-popups.mjs",
-      "testFile": null,
+      "testFile": "tests/collectors/homeplus.test.mjs",
       "lastVerifiedAt": "2026-08-04",
       "verificationEvidence": [
         "https://corporate.homeplus.co.kr/Business/Hyper_Notice.aspx",
-        "scripts/refresh-food-popups.mjs"
+        "scripts/refresh-food-popups.mjs",
+        "tests/fixtures/food-popups/homeplus.json",
+        "tests/collectors/homeplus.test.mjs",
+        "tests/collector-dispatch.test.mjs",
+        "tests/popup-run-report.test.mjs"
       ],
       "priorityScore": 85,
       "priorityReason": "관련성 30/30 + 등록량 14/20 + 공식성 15/15 + 안정성 13/15 + 유지보수 7/10 + 지역 5/5 + 미커버 1/5",
-      "notes": "현재 npm run data:refresh-homeplus로 부분 실행 가능. 공통 실행은 npm run data:refresh-popups."
+      "notes": "현재 npm run data:refresh-homeplus로 부분 실행 가능. 공통 실행은 npm run data:refresh-popups. Batch 1 fixture parser 계약, 부분 실행 dispatch, source health 및 anomaly 회귀 테스트 연결. active 상태 유지."
     },
     {
       "id": "sweetspot",
@@ -3751,15 +3800,19 @@
       ],
       "currentCollector": "롯데 공식 블로그",
       "collectorFile": "scripts/refresh-food-popups.mjs",
-      "testFile": null,
+      "testFile": "tests/collectors/lotte-blog.test.mjs",
       "lastVerifiedAt": "2026-08-04",
       "verificationEvidence": [
         "https://blog.lotte.co.kr/feed/",
-        "scripts/refresh-food-popups.mjs"
+        "scripts/refresh-food-popups.mjs",
+        "tests/fixtures/food-popups/lotte-blog.json",
+        "tests/collectors/lotte-blog.test.mjs",
+        "tests/collector-dispatch.test.mjs",
+        "tests/popup-run-report.test.mjs"
       ],
       "priorityScore": 77,
       "priorityReason": "관련성 24/30 + 등록량 14/20 + 공식성 15/15 + 안정성 13/15 + 유지보수 5/10 + 지역 5/5 + 미커버 1/5",
-      "notes": "현재 npm run data:refresh-lotte로 부분 실행 가능. 공통 실행은 npm run data:refresh-popups."
+      "notes": "현재 npm run data:refresh-lotte로 부분 실행 가능. 공통 실행은 npm run data:refresh-popups. Batch 1 fixture parser 계약, 부분 실행 dispatch, source health 및 anomaly 회귀 테스트 연결. active 상태 유지."
     },
     {
       "id": "visitkorea-festival",
