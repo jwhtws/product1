@@ -1,0 +1,10 @@
+{
+  "metadata": {"sourceId":"ediya-news","officialUrl":"https://www.ediya.com/contents/notice.html","capturedAt":"2026-08-05","fixturePurpose":"Batch4 brand parser states from official newsroom HTML fields"},
+  "source": {"sourceId":"ediya-news","sourceName":"이디야커피 뉴스","brand":"이디야커피"},
+  "valid": {"items":[{"sourceItemId":"valid-1","title":"이디야커피 여름 디저트 팝업","description":"베이커리와 커피를 선보이는 팝업스토어","venue":"성수 테스트키친","address":"서울특별시 성동구 연무장길 1","startDate":"2026-08-01","endDate":"2026-08-31","sourceUrl":"https://www.ediya.com/contents/notice.html?tb_name=notice&bbs_section=view&idx=valid-1","imageUrl":"https://www.ediya.com/images/popup.jpg"}]},
+  "empty": {"items":[]},
+  "expired": {"items":[{"sourceItemId":"expired-1","title":"이디야커피 디저트 팝업","description":"베이커리 팝업","venue":"성수 테스트키친","startDate":"2026-04-01","endDate":"2026-04-30","sourceUrl":"https://www.ediya.com/contents/notice.html?tb_name=notice&bbs_section=view&idx=expired-1"}]},
+  "duplicate": {"items":[{"sourceItemId":"duplicate-1","title":"이디야커피 커피 팝업","description":"커피 팝업","venue":"성수 테스트키친","startDate":"2026-08-01","endDate":"2026-08-31","sourceUrl":"https://www.ediya.com/contents/notice.html?tb_name=notice&bbs_section=view&idx=duplicate-1"},{"sourceItemId":"duplicate-1","title":"이디야커피 커피 팝업","description":"커피 팝업","venue":"성수 테스트키친","startDate":"2026-08-01","endDate":"2026-08-31","sourceUrl":"https://www.ediya.com/contents/notice.html?tb_name=notice&bbs_section=view&idx=duplicate-1"}]},
+  "non_food": {"items":[{"sourceItemId":"non-food-1","title":"캐릭터 굿즈 팝업","description":"패션과 문구 전시","venue":"성수 테스트키친","startDate":"2026-08-01","endDate":"2026-08-31","sourceUrl":"https://www.ediya.com/contents/notice.html?tb_name=notice&bbs_section=view&idx=non-food-1"}]},
+  "structure_changed": {"unexpected":[]}
+}

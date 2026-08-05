@@ -6,6 +6,7 @@ import { collectLottePopups, discoverLottePopups } from './lib/lotte-popup-colle
 import { selectCollectors } from './collectors/registry.mjs';
 import { createBatch3Collectors } from './collectors/batch3-popup-venues.mjs';
 import { createVerifiedVenueCollectors } from './collectors/batch3-verified-venues.mjs';
+import { createBatch4BrandCollectors } from './collectors/batch4-brand-newsrooms.mjs';
 import { collectTimesSquareSitemap } from './collectors/times-square-sitemap.mjs';
 import { assertNotBlockedPage, hardenedFetch } from './lib/hardened-fetch.mjs';
 import {
@@ -943,6 +944,14 @@ const allCollectors = [
       if (!response.ok) throw new Error(`${url} 응답 ${response.status}`);
       return response.text();
     }
+  }),
+  ...createBatch4BrandCollectors({
+    today,
+    fetchHtml: async url => {
+      const response = await fetchResilient(url);
+      if (!response.ok) throw new Error(`${url} 응답 ${response.status}`);
+      return response.text();
+    }
   })
 ];
 // Incident repair path: refresh one retailer without waiting for every
@@ -1119,7 +1128,13 @@ const refreshedIdRules = [
   ['팝업 전문 공간 · 아모레성수', /^popup-venue:amore-seongsu:/u],
   ['팝업 전문 공간 · KT&G 상상마당', /^popup-venue:ktng-sangsangmadang:/u],
   ['팝업 전문 공간 · 현대카드 STORAGE', /^popup-venue:hyundai-card-storage:/u],
-  ['팝업 전문 공간 · 서울숲 커뮤니티센터', /^popup-venue:seoul-forest-community-center:/u]
+  ['팝업 전문 공간 · 서울숲 커뮤니티센터', /^popup-venue:seoul-forest-community-center:/u],
+  ['브랜드 공식 · CJ제일제당 뉴스룸', /^brand:cj-cheiljedang-newsroom:/u],
+  ['브랜드 공식 · 삼양식품 미디어', /^brand:samyang-foods-newsroom:/u],
+  ['브랜드 공식 · 오리온 뉴스룸', /^brand:orion-newsroom:/u],
+  ['브랜드 공식 · 이디야커피 뉴스', /^brand:ediya-news:/u],
+  ['브랜드 공식 · 풀무원 뉴스룸', /^brand:pulmuone-newsroom:/u],
+  ['브랜드 공식 · 교촌치킨 소식', /^brand:kyochon-news:/u]
 ];
 // A scoped repair returning zero rows is more likely a temporary parser/feed
 // issue than proof that every event disappeared. Preserve the last known rows

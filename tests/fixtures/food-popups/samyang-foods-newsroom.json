@@ -1,0 +1,10 @@
+{
+  "metadata": {"sourceId":"samyang-foods-newsroom","officialUrl":"https://www.samyangfoods.com/kor/publicity/press/list.do","capturedAt":"2026-08-05","fixturePurpose":"Batch4 brand parser states from official newsroom HTML fields"},
+  "source": {"sourceId":"samyang-foods-newsroom","sourceName":"삼양식품 미디어","brand":"삼양식품"},
+  "valid": {"items":[{"sourceItemId":"valid-1","title":"삼양식품 여름 디저트 팝업","description":"베이커리와 커피를 선보이는 팝업스토어","venue":"성수 테스트키친","address":"서울특별시 성동구 연무장길 1","startDate":"2026-08-01","endDate":"2026-08-31","sourceUrl":"https://www.samyangfoods.com/kor/publicity/press/view.do?seq=valid-1","imageUrl":"https://www.samyangfoods.com/upload/popup.jpg"}]},
+  "empty": {"items":[]},
+  "expired": {"items":[{"sourceItemId":"expired-1","title":"삼양식품 디저트 팝업","description":"베이커리 팝업","venue":"성수 테스트키친","startDate":"2026-04-01","endDate":"2026-04-30","sourceUrl":"https://www.samyangfoods.com/kor/publicity/press/view.do?seq=expired-1"}]},
+  "duplicate": {"items":[{"sourceItemId":"duplicate-1","title":"삼양식품 커피 팝업","description":"커피 팝업","venue":"성수 테스트키친","startDate":"2026-08-01","endDate":"2026-08-31","sourceUrl":"https://www.samyangfoods.com/kor/publicity/press/view.do?seq=duplicate-1"},{"sourceItemId":"duplicate-1","title":"삼양식품 커피 팝업","description":"커피 팝업","venue":"성수 테스트키친","startDate":"2026-08-01","endDate":"2026-08-31","sourceUrl":"https://www.samyangfoods.com/kor/publicity/press/view.do?seq=duplicate-1"}]},
+  "non_food": {"items":[{"sourceItemId":"non-food-1","title":"캐릭터 굿즈 팝업","description":"패션과 문구 전시","venue":"성수 테스트키친","startDate":"2026-08-01","endDate":"2026-08-31","sourceUrl":"https://www.samyangfoods.com/kor/publicity/press/view.do?seq=non-food-1"}]},
+  "structure_changed": {"unexpected":[]}
+}

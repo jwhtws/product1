@@ -1,0 +1,10 @@
+{
+  "metadata": {"sourceId":"orion-newsroom","officialUrl":"https://www.orionworld.com/board/list/87","capturedAt":"2026-08-05","fixturePurpose":"Batch4 brand parser states from official newsroom HTML fields"},
+  "source": {"sourceId":"orion-newsroom","sourceName":"오리온 뉴스룸","brand":"오리온"},
+  "valid": {"items":[{"sourceItemId":"valid-1","title":"오리온 여름 디저트 팝업","description":"베이커리와 커피를 선보이는 팝업스토어","venue":"성수 테스트키친","address":"서울특별시 성동구 연무장길 1","startDate":"2026-08-01","endDate":"2026-08-31","sourceUrl":"https://www.orionworld.com/board/view/87?boardno=valid-1","imageUrl":"https://www.orionworld.com/upload/popup.jpg"}]},
+  "empty": {"items":[]},
+  "expired": {"items":[{"sourceItemId":"expired-1","title":"오리온 디저트 팝업","description":"베이커리 팝업","venue":"성수 테스트키친","startDate":"2026-04-01","endDate":"2026-04-30","sourceUrl":"https://www.orionworld.com/board/view/87?boardno=expired-1"}]},
+  "duplicate": {"items":[{"sourceItemId":"duplicate-1","title":"오리온 커피 팝업","description":"커피 팝업","venue":"성수 테스트키친","startDate":"2026-08-01","endDate":"2026-08-31","sourceUrl":"https://www.orionworld.com/board/view/87?boardno=duplicate-1"},{"sourceItemId":"duplicate-1","title":"오리온 커피 팝업","description":"커피 팝업","venue":"성수 테스트키친","startDate":"2026-08-01","endDate":"2026-08-31","sourceUrl":"https://www.orionworld.com/board/view/87?boardno=duplicate-1"}]},
+  "non_food": {"items":[{"sourceItemId":"non-food-1","title":"캐릭터 굿즈 팝업","description":"패션과 문구 전시","venue":"성수 테스트키친","startDate":"2026-08-01","endDate":"2026-08-31","sourceUrl":"https://www.orionworld.com/board/view/87?boardno=non-food-1"}]},
+  "structure_changed": {"unexpected":[]}
+}

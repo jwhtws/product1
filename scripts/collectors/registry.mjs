@@ -14,6 +14,12 @@ export const COLLECTOR_SCOPES = Object.freeze({
   premiumoutlets: ['신세계사이먼 프리미엄 아울렛'],
   ifc: ['IFC몰'],
   doota: ['두타몰'],
+  'brand-cj-cheiljedang': ['브랜드 공식 · CJ제일제당 뉴스룸'],
+  'brand-samyang-foods': ['브랜드 공식 · 삼양식품 미디어'],
+  'brand-orion': ['브랜드 공식 · 오리온 뉴스룸'],
+  'brand-ediya': ['브랜드 공식 · 이디야커피 뉴스'],
+  'brand-pulmuone': ['브랜드 공식 · 풀무원 뉴스룸'],
+  'brand-kyochon': ['브랜드 공식 · 교촌치킨 소식'],
   batch3: [
     '팝업 전문 공간 · 문화역서울284',
     '팝업 전문 공간 · 문화비축기지',

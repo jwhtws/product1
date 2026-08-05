@@ -18,3 +18,10 @@ test('Batch 3 신규 source는 전체 실행에 포함되고 unverified 후보�
 test('부분 실행 report 대상은 선택 source 하나뿐이다',()=>{
   for(const scope of ['premiumoutlets','ifc','doota']) assert.equal(selectCollectors(all,scope).length,1);
 });
+test('Batch 4 검증 브랜드는 전체 실행과 source별 부분 실행에 연결된다',()=>{
+  const scopes=['brand-cj-cheiljedang','brand-samyang-foods','brand-orion','brand-ediya','brand-pulmuone','brand-kyochon'];
+  for(const scope of scopes) {
+    assert.equal(selectCollectors(all,scope).length,1);
+    assert.ok(all.map(([name])=>name).includes(COLLECTOR_SCOPES[scope][0]));
+  }
+});
