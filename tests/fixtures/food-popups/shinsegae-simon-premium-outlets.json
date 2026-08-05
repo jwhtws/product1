@@ -1,0 +1,16 @@
+{
+  "metadata": { "sourceId": "shinsegae-simon-premium-outlets", "officialUrl": "https://www.premiumoutlets.co.kr/rpage/main/index/01", "capturedAt": "2026-08-05", "fixturePurpose": "valid-list, valid-detail, empty, structure-changed, expired, non-food, non-popup-sale, duplicate-source-item" },
+  "validList": "<html><a href=\"/rpage/shopping-info/event/offline-detail/100/01\" data-name=\"여름 디저트 팝업\"><img alt=\"여름 디저트 팝업\"><p>2026.08.01 2026.08.31</p></a></html>",
+  "validDetail": "<html><meta property=\"og:title\" content=\"여름 디저트 팝업\"><meta property=\"og:image\" content=\"/assets/attach/view/board/100/eventMain\"><h1>여름 디저트 팝업</h1><p>먹당베이커리 푸드 팝업 2026.08.01 ~ 2026.08.31</p></html>",
+  "expected": { "venue": "여주 프리미엄 아울렛", "branch": "여주 프리미엄 아울렛", "address": "경기도 여주시 명품로 360", "imageUrl": "https://www.premiumoutlets.co.kr/assets/popup.jpg", "sourceUrl": "https://www.premiumoutlets.co.kr/rpage/shopping-info/event/offline-detail/100/01" },
+  "structureChanged": { "sourceId": "shinsegae-simon-premium-outlets", "blocked": false },
+  "payload": { "sourceId": "shinsegae-simon-premium-outlets", "sourceName": "신세계사이먼 프리미엄 아울렛", "venueType": "아울렛", "items": [
+    { "sourceItemId": "evt-100", "title": "여름 디저트 팝업", "brand": "먹당베이커리", "venue": "여주 프리미엄 아울렛", "branch": "여주 프리미엄 아울렛", "address": "경기도 여주시 명품로 360", "startDate": "2026-08-01", "endDate": "2026-08-31", "sourceUrl": "https://www.premiumoutlets.co.kr/rpage/shopping-info/event/offline-detail/100/01", "imageUrl": "https://www.premiumoutlets.co.kr/assets/popup.jpg", "description": "베이커리 푸드 팝업" },
+    { "sourceItemId": "evt-100", "title": "여름 디저트 팝업", "brand": "먹당베이커리", "venue": "여주 프리미엄 아울렛", "startDate": "2026-08-01", "endDate": "2026-08-31", "sourceUrl": "https://www.premiumoutlets.co.kr/rpage/shopping-info/event/offline-detail/100/01", "description": "푸드 팝업" },
+    { "sourceItemId": "expired", "title": "지난 디저트 팝업", "venue": "여주 프리미엄 아울렛", "startDate": "2026-06-01", "endDate": "2026-07-01", "sourceUrl": "https://www.premiumoutlets.co.kr/expired", "description": "디저트 팝업" },
+    { "sourceItemId": "non-food", "title": "패션 팝업", "venue": "여주 프리미엄 아울렛", "startDate": "2026-08-01", "endDate": "2026-08-31", "sourceUrl": "https://www.premiumoutlets.co.kr/fashion" },
+    { "sourceItemId": "sale", "title": "베이커리 할인전", "venue": "여주 프리미엄 아울렛", "startDate": "2026-08-01", "endDate": "2026-08-31", "sourceUrl": "https://www.premiumoutlets.co.kr/sale", "description": "식품 할인 행사" },
+    { "sourceItemId": "bad-date", "title": "커피 팝업", "venue": "여주 프리미엄 아울렛", "startDate": "2026/08/01", "endDate": "2026-08-31", "sourceUrl": "https://www.premiumoutlets.co.kr/bad" },
+    { "sourceItemId": "", "title": "구조 변경 디저트 팝업", "venue": "여주 프리미엄 아울렛", "startDate": "2026-08-01", "endDate": "2026-08-31", "sourceUrl": "https://www.premiumoutlets.co.kr/changed" }
+  ] }
+}

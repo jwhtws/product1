@@ -10,7 +10,10 @@ export const COLLECTOR_SCOPES = Object.freeze({
   emart: ['이마트·트레이더스'],
   lottemart: ['롯데마트'],
   homeplus: ['홈플러스'],
-  malls: ['공식 쇼핑몰·마트 사이트맵'],
+  malls: ['타임스퀘어 공식 사이트맵'],
+  premiumoutlets: ['신세계사이먼 프리미엄 아울렛'],
+  ifc: ['IFC몰'],
+  doota: ['두타몰'],
   batch3: [
     '팝업 전문 공간 · 문화역서울284',
     '팝업 전문 공간 · 문화비축기지',

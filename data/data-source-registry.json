@@ -357,7 +357,7 @@
       "operator": "신세계사이먼",
       "sourceType": "outlet",
       "officialUrl": "https://www.premiumoutlets.co.kr/",
-      "eventUrl": "https://www.premiumoutlets.co.kr/",
+      "eventUrl": "https://www.premiumoutlets.co.kr/rpage/main/index/01",
       "branches": [
         "신세계사이먼 프리미엄 아울렛 경기 권역",
         "신세계사이먼 프리미엄 아울렛 부산 권역"
@@ -366,28 +366,28 @@
         "경기",
         "부산"
       ],
-      "implementationStatus": "unverified",
-      "collectionMethod": "unverified",
+      "implementationStatus": "active",
+      "collectionMethod": "html",
       "priority": "S",
       "foodPopupRelevance": 30,
       "expectedVolume": "high",
       "updateFrequency": "irregular",
-      "stability": "unknown",
-      "maintenanceCost": "unknown",
+      "stability": "medium",
+      "maintenanceCost": "medium",
       "legalRisk": "low",
       "robotsStatus": "unknown",
       "authRequired": false,
       "jsRequired": false,
-      "paginationType": "unknown",
-      "fieldsAvailable": [],
-      "currentCollector": null,
-      "collectorFile": null,
-      "testFile": null,
-      "lastVerifiedAt": null,
-      "verificationEvidence": [],
+      "paginationType": "none",
+      "fieldsAvailable": ["name", "brand", "venue", "branch", "address", "startDate", "endDate", "imageUrl", "sourceUrl", "sourceItemId"],
+      "currentCollector": "신세계사이먼 프리미엄 아울렛",
+      "collectorFile": "scripts/collectors/batch3-verified-venues.mjs",
+      "testFile": "tests/collectors/shinsegae-simon-premium-outlets.test.mjs",
+      "lastVerifiedAt": "2026-08-05",
+      "verificationEvidence": ["https://www.premiumoutlets.co.kr/rpage/main/index/01", "https://www.premiumoutlets.co.kr/rpage/shopping-info/event/offline-detail/9048/05", "scripts/collectors/batch3-verified-venues.mjs", "tests/fixtures/food-popups/shinsegae-simon-premium-outlets.json", "tests/collectors/shinsegae-simon-premium-outlets.test.mjs"],
       "priorityScore": 84,
       "priorityReason": "관련성 30/30 + 등록량 18/20 + 공식성 15/15 + 안정성 8/15 + 유지보수 5/10 + 지역 5/5 + 미커버 3/5",
-      "notes": "공식 출처 후보의 존재와 이벤트 구조·robots·이용조건을 후속 검증해야 함."
+      "notes": "공식 지점별 이벤트 목록과 상세만 제한 수집하며 지점 코드를 branches 설정으로 묶음. npm run data:refresh-premium-outlets 부분 실행 가능."
     },
     {
       "id": "savezone",
@@ -999,12 +999,15 @@
       "authRequired": false,
       "jsRequired": false,
       "paginationType": "unknown",
-      "fieldsAvailable": [],
-      "currentCollector": "공식 쇼핑몰·마트 사이트맵",
-      "collectorFile": "scripts/refresh-food-popups.mjs",
+      "fieldsAvailable": ["name", "brand", "venue", "branch", "address", "startDate", "endDate", "imageUrl", "sourceUrl", "sourceItemId"],
+      "currentCollector": "타임스퀘어 공식 사이트맵",
+      "collectorFile": "scripts/collectors/times-square-sitemap.mjs",
       "testFile": "tests/collectors/sitemap-adapter.test.mjs",
-      "lastVerifiedAt": "2026-08-04",
+      "lastVerifiedAt": "2026-08-05",
       "verificationEvidence": [
+        "https://www.timessquare.co.kr/robots.txt",
+        "https://www.timessquare.co.kr/sitemap.xml",
+        "scripts/collectors/times-square-sitemap.mjs",
         "tests/fixtures/food-popups/sitemap-adapter.json",
         "tests/collectors/sitemap-adapter.test.mjs",
         "tests/collector-dispatch.test.mjs",
@@ -1012,7 +1015,7 @@
       ],
       "priorityScore": 83,
       "priorityReason": "관련성 30/30 + 등록량 18/20 + 공식성 15/15 + 안정성 8/15 + 유지보수 7/10 + 지역 2/5 + 미커버 3/5",
-      "notes": "공식 출처 후보의 존재와 이벤트 구조·robots·이용조건을 후속 검증해야 함. Batch 1 fixture parser 계약, 부분 실행 dispatch, source health 및 anomaly 회귀 테스트 연결. 공통 sitemap adapter는 도메인·구조 검증을 보강했으나 source별 실운영 검증 부족으로 partial 유지."
+      "notes": "타임스퀘어 전용으로 허용 도메인, sitemap index/urlset 구분, URL 상한, 후보/제외 필터, 상세 필드 파싱, empty/structure_changed를 보강함. 공식 sitemap의 상세 이벤트 URL 실운영 검증은 부족하므로 partial 유지. npm run data:refresh-malls 부분 실행 가능."
     },
     {
       "id": "ifc-mall",
@@ -1020,35 +1023,35 @@
       "operator": "IFC Seoul",
       "sourceType": "shopping_mall",
       "officialUrl": "https://ifcmallseoul.com/",
-      "eventUrl": "https://ifcmallseoul.com/kr/event/eventList",
+      "eventUrl": "https://www.ifcmallseoul.com/kr/now",
       "branches": [
         "IFC몰 서울 권역"
       ],
       "regions": [
         "서울"
       ],
-      "implementationStatus": "unverified",
-      "collectionMethod": "unverified",
+      "implementationStatus": "active",
+      "collectionMethod": "official_api",
       "priority": "S",
       "foodPopupRelevance": 30,
       "expectedVolume": "high",
       "updateFrequency": "irregular",
-      "stability": "unknown",
-      "maintenanceCost": "unknown",
+      "stability": "high",
+      "maintenanceCost": "low",
       "legalRisk": "low",
       "robotsStatus": "unknown",
       "authRequired": false,
       "jsRequired": false,
-      "paginationType": "unknown",
-      "fieldsAvailable": [],
-      "currentCollector": null,
-      "collectorFile": null,
-      "testFile": null,
-      "lastVerifiedAt": null,
-      "verificationEvidence": [],
+      "paginationType": "page",
+      "fieldsAvailable": ["name", "brand", "venue", "branch", "address", "startDate", "endDate", "imageUrl", "sourceUrl", "sourceItemId"],
+      "currentCollector": "IFC몰",
+      "collectorFile": "scripts/collectors/batch3-verified-venues.mjs",
+      "testFile": "tests/collectors/ifc-mall.test.mjs",
+      "lastVerifiedAt": "2026-08-05",
+      "verificationEvidence": ["https://www.ifcmallseoul.com/kr/now", "https://www.ifcmallseoul.com/kr/now/search/list1NowByNowId?pageIndex=1&nowId=event&searchKeyword=", "https://www.ifcmallseoul.com/kr/now/view/20000000963", "scripts/collectors/batch3-verified-venues.mjs", "tests/fixtures/food-popups/ifc-mall.json", "tests/collectors/ifc-mall.test.mjs"],
       "priorityScore": 81,
       "priorityReason": "관련성 30/30 + 등록량 18/20 + 공식성 15/15 + 안정성 8/15 + 유지보수 5/10 + 지역 2/5 + 미커버 3/5",
-      "notes": "공식 출처 후보의 존재와 이벤트 구조·robots·이용조건을 후속 검증해야 함."
+      "notes": "공개 공식 NOW JSON API와 상세 페이지를 결합함. 로그인 없이 접근 가능하며 npm run data:refresh-ifc 부분 실행 가능."
     },
     {
       "id": "square-one",
@@ -1127,8 +1130,8 @@
       "name": "엔터식스",
       "operator": "엔터식스",
       "sourceType": "shopping_mall",
-      "officialUrl": "https://www.enter6.co.kr/",
-      "eventUrl": "https://www.enter6.co.kr/",
+      "officialUrl": "https://store.enter6.co.kr/",
+      "eventUrl": "https://store.enter6.co.kr/events/all-store-events",
       "branches": [
         "엔터식스 서울 권역",
         "엔터식스 경기 권역"
@@ -1158,7 +1161,7 @@
       "verificationEvidence": [],
       "priorityScore": 77,
       "priorityReason": "관련성 30/30 + 등록량 14/20 + 공식성 15/15 + 안정성 8/15 + 유지보수 5/10 + 지역 2/5 + 미커버 3/5",
-      "notes": "공식 출처 후보의 존재와 이벤트 구조·robots·이용조건을 후속 검증해야 함."
+      "notes": "공식 이벤트 목록과 상세는 공개되어 있으나 상세 HTML에 등록일만 있고 행사 기간은 포스터 이미지에 포함되어 자동 날짜 파싱 근거가 부족함. Batch 3 보류, unverified 유지."
     },
     {
       "id": "common-ground",
@@ -1202,35 +1205,35 @@
       "operator": "두산",
       "sourceType": "shopping_mall",
       "officialUrl": "https://www.doota-mall.com/",
-      "eventUrl": "https://www.doota-mall.com/",
+      "eventUrl": "https://www.doota-mall.com/event/event.do",
       "branches": [
         "두타몰 서울 권역"
       ],
       "regions": [
         "서울"
       ],
-      "implementationStatus": "unverified",
-      "collectionMethod": "unverified",
+      "implementationStatus": "active",
+      "collectionMethod": "official_api",
       "priority": "S",
       "foodPopupRelevance": 30,
       "expectedVolume": "medium",
       "updateFrequency": "irregular",
-      "stability": "unknown",
-      "maintenanceCost": "unknown",
+      "stability": "high",
+      "maintenanceCost": "low",
       "legalRisk": "low",
       "robotsStatus": "unknown",
       "authRequired": false,
       "jsRequired": false,
-      "paginationType": "unknown",
-      "fieldsAvailable": [],
-      "currentCollector": null,
-      "collectorFile": null,
-      "testFile": null,
-      "lastVerifiedAt": null,
-      "verificationEvidence": [],
+      "paginationType": "page",
+      "fieldsAvailable": ["name", "brand", "venue", "branch", "address", "startDate", "endDate", "imageUrl", "sourceUrl", "sourceItemId"],
+      "currentCollector": "두타몰",
+      "collectorFile": "scripts/collectors/batch3-verified-venues.mjs",
+      "testFile": "tests/collectors/doota-mall.test.mjs",
+      "lastVerifiedAt": "2026-08-05",
+      "verificationEvidence": ["https://www.doota-mall.com/event/event.do", "https://www.doota-mall.com/event/event_list.json?statType=OPEN&pageNo=1&device=web", "https://www.doota-mall.com/event/event_view.do?idx=600", "scripts/collectors/batch3-verified-venues.mjs", "tests/fixtures/food-popups/doota-mall.json", "tests/collectors/doota-mall.test.mjs"],
       "priorityScore": 77,
       "priorityReason": "관련성 30/30 + 등록량 14/20 + 공식성 15/15 + 안정성 8/15 + 유지보수 5/10 + 지역 2/5 + 미커버 3/5",
-      "notes": "공식 출처 후보의 존재와 이벤트 구조·robots·이용조건을 후속 검증해야 함."
+      "notes": "공개 공식 event_list.json의 ID·제목·기간·이미지와 상세 페이지를 결합함. npm run data:refresh-doota 부분 실행 가능."
     },
     {
       "id": "mecenatpolis-mall",
@@ -1770,7 +1773,7 @@
       "verificationEvidence": [],
       "priorityScore": 81,
       "priorityReason": "관련성 30/30 + 등록량 18/20 + 공식성 15/15 + 안정성 8/15 + 유지보수 5/10 + 지역 2/5 + 미커버 3/5",
-      "notes": "공식 출처 후보의 존재와 이벤트 구조·robots·이용조건을 후속 검증해야 함."
+      "notes": "별도 collector를 만들지 않음. 기존 롯데백화점·롯데아울렛·롯데몰 collector가 롯데월드몰 시설과 동일 공식 쇼핑뉴스 피드를 이미 수집하며 현재 데이터에도 롯데월드몰 항목이 존재함."
     },
     {
       "id": "coex-event-calendar",
@@ -1806,7 +1809,7 @@
       "verificationEvidence": [],
       "priorityScore": 77,
       "priorityReason": "관련성 30/30 + 등록량 14/20 + 공식성 15/15 + 안정성 8/15 + 유지보수 5/10 + 지역 2/5 + 미커버 3/5",
-      "notes": "공식 출처 후보의 존재와 이벤트 구조·robots·이용조건을 후속 검증해야 함."
+      "notes": "별도 collector를 만들지 않음. active starfield source의 branches와 collector storeId=coexmall 범위가 코엑스몰을 이미 포함함."
     },
     {
       "id": "emart-traders",

@@ -1,105 +1,18 @@
 {
-  "metadata": {
-    "sourceUrl": "https://www.timessquare.co.kr/robots.txt",
-    "collectedAt": "2026-08-04",
-    "sanitized": true,
-    "fixtureTypes": [
-      "valid-list",
-      "valid-detail",
-      "empty-list",
-      "malformed",
-      "expired-event",
-      "non-food-event",
-      "non-popup-food-sale",
-      "duplicate-source-item"
-    ]
-  },
-  "sourceId": "times-square",
-  "sourceName": "공식 쇼핑몰·마트 사이트맵",
-  "detail": {
-    "sourceItemId": "evt-100",
-    "title": "여름 디저트 팝업",
-    "brand": "먹당베이커리",
-    "venue": "타임스퀘어",
-    "startDate": "2026-08-01",
-    "endDate": "2026-08-31",
-    "sourceUrl": "https://www.timessquare.co.kr/robots.txt?id=evt-100",
-    "imageUrl": "https://images.example.test/popup.jpg",
-    "description": "베이커리 푸드 팝업",
-    "menu": "크루아상 5,000원"
-  },
-  "emptyList": {
-    "items": []
-  },
-  "malformed": {
-    "blocked": false
-  },
-  "items": [
-    {
-      "sourceItemId": "evt-100",
-      "title": "여름 디저트 팝업",
-      "brand": "먹당베이커리",
-      "venue": "타임스퀘어",
-      "startDate": "2026-08-01",
-      "endDate": "2026-08-31",
-      "sourceUrl": "https://www.timessquare.co.kr/robots.txt?id=evt-100",
-      "imageUrl": "https://images.example.test/popup.jpg",
-      "description": "베이커리 푸드 팝업"
-    },
-    {
-      "sourceItemId": "evt-100",
-      "title": "여름 디저트 팝업",
-      "brand": "먹당베이커리",
-      "venue": "타임스퀘어",
-      "startDate": "2026-08-01",
-      "endDate": "2026-08-31",
-      "sourceUrl": "https://www.timessquare.co.kr/robots.txt?id=evt-100",
-      "imageUrl": "https://images.example.test/popup.jpg",
-      "description": "베이커리 푸드 팝업"
-    },
-    {
-      "sourceItemId": "expired",
-      "title": "여름 디저트 팝업",
-      "brand": "먹당베이커리",
-      "venue": "타임스퀘어",
-      "startDate": "2026-06-01",
-      "endDate": "2026-07-01",
-      "sourceUrl": "https://www.timessquare.co.kr/robots.txt?id=evt-100",
-      "imageUrl": "https://images.example.test/popup.jpg",
-      "description": "베이커리 푸드 팝업"
-    },
-    {
-      "sourceItemId": "non-food",
-      "title": "패션 팝업",
-      "brand": "의류브랜드",
-      "venue": "타임스퀘어",
-      "startDate": "2026-08-01",
-      "endDate": "2026-08-31",
-      "sourceUrl": "https://www.timessquare.co.kr/robots.txt?id=evt-100",
-      "imageUrl": "https://images.example.test/popup.jpg",
-      "description": "의류 팝업"
-    },
-    {
-      "sourceItemId": "sale",
-      "title": "여름 베이커리 할인전",
-      "brand": "먹당베이커리",
-      "venue": "타임스퀘어",
-      "startDate": "2026-08-01",
-      "endDate": "2026-08-31",
-      "sourceUrl": "https://www.timessquare.co.kr/robots.txt?id=evt-100",
-      "imageUrl": "https://images.example.test/popup.jpg",
-      "description": "식품 할인 행사"
-    },
-    {
-      "sourceItemId": "bad-date",
-      "title": "여름 디저트 팝업",
-      "brand": "먹당베이커리",
-      "venue": "타임스퀘어",
-      "startDate": "2026/08/01",
-      "endDate": "2026-08-31",
-      "sourceUrl": "https://www.timessquare.co.kr/robots.txt?id=evt-100",
-      "imageUrl": "https://images.example.test/popup.jpg",
-      "description": "베이커리 푸드 팝업"
-    }
-  ]
+  "metadata": { "sourceId": "times-square", "officialUrl": "https://www.timessquare.co.kr/sitemap.xml", "capturedAt": "2026-08-05", "fixturePurpose": "valid-list, valid-detail, empty, structure-changed, expired, non-food, non-popup-sale, duplicate-source-item" },
+  "validSitemapIndex": "<?xml version=\"1.0\"?><sitemapindex><sitemap><loc>https://www.timessquare.co.kr/sitemap.xml?p_l_id=894&amp;layoutUuid=event</loc></sitemap><sitemap><loc>https://outside.example/sitemap.xml</loc></sitemap></sitemapindex>",
+  "validUrlset": "<?xml version=\"1.0\"?><urlset><url><loc>https://www.timessquare.co.kr/event/evt-100</loc></url><url><loc>https://www.timessquare.co.kr/store/fashion</loc></url><url><loc>https://outside.example/event/bad</loc></url></urlset>",
+  "validDetail": "<html><meta property=\"og:title\" content=\"여름 디저트 팝업\"><meta property=\"og:image\" content=\"/documents/popup.jpg\"><h1>여름 디저트 팝업</h1><p>먹당베이커리 푸드 팝업 2026.08.01 ~ 2026.08.31 타임스퀘어 1층</p></html>",
+  "structureChangedXml": "<html>점검 중</html>",
+  "expected": { "venue": "타임스퀘어", "branch": "타임스퀘어", "address": "서울특별시 영등포구 영중로 15", "imageUrl": "https://www.timessquare.co.kr/documents/popup.jpg", "sourceUrl": "https://www.timessquare.co.kr/event/evt-100" },
+  "structureChanged": { "sourceId": "times-square", "locations": [] },
+  "payload": { "sourceId": "times-square", "sourceName": "타임스퀘어 공식 사이트맵", "venueType": "쇼핑몰", "items": [
+    { "sourceItemId": "evt-100", "title": "여름 디저트 팝업", "brand": "먹당베이커리", "venue": "타임스퀘어", "branch": "타임스퀘어", "address": "서울특별시 영등포구 영중로 15", "startDate": "2026-08-01", "endDate": "2026-08-31", "sourceUrl": "https://www.timessquare.co.kr/event/evt-100", "imageUrl": "https://www.timessquare.co.kr/documents/popup.jpg", "description": "베이커리 푸드 팝업" },
+    { "sourceItemId": "evt-100", "title": "여름 디저트 팝업", "venue": "타임스퀘어", "startDate": "2026-08-01", "endDate": "2026-08-31", "sourceUrl": "https://www.timessquare.co.kr/event/evt-100", "description": "푸드 팝업" },
+    { "sourceItemId": "expired", "title": "지난 디저트 팝업", "venue": "타임스퀘어", "startDate": "2026-06-01", "endDate": "2026-07-01", "sourceUrl": "https://www.timessquare.co.kr/event/expired" },
+    { "sourceItemId": "non-food", "title": "패션 팝업", "venue": "타임스퀘어", "startDate": "2026-08-01", "endDate": "2026-08-31", "sourceUrl": "https://www.timessquare.co.kr/event/fashion" },
+    { "sourceItemId": "sale", "title": "베이커리 할인전", "venue": "타임스퀘어", "startDate": "2026-08-01", "endDate": "2026-08-31", "sourceUrl": "https://www.timessquare.co.kr/promotion/sale", "description": "식품 할인 행사" },
+    { "sourceItemId": "bad-date", "title": "커피 팝업", "venue": "타임스퀘어", "startDate": "2026/08/01", "endDate": "2026-08-31", "sourceUrl": "https://www.timessquare.co.kr/event/bad" },
+    { "sourceItemId": "", "title": "구조 변경 디저트 팝업", "venue": "타임스퀘어", "startDate": "2026-08-01", "endDate": "2026-08-31", "sourceUrl": "https://www.timessquare.co.kr/event/changed" }
+  ] }
 }

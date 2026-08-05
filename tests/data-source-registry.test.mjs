@@ -50,8 +50,8 @@ test('active collector 파일은 존재하고 현재 collector 전부가 매핑�
   const mapped = new Set(sources.map(source => source.currentCollector).filter(Boolean));
   for (const name of [
     '현대백화점·현대아울렛','신세계백화점','스타필드·스타필드시티','갤러리아','AK플라자','NC·뉴코아',
-    '아이파크몰','이마트·트레이더스','롯데마트','홈플러스','공식 쇼핑몰·마트 사이트맵','롯데 공식 블로그',
-    '롯데백화점·롯데아울렛·롯데몰'
+    '아이파크몰','이마트·트레이더스','롯데마트','홈플러스','타임스퀘어 공식 사이트맵','롯데 공식 블로그',
+    '롯데백화점·롯데아울렛·롯데몰','신세계사이먼 프리미엄 아울렛','IFC몰','두타몰'
   ]) assert.ok(mapped.has(name), `${name} registry 연결 누락`);
 });
 

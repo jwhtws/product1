@@ -5,6 +5,8 @@ import { promisify } from 'node:util';
 import { collectLottePopups, discoverLottePopups } from './lib/lotte-popup-collector.mjs';
 import { selectCollectors } from './collectors/registry.mjs';
 import { createBatch3Collectors } from './collectors/batch3-popup-venues.mjs';
+import { createVerifiedVenueCollectors } from './collectors/batch3-verified-venues.mjs';
+import { collectTimesSquareSitemap } from './collectors/times-square-sitemap.mjs';
 import { assertNotBlockedPage, hardenedFetch } from './lib/hardened-fetch.mjs';
 import {
   createCollectorStats,
@@ -638,8 +640,17 @@ async function collectFromOfficialSitemaps(sourceName, venueType, domains) {
 
 const collectSitemapChains = () => collectFromOfficialSitemaps('공식 쇼핑몰·마트 사이트맵', '쇼핑몰', [
   'www.hdc-iparkmall.com', 'store.emart.com', 'company.lottemart.com', 'corporate.homeplus.co.kr', 'www.akplaza.com',
-  'www.timessquare.co.kr', 'www.shinsegae.com'
+  'www.shinsegae.com'
 ]);
+
+const collectTimesSquare = () => collectTimesSquareSitemap({
+  today,
+  fetchText: async url => {
+    const response = await fetchResilient(url);
+    if (!response.ok) throw new Error(`${url} 응답 ${response.status}`);
+    return response.text();
+  }
+});
 
 const ncFeeds = [
   ['nc:eland', 'NC·뉴코아 공식 이벤트', 'https://www.elandretail.com/event', 'NC백화점 전점'],
@@ -913,11 +924,21 @@ const allCollectors = [
   ['롯데마트', collectLotteMart],
   ['홈플러스', collectHomeplus],
   ['공식 쇼핑몰·마트 사이트맵', collectSitemapChains],
+  ['타임스퀘어 공식 사이트맵', collectTimesSquare],
   ['롯데 공식 블로그', collectLotteOfficialBlog],
   ['롯데백화점·롯데아울렛·롯데몰', collectCuratedOfficial],
   ...createBatch3Collectors({
     today,
     fetchHtml: async url => {
+      const response = await fetchResilient(url);
+      if (!response.ok) throw new Error(`${url} 응답 ${response.status}`);
+      return response.text();
+    }
+  }),
+  ...createVerifiedVenueCollectors({
+    today,
+    fetchJson,
+    fetchText: async url => {
       const response = await fetchResilient(url);
       if (!response.ok) throw new Error(`${url} 응답 ${response.status}`);
       return response.text();
@@ -1086,6 +1107,10 @@ const refreshedIdRules = [
   ['롯데마트', /^lottemart:/u],
   ['홈플러스', /^homeplus:/u],
   ['공식 쇼핑몰·마트 사이트맵', /^sitemap:/u],
+  ['타임스퀘어 공식 사이트맵', /^times-square:/u],
+  ['신세계사이먼 프리미엄 아울렛', /^shinsegae-simon-premium-outlets:/u],
+  ['IFC몰', /^ifc-mall:/u],
+  ['두타몰', /^doota-mall:/u],
   ['롯데백화점·롯데아울렛·롯데몰', /^lotte:discovered:/u],
   ['팝업 전문 공간 · 문화역서울284', /^popup-venue:culture-station-seoul-284:/u],
   ['팝업 전문 공간 · 문화비축기지', /^popup-venue:oil-tank-culture-park:/u],
@@ -1137,6 +1162,10 @@ const collectorCoverageRules = [
   ['스타필드·스타필드시티', /스타필드/u],
   ['롯데백화점·롯데아울렛·롯데몰', /(롯데백화점|롯데아울렛|롯데프리미엄아울렛|롯데몰)/u],
   ['갤러리아', /갤러리아/u],
+  ['신세계사이먼 프리미엄 아울렛', /프리미엄 아울렛/u],
+  ['IFC몰', /IFC몰/u],
+  ['두타몰', /두타몰/u],
+  ['타임스퀘어 공식 사이트맵', /타임스퀘어/u],
   ['AK플라자', /AK플라자|에이케이플라자/iu],
   ['NC·뉴코아', /NC|뉴코아/iu],
   ['아이파크몰', /아이파크몰/u],

@@ -1,0 +1,16 @@
+{
+  "metadata": { "sourceId": "ifc-mall", "officialUrl": "https://www.ifcmallseoul.com/kr/now", "capturedAt": "2026-08-05", "fixturePurpose": "valid-api-response, valid-detail, empty, structure-changed, expired, non-food, non-popup-sale, duplicate-source-item" },
+  "validApiResponse": { "paginationInfo": { "totalRecordCount": 1 }, "nowList": [{ "nowSn": 20000000100, "sj": "여름 디저트 팝업", "eventBgndeDe": "2026.8.1 00:00:00", "eventEnddeDe": "2026.8.31 23:59:00", "physiclFlpth": "/2026/08/1/popup.jpg" }] },
+  "validDetail": "<html><h3>여름 디저트 팝업</h3><div class=\"date_start\">2026.8.1</div><div class=\"date_end\">2026.8.31</div><p>먹당베이커리 푸드 팝업</p><img src=\"/public/2026/08/1/popup.jpg\"></html>",
+  "expected": { "venue": "IFC몰", "branch": "IFC몰", "address": "서울특별시 영등포구 국제금융로 10", "imageUrl": "https://www.ifcmallseoul.com/public/popup.jpg", "sourceUrl": "https://www.ifcmallseoul.com/kr/now/view/20000000100" },
+  "structureChanged": { "sourceId": "ifc-mall", "nowItems": [] },
+  "payload": { "sourceId": "ifc-mall", "sourceName": "IFC몰", "venueType": "쇼핑몰", "items": [
+    { "sourceItemId": "evt-100", "title": "여름 디저트 팝업", "brand": "먹당베이커리", "venue": "IFC몰", "branch": "IFC몰", "address": "서울특별시 영등포구 국제금융로 10", "startDate": "2026-08-01", "endDate": "2026-08-31", "sourceUrl": "https://www.ifcmallseoul.com/kr/now/view/20000000100", "imageUrl": "https://www.ifcmallseoul.com/public/popup.jpg", "description": "베이커리 푸드 팝업" },
+    { "sourceItemId": "evt-100", "title": "여름 디저트 팝업", "venue": "IFC몰", "startDate": "2026-08-01", "endDate": "2026-08-31", "sourceUrl": "https://www.ifcmallseoul.com/duplicate", "description": "푸드 팝업" },
+    { "sourceItemId": "expired", "title": "지난 디저트 팝업", "venue": "IFC몰", "startDate": "2026-06-01", "endDate": "2026-07-01", "sourceUrl": "https://www.ifcmallseoul.com/expired" },
+    { "sourceItemId": "non-food", "title": "패션 팝업", "venue": "IFC몰", "startDate": "2026-08-01", "endDate": "2026-08-31", "sourceUrl": "https://www.ifcmallseoul.com/fashion" },
+    { "sourceItemId": "sale", "title": "베이커리 할인전", "venue": "IFC몰", "startDate": "2026-08-01", "endDate": "2026-08-31", "sourceUrl": "https://www.ifcmallseoul.com/sale", "description": "식품 할인 행사" },
+    { "sourceItemId": "bad-date", "title": "커피 팝업", "venue": "IFC몰", "startDate": "2026/08/01", "endDate": "2026-08-31", "sourceUrl": "https://www.ifcmallseoul.com/bad" },
+    { "title": "구조 변경 디저트 팝업", "venue": "IFC몰", "startDate": "2026-08-01", "endDate": "2026-08-31", "sourceUrl": "https://www.ifcmallseoul.com/changed" }
+  ] }
+}

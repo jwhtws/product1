@@ -1,0 +1,16 @@
+{
+  "metadata": { "sourceId": "doota-mall", "officialUrl": "https://www.doota-mall.com/event/event_list.json", "capturedAt": "2026-08-05", "fixturePurpose": "valid-api-response, valid-detail, empty, structure-changed, expired, non-food, non-popup-sale, duplicate-source-item" },
+  "validApiResponse": { "status": "ok", "totalCount": 1, "list": [{ "idx": 100, "title": "여름 디저트 팝업", "newImgNm": "popup.png", "startDt": "2026-08-01", "endDt": "2026-08-31", "webViewYn": "Y" }] },
+  "validDetail": "<html><h3>여름 디저트 팝업</h3><p>2026-08-01 ~ 2026-08-31 먹당베이커리 푸드 팝업</p><img src=\"/files/upload/event/popup.png\"></html>",
+  "expected": { "venue": "두타몰", "branch": "두타몰", "address": "서울특별시 중구 장충단로 275", "imageUrl": "https://www.doota-mall.com/files/upload/event/popup.png", "sourceUrl": "https://www.doota-mall.com/event/event_view.do?idx=100" },
+  "structureChanged": { "sourceId": "doota-mall", "status": "error" },
+  "payload": { "sourceId": "doota-mall", "sourceName": "두타몰", "venueType": "쇼핑몰", "items": [
+    { "sourceItemId": "evt-100", "title": "여름 디저트 팝업", "brand": "먹당베이커리", "venue": "두타몰", "branch": "두타몰", "address": "서울특별시 중구 장충단로 275", "startDate": "2026-08-01", "endDate": "2026-08-31", "sourceUrl": "https://www.doota-mall.com/event/event_view.do?idx=100", "imageUrl": "https://www.doota-mall.com/files/upload/event/popup.png", "description": "베이커리 푸드 팝업" },
+    { "sourceItemId": "evt-100", "title": "여름 디저트 팝업", "venue": "두타몰", "startDate": "2026-08-01", "endDate": "2026-08-31", "sourceUrl": "https://www.doota-mall.com/duplicate", "description": "푸드 팝업" },
+    { "sourceItemId": "expired", "title": "지난 디저트 팝업", "venue": "두타몰", "startDate": "2026-06-01", "endDate": "2026-07-01", "sourceUrl": "https://www.doota-mall.com/expired" },
+    { "sourceItemId": "non-food", "title": "패션 팝업", "venue": "두타몰", "startDate": "2026-08-01", "endDate": "2026-08-31", "sourceUrl": "https://www.doota-mall.com/fashion" },
+    { "sourceItemId": "sale", "title": "베이커리 할인전", "venue": "두타몰", "startDate": "2026-08-01", "endDate": "2026-08-31", "sourceUrl": "https://www.doota-mall.com/sale", "description": "식품 할인 행사" },
+    { "sourceItemId": "bad-date", "title": "커피 팝업", "venue": "두타몰", "startDate": "2026/08/01", "endDate": "2026-08-31", "sourceUrl": "https://www.doota-mall.com/bad" },
+    { "sourceItemId": "", "title": "구조 변경 디저트 팝업", "venue": "두타몰", "startDate": "2026-08-01", "endDate": "2026-08-31", "sourceUrl": "https://www.doota-mall.com/changed" }
+  ] }
+}
