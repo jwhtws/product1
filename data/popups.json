@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-04T22:33:39.711Z",
+  "updatedAt": "2026-08-05T08:50:43.720Z",
   "sources": [
     {
       "name": "현대백화점·현대아울렛",
@@ -64,24 +64,24 @@
     {
       "name": "롯데백화점·롯데아울렛·롯데몰",
       "status": "active",
-      "count": 30
+      "count": 32
     }
   ],
   "stats": {
-    "rawCollected": 93,
-    "parsed": 93,
-    "beforeDedup": 93,
+    "rawCollected": 32,
+    "parsed": 32,
+    "beforeDedup": 95,
     "duplicateRemoved": 0,
-    "final": 93,
+    "final": 95,
     "status": {
-      "active": 78,
+      "active": 80,
       "upcoming": 0,
       "ended": 15
     },
     "photos": {
       "popupCount": 85,
       "imageCount": 291,
-      "missingCount": 8
+      "missingCount": 10
     },
     "failedSources": [],
     "emptySources": [
@@ -97,7 +97,7 @@
   },
   "coverage": {
     "nationwideVenueTotal": 1029,
-    "verifiedPopupVenueCount": 23,
+    "verifiedPopupVenueCount": 24,
     "officialFeedMonitoredCount": 95,
     "collectorNeededCount": 934,
     "disclaimer": "시설 원장은 전국 탐색 범위이며, 화면에는 공식 출처에서 시작일과 종료일을 확인한 푸드팝업만 표시합니다."
@@ -860,7 +860,7 @@
       "endDate": "2026-08-06",
       "imageUrl": "https://minfo.lotteshopping.com/content/news/202407/SNM00000000000387996/20240715153135420_8.jpeg",
       "sourceName": "롯데쇼핑 공식 행사",
-      "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549198",
+      "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0028&searchTerm=%EB%84%88%EA%B5%AC%EB%A6%AC%EB%B2%A0%EC%9D%B4%EA%B8%80",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
@@ -1525,7 +1525,7 @@
       "endDate": "2026-08-13",
       "imageUrl": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547912/20260721093655326_9.jpeg",
       "sourceName": "롯데쇼핑 공식 행사",
-      "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000547912",
+      "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0336&searchTerm=%EC%86%8C%EA%B8%88%EC%83%81%ED%9A%8C",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
@@ -2760,7 +2760,7 @@
       "endDate": "2026-08-12",
       "imageUrl": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000549036/2026072812105940_5.jpeg",
       "sourceName": "롯데쇼핑 공식 행사",
-      "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549036",
+      "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%9A%94%EC%95%84%EC%A0%95+%EC%BB%B5%EB%B9%99%EC%88%98",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
@@ -3018,7 +3018,7 @@
       "endDate": "2026-08-06",
       "imageUrl": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000548665/20260727111443394_3.jpeg",
       "sourceName": "롯데쇼핑 공식 행사",
-      "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000548665",
+      "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0001&searchTerm=%EA%B0%93%EA%B5%AC%EC%9A%B4%EB%B9%B5%EA%B3%B5%EC%9E%A5",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
@@ -3067,7 +3067,7 @@
       "endDate": "2026-08-06",
       "imageUrl": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000533681/20260722190911672_2.jpeg",
       "sourceName": "롯데쇼핑 공식 행사",
-      "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000533681",
+      "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0001&searchTerm=%EA%B8%80%EB%9D%BC%EC%87%BC+%EC%88%98%EC%A0%9C+%EC%95%84%EC%9D%B4%EC%8A%A4%ED%81%AC%EB%A6%BC",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
@@ -3077,43 +3077,13 @@
       "lastVerifiedAt": "2026-08-05",
       "status": "active",
       "menuItems": [
-        "소금빵&아이스크림",
-        "자몽망고 요거트 아이스크림",
-        "바질 치즈 아이스크림",
-        "호두곶감 아이스크림",
-        "쁘띠 아이스 케이크",
-        "클래식 아포가토",
-        "순우유 팥빙수"
+        "프리미엄 수제 아이스크림"
       ],
-      "menuSource": "official-detail",
+      "menuSource": "official-search-result",
       "menus": [
         {
-          "name": "소금빵&아이스크림",
-          "price": "7,000원"
-        },
-        {
-          "name": "자몽망고 요거트 아이스크림",
-          "price": "9,800원"
-        },
-        {
-          "name": "바질 치즈 아이스크림",
-          "price": "8,800원"
-        },
-        {
-          "name": "호두곶감 아이스크림",
-          "price": "9,800원"
-        },
-        {
-          "name": "쁘띠 아이스 케이크",
-          "price": "15,900원"
-        },
-        {
-          "name": "클래식 아포가토",
-          "price": "6,100원"
-        },
-        {
-          "name": "순우유 팥빙수",
-          "price": "9,800원"
+          "name": "프리미엄 수제 아이스크림",
+          "price": ""
         }
       ],
       "imageSource": "official-detail",
@@ -3255,6 +3225,30 @@
       "status": "active"
     },
     {
+      "id": "lotte:gwangbok:life-culture",
+      "name": "라이프컬처 Pop-Up",
+      "venue": "롯데백화점 광복점",
+      "venueType": "백화점",
+      "address": "부산광역시 중구 중앙대로 2 (중앙동7가) · 롯데백화점 광복점",
+      "startDate": "2026-07-24",
+      "endDate": "2026-08-06",
+      "imageUrl": null,
+      "imageSource": "official-image-unavailable",
+      "sourceName": "롯데쇼핑 공식 행사",
+      "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0333&searchTerm=%EB%9D%BC%EC%9D%B4%ED%94%84%EC%BB%AC%EC%B2%98+Pop-Up",
+      "sourceGrade": "official-search",
+      "firstSeenAt": "2026-08-05",
+      "lastSeenAt": "2026-08-05",
+      "brand": null,
+      "region": "부산광역시",
+      "category": "food-popup",
+      "menus": [],
+      "menuItems": [],
+      "menuSource": "official-event-text",
+      "lastVerifiedAt": "2026-08-05",
+      "status": "active"
+    },
+    {
       "id": "lotte:incheon:lusol",
       "name": "루솔 프리미엄 이유식",
       "venue": "롯데백화점 인천점",
@@ -3288,7 +3282,7 @@
       "endDate": "2026-08-06",
       "imageUrl": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547885/20260720123252388_7.jpeg",
       "sourceName": "롯데쇼핑 공식 행사",
-      "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000547885",
+      "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0001&searchTerm=%EB%B0%80%EB%B9%9B+%ED%81%AC%EB%A6%BC%EC%B9%98%EC%A6%88%EB%B9%B5",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
@@ -3378,7 +3372,7 @@
       "endDate": "2026-09-30",
       "imageUrl": "https://minfo.lotteshopping.com/content/news/202605/SNM00000000000531614/20260507104705644_2.jpeg",
       "sourceName": "롯데쇼핑 공식 행사",
-      "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
+      "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EB%B0%94%EC%83%A4%EC%BB%A4%ED%94%BC",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
@@ -3569,7 +3563,7 @@
       "endDate": "2026-08-03",
       "imageUrl": "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000548015/2026080413515446_9.jpeg",
       "sourceName": "롯데쇼핑 공식 행사",
-      "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000548015",
+      "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=%EC%95%84%EB%A5%B4%EB%84%9B+%EC%88%98%EC%A0%9C+%ED%94%BC%EC%B9%B8%26%ED%98%B8%EB%91%90",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
@@ -3623,7 +3617,7 @@
       "endDate": "2026-08-06",
       "imageUrl": "https://minfo.lotteshopping.com/content/news/202507/SNM00000000000470512/20250723190429244_4.jpeg",
       "sourceName": "롯데쇼핑 공식 행사",
-      "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000546299",
+      "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0027&searchTerm=%EC%A0%95%EB%82%A8%EB%AF%B8%EB%AA%85%EA%B3%BC+%EA%B5%AC%ED%99%A9%EC%9E%91%EB%AC%BC%EB%B9%B5",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
@@ -3809,6 +3803,30 @@
       "menuSource": "official-event-text",
       "menus": [],
       "imageSource": "official-image-unavailable"
+    },
+    {
+      "id": "lotte:gwangbok:pongsindang",
+      "name": "퐁신당 Pop-Up",
+      "venue": "롯데백화점 광복점",
+      "venueType": "백화점",
+      "address": "부산광역시 중구 중앙대로 2 (중앙동7가) · 롯데백화점 광복점",
+      "startDate": "2026-07-24",
+      "endDate": "2026-08-06",
+      "imageUrl": null,
+      "imageSource": "official-image-unavailable",
+      "sourceName": "롯데쇼핑 공식 행사",
+      "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0333&searchTerm=%ED%90%81%EC%8B%A0%EB%8B%B9+Pop-Up",
+      "sourceGrade": "official-search",
+      "firstSeenAt": "2026-08-05",
+      "lastSeenAt": "2026-08-05",
+      "brand": null,
+      "region": "부산광역시",
+      "category": "food-popup",
+      "menus": [],
+      "menuItems": [],
+      "menuSource": "official-event-text",
+      "lastVerifiedAt": "2026-08-05",
+      "status": "active"
     },
     {
       "id": "shinsegae-shopping:SC00010:8560469",
@@ -4017,7 +4035,7 @@
       "endDate": "2026-08-13",
       "imageUrl": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547297/20260716111649115_7.jpeg",
       "sourceName": "롯데쇼핑 공식 행사",
-      "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000547297",
+      "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0344&searchTerm=%ED%94%84%EB%9E%91%EC%8A%A4%EB%A3%A8%EB%B8%8C%EB%A5%B4%EB%B0%94%EA%B2%8C%ED%8A%B8",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
@@ -4089,7 +4107,7 @@
       "endDate": "2026-10-15",
       "imageUrl": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547195/20260715171108398_1.jpeg",
       "sourceName": "롯데쇼핑 공식 행사",
-      "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000547195",
+      "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%95%BC%EB%AF%B8%ED%91%B8%EB%A3%A8%EB%94%B0+%EC%B0%A9%EC%A6%99%EC%A3%BC%EC%8A%A4",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
@@ -4199,7 +4217,7 @@
       "endDate": "2026-08-06",
       "imageUrl": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000545103/20260704192816729_9.jpeg",
       "sourceName": "롯데쇼핑 공식 행사",
-      "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000545103",
+      "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=%EB%B2%A0%EC%9D%B4%EA%B8%80%EB%A6%AC%EC%8A%A4%ED%8A%B8%C2%B7%EB%9D%BC%ED%81%AC%EB%A3%A8%EB%9C%A8",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
@@ -4379,7 +4397,7 @@
       "endDate": "2026-08-06",
       "imageUrl": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000543235/20260708153218511_4.jpeg",
       "sourceName": "롯데쇼핑 공식 행사",
-      "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000543235",
+      "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%8B%9C%EC%98%A4%ED%8C%A1%EC%95%BC+%EC%86%8C%EA%B8%88%EB%B9%B5",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
@@ -4451,7 +4469,7 @@
       "endDate": "2026-07-30",
       "imageUrl": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000550477/20260731184425479_4.jpeg",
       "sourceName": "롯데쇼핑 공식 행사",
-      "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000550477",
+      "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0027&searchTerm=%EC%8B%9D%ED%92%88%EA%B4%80+%EC%88%98%EC%A0%9C%EC%96%B4%EB%AC%B5",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
@@ -4519,7 +4537,7 @@
       "endDate": "2026-08-06",
       "imageUrl": "https://minfo.lotteshopping.com/content/news/202606/SNM00000000000543073/20260625131239774_1.jpeg",
       "sourceName": "롯데쇼핑 공식 행사",
-      "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000543073",
+      "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0342&searchTerm=%EB%8F%99%EB%B4%89+%EC%97%90%EA%B7%B8%ED%83%80%EB%A5%B4%ED%8A%B8",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",

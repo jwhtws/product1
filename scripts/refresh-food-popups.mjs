@@ -2,7 +2,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname } from 'node:path';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
-import { collectLottePopups } from './lib/lotte-popup-collector.mjs';
+import { collectLottePopups, discoverLottePopups } from './lib/lotte-popup-collector.mjs';
 import { selectCollectors } from './collectors/registry.mjs';
 import { assertNotBlockedPage, hardenedFetch } from './lib/hardened-fetch.mjs';
 import {
@@ -883,7 +883,16 @@ async function collectLotteOfficialBlog() {
 }
 
 async function collectCuratedOfficial() {
-  const rows = JSON.parse(await readFile('data/curated-popups.json', 'utf8'));
+  const curatedRows = JSON.parse(await readFile('data/curated-popups.json', 'utf8'));
+  let discoveredRows = [];
+  try {
+    discoveredRows = await discoverLottePopups({
+      today, fetchResilient, clean, decodeHtml, fast: retailerScope === 'lotte'
+    });
+  } catch (error) {
+    console.warn(`롯데 전 지점 쇼핑뉴스 자동 발견 실패 · 수동 검증 목록 보존: ${error.message}`);
+  }
+  const rows = [...curatedRows, ...discoveredRows];
   return collectLottePopups({ rows, previous, today, fetchResilient, clean, decodeHtml, uniqueMenus, normalizedText, fast: retailerScope === 'lotte' });
 }
 
@@ -1066,7 +1075,8 @@ const refreshedIdRules = [
   ['이마트·트레이더스', /^(?:emart|traders):/u],
   ['롯데마트', /^lottemart:/u],
   ['홈플러스', /^homeplus:/u],
-  ['공식 쇼핑몰·마트 사이트맵', /^sitemap:/u]
+  ['공식 쇼핑몰·마트 사이트맵', /^sitemap:/u],
+  ['롯데백화점·롯데아울렛·롯데몰', /^lotte:discovered:/u]
 ];
 // A scoped repair returning zero rows is more likely a temporary parser/feed
 // issue than proof that every event disappeared. Preserve the last known rows

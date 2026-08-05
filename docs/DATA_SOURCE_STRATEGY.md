@@ -31,7 +31,7 @@
 | collectorId / source | 운영사·대상 | 방식·URL 구조 | 페이지·날짜 | 이미지·장소·메뉴 | 부분 실행 | 테스트·보고 |
 |---|---|---|---|---|---|---|
 | `hyundai-department-outlet` / 현대백화점·아울렛 | 현대백화점그룹, 전 지점 | 공식 검색 JSON + 상세 HTML, ehyundai 쇼핑뉴스 | 최대 50 page, `EVNT_STRT_DT/END_DT` | 목록·상세 이미지, 지점명, 상세 가격 메뉴 | `data:refresh-hyundai` | 전용 테스트 없음, 공통 최근 실행 보고 포함 |
-| `lotte-department-outlet-mall` / 롯데백화점·아울렛·몰 | 롯데쇼핑 전 지점 | 공식 쇼핑뉴스 HTML과 curated 공식 URL | 목록 순회/상세, 공식 기간 파싱 | 대표·상세 이미지, 지점·주소, 상세 메뉴 | `data:refresh-lotte` | 전용 테스트 없음, 공통 보고 포함 |
+| `lotte-department-outlet-mall` / 롯데백화점·아울렛·몰 | 롯데쇼핑 전 지점 | 공식 통합검색의 지점 링크를 발견해 지점별 쇼핑뉴스 HTML 순회 후 푸드 팝업 판정 + curated 공식 URL 안전망 | 지점별 검색 결과/상세, 공식 기간 파싱 | 대표·상세 이미지, 지점·주소, 상세 메뉴 | `data:refresh-lotte` | 지점 발견·푸드 판정·광복점 코드 회귀 테스트, 공통 보고 포함 |
 | `shinsegae-department-store` | 신세계 13개 점 | 공식 event HTML + 지점별 shopping JSON | 지점별 목록, ISO 날짜 | 공식 이미지·도로주소·상세 가격 메뉴 | `data:refresh-shinsegae` | 전용 테스트 없음, 공통 보고 포함 |
 | `starfield` | 스타필드 4, 시티 3, 코엑스몰 | 공식 event API; 수원 공식 층별안내 보완 | API `totalPageCount`, 공식 날짜 | API 이미지·시설명; 메뉴·가격 없음 | `data:refresh-starfield` | 전용 테스트 없음, 공통 보고 포함 |
 | `galleria-department-store` | 갤러리아 5개 점 | 공식 쇼핑뉴스 HTML; 확인된 공식 일정 보완 | 목록 링크, 본문 기간 파싱 | OG/본문 이미지·지점·일부 공식 메뉴 | `data:refresh-galleria` | 전용 테스트 없음, 공통 보고 포함 |

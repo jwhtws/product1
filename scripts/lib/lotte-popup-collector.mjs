@@ -1,9 +1,15 @@
 const storeCodes = new Map([
   ['롯데백화점 본점', '0001'], ['롯데백화점 노원점', '0022'],
   ['롯데백화점 센텀시티점', '0027'], ['롯데백화점 건대스타시티점', '0028'],
+  ['롯데백화점 광복점', '0333'],
   ['롯데백화점 안산점', '0336'], ['롯데아울렛 청주점', '0342'],
   ['롯데백화점 인천점', '0344'], ['롯데백화점 동탄점', '0399']
 ]);
+
+const lottePopupWords = /(팝업(?:\s*스토어)?|POP[\s-]*UP(?:\s*STORE)?)/iu;
+const lotteFoodWords = /(꽈배기|술빵|모찌|떡|절미|빵|베이커리|베이글|제과|페스츄리|디저트|케이크|쿠키|초콜릿|아이스크림|젤라또|도넛|마카롱|푸딩|타르트|약과|한과|오란다|구움과자|과일|복숭아|감자|요거트|미숫가루|카페|커피|로스터리|홍닝차|티룸|음료|주스|맥주|와인|막걸리|포장마차|분식|김밥|라면|국수|냉면|만두|스시|초밥|야끼|타코|닭|치킨|고기|육회|곱창|족발|해산물|오징어|건어물|반찬|김치|식품|푸드|F&B|FNB|맛집|셰프|요리|농산|수산|축산)/iu;
+const lotteNonHumanFood = /(반려|펫|강아지|고양이|사료)/u;
+const lotteSeedStores = new Map([['0333', '광복점']]);
 
 const knownMenus = new Map([
   ['lotte:main:glaceau', [{ name: '프리미엄 수제 아이스크림', price: '' }]]
@@ -46,6 +52,162 @@ export function officialImages(html, baseUrl, decodeHtml) {
 
 export function officialImage(html, baseUrl, decodeHtml) {
   return officialImages(html, baseUrl, decodeHtml)[0] || '';
+}
+
+function htmlLines(value, decodeHtml, clean) {
+  return String(value || '')
+    .replace(/<br\s*\/?\s*>/giu, '\n')
+    .replace(/<\/(?:a|article|div|dl|dt|dd|h[1-6]|li|p|section|span|strong)>/giu, '\n')
+    .split(/\r?\n/u)
+    .map(line => decodeHtml(line))
+    .map(clean)
+    .filter(Boolean);
+}
+
+function lotteDateRange(value, today) {
+  const match = String(value || '').match(/(?:(20\d{2})[.\-/년]\s*)?(\d{1,2})[.\-/월]\s*(\d{1,2})\s*(?:일)?(?:\([^)]+\))?\s*(?:~|∼|〜|–|—|-|부터|to)\s*(?:(20\d{2})[.\-/년]\s*)?(\d{1,2})[.\-/월]\s*(\d{1,2})\s*(?:일)?/iu);
+  if (!match) return null;
+  const reference = new Date(`${today}T00:00:00+09:00`);
+  const startMonth = Number(match[2]);
+  const endMonth = Number(match[5]);
+  let startYear = Number(match[1]) || reference.getFullYear();
+  if (!match[1] && reference.getMonth() + 1 <= 2 && startMonth >= 11) startYear -= 1;
+  const endYear = Number(match[4]) || (endMonth < startMonth ? startYear + 1 : startYear);
+  return {
+    startDate: `${startYear}-${String(startMonth).padStart(2, '0')}-${String(match[3]).padStart(2, '0')}`,
+    endDate: `${endYear}-${String(endMonth).padStart(2, '0')}-${String(match[6]).padStart(2, '0')}`
+  };
+}
+
+function lotteVenue(lines, fallbackName = '') {
+  const location = lines.find(line => /(?:백화점|프리미엄\s*아울렛|아울렛|롯데몰|쇼핑몰|타임빌라스)\s*[^\n]{1,40}?점/u.test(line)) || '';
+  const match = location.match(/(백화점|프리미엄\s*아울렛|아울렛|롯데몰|쇼핑몰|타임빌라스)\s*([가-힣A-Za-z0-9&·\s]+?점)(?:\s|$)/u);
+  if (match) {
+    const type = match[1].replace(/\s+/gu, '');
+    const branch = match[2].replace(/\s+/gu, ' ');
+    if (type === '백화점') return `롯데백화점 ${branch}`;
+    if (type === '프리미엄아울렛') return `롯데프리미엄아울렛 ${branch}`;
+    if (type === '아울렛') return `롯데아울렛 ${branch}`;
+    if (type === '롯데몰') return `롯데몰 ${branch}`;
+    if (type === '타임빌라스') return `롯데타임빌라스 ${branch}`;
+  }
+  const branch = String(fallbackName || '').replace(/^(?:롯데)?(?:백화점|프리미엄아울렛|아울렛|몰|쇼핑몰)\s*/u, '').trim();
+  return branch ? `롯데백화점 ${branch}` : '';
+}
+
+function nearestResultBlock(html, index) {
+  const source = String(html || '');
+  for (const tag of ['li', 'article', 'a']) {
+    const open = source.lastIndexOf(`<${tag}`, index);
+    const close = open >= 0 ? source.indexOf(`</${tag}>`, index) : -1;
+    if (open >= 0 && close >= index && close - open <= 12_000) return source.slice(open, close + tag.length + 3);
+  }
+  return source.slice(Math.max(0, index - 1_500), Math.min(source.length, index + 3_500));
+}
+
+function stableLotteKey(value) {
+  let hash = 2_166_136_261;
+  for (const character of String(value || '')) {
+    hash ^= character.codePointAt(0);
+    hash = Math.imul(hash, 16_777_619);
+  }
+  return (hash >>> 0).toString(36);
+}
+
+export function parseLotteStoreLinks(html, { decodeHtml, clean }) {
+  const stores = new Map(lotteSeedStores);
+  for (const match of String(html || '').matchAll(/<a\b[^>]*href=["']([^"']*cstrCd=(\d{4})[^"']*)["'][^>]*>([\s\S]*?)<\/a>/giu)) {
+    const name = decodeHtml(match[3]).replace(/^(?:백화점|프리미엄\s*아울렛|아울렛|롯데몰|쇼핑몰|타임빌라스)\s*/u, '').trim();
+    if (name && name.length <= 40) stores.set(match[2], clean(name));
+  }
+  return [...stores].map(([code, name]) => ({ code, name }));
+}
+
+export function parseLotteSearchResults(html, { storeCode, storeName, today, decodeHtml, clean }) {
+  const source = String(html || '').replace(/\\u002F/giu, '/').replace(/\\\//gu, '/');
+  const rows = [];
+  const seen = new Set();
+  const candidates = [
+    ...source.matchAll(/SNM\d{10,}/gu),
+    ...source.matchAll(new RegExp(lottePopupWords.source, 'giu'))
+  ].sort((a, b) => a.index - b.index);
+  for (const match of candidates) {
+    const block = nearestResultBlock(source, match.index);
+    const newsId = block.match(/SNM\d{10,}/u)?.[0] || '';
+    const lines = htmlLines(block, decodeHtml, clean);
+    const searchable = lines.join(' ');
+    const dates = lotteDateRange(searchable, today);
+    if (!dates || !lottePopupWords.test(searchable) || !lotteFoodWords.test(searchable) || lotteNonHumanFood.test(searchable)) continue;
+    const venue = lotteVenue(lines, storeName);
+    if (!venue) continue;
+    const dateLineIndex = lines.findIndex(line => lotteDateRange(line, today));
+    const titleCandidates = lines.slice(0, dateLineIndex >= 0 ? dateLineIndex : lines.length)
+      .filter(line => !/^(?:쇼핑뉴스|행사 종료|상세보기|자세히 보기)$/u.test(line))
+      .filter(line => !/(?:백화점|아울렛|롯데몰|쇼핑몰|타임빌라스)\s*[^\n]{1,40}?점/u.test(line));
+    const name = titleCandidates.find(line => lottePopupWords.test(line) && lotteFoodWords.test(line))
+      || titleCandidates.find(line => lottePopupWords.test(line))
+      || titleCandidates.find(line => lotteFoodWords.test(line))
+      || '';
+    if (!name) continue;
+    const fingerprint = `${storeCode}|${name}|${dates.startDate}|${dates.endDate}|${venue}`;
+    if (seen.has(newsId || fingerprint)) continue;
+    seen.add(newsId || fingerprint);
+    const fallbackKey = stableLotteKey(fingerprint);
+    const sourceUrl = newsId
+      ? `https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=${newsId}`
+      : `https://m.lotteshopping.com/search/searchResult?cstrCd=${storeCode}&searchTerm=${encodeURIComponent(name)}`;
+    const officialImageUrls = officialImages(block, sourceUrl, decodeHtml);
+    rows.push({
+      id: `lotte:discovered:${storeCode}:${newsId || fallbackKey}`,
+      name,
+      venue,
+      venueType: /아울렛|몰|타임빌라스/u.test(venue) ? '쇼핑몰' : '백화점',
+      address: venue,
+      ...dates,
+      imageUrl: officialImageUrls[0] || null,
+      ...(officialImageUrls.length ? { officialImageUrls } : {}),
+      imageSource: officialImageUrls.length ? 'official-search-result' : 'official-image-unavailable',
+      sourceName: '롯데쇼핑 공식 행사',
+      sourceUrl,
+      sourceGrade: 'official-search',
+      firstSeenAt: today,
+      lastSeenAt: today
+    });
+  }
+  return rows;
+}
+
+export async function discoverLottePopups({ today, fetchResilient, clean, decodeHtml, fast = false }) {
+  const requestSeconds = fast ? 6 : 12;
+  const fetchSearch = url => fetchResilient(url, { attempts: 1, timeoutMs: requestSeconds * 1_000, curlMaxTime: requestSeconds });
+  // Lotte's literal popup search can lag behind the branch's general shopping
+  // news result. Query the current branch feed and apply our own strict
+  // popup/food filters so newly published cards are not missed.
+  const searchUrl = (code) => `https://m.lotteshopping.com/search/searchResult?cstrCd=${code}&searchTerm=-`;
+  const seedCode = '0333';
+  const seedResponse = await fetchSearch(searchUrl(seedCode));
+  if (!seedResponse.ok) throw new Error(`롯데 광복점 쇼핑뉴스 응답 ${seedResponse.status}`);
+  const seedHtml = await seedResponse.text();
+  const stores = parseLotteStoreLinks(seedHtml, { decodeHtml, clean });
+  const results = [];
+  let cursor = 0;
+  async function worker() {
+    while (cursor < stores.length) {
+      const store = stores[cursor++];
+      try {
+        const html = store.code === seedCode ? seedHtml : await (async () => {
+          const response = await fetchSearch(searchUrl(store.code));
+          return response.ok ? response.text() : '';
+        })();
+        if (html) results.push(...parseLotteSearchResults(await html, { storeCode: store.code, storeName: store.name, today, decodeHtml, clean }));
+      } catch (error) {
+        console.warn(`롯데 ${store.name} 쇼핑뉴스 발견 보존 처리: ${error.message}`);
+      }
+    }
+  }
+  await Promise.all(Array.from({ length: Math.min(fast ? 12 : 6, stores.length) }, () => worker()));
+  console.log(`롯데 쇼핑뉴스 자동 발견: 공식 지점 ${stores.length}곳 · 푸드 팝업 ${results.length}건`);
+  return results;
 }
 
 function detailMenus(html, decodeHtml, clean, uniqueMenus) {
@@ -98,7 +260,12 @@ export async function collectLottePopups({ rows, previous, today, fetchResilient
   let cursor = 0;
   async function worker() {
    while (cursor < rows.length) {
-    const [id, name, venue, startDate, endDate, rawSourceUrl] = rows[cursor++];
+    const input = rows[cursor++];
+    const normalizedInput = Array.isArray(input)
+      ? { id: input[0], name: input[1], venue: input[2], startDate: input[3], endDate: input[4], sourceUrl: input[5] }
+      : input;
+    const { id, name, venue, startDate, endDate } = normalizedInput;
+    const rawSourceUrl = normalizedInput.sourceUrl;
     let searchUrl = rawSourceUrl;
     if (/\/search\/searchResult/iu.test(searchUrl) && storeCodes.has(venue)) {
       const url = new URL(searchUrl);
@@ -108,8 +275,11 @@ export async function collectLottePopups({ rows, previous, today, fetchResilient
     }
     const old = previousById.get(id);
     let sourceUrl = searchUrl;
-    let imageUrl = old?.imageSource === 'official-detail' ? old.imageUrl : '';
-    let officialImageUrls = Array.isArray(old?.officialImageUrls) ? old.officialImageUrls : (imageUrl ? [imageUrl] : []);
+    let imageUrl = normalizedInput.imageUrl || (old?.imageSource === 'official-detail' ? old.imageUrl : '');
+    let officialImageUrls = Array.isArray(normalizedInput.officialImageUrls)
+      ? normalizedInput.officialImageUrls
+      : Array.isArray(old?.officialImageUrls) ? old.officialImageUrls : (imageUrl ? [imageUrl] : []);
+    let imageSource = normalizedInput.imageSource || (imageUrl ? 'official-detail' : 'official-image-unavailable');
     let menus = knownMenus.get(id) || (old?.menuSource === 'official-detail' ? old.menus : []);
     let menuSource = knownMenus.has(id) ? 'official-search-result' : (menus.length ? 'official-detail' : '');
     try {
@@ -165,6 +335,7 @@ export async function collectLottePopups({ rows, previous, today, fetchResilient
           const newsId = new URL(sourceUrl).searchParams.get('shpgNewsNo') || '';
           const oldMatchesDetail = newsId && String(imageUrl || '').includes(`/${newsId}/`);
           imageUrl = foundImage || (oldMatchesDetail ? imageUrl : '');
+          if (foundImage || oldMatchesDetail) imageSource = 'official-detail';
           if (foundImages.length) officialImageUrls = foundImages;
         }
         else if (foundImage) imageUrl = foundImage;
@@ -182,7 +353,7 @@ export async function collectLottePopups({ rows, previous, today, fetchResilient
       id, name, venue, venueType: /아울렛|몰/u.test(venue) ? '쇼핑몰' : '백화점', address: venue,
       startDate, endDate, imageUrl: imageUrl || null,
       ...(officialImageUrls.length ? { officialImageUrls } : {}),
-      imageSource: imageUrl ? 'official-detail' : 'official-image-unavailable',
+      imageSource: imageUrl ? imageSource : 'official-image-unavailable',
       sourceName: '롯데쇼핑 공식 행사', sourceUrl, sourceGrade: 'official-search',
       firstSeenAt: old?.firstSeenAt || today, lastSeenAt: today,
       ...(menus.length ? { menus, menuSource } : {})
