@@ -44,21 +44,21 @@ export async function collectPremiumOutlets({ fetchText, today }) {
   if (!discovered.length) throw new SourceStructureChangedError('shinsegae-simon-premium-outlets', '공식 지점 페이지에서 이벤트 상세 링크를 찾지 못했습니다');
   const unique = [...new Map(discovered.map(item => [item.sourceItemId, item])).values()];
   const enriched = await enrich(unique, fetchText, 40);
-  return parseBatch3VenuePayload({ sourceId: 'shinsegae-simon-premium-outlets', sourceName: '신세계사이먼 프리미엄 아울렛', venueType: '아울렛', venue: '신세계사이먼 프리미엄 아울렛', items: enriched.items, fetchedCount: listResponses + enriched.fetchedCount }, { today });
+  return parseBatch3VenuePayload({ sourceId: 'shinsegae-simon-premium-outlets', sourceName: '신세계사이먼 프리미엄 아울렛', venueType: '아울렛', venue: '신세계사이먼 프리미엄 아울렛', items: enriched.items, fetchedCount: unique.length + enriched.fetchedCount }, { today });
 }
 
 export async function collectIfcMall({ fetchJson, fetchText, today }) {
   const payload = await fetchJson('https://www.ifcmallseoul.com/kr/now/search/list1NowByNowId?pageIndex=1&nowId=event&searchKeyword=');
   const items = parseIfcList(payload);
   const enriched = await enrich(items, fetchText, 24);
-  return parseBatch3VenuePayload({ sourceId: 'ifc-mall', sourceName: 'IFC몰', venue: 'IFC몰', venueType: '쇼핑몰', items: enriched.items, fetchedCount: 1 + enriched.fetchedCount }, { today });
+  return parseBatch3VenuePayload({ sourceId: 'ifc-mall', sourceName: 'IFC몰', venue: 'IFC몰', venueType: '쇼핑몰', items: enriched.items, fetchedCount: items.length + enriched.fetchedCount }, { today });
 }
 
 export async function collectDootaMall({ fetchJson, fetchText, today }) {
   const payload = await fetchJson('https://www.doota-mall.com/event/event_list.json?statType=OPEN&pageNo=1&device=web');
   const items = parseDootaList(payload);
   const enriched = await enrich(items, fetchText, 24);
-  return parseBatch3VenuePayload({ sourceId: 'doota-mall', sourceName: '두타몰', venue: '두타몰', venueType: '쇼핑몰', items: enriched.items, fetchedCount: 1 + enriched.fetchedCount }, { today });
+  return parseBatch3VenuePayload({ sourceId: 'doota-mall', sourceName: '두타몰', venue: '두타몰', venueType: '쇼핑몰', items: enriched.items, fetchedCount: items.length + enriched.fetchedCount }, { today });
 }
 
 export function createVerifiedVenueCollectors(options) {

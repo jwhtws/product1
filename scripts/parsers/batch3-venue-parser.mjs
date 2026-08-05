@@ -57,7 +57,7 @@ export function parseBatch3VenuePayload(payload, { today = new Intl.DateTimeForm
       brand: item.brand || brandFromTitle(item.title), venue: item.venue || payload.venue, branch: item.branch || item.venue || payload.venue,
       venueType: payload.venueType || '쇼핑몰', address: item.address || payload.address || item.venue || payload.venue,
       startDate: item.startDate, endDate: item.endDate, imageUrl: item.imageUrl || '', sourceUrl: item.sourceUrl,
-      sourceName: payload.sourceName, sourceGrade: 'official', firstSeenAt: today, lastSeenAt: today
+      sourceName: payload.sourceName, sourceGrade: 'official', category: 'food-popup', firstSeenAt: today, lastSeenAt: today
     });
   }
   return { rows, stats, sourceHealth: { status: rows.length ? 'success_with_items' : 'success_empty', message: rows.length ? `${rows.length}건 파싱` : '정상 응답, 승인 항목 없음', checkedAt: new Date().toISOString() } };
