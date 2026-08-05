@@ -10,7 +10,17 @@ export const COLLECTOR_SCOPES = Object.freeze({
   emart: ['이마트·트레이더스'],
   lottemart: ['롯데마트'],
   homeplus: ['홈플러스'],
-  malls: ['공식 쇼핑몰·마트 사이트맵']
+  malls: ['공식 쇼핑몰·마트 사이트맵'],
+  batch3: [
+    '팝업 전문 공간 · 문화역서울284',
+    '팝업 전문 공간 · 문화비축기지',
+    '팝업 전문 공간 · 노들섬',
+    '팝업 전문 공간 · 피크닉',
+    '팝업 전문 공간 · 아모레성수',
+    '팝업 전문 공간 · KT&G 상상마당',
+    '팝업 전문 공간 · 현대카드 STORAGE',
+    '팝업 전문 공간 · 서울숲 커뮤니티센터'
+  ]
 });
 
 export function selectCollectors(collectors, scope = '') {

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-05T08:50:43.720Z",
+  "updatedAt": "2026-08-05T13:41:08.621Z",
   "sources": [
     {
       "name": "현대백화점·현대아울렛",
@@ -65,22 +65,62 @@
       "name": "롯데백화점·롯데아울렛·롯데몰",
       "status": "active",
       "count": 32
+    },
+    {
+      "name": "팝업 전문 공간 · 문화역서울284",
+      "status": "no-results",
+      "count": 0
+    },
+    {
+      "name": "팝업 전문 공간 · 문화비축기지",
+      "status": "no-results",
+      "count": 0
+    },
+    {
+      "name": "팝업 전문 공간 · 노들섬",
+      "status": "active",
+      "count": 1
+    },
+    {
+      "name": "팝업 전문 공간 · 피크닉",
+      "status": "no-results",
+      "count": 0
+    },
+    {
+      "name": "팝업 전문 공간 · 아모레성수",
+      "status": "no-results",
+      "count": 0
+    },
+    {
+      "name": "팝업 전문 공간 · KT&G 상상마당",
+      "status": "no-results",
+      "count": 0
+    },
+    {
+      "name": "팝업 전문 공간 · 현대카드 STORAGE",
+      "status": "no-results",
+      "count": 0
+    },
+    {
+      "name": "팝업 전문 공간 · 서울숲 커뮤니티센터",
+      "status": "no-results",
+      "count": 0
     }
   ],
   "stats": {
-    "rawCollected": 32,
-    "parsed": 32,
-    "beforeDedup": 95,
+    "rawCollected": 1,
+    "parsed": 1,
+    "beforeDedup": 96,
     "duplicateRemoved": 0,
-    "final": 95,
+    "final": 96,
     "status": {
-      "active": 80,
+      "active": 81,
       "upcoming": 0,
       "ended": 15
     },
     "photos": {
-      "popupCount": 85,
-      "imageCount": 291,
+      "popupCount": 86,
+      "imageCount": 292,
       "missingCount": 10
     },
     "failedSources": [],
@@ -92,7 +132,14 @@
       "롯데마트",
       "홈플러스",
       "공식 쇼핑몰·마트 사이트맵",
-      "롯데 공식 블로그"
+      "롯데 공식 블로그",
+      "팝업 전문 공간 · 문화역서울284",
+      "팝업 전문 공간 · 문화비축기지",
+      "팝업 전문 공간 · 피크닉",
+      "팝업 전문 공간 · 아모레성수",
+      "팝업 전문 공간 · KT&G 상상마당",
+      "팝업 전문 공간 · 현대카드 STORAGE",
+      "팝업 전문 공간 · 서울숲 커뮤니티센터"
     ]
   },
   "coverage": {
@@ -4789,6 +4836,40 @@
         "https://minfo.lotteshopping.com/content/news/202605/SNM00000000000536429/20260525181033898_0.jpeg",
         "https://minfo.lotteshopping.com/content/news/202605/SNM00000000000536429/20260525181033902_6.jpeg"
       ]
+    },
+    {
+      "id": "popup-venue:nodeul-island:59c1d0dfb9839e5e",
+      "sourceItemId": "59c1d0dfb9839e5e",
+      "name": "(수정) 노들섬 푸드트럭 운영 안내(2026년 5~8월)",
+      "brand": null,
+      "venue": "노들섬",
+      "venueType": "팝업 전문 공간",
+      "address": "노들섬",
+      "region": "서울특별시",
+      "startDate": "2026-05-01",
+      "endDate": "2026-08-30",
+      "imageUrl": "https://nodeul.org/wp-content/themes/nodeul/img/nodeul-ogimage.jpg",
+      "sourceName": "노들섬",
+      "sourceUrl": "https://nodeul.org/%EB%85%B8%EB%93%A4%EC%84%AC-%ED%91%B8%EB%93%9C%ED%8A%B8%EB%9F%AD-%EC%9A%B4%EC%98%81-%EC%95%88%EB%82%B42026%EB%85%84-58%EC%9B%94/",
+      "sourceGrade": "official",
+      "category": "food-popup",
+      "firstSeenAt": "2026-08-05",
+      "lastSeenAt": "2026-08-05",
+      "menus": [
+        {
+          "name": "(수정) 노들섬 푸드트럭 운영 안내(2026년 5~8월)",
+          "price": ""
+        }
+      ],
+      "menuItems": [
+        "(수정) 노들섬 푸드트럭 운영 안내(2026년 5~8월)"
+      ],
+      "menuSource": "official-event-text",
+      "officialImageUrls": [
+        "https://nodeul.org/wp-content/themes/nodeul/img/nodeul-ogimage.jpg"
+      ],
+      "lastVerifiedAt": "2026-08-05",
+      "status": "active"
     }
   ]
 }

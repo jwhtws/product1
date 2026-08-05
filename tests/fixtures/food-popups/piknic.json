@@ -1,0 +1,8 @@
+{
+  "source": {"sourceId":"piknic","sourceName":"피크닉","venue":"피크닉","region":"서울특별시"},
+  "valid": {"items":[{"sourceItemId":"valid-1","title":"피크닉 디저트 팝업","description":"케이크와 커피","startDate":"2026-08-01","endDate":"2026-08-31","sourceUrl":"https://www.piknic.kr/event/valid/"}]},
+  "empty": {"items":[]}, "structure_changed": {"unexpected":[]},
+  "expired": {"items":[{"sourceItemId":"expired-1","title":"봄 디저트 팝업","description":"케이크","startDate":"2026-04-01","endDate":"2026-04-30","sourceUrl":"https://www.piknic.kr/event/expired/"}]},
+  "duplicate": {"items":[{"sourceItemId":"duplicate-1","title":"커피 팝업","description":"커피","startDate":"2026-08-01","endDate":"2026-08-31","sourceUrl":"https://www.piknic.kr/event/duplicate/"},{"sourceItemId":"duplicate-1","title":"커피 팝업","description":"커피","startDate":"2026-08-01","endDate":"2026-08-31","sourceUrl":"https://www.piknic.kr/event/duplicate/"}]},
+  "non_food": {"items":[{"sourceItemId":"non-food-1","title":"사진 굿즈 팝업","description":"전시","startDate":"2026-08-01","endDate":"2026-08-31","sourceUrl":"https://www.piknic.kr/event/non-food/"}]}
+}

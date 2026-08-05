@@ -102,7 +102,7 @@ export function buildPopupRunReport({ runId = randomUUID(), scope, startedAt, fi
     return {
       source: run.source,
       discoveredCount: Number.isFinite(run.stats?.discoveredCount) ? run.stats.discoveredCount : (run.rows || []).length,
-      fetchedCount: (run.rows || []).length,
+      fetchedCount: Number.isFinite(run.stats?.fetchedCount) ? run.stats.fetchedCount : (run.rows || []).length,
       acceptedCount,
       rejectedCount,
       duplicateCount,
@@ -166,10 +166,11 @@ export async function writeRunHistory(report, directory = 'data/food-popups/run-
 
 export async function safelyBuildAndWritePopupRunReport(options, path = 'data/food-popups/run-report.json') {
   try {
-    const historyBySource = await readRunHistory();
+    const historyDirectory = `${dirname(path)}/run-history`;
+    const historyBySource = await readRunHistory(historyDirectory);
     const report = buildPopupRunReport({ ...options, historyBySource });
     const latestWritten = await writePopupRunReport(report, path);
-    try { await writeRunHistory(report); } catch (error) { console.warn(`팝업 실행 이력 작성 실패: ${sanitizeReportError(error).message}`); }
+    try { await writeRunHistory(report, historyDirectory); } catch (error) { console.warn(`팝업 실행 이력 작성 실패: ${sanitizeReportError(error).message}`); }
     return latestWritten;
   } catch (error) {
     console.warn(`팝업 실행 보고서 생성 실패(수집 결과는 유지): ${sanitizeReportError(error).message}`);

@@ -46,6 +46,22 @@ test('stats 포함 collector 결과를 보존한다', () => {
   assert.deepEqual(result.stats.rejectionReasons, { not_food: 2, expired: 1 });
 });
 
+test('run-report는 collector의 실제 fetchedCount와 healthStatus를 보존한다', () => {
+  const report = buildPopupRunReport({
+    runId: 'run-batch3', scope: 'batch3',
+    startedAt: '2026-08-05T00:00:00.000Z', finishedAt: '2026-08-05T00:00:01.000Z',
+    normalize: row => row, identity, finalRows: [],
+    sourceRuns: [{
+      source: '팝업 전문 공간', rows: [],
+      stats: { discoveredCount: 4, fetchedCount: 3, rejectionReasons: { not_food: 3 } },
+      startedAt: '2026-08-05T00:00:00.000Z', finishedAt: '2026-08-05T00:00:00.500Z'
+    }]
+  });
+  assert.equal(report.sources[0].fetchedCount, 3);
+  assert.equal(report.sources[0].healthStatus, 'empty');
+  assert.deepEqual(report.sources[0].rejectionReasons, { not_food: 3 });
+});
+
 test('오류의 인증 헤더 값을 가린다', () => {
   assert.equal(sanitizeReportError(new Error('Authorization: Bearer abc.def')).message, 'Authorization=[REDACTED] [REDACTED]');
 });

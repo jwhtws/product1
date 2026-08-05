@@ -1,0 +1,8 @@
+{
+  "source": {"sourceId":"hyundai-card-storage","sourceName":"현대카드 STORAGE","venue":"현대카드 STORAGE","region":"서울특별시"},
+  "valid": {"items":[{"sourceItemId":"valid-1","title":"서울 디저트 팝업","description":"베이커리와 커피","startDate":"2026-08-01","endDate":"2026-08-31","sourceUrl":"https://dive.hyundaicard.com/web/content/contentView.hdc?contentId=valid"}]},
+  "empty": {"items":[]}, "structure_changed": {"unexpected":[]},
+  "expired": {"items":[{"sourceItemId":"expired-1","title":"봄 디저트 팝업","description":"케이크","startDate":"2026-04-01","endDate":"2026-04-30","sourceUrl":"https://dive.hyundaicard.com/web/content/contentView.hdc?contentId=expired"}]},
+  "duplicate": {"items":[{"sourceItemId":"duplicate-1","title":"커피 팝업","description":"커피","startDate":"2026-08-01","endDate":"2026-08-31","sourceUrl":"https://dive.hyundaicard.com/web/content/contentView.hdc?contentId=duplicate"},{"sourceItemId":"duplicate-1","title":"커피 팝업","description":"커피","startDate":"2026-08-01","endDate":"2026-08-31","sourceUrl":"https://dive.hyundaicard.com/web/content/contentView.hdc?contentId=duplicate"}]},
+  "non_food": {"items":[{"sourceItemId":"non-food-1","title":"사진 굿즈 팝업","description":"전시","startDate":"2026-08-01","endDate":"2026-08-31","sourceUrl":"https://dive.hyundaicard.com/web/content/contentView.hdc?contentId=non-food"}]}
+}

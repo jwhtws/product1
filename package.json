@@ -19,6 +19,7 @@
     "data:refresh-lottemart": "node scripts/refresh-food-popups.mjs --retailer=lottemart",
     "data:refresh-homeplus": "node scripts/refresh-food-popups.mjs --retailer=homeplus",
     "data:refresh-malls": "node scripts/refresh-food-popups.mjs --retailer=malls",
+    "data:refresh-batch3": "node scripts/refresh-food-popups.mjs --retailer=batch3",
     "data:refresh-popup-venues": "node scripts/refresh-popup-venues.mjs",
     "data:validate": "node scripts/validate-restaurant-data.mjs --report=data/restaurants/validation-report.json",
     "data:rebuild-search": "node scripts/build-search-index.mjs && node scripts/build-search-pages.mjs",

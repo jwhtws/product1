@@ -1,0 +1,8 @@
+{
+  "source": {"sourceId":"seoul-forest-community-center","sourceName":"서울숲 커뮤니티센터","venue":"서울숲 커뮤니티센터","region":"서울특별시"},
+  "valid": {"items":[{"sourceItemId":"valid-1","title":"서울숲 먹거리 마켓","description":"푸드트럭과 음료 팝업","startDate":"2026-08-01","endDate":"2026-08-31","sourceUrl":"https://seoulforest.or.kr/event/valid/"}]},
+  "empty": {"items":[]}, "structure_changed": {"unexpected":[]},
+  "expired": {"items":[{"sourceItemId":"expired-1","title":"봄 푸드 팝업","description":"먹거리","startDate":"2026-04-01","endDate":"2026-04-30","sourceUrl":"https://seoulforest.or.kr/event/expired/"}]},
+  "duplicate": {"items":[{"sourceItemId":"duplicate-1","title":"커피 팝업","description":"커피","startDate":"2026-08-01","endDate":"2026-08-31","sourceUrl":"https://seoulforest.or.kr/event/duplicate/"},{"sourceItemId":"duplicate-1","title":"커피 팝업","description":"커피","startDate":"2026-08-01","endDate":"2026-08-31","sourceUrl":"https://seoulforest.or.kr/event/duplicate/"}]},
+  "non_food": {"items":[{"sourceItemId":"non-food-1","title":"원예 굿즈 팝업","description":"전시","startDate":"2026-08-01","endDate":"2026-08-31","sourceUrl":"https://seoulforest.or.kr/event/non-food/"}]}
+}

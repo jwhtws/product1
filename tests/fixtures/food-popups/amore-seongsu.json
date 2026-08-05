@@ -1,0 +1,8 @@
+{
+  "source": {"sourceId":"amore-seongsu","sourceName":"아모레성수","venue":"아모레성수","region":"서울특별시"},
+  "valid": {"items":[{"sourceItemId":"valid-1","title":"성수 커피 팝업","description":"커피와 디저트","startDate":"2026-08-01","endDate":"2026-08-31","sourceUrl":"https://www.amore-seongsu.com/test-valid/"}]},
+  "empty": {"items":[]}, "structure_changed": {"unexpected":[]},
+  "expired": {"items":[{"sourceItemId":"expired-1","title":"봄 카페 팝업","description":"음료","startDate":"2026-04-01","endDate":"2026-04-30","sourceUrl":"https://www.amore-seongsu.com/test-expired/"}]},
+  "duplicate": {"items":[{"sourceItemId":"duplicate-1","title":"커피 팝업","description":"커피","startDate":"2026-08-01","endDate":"2026-08-31","sourceUrl":"https://www.amore-seongsu.com/test-duplicate/"},{"sourceItemId":"duplicate-1","title":"커피 팝업","description":"커피","startDate":"2026-08-01","endDate":"2026-08-31","sourceUrl":"https://www.amore-seongsu.com/test-duplicate/"}]},
+  "non_food": {"items":[{"sourceItemId":"non-food-1","title":"뷰티 굿즈 팝업","description":"화장품","startDate":"2026-08-01","endDate":"2026-08-31","sourceUrl":"https://www.amore-seongsu.com/test-non-food/"}]}
+}

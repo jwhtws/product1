@@ -1,0 +1,8 @@
+{
+  "source": {"sourceId":"nodeul-island","sourceName":"노들섬","venue":"노들섬","region":"서울특별시"},
+  "valid": {"items":[{"sourceItemId":"valid-1","title":"노들섬 푸드트럭 운영 안내","description":"대박버거 푸드트럭","startDate":"2026-05-01","endDate":"2026-08-30","sourceUrl":"https://nodeul.org/test-valid/"}]},
+  "empty": {"items":[]}, "structure_changed": {"unexpected":[]},
+  "expired": {"items":[{"sourceItemId":"expired-1","title":"봄 푸드트럭","description":"버거","startDate":"2026-04-01","endDate":"2026-04-30","sourceUrl":"https://nodeul.org/test-expired/"}]},
+  "duplicate": {"items":[{"sourceItemId":"duplicate-1","title":"커피 팝업","description":"커피","startDate":"2026-08-01","endDate":"2026-08-31","sourceUrl":"https://nodeul.org/test-duplicate/"},{"sourceItemId":"duplicate-1","title":"커피 팝업","description":"커피","startDate":"2026-08-01","endDate":"2026-08-31","sourceUrl":"https://nodeul.org/test-duplicate/"}]},
+  "non_food": {"items":[{"sourceItemId":"non-food-1","title":"건축 굿즈 팝업","description":"전시","startDate":"2026-08-01","endDate":"2026-08-31","sourceUrl":"https://nodeul.org/test-non-food/"}]}
+}

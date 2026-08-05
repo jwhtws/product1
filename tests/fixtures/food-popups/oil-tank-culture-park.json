@@ -1,0 +1,8 @@
+{
+  "source": {"sourceId":"oil-tank-culture-park","sourceName":"문화비축기지","venue":"문화비축기지","region":"서울특별시"},
+  "valid": {"items":[{"sourceItemId":"valid-1","title":"여름 푸드트럭 팝업","description":"버거와 음료","startDate":"2026-08-01","endDate":"2026-08-31","sourceUrl":"https://parks.seoul.go.kr/story/news/detailView.do?bIdx=valid"}]},
+  "empty": {"items":[]}, "structure_changed": {"unexpected":[]},
+  "expired": {"items":[{"sourceItemId":"expired-1","title":"봄 푸드 팝업","description":"먹거리","startDate":"2026-04-01","endDate":"2026-04-30","sourceUrl":"https://parks.seoul.go.kr/story/news/detailView.do?bIdx=expired"}]},
+  "duplicate": {"items":[{"sourceItemId":"duplicate-1","title":"커피 팝업","description":"커피","startDate":"2026-08-01","endDate":"2026-08-31","sourceUrl":"https://parks.seoul.go.kr/story/news/detailView.do?bIdx=duplicate"},{"sourceItemId":"duplicate-1","title":"커피 팝업","description":"커피","startDate":"2026-08-01","endDate":"2026-08-31","sourceUrl":"https://parks.seoul.go.kr/story/news/detailView.do?bIdx=duplicate"}]},
+  "non_food": {"items":[{"sourceItemId":"non-food-1","title":"공예 굿즈 팝업","description":"전시","startDate":"2026-08-01","endDate":"2026-08-31","sourceUrl":"https://parks.seoul.go.kr/story/news/detailView.do?bIdx=non-food"}]}
+}

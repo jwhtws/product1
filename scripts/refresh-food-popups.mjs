@@ -4,6 +4,7 @@ import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import { collectLottePopups, discoverLottePopups } from './lib/lotte-popup-collector.mjs';
 import { selectCollectors } from './collectors/registry.mjs';
+import { createBatch3Collectors } from './collectors/batch3-popup-venues.mjs';
 import { assertNotBlockedPage, hardenedFetch } from './lib/hardened-fetch.mjs';
 import {
   createCollectorStats,
@@ -17,6 +18,7 @@ const runStartedAt = new Date().toISOString();
 const runId = `food-popups-${runStartedAt.replace(/[-:.TZ]/gu, '')}-${process.pid}`;
 
 const outputPath = process.argv.find(value => value.startsWith('--output='))?.slice(9) || 'data/popups.json';
+const reportPath = process.argv.find(value => value.startsWith('--run-report='))?.slice(13) || 'data/food-popups/run-report.json';
 const lotteOnly = process.argv.includes('--lotte-only');
 const strictCollectors = process.argv.includes('--strict');
 const retailerScope = process.argv.find(value => value.startsWith('--retailer='))?.slice(11)
@@ -912,7 +914,15 @@ const allCollectors = [
   ['홈플러스', collectHomeplus],
   ['공식 쇼핑몰·마트 사이트맵', collectSitemapChains],
   ['롯데 공식 블로그', collectLotteOfficialBlog],
-  ['롯데백화점·롯데아울렛·롯데몰', collectCuratedOfficial]
+  ['롯데백화점·롯데아울렛·롯데몰', collectCuratedOfficial],
+  ...createBatch3Collectors({
+    today,
+    fetchHtml: async url => {
+      const response = await fetchResilient(url);
+      if (!response.ok) throw new Error(`${url} 응답 ${response.status}`);
+      return response.text();
+    }
+  })
 ];
 // Incident repair path: refresh one retailer without waiting for every
 // national adapter. Existing rows from collectors outside the scope remain.
@@ -950,7 +960,7 @@ if (strictCollectors && collectorErrors.length) {
   await safelyBuildAndWritePopupRunReport({
     runId, scope: retailerScope || 'all', startedAt: runStartedAt, finishedAt,
     sourceRuns, normalize: row => row, identity: row => String(row?.id || ''), finalRows: collected
-  });
+  }, reportPath);
   throw new Error(`공식 수집기 실패로 일일 반영 중단: ${collectorErrors.map(source => source.name).join(', ')}`);
 }
 
@@ -1076,7 +1086,15 @@ const refreshedIdRules = [
   ['롯데마트', /^lottemart:/u],
   ['홈플러스', /^homeplus:/u],
   ['공식 쇼핑몰·마트 사이트맵', /^sitemap:/u],
-  ['롯데백화점·롯데아울렛·롯데몰', /^lotte:discovered:/u]
+  ['롯데백화점·롯데아울렛·롯데몰', /^lotte:discovered:/u],
+  ['팝업 전문 공간 · 문화역서울284', /^popup-venue:culture-station-seoul-284:/u],
+  ['팝업 전문 공간 · 문화비축기지', /^popup-venue:oil-tank-culture-park:/u],
+  ['팝업 전문 공간 · 노들섬', /^popup-venue:nodeul-island:/u],
+  ['팝업 전문 공간 · 피크닉', /^popup-venue:piknic:/u],
+  ['팝업 전문 공간 · 아모레성수', /^popup-venue:amore-seongsu:/u],
+  ['팝업 전문 공간 · KT&G 상상마당', /^popup-venue:ktng-sangsangmadang:/u],
+  ['팝업 전문 공간 · 현대카드 STORAGE', /^popup-venue:hyundai-card-storage:/u],
+  ['팝업 전문 공간 · 서울숲 커뮤니티센터', /^popup-venue:seoul-forest-community-center:/u]
 ];
 // A scoped repair returning zero rows is more likely a temporary parser/feed
 // issue than proof that every event disappeared. Preserve the last known rows
@@ -1194,7 +1212,7 @@ await safelyBuildAndWritePopupRunReport({
   normalize: normalizePopup,
   identity: row => `${normalizedText(row.brand || row.name)}|${normalizedText(row.venue)}|${row.startDate}|${row.endDate}`,
   finalRows: popups
-});
+}, reportPath);
 console.log(`원본 수집 ${rawCollectedCount}건 · 파싱 성공 ${collected.length}건 · ID 병합 ${beforeDedupCount}건 · 중복 제거 ${duplicateRemovedCount}건 · 최종 ${popups.length}건`);
 console.log(`상태 집계 active=${statusCounts.active} upcoming=${statusCounts.upcoming} ended=${statusCounts.ended}`);
 console.log(`공식 사진 팝업 ${collectionStats.photos.popupCount}/${popups.length}건 · 사진 ${collectionStats.photos.imageCount}장 · 미확보 ${collectionStats.photos.missingCount}건`);

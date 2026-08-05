@@ -22,18 +22,19 @@ export function anomalyFlags(current, history = []) {
 
 export function sourceHealthFor(run, previous = []) {
   const structureChanged = run.sourceHealth?.status === 'source_structure_changed' || run.error?.name === 'SourceStructureChangedError';
+  const unverified = run.sourceHealth?.status === 'unverified';
   const requestFailed = Boolean(run.error) && !structureChanged;
   const discoveredCount = Number(run.stats?.discoveredCount ?? run.rows?.length ?? 0);
   const acceptedCount = Number(run.acceptedCount ?? run.rows?.length ?? 0);
   const rejectedCount = Number(run.rejectedCount ?? Object.values(run.stats?.rejectionReasons || {}).reduce((sum,n)=>sum+Number(n),0));
   const base = {
-    healthStatus: structureChanged ? 'structure_changed' : requestFailed ? 'failed' : acceptedCount ? 'healthy' : 'empty',
-    healthMessage: structureChanged ? '공식 응답의 필수 구조가 변경됨' : requestFailed ? '공식 출처 요청 실패' : acceptedCount ? `${acceptedCount}건 승인` : '정상 응답, 승인 항목 없음',
+    healthStatus: structureChanged ? 'structure_changed' : unverified ? 'unverified' : requestFailed ? 'failed' : acceptedCount ? 'healthy' : 'empty',
+    healthMessage: structureChanged ? '공식 응답의 필수 구조가 변경됨' : unverified ? (run.sourceHealth?.message || '자동 검증 보류') : requestFailed ? '공식 출처 요청 실패' : acceptedCount ? `${acceptedCount}건 승인` : '정상 응답, 승인 항목 없음',
     discoveredCount, fetchedCount: Number(run.stats?.fetchedCount ?? run.rows?.length ?? 0), acceptedCount, rejectedCount,
     duplicateCount: Number(run.duplicateCount ?? run.stats?.duplicateSourceItemCount ?? run.stats?.rejectionReasons?.duplicate_source_item ?? 0),
     errorCount: Number(run.errorCount ?? (run.error ? 1 : 0)), rejectionReasons: { ...(run.rejectionReasons || run.stats?.rejectionReasons || {}) },
     startedAt: run.startedAt, finishedAt: run.finishedAt,
-    lastSuccessfulAt: requestFailed || structureChanged ? (previous.at(-1)?.lastSuccessfulAt || null) : run.finishedAt,
+    lastSuccessfulAt: requestFailed || structureChanged || unverified ? (previous.at(-1)?.lastSuccessfulAt || null) : run.finishedAt,
     consecutiveFailureCount: requestFailed || structureChanged ? Number(previous.at(-1)?.consecutiveFailureCount || 0) + 1 : 0,
     anomalyFlags: []
   };
