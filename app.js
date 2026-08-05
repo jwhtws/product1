@@ -12,7 +12,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     filters: { query: '', region: '', category: '', price: '', sort: 'recommend' },
     current: null, currentPopup: null, progress: '', searchSession: null, searchMode: 'popup', serverUser: null, serverReviews: new Map(),
     serverSaved: [], serverLists: {}, serverProfile: {}, reviewSummaries: new Map(), popularRestaurantCount: 0, popularRestaurants: [],
-    popups: [], popupUpdatedAt: null, popupQuickFilter: '', popupHomeCategoryFilter: '', popupRetailerFilter: '', nearbyRegion: '', seoRestaurantIds: new Set()
+    popups: [], popupUpdatedAt: null, popupQuickFilter: '', popupHomeCategoryFilter: '', popupRetailerFilter: '', nearbyRegion: '', nearbyEnabled: false, seoRestaurantIds: new Set()
   };
   const store = {
     get(key, fallback) { try { return JSON.parse(localStorage.getItem(`meokdang-${key}`)) ?? fallback; } catch { return fallback; } },
@@ -430,17 +430,26 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     return 'grocery';
   }
   function popupHomeCategory(popup) {
-    const text = searchKey(`${popup.name} ${popup.brand || ''} ${popupMenus(popup).map(item => item.name || item).join(' ')}`);
+    const text = searchKey(`${popup.title} ${popup.brand || ''} ${popup.category || ''} ${(popup.tags || []).join(' ')}`);
     if (/(와인|맥주|막걸리|위스키|주류|하이볼)/u.test(text)) return 'alcohol';
-    if (/(고기|갈비|족발|스테이크|육포|닭강정|치킨)/u.test(text)) return 'meat';
     if (/(베이커리|빵|베이글|식빵|소금빵|도넛)/u.test(text)) return 'bakery';
     if (/(디저트|케이크|쿠키|타르트|마카롱|아이스크림|젤라또|초콜릿|떡|약과|한과|모찌)/u.test(text)) return 'dessert';
-    if (/(카페|커피|라떼)/u.test(text)) return 'cafe';
-    if (/(음료|주스|차|티|에이드)/u.test(text)) return 'drink';
+    if (/(카페|커피|라떼|음료|주스|차|티|에이드)/u.test(text)) return 'cafe';
     if (/(간식|꽈배기|과자|스낵)/u.test(text)) return 'snack';
     return 'meal';
   }
-  const popupCategoryLabels = { dessert: '디저트', bakery: '베이커리', cafe: '카페', alcohol: '주류', meat: '고기', meal: '식사', snack: '간식', drink: '음료' };
+  const popupCategoryLabels = { dessert: '디저트', bakery: '베이커리', meal: '식사', cafe: '카페', alcohol: '주류', snack: '간식' };
+  const popupRegionLabels = {
+    '서울특별시': '서울', '경기도': '경기', '인천광역시': '인천', '부산광역시': '부산',
+    '대구광역시': '대구', '울산광역시': '울산', '대전광역시': '대전', '광주광역시': '광주',
+    '세종특별자치시': '세종', '강원특별자치도': '강원', '충청북도': '충북', '충청남도': '충남',
+    '전북특별자치도': '전북', '전라남도': '전남', '경상북도': '경북', '경상남도': '경남', '제주특별자치도': '제주'
+  };
+  const popupRegionName = popup => {
+    const addressRegion = String(popup.address || '').trim().split(/\s+/u)[0];
+    const aliases = { 서울: '서울특별시', 경기: '경기도', 인천: '인천광역시', 부산: '부산광역시', 대구: '대구광역시', 울산: '울산광역시', 대전: '대전광역시', 광주: '광주광역시', 제주: '제주특별자치도' };
+    return popupRegionLabels[addressRegion] ? addressRegion : aliases[addressRegion] || addressRegion;
+  };
   function popupRetailer(popup) {
     const text = `${popup.sourceName || ''} ${popup.venue || ''}`;
     return [
@@ -506,7 +515,6 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     const venueFilter = $('#popup-venue-filter')?.value || '';
     const sort = $('#popup-sort-filter')?.value || 'food';
     const order = { active: 0, upcoming: 1, ended: 2 };
-    const today = koreaToday();
     return state.popups.filter(popup =>
       (!query || searchKey(`${popup.name} ${popup.brand || ''} ${popup.venue} ${popup.address} ${popup.region || ''}`).includes(query)) &&
       (!foodFilter || popupFoodType(popup) === foodFilter) &&
@@ -514,8 +522,8 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
       (!venueFilter || (popup.venueType || '') === venueFilter) &&
       (!state.popupHomeCategoryFilter || popupHomeCategory(popup) === state.popupHomeCategoryFilter) &&
       (!state.popupRetailerFilter || popupRetailer(popup) === state.popupRetailerFilter) &&
-      (state.popupQuickFilter !== 'ending-today' || popup.endDate === today) &&
-      (state.popupQuickFilter !== 'nearby' || !state.nearbyRegion || searchKey(popup.region || popup.address || '').includes(searchKey(state.nearbyRegion)))
+      (state.popupQuickFilter !== 'ending-today' || popup.isEndingSoon === true) &&
+      (state.popupQuickFilter !== 'nearby' || !state.nearbyRegion || popupRegionName(popup) === state.nearbyRegion)
     ).sort((left, right) => {
       // Closed events always belong after active/upcoming events, regardless
       // of the user's secondary sort choice.
@@ -554,56 +562,70 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     </article>`;
   }
   function popupDiscoveryCard(popup, priority = false) {
-    const status = popupStatus(popup);
-    const imageUrl = popup.imageUrl || popupFallbackImage(popup);
+    const status = { key: popup.status, label: ({ ongoing: '진행 중', upcoming: '오픈 예정', ended: '종료' })[popup.status] || '일정 확인' };
+    const fallbackImages = { dessert: 'assets/food/western-ai.png', bakery: 'assets/food/western-ai.png', meal: 'assets/food/korean-ai.png', cafe: 'assets/food/cafe-ai.png', alcohol: 'assets/food/western-ai.png', snack: 'assets/food/korean-ai.png' };
+    const imageUrl = popup.image || fallbackImages[popupHomeCategory(popup)];
     const saved = isSaved(popup);
-    return `<article class="md-card md-card--popup discovery-popup-card popup-${status.key}" tabindex="0" data-home-popup-id="${escapeHtml(popup.id)}">
+    const dDay = popup.status === 'ended' ? '종료' : popup.status === 'upcoming'
+      ? (popup.dDay === 0 ? '오늘 오픈' : `오픈 D-${popup.dDay}`)
+      : popup.dDay === null ? '상시' : popup.dDay === 0 ? '오늘 종료' : `D-${popup.dDay}`;
+    const title = popup.title;
+    return `<article class="md-card md-card--popup discovery-popup-card popup-${status.key}" tabindex="0" data-home-popup-id="${escapeHtml(popup.id)}" aria-label="${escapeHtml(`${popup.brand} ${title}, ${status.label}, ${dDay}`)}">
       <div class="discovery-popup-image">
-        <img src="${escapeHtml(imageUrl)}" alt="${escapeHtml(popup.name)}" width="560" height="360" ${priority ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">
-        <div class="discovery-popup-badges"><span class="md-badge ${status.key === 'active' ? 'md-badge--success' : ''}">${escapeHtml(status.label)}</span>${isNewPopup(popup) ? '<span class="md-badge popup-new-badge">NEW</span>' : ''}</div>
-        <button class="popup-save ${saved ? 'is-saved' : ''}" type="button" data-home-save="${escapeHtml(popup.id)}" aria-label="${escapeHtml(popup.name)} ${saved ? '저장 취소' : '저장'}" aria-pressed="${String(saved)}">${saved ? '♥' : '♡'}</button>
+        <img src="${escapeHtml(imageUrl)}" alt="${escapeHtml(title)} 대표 이미지" width="560" height="360" ${priority ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">
+        <div class="discovery-popup-badges"><span class="md-badge ${status.key === 'ongoing' ? 'md-badge--success' : ''}">${escapeHtml(status.label)}</span>${popup.isNew ? '<span class="md-badge popup-new-badge">NEW</span>' : ''}</div>
+        <button class="popup-save ${saved ? 'is-saved' : ''}" type="button" data-home-save="${escapeHtml(popup.id)}" aria-label="${escapeHtml(title)} ${saved ? '저장 취소' : '저장'}" aria-pressed="${String(saved)}">${saved ? '♥' : '♡'}</button>
       </div>
       <div class="discovery-popup-body">
-        <p class="popup-card-brand">${escapeHtml(popupBrandLabel(popup))}</p>
-        <div class="popup-card-meta"><span>${escapeHtml(popupCategoryLabels[popupHomeCategory(popup)])}</span><strong>${escapeHtml(popupDday(popup))}</strong></div>
-        <h3>${escapeHtml(popup.name)}</h3>
+        <p class="popup-card-brand">${escapeHtml(popup.brand)}</p>
+        <div class="popup-card-meta"><span>${escapeHtml(popupCategoryLabels[popupHomeCategory(popup)])}</span><strong>${escapeHtml(dDay)}</strong></div>
+        <h3>${escapeHtml(title)}</h3>
         <p class="popup-card-venue">${escapeHtml(popup.venue)}</p>
         <p class="popup-card-period">${escapeHtml(popupPeriodLabel(popup))}</p>
       </div>
     </article>`;
   }
-  function discoveryRail(id, title, description, rows, prioritizeFirst = false) {
+  function discoveryRail(id, title, description, rows, { prioritizeFirst = false, horizontal = false } = {}) {
     if (!rows.length) return '';
     return `<section class="popup-discovery-section" id="${id}">
       <div class="md-section-header"><div><h2>${escapeHtml(title)}</h2><p>${escapeHtml(description)}</p></div><button class="section-more" type="button" data-section-more="${id}">전체 보기</button></div>
-      <div class="popup-card-rail">${rows.slice(0, 8).map((popup, index) => popupDiscoveryCard(popup, prioritizeFirst && index === 0)).join('')}</div>
+      <div class="popup-card-rail${horizontal ? ' popup-card-rail--horizontal' : ''}">${rows.slice(0, 8).map((popup, index) => popupDiscoveryCard(popup, prioritizeFirst && index === 0)).join('')}</div>
     </section>`;
   }
   function renderPopupDiscovery() {
     const root = $('#popup-home-content');
     if (!root) return;
     if (!state.popups.length) {
-      $('#active-popup-count').textContent = '공식 일정 확인 중';
-      root.innerHTML = '<div class="popup-home-loading"><p>현재 표시할 공식 푸드 팝업 일정이 없습니다.</p></div>';
+      $('#active-popup-count').textContent = '진행 중인 공식 일정 0개';
+      root.innerHTML = '<div class="home-premium-empty" role="status"><span aria-hidden="true">✦</span><strong>새로운 푸드팝업을 확인하고 있어요</strong><p>공식 일정이 확인되는 즉시 이곳에 가장 먼저 소개할게요.</p><button type="button" class="md-button md-button--secondary" data-feed-retry>다시 확인</button></div>';
+      root.querySelector('[data-feed-retry]').addEventListener('click', () => location.reload());
       return;
     }
-    const active = state.popups.filter(popup => popupStatus(popup).key === 'active');
-    const today = koreaToday();
-    const endingToday = active.filter(popup => popup.endDate === today);
-    const discovery = [...active].sort((a, b) => (a.endDate || '9999-12-31').localeCompare(b.endDate || '9999-12-31') || String(b.firstSeenAt || '').localeCompare(String(a.firstSeenAt || '')));
-    const nearby = state.nearbyRegion ? active.filter(popup => searchKey(popup.region || popup.address || '').includes(searchKey(state.nearbyRegion))) : [];
-    const regionOptions = [
-      ['서울', '서울특별시'], ['경기', '경기도'], ['인천', '인천광역시'], ['부산', '부산광역시'],
-      ['대구', '대구광역시'], ['대전', '대전광역시'], ['광주', '광주광역시'], ['제주', '제주특별자치도']
-    ].map(([label, value]) => ({ label, value, count: active.filter(popup => popup.region === value).length })).filter(item => item.count);
-    const categoryOptions = Object.entries(popupCategoryLabels).map(([key, label]) => ({ key, label, count: active.filter(popup => popupHomeCategory(popup) === key).length })).filter(item => item.count);
-    $('#active-popup-count').textContent = `${active.length.toLocaleString('ko-KR')}개 진행중`;
+    const active = state.popups.filter(popup => popup.status === 'ongoing');
+    const popular = active.filter(popup => (popup.tags || []).some(tag => /^(?:인기|popular|trending)$/iu.test(String(tag).trim())));
+    const editorPicks = [...active].sort((a, b) =>
+      (Number(Boolean(b.isNew)) * 4 + Number(Boolean(b.image)) * 2 + Math.min((b.tags || []).length, 5))
+      - (Number(Boolean(a.isNew)) * 4 + Number(Boolean(a.image)) * 2 + Math.min((a.tags || []).length, 5))
+      || String(a.endDate || '9999-12-31').localeCompare(String(b.endDate || '9999-12-31'))
+    );
+    const featured = popular.length ? popular : editorPicks;
+    const endingToday = active.filter(popup => popup.isEndingSoon === true);
+    const nearby = state.nearbyEnabled && state.nearbyRegion ? active.filter(popup => popupRegionName(popup) === state.nearbyRegion) : [];
+    const regionOrder = Object.keys(popupRegionLabels);
+    const regionOptions = [...new Set(state.popups.map(popupRegionName).filter(Boolean))]
+      .sort((a, b) => (regionOrder.indexOf(a) < 0 ? 99 : regionOrder.indexOf(a)) - (regionOrder.indexOf(b) < 0 ? 99 : regionOrder.indexOf(b)) || a.localeCompare(b, 'ko'))
+      .map(value => ({ label: popupRegionLabels[value] || value, value, count: state.popups.filter(popup => popupRegionName(popup) === value).length }));
+    const categoryOptions = Object.entries(popupCategoryLabels).map(([key, label]) => ({ key, label, count: state.popups.filter(popup => popupHomeCategory(popup) === key).length })).filter(item => item.count);
+    $('#active-popup-count').textContent = `${active.length.toLocaleString('ko-KR')}개 진행 중`;
+    const nearbySection = !state.nearbyEnabled ? '' : nearby.length
+      ? discoveryRail('nearby-popups', '내 주변 팝업', `${popupRegionLabels[state.nearbyRegion] || state.nearbyRegion}에서 지금 만날 수 있어요`, nearby)
+      : `<section class="popup-discovery-section" id="nearby-popups"><div class="home-premium-empty home-premium-empty--compact" role="status"><span aria-hidden="true">⌖</span><strong>이 지역의 진행 중 팝업을 찾지 못했어요</strong><p>다른 지역을 선택하면 새로운 일정을 확인할 수 있어요.</p><button type="button" data-nearby-reselect class="md-button md-button--secondary">지역 다시 선택</button></div></section>`;
     root.innerHTML = [
-      discoveryRail('today-discovery', '추천 팝업', '종료 임박·최신 공식 일정 기준', discovery, true),
-      discoveryRail('ending-today', '오늘 종료', '오늘이 지나기 전에 만날 수 있어요', endingToday),
-      nearby.length ? discoveryRail('nearby-popups', `${state.nearbyRegion} 근처`, '선택한 지역에서 진행 중인 팝업', nearby) : `<section class="popup-discovery-section nearby-empty" id="nearby-popups"><div class="md-section-header"><div><h2>내 주변</h2><p>위치 권한 없이 지역을 선택해 찾아보세요.</p></div></div><button type="button" data-popup-quick="nearby" class="nearby-empty-action">지역 선택하기</button></section>`,
-      `<section class="popup-discovery-section taxonomy-section" id="region-discovery"><div class="md-section-header"><div><h2>지역별</h2><p>현재 팝업이 있는 지역만 보여드려요.</p></div></div><div class="discovery-taxonomy">${regionOptions.map(item => `<button type="button" data-region-filter="${escapeHtml(item.value)}"><strong>${item.label}</strong><span>${item.count}개</span></button>`).join('')}</div></section>`,
-      `<section class="popup-discovery-section taxonomy-section" id="category-discovery"><div class="md-section-header"><div><h2>카테고리별</h2><p>오늘 끌리는 메뉴로 골라보세요.</p></div></div><div class="discovery-taxonomy">${categoryOptions.map(item => `<button type="button" data-category-filter="${item.key}"><strong>${item.label}</strong><span>${item.count}개</span></button>`).join('')}</div></section>`
+      discoveryRail('today-discovery', popular.length ? '오늘 인기' : "Editor's Pick", popular.length ? '지금 많이 주목받는 푸드팝업' : '이미지·신규 일정·공식 정보 완성도를 기준으로 골랐어요', featured, { prioritizeFirst: true, horizontal: true }),
+      discoveryRail('ending-today', '오늘 종료', 'Feed 기준 3일 이내 종료되는 팝업이에요', endingToday, { horizontal: true }),
+      nearbySection,
+      `<section class="popup-discovery-section taxonomy-section" id="region-discovery"><div class="md-section-header"><div><h2>지역</h2><p>현재 Feed에 팝업이 있는 지역만 보여드려요.</p></div></div><div class="discovery-taxonomy discovery-taxonomy--chips" aria-label="지역 선택">${regionOptions.map(item => `<button type="button" data-region-filter="${escapeHtml(item.value)}"><strong>${item.label}</strong><span>${item.count}</span></button>`).join('')}</div></section>`,
+      `<section class="popup-discovery-section taxonomy-section" id="category-discovery"><div class="md-section-header"><div><h2>카테고리</h2><p>오늘 끌리는 메뉴로 골라보세요.</p></div></div><div class="discovery-taxonomy discovery-taxonomy--chips" aria-label="카테고리 선택">${categoryOptions.map(item => `<button type="button" data-category-filter="${item.key}"><strong>${item.label}</strong><span>${item.count}</span></button>`).join('')}</div></section>`
     ].join('');
     bindPopupDiscovery();
     syncNearbyControls();
@@ -621,6 +643,12 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
       await toggleSaved(popup);
     }));
     [...root.querySelectorAll('[data-popup-quick]')].forEach(button => button.addEventListener('click', () => handlePopupQuick(button.dataset.popupQuick)));
+    [...root.querySelectorAll('[data-nearby-reselect]')].forEach(button => button.addEventListener('click', () => {
+      const picker = $('#nearby-region-picker');
+      picker.hidden = false;
+      $('#nearby-region').focus();
+      picker.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }));
     [...root.querySelectorAll('[data-region-filter]')].forEach(button => button.addEventListener('click', () => showPopupResults({ region: button.dataset.regionFilter })));
     [...root.querySelectorAll('[data-category-filter]')].forEach(button => button.addEventListener('click', () => showPopupResults({ homeCategory: button.dataset.categoryFilter })));
     [...root.querySelectorAll('[data-section-more]')].forEach(button => button.addEventListener('click', () => {
@@ -635,7 +663,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     history.replaceState({ ...history.state, nearbyRegion: region || null }, '', `${url.pathname}${url.search}${url.hash}`);
   }
   function syncNearbyControls() {
-    const active = state.popupQuickFilter === 'nearby' && Boolean(state.nearbyRegion);
+    const active = state.nearbyEnabled && Boolean(state.nearbyRegion);
     $$('[data-popup-quick="nearby"]').forEach(button => {
       button.classList.toggle('is-active', active);
       button.classList.toggle('md-button--primary', active);
@@ -655,12 +683,14 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     $('#popup-venue-filter').value = '';
     if (quick === 'nearby') {
       state.nearbyRegion = region || state.nearbyRegion;
+      state.nearbyEnabled = Boolean(state.nearbyRegion);
       if (state.nearbyRegion) {
         store.set('nearby-region', state.nearbyRegion);
         updateNearbyUrl(state.nearbyRegion);
       }
     } else if (clearNearby) {
       state.nearbyRegion = '';
+      state.nearbyEnabled = false;
       $('#nearby-region').value = '';
       updateNearbyUrl('');
     }
@@ -676,16 +706,26 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
         syncNearbyControls();
         return;
       }
-      if (state.popupQuickFilter === 'nearby' && state.nearbyRegion) {
+      if (state.nearbyEnabled && state.nearbyRegion) {
         picker.hidden = true;
-        showPopupResults({ clearNearby: true });
+        state.popupQuickFilter = '';
+        state.nearbyEnabled = false;
+        state.nearbyRegion = '';
+        updateNearbyUrl('');
+        renderPopupDiscovery();
+        syncNearbyControls();
         return;
       }
       const rememberedRegion = state.nearbyRegion || store.get('nearby-region', '');
       if (rememberedRegion && [...$('#nearby-region').options].some(option => option.value === rememberedRegion)) {
         $('#nearby-region').value = rememberedRegion;
         state.nearbyRegion = rememberedRegion;
-        showPopupResults({ quick: 'nearby', region: rememberedRegion, clearNearby: false });
+        state.nearbyEnabled = true;
+        store.set('nearby-region', rememberedRegion);
+        updateNearbyUrl(rememberedRegion);
+        renderPopupDiscovery();
+        syncNearbyControls();
+        $('#nearby-popups')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
         return;
       }
       picker.hidden = false;
@@ -714,6 +754,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
         .sort((a, b) => a.distance - b.distance)[0];
       if (!nearest || nearest.distance > 2) return;
       state.nearbyRegion = nearest.region;
+      state.nearbyEnabled = true;
       $('#nearby-region').value = nearest.region;
       renderPopupDiscovery();
     } catch {
@@ -1002,6 +1043,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
       state.popupHomeCategoryFilter = '';
       state.popupRetailerFilter = '';
       state.nearbyRegion = '';
+      state.nearbyEnabled = false;
       updateNearbyUrl('');
       render();
       $('#discover').scrollIntoView({ behavior: 'instant', block: 'start' });
@@ -1053,7 +1095,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
   function resetFilters() {
     $('#search-input').value = ''; $$('#filters select, #popup-filters select').forEach(select => { select.selectedIndex = 0; });
     state.filters = { query: '', region: '', category: '', price: '', sort: 'recommend' };
-    state.popupQuickFilter = ''; state.popupHomeCategoryFilter = ''; state.popupRetailerFilter = ''; state.nearbyRegion = '';
+    state.popupQuickFilter = ''; state.popupHomeCategoryFilter = ''; state.popupRetailerFilter = ''; state.nearbyRegion = ''; state.nearbyEnabled = false;
     updateNearbyUrl('');
     state.searchSession = null; state.all = state.preview; state.page = 1; render();
   }
@@ -1431,7 +1473,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
   $('#search-input').addEventListener('input', () => { renderSuggestions(); prefetchSearch($('#search-input').value).catch(() => {}); });
   $('#search-input').addEventListener('keydown', e => e.key === 'Enter' && applySearch());
   $$('#filters select').forEach(el => el.addEventListener('change', applyFilters));
-  $$('#popup-filters select').forEach(el => el.addEventListener('change', () => { state.popupQuickFilter = ''; state.popupHomeCategoryFilter = ''; state.popupRetailerFilter = ''; state.nearbyRegion = ''; updateNearbyUrl(''); state.page = 1; render(); syncNearbyControls(); }));
+  $$('#popup-filters select').forEach(el => el.addEventListener('change', () => { state.popupQuickFilter = ''; state.popupHomeCategoryFilter = ''; state.popupRetailerFilter = ''; state.nearbyRegion = ''; state.nearbyEnabled = false; updateNearbyUrl(''); state.page = 1; render(); syncNearbyControls(); }));
   $('#popup-filter-reset').addEventListener('click', () => {
     $$('#popup-filters select').forEach(select => { select.selectedIndex = 0; });
     state.page = 1;
@@ -1443,8 +1485,14 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     const region = $('#nearby-region').value;
     if (!region) return toast('지역을 먼저 선택해 주세요.');
     state.nearbyRegion = region;
+    state.nearbyEnabled = true;
+    state.popupQuickFilter = '';
+    store.set('nearby-region', region);
+    updateNearbyUrl(region);
     $('#nearby-region-picker').hidden = true;
-    showPopupResults({ quick: 'nearby', region, clearNearby: false });
+    renderPopupDiscovery();
+    syncNearbyControls();
+    $('#nearby-popups')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
   $('#header-search').addEventListener('click', () => { $('#search-input').focus(); $('#search-input').scrollIntoView({ behavior: 'smooth', block: 'center' }); });
   $('#header-account').addEventListener('click', () => openPanel(state.serverUser ? 'mypage' : 'auth'));
@@ -1564,10 +1612,9 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
   }));
 
   try {
-    // The popup feed is rebuilt every morning. Use the deployment's stable
-    // endpoint with a Seoul-date cache key so a new daily file is visible
-    // immediately without requiring a hand-edited asset version.
-    const popupFeedUrl = new URL('https://product1-84t.pages.dev/data/popups.json');
+    // Home consumes the same-origin unified site feed exactly once. The cache
+    // key exposes the newest collector build without reaching into raw data.
+    const popupFeedUrl = new URL('data/popups.json', location.href);
     popupFeedUrl.searchParams.set('v', String(Date.now()));
     const [regionsResponse, previewsResponse, popupsResponse] = await Promise.all([
       fetch('data/restaurants/regions.json?v=20260728-4'),
@@ -1580,7 +1627,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
       const popupData = await popupsResponse.json();
       state.popups = Array.isArray(popupData.popups) ? popupData.popups : [];
       state.popupUpdatedAt = popupData.updatedAt;
-      const popupRegions = [...new Set(state.popups.map(item => item.region).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'ko'));
+      const popupRegions = [...new Set(state.popups.map(popupRegionName).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'ko'));
       popupRegions.forEach(region => {
         const option = `<option value="${escapeHtml(region)}">${escapeHtml(region)}</option>`;
         $('#popup-region-filter').insertAdjacentHTML('beforeend', option);
@@ -1589,9 +1636,8 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
       const nearbyFromUrl = new URL(location.href).searchParams.get('nearby') || '';
       if (popupRegions.includes(nearbyFromUrl)) {
         state.nearbyRegion = nearbyFromUrl;
-        state.popupQuickFilter = 'nearby';
+        state.nearbyEnabled = true;
         $('#nearby-region').value = nearbyFromUrl;
-        $('#popup-region-filter').value = nearbyFromUrl;
         store.set('nearby-region', nearbyFromUrl);
       } else if (nearbyFromUrl) {
         updateNearbyUrl('');
