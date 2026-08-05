@@ -19,7 +19,7 @@
   <title>mukdang.com | 먹당·전국 맛집 검색</title>
   <link rel="stylesheet" href="design-system/theme.css?v=1">
   <link rel="stylesheet" href="design-system/components.css?v=1">
-  <link rel="stylesheet" href="styles.css?v=20260805-home-v3">
+  <link rel="stylesheet" href="styles.css?v=20260805-search-v2">
   <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"WebSite","name":"mukdang.com","alternateName":["먹당","묵당"],"url":"https://mukdang.com/","description":"전국 맛집 검색과 사용자 리뷰 서비스"}
   </script>
@@ -65,7 +65,7 @@
       </div>
       <div class="search-wrap">
         <div class="searchbar">
-          <input id="search-input" type="search" placeholder="브랜드, 장소, 지역 검색" autocomplete="off" aria-label="푸드 팝업 검색">
+          <input id="search-input" type="search" placeholder="브랜드, 장소, 지역 검색" autocomplete="off" aria-label="푸드 팝업 검색" aria-autocomplete="list" aria-controls="suggestions" aria-expanded="false">
           <button id="search-button" class="primary" type="button" disabled>준비 중</button>
         </div>
         <div id="suggestions" class="suggestions" role="listbox"></div>
@@ -90,6 +90,27 @@
     </section>
 
     <section id="discover" class="shell discover all-popup-results">
+      <div id="popup-search-v2" class="popup-search-v2" aria-label="푸드 팝업 검색" hidden>
+        <div class="popup-search-dock">
+          <div class="popup-search-control">
+            <span aria-hidden="true">⌕</span>
+            <label class="sr-only" for="popup-search-input">푸드 팝업 검색</label>
+            <input id="popup-search-input" type="search" placeholder="브랜드, 장소, 지역 검색" autocomplete="off" aria-autocomplete="list" aria-controls="popup-search-suggestions" aria-expanded="false">
+            <button id="popup-search-submit" class="md-button md-button--primary" type="button">검색</button>
+          </div>
+          <div id="popup-search-suggestions" class="popup-search-suggestions" role="listbox" aria-label="검색어 자동완성"></div>
+          <div id="popup-search-shortcuts" class="popup-search-shortcuts">
+            <section aria-labelledby="popup-recent-title">
+              <strong id="popup-recent-title">최근 검색</strong>
+              <div id="popup-recent-searches" class="popup-search-chips"></div>
+            </section>
+            <section aria-labelledby="popup-popular-title">
+              <strong id="popup-popular-title">인기 검색</strong>
+              <div id="popup-popular-searches" class="popup-search-chips"></div>
+            </section>
+          </div>
+        </div>
+      </div>
       <div class="section-head">
         <div><span class="eyebrow">전체 일정</span><h2 id="discover-title">전체 푸드 팝업</h2><p id="result-summary">팝업 정보를 불러오는 중입니다.</p></div>
         <button id="filter-toggle" class="filter-toggle" type="button" aria-expanded="false">필터</button>
@@ -103,10 +124,16 @@
         <button id="filter-reset" class="ghost" type="button">초기화</button>
       </div>
       <div id="popup-filters" class="filters popup-filters" aria-label="푸드 팝업 필터 및 정렬" hidden>
-        <label>음식 유형<select id="popup-food-filter"><option value="">전체</option><option value="bakery">베이커리·디저트</option><option value="drink">카페·음료</option><option value="tteok">떡</option><option value="snack">간식</option><option value="meal">식사·분식</option><option value="grocery">식품 행사</option></select></label>
         <label>지역<select id="popup-region-filter"><option value="">전국</option></select></label>
+        <label>카테고리<select id="popup-food-filter"><option value="">전체</option><option value="dessert">디저트</option><option value="bakery">베이커리</option><option value="meal">식사</option><option value="cafe">카페</option><option value="alcohol">주류</option><option value="snack">간식</option></select></label>
+        <label>진행 상태<select id="popup-status-filter"><option value="">전체</option><option value="active">진행 중</option><option value="upcoming">오픈 예정</option><option value="ended">종료</option></select></label>
         <label>장소 유형<select id="popup-venue-filter"><option value="">전체</option><option value="백화점">백화점</option><option value="쇼핑몰">쇼핑몰</option><option value="대형마트">대형마트</option></select></label>
-        <label>정렬<select id="popup-sort-filter"><option value="food">음식 유형순</option><option value="status">영업 중·오픈 예정 우선</option><option value="ending">종료 임박순</option><option value="newest">신규 등록순</option><option value="start">시작일순</option></select></label>
+        <label>정렬<select id="popup-sort-filter"><option value="recommend">추천</option><option value="newest">최신</option><option value="ending">종료 임박</option><option value="name">이름순</option><option value="food">카테고리순</option><option value="status">진행 상태순</option><option value="start">시작일순</option></select></label>
+        <div class="popup-filter-toggles" role="group" aria-label="빠른 필터">
+          <button id="popup-ending-filter" class="md-chip" type="button" aria-pressed="false">오늘 종료</button>
+          <button id="popup-new-filter" class="md-chip" type="button" aria-pressed="false">NEW</button>
+          <button id="popup-nearby-filter" class="md-chip" type="button" aria-pressed="false">내 주변</button>
+        </div>
         <button id="popup-filter-reset" class="ghost" type="button">정렬·필터 초기화</button>
       </div>
 
@@ -164,6 +191,6 @@
     <article class="modal panel-modal"><button class="modal-close" data-close type="button" aria-label="닫기">×</button><div id="panel-content"></div></article>
   </div>
   <div id="toast" class="toast" role="status"></div>
-  <script type="module" src="app.js?v=20260805-home-v3"></script>
+  <script type="module" src="app.js?v=20260805-search-v2"></script>
 </body>
 </html>
