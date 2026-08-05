@@ -1,0 +1,10 @@
+{
+  "metadata": {"sourceId":"dongwon-fnb-news","officialUrl":"https://www.dongwonfnb.com/services/Customer/News/News_List","capturedAt":"2026-08-05","fixturePurpose":"Batch4 official news search parser states"},
+  "source": {"sourceId":"dongwon-fnb-news","sourceName":"동원F&B 뉴스","brand":"동원F&B"},
+  "valid": {"items":[{"sourceItemId":"valid-1","title":"동원F&B 여름 디저트 팝업","description":"베이커리와 커피를 선보이는 팝업스토어","venue":"성수 테스트키친","address":"서울특별시 성동구 연무장길 1","startDate":"2026-08-01","endDate":"2026-08-31","sourceUrl":"https://www.dongwonfnb.com/services/Customer/News/News_View?contentno=valid-1","imageUrl":"https://www.dongwonfnb.com/upload/popup.jpg"}]},
+  "empty": {"items":[]},
+  "expired": {"items":[{"sourceItemId":"expired-1","title":"동원F&B 디저트 팝업","description":"베이커리 팝업","venue":"성수 테스트키친","startDate":"2026-04-01","endDate":"2026-04-30","sourceUrl":"https://www.dongwonfnb.com/services/Customer/News/News_View?contentno=expired-1"}]},
+  "duplicate": {"items":[{"sourceItemId":"duplicate-1","title":"동원F&B 커피 팝업","description":"커피 팝업","venue":"성수 테스트키친","startDate":"2026-08-01","endDate":"2026-08-31","sourceUrl":"https://www.dongwonfnb.com/services/Customer/News/News_View?contentno=duplicate-1"},{"sourceItemId":"duplicate-1","title":"동원F&B 커피 팝업","description":"커피 팝업","venue":"성수 테스트키친","startDate":"2026-08-01","endDate":"2026-08-31","sourceUrl":"https://www.dongwonfnb.com/services/Customer/News/News_View?contentno=duplicate-1"}]},
+  "non_food": {"items":[{"sourceItemId":"non-food-1","title":"캐릭터 굿즈 팝업","description":"패션과 문구 전시","venue":"성수 테스트키친","startDate":"2026-08-01","endDate":"2026-08-31","sourceUrl":"https://www.dongwonfnb.com/services/Customer/News/News_View?contentno=non-food-1"}]},
+  "structure_changed": {"unexpected":[]}
+}

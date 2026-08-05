@@ -20,6 +20,9 @@ export const COLLECTOR_SCOPES = Object.freeze({
   'brand-ediya': ['브랜드 공식 · 이디야커피 뉴스'],
   'brand-pulmuone': ['브랜드 공식 · 풀무원 뉴스룸'],
   'brand-kyochon': ['브랜드 공식 · 교촌치킨 소식'],
+  'brand-ottogi': ['브랜드 공식 · 오뚜기 뉴스룸'],
+  'brand-gongcha': ['브랜드 공식 · 공차코리아 이벤트'],
+  'brand-dongwon-fnb': ['브랜드 공식 · 동원F&B 뉴스'],
   batch3: [
     '팝업 전문 공간 · 문화역서울284',
     '팝업 전문 공간 · 문화비축기지',

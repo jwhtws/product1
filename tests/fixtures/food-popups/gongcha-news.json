@@ -1,0 +1,10 @@
+{
+  "metadata": {"sourceId":"gongcha-news","officialUrl":"https://www.gong-cha.co.kr/brand/content/eventlist","capturedAt":"2026-08-05","fixturePurpose":"Batch4 official event list parser states"},
+  "source": {"sourceId":"gongcha-news","sourceName":"공차코리아 이벤트","brand":"공차"},
+  "valid": {"items":[{"sourceItemId":"valid-1","title":"공차 여름 음료 팝업","description":"커피와 음료를 선보이는 팝업스토어","venue":"성수 테스트키친","address":"서울특별시 성동구 연무장길 1","startDate":"2026-08-01","endDate":"2026-08-31","sourceUrl":"https://www.gong-cha.co.kr/brand/content/eventlist#event-valid-1","imageUrl":"https://www.gong-cha.co.kr/uploads/popup.jpg"}]},
+  "empty": {"items":[]},
+  "expired": {"items":[{"sourceItemId":"expired-1","title":"공차 음료 팝업","description":"커피 팝업","venue":"성수 테스트키친","startDate":"2026-04-01","endDate":"2026-04-30","sourceUrl":"https://www.gong-cha.co.kr/brand/content/eventlist#event-expired-1"}]},
+  "duplicate": {"items":[{"sourceItemId":"duplicate-1","title":"공차 커피 팝업","description":"커피 팝업","venue":"성수 테스트키친","startDate":"2026-08-01","endDate":"2026-08-31","sourceUrl":"https://www.gong-cha.co.kr/brand/content/eventlist#event-duplicate-1"},{"sourceItemId":"duplicate-1","title":"공차 커피 팝업","description":"커피 팝업","venue":"성수 테스트키친","startDate":"2026-08-01","endDate":"2026-08-31","sourceUrl":"https://www.gong-cha.co.kr/brand/content/eventlist#event-duplicate-1"}]},
+  "non_food": {"items":[{"sourceItemId":"non-food-1","title":"캐릭터 굿즈 팝업","description":"패션과 문구 전시","venue":"성수 테스트키친","startDate":"2026-08-01","endDate":"2026-08-31","sourceUrl":"https://www.gong-cha.co.kr/brand/content/eventlist#event-non-food-1"}]},
+  "structure_changed": {"unexpected":[]}
+}

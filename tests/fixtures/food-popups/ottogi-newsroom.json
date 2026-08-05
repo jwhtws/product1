@@ -1,0 +1,10 @@
+{
+  "metadata": {"sourceId":"ottogi-newsroom","officialUrl":"https://www.otoki.com/pr/news","capturedAt":"2026-08-05","fixturePurpose":"Batch4 official newsroom JSON parser states"},
+  "source": {"sourceId":"ottogi-newsroom","sourceName":"오뚜기 뉴스룸","brand":"오뚜기"},
+  "valid": {"items":[{"sourceItemId":"valid-1","title":"오뚜기 여름 디저트 팝업","description":"베이커리와 커피를 선보이는 팝업스토어","venue":"성수 테스트키친","address":"서울특별시 성동구 연무장길 1","startDate":"2026-08-01","endDate":"2026-08-31","sourceUrl":"https://www.otoki.com/pr/news-detail?page=1&idx=valid-1","imageUrl":"https://www.otoki.com/images/popup.jpg"}]},
+  "empty": {"items":[]},
+  "expired": {"items":[{"sourceItemId":"expired-1","title":"오뚜기 디저트 팝업","description":"베이커리 팝업","venue":"성수 테스트키친","startDate":"2026-04-01","endDate":"2026-04-30","sourceUrl":"https://www.otoki.com/pr/news-detail?page=1&idx=expired-1"}]},
+  "duplicate": {"items":[{"sourceItemId":"duplicate-1","title":"오뚜기 커피 팝업","description":"커피 팝업","venue":"성수 테스트키친","startDate":"2026-08-01","endDate":"2026-08-31","sourceUrl":"https://www.otoki.com/pr/news-detail?page=1&idx=duplicate-1"},{"sourceItemId":"duplicate-1","title":"오뚜기 커피 팝업","description":"커피 팝업","venue":"성수 테스트키친","startDate":"2026-08-01","endDate":"2026-08-31","sourceUrl":"https://www.otoki.com/pr/news-detail?page=1&idx=duplicate-1"}]},
+  "non_food": {"items":[{"sourceItemId":"non-food-1","title":"캐릭터 굿즈 팝업","description":"패션과 문구 전시","venue":"성수 테스트키친","startDate":"2026-08-01","endDate":"2026-08-31","sourceUrl":"https://www.otoki.com/pr/news-detail?page=1&idx=non-food-1"}]},
+  "structure_changed": {"unexpected":[]}
+}

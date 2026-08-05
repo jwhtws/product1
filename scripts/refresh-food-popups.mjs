@@ -947,8 +947,9 @@ const allCollectors = [
   }),
   ...createBatch4BrandCollectors({
     today,
-    fetchHtml: async url => {
-      const response = await fetchResilient(url);
+    fetchJson,
+    fetchHtml: async (url, options) => {
+      const response = await fetchResilient(url, options);
       if (!response.ok) throw new Error(`${url} 응답 ${response.status}`);
       return response.text();
     }
