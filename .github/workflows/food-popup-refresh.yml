@@ -47,14 +47,14 @@ jobs:
         continue-on-error: true
         run: node scripts/refresh-popup-venues.mjs
       - name: 공식 쇼핑시설 푸드 팝업 갱신
-        run: node scripts/refresh-food-popups.mjs --strict ${{ github.event_name == 'workflow_dispatch' && inputs.scope != 'all' && format('--retailer={0}', inputs.scope) || '' }}
+        run: node scripts/refresh-popup-site-feed.mjs --strict ${{ github.event_name == 'workflow_dispatch' && inputs.scope != 'all' && format('--retailer={0}', inputs.scope) || '' }}
       - name: 검색엔진 상세 페이지와 사이트맵 갱신
         run: npm run seo:build
       - name: 데이터 및 코드 검증
         run: npm run check
       - name: 갱신 결과 요약
         run: |
-          node -e "const d=require('./data/popups.json'); const s=d.stats.status; console.log('### 푸드 팝업 갱신 결과\n- 전체: '+d.stats.final+'건\n- 영업 중: '+s.active+'건\n- 오픈 예정: '+s.upcoming+'건\n- 종료: '+s.ended+'건')" >> "$GITHUB_STEP_SUMMARY"
+          node -e "const d=require('./data/popups.json'); const s=d.stats.status; console.log('### 푸드 팝업 갱신 결과\n- 전체: '+d.stats.final+'건\n- 영업 중: '+s.ongoing+'건\n- 오픈 예정: '+s.upcoming+'건\n- 종료: '+s.ended+'건')" >> "$GITHUB_STEP_SUMMARY"
       - name: 변경사항 반영
         run: |
           if git diff --quiet data/popups.json data/popup-venues.json data/popup-coverage.json food-popups restaurant-reviews sitemap.xml; then

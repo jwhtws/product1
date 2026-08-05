@@ -1,6 +1,7 @@
 import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
 import { join } from 'node:path';
+import { SITE_FEED_FIELDS } from './build-popup-site-feed.mjs';
 
 const roots = ['app.js', 'js', 'functions', 'scripts', 'design-system', 'component-showcase'];
 const javascript = [];
@@ -67,7 +68,7 @@ const seoulToday = new Intl.DateTimeFormat('en-CA', {
 }).format(new Date());
 const expectedPopupStatus = popup => popup.endDate && popup.endDate < seoulToday
   ? 'ended'
-  : popup.startDate > seoulToday ? 'upcoming' : 'active';
+  : popup.startDate > seoulToday ? 'upcoming' : 'ongoing';
 const robots = readFileSync('robots.txt', 'utf8');
 const sitemap = readFileSync('sitemap.xml', 'utf8');
 if (!robots.includes('Sitemap: https://mukdang.com/sitemap.xml') || !sitemap.includes('<loc>https://mukdang.com/food-popups/')) {
@@ -95,6 +96,11 @@ const lotteVenueCodes = new Map([
   ['롯데백화점 인천점', '0344'], ['롯데백화점 동탄점', '0399']
 ]);
 for (const popup of popupData.popups) {
+  const missingFeedField = SITE_FEED_FIELDS.find(field => !(field in popup));
+  if (missingFeedField) {
+    console.error(`사이트 Feed 필드가 누락됐습니다: ${popup.id || '알 수 없음'} (${missingFeedField})`);
+    process.exitCode = 1;
+  }
   if (!popup.id || !popup.name || !/^\d{4}-\d{2}-\d{2}$/.test(popup.startDate) || (popup.endDate && !/^\d{4}-\d{2}-\d{2}$/.test(popup.endDate))) {
     console.error(`팝업 필수값이 올바르지 않습니다: ${popup.id || popup.name || '알 수 없음'}`);
     process.exitCode = 1;
@@ -105,6 +111,11 @@ for (const popup of popupData.popups) {
   }
   if (popup.status !== expectedPopupStatus(popup)) {
     console.error(`팝업 종료 상태가 날짜와 일치하지 않습니다: ${popup.id} (${popup.status} → ${expectedPopupStatus(popup)})`);
+    process.exitCode = 1;
+  }
+  if (popup.title !== popup.name || popup.officialUrl !== popup.sourceUrl || !Array.isArray(popup.tags)
+    || (popup.dDay !== null && !Number.isInteger(popup.dDay)) || typeof popup.isNew !== 'boolean' || typeof popup.isEndingSoon !== 'boolean') {
+    console.error(`사이트 Feed 호환 필드가 올바르지 않습니다: ${popup.id}`);
     process.exitCode = 1;
   }
   if (!['official', 'official-search'].includes(popup.sourceGrade)) {
@@ -147,7 +158,7 @@ for (const popup of popupData.popups) {
   }
 }
 
-const calculatedStatusStats = Object.fromEntries(['active', 'upcoming', 'ended']
+const calculatedStatusStats = Object.fromEntries(['upcoming', 'ongoing', 'ended']
   .map(status => [status, popupData.popups.filter(row => expectedPopupStatus(row) === status).length]));
 if (JSON.stringify(popupData.stats?.status) !== JSON.stringify(calculatedStatusStats)) {
   console.error('popups.json 상태 집계가 실제 시작일·종료일과 일치하지 않습니다.');

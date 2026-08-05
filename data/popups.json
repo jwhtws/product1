@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-05T13:41:08.621Z",
+  "updatedAt": "2026-08-05T16:12:16.923Z",
   "sources": [
     {
       "name": "현대백화점·현대아울렛",
@@ -114,8 +114,8 @@
     "duplicateRemoved": 0,
     "final": 96,
     "status": {
-      "active": 81,
       "upcoming": 0,
+      "ongoing": 81,
       "ended": 15
     },
     "photos": {
@@ -140,7 +140,24 @@
       "팝업 전문 공간 · KT&G 상상마당",
       "팝업 전문 공간 · 현대카드 STORAGE",
       "팝업 전문 공간 · 서울숲 커뮤니티센터"
-    ]
+    ],
+    "siteFeed": {
+      "inputCount": 96,
+      "outputCount": 96,
+      "rejectedCount": 0,
+      "duplicateRemovedCount": 0,
+      "rejectionReasons": {},
+      "statusDistribution": {
+        "upcoming": 0,
+        "ongoing": 81,
+        "ended": 15
+      },
+      "newCount": 96,
+      "endingSoonCount": 54,
+      "missingImageCount": 10,
+      "missingCoordinateCount": 96,
+      "generatedAt": "2026-08-05T16:12:16.923Z"
+    }
   },
   "coverage": {
     "nationwideVenueTotal": 1029,
@@ -164,11 +181,11 @@
       "sourceGrade": "official",
       "firstSeenAt": "2026-07-31",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "보따리제과점",
       "region": "인천광역시",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "menuItems": [
         "오리지널 로티번",
         "버터 로티번",
@@ -207,7 +224,30 @@
       "officialImageUrls": [
         "https://imgprism.ehyundai.com/derivedImage/fileValue/202602/05/4c8a3b46-4002-44ab-b684-c0512784fa21_01.jpg",
         "https://img.ehyundai.com/files/derivedImage/fileValue/202602/05/4c8a3b46-4002-44ab-b684-c0512784fa21_02.jpg"
-      ]
+      ],
+      "title": "[POP-UP] 보따리제과점",
+      "branch": "현대프리미엄아울렛 송도점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 26,
+      "image": "https://img.ehyundai.com/files/derivedImage/fileValue/202602/05/4c8a3b46-4002-44ab-b684-c0512784fa21_02.jpg",
+      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E7402607494370&branchCd=B00174000&category=",
+      "sourceItemId": "E7402607494370",
+      "tags": [
+        "보따리제과점",
+        "현대프리미엄아울렛 송도점",
+        "인천광역시",
+        "쇼핑몰",
+        "food-popup",
+        "오리지널 로티번",
+        "버터 로티번",
+        "로티 소금빵",
+        "오리지널 로티번 세트(3개입)",
+        "버터 로티번 세트(3개입)"
+      ],
+      "isNew": true,
+      "isEndingSoon": false,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "lotte:blog:breath-bread:dongbusan",
@@ -223,7 +263,7 @@
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-31",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "세븐셀렉트 숨결통식빵",
       "region": "부산광역시",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
@@ -241,7 +281,25 @@
       "imageSource": "official-detail",
       "officialImageUrls": [
         "https://lotteblog.s3.ap-northeast-2.amazonaws.com/wp-content/uploads/2026/06/%EB%A1%AF%EB%8D%B0%EC%A7%80%EC%A3%BC_%EC%88%A8%EA%B2%B0%ED%86%B5%EC%8B%9D%EB%B9%B5%ED%8C%9D%EC%97%85_344x260-1-300x227.jpg"
-      ]
+      ],
+      "title": "세븐셀렉트 숨결통식빵 팝업",
+      "branch": "롯데몰 동부산점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": -3,
+      "image": "https://lotteblog.s3.ap-northeast-2.amazonaws.com/wp-content/uploads/2026/06/%EB%A1%AF%EB%8D%B0%EC%A7%80%EC%A3%BC_%EC%88%A8%EA%B2%B0%ED%86%B5%EC%8B%9D%EB%B9%B5%ED%8C%9D%EC%97%85_344x260-1-300x227.jpg",
+      "officialUrl": "https://blog.lotte.co.kr/50904",
+      "sourceItemId": "blog:breath-bread:dongbusan",
+      "tags": [
+        "세븐셀렉트 숨결통식빵",
+        "롯데몰 동부산점",
+        "부산광역시",
+        "쇼핑몰",
+        "food-popup"
+      ],
+      "isNew": true,
+      "isEndingSoon": false,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "hyundai:E2902607493874",
@@ -298,7 +356,7 @@
         "https://imgprism.ehyundai.com/img1ItemNmPrcTypeInf/imgPath/202607/27/8476ba1b-0950-4955-a8d1-908669890796.png",
         "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/28/3560e6db-6d9a-47d4-8e7a-79f5e81ba807.png"
       ],
-      "brand": null,
+      "brand": "홍닝차",
       "region": "울산광역시",
       "category": "food-popup",
       "menuItems": [
@@ -311,7 +369,30 @@
         "양쯔깐루 화채"
       ],
       "lastVerifiedAt": "2026-08-05",
-      "status": "active"
+      "status": "ongoing",
+      "title": "홍닝차 POP-UP",
+      "branch": "현대백화점 울산점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 4,
+      "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/28/3560e6db-6d9a-47d4-8e7a-79f5e81ba807.png",
+      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
+      "sourceItemId": "E2902607493874",
+      "tags": [
+        "홍닝차",
+        "현대백화점 울산점",
+        "울산광역시",
+        "백화점",
+        "food-popup",
+        "오리지널 레몬티",
+        "얼그레이 레몬티",
+        "씨글라스 피치 레몬티",
+        "퓨어 자스민 레몬티",
+        "자스민 파인애플&망고"
+      ],
+      "isNew": true,
+      "isEndingSoon": false,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "shinsegae-shopping:SC00012:8578550",
@@ -327,7 +408,7 @@
       "sourceGrade": "official",
       "firstSeenAt": "2026-08-02",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "555크림",
       "region": "경기도",
       "category": "food-popup",
       "menus": [
@@ -341,10 +422,28 @@
       ],
       "menuSource": "official-event-text",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "officialImageUrls": [
         "https://www.shinsegae.com/cms12/SC00012/info/shopping/brndintg/__icsFiles/afieldfile/2026/07/30/0729appha7.jpg"
-      ]
+      ],
+      "title": "[555크림] 신규오픈",
+      "branch": "신세계백화점 스타필드 하남점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 9,
+      "image": "https://www.shinsegae.com/cms12/SC00012/info/shopping/brndintg/__icsFiles/afieldfile/2026/07/30/0729appha7.jpg",
+      "officialUrl": "https://www.shinsegae.com/shopping/view.do?mainCd=02&pageLink=%2Fcms12%2FSC00012%2Finfo%2Fshopping%2Fbrndintg%2F8578550_4636.txt&contentDtlCd=01&contentId=8578550&storeCd=SC00012&brandCd=",
+      "sourceItemId": "SC00012:8578550",
+      "tags": [
+        "555크림",
+        "신세계백화점 스타필드 하남점",
+        "경기도",
+        "백화점",
+        "food-popup"
+      ],
+      "isNew": true,
+      "isEndingSoon": false,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "hyundai:E4602607494433",
@@ -360,11 +459,11 @@
       "sourceGrade": "official",
       "firstSeenAt": "2026-07-31",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "보정당",
       "region": "대구광역시",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "menuItems": [
         "초콜렛쿠키",
         "르뱅쿠키",
@@ -433,7 +532,30 @@
       "officialImageUrls": [
         "https://imgprism.ehyundai.com/derivedImage/fileValue/202604/28/8a296024-90d5-4840-bf21-6d02faded8c5_01.jpg",
         "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/29/ab4c9e01-a0f3-48e9-af42-39d26cee34fe.jpg"
-      ]
+      ],
+      "title": "[디저트 카라반] 보정당",
+      "branch": "더현대 대구",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 8,
+      "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/29/ab4c9e01-a0f3-48e9-af42-39d26cee34fe.jpg",
+      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4602607494433&branchCd=B00146000&category=",
+      "sourceItemId": "E4602607494433",
+      "tags": [
+        "보정당",
+        "더현대 대구",
+        "대구광역시",
+        "백화점",
+        "food-popup",
+        "초콜렛쿠키",
+        "르뱅쿠키",
+        "얼그레이쿠키",
+        "머랭쿠키",
+        "플레인스콘"
+      ],
+      "isNew": true,
+      "isEndingSoon": false,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "hyundai:E4602607493810",
@@ -449,11 +571,11 @@
       "sourceGrade": "official",
       "firstSeenAt": "2026-07-31",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "어썸팝콘",
       "region": "대구광역시",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "menuItems": [
         "어썸팝콘 카라멜",
         "어썸팝콘 초코",
@@ -483,7 +605,29 @@
         "https://imgprism.ehyundai.com/img1ItemNmPrcTypeInf/imgPath/202505/20/1345ad6c-cf67-4107-a640-f4015a50ce76.jpg",
         "https://imgprism.ehyundai.com/img1ItemNmPrcTypeInf/imgPath/202505/20/0fd0c45a-6ca1-4579-9661-0a7e01947543.jpg",
         "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202505/20/2f3e6c9e-b2c1-4e28-a2df-9a10651d1c6f.jpg"
-      ]
+      ],
+      "title": "[디저트 카라반] 어썸팝콘",
+      "branch": "더현대 대구",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202505/20/2f3e6c9e-b2c1-4e28-a2df-9a10651d1c6f.jpg",
+      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4602607493810&branchCd=B00146000&category=",
+      "sourceItemId": "E4602607493810",
+      "tags": [
+        "어썸팝콘",
+        "더현대 대구",
+        "대구광역시",
+        "백화점",
+        "food-popup",
+        "어썸팝콘 카라멜",
+        "어썸팝콘 초코",
+        "어썸팝콘 클래식솔트",
+        "어썸팝콘 말차"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "hyundai:E4302607493645",
@@ -499,11 +643,11 @@
       "sourceGrade": "official",
       "firstSeenAt": "2026-07-31",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "위클리 팝업 뉴스",
       "region": "경기도",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "menuItems": [],
       "menuSource": "official-event-text",
       "menus": [],
@@ -514,7 +658,25 @@
         "https://imgprism.ehyundai.com/img1HorizontalItemNmPrcTypeInf/imgPath/202607/25/6a996429-346a-4b0e-8d5f-bc79c0d07d1f.jpg",
         "https://imgprism.ehyundai.com/img1HorizontalItemNmPrcTypeInf/imgPath/202607/29/9b55cceb-5d0b-4ea0-b424-d3686386276c.jpg",
         "https://img.ehyundai.com/files/derivedImage/fileValue/202607/29/7d85a36b-9bea-4bd1-b4e7-39dc53f939d5_02.png"
-      ]
+      ],
+      "title": "[푸드파크] 위클리 팝업 뉴스",
+      "branch": "현대백화점 중동점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://img.ehyundai.com/files/derivedImage/fileValue/202607/29/7d85a36b-9bea-4bd1-b4e7-39dc53f939d5_02.png",
+      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4302607493645&branchCd=B00143000&category=",
+      "sourceItemId": "E4302607493645",
+      "tags": [
+        "위클리 팝업 뉴스",
+        "현대백화점 중동점",
+        "경기도",
+        "백화점",
+        "food-popup"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "hyundai:E7402607492119",
@@ -550,7 +712,7 @@
         "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/15/101ff31d-5d95-40b7-97ad-fed00dd998c6.png",
         "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/15/d39a1c08-973a-4447-a797-47b58e8c4c75.png"
       ],
-      "brand": null,
+      "brand": "강릉길감자",
       "region": "인천광역시",
       "category": "food-popup",
       "menuItems": [
@@ -559,7 +721,28 @@
         "커플 길감자 세트"
       ],
       "lastVerifiedAt": "2026-08-05",
-      "status": "active"
+      "status": "ongoing",
+      "title": "[POP-UP] 강릉길감자",
+      "branch": "현대프리미엄아울렛 송도점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 8,
+      "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/15/d39a1c08-973a-4447-a797-47b58e8c4c75.png",
+      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E7402607492119&branchCd=B00174000&category=",
+      "sourceItemId": "E7402607492119",
+      "tags": [
+        "강릉길감자",
+        "현대프리미엄아울렛 송도점",
+        "인천광역시",
+        "쇼핑몰",
+        "food-popup",
+        "케찹 / 불닭마요 / 바질마요 / 카레떡볶이 / 양념치킨 / 마늘간장",
+        "길감자 세트",
+        "커플 길감자 세트"
+      ],
+      "isNew": true,
+      "isEndingSoon": false,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "hyundai:E7402607492121",
@@ -594,7 +777,7 @@
         }
       ],
       "menuSource": "official-detail",
-      "brand": null,
+      "brand": "어글리베이커스베이글",
       "region": "인천광역시",
       "category": "food-popup",
       "menuItems": [
@@ -607,7 +790,29 @@
         "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/09/f3bef0f0-0e23-4d22-bdc8-493c1a7b7108.JPG"
       ],
       "lastVerifiedAt": "2026-08-05",
-      "status": "active"
+      "status": "ongoing",
+      "title": "[POP-UP] 어글리베이커스베이글",
+      "branch": "현대프리미엄아울렛 송도점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 8,
+      "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/09/f3bef0f0-0e23-4d22-bdc8-493c1a7b7108.JPG",
+      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E7402607492121&branchCd=B00174000&category=",
+      "sourceItemId": "E7402607492121",
+      "tags": [
+        "어글리베이커스베이글",
+        "현대프리미엄아울렛 송도점",
+        "인천광역시",
+        "쇼핑몰",
+        "food-popup",
+        "소프트 클래식 (소프트플레인·에브리띵·라우겐·버터솔트)",
+        "시그니처 프리미엄 (명란감태·바질토마토·무화과피칸·호두크랜베리)",
+        "스위트&디저트 (블루베리·모찌크림·단팥소보로·애플시나몬·코코넛카야잼·초코멜로우)",
+        "소프트 베스트 (에그마요·갈릭앤크림치즈·체다치즈·더블치즈감자·올리브·명란감태)"
+      ],
+      "isNew": true,
+      "isEndingSoon": false,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "hyundai:E7202607493841",
@@ -623,11 +828,11 @@
       "sourceGrade": "official",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "우베리상하이모찌",
       "region": "경기도",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "menuItems": [
         "우베리 피스타치오 모찌",
         "망고 치케 모찌",
@@ -659,7 +864,29 @@
         "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/60e96ff0-8c25-41b1-b177-dfea497bdd2f.png",
         "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/13692d99-1a46-4310-964a-286b8acf53ff.png",
         "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/27/84be0425-adc8-4876-8b00-bcb697faba64.jpg"
-      ]
+      ],
+      "title": "[POP-UP] 우베리상하이모찌",
+      "branch": "현대프리미엄아울렛 김포점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 8,
+      "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/27/84be0425-adc8-4876-8b00-bcb697faba64.jpg",
+      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E7202607493841&branchCd=B00172000&category=",
+      "sourceItemId": "E7202607493841",
+      "tags": [
+        "우베리상하이모찌",
+        "현대프리미엄아울렛 김포점",
+        "경기도",
+        "쇼핑몰",
+        "food-popup",
+        "우베리 피스타치오 모찌",
+        "망고 치케 모찌",
+        "메로나 모찌",
+        "양즈깐루"
+      ],
+      "isNew": true,
+      "isEndingSoon": false,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "hyundai:E4502607494110",
@@ -675,11 +902,11 @@
       "sourceGrade": "official",
       "firstSeenAt": "2026-07-31",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "31건어물&늘봄",
       "region": "경기도",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "menuItems": [
         "육개장 (800g/팩)",
         "늘봄 갈비탕 (1kg/팩)",
@@ -710,7 +937,29 @@
         "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202405/29/56cd91ea-c613-4007-8be1-f652fd81342d.PNG",
         "https://imgprism.ehyundai.com/img1ItemNmPrcTypeInf/imgPath/202607/28/d27e5207-4468-4837-9a54-1a539737bf1e.jpg",
         "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202405/29/364a4c2e-5b61-484b-9793-10c6dd8d8a90.jpg"
-      ]
+      ],
+      "title": "31건어물&늘봄",
+      "branch": "현대백화점 킨텍스점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202405/29/364a4c2e-5b61-484b-9793-10c6dd8d8a90.jpg",
+      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4502607494110&branchCd=B00145000&category=",
+      "sourceItemId": "E4502607494110",
+      "tags": [
+        "31건어물&늘봄",
+        "현대백화점 킨텍스점",
+        "경기도",
+        "백화점",
+        "food-popup",
+        "육개장 (800g/팩)",
+        "늘봄 갈비탕 (1kg/팩)",
+        "낙지롱칩 (순한맛/1봉)",
+        "낙지롱칩 (매운맛/1봉)"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "hyundai:E4502607494064",
@@ -726,11 +975,11 @@
       "sourceGrade": "official",
       "firstSeenAt": "2026-07-31",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "강릉막걸리술빵&기백삼계탕",
       "region": "경기도",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "menuItems": [
         "기백삼계탕 1팩(1kg)",
         "기백삼계탕 2팩(2kg)",
@@ -756,7 +1005,28 @@
         "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/28/cfa6ff73-e6bc-493f-aedc-1418db8455c6.JPG",
         "https://imgprism.ehyundai.com/img1ItemNmPrcTypeInf/imgPath/202607/28/1684f54f-71a1-42fc-9041-d4714e482de9.jpg",
         "https://img.ehyundai.com/files/derivedImage/fileValue/202607/28/5ce222b8-bddd-499c-a2ca-af85fe9becfb_02.JPG"
-      ]
+      ],
+      "title": "강릉막걸리술빵&기백삼계탕",
+      "branch": "현대백화점 킨텍스점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://img.ehyundai.com/files/derivedImage/fileValue/202607/28/5ce222b8-bddd-499c-a2ca-af85fe9becfb_02.JPG",
+      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4502607494064&branchCd=B00145000&category=",
+      "sourceItemId": "E4502607494064",
+      "tags": [
+        "강릉막걸리술빵&기백삼계탕",
+        "현대백화점 킨텍스점",
+        "경기도",
+        "백화점",
+        "food-popup",
+        "기백삼계탕 1팩(1kg)",
+        "기백삼계탕 2팩(2kg)",
+        "흑미 막걸리 술빵"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "hyundai:E4602607493812",
@@ -772,11 +1042,11 @@
       "sourceGrade": "official",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "광안제일분식",
       "region": "대구광역시",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "menuItems": [
         "쫀득감자볼",
         "세트 메뉴",
@@ -807,7 +1077,29 @@
         "https://imgprism.ehyundai.com/img1HorizontalItemNmPrcTypeInf/imgPath/202607/28/9461482e-7995-4f3b-85a4-451a40874f38.png",
         "https://imgprism.ehyundai.com/img1HorizontalItemNmPrcTypeInf/imgPath/202607/28/c2ce2acd-447f-4d47-9006-ae7c148bdf3d.png",
         "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202605/07/af102d29-cd2e-4566-a7bf-d44b269adf5b.JPG"
-      ]
+      ],
+      "title": "광안제일분식",
+      "branch": "더현대 대구",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202605/07/af102d29-cd2e-4566-a7bf-d44b269adf5b.JPG",
+      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4602607493812&branchCd=B00146000&category=",
+      "sourceItemId": "E4602607493812",
+      "tags": [
+        "광안제일분식",
+        "더현대 대구",
+        "대구광역시",
+        "백화점",
+        "food-popup",
+        "쫀득감자볼",
+        "세트 메뉴",
+        "쫀득 감자 핫도그",
+        "한우대창떡볶이"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "hyundai:E4702607493547",
@@ -839,7 +1131,7 @@
         "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202603/25/fe828650-e956-43d2-9938-9e22bb07f333.jpg",
         "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202603/25/543f39b2-3197-4d0b-8a30-6959304267e3.jpg"
       ],
-      "brand": null,
+      "brand": "기장끝집",
       "region": "충청북도",
       "category": "food-popup",
       "menuItems": [
@@ -847,7 +1139,27 @@
         "오직 미역국"
       ],
       "lastVerifiedAt": "2026-08-05",
-      "status": "active"
+      "status": "ongoing",
+      "title": "기장끝집",
+      "branch": "현대백화점 충청점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202603/25/543f39b2-3197-4d0b-8a30-6959304267e3.jpg",
+      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4702607493547&branchCd=B00147000&category=",
+      "sourceItemId": "E4702607493547",
+      "tags": [
+        "기장끝집",
+        "현대백화점 충청점",
+        "충청북도",
+        "백화점",
+        "food-popup",
+        "오직 전복죽",
+        "오직 미역국"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "hyundai:E2102607494257",
@@ -882,7 +1194,7 @@
         }
       ],
       "menuSource": "official-detail",
-      "brand": null,
+      "brand": "나에게오란다",
       "region": "서울특별시",
       "category": "food-popup",
       "menuItems": [
@@ -895,7 +1207,29 @@
         "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202605/27/7d9ed388-3811-4f64-8758-5565ab840409.jpg"
       ],
       "lastVerifiedAt": "2026-08-05",
-      "status": "active"
+      "status": "ongoing",
+      "title": "나에게오란다",
+      "branch": "현대백화점 압구정본점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202605/27/7d9ed388-3811-4f64-8758-5565ab840409.jpg",
+      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2102607494257&branchCd=B00121000&category=",
+      "sourceItemId": "E2102607494257",
+      "tags": [
+        "나에게오란다",
+        "현대백화점 압구정본점",
+        "서울특별시",
+        "백화점",
+        "food-popup",
+        "오리지널 오란다(2팩)",
+        "크랜베리 오란다(2팩)",
+        "라이스볼 강정(1봉)",
+        "약과(1봉)"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "lotte:global:neoguri-bagel",
@@ -911,11 +1245,11 @@
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "너구리베이글",
       "region": "서울특별시",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "menuItems": [
         "블루베리 베이글",
         "바질 베이글",
@@ -961,7 +1295,30 @@
         "https://minfo.lotteshopping.com/content/news/202505/SNM00000000000453941/20250508171952339_6.jpeg",
         "https://minfo.lotteshopping.com/content/news/202505/SNM00000000000453941/20250508171952353_7.jpeg",
         "https://minfo.lotteshopping.com/content/news/202505/SNM00000000000453941/20250508171952357_8.jpeg"
-      ]
+      ],
+      "title": "너구리베이글",
+      "branch": "롯데백화점 건대스타시티점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://minfo.lotteshopping.com/content/news/202407/SNM00000000000387996/20240715153135420_8.jpeg",
+      "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0028&searchTerm=%EB%84%88%EA%B5%AC%EB%A6%AC%EB%B2%A0%EC%9D%B4%EA%B8%80",
+      "sourceItemId": "global:neoguri-bagel",
+      "tags": [
+        "너구리베이글",
+        "롯데백화점 건대스타시티점",
+        "서울특별시",
+        "백화점",
+        "food-popup",
+        "블루베리 베이글",
+        "바질 베이글",
+        "올리브치즈 베이글",
+        "갈릭 퐁당 베이글",
+        "할라피뇨 에멘탈 베이글"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "hyundai:E4702607493434",
@@ -996,7 +1353,7 @@
         }
       ],
       "menuSource": "official-detail",
-      "brand": null,
+      "brand": "네모야끼",
       "region": "충청북도",
       "category": "food-popup",
       "menuItems": [
@@ -1009,7 +1366,29 @@
         "https://img.ehyundai.com/files/derivedImage/fileValue/202306/11/8f130513-37d6-430e-bac1-8b105f5436a9_02.png"
       ],
       "lastVerifiedAt": "2026-08-05",
-      "status": "active"
+      "status": "ongoing",
+      "title": "네모야끼",
+      "branch": "현대백화점 충청점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://img.ehyundai.com/files/derivedImage/fileValue/202306/11/8f130513-37d6-430e-bac1-8b105f5436a9_02.png",
+      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4702607493434&branchCd=B00147000&category=",
+      "sourceItemId": "E4702607493434",
+      "tags": [
+        "네모야끼",
+        "현대백화점 충청점",
+        "충청북도",
+        "백화점",
+        "food-popup",
+        "히로시마야끼 베이컨",
+        "히로시마야끼 해물",
+        "오코노미야끼 베이컨",
+        "오코노미야끼 해물"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "hyundai:E2902607493865",
@@ -1071,7 +1450,7 @@
         "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/c565ad6b-ad33-4a8b-9275-568bac914ead.jpg",
         "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/27/8d29155f-6c6e-44e0-98a8-b60e43b124b1.jpg"
       ],
-      "brand": null,
+      "brand": "네이처스세븐",
       "region": "울산광역시",
       "category": "food-popup",
       "menuItems": [
@@ -1085,7 +1464,30 @@
         "아몬드 버터"
       ],
       "lastVerifiedAt": "2026-08-05",
-      "status": "active"
+      "status": "ongoing",
+      "title": "네이처스세븐 POP-UP",
+      "branch": "현대백화점 울산점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 4,
+      "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/27/8d29155f-6c6e-44e0-98a8-b60e43b124b1.jpg",
+      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
+      "sourceItemId": "E2902607493865",
+      "tags": [
+        "네이처스세븐",
+        "현대백화점 울산점",
+        "울산광역시",
+        "백화점",
+        "food-popup",
+        "땡큐베리넛츠",
+        "플랜트코코프로틴",
+        "아임파인",
+        "핑크러쉬",
+        "그린휘슬"
+      ],
+      "isNew": true,
+      "isEndingSoon": false,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "galleria:gwanggyo:c85957:tdbd",
@@ -1104,7 +1506,7 @@
       "sourceGrade": "official",
       "firstSeenAt": "2026-08-03",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "더데일리브레드(TDBD)",
       "region": "경기도",
       "category": "food-popup",
       "menus": [
@@ -1118,7 +1520,25 @@
       ],
       "menuSource": "official-event-text",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active"
+      "status": "ongoing",
+      "title": "더데일리브레드(TDBD)",
+      "branch": "갤러리아 광교",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 87,
+      "image": "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-tdbd.jpg",
+      "officialUrl": "https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/c85957?qCategory=PRODUCT_EVENT",
+      "sourceItemId": "gwanggyo:c85957:tdbd",
+      "tags": [
+        "더데일리브레드(TDBD)",
+        "갤러리아 광교",
+        "경기도",
+        "백화점",
+        "food-popup"
+      ],
+      "isNew": true,
+      "isEndingSoon": false,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "hyundai:E2102607494295",
@@ -1158,7 +1578,7 @@
         "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202508/05/df3fb0a7-e987-4b96-b5be-79555ee36f89.jpg",
         "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202508/05/061a1ec7-20ca-4828-8b21-86ef3aaa3af2.jpg"
       ],
-      "brand": null,
+      "brand": "도요복숭아",
       "region": "서울특별시",
       "category": "food-popup",
       "menuItems": [
@@ -1168,7 +1588,29 @@
         "리미티드 박스 아카스키"
       ],
       "lastVerifiedAt": "2026-08-05",
-      "status": "active"
+      "status": "ongoing",
+      "title": "도요복숭아",
+      "branch": "현대백화점 압구정본점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202508/05/061a1ec7-20ca-4828-8b21-86ef3aaa3af2.jpg",
+      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2102607494295&branchCd=B00121000&category=",
+      "sourceItemId": "E2102607494295",
+      "tags": [
+        "도요복숭아",
+        "현대백화점 압구정본점",
+        "서울특별시",
+        "백화점",
+        "food-popup",
+        "프리미엄 박스 천황도 (470ml*2)",
+        "프리미엄 박스 아카스키 (470ml*2)",
+        "리미티드 박스 천황도",
+        "리미티드 박스 아카스키"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "galleria:gwanggyo:c85957:ageujak",
@@ -1187,7 +1629,7 @@
       "sourceGrade": "official",
       "firstSeenAt": "2026-08-03",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "떼구르르 베이커리(아그작케이크)",
       "region": "경기도",
       "category": "food-popup",
       "menus": [
@@ -1201,7 +1643,25 @@
       ],
       "menuSource": "official-event-text",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active"
+      "status": "ongoing",
+      "title": "떼구르르 베이커리(아그작케이크)",
+      "branch": "갤러리아 광교",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 15,
+      "image": "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-ageujak.jpg",
+      "officialUrl": "https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/c85957?qCategory=PRODUCT_EVENT",
+      "sourceItemId": "gwanggyo:c85957:ageujak",
+      "tags": [
+        "떼구르르 베이커리(아그작케이크)",
+        "갤러리아 광교",
+        "경기도",
+        "백화점",
+        "food-popup"
+      ],
+      "isNew": true,
+      "isEndingSoon": false,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "galleria:gwanggyo:c85958:longmadame",
@@ -1220,7 +1680,7 @@
       "sourceGrade": "official",
       "firstSeenAt": "2026-08-03",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "롱마담 에그타르트",
       "region": "경기도",
       "category": "food-popup",
       "menus": [
@@ -1234,7 +1694,25 @@
       ],
       "menuSource": "official-event-text",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active"
+      "status": "ongoing",
+      "title": "롱마담 에그타르트",
+      "branch": "갤러리아 광교",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 8,
+      "image": "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-longmadame.jpg",
+      "officialUrl": "https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/c85958?qCategory=PRODUCT_EVENT",
+      "sourceItemId": "gwanggyo:c85958:longmadame",
+      "tags": [
+        "롱마담 에그타르트",
+        "갤러리아 광교",
+        "경기도",
+        "백화점",
+        "food-popup"
+      ],
+      "isNew": true,
+      "isEndingSoon": false,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "hyundai:E4502607493918",
@@ -1268,7 +1746,7 @@
         "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/a7242a1b-e10f-4c97-a665-618e5d486c75.jpg",
         "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/27/39962bcc-3753-42d3-b6ed-1abd9faafcef.jpg"
       ],
-      "brand": null,
+      "brand": "룩트 요거트",
       "region": "경기도",
       "category": "food-popup",
       "menuItems": [
@@ -1276,7 +1754,27 @@
         "크리스프 크래커"
       ],
       "lastVerifiedAt": "2026-08-05",
-      "status": "active"
+      "status": "ongoing",
+      "title": "룩트 요거트",
+      "branch": "현대백화점 킨텍스점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/27/39962bcc-3753-42d3-b6ed-1abd9faafcef.jpg",
+      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4502607493918&branchCd=B00145000&category=",
+      "sourceItemId": "E4502607493918",
+      "tags": [
+        "룩트 요거트",
+        "현대백화점 킨텍스점",
+        "경기도",
+        "백화점",
+        "food-popup",
+        "대용량 그래놀라",
+        "크리스프 크래커"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "hyundai:E2102607494369",
@@ -1292,11 +1790,11 @@
       "sourceGrade": "official",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "모찌트리",
       "region": "서울특별시",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "menuItems": [
         "딸기 모찌",
         "생초콜릿 모찌"
@@ -1315,7 +1813,27 @@
       "officialImageUrls": [
         "https://imgprism.ehyundai.com/derivedImage/fileValue/202410/01/a53f6ce9-132f-438e-82e3-ff2b603b871b_01.jpg",
         "https://img.ehyundai.com/files/derivedImage/fileValue/202410/01/a53f6ce9-132f-438e-82e3-ff2b603b871b_02.jpg"
-      ]
+      ],
+      "title": "모찌트리",
+      "branch": "현대백화점 압구정본점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://img.ehyundai.com/files/derivedImage/fileValue/202410/01/a53f6ce9-132f-438e-82e3-ff2b603b871b_02.jpg",
+      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2102607494369&branchCd=B00121000&category=",
+      "sourceItemId": "E2102607494369",
+      "tags": [
+        "모찌트리",
+        "현대백화점 압구정본점",
+        "서울특별시",
+        "백화점",
+        "food-popup",
+        "딸기 모찌",
+        "생초콜릿 모찌"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "hyundai:E1102607494209",
@@ -1331,11 +1849,11 @@
       "sourceGrade": "official",
       "firstSeenAt": "2026-07-31",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "미담수제고로케 팝업 스토어",
       "region": "서울특별시",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "menuItems": [
         "직화불고기 고로케",
         "부추가득고로케",
@@ -1367,7 +1885,29 @@
         "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202606/03/ec1019a6-af49-4f74-9423-faf1715cef13.png",
         "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202606/03/ced47ac2-2b4b-41c3-83d5-625c0bcb37a3.png",
         "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202606/03/71e8a103-689a-47a2-bf53-b3334686ffe1.jpg"
-      ]
+      ],
+      "title": "미담수제고로케 팝업 스토어",
+      "branch": "현대백화점 천호점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202606/03/71e8a103-689a-47a2-bf53-b3334686ffe1.jpg",
+      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E1102607494209&branchCd=B00126000&category=",
+      "sourceItemId": "E1102607494209",
+      "tags": [
+        "미담수제고로케 팝업 스토어",
+        "현대백화점 천호점",
+        "서울특별시",
+        "백화점",
+        "food-popup",
+        "직화불고기 고로케",
+        "부추가득고로케",
+        "콘크림치즈스노우 고로케",
+        "새우 고로케"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "hyundai:E1102607494412",
@@ -1383,11 +1923,11 @@
       "sourceGrade": "official",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "봄날엔 약과",
       "region": "서울특별시",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "menuItems": [
         "우리밀 약과",
         "초코퐁당 요거꿀떡",
@@ -1419,7 +1959,29 @@
         "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202606/23/904ae395-e5ce-4142-8388-3eae6c348c16.jpg",
         "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202606/23/9e032910-8f7c-4da4-a4df-2c071a77e4ae.jpg",
         "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202512/16/fcd2a73e-6512-4051-a531-b991d1b40176.jpg"
-      ]
+      ],
+      "title": "봄날엔 약과",
+      "branch": "현대백화점 미아점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202512/16/fcd2a73e-6512-4051-a531-b991d1b40176.jpg",
+      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E1102607494412&branchCd=B00141000&category=",
+      "sourceItemId": "E1102607494412",
+      "tags": [
+        "봄날엔 약과",
+        "현대백화점 미아점",
+        "서울특별시",
+        "백화점",
+        "food-popup",
+        "우리밀 약과",
+        "초코퐁당 요거꿀떡",
+        "초코퐁당 두바이쫀득떡 카라멜쿠키",
+        "초코퐁당 초코초코 롤케이크"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "hyundai:E4602607493807",
@@ -1435,11 +1997,11 @@
       "sourceGrade": "official",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "샘실떡방",
       "region": "대구광역시",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "menuItems": [
         "참모싯잎 동부 송편",
         "참모싯잎 통동부 송편",
@@ -1509,7 +2071,30 @@
         "https://imgprism.ehyundai.com/derivedImage/fileValue/202509/16/73533c6d-af3e-4d70-90a6-6aca89f7f0c2_01.jpg",
         "https://imgprism.ehyundai.com/img1ItemNmPrcTypeInf/imgPath/202509/16/f92be6cb-d063-44ab-addb-3a4c4ad26be7.jpg",
         "https://img.ehyundai.com/files/derivedImage/fileValue/202509/16/73533c6d-af3e-4d70-90a6-6aca89f7f0c2_02.jpg"
-      ]
+      ],
+      "title": "샘실떡방",
+      "branch": "더현대 대구",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://img.ehyundai.com/files/derivedImage/fileValue/202509/16/73533c6d-af3e-4d70-90a6-6aca89f7f0c2_02.jpg",
+      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4602607493807&branchCd=B00146000&category=",
+      "sourceItemId": "E4602607493807",
+      "tags": [
+        "샘실떡방",
+        "더현대 대구",
+        "대구광역시",
+        "백화점",
+        "food-popup",
+        "참모싯잎 동부 송편",
+        "참모싯잎 통동부 송편",
+        "참모싯잎 흑임자 송편",
+        "참모싯잎 개떡",
+        "샘실 쑥 개떡"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "hyundai:E1102607494403",
@@ -1525,11 +2110,11 @@
       "sourceGrade": "official",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "성북당 십원빵",
       "region": "서울특별시",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "menuItems": [
         "불닭/갈릭",
         "오리지널 치즈",
@@ -1560,7 +2145,29 @@
         "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202606/23/ceeb2aee-187b-465c-a93f-2e2c55b2166e.jpg",
         "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202606/23/eb8c3652-f279-461e-8dec-9526028e103f.jpg",
         "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202606/23/5f6f6349-5f91-42df-9b02-9ad233b5bcea.jpg"
-      ]
+      ],
+      "title": "성북당 십원빵",
+      "branch": "현대백화점 미아점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202606/23/5f6f6349-5f91-42df-9b02-9ad233b5bcea.jpg",
+      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E1102607494403&branchCd=B00141000&category=",
+      "sourceItemId": "E1102607494403",
+      "tags": [
+        "성북당 십원빵",
+        "현대백화점 미아점",
+        "서울특별시",
+        "백화점",
+        "food-popup",
+        "불닭/갈릭",
+        "오리지널 치즈",
+        "팥",
+        "옥수수 치즈"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "lotte:ansan:salt-market",
@@ -1576,11 +2183,11 @@
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "소금상회",
       "region": "경기도",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "menuItems": [
         "소금빵 아이스크림",
         "플레인 소금빵",
@@ -1613,7 +2220,29 @@
         "https://minfo.lotteshopping.com/content/news/202605/SNM00000000000537741/20260530121129894_6.jpeg",
         "https://minfo.lotteshopping.com/content/news/202605/SNM00000000000537741/20260530121129899_4.jpeg",
         "https://minfo.lotteshopping.com/content/news/202605/SNM00000000000537741/20260530121129903_4.jpeg"
-      ]
+      ],
+      "title": "소금상회",
+      "branch": "롯데백화점 안산점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 8,
+      "image": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547912/20260721093655326_9.jpeg",
+      "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0336&searchTerm=%EC%86%8C%EA%B8%88%EC%83%81%ED%9A%8C",
+      "sourceItemId": "ansan:salt-market",
+      "tags": [
+        "소금상회",
+        "롯데백화점 안산점",
+        "경기도",
+        "백화점",
+        "food-popup",
+        "소금빵 아이스크림",
+        "플레인 소금빵",
+        "통밀 소금빵",
+        "찹쌀 소금빵"
+      ],
+      "isNew": true,
+      "isEndingSoon": false,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "hyundai:E4702607493683",
@@ -1660,7 +2289,7 @@
         "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/26/47498479-7e16-4202-8671-c5206b55a1e0.png",
         "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202506/25/36c3ab36-f045-4259-abab-6e61c084bc3f.png"
       ],
-      "brand": null,
+      "brand": "소울 로스터리",
       "region": "충청북도",
       "category": "food-popup",
       "menuItems": [
@@ -1672,7 +2301,29 @@
         "오리지널 옥수수커피"
       ],
       "lastVerifiedAt": "2026-08-05",
-      "status": "active"
+      "status": "ongoing",
+      "title": "소울 로스터리",
+      "branch": "현대백화점 충청점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202506/25/36c3ab36-f045-4259-abab-6e61c084bc3f.png",
+      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4702607493683&branchCd=B00147000&category=",
+      "sourceItemId": "E4702607493683",
+      "tags": [
+        "소울 로스터리",
+        "현대백화점 충청점",
+        "충청북도",
+        "백화점",
+        "food-popup",
+        "옥수수커피",
+        "베이직 드립백",
+        "디카페인 드립백",
+        "홀빈 원두"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "hyundai:E4702607493534",
@@ -1709,7 +2360,7 @@
         "https://imgprism.ehyundai.com/img1HorizontalItemNmPrcTypeInf/imgPath/202505/15/7cd8eb43-ec15-4ba5-a047-e0aafadf43b3.jpg",
         "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202505/12/b1f5e957-fbd2-4d34-8e72-874a272f2917.jpg"
       ],
-      "brand": null,
+      "brand": "스시리더",
       "region": "충청북도",
       "category": "food-popup",
       "menuItems": [
@@ -1718,7 +2369,28 @@
         "회덮밥 재료"
       ],
       "lastVerifiedAt": "2026-08-05",
-      "status": "active"
+      "status": "ongoing",
+      "title": "스시리더",
+      "branch": "현대백화점 충청점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202505/12/b1f5e957-fbd2-4d34-8e72-874a272f2917.jpg",
+      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4702607493534&branchCd=B00147000&category=",
+      "sourceItemId": "E4702607493534",
+      "tags": [
+        "스시리더",
+        "현대백화점 충청점",
+        "충청북도",
+        "백화점",
+        "food-popup",
+        "프리미엄 참치 모듬회",
+        "초밥 / 후토마끼류",
+        "회덮밥 재료"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "hyundai:E4702607493441",
@@ -1734,11 +2406,11 @@
       "sourceGrade": "official",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "스탠다드번",
       "region": "충청북도",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "menuItems": [
         "모카번",
         "카라멜번",
@@ -1771,7 +2443,30 @@
       ],
       "officialImageUrls": [
         "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/27/5efe933f-942a-4dc1-85f1-3b71f0a5ffbe.jpg"
-      ]
+      ],
+      "title": "스탠다드번",
+      "branch": "현대백화점 충청점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 8,
+      "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/27/5efe933f-942a-4dc1-85f1-3b71f0a5ffbe.jpg",
+      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4702607493441&branchCd=B00147000&category=",
+      "sourceItemId": "E4702607493441",
+      "tags": [
+        "스탠다드번",
+        "현대백화점 충청점",
+        "충청북도",
+        "백화점",
+        "food-popup",
+        "모카번",
+        "카라멜번",
+        "밀크번",
+        "앙버터번",
+        "메이플 버터"
+      ],
+      "isNew": true,
+      "isEndingSoon": false,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "hyundai:E4702607493532",
@@ -1806,7 +2501,7 @@
         }
       ],
       "menuSource": "official-detail",
-      "brand": null,
+      "brand": "어릿물",
       "region": "충청북도",
       "category": "food-popup",
       "menuItems": [
@@ -1819,7 +2514,29 @@
         "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202602/25/6e5261c8-12c9-448d-bf90-135cf7d2b5c8.jpg"
       ],
       "lastVerifiedAt": "2026-08-05",
-      "status": "active"
+      "status": "ongoing",
+      "title": "어릿물",
+      "branch": "현대백화점 충청점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202602/25/6e5261c8-12c9-448d-bf90-135cf7d2b5c8.jpg",
+      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4702607493532&branchCd=B00147000&category=",
+      "sourceItemId": "E4702607493532",
+      "tags": [
+        "어릿물",
+        "현대백화점 충청점",
+        "충청북도",
+        "백화점",
+        "food-popup",
+        "구운김",
+        "재래곱창돌김",
+        "말린 굴",
+        "버터구이 오징어"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "hyundai:E2102607494345",
@@ -1835,11 +2552,11 @@
       "sourceGrade": "official",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "엄지네 포장마차",
       "region": "서울특별시",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "menuItems": [
         "꼬막 무침",
         "꼬막 비빔밥"
@@ -1857,7 +2574,27 @@
       ],
       "officialImageUrls": [
         "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202403/27/8e1238df-c06c-49e6-90de-4fee94b19b49.jpg"
-      ]
+      ],
+      "title": "엄지네 포장마차",
+      "branch": "현대백화점 압구정본점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202403/27/8e1238df-c06c-49e6-90de-4fee94b19b49.jpg",
+      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2102607494345&branchCd=B00121000&category=",
+      "sourceItemId": "E2102607494345",
+      "tags": [
+        "엄지네 포장마차",
+        "현대백화점 압구정본점",
+        "서울특별시",
+        "백화점",
+        "food-popup",
+        "꼬막 무침",
+        "꼬막 비빔밥"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "hyundai:E4502607493903",
@@ -1894,7 +2631,7 @@
         "https://imgprism.ehyundai.com/img1HorizontalItemNmPrcTypeInf/imgPath/202607/27/0f2c3d3b-10b3-43ab-b9a6-d217cb1c1de0.jpg",
         "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/27/894951f6-fb6a-4cd7-a65c-50d47305a2d5.jpg"
       ],
-      "brand": null,
+      "brand": "오야밀 미숫가루",
       "region": "경기도",
       "category": "food-popup",
       "menuItems": [
@@ -1903,7 +2640,28 @@
         "오야밀 선물세트"
       ],
       "lastVerifiedAt": "2026-08-05",
-      "status": "active"
+      "status": "ongoing",
+      "title": "오야밀 미숫가루",
+      "branch": "현대백화점 킨텍스점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/27/894951f6-fb6a-4cd7-a65c-50d47305a2d5.jpg",
+      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4502607493903&branchCd=B00145000&category=",
+      "sourceItemId": "E4502607493903",
+      "tags": [
+        "오야밀 미숫가루",
+        "현대백화점 킨텍스점",
+        "경기도",
+        "백화점",
+        "food-popup",
+        "오야밀 미숫가루 스틱",
+        "오야밀 밤 미숫가루 라떼",
+        "오야밀 선물세트"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "hyundai:E2102607494261",
@@ -1938,7 +2696,7 @@
         }
       ],
       "menuSource": "official-detail",
-      "brand": null,
+      "brand": "온앤퍼프페스츄리",
       "region": "서울특별시",
       "category": "food-popup",
       "menuItems": [
@@ -1951,7 +2709,29 @@
         "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/28/4c0cbcbd-2655-4c5e-bb7d-267cfb4af4bc.jpg"
       ],
       "lastVerifiedAt": "2026-08-05",
-      "status": "active"
+      "status": "ongoing",
+      "title": "온앤퍼프페스츄리",
+      "branch": "현대백화점 압구정본점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/28/4c0cbcbd-2655-4c5e-bb7d-267cfb4af4bc.jpg",
+      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2102607494261&branchCd=B00121000&category=",
+      "sourceItemId": "E2102607494261",
+      "tags": [
+        "온앤퍼프페스츄리",
+        "현대백화점 압구정본점",
+        "서울특별시",
+        "백화점",
+        "food-popup",
+        "시그니처 에그타르트",
+        "갈릭 에그타르트",
+        "4구 박스",
+        "6구 박스"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "galleria:gwanggyo:c85958:yoodongbu",
@@ -1970,7 +2750,7 @@
       "sourceGrade": "official",
       "firstSeenAt": "2026-08-03",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "유동부치아바타",
       "region": "경기도",
       "category": "food-popup",
       "menus": [
@@ -1984,7 +2764,25 @@
       ],
       "menuSource": "official-event-text",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active"
+      "status": "ongoing",
+      "title": "유동부치아바타",
+      "branch": "갤러리아 광교",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 8,
+      "image": "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-yoodongbu.jpg",
+      "officialUrl": "https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/c85958?qCategory=PRODUCT_EVENT",
+      "sourceItemId": "gwanggyo:c85958:yoodongbu",
+      "tags": [
+        "유동부치아바타",
+        "갤러리아 광교",
+        "경기도",
+        "백화점",
+        "food-popup"
+      ],
+      "isNew": true,
+      "isEndingSoon": false,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "hyundai:E4602607493805",
@@ -2000,11 +2798,11 @@
       "sourceGrade": "official",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "이스터서울",
       "region": "대구광역시",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "menuItems": [
         "플레인 휘낭시에",
         "솔티드카라멜 휘낭시에",
@@ -2089,7 +2887,30 @@
         "https://imgprism.ehyundai.com/derivedImage/fileValue/202601/12/02242f51-eaf4-4562-81ba-a7c54658efb0_01.jpg",
         "https://imgprism.ehyundai.com/img1ItemNmPrcTypeInf/imgPath/202601/12/46bed611-b229-422c-aa2d-ce4b5f5e8d42.jpg",
         "https://img.ehyundai.com/files/derivedImage/fileValue/202601/12/02242f51-eaf4-4562-81ba-a7c54658efb0_02.jpg"
-      ]
+      ],
+      "title": "이스터서울",
+      "branch": "더현대 대구",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://img.ehyundai.com/files/derivedImage/fileValue/202601/12/02242f51-eaf4-4562-81ba-a7c54658efb0_02.jpg",
+      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4602607493805&branchCd=B00146000&category=",
+      "sourceItemId": "E4602607493805",
+      "tags": [
+        "이스터서울",
+        "더현대 대구",
+        "대구광역시",
+        "백화점",
+        "food-popup",
+        "플레인 휘낭시에",
+        "솔티드카라멜 휘낭시에",
+        "마카다미아 휘낭시에",
+        "피칸 휘낭시에",
+        "무화과크림치즈 휘낭시에"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "hyundai:E4702607493440",
@@ -2124,7 +2945,7 @@
         "https://imgprism.ehyundai.com/derivedImage/fileValue/202311/15/4f1dc282-9994-4ab4-b5de-354a9eafa2ff_01.jpg",
         "https://img.ehyundai.com/files/derivedImage/fileValue/202311/15/4f1dc282-9994-4ab4-b5de-354a9eafa2ff_02.jpg"
       ],
-      "brand": null,
+      "brand": "제주 구움과자",
       "region": "충청북도",
       "category": "food-popup",
       "menuItems": [
@@ -2133,7 +2954,28 @@
         "아몬드 마늘빵"
       ],
       "lastVerifiedAt": "2026-08-05",
-      "status": "active"
+      "status": "ongoing",
+      "title": "제주 구움과자",
+      "branch": "현대백화점 충청점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://img.ehyundai.com/files/derivedImage/fileValue/202311/15/4f1dc282-9994-4ab4-b5de-354a9eafa2ff_02.jpg",
+      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4702607493440&branchCd=B00147000&category=",
+      "sourceItemId": "E4702607493440",
+      "tags": [
+        "제주 구움과자",
+        "현대백화점 충청점",
+        "충청북도",
+        "백화점",
+        "food-popup",
+        "오리지널 바게트",
+        "소보로 마늘빵",
+        "아몬드 마늘빵"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "hyundai:E2102607494378",
@@ -2149,11 +2991,11 @@
       "sourceGrade": "official",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "찹쌀꽈배기&술빵",
       "region": "서울특별시",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "menuItems": [
         "찹쌀도너츠(5개)",
         "전통쌀술빵(1봉)"
@@ -2171,7 +3013,27 @@
       ],
       "officialImageUrls": [
         "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/29/f6df6add-f716-4e76-a12a-21682eb3bcb8.png"
-      ]
+      ],
+      "title": "찹쌀꽈배기&술빵",
+      "branch": "현대백화점 압구정본점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/29/f6df6add-f716-4e76-a12a-21682eb3bcb8.png",
+      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2102607494378&branchCd=B00121000&category=",
+      "sourceItemId": "E2102607494378",
+      "tags": [
+        "찹쌀꽈배기&술빵",
+        "현대백화점 압구정본점",
+        "서울특별시",
+        "백화점",
+        "food-popup",
+        "찹쌀도너츠(5개)",
+        "전통쌀술빵(1봉)"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "galleria:gwanggyo:c85958:kickstaco",
@@ -2190,7 +3052,7 @@
       "sourceGrade": "official",
       "firstSeenAt": "2026-08-03",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "킥스타코",
       "region": "경기도",
       "category": "food-popup",
       "menus": [
@@ -2204,7 +3066,25 @@
       ],
       "menuSource": "official-event-text",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active"
+      "status": "ongoing",
+      "title": "킥스타코",
+      "branch": "갤러리아 광교",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-kickstaco.jpg",
+      "officialUrl": "https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/c85958?qCategory=PRODUCT_EVENT",
+      "sourceItemId": "gwanggyo:c85958:kickstaco",
+      "tags": [
+        "킥스타코",
+        "갤러리아 광교",
+        "경기도",
+        "백화점",
+        "food-popup"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "galleria:gwanggyo:c85958:takonottaco",
@@ -2223,7 +3103,7 @@
       "sourceGrade": "official",
       "firstSeenAt": "2026-08-03",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "타코낫타코",
       "region": "경기도",
       "category": "food-popup",
       "menus": [
@@ -2237,7 +3117,25 @@
       ],
       "menuSource": "official-event-text",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active"
+      "status": "ongoing",
+      "title": "타코낫타코",
+      "branch": "갤러리아 광교",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 8,
+      "image": "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-takonottaco.jpg",
+      "officialUrl": "https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/c85958?qCategory=PRODUCT_EVENT",
+      "sourceItemId": "gwanggyo:c85958:takonottaco",
+      "tags": [
+        "타코낫타코",
+        "갤러리아 광교",
+        "경기도",
+        "백화점",
+        "food-popup"
+      ],
+      "isNew": true,
+      "isEndingSoon": false,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "hyundai:E4602607493804",
@@ -2300,7 +3198,7 @@
         "https://imgprism.ehyundai.com/derivedImage/fileValue/202510/15/af49da80-613e-4691-8b04-df5d0c8ccbbb_01.jpg",
         "https://img.ehyundai.com/files/derivedImage/fileValue/202510/15/af49da80-613e-4691-8b04-df5d0c8ccbbb_02.jpg"
       ],
-      "brand": null,
+      "brand": "타코네코",
       "region": "대구광역시",
       "category": "food-popup",
       "menuItems": [
@@ -2316,7 +3214,30 @@
         "네기 타코야끼 (12알)"
       ],
       "lastVerifiedAt": "2026-08-05",
-      "status": "active"
+      "status": "ongoing",
+      "title": "타코네코",
+      "branch": "더현대 대구",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://img.ehyundai.com/files/derivedImage/fileValue/202510/15/af49da80-613e-4691-8b04-df5d0c8ccbbb_02.jpg",
+      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4602607493804&branchCd=B00146000&category=",
+      "sourceItemId": "E4602607493804",
+      "tags": [
+        "타코네코",
+        "더현대 대구",
+        "대구광역시",
+        "백화점",
+        "food-popup",
+        "오리지널 타코야끼 (12알)",
+        "매운맛 타코야끼 (12알)",
+        "핵매운맛 타코야끼 (12알)",
+        "시오 타코야끼 (12알)",
+        "체다치즈 타코야끼 (12알)"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "hyundai:E2902607493868",
@@ -2358,7 +3279,7 @@
         "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/8a57b8af-7540-4ff6-b1b5-e95c373defd6.png",
         "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/27/f2ff257b-698a-4b23-b88b-3ea61d785687.jpeg"
       ],
-      "brand": null,
+      "brand": "테쿠루",
       "region": "울산광역시",
       "category": "food-popup",
       "menuItems": [
@@ -2368,7 +3289,29 @@
         "대파타코"
       ],
       "lastVerifiedAt": "2026-08-05",
-      "status": "active"
+      "status": "ongoing",
+      "title": "테쿠루 POP-UP",
+      "branch": "현대백화점 울산점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 4,
+      "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/27/f2ff257b-698a-4b23-b88b-3ea61d785687.jpeg",
+      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493868&branchCd=B00129000&category=",
+      "sourceItemId": "E2902607493868",
+      "tags": [
+        "테쿠루",
+        "현대백화점 울산점",
+        "울산광역시",
+        "백화점",
+        "food-popup",
+        "오리지널",
+        "매콤데리",
+        "체다치즈",
+        "대파타코"
+      ],
+      "isNew": true,
+      "isEndingSoon": false,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "hyundai:E4702607493437",
@@ -2384,11 +3327,11 @@
       "sourceGrade": "official",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "토실이쌀밤빵",
       "region": "충청북도",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "menuItems": [
         "토실이 쌀 왕밤빵",
         "토실이 쌀 알밤빵",
@@ -2411,7 +3354,28 @@
       ],
       "officialImageUrls": [
         "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202507/17/61b47e0c-4b4b-49b8-a806-57bcc7c0c866.jpg"
-      ]
+      ],
+      "title": "토실이쌀밤빵",
+      "branch": "현대백화점 충청점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202507/17/61b47e0c-4b4b-49b8-a806-57bcc7c0c866.jpg",
+      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4702607493437&branchCd=B00147000&category=",
+      "sourceItemId": "E4702607493437",
+      "tags": [
+        "토실이쌀밤빵",
+        "현대백화점 충청점",
+        "충청북도",
+        "백화점",
+        "food-popup",
+        "토실이 쌀 왕밤빵",
+        "토실이 쌀 알밤빵",
+        "토실이 쌀 핫도그"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "hyundai:E2102607494258",
@@ -2434,7 +3398,7 @@
         }
       ],
       "menuSource": "official-detail",
-      "brand": null,
+      "brand": "프뤼떼마지",
       "region": "서울특별시",
       "category": "food-popup",
       "menuItems": [
@@ -2444,7 +3408,26 @@
         "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202603/19/22dc1180-9c79-4ed0-b1f6-262f84604685.jpg"
       ],
       "lastVerifiedAt": "2026-08-05",
-      "status": "active"
+      "status": "ongoing",
+      "title": "프뤼떼마지",
+      "branch": "현대백화점 압구정본점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202603/19/22dc1180-9c79-4ed0-b1f6-262f84604685.jpg",
+      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2102607494258&branchCd=B00121000&category=",
+      "sourceItemId": "E2102607494258",
+      "tags": [
+        "프뤼떼마지",
+        "현대백화점 압구정본점",
+        "서울특별시",
+        "백화점",
+        "food-popup",
+        "자두밀크티 (500ml)"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "shinsegae-shopping:SC00003:8578435",
@@ -2460,11 +3443,11 @@
       "sourceGrade": "official",
       "firstSeenAt": "2026-08-02",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "3층 다락빵",
       "region": "서울특별시",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "menuItems": [
         "초코칩 씬쿠키(개)",
         "쫀득 쿠키바(12-13종) (개)",
@@ -2487,7 +3470,28 @@
       ],
       "officialImageUrls": [
         "https://www.shinsegae.com/cms12/SC00003/info/shopping/brndsingle/__icsFiles/afieldfile/2026/07/30/9OhjECYHAYbA.jpg"
-      ]
+      ],
+      "title": "[3층 다락빵] POP-UP",
+      "branch": "신세계백화점 타임스퀘어점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://www.shinsegae.com/cms12/SC00003/info/shopping/brndsingle/__icsFiles/afieldfile/2026/07/30/9OhjECYHAYbA.jpg",
+      "officialUrl": "https://www.shinsegae.com/shopping/view.do?mainCd=02&pageLink=%2Fcms12%2FSC00003%2Finfo%2Fshopping%2Fbrndsingle%2F8578435_4474.txt&contentDtlCd=01&contentId=8578435&storeCd=SC00003&brandCd=UB0004152",
+      "sourceItemId": "SC00003:8578435",
+      "tags": [
+        "3층 다락빵",
+        "신세계백화점 타임스퀘어점",
+        "서울특별시",
+        "백화점",
+        "food-popup",
+        "초코칩 씬쿠키(개)",
+        "쫀득 쿠키바(12-13종) (개)",
+        "두바이 필링 샌드쿠키 (개)"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "shinsegae-shopping:SC00010:8568366",
@@ -2503,11 +3507,11 @@
       "sourceGrade": "official",
       "firstSeenAt": "2026-08-02",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "[모락절미] 팝업 스토어",
       "region": "경기도",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "menuItems": [
         "시그니처 호박절미",
         "진한 쑥절미",
@@ -2540,7 +3544,30 @@
       ],
       "officialImageUrls": [
         "https://www.shinsegae.com/cms12/SC00010/info/shopping/brndsingle/__icsFiles/afieldfile/2026/07/28/Y2XYViknuGR1.jpg"
-      ]
+      ],
+      "title": "[모락절미] 팝업 스토어",
+      "branch": "신세계백화점 의정부점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://www.shinsegae.com/cms12/SC00010/info/shopping/brndsingle/__icsFiles/afieldfile/2026/07/28/Y2XYViknuGR1.jpg",
+      "officialUrl": "https://www.shinsegae.com/shopping/view.do?mainCd=02&pageLink=%2Fcms12%2FSC00010%2Finfo%2Fshopping%2Fbrndsingle%2F8568366_4597.txt&contentDtlCd=01&contentId=8568366&storeCd=SC00010&brandCd=UB0006880",
+      "sourceItemId": "SC00010:8568366",
+      "tags": [
+        "[모락절미] 팝업 스토어",
+        "신세계백화점 의정부점",
+        "경기도",
+        "백화점",
+        "food-popup",
+        "시그니처 호박절미",
+        "진한 쑥절미",
+        "고소한 흑임자절미",
+        "클래식 콩절미",
+        "선물세트"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "shinsegae-shopping:SC00003:8576847",
@@ -2556,11 +3583,11 @@
       "sourceGrade": "official",
       "firstSeenAt": "2026-08-02",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "모찌트리",
       "region": "서울특별시",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "menuItems": [
         "모찌 (말차초코 / 카스테라) 각",
         "모찌 (딸기 / 바스크 치즈케이크) 각"
@@ -2578,7 +3605,27 @@
       ],
       "officialImageUrls": [
         "https://www.shinsegae.com/cms12/SC00003/info/shopping/brndsingle/__icsFiles/afieldfile/2026/07/29/07OMpbg6EAc5.jpg"
-      ]
+      ],
+      "title": "[모찌트리] POP-UP",
+      "branch": "신세계백화점 타임스퀘어점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://www.shinsegae.com/cms12/SC00003/info/shopping/brndsingle/__icsFiles/afieldfile/2026/07/29/07OMpbg6EAc5.jpg",
+      "officialUrl": "https://www.shinsegae.com/shopping/view.do?mainCd=02&pageLink=%2Fcms12%2FSC00003%2Finfo%2Fshopping%2Fbrndsingle%2F8576847_4474.txt&contentDtlCd=01&contentId=8576847&storeCd=SC00003&brandCd=UB0004152",
+      "sourceItemId": "SC00003:8576847",
+      "tags": [
+        "모찌트리",
+        "신세계백화점 타임스퀘어점",
+        "서울특별시",
+        "백화점",
+        "food-popup",
+        "모찌 (말차초코 / 카스테라) 각",
+        "모찌 (딸기 / 바스크 치즈케이크) 각"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "shinsegae-shopping:SC00003:8577774",
@@ -2605,7 +3652,7 @@
         }
       ],
       "menuSource": "official-detail",
-      "brand": null,
+      "brand": "모카블루스",
       "region": "서울특별시",
       "category": "food-popup",
       "menuItems": [
@@ -2613,10 +3660,30 @@
         "생크림번 4종 각"
       ],
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "officialImageUrls": [
         "https://www.shinsegae.com/cms12/SC00003/info/shopping/brndsingle/__icsFiles/afieldfile/2026/07/30/1785221242320-20260730083324-20260730083326_1.png"
-      ]
+      ],
+      "title": "[모카블루스] POP-UP",
+      "branch": "신세계백화점 타임스퀘어점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://www.shinsegae.com/cms12/SC00003/info/shopping/brndsingle/__icsFiles/afieldfile/2026/07/30/1785221242320-20260730083324-20260730083326_1.png",
+      "officialUrl": "https://www.shinsegae.com/shopping/view.do?mainCd=02&pageLink=%2Fcms12%2FSC00003%2Finfo%2Fshopping%2Fbrndsingle%2F8577774_4474.txt&contentDtlCd=01&contentId=8577774&storeCd=SC00003&brandCd=UB0004152",
+      "sourceItemId": "SC00003:8577774",
+      "tags": [
+        "모카블루스",
+        "신세계백화점 타임스퀘어점",
+        "서울특별시",
+        "백화점",
+        "food-popup",
+        "번 2종 각",
+        "생크림번 4종 각"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "shinsegae-shopping:SC00010:8568467",
@@ -2632,11 +3699,11 @@
       "sourceGrade": "official",
       "firstSeenAt": "2026-08-02",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "[본투비클래식] 팝업 스토어",
       "region": "경기도",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "menuItems": [
         "에그타르트",
         "블랙 에그타르트",
@@ -2664,7 +3731,29 @@
       ],
       "officialImageUrls": [
         "https://www.shinsegae.com/cms12/SC00010/info/shopping/brndsingle/__icsFiles/afieldfile/2026/07/28/FsKSmNqHiPHt.jpg"
-      ]
+      ],
+      "title": "[본투비클래식] 팝업 스토어",
+      "branch": "신세계백화점 의정부점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://www.shinsegae.com/cms12/SC00010/info/shopping/brndsingle/__icsFiles/afieldfile/2026/07/28/FsKSmNqHiPHt.jpg",
+      "officialUrl": "https://www.shinsegae.com/shopping/view.do?mainCd=02&pageLink=%2Fcms12%2FSC00010%2Finfo%2Fshopping%2Fbrndsingle%2F8568467_4597.txt&contentDtlCd=01&contentId=8568467&storeCd=SC00010&brandCd=UB0006878",
+      "sourceItemId": "SC00010:8568467",
+      "tags": [
+        "[본투비클래식] 팝업 스토어",
+        "신세계백화점 의정부점",
+        "경기도",
+        "백화점",
+        "food-popup",
+        "에그타르트",
+        "블랙 에그타르트",
+        "브라운치즈 에그타르트",
+        "밀크 에그타르트"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "shinsegae-shopping:SC00010:8527508",
@@ -2680,11 +3769,11 @@
       "sourceGrade": "official",
       "firstSeenAt": "2026-08-02",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "[삼부자닭발] 팝업 스토어",
       "region": "경기도",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "menuItems": [
         "대표메뉴 및 가격 : 직화튤립/직화무뼈 닭발 각"
       ],
@@ -2697,7 +3786,26 @@
       ],
       "officialImageUrls": [
         "https://www.shinsegae.com/cms12/SC00010/info/shopping/brndsingle/__icsFiles/afieldfile/2026/07/07/FVwlGtRaGbVO.jpg"
-      ]
+      ],
+      "title": "[삼부자닭발] 팝업 스토어",
+      "branch": "신세계백화점 의정부점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://www.shinsegae.com/cms12/SC00010/info/shopping/brndsingle/__icsFiles/afieldfile/2026/07/07/FVwlGtRaGbVO.jpg",
+      "officialUrl": "https://www.shinsegae.com/shopping/view.do?mainCd=02&pageLink=%2Fcms12%2FSC00010%2Finfo%2Fshopping%2Fbrndsingle%2F8527508_4597.txt&contentDtlCd=01&contentId=8527508&storeCd=SC00010&brandCd=UB0003790",
+      "sourceItemId": "SC00010:8527508",
+      "tags": [
+        "[삼부자닭발] 팝업 스토어",
+        "신세계백화점 의정부점",
+        "경기도",
+        "백화점",
+        "food-popup",
+        "대표메뉴 및 가격 : 직화튤립/직화무뼈 닭발 각"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "shinsegae-shopping:SC00003:8576848",
@@ -2720,17 +3828,36 @@
         }
       ],
       "menuSource": "official-detail",
-      "brand": null,
+      "brand": "오늘구움",
       "region": "서울특별시",
       "category": "food-popup",
       "menuItems": [
         "요거트 산도 2종 각"
       ],
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "officialImageUrls": [
         "https://www.shinsegae.com/cms12/SC00003/info/shopping/brndsingle/__icsFiles/afieldfile/2026/07/29/KakaoTalk_20260728_103700658_03-20260729075945-20260729075947_1.png"
-      ]
+      ],
+      "title": "[오늘구움] POP-UP",
+      "branch": "신세계백화점 타임스퀘어점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://www.shinsegae.com/cms12/SC00003/info/shopping/brndsingle/__icsFiles/afieldfile/2026/07/29/KakaoTalk_20260728_103700658_03-20260729075945-20260729075947_1.png",
+      "officialUrl": "https://www.shinsegae.com/shopping/view.do?mainCd=02&pageLink=%2Fcms12%2FSC00003%2Finfo%2Fshopping%2Fbrndsingle%2F8576848_4474.txt&contentDtlCd=01&contentId=8576848&storeCd=SC00003&brandCd=UB0004152",
+      "sourceItemId": "SC00003:8576848",
+      "tags": [
+        "오늘구움",
+        "신세계백화점 타임스퀘어점",
+        "서울특별시",
+        "백화점",
+        "food-popup",
+        "요거트 산도 2종 각"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "shinsegae-shopping:SC00003:8576849",
@@ -2746,11 +3873,11 @@
       "sourceGrade": "official",
       "firstSeenAt": "2026-08-02",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "[TDBD] 더데일리브레드",
       "region": "서울특별시",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "menuItems": [
         "데일리식빵 M",
         "스트로베리 생식빵"
@@ -2768,7 +3895,27 @@
       ],
       "officialImageUrls": [
         "https://www.shinsegae.com/cms12/SC00003/info/shopping/brndsingle/__icsFiles/afieldfile/2026/07/29/W8axzSnpSQ2R.jpg"
-      ]
+      ],
+      "title": "[TDBD] 더데일리브레드 POP-UP",
+      "branch": "신세계백화점 타임스퀘어점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 8,
+      "image": "https://www.shinsegae.com/cms12/SC00003/info/shopping/brndsingle/__icsFiles/afieldfile/2026/07/29/W8axzSnpSQ2R.jpg",
+      "officialUrl": "https://www.shinsegae.com/shopping/view.do?mainCd=02&pageLink=%2Fcms12%2FSC00003%2Finfo%2Fshopping%2Fbrndsingle%2F8576849_4474.txt&contentDtlCd=01&contentId=8576849&storeCd=SC00003&brandCd=UB0006878",
+      "sourceItemId": "SC00003:8576849",
+      "tags": [
+        "[TDBD] 더데일리브레드",
+        "신세계백화점 타임스퀘어점",
+        "서울특별시",
+        "백화점",
+        "food-popup",
+        "데일리식빵 M",
+        "스트로베리 생식빵"
+      ],
+      "isNew": true,
+      "isEndingSoon": false,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "lotte:dongtan:manseok",
@@ -2784,7 +3931,7 @@
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "만석닭강정",
       "region": "경기도",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
@@ -2795,7 +3942,25 @@
       "imageSource": "official-detail",
       "officialImageUrls": [
         "https://minfo.lotteshopping.com/content/prfl/202505/PRFL2025050818072491.jpg"
-      ]
+      ],
+      "title": "만석닭강정",
+      "branch": "롯데백화점 동탄점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": -3,
+      "image": "https://minfo.lotteshopping.com/content/prfl/202505/PRFL2025050818072491.jpg",
+      "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EB%A7%8C%EC%84%9D%EB%8B%AD%EA%B0%95%EC%A0%95",
+      "sourceItemId": "dongtan:manseok",
+      "tags": [
+        "만석닭강정",
+        "롯데백화점 동탄점",
+        "경기도",
+        "백화점",
+        "food-popup"
+      ],
+      "isNew": true,
+      "isEndingSoon": false,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "lotte:dongtan:yoajung",
@@ -2811,11 +3976,11 @@
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "요아정 컵빙수",
       "region": "경기도",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "menuItems": [
         "생망고 컵빙수",
         "팥 컵빙수",
@@ -2855,7 +4020,30 @@
         "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000549036/20260725122304121_1.jpeg",
         "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000549036/20260725122304127_7.jpeg",
         "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000549036/20260725122304132_8.jpeg"
-      ]
+      ],
+      "title": "요아정 컵빙수",
+      "branch": "롯데백화점 동탄점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 7,
+      "image": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000549036/2026072812105940_5.jpeg",
+      "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%9A%94%EC%95%84%EC%A0%95+%EC%BB%B5%EB%B9%99%EC%88%98",
+      "sourceItemId": "dongtan:yoajung",
+      "tags": [
+        "요아정 컵빙수",
+        "롯데백화점 동탄점",
+        "경기도",
+        "백화점",
+        "food-popup",
+        "생망고 컵빙수",
+        "팥 컵빙수",
+        "리얼 수박 컵빙수",
+        "브륄레 컵빙수",
+        "딥초코 컵빙수"
+      ],
+      "isNew": true,
+      "isEndingSoon": false,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "hyundai:E2202607492968",
@@ -2898,7 +4086,7 @@
         }
       ],
       "menuSource": "official-detail",
-      "brand": null,
+      "brand": "아페롤",
       "region": "서울특별시",
       "category": "food-popup",
       "menuItems": [
@@ -2913,7 +4101,30 @@
         "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/21/1d3beb1d-e286-4c53-865e-339e1823d0cd.jpg"
       ],
       "lastVerifiedAt": "2026-08-05",
-      "status": "active"
+      "status": "ongoing",
+      "title": "[POP-UP] 아페롤",
+      "branch": "현대백화점 무역센터점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 4,
+      "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/21/1d3beb1d-e286-4c53-865e-339e1823d0cd.jpg",
+      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2202607492968&branchCd=B00122000&category=",
+      "sourceItemId": "E2202607492968",
+      "tags": [
+        "아페롤",
+        "현대백화점 무역센터점",
+        "서울특별시",
+        "백화점",
+        "food-popup",
+        "· 아페롤 스프리츠",
+        "· 아페롤 350ml",
+        "· 아페롤 700ml",
+        "· 시그니처 세트",
+        "· 시그니처 페어링 세트"
+      ],
+      "isNew": true,
+      "isEndingSoon": false,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "hyundai:E4602607492936",
@@ -2929,11 +4140,11 @@
       "sourceGrade": "official",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "빵고미",
       "region": "대구광역시",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "menuItems": [
         "빵고미",
         "빵고미",
@@ -2965,7 +4176,25 @@
         "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/21/b8930c58-2607-4eb3-a81e-a68d936b8ada.png",
         "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/21/66bedff7-420e-41e4-b2c4-c18de14b3318.png",
         "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/21/2174e7a9-d619-4620-9d83-14280f60eee7.png"
-      ]
+      ],
+      "title": "빵고미",
+      "branch": "더현대 대구",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 8,
+      "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/21/2174e7a9-d619-4620-9d83-14280f60eee7.png",
+      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4602607492936&branchCd=B00146000&category=",
+      "sourceItemId": "E4602607492936",
+      "tags": [
+        "빵고미",
+        "더현대 대구",
+        "대구광역시",
+        "백화점",
+        "food-popup"
+      ],
+      "isNew": true,
+      "isEndingSoon": false,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "hyundai:E4602607493809",
@@ -2981,11 +4210,11 @@
       "sourceGrade": "official",
       "firstSeenAt": "2026-07-31",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "더옐롱",
       "region": "대구광역시",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "menuItems": [
         "성주꿀참외빵 낱개",
         "성주꿀참외빵 6개입",
@@ -3053,7 +4282,30 @@
       ],
       "officialImageUrls": [
         "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/24/1eece98e-a959-43f6-9aaf-d1b87d84587c.jpg"
-      ]
+      ],
+      "title": "[디저트 카라반] 더옐롱",
+      "branch": "더현대 대구",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/24/1eece98e-a959-43f6-9aaf-d1b87d84587c.jpg",
+      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4602607493809&branchCd=B00146000&category=",
+      "sourceItemId": "E4602607493809",
+      "tags": [
+        "더옐롱",
+        "더현대 대구",
+        "대구광역시",
+        "백화점",
+        "food-popup",
+        "성주꿀참외빵 낱개",
+        "성주꿀참외빵 6개입",
+        "성주꿀참외빵 12개입",
+        "참외 소프트아이스크림(컵/콘)",
+        "복숭아 소프트아이스크림(컵/콘)"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "lotte:main:fresh-bread",
@@ -3069,11 +4321,11 @@
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "갓구운빵공장",
       "region": "서울특별시",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "menuItems": [
         "소금빵",
         "애플소금빵",
@@ -3102,7 +4354,29 @@
       "imageSource": "official-detail",
       "officialImageUrls": [
         "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000548665/20260727111443394_3.jpeg"
-      ]
+      ],
+      "title": "갓구운빵공장",
+      "branch": "롯데백화점 본점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000548665/20260727111443394_3.jpeg",
+      "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0001&searchTerm=%EA%B0%93%EA%B5%AC%EC%9A%B4%EB%B9%B5%EA%B3%B5%EC%9E%A5",
+      "sourceItemId": "main:fresh-bread",
+      "tags": [
+        "갓구운빵공장",
+        "롯데백화점 본점",
+        "서울특별시",
+        "백화점",
+        "food-popup",
+        "소금빵",
+        "애플소금빵",
+        "초코소금빵",
+        "인절미소금빵"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "lotte:main:glaceau",
@@ -3118,11 +4392,11 @@
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "글라쇼 수제 아이스크림",
       "region": "서울특별시",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "menuItems": [
         "프리미엄 수제 아이스크림"
       ],
@@ -3143,7 +4417,26 @@
         "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000533681/20260721140358833_6.jpeg",
         "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000533681/20260721140503356_2.jpeg",
         "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000533681/20260721154904415_9.jpeg"
-      ]
+      ],
+      "title": "글라쇼 수제 아이스크림",
+      "branch": "롯데백화점 본점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000533681/20260722190911672_2.jpeg",
+      "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0001&searchTerm=%EA%B8%80%EB%9D%BC%EC%87%BC+%EC%88%98%EC%A0%9C+%EC%95%84%EC%9D%B4%EC%8A%A4%ED%81%AC%EB%A6%BC",
+      "sourceItemId": "main:glaceau",
+      "tags": [
+        "글라쇼 수제 아이스크림",
+        "롯데백화점 본점",
+        "서울특별시",
+        "백화점",
+        "food-popup",
+        "프리미엄 수제 아이스크림"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "lotte:incheon:damahon",
@@ -3159,7 +4452,7 @@
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "담아헌 프리미엄 모찌",
       "region": "인천광역시",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
@@ -3167,7 +4460,25 @@
       "menuItems": [],
       "menuSource": "official-event-text",
       "menus": [],
-      "imageSource": "official-image-unavailable"
+      "imageSource": "official-image-unavailable",
+      "title": "담아헌 프리미엄 모찌",
+      "branch": "롯데백화점 인천점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": -6,
+      "image": null,
+      "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0344&searchTerm=%EB%8B%B4%EC%95%84%ED%97%8C+%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84+%EB%AA%A8%EC%B0%8C",
+      "sourceItemId": "incheon:damahon",
+      "tags": [
+        "담아헌 프리미엄 모찌",
+        "롯데백화점 인천점",
+        "인천광역시",
+        "백화점",
+        "food-popup"
+      ],
+      "isNew": true,
+      "isEndingSoon": false,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "lotte:nowon:strawberry",
@@ -3183,7 +4494,7 @@
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "동화속딸기 과일청&잼",
       "region": "서울특별시",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
@@ -3221,7 +4532,29 @@
         "https://minfo.lotteshopping.com/content/news/202604/SNM00000000000530497/20260428135254334_3.jpeg",
         "https://minfo.lotteshopping.com/content/news/202604/SNM00000000000530497/20260428135254339_7.jpeg",
         "https://minfo.lotteshopping.com/content/news/202604/SNM00000000000530497/20260428135254344_3.jpeg"
-      ]
+      ],
+      "title": "동화속딸기 과일청&잼",
+      "branch": "롯데백화점 노원점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": -2,
+      "image": "https://minfo.lotteshopping.com/content/news/202604/SNM00000000000530497/20260428165516181_6.jpeg",
+      "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=%EB%8F%99%ED%99%94%EC%86%8D%EB%94%B8%EA%B8%B0+%EA%B3%BC%EC%9D%BC%EC%B2%AD%26%EC%9E%BC",
+      "sourceItemId": "nowon:strawberry",
+      "tags": [
+        "동화속딸기 과일청&잼",
+        "롯데백화점 노원점",
+        "서울특별시",
+        "백화점",
+        "food-popup",
+        "알룰로스 딸기잼 (200g)",
+        "수제 딸기청 (500g)",
+        "블루베리청 (500g)",
+        "망고청 (500g)"
+      ],
+      "isNew": true,
+      "isEndingSoon": false,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "galleria:timeworld:c85834:dessert-planet",
@@ -3259,7 +4592,7 @@
       "sourceGrade": "official",
       "firstSeenAt": "2026-08-03",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "디저트플래닛",
       "region": "대전광역시",
       "category": "food-popup",
       "menuItems": [
@@ -3269,7 +4602,29 @@
         "두바이 크로플"
       ],
       "lastVerifiedAt": "2026-08-05",
-      "status": "active"
+      "status": "ongoing",
+      "title": "디저트플래닛",
+      "branch": "갤러리아 타임월드",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://product1-84t.pages.dev/assets/popups/galleria/timeworld-dessert-planet.jpg",
+      "officialUrl": "https://dept.galleria.co.kr/store-info/timeworld/promotion/shopping-news/c85834?qCategory=NEWOPENING_POPUP",
+      "sourceItemId": "timeworld:c85834:dessert-planet",
+      "tags": [
+        "디저트플래닛",
+        "갤러리아 타임월드",
+        "대전광역시",
+        "백화점",
+        "food-popup",
+        "마블 글레이즈 크로넛",
+        "우유생크림 크로넛",
+        "오레오 크로넛",
+        "두바이 크로플"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "lotte:gwangbok:life-culture",
@@ -3286,14 +4641,32 @@
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-05",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "라이프컬처",
       "region": "부산광역시",
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
       "menuSource": "official-event-text",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active"
+      "status": "ongoing",
+      "title": "라이프컬처 Pop-Up",
+      "branch": "롯데백화점 광복점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": null,
+      "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0333&searchTerm=%EB%9D%BC%EC%9D%B4%ED%94%84%EC%BB%AC%EC%B2%98+Pop-Up",
+      "sourceItemId": "gwangbok:life-culture",
+      "tags": [
+        "라이프컬처",
+        "롯데백화점 광복점",
+        "부산광역시",
+        "백화점",
+        "food-popup"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "lotte:incheon:lusol",
@@ -3309,7 +4682,7 @@
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "루솔 프리미엄 이유식",
       "region": "인천광역시",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
@@ -3317,7 +4690,25 @@
       "menuItems": [],
       "menuSource": "official-event-text",
       "menus": [],
-      "imageSource": "official-image-unavailable"
+      "imageSource": "official-image-unavailable",
+      "title": "루솔 프리미엄 이유식",
+      "branch": "롯데백화점 인천점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": -6,
+      "image": null,
+      "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0344&searchTerm=%EB%A3%A8%EC%86%94+%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84+%EC%9D%B4%EC%9C%A0%EC%8B%9D",
+      "sourceItemId": "incheon:lusol",
+      "tags": [
+        "루솔 프리미엄 이유식",
+        "롯데백화점 인천점",
+        "인천광역시",
+        "백화점",
+        "food-popup"
+      ],
+      "isNew": true,
+      "isEndingSoon": false,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "lotte:main:milbit",
@@ -3333,11 +4724,11 @@
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "밀빛 크림치즈빵",
       "region": "서울특별시",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "menuItems": [
         "말차 맘모스",
         "황치즈 뽀또 맘모스",
@@ -3407,7 +4798,30 @@
         "https://minfo.lotteshopping.com/content/news/202603/SNM00000000000522889/20260327170639295_7.jpeg",
         "https://minfo.lotteshopping.com/content/news/202603/SNM00000000000522889/20260327170639302_1.jpeg",
         "https://minfo.lotteshopping.com/content/news/202603/SNM00000000000522889/20260327170639307_6.jpeg"
-      ]
+      ],
+      "title": "밀빛 크림치즈빵",
+      "branch": "롯데백화점 본점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547885/20260720123252388_7.jpeg",
+      "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0001&searchTerm=%EB%B0%80%EB%B9%9B+%ED%81%AC%EB%A6%BC%EC%B9%98%EC%A6%88%EB%B9%B5",
+      "sourceItemId": "main:milbit",
+      "tags": [
+        "밀빛 크림치즈빵",
+        "롯데백화점 본점",
+        "서울특별시",
+        "백화점",
+        "food-popup",
+        "말차 맘모스",
+        "황치즈 뽀또 맘모스",
+        "더블 딸기 맘모스",
+        "초코나무 쫀득빵",
+        "우유플레인 쫀득빵"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "lotte:dongtan:bacha-coffee",
@@ -3423,11 +4837,11 @@
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "바샤커피",
       "region": "경기도",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "menuItems": [
         "밀라노 모닝 커피 드립백(12개입)",
         "1910 커피 드립백 (12개입)",
@@ -3507,7 +4921,30 @@
         "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000508377/20260122161103117_3.jpeg",
         "https://minfo.lotteshopping.com/content/news/202603/SNM00000000000518271/20260306152438793_2.jpeg",
         "https://minfo.lotteshopping.com/content/news/202603/SNM00000000000518271/20260306152438798_1.jpeg"
-      ]
+      ],
+      "title": "바샤커피",
+      "branch": "롯데백화점 동탄점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 56,
+      "image": "https://minfo.lotteshopping.com/content/news/202605/SNM00000000000531614/20260507104705644_2.jpeg",
+      "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EB%B0%94%EC%83%A4%EC%BB%A4%ED%94%BC",
+      "sourceItemId": "dongtan:bacha-coffee",
+      "tags": [
+        "바샤커피",
+        "롯데백화점 동탄점",
+        "경기도",
+        "백화점",
+        "food-popup",
+        "밀라노 모닝 커피 드립백(12개입)",
+        "1910 커피 드립백 (12개입)",
+        "캐러멜로 모닝 커피 드립백 (12개입)",
+        "톨테카 초콜릿 커피 드립백 (12개입)",
+        "마운트 케냐 커피 드립백 (12개입)"
+      ],
+      "isNew": true,
+      "isEndingSoon": false,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "galleria:timeworld:c85834:beatzel",
@@ -3541,7 +4978,7 @@
       "sourceGrade": "official",
       "firstSeenAt": "2026-08-03",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "바잇첼",
       "region": "대전광역시",
       "category": "food-popup",
       "menuItems": [
@@ -3550,7 +4987,28 @@
         "시그니처 토마콘 프레즐"
       ],
       "lastVerifiedAt": "2026-08-05",
-      "status": "active"
+      "status": "ongoing",
+      "title": "바잇첼",
+      "branch": "갤러리아 타임월드",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://product1-84t.pages.dev/assets/popups/galleria/timeworld-beatzel.jpg",
+      "officialUrl": "https://dept.galleria.co.kr/store-info/timeworld/promotion/shopping-news/c85834?qCategory=NEWOPENING_POPUP",
+      "sourceItemId": "timeworld:c85834:beatzel",
+      "tags": [
+        "바잇첼",
+        "갤러리아 타임월드",
+        "대전광역시",
+        "백화점",
+        "food-popup",
+        "솔트 프레즐",
+        "크림치즈 프레즐",
+        "시그니처 토마콘 프레즐"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "lotte:ansan:seoul-roll",
@@ -3566,7 +5024,7 @@
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "서울롤 철판피자&튀일",
       "region": "경기도",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
@@ -3574,7 +5032,25 @@
       "menuItems": [],
       "menuSource": "official-event-text",
       "menus": [],
-      "imageSource": "official-image-unavailable"
+      "imageSource": "official-image-unavailable",
+      "title": "서울롤 철판피자&튀일",
+      "branch": "롯데백화점 안산점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": -6,
+      "image": null,
+      "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0336&searchTerm=%EC%84%9C%EC%9A%B8%EB%A1%A4+%EC%B2%A0%ED%8C%90%ED%94%BC%EC%9E%90%26%ED%8A%80%EC%9D%BC",
+      "sourceItemId": "ansan:seoul-roll",
+      "tags": [
+        "서울롤 철판피자&튀일",
+        "롯데백화점 안산점",
+        "경기도",
+        "백화점",
+        "food-popup"
+      ],
+      "isNew": true,
+      "isEndingSoon": false,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "lotte:ansan:susu",
@@ -3590,7 +5066,7 @@
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "수수대장군 전통간식",
       "region": "경기도",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
@@ -3598,7 +5074,25 @@
       "menuItems": [],
       "menuSource": "official-event-text",
       "menus": [],
-      "imageSource": "official-image-unavailable"
+      "imageSource": "official-image-unavailable",
+      "title": "수수대장군 전통간식",
+      "branch": "롯데백화점 안산점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": -6,
+      "image": null,
+      "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0336&searchTerm=%EC%88%98%EC%88%98%EB%8C%80%EC%9E%A5%EA%B5%B0+%EC%A0%84%ED%86%B5%EA%B0%84%EC%8B%9D",
+      "sourceItemId": "ansan:susu",
+      "tags": [
+        "수수대장군 전통간식",
+        "롯데백화점 안산점",
+        "경기도",
+        "백화점",
+        "food-popup"
+      ],
+      "isNew": true,
+      "isEndingSoon": false,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "lotte:nowon:arenut",
@@ -3614,7 +5108,7 @@
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "아르넛 수제 피칸&호두",
       "region": "서울특별시",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
@@ -3652,7 +5146,29 @@
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000548015/2026080413515457_8.jpeg",
         "https://minfo.lotteshopping.com/content/news/202506/SNM00000000000459927/20250604120401221_9.jpeg",
         "https://minfo.lotteshopping.com/content/news/202506/SNM00000000000459927/20250604120401237_0.jpeg"
-      ]
+      ],
+      "title": "아르넛 수제 피칸&호두",
+      "branch": "롯데백화점 노원점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": -2,
+      "image": "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000548015/2026080413515446_9.jpeg",
+      "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=%EC%95%84%EB%A5%B4%EB%84%9B+%EC%88%98%EC%A0%9C+%ED%94%BC%EC%B9%B8%26%ED%98%B8%EB%91%90",
+      "sourceItemId": "nowon:arenut",
+      "tags": [
+        "아르넛 수제 피칸&호두",
+        "롯데백화점 노원점",
+        "서울특별시",
+        "백화점",
+        "food-popup",
+        "호두스몰박스 4팩",
+        "호두 미디움박스 7팩",
+        "페이퍼팩",
+        "리본 선물박스"
+      ],
+      "isNew": true,
+      "isEndingSoon": false,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "lotte:centum:potato-bread",
@@ -3668,11 +5184,11 @@
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "정남미명과 구황작물빵",
       "region": "부산광역시",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "menuItems": [
         "감자빵(1EA)",
         "고구마빵(1EA)",
@@ -3724,7 +5240,30 @@
         "https://minfo.lotteshopping.com/content/news/202507/SNM00000000000470512/20250723190429284_7.jpeg",
         "https://minfo.lotteshopping.com/content/news/202507/SNM00000000000470512/20250723191112632_6.jpeg",
         "https://minfo.lotteshopping.com/content/news/202507/SNM00000000000470512/20250723190429287_2.jpeg"
-      ]
+      ],
+      "title": "정남미명과 구황작물빵",
+      "branch": "롯데백화점 센텀시티점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://minfo.lotteshopping.com/content/news/202507/SNM00000000000470512/20250723190429244_4.jpeg",
+      "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0027&searchTerm=%EC%A0%95%EB%82%A8%EB%AF%B8%EB%AA%85%EA%B3%BC+%EA%B5%AC%ED%99%A9%EC%9E%91%EB%AC%BC%EB%B9%B5",
+      "sourceItemId": "centum:potato-bread",
+      "tags": [
+        "정남미명과 구황작물빵",
+        "롯데백화점 센텀시티점",
+        "부산광역시",
+        "백화점",
+        "food-popup",
+        "감자빵(1EA)",
+        "고구마빵(1EA)",
+        "옥수수빵(1EA)",
+        "단호박빵(1EA)",
+        "밤빵(1EA)"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "lotte:nowon:home-meal",
@@ -3740,7 +5279,7 @@
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "집밥장인 국탕류",
       "region": "서울특별시",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
@@ -3801,7 +5340,30 @@
         "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547993/20260720181243616_9.jpeg",
         "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547993/20260720181243619_7.jpeg",
         "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547993/20260720181243623_9.jpeg"
-      ]
+      ],
+      "title": "집밥장인 국탕류",
+      "branch": "롯데백화점 노원점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": -2,
+      "image": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547993/20260720181243581_6.jpeg",
+      "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=%EC%A7%91%EB%B0%A5%EC%9E%A5%EC%9D%B8+%EA%B5%AD%ED%83%95%EB%A5%98",
+      "sourceItemId": "nowon:home-meal",
+      "tags": [
+        "집밥장인 국탕류",
+        "롯데백화점 노원점",
+        "서울특별시",
+        "백화점",
+        "food-popup",
+        "참이맛 감자탕 블랙",
+        "참이맛 감자탕 레드",
+        "참이맛 순살 감자탕 블랙",
+        "가마솥 갈비탕 블랙",
+        "영양삼계탕 블랙"
+      ],
+      "isNew": true,
+      "isEndingSoon": false,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "lotte:dongtan:findhere",
@@ -3817,7 +5379,7 @@
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "찾다보니여기 건어물·건강칩",
       "region": "경기도",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
@@ -3825,7 +5387,25 @@
       "menuItems": [],
       "menuSource": "official-event-text",
       "menus": [],
-      "imageSource": "official-image-unavailable"
+      "imageSource": "official-image-unavailable",
+      "title": "찾다보니여기 건어물·건강칩",
+      "branch": "롯데백화점 동탄점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": -6,
+      "image": null,
+      "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%B0%BE%EB%8B%A4%EB%B3%B4%EB%8B%88%EC%97%AC%EA%B8%B0+%EA%B1%B4%EC%96%B4%EB%AC%BC%C2%B7%EA%B1%B4%EA%B0%95%EC%B9%A9",
+      "sourceItemId": "dongtan:findhere",
+      "tags": [
+        "찾다보니여기 건어물·건강칩",
+        "롯데백화점 동탄점",
+        "경기도",
+        "백화점",
+        "food-popup"
+      ],
+      "isNew": true,
+      "isEndingSoon": false,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "lotte:dongtan:cheongju-mandu",
@@ -3841,7 +5421,7 @@
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "청주미친만두",
       "region": "경기도",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
@@ -3849,7 +5429,25 @@
       "menuItems": [],
       "menuSource": "official-event-text",
       "menus": [],
-      "imageSource": "official-image-unavailable"
+      "imageSource": "official-image-unavailable",
+      "title": "청주미친만두",
+      "branch": "롯데백화점 동탄점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": -6,
+      "image": null,
+      "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%B2%AD%EC%A3%BC%EB%AF%B8%EC%B9%9C%EB%A7%8C%EB%91%90",
+      "sourceItemId": "dongtan:cheongju-mandu",
+      "tags": [
+        "청주미친만두",
+        "롯데백화점 동탄점",
+        "경기도",
+        "백화점",
+        "food-popup"
+      ],
+      "isNew": true,
+      "isEndingSoon": false,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "lotte:gwangbok:pongsindang",
@@ -3866,14 +5464,32 @@
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-05",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "퐁신당",
       "region": "부산광역시",
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
       "menuSource": "official-event-text",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active"
+      "status": "ongoing",
+      "title": "퐁신당 Pop-Up",
+      "branch": "롯데백화점 광복점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": null,
+      "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0333&searchTerm=%ED%90%81%EC%8B%A0%EB%8B%B9+Pop-Up",
+      "sourceItemId": "gwangbok:pongsindang",
+      "tags": [
+        "퐁신당",
+        "롯데백화점 광복점",
+        "부산광역시",
+        "백화점",
+        "food-popup"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "shinsegae-shopping:SC00010:8560469",
@@ -3889,11 +5505,11 @@
       "sourceGrade": "official",
       "firstSeenAt": "2026-08-02",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "[떼구르르베이커리] 팝업 스토어",
       "region": "경기도",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "menuItems": [
         "대표메뉴 및 가격 : 아그작케이크 애플망고/복숭아 각"
       ],
@@ -3906,7 +5522,26 @@
       ],
       "officialImageUrls": [
         "https://www.shinsegae.com/cms12/SC00010/info/shopping/brndsingle/__icsFiles/afieldfile/2026/07/28/J6rsTxPCb1E6.jpg"
-      ]
+      ],
+      "title": "[떼구르르베이커리] 팝업 스토어",
+      "branch": "신세계백화점 의정부점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://www.shinsegae.com/cms12/SC00010/info/shopping/brndsingle/__icsFiles/afieldfile/2026/07/28/J6rsTxPCb1E6.jpg",
+      "officialUrl": "https://www.shinsegae.com/shopping/view.do?mainCd=02&pageLink=%2Fcms12%2FSC00010%2Finfo%2Fshopping%2Fbrndsingle%2F8560469_4597.txt&contentDtlCd=01&contentId=8560469&storeCd=SC00010&brandCd=UB0004152",
+      "sourceItemId": "SC00010:8560469",
+      "tags": [
+        "[떼구르르베이커리] 팝업 스토어",
+        "신세계백화점 의정부점",
+        "경기도",
+        "백화점",
+        "food-popup",
+        "대표메뉴 및 가격 : 아그작케이크 애플망고/복숭아 각"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "shinsegae-shopping:SC00003:8568278",
@@ -3922,11 +5557,11 @@
       "sourceGrade": "official",
       "firstSeenAt": "2026-08-02",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "시오사쿠",
       "region": "서울특별시",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "menuItems": [
         "오사카 시오빵 (개)",
         "시오빵 러스크 (개)",
@@ -3969,7 +5604,30 @@
       ],
       "officialImageUrls": [
         "https://www.shinsegae.com/cms12/SC00003/info/shopping/brndsingle/__icsFiles/afieldfile/2026/07/18/SIOSAKU33-20260718055548-20260718055550_1.png"
-      ]
+      ],
+      "title": "[시오사쿠] POP-UP",
+      "branch": "신세계백화점 타임스퀘어점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://www.shinsegae.com/cms12/SC00003/info/shopping/brndsingle/__icsFiles/afieldfile/2026/07/18/SIOSAKU33-20260718055548-20260718055550_1.png",
+      "officialUrl": "https://www.shinsegae.com/shopping/view.do?mainCd=02&pageLink=%2Fcms12%2FSC00003%2Finfo%2Fshopping%2Fbrndsingle%2F8568278_4474.txt&contentDtlCd=01&contentId=8568278&storeCd=SC00003&brandCd=UB0004152",
+      "sourceItemId": "SC00003:8568278",
+      "tags": [
+        "시오사쿠",
+        "신세계백화점 타임스퀘어점",
+        "서울특별시",
+        "백화점",
+        "food-popup",
+        "오사카 시오빵 (개)",
+        "시오빵 러스크 (개)",
+        "탕종식빵 (개)",
+        "멜론/타코/야끼소바 시오빵 (각/개)",
+        "쪽파/명란/갈릭 시오빵 (각/개)"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "shinsegae-shopping:SC00010:8516545",
@@ -3985,11 +5643,11 @@
       "sourceGrade": "official",
       "firstSeenAt": "2026-08-02",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "[봄날엔]여수언니 디저트",
       "region": "경기도",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "menuItems": [
         "우리밀 약과(10개입)",
         "우리밀 미니약과(400g)",
@@ -4037,7 +5695,30 @@
       ],
       "officialImageUrls": [
         "https://www.shinsegae.com/cms12/SC00010/info/shopping/brndsingle/__icsFiles/afieldfile/2026/07/03/055A0041-20260703123934-20260703123935_1.jpg"
-      ]
+      ],
+      "title": "[봄날엔]여수언니 디저트 팝업스토어",
+      "branch": "신세계백화점 의정부점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://www.shinsegae.com/cms12/SC00010/info/shopping/brndsingle/__icsFiles/afieldfile/2026/07/03/055A0041-20260703123934-20260703123935_1.jpg",
+      "officialUrl": "https://www.shinsegae.com/shopping/view.do?mainCd=02&pageLink=%2Fcms12%2FSC00010%2Finfo%2Fshopping%2Fbrndsingle%2F8516545_4597.txt&contentDtlCd=01&contentId=8516545&storeCd=SC00010&brandCd=UB0004152",
+      "sourceItemId": "SC00010:8516545",
+      "tags": [
+        "[봄날엔]여수언니 디저트",
+        "신세계백화점 의정부점",
+        "경기도",
+        "백화점",
+        "food-popup",
+        "우리밀 약과(10개입)",
+        "우리밀 미니약과(400g)",
+        "우리밀 미니약과(100g)",
+        "구름크림떡(6개입)",
+        "초코초꾸떡(6개입)"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "galleria:gwanggyo:c85957:oneulmojji",
@@ -4056,7 +5737,7 @@
       "sourceGrade": "official",
       "firstSeenAt": "2026-08-03",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "오늘모찌",
       "region": "경기도",
       "category": "food-popup",
       "menus": [
@@ -4070,7 +5751,25 @@
       ],
       "menuSource": "official-event-text",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active"
+      "status": "ongoing",
+      "title": "오늘모찌",
+      "branch": "갤러리아 광교",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 87,
+      "image": "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-oneulmojji.jpg",
+      "officialUrl": "https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/c85957?qCategory=PRODUCT_EVENT",
+      "sourceItemId": "gwanggyo:c85957:oneulmojji",
+      "tags": [
+        "오늘모찌",
+        "갤러리아 광교",
+        "경기도",
+        "백화점",
+        "food-popup"
+      ],
+      "isNew": true,
+      "isEndingSoon": false,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "lotte:incheon:french-louvre-baguette",
@@ -4086,11 +5785,11 @@
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "프랑스루브르바게트",
       "region": "인천광역시",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "menuItems": [
         "바게트 샌드위치",
         "부들 크림빵",
@@ -4142,7 +5841,30 @@
         "https://minfo.lotteshopping.com/content/news/202606/SNM00000000000540432/20260613162523197_5.jpeg",
         "https://minfo.lotteshopping.com/content/news/202606/SNM00000000000540432/20260613162523201_2.jpeg",
         "https://minfo.lotteshopping.com/content/news/202606/SNM00000000000540432/20260613162523204_0.jpeg"
-      ]
+      ],
+      "title": "프랑스루브르바게트",
+      "branch": "롯데백화점 인천점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 8,
+      "image": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547297/20260716111649115_7.jpeg",
+      "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0344&searchTerm=%ED%94%84%EB%9E%91%EC%8A%A4%EB%A3%A8%EB%B8%8C%EB%A5%B4%EB%B0%94%EA%B2%8C%ED%8A%B8",
+      "sourceItemId": "incheon:french-louvre-baguette",
+      "tags": [
+        "프랑스루브르바게트",
+        "롯데백화점 인천점",
+        "인천광역시",
+        "백화점",
+        "food-popup",
+        "바게트 샌드위치",
+        "부들 크림빵",
+        "루브르 뮤지엄",
+        "뺑스위스",
+        "초코범벅 바게트"
+      ],
+      "isNew": true,
+      "isEndingSoon": false,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "lotte:dongtan:yummy-fruta",
@@ -4158,11 +5880,11 @@
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "야미푸루따 착즙주스",
       "region": "경기도",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "menuItems": [
         "오렌지 주스 R",
         "오자몽주스 R",
@@ -4196,7 +5918,29 @@
         "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547195/20260715184905847_6.jpeg",
         "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547195/20260715184905854_9.jpeg",
         "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547195/20260715184905858_3.jpeg"
-      ]
+      ],
+      "title": "야미푸루따 착즙주스",
+      "branch": "롯데백화점 동탄점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 71,
+      "image": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547195/20260715171108398_1.jpeg",
+      "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%95%BC%EB%AF%B8%ED%91%B8%EB%A3%A8%EB%94%B0+%EC%B0%A9%EC%A6%99%EC%A3%BC%EC%8A%A4",
+      "sourceItemId": "dongtan:yummy-fruta",
+      "tags": [
+        "야미푸루따 착즙주스",
+        "롯데백화점 동탄점",
+        "경기도",
+        "백화점",
+        "food-popup",
+        "오렌지 주스 R",
+        "오자몽주스 R",
+        "시트러스 비타민 주스 R",
+        "자몽주스 R"
+      ],
+      "isNew": true,
+      "isEndingSoon": false,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "lotte:jamsil:honey",
@@ -4212,11 +5956,11 @@
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "안상규벌꿀",
       "region": "서울특별시",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "menuItems": [],
       "menuSource": "official-event-text",
       "menus": [],
@@ -4228,7 +5972,25 @@
         "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000546957/2026071421214615_2.jpeg",
         "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000546957/2026071421214618_2.jpeg",
         "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000546957/2026071421214621_0.jpeg"
-      ]
+      ],
+      "title": "안상규벌꿀",
+      "branch": "롯데월드몰",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 4,
+      "image": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000546957/20260714212145994_1.jpeg",
+      "officialUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000546957",
+      "sourceItemId": "jamsil:honey",
+      "tags": [
+        "안상규벌꿀",
+        "롯데월드몰",
+        "서울특별시",
+        "쇼핑몰",
+        "food-popup"
+      ],
+      "isNew": true,
+      "isEndingSoon": false,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "lotte:dongtan:tokyoberry",
@@ -4244,7 +6006,7 @@
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "도쿄베리 생과일모찌",
       "region": "경기도",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
@@ -4252,7 +6014,25 @@
       "menuItems": [],
       "menuSource": "official-event-text",
       "menus": [],
-      "imageSource": "official-image-unavailable"
+      "imageSource": "official-image-unavailable",
+      "title": "도쿄베리 생과일모찌",
+      "branch": "롯데백화점 동탄점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": -6,
+      "image": null,
+      "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EB%8F%84%EC%BF%84%EB%B2%A0%EB%A6%AC+%EC%83%9D%EA%B3%BC%EC%9D%BC%EB%AA%A8%EC%B0%8C",
+      "sourceItemId": "dongtan:tokyoberry",
+      "tags": [
+        "도쿄베리 생과일모찌",
+        "롯데백화점 동탄점",
+        "경기도",
+        "백화점",
+        "food-popup"
+      ],
+      "isNew": true,
+      "isEndingSoon": false,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "lotte:nowon:bagelist",
@@ -4268,11 +6048,11 @@
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "베이글리스트·라크루뜨",
       "region": "서울특별시",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "menuItems": [
         "잠봉뵈르",
         "소금 베이글",
@@ -4432,7 +6212,30 @@
         "https://minfo.lotteshopping.com/content/news/202407/SNM00000000000386485/20240706170254100_1.jpeg",
         "https://minfo.lotteshopping.com/content/news/202407/SNM00000000000386485/2024070617025491_4.jpeg",
         "https://minfo.lotteshopping.com/content/news/202604/SNM00000000000523028/20260404183435985_0.jpeg"
-      ]
+      ],
+      "title": "베이글리스트·라크루뜨",
+      "branch": "롯데백화점 노원점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000545103/20260704192816729_9.jpeg",
+      "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=%EB%B2%A0%EC%9D%B4%EA%B8%80%EB%A6%AC%EC%8A%A4%ED%8A%B8%C2%B7%EB%9D%BC%ED%81%AC%EB%A3%A8%EB%9C%A8",
+      "sourceItemId": "nowon:bagelist",
+      "tags": [
+        "베이글리스트·라크루뜨",
+        "롯데백화점 노원점",
+        "서울특별시",
+        "백화점",
+        "food-popup",
+        "잠봉뵈르",
+        "소금 베이글",
+        "허니 고르곤졸라 베이글",
+        "플레인 베이글",
+        "베이글"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "lotte:dongtan:siopanya",
@@ -4448,11 +6251,11 @@
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "시오팡야 소금빵",
       "region": "경기도",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "menuItems": [
         "클래식 소금빵",
         "명란 소금빵",
@@ -4504,7 +6307,30 @@
         "https://minfo.lotteshopping.com/content/news/202503/SNM00000000000441803/20250323204355601_6.jpeg",
         "https://minfo.lotteshopping.com/content/news/202503/SNM00000000000441803/20250323204355610_8.jpeg",
         "https://minfo.lotteshopping.com/content/news/202503/SNM00000000000441803/20250323204355606_8.jpeg"
-      ]
+      ],
+      "title": "시오팡야 소금빵",
+      "branch": "롯데백화점 동탄점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000543235/20260708153218511_4.jpeg",
+      "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%8B%9C%EC%98%A4%ED%8C%A1%EC%95%BC+%EC%86%8C%EA%B8%88%EB%B9%B5",
+      "sourceItemId": "dongtan:siopanya",
+      "tags": [
+        "시오팡야 소금빵",
+        "롯데백화점 동탄점",
+        "경기도",
+        "백화점",
+        "food-popup",
+        "클래식 소금빵",
+        "명란 소금빵",
+        "트러플 소금빵",
+        "쿠키 소금빵",
+        "초코 소금빵"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "lotte:centum:fishcake",
@@ -4520,7 +6346,7 @@
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "식품관 수제어묵",
       "region": "부산광역시",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
@@ -4539,7 +6365,26 @@
       "officialImageUrls": [
         "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000550477/20260731184425479_4.jpeg",
         "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000550477/20260731184425494_6.jpeg"
-      ]
+      ],
+      "title": "식품관 수제어묵",
+      "branch": "롯데백화점 센텀시티점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": -6,
+      "image": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000550477/20260731184425479_4.jpeg",
+      "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0027&searchTerm=%EC%8B%9D%ED%92%88%EA%B4%80+%EC%88%98%EC%A0%9C%EC%96%B4%EB%AC%B5",
+      "sourceItemId": "centum:fishcake",
+      "tags": [
+        "식품관 수제어묵",
+        "롯데백화점 센텀시티점",
+        "부산광역시",
+        "백화점",
+        "food-popup",
+        "우대가"
+      ],
+      "isNew": true,
+      "isEndingSoon": false,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "galleria:gwanggyo:c85957:hanwoomyeongga",
@@ -4558,7 +6403,7 @@
       "sourceGrade": "official",
       "firstSeenAt": "2026-08-03",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "한우명가",
       "region": "경기도",
       "category": "food-popup",
       "menus": [
@@ -4572,7 +6417,25 @@
       ],
       "menuSource": "official-event-text",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active"
+      "status": "ongoing",
+      "title": "한우명가",
+      "branch": "갤러리아 광교",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-hanwoomyeongga.jpg",
+      "officialUrl": "https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/c85957?qCategory=PRODUCT_EVENT",
+      "sourceItemId": "gwanggyo:c85957:hanwoomyeongga",
+      "tags": [
+        "한우명가",
+        "갤러리아 광교",
+        "경기도",
+        "백화점",
+        "food-popup"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "lotte:cheongju:dongbong",
@@ -4588,11 +6451,11 @@
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "동봉 에그타르트",
       "region": "충청북도",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "menuItems": [
         "에그타르트",
         "콘 타르트",
@@ -4637,7 +6500,30 @@
         "https://minfo.lotteshopping.com/content/news/202606/SNM00000000000543073/20260625131239814_0.jpeg",
         "https://minfo.lotteshopping.com/content/news/202606/SNM00000000000543073/20260625131239819_8.jpeg",
         "https://minfo.lotteshopping.com/content/news/202606/SNM00000000000543073/20260625131239825_5.jpeg"
-      ]
+      ],
+      "title": "동봉 에그타르트",
+      "branch": "롯데아울렛 청주점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://minfo.lotteshopping.com/content/news/202606/SNM00000000000543073/20260625131239774_1.jpeg",
+      "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0342&searchTerm=%EB%8F%99%EB%B4%89+%EC%97%90%EA%B7%B8%ED%83%80%EB%A5%B4%ED%8A%B8",
+      "sourceItemId": "cheongju:dongbong",
+      "tags": [
+        "동봉 에그타르트",
+        "롯데아울렛 청주점",
+        "충청북도",
+        "쇼핑몰",
+        "food-popup",
+        "에그타르트",
+        "콘 타르트",
+        "애플파이",
+        "말차 타르트",
+        "얼그레이 타르트"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "lotte:cheongju:ojisan-cheesecake",
@@ -4653,11 +6539,11 @@
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "오지상 치즈케이크",
       "region": "충청북도",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "menuItems": [],
       "menuSource": "official-event-text",
       "menus": [],
@@ -4666,7 +6552,25 @@
         "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000509439/20260127090749624_7.jpeg",
         "https://minfo.lotteshopping.com/content/news/202508/SNM00000000000477442/2025082712294592_4.jpeg",
         "https://minfo.lotteshopping.com/content/news/202511/SNM00000000000496977/20251126165107365_4.jpeg"
-      ]
+      ],
+      "title": "오지상 치즈케이크",
+      "branch": "롯데아울렛 청주점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 1,
+      "image": "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000509439/20260127090749624_7.jpeg",
+      "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0342&searchTerm=%EC%98%A4%EC%A7%80%EC%83%81+%EC%B9%98%EC%A6%88%EC%BC%80%EC%9D%B4%ED%81%AC",
+      "sourceItemId": "cheongju:ojisan-cheesecake",
+      "tags": [
+        "오지상 치즈케이크",
+        "롯데아울렛 청주점",
+        "충청북도",
+        "쇼핑몰",
+        "food-popup"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "lotte:nowon:maison-once-year",
@@ -4682,7 +6586,7 @@
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "메종원스이어 케이크",
       "region": "서울특별시",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
@@ -4713,7 +6617,28 @@
         "https://minfo.lotteshopping.com/content/news/202507/SNM00000000000468353/2025071219053450_2.jpeg",
         "https://minfo.lotteshopping.com/content/news/202507/SNM00000000000468353/2025071219053459_1.jpeg",
         "https://minfo.lotteshopping.com/content/news/202507/SNM00000000000468353/20250715135201576_5.jpeg"
-      ]
+      ],
+      "title": "메종원스이어 케이크",
+      "branch": "롯데백화점 노원점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": -2,
+      "image": "https://minfo.lotteshopping.com/content/news/202507/SNM00000000000470286/20250731135233966_9.jpeg",
+      "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=%EB%A9%94%EC%A2%85%EC%9B%90%EC%8A%A4%EC%9D%B4%EC%96%B4+%EC%BC%80%EC%9D%B4%ED%81%AC",
+      "sourceItemId": "nowon:maison-once-year",
+      "tags": [
+        "메종원스이어 케이크",
+        "롯데백화점 노원점",
+        "서울특별시",
+        "백화점",
+        "food-popup",
+        "생망고 케이크 (1호)",
+        "망고듬뿍 케이크 (1호)",
+        "딸망고 케이크 (1호)"
+      ],
+      "isNew": true,
+      "isEndingSoon": false,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "shinsegae-shopping:SC00010:8464018",
@@ -4729,7 +6654,7 @@
       "sourceGrade": "official",
       "firstSeenAt": "2026-08-02",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "청23 팝업 스토어",
       "region": "경기도",
       "category": "food-popup",
       "menus": [
@@ -4743,10 +6668,29 @@
       ],
       "menuSource": "official-event-text",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active",
+      "status": "ongoing",
       "officialImageUrls": [
         "https://www.shinsegae.com/cms12/SC00010/info/shopping/brndintg/__icsFiles/afieldfile/2026/06/25/260626_po_ui_.jpg"
-      ]
+      ],
+      "title": "청23 팝업 스토어",
+      "branch": "신세계백화점 의정부점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 26,
+      "image": "https://www.shinsegae.com/cms12/SC00010/info/shopping/brndintg/__icsFiles/afieldfile/2026/06/25/260626_po_ui_.jpg",
+      "officialUrl": "https://www.shinsegae.com/shopping/view.do?mainCd=02&pageLink=%2Fcms12%2FSC00010%2Finfo%2Fshopping%2Fbrndintg%2F8464018_4596.txt&contentDtlCd=01&contentId=8464018&storeCd=SC00010&brandCd=",
+      "sourceItemId": "SC00010:8464018",
+      "tags": [
+        "청23 팝업 스토어",
+        "신세계백화점 의정부점",
+        "경기도",
+        "백화점",
+        "food-popup",
+        "청23"
+      ],
+      "isNew": true,
+      "isEndingSoon": false,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "starfield:suwon:bites-place:intelligentsia",
@@ -4755,14 +6699,14 @@
       "venueType": "쇼핑몰",
       "address": "경기도 수원시 장안구 수성로 175 · 스타필드 수원",
       "startDate": "2026-06-11",
-      "endDate": "",
+      "endDate": null,
       "imageUrl": null,
       "sourceName": "스타필드 수원 공식 층별안내·바이츠 플레이스",
       "sourceUrl": "https://www.starfield.co.kr/suwon/tenant/floorInfo",
       "sourceGrade": "official",
       "firstSeenAt": "2026-08-03",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "인텔리젠시아 커피",
       "region": "경기도",
       "category": "food-popup",
       "menus": [
@@ -4776,7 +6720,25 @@
       ],
       "menuSource": "official-event-text",
       "lastVerifiedAt": "2026-08-05",
-      "status": "active"
+      "status": "ongoing",
+      "title": "인텔리젠시아 커피",
+      "branch": "스타필드 수원",
+      "latitude": null,
+      "longitude": null,
+      "dDay": null,
+      "image": null,
+      "officialUrl": "https://www.starfield.co.kr/suwon/tenant/floorInfo",
+      "sourceItemId": "suwon:bites-place:intelligentsia",
+      "tags": [
+        "인텔리젠시아 커피",
+        "스타필드 수원",
+        "경기도",
+        "쇼핑몰",
+        "food-popup"
+      ],
+      "isNew": true,
+      "isEndingSoon": true,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "lotte:nowon:rollsrolls",
@@ -4792,7 +6754,7 @@
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
       "lastSeenAt": "2026-08-05",
-      "brand": null,
+      "brand": "롤스롤스 불초밥",
       "region": "서울특별시",
       "category": "food-popup",
       "lastVerifiedAt": "2026-08-05",
@@ -4835,13 +6797,36 @@
         "https://minfo.lotteshopping.com/content/news/202605/SNM00000000000536429/20260525181033893_1.jpeg",
         "https://minfo.lotteshopping.com/content/news/202605/SNM00000000000536429/20260525181033898_0.jpeg",
         "https://minfo.lotteshopping.com/content/news/202605/SNM00000000000536429/20260525181033902_6.jpeg"
-      ]
+      ],
+      "title": "롤스롤스 불초밥",
+      "branch": "롯데백화점 노원점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": -2,
+      "image": "https://minfo.lotteshopping.com/content/news/202605/SNM00000000000536429/20260528170140437_4.jpeg",
+      "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=%EB%A1%A4%EC%8A%A4%EB%A1%A4%EC%8A%A4+%EB%B6%88%EC%B4%88%EB%B0%A5",
+      "sourceItemId": "nowon:rollsrolls",
+      "tags": [
+        "롤스롤스 불초밥",
+        "롯데백화점 노원점",
+        "서울특별시",
+        "백화점",
+        "food-popup",
+        "쇠고기 불초밥(1팩)",
+        "새우 불초밥(1팩)",
+        "유부 롤초밥(1팩)",
+        "다마고츠쿠네(1개)",
+        "새우 에그롤(1개)"
+      ],
+      "isNew": true,
+      "isEndingSoon": false,
+      "lastUpdated": "2026-08-05"
     },
     {
       "id": "popup-venue:nodeul-island:59c1d0dfb9839e5e",
       "sourceItemId": "59c1d0dfb9839e5e",
       "name": "(수정) 노들섬 푸드트럭 운영 안내(2026년 5~8월)",
-      "brand": null,
+      "brand": "(수정) 노들섬 푸드트럭 운영 안내(2026년 5~8월)",
       "venue": "노들섬",
       "venueType": "팝업 전문 공간",
       "address": "노들섬",
@@ -4869,7 +6854,25 @@
         "https://nodeul.org/wp-content/themes/nodeul/img/nodeul-ogimage.jpg"
       ],
       "lastVerifiedAt": "2026-08-05",
-      "status": "active"
+      "status": "ongoing",
+      "title": "(수정) 노들섬 푸드트럭 운영 안내(2026년 5~8월)",
+      "branch": "노들섬",
+      "latitude": null,
+      "longitude": null,
+      "dDay": 25,
+      "image": "https://nodeul.org/wp-content/themes/nodeul/img/nodeul-ogimage.jpg",
+      "officialUrl": "https://nodeul.org/%EB%85%B8%EB%93%A4%EC%84%AC-%ED%91%B8%EB%93%9C%ED%8A%B8%EB%9F%AD-%EC%9A%B4%EC%98%81-%EC%95%88%EB%82%B42026%EB%85%84-58%EC%9B%94/",
+      "tags": [
+        "(수정) 노들섬 푸드트럭 운영 안내(2026년 5~8월)",
+        "노들섬",
+        "서울특별시",
+        "팝업 전문 공간",
+        "food-popup"
+      ],
+      "isNew": true,
+      "isEndingSoon": false,
+      "lastUpdated": "2026-08-05"
     }
-  ]
+  ],
+  "feedVersion": 1
 }
