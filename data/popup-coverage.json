@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-08-04T22:33:39.713Z",
+  "updatedAt": "2026-08-06T10:04:15.192Z",
   "summary": {
     "nationwideVenueTotal": 1029,
-    "verifiedPopupVenueCount": 23,
+    "verifiedPopupVenueCount": 24,
     "officialFeedMonitoredCount": 95,
     "collectorNeededCount": 934,
     "disclaimer": "시설 원장은 전국 탐색 범위이며, 화면에는 공식 출처에서 시작일과 종료일을 확인한 푸드팝업만 표시합니다."
@@ -202,8 +202,8 @@
       "name": "원주 프리미엄 아울렛",
       "region": "강원특별자치도",
       "kind": "아울렛",
-      "collector": null,
-      "status": "collector-needed",
+      "collector": "신세계사이먼 프리미엄 아울렛",
+      "status": "adapter-needed",
       "popupCount": 0
     },
     {
@@ -4523,8 +4523,8 @@
       "region": "부산광역시",
       "kind": "백화점",
       "collector": "롯데백화점·롯데아울렛·롯데몰",
-      "status": "official-feed-monitored",
-      "popupCount": 0
+      "status": "verified-popup-found",
+      "popupCount": 2
     },
     {
       "venueId": "localdata:3300000:2012330007907500001",
@@ -4990,8 +4990,8 @@
       "name": "힐탑 프리미엄 아울렛",
       "region": "부산광역시",
       "kind": "아울렛",
-      "collector": null,
-      "status": "collector-needed",
+      "collector": "신세계사이먼 프리미엄 아울렛",
+      "status": "adapter-needed",
       "popupCount": 0
     },
     {
@@ -5089,7 +5089,7 @@
       "name": "(주)신세계 타임스퀘어점",
       "region": "서울특별시",
       "kind": "백화점",
-      "collector": "타임스퀘어",
+      "collector": "타임스퀘어 공식 사이트맵",
       "status": "adapter-needed",
       "popupCount": 0
     },
@@ -6376,7 +6376,7 @@
       "name": "타임스퀘어",
       "region": "서울특별시",
       "kind": "쇼핑센터",
-      "collector": "타임스퀘어",
+      "collector": "타임스퀘어 공식 사이트맵",
       "status": "verified-popup-found",
       "popupCount": 6
     },
@@ -6477,7 +6477,7 @@
       "kind": "백화점",
       "collector": "현대백화점·현대아울렛",
       "status": "verified-popup-found",
-      "popupCount": 2
+      "popupCount": 3
     },
     {
       "venueId": "localdata:3120000:1992312010707500001",
@@ -9177,7 +9177,7 @@
       "kind": "백화점",
       "collector": "현대백화점·현대아울렛",
       "status": "verified-popup-found",
-      "popupCount": 8
+      "popupCount": 12
     },
     {
       "venueId": "localdata:4390000:2020439021407500001",

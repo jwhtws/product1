@@ -4,8 +4,16 @@ import { probeOfficialImage } from './lib/popup-content-quality.mjs';
 
 const inputPath = process.argv.find(value => value.startsWith('--input='))?.slice(8) || 'data/popups.json';
 const outputPath = process.argv.find(value => value.startsWith('--output='))?.slice(9) || 'data/food-popups/live-content-audit.json';
+const reviewInputPath = process.argv.find(value => value.startsWith('--review-input='))?.slice(15) || '';
 const liveOnly = process.argv.includes('--live-http');
 const payload = JSON.parse(await readFile(inputPath, 'utf8'));
+if (reviewInputPath) {
+  const review = JSON.parse(await readFile(reviewInputPath, 'utf8'));
+  const merged = new Map([
+    ...payload.popups, ...(review.reviewRequired || []), ...(review.rejected || [])
+  ].map(row => [row.id, row]));
+  payload.popups = [...merged.values()];
+}
 const sourceCache = new Map();
 
 async function limitedBytes(response, limit = 262_144) {
