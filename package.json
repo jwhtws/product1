@@ -6,6 +6,7 @@
     "build": "npm run check",
     "test": "node --test scripts/lib/*.test.mjs tests/*.test.mjs tests/collectors/*.test.mjs && npx playwright test",
     "audit:data-sources": "node scripts/audit-data-sources.mjs",
+    "audit:popup-content": "node scripts/audit-popup-content.mjs",
     "data:refresh-popups": "node scripts/refresh-popup-site-feed.mjs",
     "data:build-site-feed": "node scripts/build-popup-site-feed.mjs",
     "data:refresh-lotte": "node scripts/refresh-popup-site-feed.mjs --lotte-only",

@@ -22,6 +22,7 @@ const runId = `food-popups-${runStartedAt.replace(/[-:.TZ]/gu, '')}-${process.pi
 
 const outputPath = process.argv.find(value => value.startsWith('--output='))?.slice(9) || 'data/popups.json';
 const reportPath = process.argv.find(value => value.startsWith('--run-report='))?.slice(13) || 'data/food-popups/run-report.json';
+const coveragePath = process.argv.find(value => value.startsWith('--coverage-output='))?.slice(18) || 'data/popup-coverage.json';
 const lotteOnly = process.argv.includes('--lotte-only');
 const strictCollectors = process.argv.includes('--strict');
 const retailerScope = process.argv.find(value => value.startsWith('--retailer='))?.slice(11)
@@ -114,7 +115,15 @@ async function fetchResilient(url, options = {}) {
 
 function uniqueMenus(menus) {
   const seen = new Set();
-  return menus.map(menu => ({ name: clean(menu?.name), price: clean(menu?.price) }))
+  return menus.map(menu => ({
+    ...menu,
+    name: clean(menu?.name),
+    price: clean(menu?.price),
+    ...(menu?.priceText ? { priceText: clean(menu.priceText) } : {}),
+    ...(menu?.sourceUrl ? { sourceUrl: clean(menu.sourceUrl) } : {}),
+    ...(menu?.sourceName ? { sourceName: clean(menu.sourceName) } : {}),
+    ...(menu?.evidenceType ? { evidenceType: clean(menu.evidenceType) } : {})
+  }))
     .filter(menu => menu.name && !seen.has(`${menu.name}|${menu.price}`) && seen.add(`${menu.name}|${menu.price}`))
     .slice(0, 30);
 }
@@ -986,13 +995,13 @@ const outputSources = retailerScope
   : sources;
 const collectorErrors = sources.filter(source => source.status === 'error');
 if (collectorErrors.length) console.warn(`공식 수집기 ${collectorErrors.length}개 실패: ${collectorErrors.map(source => source.name).join(', ')} · 기존 데이터 보존`);
-if (strictCollectors && collectorErrors.length) {
+if (strictCollectors && collectorErrors.length === collectors.length) {
   const finishedAt = new Date().toISOString();
   await safelyBuildAndWritePopupRunReport({
     runId, scope: retailerScope || 'all', startedAt: runStartedAt, finishedAt,
     sourceRuns, normalize: row => row, identity: row => String(row?.id || ''), finalRows: collected
   }, reportPath);
-  throw new Error(`공식 수집기 실패로 일일 반영 중단: ${collectorErrors.map(source => source.name).join(', ')}`);
+  throw new Error(`모든 공식 수집기 실패로 일일 반영 중단: ${collectorErrors.map(source => source.name).join(', ')}`);
 }
 
 function normalizedUrl(value) {
@@ -1008,20 +1017,6 @@ function derivedStatus(row) {
   if (row.endDate && row.endDate < today) return 'ended';
   if (row.startDate > today) return 'upcoming';
   return 'active';
-}
-function officialMenuItems(row) {
-  if (Array.isArray(row.menuItems) && row.menuItems.length) return row.menuItems.map(clean).filter(Boolean);
-  let title = clean(row.name)
-    .replace(/^\[(?:POP[\s-]*UP(?: STORE)?|팝업스토어?|디저트 카라반|푸드파크)\]\s*/iu, '')
-    .replace(/\s*(?:팝업(?:\s*스토어)?|POP[\s-]*UP(?:\s*STORE)?|신규\s*오픈|NEW\s*OPEN|NOW\s*OPEN|OPEN)\s*$/iu, '')
-    .replace(/^\[([^\]]+)\]$/u, '$1');
-  const exactOfficialMenus = new Map([
-    ['lotte:blog:breath-bread:dongbusan', ['세븐셀렉트 숨결통식빵']]
-  ]);
-  if (exactOfficialMenus.has(row.id)) return exactOfficialMenus.get(row.id);
-  if (/^lotte:/u.test(row.id)) return [];
-  if (/^(?:위클리\s*)?팝업\s*뉴스$/u.test(title)) return [];
-  return [...new Set(title.split(/\s*(?:&|\/|\+|·)\s*/u).map(item => clean(item).replace(/^\[|\]$/g, '')).filter(item => item.length >= 2))].slice(0, 8);
 }
 function popupRegion(row) {
   if (row.region) return clean(row.region);
@@ -1065,12 +1060,51 @@ function registeredVenueAddress(row) {
   const match = candidates.sort((left, right) => venueIdentity(right.name).length - venueIdentity(left.name).length)[0];
   return match?.address ? clean(`${match.address} · ${row.venue}`) : current || null;
 }
+function inferredContentSearch(row, officialImageUrls, menus) {
+  if (row.contentSearch && typeof row.contentSearch === 'object') return row.contentSearch;
+  const checkedAt = new Date().toISOString();
+  const detailChecked = row.menuSource === 'official-detail' || row.imageSource === 'official-detail';
+  const brandOfficial = /브랜드 공식|뉴스룸|공식 블로그/u.test(row.sourceName || '');
+  const imageEvidence = officialImageUrls.map(imageUrl => ({
+    sourceUrl: row.sourceUrl, sourceName: row.sourceName,
+    contentType: detailChecked ? 'official_detail' : 'official_list',
+    extractedField: 'officialImageUrls', imageUrl, capturedAt: checkedAt
+  }));
+  const menuEvidence = menus.map(() => ({
+    sourceUrl: row.sourceUrl, sourceName: row.sourceName,
+    contentType: detailChecked ? 'official_detail' : 'official_list',
+    extractedField: 'menus', capturedAt: checkedAt
+  }));
+  return {
+    checkedOfficialList: true,
+    checkedOfficialDetail: detailChecked,
+    checkedEmbeddedData: detailChecked,
+    checkedOfficialImages: Boolean(officialImageUrls.length) || detailChecked,
+    checkedOperatorSearch: row.sourceGrade === 'official-search',
+    checkedBrandOfficialSources: brandOfficial,
+    checkedUrls: [row.sourceUrl].filter(Boolean),
+    checkedMethods: [detailChecked ? 'official_detail_html' : 'official_list_html'],
+    imageCandidatesFound: officialImageUrls.length,
+    menuCandidatesFound: menus.length,
+    priceCandidatesFound: menus.filter(menu => clean(menu.price)).length,
+    descriptionCandidatesFound: clean(row.description).length ? 1 : 0,
+    status: officialImageUrls.length && menus.length ? 'found' : 'search_incomplete',
+    evidence: [...imageEvidence, ...menuEvidence],
+    failureReasons: officialImageUrls.length && menus.length ? [] : ['legacy_collector_search_evidence_incomplete'],
+    checkedAt
+  };
+}
 function normalizePopup(row) {
   const address = registeredVenueAddress(row);
-  const fallbackItems = officialMenuItems(row);
-  const menus = uniqueMenus(Array.isArray(row.menus) && row.menus.length
-    ? row.menus
-    : fallbackItems.map(name => ({ name, price: '' })));
+  const menus = uniqueMenus(Array.isArray(row.menus) ? row.menus : []).map(menu => ({
+    ...menu,
+    sourceUrl: menu.sourceUrl || row.sourceUrl || '',
+    sourceName: menu.sourceName || row.sourceName || '',
+    evidenceType: menu.evidenceType || ({
+      'official-detail': 'html', 'official-search-result': 'html',
+      'official-image': 'official_image', admin: 'admin'
+    }[row.menuSource] || '')
+  }));
   // Every retailer's official representative image belongs in the same
   // gallery contract. Retailer adapters may add more detail-page images, but
   // no official source should be excluded merely because it is not Lotte.
@@ -1094,10 +1128,11 @@ function normalizePopup(row) {
     category: row.category || 'food-popup',
     menus,
     menuItems: menus.map(menu => menu.name),
-    menuSource: row.menuSource || 'official-event-text',
+    ...(row.menuSource ? { menuSource: row.menuSource } : {}),
     sourceUrl: normalizedUrl(row.sourceUrl),
     imageUrl: normalizedImageUrl || null,
     ...(officialImageUrls.length ? { officialImageUrls } : {}),
+    contentSearch: inferredContentSearch(row, officialImageUrls, menus),
     lastVerifiedAt: today,
     lastSeenAt: today
   };
@@ -1241,7 +1276,7 @@ await writeFile(outputPath, `${JSON.stringify({
   popups
 }, null, 2)}\n`);
 if (!retailerScope) {
-  await writeFile('data/popup-coverage.json', `${JSON.stringify({
+  await writeFile(coveragePath, `${JSON.stringify({
     updatedAt: new Date().toISOString(),
     summary: coverageSummary,
     venues: venueCoverage

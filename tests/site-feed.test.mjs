@@ -9,7 +9,11 @@ const base = {
   id: 'brand:test:1', name: '테스트커피 팝업', brand: '(주) 테스트커피', venue: ' 성수  테스트키친 ',
   address: '서울특별시 성동구 연무장길 1', category: 'food_popup', startDate: '2026.8.1', endDate: '2026.8.7',
   imageUrl: 'https://official.example/popup.jpg', sourceUrl: 'https://official.example/news/1?keep=yes',
-  sourceName: '테스트 공식 뉴스', sourceGrade: 'official', firstSeenAt: '2026-08-01', lastSeenAt: '2026-08-05'
+  sourceName: '테스트 공식 뉴스', sourceGrade: 'official', firstSeenAt: '2026-08-01', lastSeenAt: '2026-08-05',
+  menus: [{ name: '공식 메뉴', price: null, priceText: '가격 미공개', sourceUrl: 'https://official.example/news/1', sourceName: '테스트 공식 뉴스', evidenceType: 'html' }],
+  menuItems: ['공식 메뉴'], imageValidation: { status: 'valid', contentType: 'image/jpeg', width: 800, height: 600 },
+  contentQuality: 'B', publishStatus: 'published', qualityReasons: [],
+  contentSearch: { status: 'found' }
 };
 
 test('단일 Site Feed는 필수 필드, 중복, Status, D-Day, NEW, 종료 임박을 정규화한다', () => {
@@ -22,12 +26,13 @@ test('단일 Site Feed는 필수 필드, 중복, Status, D-Day, NEW, 종료 임�
       { ...base, id: 'brand:test:2', brand: '예정브랜드', venue: '예정 장소', sourceUrl: 'https://official.example/news/2', startDate: '2026/08/08', endDate: '2026/08/20', firstSeenAt: '2026-07-20' },
       { ...base, id: 'brand:test:3', brand: '종료브랜드', venue: '종료 장소', sourceUrl: 'https://official.example/news/3', startDate: '2026-07-01', endDate: '2026-08-04' },
       { ...base, id: 'brand:test:5', brand: '칠일브랜드', venue: '칠일 장소', sourceUrl: 'https://official.example/news/5', firstSeenAt: '2026-07-29' },
-      { ...base, id: 'brand:test:4', brand: '누락브랜드', venue: '누락 장소', sourceUrl: '' }
+      { ...base, id: 'brand:test:4', brand: '누락브랜드', venue: '누락 장소', sourceUrl: '' },
+      { ...base, id: 'brand:test:review', brand: '검토브랜드', venue: '검토 장소', publishStatus: 'review_required', contentQuality: 'C' }
     ]
   };
   const { feed, stats } = buildSiteFeedPayload(payload, { today: '2026-08-05', generatedAt: '2026-08-05T12:00:00.000Z' });
   assert.equal(feed.feedVersion, 1);
-  assert.equal(stats.inputCount, 7);
+  assert.equal(stats.inputCount, 8);
   assert.equal(stats.outputCount, 4);
   assert.equal(stats.duplicateRemovedCount, 2);
   assert.deepEqual(stats.statusDistribution, { upcoming: 1, ongoing: 2, ended: 1 });
@@ -36,6 +41,8 @@ test('단일 Site Feed는 필수 필드, 중복, Status, D-Day, NEW, 종료 임�
   assert.equal(stats.rejectionReasons.duplicate_id, 1);
   assert.equal(stats.rejectionReasons.duplicate_identity, 1);
   assert.equal(stats.rejectionReasons.missing_value_officialUrl, 1);
+  assert.equal(stats.rejectionReasons.quality_review_required, 1);
+  assert.equal(stats.qualityExcludedCount, 1);
 
   const ongoing = feed.popups.find(row => row.id === base.id);
   const upcoming = feed.popups.find(row => row.id === 'brand:test:2');

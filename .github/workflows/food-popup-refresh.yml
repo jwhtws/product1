@@ -36,7 +36,7 @@ concurrency:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -46,26 +46,46 @@ jobs:
         if: github.event_name != 'workflow_dispatch' || inputs.scope == 'all'
         continue-on-error: true
         run: node scripts/refresh-popup-venues.mjs
-      - name: 공식 쇼핑시설 푸드 팝업 갱신
+      - name: 공식 목록 수집부터 상세 보강·교차탐색·품질검사·사용자 Feed 생성
+        id: popup_refresh
         run: node scripts/refresh-popup-site-feed.mjs --strict ${{ github.event_name == 'workflow_dispatch' && inputs.scope != 'all' && format('--retailer={0}', inputs.scope) || '' }}
+      - name: 일부 출처 실패 알림
+        if: steps.popup_refresh.outcome == 'success'
+        continue-on-error: true
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const report = JSON.parse(fs.readFileSync('data/food-popups/run-report.json', 'utf8'));
+            const failed = (report.sources || []).filter(source => source.errorCount > 0);
+            if (!failed.length) return;
+            await github.rest.issues.create({
+              ...context.repo,
+              title: `푸드 팝업 일부 출처 수집 실패 (${failed.length}곳)`,
+              body: `정상 출처 데이터와 기존 실패 출처 데이터는 보존했습니다.\n\n${failed.map(source => `- ${source.source}: ${source.errors?.[0]?.message || '수집 실패'}`).join('\n')}\n\n실행 로그: https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`
+            });
+      - name: 출처 Registry 및 사용자 데이터 검증
+        run: |
+          npm run audit:data-sources
+          npm run check
       - name: 검색엔진 상세 페이지와 사이트맵 갱신
         run: npm run seo:build
-      - name: 데이터 및 코드 검증
-        run: npm run check
       - name: 갱신 결과 요약
         run: |
-          node -e "const d=require('./data/popups.json'); const s=d.stats.status; console.log('### 푸드 팝업 갱신 결과\n- 전체: '+d.stats.final+'건\n- 영업 중: '+s.ongoing+'건\n- 오픈 예정: '+s.upcoming+'건\n- 종료: '+s.ended+'건')" >> "$GITHUB_STEP_SUMMARY"
+          node -e "const d=require('./data/popups.json'); const a=require('./data/popup-content-audit.json').stats.total; const s=d.stats.status; console.log('### 푸드 팝업 갱신 결과\n- 공개: '+d.stats.final+'건 / 검토: '+a.reviewRequiredCount+'건 / 거절: '+a.rejectedCount+'건\n- 품질: A '+a.qualityDistribution.A+' / B '+a.qualityDistribution.B+' / C '+a.qualityDistribution.C+'\n- 영업 중: '+s.ongoing+'건 / 오픈 예정: '+s.upcoming+'건 / 종료: '+s.ended+'건\n- 유효 이미지: '+a.validImageCount+'건 / 메뉴: '+a.menuCompleteCount+'건')" >> "$GITHUB_STEP_SUMMARY"
       - name: 변경사항 반영
         run: |
-          if git diff --quiet data/popups.json data/popup-venues.json data/popup-coverage.json food-popups restaurant-reviews sitemap.xml; then
+          if git diff --quiet data/popups.json data/popup-review-queue.json data/popup-content-audit.json data/popup-venues.json data/popup-coverage.json food-popups restaurant-reviews sitemap.xml; then
             echo "팝업 변경 없음" >> "$GITHUB_STEP_SUMMARY"
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/popups.json data/popup-venues.json data/popup-coverage.json food-popups restaurant-reviews sitemap.xml
+          git add data/popups.json data/popup-review-queue.json data/popup-content-audit.json data/popup-venues.json data/popup-coverage.json food-popups restaurant-reviews sitemap.xml
           git commit -m "data: 푸드 팝업 일간 갱신"
           git push
+      - name: Cloudflare Pages 운영 배포 결과 검증
+        run: node scripts/verify-popup-deployment.mjs --url=https://mukdang.com --attempts=12 --interval-ms=30000
       - name: 네이버에 변경 URL 알림
         if: success()
         continue-on-error: true

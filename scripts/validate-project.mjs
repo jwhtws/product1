@@ -92,6 +92,7 @@ if (!Array.isArray(curatedPopups) || curatedPopups.some(row => !Array.isArray(ro
 const lotteVenueCodes = new Map([
   ['롯데백화점 본점', '0001'], ['롯데백화점 노원점', '0022'],
   ['롯데백화점 센텀시티점', '0027'], ['롯데백화점 건대스타시티점', '0028'],
+  ['롯데백화점 광복점', '0333'],
   ['롯데백화점 안산점', '0336'], ['롯데아울렛 청주점', '0342'],
   ['롯데백화점 인천점', '0344'], ['롯데백화점 동탄점', '0399']
 ]);
@@ -154,6 +155,40 @@ for (const popup of popupData.popups) {
   }
   if (popup.id.startsWith('lotte:') && !popup.id.startsWith('lotte:blog:') && popup.menuSource === 'official-event-text' && popup.menus?.length) {
     console.error(`롯데 행사명을 실제 메뉴로 저장할 수 없습니다: ${popup.id}`);
+    process.exitCode = 1;
+  }
+}
+
+if (popupData.contentPolicyVersion !== undefined) {
+  let popupReviewQueue;
+  let popupContentAudit;
+  try {
+    popupReviewQueue = JSON.parse(readFileSync('data/popup-review-queue.json', 'utf8'));
+    popupContentAudit = JSON.parse(readFileSync('data/popup-content-audit.json', 'utf8'));
+  } catch {
+    console.error('엄격 콘텐츠 정책에는 검토 Queue와 품질 감사 보고서가 필요합니다.');
+    process.exitCode = 1;
+  }
+  const publishedIds = new Set(popupData.popups.map(row => row.id));
+  for (const popup of popupData.popups) {
+    if (popup.publishStatus !== 'published' || !['A', 'B'].includes(popup.contentQuality)
+      || popup.imageValidation?.status !== 'valid' || !popup.image || !popup.menus?.length) {
+      console.error(`공개 팝업 콘텐츠 품질 계약 위반: ${popup.id}`);
+      process.exitCode = 1;
+    }
+  }
+  for (const popup of popupReviewQueue?.reviewRequired || []) {
+    if (publishedIds.has(popup.id) || popup.publishStatus !== 'review_required' || popup.contentQuality !== 'C'
+      || !Array.isArray(popup.qualityReasons) || !popup.contentSearch) {
+      console.error(`팝업 검토 Queue 계약 위반: ${popup.id}`);
+      process.exitCode = 1;
+    }
+  }
+  const invariants = popupContentAudit?.invariants || {};
+  if (invariants.publishedValidImageRate !== 1 || invariants.publishedMenuRate !== 1
+    || invariants.publishedBrokenImageCount !== 0 || invariants.incompleteMisclassifiedMissingCount !== 0
+    || invariants.parseFailedMisclassifiedMissingCount !== 0) {
+    console.error('팝업 콘텐츠 품질 불변식이 충족되지 않았습니다.');
     process.exitCode = 1;
   }
 }

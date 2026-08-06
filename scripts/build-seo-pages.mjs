@@ -3,6 +3,12 @@ import path from 'node:path';
 
 const origin = 'https://mukdang.com';
 const popupData = JSON.parse(fs.readFileSync('data/popups.json', 'utf8'));
+let popupReviewQueue = { reviewRequired: [], rejected: [] };
+try { popupReviewQueue = JSON.parse(fs.readFileSync('data/popup-review-queue.json', 'utf8')); } catch {}
+const publishedPopupIds = new Set(popupData.popups.map(popup => popup.id));
+const detailPopups = [...new Map([
+  ...popupData.popups, ...(popupReviewQueue.reviewRequired || [])
+].map(popup => [popup.id, popup])).values()];
 const restaurants = JSON.parse(fs.readFileSync('data/popular-restaurants.json', 'utf8'));
 const escapeHtml = value => String(value ?? '').replace(/[&<>'"]/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[character]));
 const hash = value => [...String(value)].reduce((total, character) => ((total << 5) - total + character.charCodeAt(0)) | 0, 0);
@@ -46,17 +52,23 @@ function writePage(route, html) {
 for (const root of ['food-popups', 'restaurant-reviews']) fs.rmSync(root, { recursive: true, force: true });
 
 const popupLinks = [];
-for (const popup of popupData.popups) {
+const popupDetailLinks = [];
+const menuPriceLabel = item => item.priceText
+  || (Number.isFinite(item.price) ? `${item.price.toLocaleString('ko-KR')}원` : item.price || '');
+for (const popup of detailPopups) {
   const route = popupPath(popup);
   const canonical = `${origin}${route}`;
   const period = `${popup.startDate} ~ ${popup.endDate || '종료일 미정'}`;
   const description = `${popup.name} ${popup.venue} 푸드 팝업의 운영 기간, 위치${popup.menus?.length ? ', 메뉴와 가격' : ''}을 확인하세요.`;
   const menus = (popup.menus || popup.menuItems || []).map(item => typeof item === 'string' ? { name: item } : item);
   const schema = { '@context': 'https://schema.org', '@type': 'Event', name: popup.name, startDate: popup.startDate, ...(popup.endDate ? { endDate: popup.endDate } : {}), eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode', eventStatus: 'https://schema.org/EventScheduled', location: { '@type': 'Place', name: popup.venue, address: { '@type': 'PostalAddress', streetAddress: popup.address || popup.venue, addressRegion: popup.region || '', addressCountry: 'KR' } }, url: canonical, ...(popup.imageUrl ? { image: [popup.imageUrl] } : {}) };
-  const menuHtml = menus.length ? `<h2>대표 메뉴</h2><ul class="menu">${menus.map(item => `<li>${escapeHtml(item.name || item)}${item.price ? ` · <strong>${escapeHtml(item.price)}</strong>` : ''}</li>`).join('')}</ul>` : '';
-  const body = `<span class="eyebrow">${escapeHtml(popup.venueType || '쇼핑시설')} 푸드 팝업</span><h1>${escapeHtml(popup.name)}</h1><p class="lead"><strong>${escapeHtml(popup.venue)}</strong>에서 진행되는 푸드 팝업입니다. 일정과 위치를 확인하고 방문하세요.</p><section class="facts"><div><span>백화점·지점</span><strong>${escapeHtml(popup.venue)}</strong></div><div><span>주소</span><strong>${escapeHtml(popup.address || popup.venue)}</strong></div><div><span>운영 기간</span><strong>${escapeHtml(period)}</strong></div></section>${menuHtml}<div class="actions"><a href="${escapeHtml(popup.sourceUrl)}" rel="noopener noreferrer">공식 정보 확인</a><a class="secondary" href="/">다른 푸드 팝업 보기</a></div>`;
+  const menuHtml = menus.length ? `<h2>대표 메뉴</h2><ul class="menu">${menus.map(item => { const price = menuPriceLabel(item); return `<li>${escapeHtml(item.name || item)}${price ? ` · <strong>${escapeHtml(price)}</strong>` : ''}</li>`; }).join('')}</ul>` : '';
+  const ended = popup.status === 'ended' || (popup.endDate && popup.endDate < seoulToday);
+  const body = `<span class="eyebrow">${ended ? '종료됨 · ' : ''}${escapeHtml(popup.venueType || '쇼핑시설')} 푸드 팝업</span><h1>${escapeHtml(popup.name)}</h1><p class="lead"><strong>${escapeHtml(popup.venue)}</strong>에서 ${ended ? '진행됐던' : '진행되는'} 푸드 팝업입니다. ${ended ? '종료된 일정과 공식 정보를 기록으로 확인하세요.' : '일정과 위치를 확인하고 방문하세요.'}</p><section class="facts"><div><span>상태</span><strong>${ended ? '종료됨' : popup.status === 'upcoming' ? '오픈 예정' : '진행 중'}</strong></div><div><span>백화점·지점</span><strong>${escapeHtml(popup.venue)}</strong></div><div><span>주소</span><strong>${escapeHtml(popup.address || popup.venue)}</strong></div><div><span>운영 기간</span><strong>${escapeHtml(period)}</strong></div></section>${menuHtml}<div class="actions"><a href="${escapeHtml(popup.sourceUrl)}" rel="noopener noreferrer">공식 정보 확인</a><a class="secondary" href="/">다른 푸드 팝업 보기</a></div>`;
   writePage(route, layout({ title: `${popup.name} | ${popup.venue} 푸드 팝업 일정`, description, canonical, body, schema, image: popup.imageUrl }));
-  popupLinks.push({ route, title: `${popup.name} · ${popup.venue}`, lastmod: popup.lastVerifiedAt || popupData.updatedAt?.slice(0, 10), popup });
+  const link = { route, title: `${popup.name} · ${popup.venue}`, lastmod: popup.lastVerifiedAt || popupData.updatedAt?.slice(0, 10), popup };
+  popupDetailLinks.push(link);
+  if (publishedPopupIds.has(popup.id)) popupLinks.push(link);
 }
 
 const restaurantLinks = [];
@@ -95,7 +107,7 @@ for (const [routeName, label, matches] of retailerRoutes) {
   createLanding(`food-popups/${routeName}`, `${label}백화점 푸드 팝업 일정 | 먹당`, `${label} 계열 백화점과 쇼핑몰에서 진행 중이거나 곧 열리는 푸드 팝업 ${links.length}개의 기간과 지점을 확인하세요.`, links, '각 행사 상세 페이지에서 주소, 운영 기간과 공식 출처를 확인할 수 있습니다.');
 }
 
-const urls = [{ route: '/', lastmod: popupData.updatedAt?.slice(0, 10) }, { route: '/food-popups/', lastmod: popupData.updatedAt?.slice(0, 10) }, { route: '/restaurant-reviews/' }, ...landingLinks, ...popupLinks, ...restaurantLinks];
+const urls = [{ route: '/', lastmod: popupData.updatedAt?.slice(0, 10) }, { route: '/food-popups/', lastmod: popupData.updatedAt?.slice(0, 10) }, { route: '/restaurant-reviews/' }, ...landingLinks, ...popupDetailLinks, ...restaurantLinks];
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(item => `  <url><loc>${new URL(item.route, origin).href}</loc>${item.lastmod ? `<lastmod>${item.lastmod}</lastmod>` : ''}</url>`).join('\n')}\n</urlset>\n`;
 fs.writeFileSync('sitemap.xml', sitemap);
 console.log(`SEO 페이지 ${popupLinks.length}개 팝업, ${restaurantLinks.length}개 식당 생성`);

@@ -1,3 +1,5 @@
+import { extractOfficialMenuCandidates } from './popup-content-quality.mjs';
+
 const storeCodes = new Map([
   ['롯데백화점 본점', '0001'], ['롯데백화점 노원점', '0022'],
   ['롯데백화점 센텀시티점', '0027'], ['롯데백화점 건대스타시티점', '0028'],
@@ -171,7 +173,29 @@ export function parseLotteSearchResults(html, { storeCode, storeName, today, dec
       sourceUrl,
       sourceGrade: 'official-search',
       firstSeenAt: today,
-      lastSeenAt: today
+      lastSeenAt: today,
+      contentSearch: {
+        checkedOfficialList: true,
+        checkedOfficialDetail: false,
+        checkedEmbeddedData: true,
+        checkedOfficialImages: true,
+        checkedOperatorSearch: true,
+        checkedBrandOfficialSources: false,
+        checkedUrls: [sourceUrl],
+        checkedMethods: ['official_list_html', 'embedded_json_scan', 'official_image_candidate_scan', 'operator_internal_search'],
+        imageCandidatesFound: officialImageUrls.length,
+        menuCandidatesFound: 0,
+        priceCandidatesFound: 0,
+        descriptionCandidatesFound: lines.length ? 1 : 0,
+        status: officialImageUrls.length ? 'review_required' : 'search_incomplete',
+        evidence: officialImageUrls.map(imageUrl => ({
+          sourceUrl, sourceName: '롯데쇼핑 공식 행사', contentType: 'official_list',
+          extractedField: 'officialImageUrls', selector: 'search result card image', imageUrl,
+          capturedAt: new Date().toISOString()
+        })),
+        failureReasons: ['brand_official_sources_not_checked'],
+        checkedAt: new Date().toISOString()
+      }
     });
   }
   return rows;
@@ -225,7 +249,12 @@ function detailMenus(html, decodeHtml, clean, uniqueMenus) {
       && !/^#|^\d{1,2}\.\d{1,2}/u.test(line));
     if (name) menus.push({ name, price: price.replace(/\s+/gu, '') });
   }
-  return uniqueMenus(menus);
+  return uniqueMenus([
+    ...menus,
+    ...extractOfficialMenuCandidates(html).map(menu => ({
+      name: menu.name, price: menu.price, evidenceType: menu.evidenceType
+    }))
+  ]);
 }
 
 function matchingNewsId(html, name, normalizedText, decodeHtml) {
@@ -282,11 +311,26 @@ export async function collectLottePopups({ rows, previous, today, fetchResilient
     let imageSource = normalizedInput.imageSource || (imageUrl ? 'official-detail' : 'official-image-unavailable');
     let menus = knownMenus.get(id) || (old?.menuSource === 'official-detail' ? old.menus : []);
     let menuSource = knownMenus.has(id) ? 'official-search-result' : (menus.length ? 'official-detail' : '');
+    const checkedAt = new Date().toISOString();
+    const checkedUrls = [];
+    const checkedMethods = ['official_list_html', 'operator_internal_search'];
+    const evidence = [];
+    const failureReasons = [];
+    let checkedOfficialList = false;
+    let checkedOfficialDetail = false;
+    let checkedEmbeddedData = false;
+    let checkedOfficialImages = false;
+    let parserFailureReason = '';
     try {
+      checkedUrls.push(searchUrl);
       const response = await fetchLotte(searchUrl);
       if (response.ok) {
+        checkedOfficialList = true;
         let searchHtml = await response.text();
+        checkedEmbeddedData = true;
+        checkedMethods.push('embedded_json_scan');
         let detailHtml = /\/shpgnews\/shpgnewsDetail/iu.test(searchUrl) ? searchHtml : '';
+        if (detailHtml) checkedOfficialDetail = true;
         if (!detailHtml) {
           let newsId = matchingNewsId(searchHtml, name, normalizedText, decodeHtml);
           if (!newsId && /\/search\/searchResult/iu.test(searchUrl)) {
@@ -294,6 +338,7 @@ export async function collectLottePopups({ rows, previous, today, fetchResilient
               try {
                 const fallbackUrl = new URL(searchUrl);
                 fallbackUrl.searchParams.set('searchTerm', term);
+                checkedUrls.push(fallbackUrl.href);
                 const fallbackResponse = await fetchLotte(fallbackUrl.href);
                 if (!fallbackResponse.ok) continue;
                 const fallbackHtml = await fallbackResponse.text();
@@ -308,8 +353,10 @@ export async function collectLottePopups({ rows, previous, today, fetchResilient
           }
           if (newsId) {
             sourceUrl = `https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=${newsId}`;
+            checkedUrls.push(sourceUrl);
             const detailResponse = await fetchLotte(sourceUrl);
             if (detailResponse.ok) {
+              checkedOfficialDetail = true;
               const candidateDetailHtml = await detailResponse.text();
               const brand = searchTerms(name, clean)[1] || searchTerms(name, clean)[0];
               if (brand && normalizedText(candidateDetailHtml).includes(normalizedText(brand))) {
@@ -320,6 +367,7 @@ export async function collectLottePopups({ rows, previous, today, fetchResilient
                 sourceUrl = searchUrl;
                 imageUrl = '';
                 officialImageUrls = [];
+                failureReasons.push('official_detail_brand_conflict');
               }
             }
           }
@@ -327,6 +375,10 @@ export async function collectLottePopups({ rows, previous, today, fetchResilient
         // Search pages contain many unrelated cards. Only a validated,
         // single-event detail page may contribute an image.
         const foundImages = detailHtml ? officialImages(detailHtml, sourceUrl, decodeHtml) : [];
+        if (detailHtml) {
+          checkedOfficialImages = true;
+          checkedMethods.push('official_detail_html', 'official_detail_embedded_json', 'official_image_candidate_scan');
+        }
         const foundImage = foundImages[0] || '';
         if (detailHtml) {
           detailMatched += 1;
@@ -337,18 +389,37 @@ export async function collectLottePopups({ rows, previous, today, fetchResilient
           imageUrl = foundImage || (oldMatchesDetail ? imageUrl : '');
           if (foundImage || oldMatchesDetail) imageSource = 'official-detail';
           if (foundImages.length) officialImageUrls = foundImages;
+          for (const candidate of foundImages) evidence.push({
+            sourceUrl, sourceName: '롯데쇼핑 공식 행사', contentType: 'official_detail',
+            extractedField: 'officialImageUrls', selector: 'og:image|embedded JSON|img|srcset|background-image',
+            imageUrl: candidate, capturedAt: checkedAt
+          });
         }
         else if (foundImage) imageUrl = foundImage;
         if (imageUrl) imageMatched += 1;
         if (detailHtml) {
           const foundMenus = detailMenus(detailHtml, decodeHtml, clean, uniqueMenus);
-          if (foundMenus.length) { menus = foundMenus; menuSource = 'official-detail'; }
+          if (foundMenus.length) {
+            menus = foundMenus;
+            menuSource = 'official-detail';
+            for (const menu of foundMenus) evidence.push({
+              sourceUrl, sourceName: '롯데쇼핑 공식 행사', contentType: 'official_detail',
+              extractedField: 'menus', selector: 'detail text price line and nearest product name', capturedAt: checkedAt
+            });
+          } else if (/[\d,]+\s*원/u.test(detailHtml)) {
+            parserFailureReason = 'price_text_detected_menu_parse_empty';
+            failureReasons.push(parserFailureReason);
+          }
         }
         verified += 1;
-      }
+      } else failureReasons.push(`official_list_http_${response.status}`);
     } catch (error) {
       console.warn(`롯데 전용 수집 ${name} 보존 처리: ${error.message}`);
+      failureReasons.push('official_list_request_failed');
     }
+    if (!checkedOfficialDetail) failureReasons.push('official_detail_not_identified');
+    if (!checkedOfficialImages) failureReasons.push('official_detail_images_not_checked');
+    failureReasons.push('brand_official_sources_not_checked');
     results.push({
       id, name, venue, venueType: /아울렛|몰/u.test(venue) ? '쇼핑몰' : '백화점', address: venue,
       startDate, endDate, imageUrl: imageUrl || null,
@@ -356,7 +427,26 @@ export async function collectLottePopups({ rows, previous, today, fetchResilient
       imageSource: imageUrl ? imageSource : 'official-image-unavailable',
       sourceName: '롯데쇼핑 공식 행사', sourceUrl, sourceGrade: 'official-search',
       firstSeenAt: old?.firstSeenAt || today, lastSeenAt: today,
-      ...(menus.length ? { menus, menuSource } : {})
+      ...(menus.length ? { menus, menuSource } : {}),
+      ...(parserFailureReason ? { parserFailureReason } : {}),
+      contentSearch: {
+        checkedOfficialList,
+        checkedOfficialDetail,
+        checkedEmbeddedData,
+        checkedOfficialImages,
+        checkedOperatorSearch: checkedOfficialList,
+        checkedBrandOfficialSources: false,
+        checkedUrls: [...new Set(checkedUrls)],
+        checkedMethods: [...new Set(checkedMethods)],
+        imageCandidatesFound: officialImageUrls.length,
+        menuCandidatesFound: menus.length,
+        priceCandidatesFound: menus.filter(menu => clean(menu.price)).length,
+        descriptionCandidatesFound: 0,
+        status: parserFailureReason ? 'parse_failed' : (imageUrl && menus.length ? 'found' : 'search_incomplete'),
+        evidence,
+        failureReasons: [...new Set(failureReasons)],
+        checkedAt
+      }
     });
    }
   }

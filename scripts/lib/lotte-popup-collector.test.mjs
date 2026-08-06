@@ -3,6 +3,7 @@ import test from 'node:test';
 import {
   collectLottePopups,
   discoverLottePopups,
+  officialImages,
   parseLotteSearchResults,
   parseLotteStoreLinks
 } from './lotte-popup-collector.mjs';
@@ -24,6 +25,20 @@ const card = ({ newsId = '', title, venue, dates, image = '' }) => `
       <span>${dates}</span>
     </a>
   </li>`;
+
+test('공식 대표이미지는 og·embedded JSON·lazy-load·CSS 후보를 중복 없이 추출한다', () => {
+  const id = 'SNM00000000000559999';
+  const base = `https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=${id}`;
+  const root = `https://minfo.lotteshopping.com/content/news/202608/${id}`;
+  const html = `
+    <meta property="og:image" content="${root}/hero.jpg">
+    <script>window.__DATA__={"imageUrl":"${root}/gallery.png"}</script>
+    <img data-src="${root}/lazy.webp"><div style="background-image:url('${root}/poster.jpg')"></div>
+    <img src="${root}/hero.jpg"><img src="/assets/logo.png">`;
+  assert.deepEqual(officialImages(html, base, decodeHtml), [
+    `${root}/hero.jpg`, `${root}/gallery.png`, `${root}/lazy.webp`, `${root}/poster.jpg`
+  ]);
+});
 
 test('롯데 공식 지점 링크에서 광복점 seed와 다른 지점을 함께 발견한다', () => {
   const html = `
@@ -54,7 +69,8 @@ test('롯데 검색 결과에서 푸드 팝업만 날짜·지점·공식 이미�
     storeCode: '0333', storeName: '광복점', today: '2026-08-05', decodeHtml, clean
   });
   assert.equal(rows.length, 2);
-  assert.deepEqual(rows[0], {
+  const { contentSearch, ...firstRow } = rows[0];
+  assert.deepEqual(firstRow, {
     id: `lotte:discovered:0333:${foodId}`,
     name: '[파닭파닭] Pop-Up Open',
     venue: '롯데백화점 광복점',
@@ -71,6 +87,10 @@ test('롯데 검색 결과에서 푸드 팝업만 날짜·지점·공식 이미�
     firstSeenAt: '2026-08-05',
     lastSeenAt: '2026-08-05'
   });
+  assert.equal(contentSearch.checkedOfficialList, true);
+  assert.equal(contentSearch.checkedOfficialDetail, false);
+  assert.equal(contentSearch.checkedBrandOfficialSources, false);
+  assert.equal(contentSearch.imageCandidatesFound, 1);
   assert.equal(rows[1].name, '[퐁신당] Pop-Up');
   assert.equal(rows[1].venue, '롯데백화점 광복점');
 });
@@ -128,4 +148,9 @@ test('광복점 수동 안전망 검색도 공식 지점 코드 0333으로 교�
   });
   assert.equal(rows.length, 1);
   assert.equal(new URL(requested[0]).searchParams.get('cstrCd'), '0333');
+  assert.equal(rows[0].contentSearch.checkedOfficialList, true);
+  assert.equal(rows[0].contentSearch.checkedOfficialDetail, false);
+  assert.equal(rows[0].contentSearch.checkedBrandOfficialSources, false);
+  assert.equal(rows[0].contentSearch.status, 'search_incomplete');
+  assert.ok(rows[0].contentSearch.checkedMethods.includes('operator_internal_search'));
 });

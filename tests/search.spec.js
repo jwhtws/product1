@@ -172,6 +172,7 @@ test('공식 상세 페이지의 대표메뉴와 가격을 표시한다', async 
 
 test('카드형 공식 상품도 메뉴와 가격으로 변환한다', async ({ page }) => {
   await page.goto(process.env.TEST_BASE_URL || 'http://127.0.0.1:8765/', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('#search-button')).toBeEnabled({ timeout: 15000 });
   await page.locator('#search-input').fill('우베리');
   await page.locator('#search-button').click();
   const popup = page.locator('.popup-card').filter({ hasText: '우베리상하이모찌' }).first();

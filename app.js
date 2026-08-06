@@ -541,7 +541,12 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
   }
   function popupMenus(popup) {
     if (Array.isArray(popup.menus)) return popup.menus;
-    return Array.isArray(popup.menuItems) ? popup.menuItems.map(name => ({ name, price: '' })) : [];
+    return Array.isArray(popup.menuItems) ? popup.menuItems.map(item => typeof item === 'string' ? { name: item } : item) : [];
+  }
+  function popupMenuPriceLabel(item) {
+    if (item?.priceText) return item.priceText;
+    if (Number.isFinite(item?.price)) return `${item.price.toLocaleString('ko-KR')}원`;
+    return item?.price || '';
   }
   function popupLocationLabel(popup) {
     const region = popup.region || '';
@@ -1031,7 +1036,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
   function renderPopupMenuSection(popup) {
     const menus = popupMenus(popup);
     return `<section class="popup-menu-section popup-detail-section"><h3>메뉴·가격</h3>${menus.length
-      ? `<ul class="popup-menu-list">${menus.map(item => `<li><span>${escapeHtml(item.name || item)}</span>${item.price ? `<strong>${escapeHtml(item.price)}</strong>` : ''}</li>`).join('')}</ul><p class="data-source-note">${popup.menuSource === 'official-detail' ? '공식 상세 페이지에 공개된 대표 메뉴와 가격입니다.' : '공식 정보에 공개된 대표 품목입니다.'}</p>`
+      ? `<ul class="popup-menu-list">${menus.map(item => { const price = popupMenuPriceLabel(item); return `<li><span>${escapeHtml(item.name || item)}</span>${price ? `<strong>${escapeHtml(price)}</strong>` : ''}</li>`; }).join('')}</ul><p class="data-source-note">${popup.menuSource === 'official-detail' ? '공식 상세 페이지에 공개된 대표 메뉴와 가격입니다.' : '공식 정보에 공개된 대표 품목입니다.'}</p>`
       : '<p class="popup-menu-empty">메뉴는 공식 공지에서 확인해 주세요.</p>'}</section>`;
   }
   function renderPopupOfficialPhotos(popup) {

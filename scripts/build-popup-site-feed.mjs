@@ -1,6 +1,7 @@
 import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { calculatePopupStatus, daysBetween, seoulDate } from './lib/popup-content-quality.mjs';
 
 export const SITE_FEED_FIELDS = Object.freeze([
   'id', 'title', 'brand', 'venue', 'branch', 'address', 'latitude', 'longitude',
@@ -13,7 +14,6 @@ const VALUE_REQUIRED = Object.freeze([
   'startDate', 'officialUrl', 'sourceName', 'sourceItemId', 'lastUpdated'
 ]);
 const STATUS = new Set(['upcoming', 'ongoing', 'ended']);
-const DAY_MS = 86_400_000;
 
 const clean = value => String(value ?? '').replace(/<[^>]*>/gu, ' ').replace(/\s+/gu, ' ').trim();
 const normalizeKey = value => clean(value).normalize('NFKC').replace(/[\s·.,()[\]{}'"`~!@#$%^&*+_=|:;?<>/\\-]/gu, '').toLowerCase();
@@ -26,14 +26,8 @@ export function normalizeFeedDate(value) {
   return Number.isNaN(date.getTime()) || date.toISOString().slice(0, 10) !== normalized ? '' : normalized;
 }
 
-function daysBetween(from, to) {
-  return Math.round((Date.parse(`${to}T00:00:00Z`) - Date.parse(`${from}T00:00:00Z`)) / DAY_MS);
-}
-
 export function popupFeedStatus(startDate, endDate, today) {
-  if (startDate > today) return 'upcoming';
-  if (endDate && endDate < today) return 'ended';
-  return 'ongoing';
+  return calculatePopupStatus({ startDate, endDate }, today);
 }
 
 function normalizeBrand(row) {
@@ -118,19 +112,26 @@ function invalidReason(row) {
 }
 
 function preferredRow(current, candidate) {
-  const score = row => Number(row.sourceGrade === 'official') * 4 + Number(Boolean(row.image)) * 2 + Number(Boolean(row.latitude));
+  const score = row => Number(row.sourceGrade === 'official') * 8
+    + Number(row.contentQuality === 'A') * 4 + Number(Boolean(row.image)) * 2 + Number(Boolean(row.latitude));
   return score(candidate) > score(current) ? candidate : current;
 }
 
 export function buildSiteFeedPayload(payload, options = {}) {
-  const today = options.today || new Intl.DateTimeFormat('en-CA', {
-    timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit'
-  }).format(new Date());
+  const today = options.today || seoulDate();
   const generatedAt = options.generatedAt || new Date().toISOString();
   const inputRows = Array.isArray(payload?.popups) ? payload.popups : [];
-  const stats = { inputCount: inputRows.length, outputCount: 0, rejectedCount: 0, duplicateRemovedCount: 0, rejectionReasons: {} };
+  const stats = {
+    inputCount: inputRows.length, outputCount: 0, rejectedCount: 0,
+    qualityExcludedCount: 0, duplicateRemovedCount: 0, rejectionReasons: {}
+  };
   const byId = new Map();
   for (const raw of inputRows) {
+    if (raw.publishStatus !== 'published' || !['A', 'B'].includes(raw.contentQuality)) {
+      reject(stats, raw.publishStatus === 'rejected' ? 'quality_rejected' : 'quality_review_required');
+      stats.qualityExcludedCount += 1;
+      continue;
+    }
     const row = feedRow(raw, { today, generatedAt });
     const reason = invalidReason(row);
     if (reason) { reject(stats, reason); continue; }
@@ -153,7 +154,12 @@ export function buildSiteFeedPayload(payload, options = {}) {
     }
     byIdentity.set(identity, row);
   }
-  const popups = [...byIdentity.values()];
+  const statusRank = { ongoing: 0, upcoming: 1, ended: 2 };
+  const popups = [...byIdentity.values()].sort((left, right) =>
+    statusRank[left.status] - statusRank[right.status]
+    || (left.status === 'ended' ? right.endDate.localeCompare(left.endDate) : left.startDate.localeCompare(right.startDate))
+    || left.title.localeCompare(right.title, 'ko')
+  );
   const statusDistribution = Object.fromEntries(['upcoming', 'ongoing', 'ended'].map(status => [status, popups.filter(row => row.status === status).length]));
   Object.assign(stats, {
     outputCount: popups.length,
@@ -161,6 +167,7 @@ export function buildSiteFeedPayload(payload, options = {}) {
     newCount: popups.filter(row => row.isNew).length,
     endingSoonCount: popups.filter(row => row.isEndingSoon).length,
     missingImageCount: popups.filter(row => row.image === null).length,
+    missingMenuCount: popups.filter(row => !row.menus?.length).length,
     missingCoordinateCount: popups.filter(row => row.latitude === null || row.longitude === null).length,
     generatedAt
   });
@@ -169,7 +176,15 @@ export function buildSiteFeedPayload(payload, options = {}) {
       ...payload,
       feedVersion: 1,
       updatedAt: generatedAt,
-      stats: { ...(payload?.stats || {}), final: popups.length, status: statusDistribution, siteFeed: stats },
+      stats: {
+        ...(payload?.stats || {}), final: popups.length, status: statusDistribution,
+        photos: {
+          popupCount: popups.filter(row => row.officialImageUrls?.length).length,
+          imageCount: popups.reduce((sum, row) => sum + (row.officialImageUrls?.length || 0), 0),
+          missingCount: popups.filter(row => !row.officialImageUrls?.length).length
+        },
+        siteFeed: stats
+      },
       popups
     },
     stats
