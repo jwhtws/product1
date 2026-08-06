@@ -14,7 +14,7 @@ export function runPopupVenueParserContract(sourceId) {
     assert.equal(valid.rows[0].venue, fixture.source.venue);
     assert.equal(valid.sourceHealth.status, 'success_with_items');
     assert.deepEqual(parse(fixture.empty.items).stats.rejectionReasons, {});
-    assert.equal(parse(fixture.empty.items).sourceHealth.status, 'success_empty');
+    assert.equal(parse(fixture.empty.items).sourceHealth.status, 'search_incomplete');
     assert.throws(() => parsePopupVenuePayload({ ...fixture.source, ...fixture.structure_changed }), SourceStructureChangedError);
     assert.deepEqual(parse(fixture.expired.items).stats.rejectionReasons, { expired: 1 });
     const duplicate = parse(fixture.duplicate.items);

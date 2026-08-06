@@ -58,7 +58,7 @@ test('Batch4 fixture는 필수 상태와 parser 필드·food·popup 판별을 �
     assert.equal(row.imageUrl, fixture.valid.items[0].imageUrl);
     assert.equal(row.sourceItemId, fixture.valid.items[0].sourceItemId);
     assert.equal(row.category, 'food-popup');
-    assert.equal(parse(fixture.empty.items).sourceHealth.status, 'success_empty');
+    assert.equal(parse(fixture.empty.items).sourceHealth.status, 'search_incomplete');
     assert.equal(parse(fixture.expired.items).stats.rejectionReasons.expired, 1);
     assert.equal(parse(fixture.duplicate.items).stats.rejectionReasons.duplicate_source_item, 1);
     assert.equal(parse(fixture.non_food.items).stats.rejectionReasons.not_food, 1);

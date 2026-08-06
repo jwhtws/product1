@@ -1,4 +1,5 @@
 import { extractOfficialMenuCandidates } from './popup-content-quality.mjs';
+import { discoveryAttempt } from './official-source-discovery.mjs';
 
 const storeCodes = new Map([
   ['롯데백화점 본점', '0001'], ['롯데백화점 노원점', '0022'],
@@ -286,6 +287,8 @@ export async function collectLottePopups({ rows, previous, today, fetchResilient
   let detailMatched = 0;
   let imageMatched = 0;
   let simplifiedSearchMatched = 0;
+  let officialItemsFound = 0;
+  const discoveryAttempts = [];
   let cursor = 0;
   async function worker() {
    while (cursor < rows.length) {
@@ -322,56 +325,76 @@ export async function collectLottePopups({ rows, previous, today, fetchResilient
     let checkedOfficialImages = false;
     let parserFailureReason = '';
     try {
-      checkedUrls.push(searchUrl);
-      const response = await fetchLotte(searchUrl);
-      if (response.ok) {
-        checkedOfficialList = true;
-        let searchHtml = await response.text();
-        checkedEmbeddedData = true;
-        checkedMethods.push('embedded_json_scan');
-        let detailHtml = /\/shpgnews\/shpgnewsDetail/iu.test(searchUrl) ? searchHtml : '';
-        if (detailHtml) checkedOfficialDetail = true;
-        if (!detailHtml) {
-          let newsId = matchingNewsId(searchHtml, name, normalizedText, decodeHtml);
-          if (!newsId && /\/search\/searchResult/iu.test(searchUrl)) {
-            for (const term of searchTerms(name, clean).slice(1)) {
-              try {
-                const fallbackUrl = new URL(searchUrl);
-                fallbackUrl.searchParams.set('searchTerm', term);
-                checkedUrls.push(fallbackUrl.href);
-                const fallbackResponse = await fetchLotte(fallbackUrl.href);
-                if (!fallbackResponse.ok) continue;
-                const fallbackHtml = await fallbackResponse.text();
-                newsId = matchingNewsId(fallbackHtml, term, normalizedText, decodeHtml);
-                if (newsId) {
-                  searchHtml = fallbackHtml;
-                  simplifiedSearchMatched += 1;
-                  break;
-                }
-              } catch {}
-            }
+      let detailHtml = '';
+      let newsId = '';
+      let lastSearchError = null;
+      const directDetail = /\/shpgnews\/shpgnewsDetail/iu.test(searchUrl);
+      const candidates = directDetail ? [{ url: searchUrl, term: name }]
+        : searchTerms(name, clean).map((term, index) => {
+          const candidate = new URL(searchUrl);
+          candidate.searchParams.set('searchTerm', term);
+          return { url: candidate.href, term, fallback: index > 0 };
+        });
+      for (const candidate of candidates) {
+        checkedUrls.push(candidate.url);
+        const method = candidate.fallback ? 'operator_internal_search_fallback' : 'operator_internal_search';
+        try {
+          const response = await fetchLotte(candidate.url);
+          if (!response.ok) {
+            discoveryAttempts.push(discoveryAttempt({ method, url: candidate.url, status: response.status === 403 ? 'blocked' : 'failed', response, errorType: `http_${response.status}`, detail: response.requestMeta || {} }));
+            continue;
           }
+          checkedOfficialList = true;
+          checkedEmbeddedData = true;
+          checkedMethods.push('embedded_json_scan');
+          const candidateHtml = await response.text();
+          if (directDetail) {
+            detailHtml = candidateHtml;
+            checkedOfficialDetail = true;
+            officialItemsFound += 1;
+            discoveryAttempts.push(discoveryAttempt({ method: 'official_detail_html', url: candidate.url, status: 'success', response, itemsFound: 1, detail: response.requestMeta || {} }));
+            break;
+          }
+          newsId = matchingNewsId(candidateHtml, candidate.term, normalizedText, decodeHtml);
+          discoveryAttempts.push(discoveryAttempt({ method, url: candidate.url, status: newsId ? 'success' : 'empty', response, itemsFound: newsId ? 1 : 0, detail: response.requestMeta || {} }));
           if (newsId) {
-            sourceUrl = `https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=${newsId}`;
-            checkedUrls.push(sourceUrl);
-            const detailResponse = await fetchLotte(sourceUrl);
-            if (detailResponse.ok) {
-              checkedOfficialDetail = true;
-              const candidateDetailHtml = await detailResponse.text();
-              const brand = searchTerms(name, clean)[1] || searchTerms(name, clean)[0];
-              if (brand && normalizedText(candidateDetailHtml).includes(normalizedText(brand))) {
-                detailHtml = candidateDetailHtml;
-              } else {
-                // Reject and erase an image retained from a previously
-                // mis-associated detail page (for example 밀빛 → 톰포드).
-                sourceUrl = searchUrl;
-                imageUrl = '';
-                officialImageUrls = [];
-                failureReasons.push('official_detail_brand_conflict');
-              }
+            officialItemsFound += 1;
+            if (candidate.fallback) simplifiedSearchMatched += 1;
+            break;
+          }
+        } catch (error) {
+          lastSearchError = error;
+          discoveryAttempts.push(discoveryAttempt({ method, url: candidate.url, status: error?.name === 'BlockPageError' ? 'blocked' : 'failed', errorType: error?.errorType || error?.name || 'request_failed', detail: { ...error, timeout: Boolean(error?.timeout), retryCount: error?.retryCount || 0 } }));
+        }
+      }
+      if (!checkedOfficialList && lastSearchError) throw lastSearchError;
+      if (newsId) {
+        sourceUrl = `https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=${newsId}`;
+        checkedUrls.push(sourceUrl);
+        try {
+          const detailResponse = await fetchLotte(sourceUrl);
+          discoveryAttempts.push(discoveryAttempt({ method: 'official_detail_html', url: sourceUrl, status: detailResponse.ok ? 'success' : (detailResponse.status === 403 ? 'blocked' : 'failed'), response: detailResponse, itemsFound: detailResponse.ok ? 1 : 0, errorType: detailResponse.ok ? null : `http_${detailResponse.status}`, detail: detailResponse.requestMeta || {} }));
+          if (detailResponse.ok) {
+            checkedOfficialDetail = true;
+            const candidateDetailHtml = await detailResponse.text();
+            const brand = searchTerms(name, clean)[1] || searchTerms(name, clean)[0];
+            if (brand && normalizedText(candidateDetailHtml).includes(normalizedText(brand))) {
+              detailHtml = candidateDetailHtml;
+            } else {
+              // Reject and erase an image retained from a previously
+              // mis-associated detail page (for example 밀빛 → 톰포드).
+              sourceUrl = searchUrl;
+              imageUrl = '';
+              officialImageUrls = [];
+              failureReasons.push('official_detail_brand_conflict');
             }
           }
+        } catch (error) {
+          discoveryAttempts.push(discoveryAttempt({ method: 'official_detail_html', url: sourceUrl, status: error?.name === 'BlockPageError' ? 'blocked' : 'failed', errorType: error?.errorType || error?.name || 'request_failed', detail: { ...error, timeout: Boolean(error?.timeout), retryCount: error?.retryCount || 0 } }));
+          failureReasons.push('official_detail_request_failed');
         }
+      }
+      if (checkedOfficialList) {
         // Search pages contain many unrelated cards. Only a validated,
         // single-event detail page may contribute an image.
         const foundImages = detailHtml ? officialImages(detailHtml, sourceUrl, decodeHtml) : [];
@@ -412,7 +435,7 @@ export async function collectLottePopups({ rows, previous, today, fetchResilient
           }
         }
         verified += 1;
-      } else failureReasons.push(`official_list_http_${response.status}`);
+      }
     } catch (error) {
       console.warn(`롯데 전용 수집 ${name} 보존 처리: ${error.message}`);
       failureReasons.push('official_list_request_failed');
@@ -453,5 +476,25 @@ export async function collectLottePopups({ rows, previous, today, fetchResilient
   const concurrency = fast ? 16 : 8;
   await Promise.all(Array.from({ length: Math.min(concurrency, rows.length) }, () => worker()));
   console.log(`롯데 전용 수집기: ${rows.length}건 · 공식 응답 ${verified}건 · 축약 검색 적중 ${simplifiedSearchMatched}건 · 상세 연결 ${detailMatched}건 · 공식 사진 ${imageMatched}건 · 사진 미제공 ${rows.length - imageMatched}건`);
+  const unresolved = discoveryAttempts.some(attempt => ['failed', 'blocked'].includes(attempt.status));
+  const finalStatus = officialItemsFound ? (simplifiedSearchMatched ? 'recovered' : 'success_with_items')
+    : unresolved ? 'unresolved' : 'search_incomplete';
+  Object.defineProperty(results, 'sourceHealth', { value: {
+    sourceId: 'lotte-department-outlet-mall',
+    primaryPath: 'https://m.lotteshopping.com/search/searchResult?cstrCd=0333&searchTerm=-',
+    fallbackPathsTried: [...new Set(discoveryAttempts.filter(attempt => attempt.method !== 'operator_internal_search').map(attempt => attempt.url))],
+    recoveredPath: simplifiedSearchMatched ? discoveryAttempts.find(attempt => attempt.method === 'operator_internal_search_fallback' && attempt.status === 'success' && attempt.itemsFound > 0)?.url || null : null,
+    recovered: simplifiedSearchMatched > 0,
+    recoveryReason: simplifiedSearchMatched ? 'full_search_term_missed_simplified_official_search_succeeded' : null,
+    discoveryAttempts: discoveryAttempts.slice(0, 300),
+    discoveredCount: officialItemsFound,
+    detailPagesChecked: detailMatched,
+    imageCandidatesFound: results.reduce((sum, row) => sum + (row.officialImageUrls?.length || 0), 0),
+    menuCandidatesFound: results.reduce((sum, row) => sum + (row.menus?.length || 0), 0),
+    finalStatus,
+    status: finalStatus,
+    message: officialItemsFound ? `${officialItemsFound}건 공식 행사 확인${simplifiedSearchMatched ? ` · ${simplifiedSearchMatched}건 fallback 복구` : ''}`
+      : unresolved ? '공식 검색 및 상세 경로 응답 미확인' : '공식 응답은 받았지만 현재 행사 존재 여부 미확정'
+  }, enumerable: false });
   return results;
 }

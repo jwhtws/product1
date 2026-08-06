@@ -1,5 +1,8 @@
 import { createHash } from 'node:crypto';
 import { parsePopupVenuePayload, SourceStructureChangedError } from '../parsers/popup-venue-parser.mjs';
+import {
+  discoveryAttempt, inspectOfficialDocument, officialUrl, recoveryMetadata
+} from '../lib/official-source-discovery.mjs';
 
 export const BATCH3_POPUP_VENUES = Object.freeze([
   {
@@ -29,14 +32,20 @@ export const BATCH3_POPUP_VENUES = Object.freeze([
   {
     id: 'amore-seongsu', name: '아모레성수', venue: '아모레성수', region: '서울특별시',
     eventUrl: 'https://www.amore-seongsu.com/', marker: /아모레성수/u,
-    detailPattern: /\/store\/(?:news|display)/u,
-    seedUrls: []
+    detailPattern: /\/(?:store|event|program|news|display|contents?)\//u,
+    seedUrls: [],
+    fallbackUrls: ['https://www.amoremall.com/kr/ko/store/display?storeCode=001'],
+    discoveryUrls: ['https://www.amoremall.com/robots.txt', 'https://www.amoremall.com/sitemap.xml'],
+    allowedHosts: ['amore-seongsu.com', 'amoremall.com']
   },
   {
     id: 'ktng-sangsangmadang', name: 'KT&G 상상마당', venue: 'KT&G 상상마당', region: '전국',
     eventUrl: 'https://www.sangsangmadang.com/', marker: /상상마당/u,
-    detailPattern: /\/display\/detail\/\d+/u,
-    seedUrls: ['https://www.sangsangmadang.com/display/detail/3099']
+    detailPattern: /\/(?:display|event|program|search)\/(?:detail\/\d+|[^?#]+)/u,
+    seedUrls: ['https://www.sangsangmadang.com/display/detail/3099'],
+    fallbackUrls: ['https://www.sangsangmadang.com/display', 'https://www.sangsangmadang.com/search?query=%ED%8C%9D%EC%97%85'],
+    discoveryUrls: ['https://www.sangsangmadang.com/robots.txt', 'https://www.sangsangmadang.com/sitemap.xml'],
+    allowedHosts: ['sangsangmadang.com']
   },
   {
     id: 'hyundai-card-storage', name: '현대카드 STORAGE', venue: '현대카드 STORAGE', region: '서울특별시',
@@ -84,21 +93,18 @@ function dateRange(text) {
   };
 }
 
-function imageFrom(html, sourceUrl) {
-  const raw = decode(html.match(/<meta\b[^>]*property=["']og:image["'][^>]*content=["']([^"']+)["']/iu)?.[1] || '');
-  try { return raw ? new URL(raw, sourceUrl).href : null; } catch { return null; }
-}
-
 function sourceItemId(sourceUrl) {
   const url = new URL(sourceUrl);
   const explicit = url.searchParams.get('idx') || url.searchParams.get('bIdx') || url.searchParams.get('contentId');
   return explicit || createHash('sha256').update(url.href).digest('hex').slice(0, 16);
 }
 
-export function extractPopupVenueItem(html, sourceUrl) {
+export function extractPopupVenueItem(html, sourceUrl, { allowedHosts = [new URL(sourceUrl).hostname] } = {}) {
   const title = titleFrom(html);
   const description = clean(html);
   const dates = dateRange(description);
+  const inspection = inspectOfficialDocument(html, sourceUrl, { allowedHosts });
+  const menus = inspection.menuCandidates.map(menu => ({ ...menu, sourceUrl, sourceName: new URL(sourceUrl).hostname }));
   return {
     sourceItemId: sourceItemId(sourceUrl),
     title,
@@ -106,26 +112,33 @@ export function extractPopupVenueItem(html, sourceUrl) {
     startDate: dates?.startDate || '',
     endDate: dates?.endDate || '',
     sourceUrl,
-    imageUrl: imageFrom(html, sourceUrl)
+    imageUrl: inspection.imageCandidates[0] || null,
+    officialImageUrls: inspection.imageCandidates.slice(0, 12),
+    menus,
+    inspection
   };
 }
 
 function discoverDetailUrls(html, config) {
-  const officialHost = new URL(config.eventUrl).hostname.replace(/^www\./u, '');
-  const isOfficial = value => {
-    try { return new URL(value, config.eventUrl).hostname.replace(/^www\./u, '') === officialHost; } catch { return false; }
-  };
-  const urls = new Set(config.seedUrls.filter(isOfficial));
+  const allowedHosts = config.allowedHosts || [new URL(config.eventUrl).hostname];
+  const urls = new Set(config.seedUrls.map(value => officialUrl(value, config.eventUrl, allowedHosts)).filter(Boolean));
   for (const match of String(html).matchAll(/<a\b[^>]*href=["']([^"'#]+)["'][^>]*>([\s\S]*?)<\/a>/giu)) {
-    try {
-      const url = new URL(decode(match[1]), config.eventUrl);
-      if (url.protocol === 'https:' && isOfficial(url.href) && config.detailPattern.test(url.href) && DISCOVERY_SIGNAL.test(clean(match[2]))) urls.add(url.href);
-    } catch {}
+    const url = officialUrl(match[1], config.eventUrl, allowedHosts);
+    if (url && config.detailPattern.test(url) && DISCOVERY_SIGNAL.test(`${clean(match[2])} ${url}`)) urls.add(url);
+  }
+  for (const match of String(html).matchAll(/["'](?:detailUrl|eventUrl|href|link|url)["']\s*:\s*["']([^"']+)["']/giu)) {
+    const url = officialUrl(match[1], config.eventUrl, allowedHosts);
+    const context = clean(String(html).slice(Math.max(0, match.index - 500), match.index + 500));
+    if (url && config.detailPattern.test(url) && DISCOVERY_SIGNAL.test(`${context} ${url}`)) urls.add(url);
+  }
+  for (const match of String(html).matchAll(/<loc>\s*([^<]+)\s*<\/loc>/giu)) {
+    const url = officialUrl(match[1], config.eventUrl, allowedHosts);
+    if (url && config.detailPattern.test(url) && DISCOVERY_SIGNAL.test(url)) urls.add(url);
   }
   return [...urls].slice(0, 30);
 }
 
-export async function collectPopupVenue(config, { fetchHtml, today }) {
+export async function collectPopupVenue(config, { fetchHtml, fetchPage, today }) {
   if (config.suspendedReason) {
     return {
       rows: [],
@@ -133,23 +146,75 @@ export async function collectPopupVenue(config, { fetchHtml, today }) {
       sourceHealth: { status: 'unverified', message: config.suspendedReason, checkedAt: new Date().toISOString() }
     };
   }
-  const indexHtml = await fetchHtml(config.eventUrl);
-  if (!config.marker.test(clean(indexHtml))) {
-    throw new SourceStructureChangedError(config.id, '공식 목록 페이지 식별자가 없습니다');
+  const allowedHosts = config.allowedHosts || [new URL(config.eventUrl).hostname];
+  const paths = [...new Set([config.eventUrl, ...(config.fallbackUrls || []), ...(config.discoveryUrls || [])])];
+  const attempts = [];
+  const inspections = [];
+  const documents = new Map();
+  const load = async (url, method) => {
+    try {
+      const result = fetchPage ? await fetchPage(url) : { text: await fetchHtml(url), response: null, diagnostic: {} };
+      const html = String(result.text || '');
+      const inspection = inspectOfficialDocument(html, result.response?.url || url, { allowedHosts });
+      documents.set(url, html); inspections.push(inspection);
+      attempts.push(discoveryAttempt({ method, url, status: inspection.hasPopupSignal || inspection.detailUrls.length ? 'success' : 'empty', response: result.response, itemsFound: inspection.detailUrls.length, detail: { ...result.diagnostic, responseSize: Buffer.byteLength(html) } }));
+      return html;
+    } catch (error) {
+      attempts.push(discoveryAttempt({ method, url, status: error?.name === 'BlockPageError' ? 'blocked' : 'failed', errorType: error?.errorType || error?.name || 'request_failed', detail: { ...error, timeout: Boolean(error?.timeout), retryCount: error?.retryCount || 0 } }));
+      return '';
+    }
+  };
+  for (const [index, url] of paths.entries()) {
+    const method = index === 0 ? 'official_list_html' : /robots\.txt(?:\?|$)/iu.test(url) ? 'robots'
+      : /sitemap/iu.test(url) ? 'sitemap' : 'official_fallback_html';
+    await load(url, method);
   }
-  const detailUrls = discoverDetailUrls(indexHtml, config);
+  const discoveredResources = [];
+  for (const [url, html] of documents) {
+    const inspection = inspectOfficialDocument(html, url, { allowedHosts });
+    for (const candidate of inspection.apiCandidates.slice(0, 5)) discoveredResources.push({ url: candidate.url, method: 'official_api' });
+    for (const candidate of inspection.sitemapCandidates.slice(0, 5)) discoveredResources.push({ url: candidate, method: 'sitemap' });
+    for (const match of html.matchAll(/^\s*Sitemap:\s*(\S+)/gimu)) {
+      const candidate = officialUrl(match[1], url, allowedHosts);
+      if (candidate) discoveredResources.push({ url: candidate, method: 'sitemap' });
+    }
+  }
+  for (const resource of [...new Map(discoveredResources.map(item => [item.url, item])).values()].slice(0, 10)) {
+    if (!documents.has(resource.url)) await load(resource.url, resource.method);
+  }
+  const detailUrls = new Set(config.seedUrls.map(value => officialUrl(value, config.eventUrl, allowedHosts)).filter(Boolean));
+  for (const [url, html] of documents) {
+    for (const detailUrl of discoverDetailUrls(html, { ...config, eventUrl: url })) detailUrls.add(detailUrl);
+    const inspection = inspectOfficialDocument(html, url, { allowedHosts });
+    for (const detailUrl of inspection.detailUrls) if (config.detailPattern.test(detailUrl)) detailUrls.add(detailUrl);
+  }
   const items = [];
   for (const url of detailUrls) {
-    const html = url === config.eventUrl ? indexHtml : await fetchHtml(url);
-    items.push(extractPopupVenueItem(html, url));
+    const html = documents.get(url) || await load(url, 'official_detail_html');
+    if (!html) continue;
+    const item = extractPopupVenueItem(html, url, { allowedHosts });
+    inspections.push(item.inspection);
+    items.push(item);
   }
-  return parsePopupVenuePayload({
+  const parsed = parsePopupVenuePayload({
     sourceId: config.id,
     sourceName: config.name,
     venue: config.venue,
     region: config.region,
     items
   }, { today });
+  const recovery = recoveryMetadata({
+    sourceId: config.id, primaryPath: config.eventUrl, fallbackPaths: [...paths.slice(1), ...discoveredResources.map(item => item.url)], attempts,
+    rows: parsed.rows, detailPagesChecked: detailUrls.size, inspection: inspections
+  });
+  return {
+    ...parsed,
+    sourceHealth: {
+      ...parsed.sourceHealth, ...recovery,
+      status: recovery.finalStatus,
+      message: parsed.rows.length ? `${parsed.rows.length}건 파싱${recovery.recovered ? ' · fallback 복구' : ''}` : '공식 대체 경로 확인 후도 존재 여부 미확정'
+    }
+  };
 }
 
 export function createBatch3Collectors(options) {

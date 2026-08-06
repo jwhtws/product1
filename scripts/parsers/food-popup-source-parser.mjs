@@ -36,6 +36,6 @@ export function parseFixturePayload(payload, { today = '2026-08-04' } = {}) {
       rejectionReasons,
       duplicateSourceItemCount: rejectionReasons.duplicate_source_item || 0
     },
-    sourceHealth: { status: rows.length ? 'success_with_items' : 'success_empty', message: rows.length ? `${rows.length}건 파싱` : '정상 응답, 승인 항목 없음', checkedAt: new Date().toISOString() }
+    sourceHealth: { status: rows.length ? 'success_with_items' : payload.verifiedEmptyEvidence ? 'verified_empty' : 'search_incomplete', message: rows.length ? `${rows.length}건 파싱` : payload.verifiedEmptyEvidence ? '공식 목록에 현재 행사 없음 확인' : '0건이지만 대체 공식 경로 확인 미완료', checkedAt: new Date().toISOString() }
   };
 }

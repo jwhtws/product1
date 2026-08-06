@@ -64,6 +64,8 @@ export function parsePopupVenuePayload(payload, { today = new Intl.DateTimeForma
       startDate: item.startDate,
       endDate: item.endDate,
       imageUrl: item.imageUrl || null,
+      ...(Array.isArray(item.officialImageUrls) && item.officialImageUrls.length ? { officialImageUrls: item.officialImageUrls.slice(0, 12) } : {}),
+      ...(Array.isArray(item.menus) && item.menus.length ? { menus: item.menus, menuItems: item.menus.map(menu => menu.name), menuSource: 'official-detail' } : {}),
       sourceName: payload.sourceName,
       sourceUrl: item.sourceUrl,
       sourceGrade: 'official',
@@ -76,8 +78,8 @@ export function parsePopupVenuePayload(payload, { today = new Intl.DateTimeForma
     rows,
     stats,
     sourceHealth: {
-      status: rows.length ? 'success_with_items' : 'success_empty',
-      message: rows.length ? `${rows.length}건 파싱` : '정상 응답, 승인 항목 없음',
+      status: rows.length ? 'success_with_items' : 'search_incomplete',
+      message: rows.length ? `${rows.length}건 파싱` : '정상 응답이지만 현재 행사 없음을 확정할 근거 부족',
       checkedAt: new Date().toISOString()
     }
   };

@@ -8,7 +8,7 @@ import { createBatch3Collectors } from './collectors/batch3-popup-venues.mjs';
 import { createVerifiedVenueCollectors } from './collectors/batch3-verified-venues.mjs';
 import { createBatch4BrandCollectors } from './collectors/batch4-brand-newsrooms.mjs';
 import { collectTimesSquareSitemap } from './collectors/times-square-sitemap.mjs';
-import { assertNotBlockedPage, hardenedFetch } from './lib/hardened-fetch.mjs';
+import { assertNotBlockedPage, BlockPageError, hardenedFetch } from './lib/hardened-fetch.mjs';
 import {
   createCollectorStats,
   mergeCollectorStats,
@@ -82,7 +82,7 @@ async function fetchJson(url) {
 }
 
 async function fetchResilient(url, options = {}) {
-  const { attempts = 3, timeoutMs = 25_000, curlMaxTime = 25, ...fetchOptions } = options;
+  const { attempts = 3, timeoutMs = 20_000, curlMaxTime = 20, ...fetchOptions } = options;
   let lastError;
   for (let attempt = 0; attempt < attempts; attempt += 1) {
     try {
@@ -97,20 +97,85 @@ async function fetchResilient(url, options = {}) {
         },
         timeoutMs, retries: 0, requestIntervalMs: 100
       });
-      if (response.ok || [401, 403, 404].includes(response.status)) return response;
+      if (response.ok || [400, 401, 403, 404].includes(response.status)) {
+        if (!response.requestMeta) Object.defineProperty(response, 'requestMeta', { value: {
+          url, finalUrl: response.url || url, httpStatus: response.status, retryCount: attempt,
+          contentType: response.headers.get('content-type') || null,
+          responseSize: Number(response.headers.get('content-length') || 0) || null,
+          timeout: false, occurredAt: new Date().toISOString()
+        }, enumerable: false });
+        return response;
+      }
       lastError = new Error(`${url} 응답 ${response.status}`);
-    } catch (error) { lastError = error; }
-    await new Promise(resolve => setTimeout(resolve, 500 * (attempt + 1)));
+      const retryAfter = response.status === 429 ? response.headers.get('retry-after') : '';
+      if (retryAfter) {
+        const seconds = Number(retryAfter);
+        const delay = Number.isFinite(seconds) ? seconds * 1_000 : Math.max(0, Date.parse(retryAfter) - Date.now());
+        await new Promise(resolve => setTimeout(resolve, Math.min(20_000, delay)));
+      }
+    } catch (error) {
+      lastError = error;
+      if ([400, 401, 403, 404].includes(error?.httpStatus)) {
+        const response = new Response('', { status: error.httpStatus });
+        Object.defineProperty(response, 'requestMeta', { value: {
+          url, finalUrl: error.finalUrl || url, httpStatus: error.httpStatus, retryCount: attempt,
+          contentType: error.contentType || null, responseSize: error.responseSize || null,
+          timeout: false, occurredAt: new Date().toISOString()
+        }, enumerable: false });
+        return response;
+      }
+    }
+    if (attempt + 1 < attempts) await new Promise(resolve => setTimeout(resolve, Math.min(4_000, 500 * 2 ** attempt)));
   }
   // Some Korean retail hosts reject Node's TLS fingerprint while allowing a
   // normal browser-like curl request. Use curl only as a bounded fallback;
   // no proxy, login, captcha, or robots bypass is performed.
   try {
     const result = await execFileAsync('curl', ['-L', '--fail', '--silent', '--show-error', '--max-time', String(curlMaxTime), '-A', 'mukdang-popup-indexer/1.0 (+https://mukdang.com)', url], { maxBuffer: 8 * 1024 * 1024 });
-    return new Response(result.stdout, { status: 200, headers: { 'content-type': 'text/html; charset=utf-8' } });
+    const response = new Response(result.stdout, { status: 200, headers: { 'content-type': 'text/html; charset=utf-8', 'content-length': String(Buffer.byteLength(result.stdout)) } });
+    Object.defineProperty(response, 'requestMeta', { value: {
+      url, finalUrl: url, httpStatus: 200, retryCount: attempts, contentType: 'text/html; charset=utf-8',
+      responseSize: Buffer.byteLength(result.stdout), timeout: false, occurredAt: new Date().toISOString(), transport: 'curl'
+    }, enumerable: false });
+    return response;
   } catch (error) {
     throw lastError || error || new Error(`${url} 요청 실패`);
   }
+}
+
+const officialPageCache = new Map();
+async function fetchOfficialPage(url, options = {}) {
+  const cacheKey = `${url}\n${JSON.stringify(options.headers || {})}`;
+  if (officialPageCache.has(cacheKey)) return officialPageCache.get(cacheKey);
+  const pending = (async () => {
+    const response = await fetchResilient(url, options);
+    if (!response.ok) {
+      const error = response.status === 403
+        ? new BlockPageError(`${url} 응답 403`)
+        : new Error(`${url} 응답 ${response.status}`);
+      Object.assign(error, response.requestMeta || {}, { httpStatus: response.status, finalUrl: response.url || url, errorType: `http_${response.status}` });
+      throw error;
+    }
+    const text = await response.text();
+    const responseSize = Buffer.byteLength(text);
+    if (responseSize > 8 * 1024 * 1024) {
+      const error = new Error(`${new URL(url).origin} 응답 크기 제한 초과`);
+      Object.assign(error, response.requestMeta || {}, {
+        name: 'ResponseSizeError', responseSize, finalUrl: response.url || url, httpStatus: response.status
+      });
+      throw error;
+    }
+    try { assertNotBlockedPage(text, new URL(url).hostname); }
+    catch (error) { Object.assign(error, response.requestMeta || {}, { blockedPageDetected: true, responseSize }); throw error; }
+    return {
+      text,
+      response,
+      diagnostic: { ...(response.requestMeta || {}), finalUrl: response.url || response.requestMeta?.finalUrl || url, responseSize }
+    };
+  })();
+  officialPageCache.set(cacheKey, pending);
+  try { return await pending; }
+  catch (error) { officialPageCache.delete(cacheKey); throw error; }
 }
 
 function uniqueMenus(menus) {
@@ -655,6 +720,7 @@ const collectSitemapChains = () => collectFromOfficialSitemaps('공식 쇼핑몰
 
 const collectTimesSquare = () => collectTimesSquareSitemap({
   today,
+  fetchPage: fetchOfficialPage,
   fetchText: async url => {
     const response = await fetchResilient(url);
     if (!response.ok) throw new Error(`${url} 응답 ${response.status}`);
@@ -907,6 +973,10 @@ async function collectLotteOfficialBlog() {
 
 async function collectCuratedOfficial() {
   const curatedRows = JSON.parse(await readFile('data/curated-popups.json', 'utf8'));
+  if (retailerScope === 'lotte-gwangbok') {
+    const gwangbokRows = curatedRows.filter(row => Array.isArray(row) ? row[2] === '롯데백화점 광복점' : row.venue === '롯데백화점 광복점');
+    return collectLottePopups({ rows: gwangbokRows, previous, today, fetchResilient, clean, decodeHtml, uniqueMenus, normalizedText, fast: true });
+  }
   let discoveredRows = [];
   try {
     discoveredRows = await discoverLottePopups({
@@ -939,6 +1009,7 @@ const allCollectors = [
   ['롯데백화점·롯데아울렛·롯데몰', collectCuratedOfficial],
   ...createBatch3Collectors({
     today,
+    fetchPage: fetchOfficialPage,
     fetchHtml: async url => {
       const response = await fetchResilient(url);
       if (!response.ok) throw new Error(`${url} 응답 ${response.status}`);

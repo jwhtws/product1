@@ -16,7 +16,8 @@ export function runSourceParserContract(name) {
     assert.equal(result.stats.duplicateSourceItemCount,1);
     assert.deepEqual(result.stats.rejectionReasons,{duplicate_source_item:1,expired:1,not_food:1,not_popup:1,invalid_date:1});
     assert.equal(result.sourceHealth.status,'success_with_items');
-    assert.equal(parseFixturePayload({...fixture,...fixture.emptyList}).sourceHealth.status,'success_empty');
+    assert.equal(parseFixturePayload({...fixture,...fixture.emptyList}).sourceHealth.status,'search_incomplete');
+    assert.equal(parseFixturePayload({...fixture,...fixture.emptyList,verifiedEmptyEvidence:true}).sourceHealth.status,'verified_empty');
     assert.throws(()=>parseFixturePayload({sourceId:fixture.sourceId,...fixture.malformed}),SourceStructureChangedError);
   });
 }

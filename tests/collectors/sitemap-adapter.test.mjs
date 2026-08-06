@@ -21,18 +21,40 @@ test('타임스퀘어: 후보 상세만 제한 fetch하고 필드를 파싱한�
   const calls=[];
   const fetchText=async url=>{
     calls.push(url);
+    if(url==='https://www.timessquare.co.kr/')return '<html><title>타임스퀘어 이벤트</title></html>';
+    if(url==='https://www.timessquare.co.kr/robots.txt')return 'Sitemap: https://www.timessquare.co.kr/sitemap.xml';
     if(url===f.metadata.officialUrl)return f.validSitemapIndex;
     if(url===child)return f.validUrlset;
+    if(url==='https://www.timessquare.co.kr/sitemap.xml?p_l_id=894&layoutUuid=event')return '<urlset></urlset>';
     if(url===f.expected.sourceUrl)return f.validDetail;
     throw new Error(`예상하지 않은 fetch: ${url}`);
   };
   const result=await collectTimesSquareSitemap({fetchText,today:'2026-08-05'});
   assert.equal(result.rows.length,1);
   assert.equal(result.rows[0].venue,'타임스퀘어');
-  assert.equal(calls.length,3);
+  assert.ok(calls.length>=5);
+  assert.ok(result.sourceHealth.discoveryAttempts.length>=5);
 });
 test('타임스퀘어: 정상 빈 urlset과 구조 변경을 구분한다', async () => {
   const empty=await collectTimesSquareSitemap({fetchText:async()=>'<urlset></urlset>',today:'2026-08-05'});
-  assert.equal(empty.sourceHealth.status,'success_empty');
-  await assert.rejects(()=>collectTimesSquareSitemap({fetchText:async()=>'<html>changed</html>',today:'2026-08-05'}),/sitemapindex\/urlset/u);
+  assert.equal(empty.sourceHealth.finalStatus,'verified_empty');
+  const changed=await collectTimesSquareSitemap({fetchText:async()=>'<html>changed</html>',today:'2026-08-05'});
+  assert.equal(changed.sourceHealth.finalStatus,'unresolved');
+});
+
+test('타임스퀘어: 기본 sitemap 404 후 공식 Liferay sitemap fallback으로 복구한다', async () => {
+  const f = JSON.parse(await readFile(new URL('../fixtures/food-popups/sitemap-adapter.json', import.meta.url)));
+  const fallback='https://www.timessquare.co.kr/sitemap.xml?p_l_id=894&layoutUuid=event';
+  const fetchText=async url=>{
+    if(url==='https://www.timessquare.co.kr/')return '<html><title>타임스퀘어</title></html>';
+    if(url==='https://www.timessquare.co.kr/robots.txt')return '';
+    if(url==='https://www.timessquare.co.kr/sitemap.xml')throw Object.assign(new Error('404'),{httpStatus:404,errorType:'http_404'});
+    if(url===fallback)return f.validUrlset;
+    if(url===f.expected.sourceUrl)return f.validDetail;
+    throw new Error(`unexpected ${url}`);
+  };
+  const result=await collectTimesSquareSitemap({fetchText,today:'2026-08-05'});
+  assert.equal(result.rows.length,1);
+  assert.equal(result.sourceHealth.finalStatus,'recovered');
+  assert.equal(result.sourceHealth.recoveredPath,fallback);
 });

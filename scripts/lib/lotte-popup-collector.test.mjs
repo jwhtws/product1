@@ -154,3 +154,26 @@ test('광복점 수동 안전망 검색도 공식 지점 코드 0333으로 교�
   assert.equal(rows[0].contentSearch.status, 'search_incomplete');
   assert.ok(rows[0].contentSearch.checkedMethods.includes('operator_internal_search'));
 });
+
+test('광복점 퐁신당은 전체 검색 미적중 후 브랜드 검색·상세에서 공식 이미지와 메뉴를 복구한다', async () => {
+  const newsId='SNM00000000000557777';
+  const hero=`https://minfo.lotteshopping.com/content/news/202608/${newsId}/hero.jpg`;
+  const requested=[];
+  const fetchResilient=async url=>{
+    requested.push(url);
+    const parsed=new URL(url);
+    if(parsed.pathname.includes('shpgnewsDetail')) return new Response(`<html><meta property="og:image" content="${hero}"><h1>퐁신당 Pop-Up</h1><p>롯데백화점 광복점 2026.07.24 ~ 2026.08.06</p><li class="menu-item">퐁신 카스테라 8,000원</li></html>`,{status:200});
+    if(parsed.searchParams.get('searchTerm')==='퐁신당') return new Response(card({newsId,title:'퐁신당 Pop-Up',venue:'백화점 광복점 B1 식품관',dates:'7.24 ~ 8.6'}),{status:200});
+    return new Response('<html><title>검색 결과</title></html>',{status:200});
+  };
+  const rows=await collectLottePopups({
+    rows:[['lotte:gwangbok:pongsindang','퐁신당 Pop-Up','롯데백화점 광복점','2026-07-24','2026-08-06','https://m.lotteshopping.com/search/searchResult?cstrCd=0333&searchTerm=-']],
+    previous:[],today:'2026-08-05',fetchResilient,clean,decodeHtml,uniqueMenus,normalizedText,fast:true
+  });
+  assert.equal(rows[0].imageUrl,hero);
+  assert.equal(rows[0].menus[0].name,'퐁신 카스테라');
+  assert.equal(rows[0].menus[0].price,'8,000원');
+  assert.equal(rows[0].contentSearch.checkedOfficialDetail,true);
+  assert.equal(rows.sourceHealth.finalStatus,'recovered');
+  assert.ok(requested.some(url=>new URL(url).searchParams.get('searchTerm')==='퐁신당'));
+});

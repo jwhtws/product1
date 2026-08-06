@@ -27,7 +27,7 @@ export function runBatch3VenueContract(sourceId, fixtureName = sourceId) {
     assert.ok(result.stats.fetchedCount >= result.rows.length);
     assert.deepEqual(result.stats.rejectionReasons, { duplicate_source_item: 1, expired: 1, not_food: 1, not_popup: 1, invalid_date: 1, structure_changed: 1 });
     assert.equal(result.stats.duplicateSourceItemCount, 1);
-    assert.equal(parseBatch3VenuePayload({ ...fixture.payload, items: [] }, { today: '2026-08-05' }).sourceHealth.status, 'success_empty');
+    assert.equal(parseBatch3VenuePayload({ ...fixture.payload, items: [] }, { today: '2026-08-05' }).sourceHealth.status, 'search_incomplete');
     assert.throws(() => parseBatch3VenuePayload(fixture.structureChanged), SourceStructureChangedError);
   });
 }

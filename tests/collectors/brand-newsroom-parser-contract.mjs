@@ -15,7 +15,7 @@ export function runBrandNewsroomParserContract(sourceId) {
     assert.equal(valid.rows[0].category, 'food-popup');
     assert.equal(valid.sourceHealth.status, 'success_with_items');
     assert.deepEqual(parse(fixture.empty.items).stats.rejectionReasons, {});
-    assert.equal(parse(fixture.empty.items).sourceHealth.status, 'success_empty');
+    assert.equal(parse(fixture.empty.items).sourceHealth.status, 'search_incomplete');
     assert.deepEqual(parse(fixture.expired.items).stats.rejectionReasons, { expired: 1 });
     const duplicate = parse(fixture.duplicate.items);
     assert.equal(duplicate.rows.length, 1);

@@ -26,7 +26,7 @@ export function mergeCollectorStats(target, source = {}) {
 
 export function normalizeCollectorResult(result) {
   if (Array.isArray(result)) {
-    return { rows: result, stats: { discoveredCount: result.length, fetchedCount: result.length, rejectionReasons: {}, duplicateSourceItemCount: 0 }, sourceHealth: null };
+    return { rows: result, stats: { discoveredCount: result.length, fetchedCount: result.length, rejectionReasons: {}, duplicateSourceItemCount: 0 }, sourceHealth: result.sourceHealth || null };
   }
   const rows = Array.isArray(result?.rows) ? result.rows : [];
   return {
@@ -99,6 +99,10 @@ export function buildPopupRunReport({ runId = randomUUID(), scope, startedAt, fi
     }
     const errors = run.error ? [sanitizeReportError(run.error)] : [];
     const health = sourceHealthFor({ ...run, acceptedCount, rejectedCount, duplicateCount, errorCount: errors.length, rejectionReasons }, historyBySource[run.source] || []);
+    const recovery = run.sourceHealth ? Object.fromEntries(Object.entries(run.sourceHealth).filter(([key]) => [
+      'sourceId', 'primaryPath', 'fallbackPathsTried', 'recoveredPath', 'recovered', 'recoveryReason',
+      'discoveryAttempts', 'detailPagesChecked', 'imageCandidatesFound', 'menuCandidatesFound', 'finalStatus'
+    ].includes(key))) : {};
     return {
       source: run.source,
       discoveredCount: Number.isFinite(run.stats?.discoveredCount) ? run.stats.discoveredCount : (run.rows || []).length,
@@ -111,7 +115,8 @@ export function buildPopupRunReport({ runId = randomUUID(), scope, startedAt, fi
       errors,
       startedAt: run.startedAt,
       finishedAt: run.finishedAt,
-      ...health
+      ...health,
+      ...recovery
     };
   });
   const sum = key => sources.reduce((total, source) => total + source[key], 0);

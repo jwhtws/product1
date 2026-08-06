@@ -57,10 +57,12 @@ export function parseBatch3VenuePayload(payload, { today = new Intl.DateTimeForm
       brand: item.brand || brandFromTitle(item.title), venue: item.venue || payload.venue, branch: item.branch || item.venue || payload.venue,
       venueType: payload.venueType || '쇼핑몰', address: item.address || payload.address || item.venue || payload.venue,
       startDate: item.startDate, endDate: item.endDate, imageUrl: item.imageUrl || '', sourceUrl: item.sourceUrl,
+      ...(Array.isArray(item.officialImageUrls) && item.officialImageUrls.length ? { officialImageUrls: item.officialImageUrls.slice(0, 12) } : {}),
+      ...(Array.isArray(item.menus) && item.menus.length ? { menus: item.menus, menuItems: item.menus.map(menu => menu.name), menuSource: 'official-detail' } : {}),
       sourceName: payload.sourceName, sourceGrade: 'official', category: 'food-popup', firstSeenAt: today, lastSeenAt: today
     });
   }
-  return { rows, stats, sourceHealth: { status: rows.length ? 'success_with_items' : 'success_empty', message: rows.length ? `${rows.length}건 파싱` : '정상 응답, 승인 항목 없음', checkedAt: new Date().toISOString() } };
+  return { rows, stats, sourceHealth: { status: rows.length ? 'success_with_items' : 'search_incomplete', message: rows.length ? `${rows.length}건 파싱` : '정상 응답이지만 현재 행사 없음을 확정할 근거 부족', checkedAt: new Date().toISOString() } };
 }
 
 export function parseIfcList(payload) {

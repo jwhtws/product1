@@ -16,7 +16,7 @@ test('Batch 3 신규 source는 전체 실행에 포함되고 unverified 후보�
   assert.ok(!names.includes('스퀘어원'));
 });
 test('부분 실행 report 대상은 선택 source 하나뿐이다',()=>{
-  for(const scope of ['premiumoutlets','ifc','doota']) assert.equal(selectCollectors(all,scope).length,1);
+  for(const scope of ['premiumoutlets','ifc','doota','times-square','amore-seongsu','ktng-sangsangmadang','lotte-gwangbok']) assert.equal(selectCollectors(all,scope).length,1);
 });
 test('Batch 4 검증 브랜드는 전체 실행과 source별 부분 실행에 연결된다',()=>{
   const scopes=['brand-cj-cheiljedang','brand-samyang-foods','brand-orion','brand-ediya','brand-pulmuone','brand-kyochon','brand-ottogi','brand-gongcha','brand-dongwon-fnb'];
