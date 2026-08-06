@@ -2093,7 +2093,9 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     const regionData = await regionsResponse.json(), previews = await previewsResponse.json();
     if (popupsResponse.ok) {
       const popupData = await popupsResponse.json();
-      state.popups = Array.isArray(popupData.popups) ? popupData.popups : [];
+      state.popups = Array.isArray(popupData.popups)
+        ? popupData.popups.filter(popup => !popup.publishStatus || popup.publishStatus === 'published')
+        : [];
       state.popupUpdatedAt = popupData.updatedAt;
       const popupRegions = [...new Set(state.popups.map(popupRegionName).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'ko'));
       popupRegions.forEach(region => {

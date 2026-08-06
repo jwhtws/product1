@@ -35,7 +35,9 @@ export function normalizeCollectorResult(result) {
       discoveredCount: Number.isFinite(result?.stats?.discoveredCount) ? result.stats.discoveredCount : rows.length,
       fetchedCount: Number.isFinite(result?.stats?.fetchedCount) ? result.stats.fetchedCount : rows.length,
       rejectionReasons: { ...(result?.stats?.rejectionReasons || {}) },
-      duplicateSourceItemCount: Number(result?.stats?.duplicateSourceItemCount || result?.stats?.rejectionReasons?.duplicate_source_item || 0)
+      duplicateSourceItemCount: Number(result?.stats?.duplicateSourceItemCount || result?.stats?.rejectionReasons?.duplicate_source_item || 0),
+      errorCount: Number(result?.stats?.errorCount || 0),
+      errors: Array.isArray(result?.stats?.errors) ? result.stats.errors : []
     },
     sourceHealth: result?.sourceHealth || null
   };
@@ -97,7 +99,12 @@ export function buildPopupRunReport({ runId = randomUUID(), scope, startedAt, fi
       } else if (winner.id !== normalized.id) duplicateCount += 1;
       else acceptedCount += 1;
     }
-    const errors = run.error ? [sanitizeReportError(run.error)] : [];
+    const errors = [
+      ...(run.error ? [sanitizeReportError(run.error)] : []),
+      ...(run.stats?.errors || []).map(error => sanitizeReportError(
+        error?.message || `${error?.errorType || 'request_failed'}${error?.httpStatus ? ` HTTP ${error.httpStatus}` : ''}${error?.url ? ` ${error.url}` : ''}`
+      ))
+    ];
     const health = sourceHealthFor({ ...run, acceptedCount, rejectedCount, duplicateCount, errorCount: errors.length, rejectionReasons }, historyBySource[run.source] || []);
     const recovery = run.sourceHealth ? Object.fromEntries(Object.entries(run.sourceHealth).filter(([key]) => [
       'sourceId', 'primaryPath', 'fallbackPathsTried', 'recoveredPath', 'recovered', 'recoveryReason',

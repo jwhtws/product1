@@ -42,6 +42,15 @@ try {
   });
   if (exitCode !== 0) process.exitCode = exitCode;
   else {
+    const cacheExitCode = await new Promise((resolve, reject) => {
+      const child = spawn(process.execPath, [
+        'scripts/cache-live-popup-images.mjs', `--input=${rawPath}`,
+        '--source-prefix=shinsegae-shopping:', '--source-folder=shinsegae'
+      ], { stdio: 'inherit' });
+      child.once('error', reject);
+      child.once('exit', code => resolve(code ?? 1));
+    });
+    if (cacheExitCode !== 0) throw new Error(`신세계 공식 이미지 로컬 캐시 실패: exit ${cacheExitCode}`);
     const audit = await runPopupContentAudit({
       inputPath: rawPath, outputPath: evaluatedPath, reviewPath, reportPath: auditPath,
       previousRows: currentPayload.popups || []

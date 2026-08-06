@@ -199,7 +199,7 @@ export function normalizeOfficialMenus(row) {
   for (const value of values) {
     const menu = typeof value === 'string' ? { name: value } : (value || {});
     const name = clean(menu.name || menu.title);
-    if (name.length < 2) continue;
+    if (!name) continue;
     const nameKey = normalizeKey(name);
     const copiedTitle = nameKey && nameKey === titleKey;
     const explicitEvidence = clean(menu.evidenceType || source);

@@ -216,8 +216,16 @@ function parseHyundaiMenus(html) {
     const block = figure[0];
     const name = decodeHtml(block.match(/<dd\b[^>]*class=["'][^"']*p_brandNm[^"']*["'][^>]*>([\s\S]*?)<\/dd>/iu)?.[1]
       || block.match(/<dd\b[^>]*class=["'][^"']*p_productNm[^"']*["'][^>]*>([\s\S]*?)<\/dd>/iu)?.[1]);
+    const description = decodeHtml(block.match(/<dd\b[^>]*class=["'][^"']*p_productNm[^"']*["'][^>]*>([\s\S]*?)<\/dd>/iu)?.[1]);
     const price = decodeHtml(block.match(/<dd\b[^>]*class=["'][^"']*p_productPrc[^"']*["'][^>]*>[\s\S]*?([\d,]+\s*원)[\s\S]*?<\/dd>/iu)?.[1]);
-    if (name && price) menus.push({ name, price });
+    const cleanedName = name.replace(/^[①②③④⑤⑥⑦⑧⑨⑩]\s*/u, '');
+    if (cleanedName) menus.push({
+      name: cleanedName,
+      price: price || '',
+      priceText: price || '가격 미공개',
+      description,
+      evidenceType: 'html'
+    });
   }
   return uniqueMenus(menus);
 }
@@ -419,6 +427,27 @@ async function shinsegaeDetailMenus(pageLink) {
   return parsePricedLines(menuText);
 }
 
+async function shinsegaeViewContent(sourceUrl) {
+  const response = await fetchResilient(sourceUrl);
+  if (!response.ok) return { menus: [], imageUrls: [] };
+  const html = await response.text();
+  const imageUrls = [...new Set([...html.matchAll(/background\s*:\s*url\(['"]?([^'")]+)["']?\)/giu)]
+    .map(match => new URL(match[1], sourceUrl).href)
+    .filter(url => /\/cms\d*\/[^?]+\.(?:jpe?g|png|webp)(?:\?|$)/iu.test(url)))].slice(0, 12);
+  const detailCopy = html.match(/class=["'][^"']*layout_first_copy[^"']*["'][^>]*>([\s\S]*?)<\/div>/iu)?.[1] || '';
+  const menuLine = detailCopy.split(/<br\s*\/?\s*>/iu)
+    .map(line => decodeHtml(line)).find(line => /대표메뉴/u.test(line))
+    ?.replace(/^.*?대표메뉴(?:\s*및\s*가격)?\s*:\s*/u, '') || '';
+  const menus = [];
+  for (const match of menuLine.matchAll(/(?:^|,\s*)(.+?)\s+([\d,]+\s*원)(?=\s*,|$)/gu)) {
+    menus.push({
+      name: clean(match[1]), price: clean(match[2]), priceText: clean(match[2]),
+      sourceUrl, sourceName: '신세계백화점 공식 쇼핑뉴스', evidenceType: 'html'
+    });
+  }
+  return { menus: uniqueMenus(menus), imageUrls };
+}
+
 async function collectShinsegaeShoppingNews() {
   const rows = [];
   const stats = createCollectorStats();
@@ -449,18 +478,27 @@ async function collectShinsegaeShoppingNews() {
       });
       const imagePath = String(card.imgUrl2 || card.imgUrl1 || '');
       let menus = [];
+      let detailImages = [];
       try {
         menus = await shinsegaeDetailMenus(pageLink);
       } catch {}
+      const sourceUrl = `https://www.shinsegae.com/shopping/view.do?${sourceParams}`;
+      try {
+        const detail = await shinsegaeViewContent(sourceUrl);
+        if (detail.menus.length) menus = detail.menus;
+        detailImages = detail.imageUrls;
+      } catch {}
+      const imageUrl = detailImages[0] || (imagePath.startsWith('http') ? imagePath : `https://www.shinsegae.com${imagePath}`);
       rows.push({
         id: `shinsegae-shopping:${storeCd}:${card.id}`,
         name: clean(card.title1), venue, venueType: '백화점',
         address: clean(`${roadAddress} · ${venue} ${card.viewNm || ''} ${card.floorNm || ''}`),
         startDate, endDate,
-        imageUrl: imagePath.startsWith('http') ? imagePath : `https://www.shinsegae.com${imagePath}`,
+        imageUrl,
         sourceName: '신세계백화점 공식 쇼핑뉴스',
-        sourceUrl: `https://www.shinsegae.com/shopping/view.do?${sourceParams}`,
+        sourceUrl,
         sourceGrade: 'official', firstSeenAt: today, lastSeenAt: today,
+        ...(detailImages.length ? { officialImageUrls: detailImages } : {}),
         ...(menus.length ? { menus, menuSource: 'official-detail' } : {})
       });
     }
@@ -613,10 +651,25 @@ async function collectElandRetail() {
 // rows when the page itself contains a popup/food keyword and an explicit date range.
 async function collectOfficialHtmlFeeds(sourceName, venueType, feeds) {
   const rows = [];
+  const stats = createCollectorStats();
+  stats.errors = [];
+  stats.errorCount = 0;
+  let successfulFeeds = 0;
+  let failedFeeds = 0;
+  let structureChangedFeeds = 0;
   for (const feed of feeds) {
     try {
       const response = await fetchResilient(feed.url);
-      if (!response.ok) continue;
+      if (!response.ok) {
+        failedFeeds += 1;
+        stats.errors.push({ url: feed.url, httpStatus: response.status, errorType: 'http_error' });
+        stats.errorCount += 1;
+        continue;
+      }
+      successfulFeeds += 1;
+      stats.fetchedCount += 1;
+      if (!/(?:event|news|notice|promotion)/iu.test(new URL(response.url).pathname)
+        && /(?:event|news|notice|promotion)/iu.test(new URL(feed.url).pathname)) structureChangedFeeds += 1;
       const html = await response.text();
       const blocks = [...html.matchAll(/<(?:article|li|tr)[^>]*>[\s\S]*?<\/(?:article|li|tr)>/gi)].map(match => match[0]);
       // A lot of current sites render cards with nested divs. The old
@@ -629,24 +682,40 @@ async function collectOfficialHtmlFeeds(sourceName, venueType, feeds) {
         blocks.push(html.slice(start, end));
       }
       for (const block of blocks) {
+        stats.discoveredCount += 1;
         const text = decodeHtml(block);
         // Official boards often call these "식품행사" or "시식" rather than
         // "팝업". Keep the source restriction, but accept an explicit food
         // event keyword so those branch-level notices are not discarded.
-        if (!popupWords.test(text) || !foodWords.test(text) || nonHumanFood.test(text)) continue;
+        if (!(popupWords.test(text) || /식품\s*행사|시식\s*행사/iu.test(text)) || !foodWords.test(text) || nonHumanFood.test(text)) {
+          recordCollectorRejection(stats, 'not_food_popup');
+          continue;
+        }
         const range = dateRange(text);
-        if (!range) continue;
+        if (!range) { recordCollectorRejection(stats, 'invalid_date'); continue; }
         const { startDate, endDate } = range;
-        if (new Date(`${endDate}T23:59:59+09:00`) < keepSince) continue;
+        if (new Date(`${endDate}T23:59:59+09:00`) < keepSince) { recordCollectorRejection(stats, 'expired'); continue; }
         const link = block.match(/href=["']([^"']+)["']/i)?.[1] || feed.url;
         const title = decodeHtml(block.match(/<(?:h[1-6]|strong|a)[^>]*>([\s\S]*?)<\/(?:h[1-6]|strong|a)>/i)?.[1]) || text.slice(0, 100);
-        if (title.length < 2) continue;
+        if (title.length < 2) { recordCollectorRejection(stats, 'missing_name'); continue; }
         const sourceUrl = link.startsWith('http') ? link : new URL(link, feed.url).href;
         rows.push({ id: `${feed.id}:${stableHash(`${sourceUrl}|${startDate}|${title}`)}`, name: title, venue: feed.venue, venueType, address: feed.venue, startDate, endDate, imageUrl: block.match(/<img[^>]+src=["']([^"']+)/i)?.[1] || '', sourceName, sourceUrl, sourceGrade: 'official', firstSeenAt: today, lastSeenAt: today });
       }
-    } catch (error) { console.warn(`${sourceName} ${feed.venue} 건너뜀: ${error.message}`); }
+    } catch (error) {
+      failedFeeds += 1;
+      stats.errorCount += 1;
+      stats.errors.push({ url: feed.url, errorType: error?.name === 'TimeoutError' ? 'timeout' : 'request_failed', message: error.message });
+      console.warn(`${sourceName} ${feed.venue} 건너뜀: ${error.message}`);
+    }
   }
-  return rows;
+  const sourceHealth = rows.length
+    ? { status: 'success_with_items', message: `${rows.length}건 수집`, checkedAt: new Date().toISOString() }
+    : successfulFeeds === 0
+      ? { status: 'request_failed', message: `공식 경로 ${failedFeeds}개 요청 실패`, checkedAt: new Date().toISOString() }
+      : structureChangedFeeds === successfulFeeds
+        ? { status: 'source_structure_changed', message: '공식 이벤트 경로가 일반 페이지로 변경됨', checkedAt: new Date().toISOString() }
+        : { status: 'success_empty', message: '공식 페이지 정상 응답, 현재 승인 가능한 푸드팝업 없음', checkedAt: new Date().toISOString() };
+  return { rows, stats, sourceHealth };
 }
 
 async function collectFromOfficialSitemaps(sourceName, venueType, domains) {
@@ -734,8 +803,8 @@ const ncFeeds = [
 ];
 const iparkFeeds = [['ipark:event', '아이파크몰 공식 이벤트', 'https://www.hdc-iparkmall.com/event', '아이파크몰 용산점']];
 const emartFeeds = [
-  ['emart:event', '이마트·트레이더스 공식 이벤트', 'https://store.emart.com/event/event.do', '이마트 전점'],
-  ['traders:event', '이마트·트레이더스 공식 이벤트', 'https://store.emart.com/event/traders.do', '트레이더스 전점'],
+  ['emart:event', '이마트·트레이더스 공식 이벤트', 'https://store.emart.com/news/event/progress_list.do', '이마트 전점'],
+  ['traders:event', '이마트·트레이더스 공식 이벤트', 'https://store.emart.com/news/event/progress_list.do', '트레이더스 전점'],
   ['emart:notice', '이마트 공식 공지사항', 'https://store.emart.com/news/notice_list.do', '이마트 전점']
 ];
 const lotteMartFeeds = [['lottemart:event', '롯데마트 공식 행사', 'https://company.lottemart.com/en/event_list.asp', '롯데마트 전점']];
@@ -780,8 +849,8 @@ function xmlText(block, tag) {
 }
 
 const akStores = [
-  ['01', '수원'], ['02', '분당'], ['03', '평택'], ['04', '원주'],
-  ['12', '금정'], ['13', '홍대'], ['14', '기흥'], ['15', '광명'], ['16', '금정'], ['17', '세종']
+  ['02', '수원'], ['03', '분당'], ['04', '평택'], ['05', '원주'],
+  ['11', '광명'], ['12', '금정'], ['51', '홍대'], ['52', '기흥'], ['53', '세종']
 ];
 
 const galleriaStores = [
@@ -823,23 +892,28 @@ async function collectGalleria() {
     }
   );
   const gwanggyoSchedules = [
-    ['c85958:yoodongbu', '유동부치아바타', '2026-07-31', '2026-08-13', 'c85958', 'gwanggyo-yoodongbu.jpg'],
-    ['c85958:longmadame', '롱마담 에그타르트', '2026-07-31', '2026-08-13', 'c85958', 'gwanggyo-longmadame.jpg'],
-    ['c85958:kickstaco', '킥스타코', '2026-07-31', '2026-08-06', 'c85958', 'gwanggyo-kickstaco.jpg'],
-    ['c85958:takonottaco', '타코낫타코', '2026-07-31', '2026-08-13', 'c85958', 'gwanggyo-takonottaco.jpg'],
-    ['c85957:ageujak', '떼구르르 베이커리(아그작케이크)', '2026-07-31', '2026-08-20', 'c85957', 'gwanggyo-ageujak.jpg'],
-    ['c85957:tdbd', '더데일리브레드(TDBD)', '2026-07-31', '2026-10-31', 'c85957', 'gwanggyo-tdbd.jpg'],
-    ['c85957:oneulmojji', '오늘모찌', '2026-07-17', '2026-10-31', 'c85957', 'gwanggyo-oneulmojji.jpg'],
-    ['c85957:hanwoomyeongga', '한우명가', '2026-07-10', '2026-08-06', 'c85957', 'gwanggyo-hanwoomyeongga.jpg']
+    ['c85958:yoodongbu', '유동부치아바타', '2026-07-31', '2026-08-13', 'c85958', 'gwanggyo-yoodongbu.jpg', '치아바타'],
+    ['c85958:longmadame', '롱마담 에그타르트', '2026-07-31', '2026-08-13', 'c85958', 'gwanggyo-longmadame.jpg', '에그타르트'],
+    ['c85958:kickstaco', '킥스타코', '2026-07-31', '2026-08-06', 'c85958', 'gwanggyo-kickstaco.jpg', '치미창가'],
+    ['c85958:takonottaco', '타코낫타코', '2026-07-31', '2026-08-13', 'c85958', 'gwanggyo-takonottaco.jpg', '한국식 퓨전 타코'],
+    ['c85957:ageujak', '떼구르르 베이커리(아그작케이크)', '2026-07-31', '2026-08-20', 'c85957', 'gwanggyo-ageujak.jpg', '아그작 케이크'],
+    ['c85957:tdbd', '더데일리브레드(TDBD)', '2026-07-31', '2026-10-31', 'c85957', 'gwanggyo-tdbd.jpg', '식빵'],
+    ['c85957:oneulmojji', '오늘모찌', '2026-07-17', '2026-10-31', 'c85957', 'gwanggyo-oneulmojji.jpg', '과일 통찹쌀떡'],
+    ['c85957:hanwoomyeongga', '한우명가', '2026-07-10', '2026-08-06', 'c85957', 'gwanggyo-hanwoomyeongga.jpg', '한우 스테이크빵']
   ];
-  for (const [key, name, startDate, endDate, cardId, imageName] of gwanggyoSchedules) {
+  for (const [key, name, startDate, endDate, cardId, imageName, productName] of gwanggyoSchedules) {
     const sourceUrl = `https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/${cardId}?qCategory=PRODUCT_EVENT`;
     const imageUrl = `https://product1-84t.pages.dev/assets/popups/galleria/${imageName}`;
     rows.push({
       id: `galleria:gwanggyo:${key}`, name, venue: '갤러리아 광교', venueType: '백화점',
       address: '경기도 수원시 영통구 광교중앙로 124 · 갤러리아 광교 B1F GOURMET494',
       startDate, endDate, imageUrl, officialImageUrls: [imageUrl], sourceName: '갤러리아 공식 쇼핑뉴스',
-      sourceUrl, sourceGrade: 'official', firstSeenAt: today, lastSeenAt: today
+      sourceUrl, sourceGrade: 'official', firstSeenAt: today, lastSeenAt: today,
+      menus: [{
+        name: productName, price: '', priceText: '가격 미공개', sourceUrl,
+        sourceName: '갤러리아 공식 쇼핑뉴스', evidenceType: 'official_image'
+      }],
+      menuSource: 'official-image'
     });
   }
   stats.discoveredCount = rows.length;
@@ -1249,16 +1323,32 @@ const refreshedIdRules = [
 const fulfilledCollectorNames = new Set(collectors
   .filter((_collector, index) => settled[index].status === 'fulfilled' && settled[index].value.length)
   .map(([name]) => name));
-const retainedPrevious = previous.filter(row => !refreshedIdRules.some(([collectorName, pattern]) =>
-  fulfilledCollectorNames.has(collectorName) && pattern.test(row.id) && !collectedIds.has(row.id)
-));
+// A collector list can omit a still-valid card because of pagination, search
+// ranking or an upstream partial response. Popups are historical records, so
+// absence from one run is not deletion evidence; status recalculation retires
+// them after endDate instead.
+const retainedPrevious = previous;
 const merged = new Map(retainedPrevious
   .filter(row => ['official', 'official-search'].includes(row.sourceGrade))
   .map(row => [row.id, normalizePopup(row)]));
 for (const row of collected) {
   const normalized = normalizePopup(row);
   const old = merged.get(normalized.id);
-  merged.set(normalized.id, { ...old, ...normalized, firstSeenAt: old?.firstSeenAt || normalized.firstSeenAt });
+  const keepLocalOfficialImage = /official-detail-local-copy/u.test(old?.imageSource || '');
+  const keepRicherOfficialMenus = (old?.menus?.length || 0) > (normalized.menus?.length || 0)
+    && /official/u.test(old?.menuSource || '');
+  merged.set(normalized.id, {
+    ...old,
+    ...normalized,
+    ...(keepLocalOfficialImage ? {
+      imageUrl: old.imageUrl, image: old.image, imageSource: old.imageSource,
+      imageOriginalUrl: old.imageOriginalUrl, officialImageUrls: old.officialImageUrls
+    } : {}),
+    ...(keepRicherOfficialMenus ? {
+      menus: old.menus, menuItems: old.menuItems, menuSource: old.menuSource
+    } : {}),
+    firstSeenAt: old?.firstSeenAt || normalized.firstSeenAt
+  });
 }
 const beforeDedupCount = merged.size;
 const deduped = new Map();

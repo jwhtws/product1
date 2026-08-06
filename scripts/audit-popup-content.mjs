@@ -1,7 +1,21 @@
 import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';
+import { extname } from 'node:path';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { auditPopupRows, seoulDate } from './lib/popup-content-quality.mjs';
+
+async function repositoryAwareFetch(url, options) {
+  try {
+    const parsed = new URL(url);
+    const path = decodeURIComponent(parsed.pathname).replace(/^\//u, '');
+    if (parsed.hostname === 'mukdang.com' && path.startsWith('assets/popups/')) {
+      const bytes = await readFile(path);
+      const contentType = ({ '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png', '.webp': 'image/webp', '.gif': 'image/gif' })[extname(path).toLowerCase()] || 'application/octet-stream';
+      return new Response(bytes, { status: 200, headers: { 'content-type': contentType, 'content-length': String(bytes.length) } });
+    }
+  } catch {}
+  return fetch(url, options);
+}
 
 async function atomicWrite(path, value) {
   await mkdir(dirname(path), { recursive: true });
@@ -83,10 +97,10 @@ export async function auditPopupPayload(payload, options = {}) {
 
 export async function runPopupContentAudit({
   inputPath = 'data/popups.json', outputPath, reviewPath = 'data/popup-review-queue.json',
-  reportPath = 'data/popup-content-audit.json', today, verifyImages = true, previousRows, evidenceRows
+  reportPath = 'data/popup-content-audit.json', today, verifyImages = true, previousRows, evidenceRows, fetchImpl
 } = {}) {
   const payload = JSON.parse(await readFile(inputPath, 'utf8'));
-  const result = await auditPopupPayload(payload, { today, verifyImages, previousRows, evidenceRows });
+  const result = await auditPopupPayload(payload, { today, verifyImages, previousRows, evidenceRows, fetchImpl: fetchImpl || repositoryAwareFetch });
   if (outputPath) await atomicWrite(outputPath, result.evaluatedPayload);
   await atomicWrite(reviewPath, result.reviewQueue);
   await atomicWrite(reportPath, result.auditReport);

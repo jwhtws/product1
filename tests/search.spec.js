@@ -184,6 +184,7 @@ test('카드형 공식 상품도 메뉴와 가격으로 변환한다', async ({ 
 
 test('성북당 공식 상세의 모든 상품 블록을 합쳐 표시한다', async ({ page }) => {
   await page.goto(process.env.TEST_BASE_URL || 'http://127.0.0.1:8765/', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('#search-button')).toBeEnabled({ timeout: 15000 });
   await page.locator('#search-input').fill('성북당');
   await page.locator('#search-button').click();
   await page.locator('.popup-card').filter({ hasText: '성북당 십원빵' }).click();

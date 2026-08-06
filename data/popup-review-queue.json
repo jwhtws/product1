@@ -1,81 +1,74 @@
 {
-  "generatedAt": "2026-08-06T04:03:41.871Z",
+  "generatedAt": "2026-08-06T09:19:43.633Z",
   "stats": {
     "total": {
-      "totalCollected": 96,
-      "publishedCount": 71,
-      "reviewRequiredCount": 25,
+      "totalCollected": 97,
+      "publishedCount": 85,
+      "reviewRequiredCount": 12,
       "rejectedCount": 0,
-      "validImageCount": 84,
-      "missingImageCount": 12,
-      "menuCompleteCount": 73,
-      "missingMenuCount": 23,
-      "priceKnownCount": 69,
-      "descriptionCompleteCount": 95,
-      "searchIncompleteCount": 25,
+      "validImageCount": 87,
+      "missingImageCount": 10,
+      "menuCompleteCount": 85,
+      "missingMenuCount": 12,
+      "priceKnownCount": 70,
+      "descriptionCompleteCount": 96,
+      "searchIncompleteCount": 12,
       "parseFailedCount": 0,
       "notPublishedBySourceCount": 0,
-      "upcomingCount": 0,
+      "upcomingCount": 1,
       "ongoingCount": 80,
       "endedCount": 15,
       "newlyPublishedCount": 0,
       "newlyEndedCount": 0,
       "qualityDistribution": {
-        "A": 71,
+        "A": 85,
         "B": 0,
-        "C": 25
+        "C": 12
       },
       "asOfDate": "2026-08-06"
     },
     "bySource": {
       "현대백화점 공식 쇼핑뉴스": {
-        "totalCollected": 39,
+        "totalCollected": 40,
         "imageCompletenessRate": 1,
-        "menuCompletenessRate": 0.9744,
-        "priceCompletenessRate": 0.9744,
-        "publishRate": 0.9744,
-        "searchIncompleteRate": 0.0256,
+        "menuCompletenessRate": 1,
+        "priceCompletenessRate": 0.975,
+        "publishRate": 1,
+        "searchIncompleteRate": 0,
         "parseFailureRate": 0,
-        "reviewRequiredReasons": {
-          "search_incomplete": 1
-        }
+        "reviewRequiredReasons": {}
       },
       "롯데쇼핑 공식 행사": {
         "totalCollected": 32,
         "imageCompletenessRate": 0.7188,
-        "menuCompletenessRate": 0.625,
+        "menuCompletenessRate": 0.6875,
         "priceCompletenessRate": 0.5625,
-        "publishRate": 0.625,
-        "searchIncompleteRate": 0.375,
+        "publishRate": 0.6875,
+        "searchIncompleteRate": 0.3125,
         "parseFailureRate": 0,
         "reviewRequiredReasons": {
-          "search_incomplete": 12
+          "search_incomplete": 10
         }
       },
       "신세계백화점 공식 쇼핑뉴스": {
         "totalCollected": 13,
-        "imageCompletenessRate": 0.8462,
+        "imageCompletenessRate": 1,
         "menuCompletenessRate": 1,
         "priceCompletenessRate": 0.8462,
-        "publishRate": 0.8462,
-        "searchIncompleteRate": 0.1538,
+        "publishRate": 1,
+        "searchIncompleteRate": 0,
         "parseFailureRate": 0,
-        "reviewRequiredReasons": {
-          "broken_image": 2,
-          "search_incomplete": 2
-        }
+        "reviewRequiredReasons": {}
       },
       "갤러리아 공식 쇼핑뉴스": {
         "totalCollected": 10,
         "imageCompletenessRate": 1,
-        "menuCompletenessRate": 0.2,
+        "menuCompletenessRate": 1,
         "priceCompletenessRate": 0.2,
-        "publishRate": 0.2,
-        "searchIncompleteRate": 0.8,
+        "publishRate": 1,
+        "searchIncompleteRate": 0,
         "parseFailureRate": 0,
-        "reviewRequiredReasons": {
-          "search_incomplete": 8
-        }
+        "reviewRequiredReasons": {}
       },
       "스타필드 수원 공식 층별안내·바이츠 플레이스": {
         "totalCollected": 1,
@@ -106,695 +99,6 @@
   },
   "reviewRequired": [
     {
-      "id": "shinsegae-shopping:SC00012:8578550",
-      "name": "[555크림] 신규오픈",
-      "venue": "신세계백화점 스타필드 하남점",
-      "venueType": "백화점",
-      "address": "경기도 하남시 미사대로 750 · 신세계백화점 스타필드 하남점 백화점 B1층",
-      "startDate": "2026-07-31",
-      "endDate": "2026-08-14",
-      "imageUrl": "https://www.shinsegae.com/cms12/SC00012/info/shopping/brndintg/__icsFiles/afieldfile/2026/07/30/0729appha7.jpg",
-      "sourceName": "신세계백화점 공식 쇼핑뉴스",
-      "sourceUrl": "https://www.shinsegae.com/shopping/view.do?mainCd=02&pageLink=%2Fcms12%2FSC00012%2Finfo%2Fshopping%2Fbrndintg%2F8578550_4636.txt&contentDtlCd=01&contentId=8578550&storeCd=SC00012&brandCd=",
-      "sourceGrade": "official",
-      "firstSeenAt": "2026-08-02",
-      "lastSeenAt": "2026-08-05",
-      "brand": "555크림",
-      "region": "경기도",
-      "category": "food-popup",
-      "menus": [
-        {
-          "name": "555크림",
-          "price": null,
-          "priceText": "가격 미공개",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.shinsegae.com/shopping/view.do?mainCd=02&pageLink=%2Fcms12%2FSC00012%2Finfo%2Fshopping%2Fbrndintg%2F8578550_4636.txt&contentDtlCd=01&contentId=8578550&storeCd=SC00012&brandCd=",
-          "sourceName": "신세계백화점 공식 쇼핑뉴스",
-          "evidenceType": "official-event-text"
-        }
-      ],
-      "menuItems": [
-        "555크림"
-      ],
-      "menuSource": "official-event-text",
-      "lastVerifiedAt": "2026-08-05",
-      "status": "ongoing",
-      "officialImageUrls": [
-        "https://www.shinsegae.com/cms12/SC00012/info/shopping/brndintg/__icsFiles/afieldfile/2026/07/30/0729appha7.jpg"
-      ],
-      "title": "[555크림] 신규오픈",
-      "branch": "신세계백화점 스타필드 하남점",
-      "latitude": null,
-      "longitude": null,
-      "dDay": 9,
-      "image": "https://www.shinsegae.com/cms12/SC00012/info/shopping/brndintg/__icsFiles/afieldfile/2026/07/30/0729appha7.jpg",
-      "officialUrl": "https://www.shinsegae.com/shopping/view.do?mainCd=02&pageLink=%2Fcms12%2FSC00012%2Finfo%2Fshopping%2Fbrndintg%2F8578550_4636.txt&contentDtlCd=01&contentId=8578550&storeCd=SC00012&brandCd=",
-      "sourceItemId": "SC00012:8578550",
-      "tags": [
-        "555크림",
-        "신세계백화점 스타필드 하남점",
-        "경기도",
-        "백화점",
-        "food-popup"
-      ],
-      "isNew": true,
-      "isEndingSoon": false,
-      "lastUpdated": "2026-08-05",
-      "imageValidation": {
-        "status": "invalid",
-        "reason": "request_failed",
-        "checkedAt": "2026-08-06T04:03:52.517Z"
-      },
-      "contentQuality": "C",
-      "publishStatus": "review_required",
-      "qualityReasons": [
-        "broken_image",
-        "search_incomplete"
-      ],
-      "lastContentCheckedAt": "2026-08-06T04:03:41.871Z",
-      "contentSearch": {
-        "checkedOfficialList": false,
-        "checkedOfficialDetail": false,
-        "checkedEmbeddedData": false,
-        "checkedOfficialImages": false,
-        "checkedOperatorSearch": false,
-        "checkedBrandOfficialSources": false,
-        "checkedUrls": [
-          "https://www.shinsegae.com/shopping/view.do?mainCd=02&pageLink=%2Fcms12%2FSC00012%2Finfo%2Fshopping%2Fbrndintg%2F8578550_4636.txt&contentDtlCd=01&contentId=8578550&storeCd=SC00012&brandCd="
-        ],
-        "checkedMethods": [],
-        "imageCandidatesFound": 1,
-        "menuCandidatesFound": 1,
-        "priceCandidatesFound": 0,
-        "descriptionCandidatesFound": 0,
-        "status": "search_incomplete",
-        "evidence": [],
-        "failureReasons": [],
-        "checkedAt": "2026-08-06T04:03:41.871Z"
-      },
-      "imageCandidates": [
-        "https://www.shinsegae.com/cms12/SC00012/info/shopping/brndintg/__icsFiles/afieldfile/2026/07/30/0729appha7.jpg"
-      ],
-      "menuCandidates": [
-        {
-          "name": "555크림",
-          "price": null,
-          "priceText": "가격 미공개",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.shinsegae.com/shopping/view.do?mainCd=02&pageLink=%2Fcms12%2FSC00012%2Finfo%2Fshopping%2Fbrndintg%2F8578550_4636.txt&contentDtlCd=01&contentId=8578550&storeCd=SC00012&brandCd=",
-          "sourceName": "신세계백화점 공식 쇼핑뉴스",
-          "evidenceType": "official-event-text"
-        }
-      ],
-      "ocrStatus": "not_used"
-    },
-    {
-      "id": "hyundai:E4302607493645",
-      "name": "[푸드파크] 위클리 팝업 뉴스",
-      "venue": "현대백화점 중동점",
-      "venueType": "백화점",
-      "address": "경기도 부천시 원미구 길주로 180 (중동) · 현대백화점 중동점",
-      "startDate": "2026-07-31",
-      "endDate": "2026-08-06",
-      "imageUrl": "https://img.ehyundai.com/files/derivedImage/fileValue/202607/29/7d85a36b-9bea-4bd1-b4e7-39dc53f939d5_02.png",
-      "sourceName": "현대백화점 공식 쇼핑뉴스",
-      "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4302607493645&branchCd=B00143000&category=",
-      "sourceGrade": "official",
-      "firstSeenAt": "2026-07-31",
-      "lastSeenAt": "2026-08-05",
-      "brand": "위클리 팝업 뉴스",
-      "region": "경기도",
-      "category": "food-popup",
-      "lastVerifiedAt": "2026-08-05",
-      "status": "ongoing",
-      "menuItems": [],
-      "menuSource": "official-event-text",
-      "menus": [],
-      "officialImageUrls": [
-        "https://imgprism.ehyundai.com/derivedImage/fileValue/202607/29/7d85a36b-9bea-4bd1-b4e7-39dc53f939d5_01.png",
-        "https://imgprism.ehyundai.com/img1HorizontalItemNmPrcTypeInf/imgPath/202607/29/7133addc-6159-4fc0-bd62-2fdd15a05284.jpg",
-        "https://imgprism.ehyundai.com/img1HorizontalItemNmPrcTypeInf/imgPath/202607/22/3da649fa-179b-4d30-ae9d-fb496ab667e2.jpg",
-        "https://imgprism.ehyundai.com/img1HorizontalItemNmPrcTypeInf/imgPath/202607/25/6a996429-346a-4b0e-8d5f-bc79c0d07d1f.jpg",
-        "https://imgprism.ehyundai.com/img1HorizontalItemNmPrcTypeInf/imgPath/202607/29/9b55cceb-5d0b-4ea0-b424-d3686386276c.jpg",
-        "https://img.ehyundai.com/files/derivedImage/fileValue/202607/29/7d85a36b-9bea-4bd1-b4e7-39dc53f939d5_02.png"
-      ],
-      "title": "[푸드파크] 위클리 팝업 뉴스",
-      "branch": "현대백화점 중동점",
-      "latitude": null,
-      "longitude": null,
-      "dDay": 1,
-      "image": "https://img.ehyundai.com/files/derivedImage/fileValue/202607/29/7d85a36b-9bea-4bd1-b4e7-39dc53f939d5_02.png",
-      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4302607493645&branchCd=B00143000&category=",
-      "sourceItemId": "E4302607493645",
-      "tags": [
-        "위클리 팝업 뉴스",
-        "현대백화점 중동점",
-        "경기도",
-        "백화점",
-        "food-popup"
-      ],
-      "isNew": true,
-      "isEndingSoon": true,
-      "lastUpdated": "2026-08-05",
-      "imageValidation": {
-        "status": "valid",
-        "contentType": "image/png",
-        "width": 837,
-        "height": 837,
-        "checkedAt": "2026-08-06T04:03:43.164Z"
-      },
-      "contentQuality": "C",
-      "publishStatus": "review_required",
-      "qualityReasons": [
-        "search_incomplete"
-      ],
-      "lastContentCheckedAt": "2026-08-06T04:03:41.871Z",
-      "contentSearch": {
-        "checkedOfficialList": false,
-        "checkedOfficialDetail": false,
-        "checkedEmbeddedData": false,
-        "checkedOfficialImages": false,
-        "checkedOperatorSearch": false,
-        "checkedBrandOfficialSources": false,
-        "checkedUrls": [
-          "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4302607493645&branchCd=B00143000&category="
-        ],
-        "checkedMethods": [],
-        "imageCandidatesFound": 6,
-        "menuCandidatesFound": 0,
-        "priceCandidatesFound": 0,
-        "descriptionCandidatesFound": 0,
-        "status": "search_incomplete",
-        "evidence": [],
-        "failureReasons": [],
-        "checkedAt": "2026-08-06T04:03:41.871Z"
-      },
-      "imageCandidates": [
-        "https://img.ehyundai.com/files/derivedImage/fileValue/202607/29/7d85a36b-9bea-4bd1-b4e7-39dc53f939d5_02.png",
-        "https://imgprism.ehyundai.com/derivedImage/fileValue/202607/29/7d85a36b-9bea-4bd1-b4e7-39dc53f939d5_01.png",
-        "https://imgprism.ehyundai.com/img1HorizontalItemNmPrcTypeInf/imgPath/202607/29/7133addc-6159-4fc0-bd62-2fdd15a05284.jpg",
-        "https://imgprism.ehyundai.com/img1HorizontalItemNmPrcTypeInf/imgPath/202607/22/3da649fa-179b-4d30-ae9d-fb496ab667e2.jpg",
-        "https://imgprism.ehyundai.com/img1HorizontalItemNmPrcTypeInf/imgPath/202607/25/6a996429-346a-4b0e-8d5f-bc79c0d07d1f.jpg",
-        "https://imgprism.ehyundai.com/img1HorizontalItemNmPrcTypeInf/imgPath/202607/29/9b55cceb-5d0b-4ea0-b424-d3686386276c.jpg"
-      ],
-      "menuCandidates": [],
-      "ocrStatus": "not_used"
-    },
-    {
-      "id": "galleria:gwanggyo:c85957:tdbd",
-      "name": "더데일리브레드(TDBD)",
-      "venue": "갤러리아 광교",
-      "venueType": "백화점",
-      "address": "경기도 수원시 영통구 광교중앙로 124 · 갤러리아 광교 B1F GOURMET494",
-      "startDate": "2026-07-31",
-      "endDate": "2026-10-31",
-      "imageUrl": "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-tdbd.jpg",
-      "officialImageUrls": [
-        "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-tdbd.jpg"
-      ],
-      "sourceName": "갤러리아 공식 쇼핑뉴스",
-      "sourceUrl": "https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/c85957?qCategory=PRODUCT_EVENT",
-      "sourceGrade": "official",
-      "firstSeenAt": "2026-08-03",
-      "lastSeenAt": "2026-08-05",
-      "brand": "더데일리브레드(TDBD)",
-      "region": "경기도",
-      "category": "food-popup",
-      "menus": [],
-      "menuItems": [],
-      "menuSource": "official-event-text",
-      "lastVerifiedAt": "2026-08-05",
-      "status": "ongoing",
-      "title": "더데일리브레드(TDBD)",
-      "branch": "갤러리아 광교",
-      "latitude": null,
-      "longitude": null,
-      "dDay": 87,
-      "image": "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-tdbd.jpg",
-      "officialUrl": "https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/c85957?qCategory=PRODUCT_EVENT",
-      "sourceItemId": "gwanggyo:c85957:tdbd",
-      "tags": [
-        "더데일리브레드(TDBD)",
-        "갤러리아 광교",
-        "경기도",
-        "백화점",
-        "food-popup"
-      ],
-      "isNew": true,
-      "isEndingSoon": false,
-      "lastUpdated": "2026-08-05",
-      "imageValidation": {
-        "status": "valid",
-        "contentType": "image/jpeg",
-        "width": 720,
-        "height": 1200,
-        "checkedAt": "2026-08-06T04:03:43.570Z"
-      },
-      "contentQuality": "C",
-      "publishStatus": "review_required",
-      "qualityReasons": [
-        "search_incomplete"
-      ],
-      "lastContentCheckedAt": "2026-08-06T04:03:41.871Z",
-      "contentSearch": {
-        "checkedOfficialList": false,
-        "checkedOfficialDetail": false,
-        "checkedEmbeddedData": false,
-        "checkedOfficialImages": false,
-        "checkedOperatorSearch": false,
-        "checkedBrandOfficialSources": false,
-        "checkedUrls": [
-          "https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/c85957?qCategory=PRODUCT_EVENT"
-        ],
-        "checkedMethods": [],
-        "imageCandidatesFound": 1,
-        "menuCandidatesFound": 0,
-        "priceCandidatesFound": 0,
-        "descriptionCandidatesFound": 0,
-        "status": "search_incomplete",
-        "evidence": [],
-        "failureReasons": [],
-        "checkedAt": "2026-08-06T04:03:41.871Z"
-      },
-      "imageCandidates": [
-        "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-tdbd.jpg"
-      ],
-      "menuCandidates": [],
-      "ocrStatus": "not_used"
-    },
-    {
-      "id": "galleria:gwanggyo:c85957:ageujak",
-      "name": "떼구르르 베이커리(아그작케이크)",
-      "venue": "갤러리아 광교",
-      "venueType": "백화점",
-      "address": "경기도 수원시 영통구 광교중앙로 124 · 갤러리아 광교 B1F GOURMET494",
-      "startDate": "2026-07-31",
-      "endDate": "2026-08-20",
-      "imageUrl": "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-ageujak.jpg",
-      "officialImageUrls": [
-        "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-ageujak.jpg"
-      ],
-      "sourceName": "갤러리아 공식 쇼핑뉴스",
-      "sourceUrl": "https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/c85957?qCategory=PRODUCT_EVENT",
-      "sourceGrade": "official",
-      "firstSeenAt": "2026-08-03",
-      "lastSeenAt": "2026-08-05",
-      "brand": "떼구르르 베이커리(아그작케이크)",
-      "region": "경기도",
-      "category": "food-popup",
-      "menus": [],
-      "menuItems": [],
-      "menuSource": "official-event-text",
-      "lastVerifiedAt": "2026-08-05",
-      "status": "ongoing",
-      "title": "떼구르르 베이커리(아그작케이크)",
-      "branch": "갤러리아 광교",
-      "latitude": null,
-      "longitude": null,
-      "dDay": 15,
-      "image": "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-ageujak.jpg",
-      "officialUrl": "https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/c85957?qCategory=PRODUCT_EVENT",
-      "sourceItemId": "gwanggyo:c85957:ageujak",
-      "tags": [
-        "떼구르르 베이커리(아그작케이크)",
-        "갤러리아 광교",
-        "경기도",
-        "백화점",
-        "food-popup"
-      ],
-      "isNew": true,
-      "isEndingSoon": false,
-      "lastUpdated": "2026-08-05",
-      "imageValidation": {
-        "status": "valid",
-        "contentType": "image/jpeg",
-        "width": 720,
-        "height": 1200,
-        "checkedAt": "2026-08-06T04:03:43.599Z"
-      },
-      "contentQuality": "C",
-      "publishStatus": "review_required",
-      "qualityReasons": [
-        "search_incomplete"
-      ],
-      "lastContentCheckedAt": "2026-08-06T04:03:41.871Z",
-      "contentSearch": {
-        "checkedOfficialList": false,
-        "checkedOfficialDetail": false,
-        "checkedEmbeddedData": false,
-        "checkedOfficialImages": false,
-        "checkedOperatorSearch": false,
-        "checkedBrandOfficialSources": false,
-        "checkedUrls": [
-          "https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/c85957?qCategory=PRODUCT_EVENT"
-        ],
-        "checkedMethods": [],
-        "imageCandidatesFound": 1,
-        "menuCandidatesFound": 0,
-        "priceCandidatesFound": 0,
-        "descriptionCandidatesFound": 0,
-        "status": "search_incomplete",
-        "evidence": [],
-        "failureReasons": [],
-        "checkedAt": "2026-08-06T04:03:41.871Z"
-      },
-      "imageCandidates": [
-        "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-ageujak.jpg"
-      ],
-      "menuCandidates": [],
-      "ocrStatus": "not_used"
-    },
-    {
-      "id": "galleria:gwanggyo:c85958:longmadame",
-      "name": "롱마담 에그타르트",
-      "venue": "갤러리아 광교",
-      "venueType": "백화점",
-      "address": "경기도 수원시 영통구 광교중앙로 124 · 갤러리아 광교 B1F GOURMET494",
-      "startDate": "2026-07-31",
-      "endDate": "2026-08-13",
-      "imageUrl": "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-longmadame.jpg",
-      "officialImageUrls": [
-        "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-longmadame.jpg"
-      ],
-      "sourceName": "갤러리아 공식 쇼핑뉴스",
-      "sourceUrl": "https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/c85958?qCategory=PRODUCT_EVENT",
-      "sourceGrade": "official",
-      "firstSeenAt": "2026-08-03",
-      "lastSeenAt": "2026-08-05",
-      "brand": "롱마담 에그타르트",
-      "region": "경기도",
-      "category": "food-popup",
-      "menus": [],
-      "menuItems": [],
-      "menuSource": "official-event-text",
-      "lastVerifiedAt": "2026-08-05",
-      "status": "ongoing",
-      "title": "롱마담 에그타르트",
-      "branch": "갤러리아 광교",
-      "latitude": null,
-      "longitude": null,
-      "dDay": 8,
-      "image": "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-longmadame.jpg",
-      "officialUrl": "https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/c85958?qCategory=PRODUCT_EVENT",
-      "sourceItemId": "gwanggyo:c85958:longmadame",
-      "tags": [
-        "롱마담 에그타르트",
-        "갤러리아 광교",
-        "경기도",
-        "백화점",
-        "food-popup"
-      ],
-      "isNew": true,
-      "isEndingSoon": false,
-      "lastUpdated": "2026-08-05",
-      "imageValidation": {
-        "status": "valid",
-        "contentType": "image/jpeg",
-        "width": 720,
-        "height": 1200,
-        "checkedAt": "2026-08-06T04:03:43.617Z"
-      },
-      "contentQuality": "C",
-      "publishStatus": "review_required",
-      "qualityReasons": [
-        "search_incomplete"
-      ],
-      "lastContentCheckedAt": "2026-08-06T04:03:41.871Z",
-      "contentSearch": {
-        "checkedOfficialList": false,
-        "checkedOfficialDetail": false,
-        "checkedEmbeddedData": false,
-        "checkedOfficialImages": false,
-        "checkedOperatorSearch": false,
-        "checkedBrandOfficialSources": false,
-        "checkedUrls": [
-          "https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/c85958?qCategory=PRODUCT_EVENT"
-        ],
-        "checkedMethods": [],
-        "imageCandidatesFound": 1,
-        "menuCandidatesFound": 0,
-        "priceCandidatesFound": 0,
-        "descriptionCandidatesFound": 0,
-        "status": "search_incomplete",
-        "evidence": [],
-        "failureReasons": [],
-        "checkedAt": "2026-08-06T04:03:41.871Z"
-      },
-      "imageCandidates": [
-        "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-longmadame.jpg"
-      ],
-      "menuCandidates": [],
-      "ocrStatus": "not_used"
-    },
-    {
-      "id": "galleria:gwanggyo:c85958:yoodongbu",
-      "name": "유동부치아바타",
-      "venue": "갤러리아 광교",
-      "venueType": "백화점",
-      "address": "경기도 수원시 영통구 광교중앙로 124 · 갤러리아 광교 B1F GOURMET494",
-      "startDate": "2026-07-31",
-      "endDate": "2026-08-13",
-      "imageUrl": "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-yoodongbu.jpg",
-      "officialImageUrls": [
-        "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-yoodongbu.jpg"
-      ],
-      "sourceName": "갤러리아 공식 쇼핑뉴스",
-      "sourceUrl": "https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/c85958?qCategory=PRODUCT_EVENT",
-      "sourceGrade": "official",
-      "firstSeenAt": "2026-08-03",
-      "lastSeenAt": "2026-08-05",
-      "brand": "유동부치아바타",
-      "region": "경기도",
-      "category": "food-popup",
-      "menus": [],
-      "menuItems": [],
-      "menuSource": "official-event-text",
-      "lastVerifiedAt": "2026-08-05",
-      "status": "ongoing",
-      "title": "유동부치아바타",
-      "branch": "갤러리아 광교",
-      "latitude": null,
-      "longitude": null,
-      "dDay": 8,
-      "image": "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-yoodongbu.jpg",
-      "officialUrl": "https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/c85958?qCategory=PRODUCT_EVENT",
-      "sourceItemId": "gwanggyo:c85958:yoodongbu",
-      "tags": [
-        "유동부치아바타",
-        "갤러리아 광교",
-        "경기도",
-        "백화점",
-        "food-popup"
-      ],
-      "isNew": true,
-      "isEndingSoon": false,
-      "lastUpdated": "2026-08-05",
-      "imageValidation": {
-        "status": "valid",
-        "contentType": "image/jpeg",
-        "width": 720,
-        "height": 1200,
-        "checkedAt": "2026-08-06T04:03:44.071Z"
-      },
-      "contentQuality": "C",
-      "publishStatus": "review_required",
-      "qualityReasons": [
-        "search_incomplete"
-      ],
-      "lastContentCheckedAt": "2026-08-06T04:03:41.871Z",
-      "contentSearch": {
-        "checkedOfficialList": false,
-        "checkedOfficialDetail": false,
-        "checkedEmbeddedData": false,
-        "checkedOfficialImages": false,
-        "checkedOperatorSearch": false,
-        "checkedBrandOfficialSources": false,
-        "checkedUrls": [
-          "https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/c85958?qCategory=PRODUCT_EVENT"
-        ],
-        "checkedMethods": [],
-        "imageCandidatesFound": 1,
-        "menuCandidatesFound": 0,
-        "priceCandidatesFound": 0,
-        "descriptionCandidatesFound": 0,
-        "status": "search_incomplete",
-        "evidence": [],
-        "failureReasons": [],
-        "checkedAt": "2026-08-06T04:03:41.871Z"
-      },
-      "imageCandidates": [
-        "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-yoodongbu.jpg"
-      ],
-      "menuCandidates": [],
-      "ocrStatus": "not_used"
-    },
-    {
-      "id": "galleria:gwanggyo:c85958:kickstaco",
-      "name": "킥스타코",
-      "venue": "갤러리아 광교",
-      "venueType": "백화점",
-      "address": "경기도 수원시 영통구 광교중앙로 124 · 갤러리아 광교 B1F GOURMET494",
-      "startDate": "2026-07-31",
-      "endDate": "2026-08-06",
-      "imageUrl": "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-kickstaco.jpg",
-      "officialImageUrls": [
-        "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-kickstaco.jpg"
-      ],
-      "sourceName": "갤러리아 공식 쇼핑뉴스",
-      "sourceUrl": "https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/c85958?qCategory=PRODUCT_EVENT",
-      "sourceGrade": "official",
-      "firstSeenAt": "2026-08-03",
-      "lastSeenAt": "2026-08-05",
-      "brand": "킥스타코",
-      "region": "경기도",
-      "category": "food-popup",
-      "menus": [],
-      "menuItems": [],
-      "menuSource": "official-event-text",
-      "lastVerifiedAt": "2026-08-05",
-      "status": "ongoing",
-      "title": "킥스타코",
-      "branch": "갤러리아 광교",
-      "latitude": null,
-      "longitude": null,
-      "dDay": 1,
-      "image": "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-kickstaco.jpg",
-      "officialUrl": "https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/c85958?qCategory=PRODUCT_EVENT",
-      "sourceItemId": "gwanggyo:c85958:kickstaco",
-      "tags": [
-        "킥스타코",
-        "갤러리아 광교",
-        "경기도",
-        "백화점",
-        "food-popup"
-      ],
-      "isNew": true,
-      "isEndingSoon": true,
-      "lastUpdated": "2026-08-05",
-      "imageValidation": {
-        "status": "valid",
-        "contentType": "image/jpeg",
-        "width": 720,
-        "height": 1200,
-        "checkedAt": "2026-08-06T04:03:44.170Z"
-      },
-      "contentQuality": "C",
-      "publishStatus": "review_required",
-      "qualityReasons": [
-        "search_incomplete"
-      ],
-      "lastContentCheckedAt": "2026-08-06T04:03:41.871Z",
-      "contentSearch": {
-        "checkedOfficialList": false,
-        "checkedOfficialDetail": false,
-        "checkedEmbeddedData": false,
-        "checkedOfficialImages": false,
-        "checkedOperatorSearch": false,
-        "checkedBrandOfficialSources": false,
-        "checkedUrls": [
-          "https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/c85958?qCategory=PRODUCT_EVENT"
-        ],
-        "checkedMethods": [],
-        "imageCandidatesFound": 1,
-        "menuCandidatesFound": 0,
-        "priceCandidatesFound": 0,
-        "descriptionCandidatesFound": 0,
-        "status": "search_incomplete",
-        "evidence": [],
-        "failureReasons": [],
-        "checkedAt": "2026-08-06T04:03:41.871Z"
-      },
-      "imageCandidates": [
-        "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-kickstaco.jpg"
-      ],
-      "menuCandidates": [],
-      "ocrStatus": "not_used"
-    },
-    {
-      "id": "galleria:gwanggyo:c85958:takonottaco",
-      "name": "타코낫타코",
-      "venue": "갤러리아 광교",
-      "venueType": "백화점",
-      "address": "경기도 수원시 영통구 광교중앙로 124 · 갤러리아 광교 B1F GOURMET494",
-      "startDate": "2026-07-31",
-      "endDate": "2026-08-13",
-      "imageUrl": "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-takonottaco.jpg",
-      "officialImageUrls": [
-        "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-takonottaco.jpg"
-      ],
-      "sourceName": "갤러리아 공식 쇼핑뉴스",
-      "sourceUrl": "https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/c85958?qCategory=PRODUCT_EVENT",
-      "sourceGrade": "official",
-      "firstSeenAt": "2026-08-03",
-      "lastSeenAt": "2026-08-05",
-      "brand": "타코낫타코",
-      "region": "경기도",
-      "category": "food-popup",
-      "menus": [],
-      "menuItems": [],
-      "menuSource": "official-event-text",
-      "lastVerifiedAt": "2026-08-05",
-      "status": "ongoing",
-      "title": "타코낫타코",
-      "branch": "갤러리아 광교",
-      "latitude": null,
-      "longitude": null,
-      "dDay": 8,
-      "image": "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-takonottaco.jpg",
-      "officialUrl": "https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/c85958?qCategory=PRODUCT_EVENT",
-      "sourceItemId": "gwanggyo:c85958:takonottaco",
-      "tags": [
-        "타코낫타코",
-        "갤러리아 광교",
-        "경기도",
-        "백화점",
-        "food-popup"
-      ],
-      "isNew": true,
-      "isEndingSoon": false,
-      "lastUpdated": "2026-08-05",
-      "imageValidation": {
-        "status": "valid",
-        "contentType": "image/jpeg",
-        "width": 720,
-        "height": 1305,
-        "checkedAt": "2026-08-06T04:03:44.174Z"
-      },
-      "contentQuality": "C",
-      "publishStatus": "review_required",
-      "qualityReasons": [
-        "search_incomplete"
-      ],
-      "lastContentCheckedAt": "2026-08-06T04:03:41.871Z",
-      "contentSearch": {
-        "checkedOfficialList": false,
-        "checkedOfficialDetail": false,
-        "checkedEmbeddedData": false,
-        "checkedOfficialImages": false,
-        "checkedOperatorSearch": false,
-        "checkedBrandOfficialSources": false,
-        "checkedUrls": [
-          "https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/c85958?qCategory=PRODUCT_EVENT"
-        ],
-        "checkedMethods": [],
-        "imageCandidatesFound": 1,
-        "menuCandidatesFound": 0,
-        "priceCandidatesFound": 0,
-        "descriptionCandidatesFound": 0,
-        "status": "search_incomplete",
-        "evidence": [],
-        "failureReasons": [],
-        "checkedAt": "2026-08-06T04:03:41.871Z"
-      },
-      "imageCandidates": [
-        "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-takonottaco.jpg"
-      ],
-      "menuCandidates": [],
-      "ocrStatus": "not_used"
-    },
-    {
       "id": "lotte:dongtan:manseok",
       "name": "만석닭강정",
       "venue": "롯데백화점 동탄점",
@@ -807,11 +111,11 @@
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EB%A7%8C%EC%84%9D%EB%8B%AD%EA%B0%95%EC%A0%95",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-08-05",
+      "lastSeenAt": "2026-08-06",
       "brand": "만석닭강정",
       "region": "경기도",
       "category": "food-popup",
-      "lastVerifiedAt": "2026-08-05",
+      "lastVerifiedAt": "2026-08-06",
       "status": "ended",
       "menuItems": [],
       "menuSource": "official-event-text",
@@ -839,46 +143,52 @@
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
-        "checkedOfficialList": false,
-        "checkedOfficialDetail": false,
-        "checkedEmbeddedData": false,
-        "checkedOfficialImages": false,
-        "checkedOperatorSearch": false,
+        "checkedOfficialList": true,
+        "checkedOfficialDetail": true,
+        "checkedEmbeddedData": true,
+        "checkedOfficialImages": true,
+        "checkedOperatorSearch": true,
         "checkedBrandOfficialSources": false,
         "checkedUrls": [
-          "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EB%A7%8C%EC%84%9D%EB%8B%AD%EA%B0%95%EC%A0%95"
+          "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EB%A7%8C%EC%84%9D%EB%8B%AD%EA%B0%95%EC%A0%95",
+          "https://minfo.lotteshopping.com/content/prfl/202505/PRFL2025050818072491.jpg"
         ],
         "checkedMethods": [
-          "official_list_html",
-          "operator_internal_search"
+          "official_detail_html"
         ],
         "imageCandidatesFound": 1,
         "menuCandidatesFound": 0,
         "priceCandidatesFound": 0,
         "descriptionCandidatesFound": 0,
         "status": "search_incomplete",
-        "evidence": [],
-        "failureReasons": [
-          "official_list_request_failed",
-          "official_detail_not_identified",
-          "official_detail_images_not_checked",
-          "brand_official_sources_not_checked"
+        "evidence": [
+          {
+            "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EB%A7%8C%EC%84%9D%EB%8B%AD%EA%B0%95%EC%A0%95",
+            "sourceName": "롯데쇼핑 공식 행사",
+            "contentType": "official_detail",
+            "extractedField": "officialImageUrls",
+            "imageUrl": "https://minfo.lotteshopping.com/content/prfl/202505/PRFL2025050818072491.jpg",
+            "capturedAt": "2026-08-06T09:03:23.112Z"
+          }
         ],
-        "checkedAt": "2026-08-06T03:27:05.018Z"
+        "failureReasons": [
+          "legacy_collector_search_evidence_incomplete"
+        ],
+        "checkedAt": "2026-08-06T09:03:23.112Z"
       },
       "imageValidation": {
         "status": "valid",
         "contentType": "image/jpeg",
         "width": 1687,
         "height": 2249,
-        "checkedAt": "2026-08-06T04:03:45.612Z"
+        "checkedAt": "2026-08-06T09:19:45.722Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-06T04:03:41.871Z",
+      "lastContentCheckedAt": "2026-08-06T09:19:43.633Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/prfl/202505/PRFL2025050818072491.jpg"
       ],
@@ -898,11 +208,11 @@
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0344&searchTerm=%EB%8B%B4%EC%95%84%ED%97%8C+%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84+%EB%AA%A8%EC%B0%8C",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-08-05",
+      "lastSeenAt": "2026-08-06",
       "brand": "담아헌 프리미엄 모찌",
       "region": "인천광역시",
       "category": "food-popup",
-      "lastVerifiedAt": "2026-08-05",
+      "lastVerifiedAt": "2026-08-06",
       "status": "ended",
       "menuItems": [],
       "menuSource": "official-event-text",
@@ -927,18 +237,17 @@
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
-        "checkedOfficialList": false,
+        "checkedOfficialList": true,
         "checkedOfficialDetail": false,
         "checkedEmbeddedData": false,
         "checkedOfficialImages": false,
-        "checkedOperatorSearch": false,
+        "checkedOperatorSearch": true,
         "checkedBrandOfficialSources": false,
         "checkedUrls": [
           "https://m.lotteshopping.com/search/searchResult?cstrCd=0344&searchTerm=%EB%8B%B4%EC%95%84%ED%97%8C+%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84+%EB%AA%A8%EC%B0%8C"
         ],
         "checkedMethods": [
-          "official_list_html",
-          "operator_internal_search"
+          "official_list_html"
         ],
         "imageCandidatesFound": 0,
         "menuCandidatesFound": 0,
@@ -947,24 +256,21 @@
         "status": "search_incomplete",
         "evidence": [],
         "failureReasons": [
-          "official_list_request_failed",
-          "official_detail_not_identified",
-          "official_detail_images_not_checked",
-          "brand_official_sources_not_checked"
+          "legacy_collector_search_evidence_incomplete"
         ],
-        "checkedAt": "2026-08-06T03:27:15.934Z"
+        "checkedAt": "2026-08-06T09:03:23.112Z"
       },
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-06T04:03:41.871Z"
+        "checkedAt": "2026-08-06T09:19:43.633Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-06T04:03:41.871Z",
+      "lastContentCheckedAt": "2026-08-06T09:19:43.633Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -983,14 +289,14 @@
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0333&searchTerm=%EB%9D%BC%EC%9D%B4%ED%94%84%EC%BB%AC%EC%B2%98+Pop-Up",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-05",
-      "lastSeenAt": "2026-08-05",
+      "lastSeenAt": "2026-08-06",
       "brand": "라이프컬처",
       "region": "부산광역시",
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
       "menuSource": "official-event-text",
-      "lastVerifiedAt": "2026-08-05",
+      "lastVerifiedAt": "2026-08-06",
       "status": "ongoing",
       "title": "라이프컬처 Pop-Up",
       "branch": "롯데백화점 광복점",
@@ -1011,18 +317,17 @@
       "isEndingSoon": true,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
-        "checkedOfficialList": false,
+        "checkedOfficialList": true,
         "checkedOfficialDetail": false,
         "checkedEmbeddedData": false,
         "checkedOfficialImages": false,
-        "checkedOperatorSearch": false,
+        "checkedOperatorSearch": true,
         "checkedBrandOfficialSources": false,
         "checkedUrls": [
           "https://m.lotteshopping.com/search/searchResult?cstrCd=0333&searchTerm=%EB%9D%BC%EC%9D%B4%ED%94%84%EC%BB%AC%EC%B2%98+Pop-Up"
         ],
         "checkedMethods": [
-          "official_list_html",
-          "operator_internal_search"
+          "official_list_html"
         ],
         "imageCandidatesFound": 0,
         "menuCandidatesFound": 0,
@@ -1031,24 +336,21 @@
         "status": "search_incomplete",
         "evidence": [],
         "failureReasons": [
-          "official_list_request_failed",
-          "official_detail_not_identified",
-          "official_detail_images_not_checked",
-          "brand_official_sources_not_checked"
+          "legacy_collector_search_evidence_incomplete"
         ],
-        "checkedAt": "2026-08-06T03:27:15.957Z"
+        "checkedAt": "2026-08-06T09:03:23.113Z"
       },
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-06T04:03:41.871Z"
+        "checkedAt": "2026-08-06T09:19:43.633Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-06T04:03:41.871Z",
+      "lastContentCheckedAt": "2026-08-06T09:19:43.633Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -1066,11 +368,11 @@
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0344&searchTerm=%EB%A3%A8%EC%86%94+%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84+%EC%9D%B4%EC%9C%A0%EC%8B%9D",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-08-05",
+      "lastSeenAt": "2026-08-06",
       "brand": "루솔 프리미엄 이유식",
       "region": "인천광역시",
       "category": "food-popup",
-      "lastVerifiedAt": "2026-08-05",
+      "lastVerifiedAt": "2026-08-06",
       "status": "ended",
       "menuItems": [],
       "menuSource": "official-event-text",
@@ -1095,18 +397,17 @@
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
-        "checkedOfficialList": false,
+        "checkedOfficialList": true,
         "checkedOfficialDetail": false,
         "checkedEmbeddedData": false,
         "checkedOfficialImages": false,
-        "checkedOperatorSearch": false,
+        "checkedOperatorSearch": true,
         "checkedBrandOfficialSources": false,
         "checkedUrls": [
           "https://m.lotteshopping.com/search/searchResult?cstrCd=0344&searchTerm=%EB%A3%A8%EC%86%94+%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84+%EC%9D%B4%EC%9C%A0%EC%8B%9D"
         ],
         "checkedMethods": [
-          "official_list_html",
-          "operator_internal_search"
+          "official_list_html"
         ],
         "imageCandidatesFound": 0,
         "menuCandidatesFound": 0,
@@ -1115,24 +416,21 @@
         "status": "search_incomplete",
         "evidence": [],
         "failureReasons": [
-          "official_list_request_failed",
-          "official_detail_not_identified",
-          "official_detail_images_not_checked",
-          "brand_official_sources_not_checked"
+          "legacy_collector_search_evidence_incomplete"
         ],
-        "checkedAt": "2026-08-06T03:27:15.900Z"
+        "checkedAt": "2026-08-06T09:03:23.113Z"
       },
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-06T04:03:41.871Z"
+        "checkedAt": "2026-08-06T09:19:43.633Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-06T04:03:41.871Z",
+      "lastContentCheckedAt": "2026-08-06T09:19:43.633Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -1150,11 +448,11 @@
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0336&searchTerm=%EC%84%9C%EC%9A%B8%EB%A1%A4+%EC%B2%A0%ED%8C%90%ED%94%BC%EC%9E%90%26%ED%8A%80%EC%9D%BC",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-08-05",
+      "lastSeenAt": "2026-08-06",
       "brand": "서울롤 철판피자&튀일",
       "region": "경기도",
       "category": "food-popup",
-      "lastVerifiedAt": "2026-08-05",
+      "lastVerifiedAt": "2026-08-06",
       "status": "ended",
       "menuItems": [],
       "menuSource": "official-event-text",
@@ -1179,18 +477,17 @@
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
-        "checkedOfficialList": false,
+        "checkedOfficialList": true,
         "checkedOfficialDetail": false,
         "checkedEmbeddedData": false,
         "checkedOfficialImages": false,
-        "checkedOperatorSearch": false,
+        "checkedOperatorSearch": true,
         "checkedBrandOfficialSources": false,
         "checkedUrls": [
           "https://m.lotteshopping.com/search/searchResult?cstrCd=0336&searchTerm=%EC%84%9C%EC%9A%B8%EB%A1%A4+%EC%B2%A0%ED%8C%90%ED%94%BC%EC%9E%90%26%ED%8A%80%EC%9D%BC"
         ],
         "checkedMethods": [
-          "official_list_html",
-          "operator_internal_search"
+          "official_list_html"
         ],
         "imageCandidatesFound": 0,
         "menuCandidatesFound": 0,
@@ -1199,24 +496,21 @@
         "status": "search_incomplete",
         "evidence": [],
         "failureReasons": [
-          "official_list_request_failed",
-          "official_detail_not_identified",
-          "official_detail_images_not_checked",
-          "brand_official_sources_not_checked"
+          "legacy_collector_search_evidence_incomplete"
         ],
-        "checkedAt": "2026-08-06T03:27:15.853Z"
+        "checkedAt": "2026-08-06T09:03:23.113Z"
       },
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-06T04:03:41.871Z"
+        "checkedAt": "2026-08-06T09:19:43.633Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-06T04:03:41.871Z",
+      "lastContentCheckedAt": "2026-08-06T09:19:43.633Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -1234,11 +528,11 @@
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0336&searchTerm=%EC%88%98%EC%88%98%EB%8C%80%EC%9E%A5%EA%B5%B0+%EC%A0%84%ED%86%B5%EA%B0%84%EC%8B%9D",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-08-05",
+      "lastSeenAt": "2026-08-06",
       "brand": "수수대장군 전통간식",
       "region": "경기도",
       "category": "food-popup",
-      "lastVerifiedAt": "2026-08-05",
+      "lastVerifiedAt": "2026-08-06",
       "status": "ended",
       "menuItems": [],
       "menuSource": "official-event-text",
@@ -1263,18 +557,17 @@
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
-        "checkedOfficialList": false,
+        "checkedOfficialList": true,
         "checkedOfficialDetail": false,
         "checkedEmbeddedData": false,
         "checkedOfficialImages": false,
-        "checkedOperatorSearch": false,
+        "checkedOperatorSearch": true,
         "checkedBrandOfficialSources": false,
         "checkedUrls": [
           "https://m.lotteshopping.com/search/searchResult?cstrCd=0336&searchTerm=%EC%88%98%EC%88%98%EB%8C%80%EC%9E%A5%EA%B5%B0+%EC%A0%84%ED%86%B5%EA%B0%84%EC%8B%9D"
         ],
         "checkedMethods": [
-          "official_list_html",
-          "operator_internal_search"
+          "official_list_html"
         ],
         "imageCandidatesFound": 0,
         "menuCandidatesFound": 0,
@@ -1283,24 +576,21 @@
         "status": "search_incomplete",
         "evidence": [],
         "failureReasons": [
-          "official_list_request_failed",
-          "official_detail_not_identified",
-          "official_detail_images_not_checked",
-          "brand_official_sources_not_checked"
+          "legacy_collector_search_evidence_incomplete"
         ],
-        "checkedAt": "2026-08-06T03:27:15.869Z"
+        "checkedAt": "2026-08-06T09:03:23.113Z"
       },
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-06T04:03:41.871Z"
+        "checkedAt": "2026-08-06T09:19:43.633Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-06T04:03:41.871Z",
+      "lastContentCheckedAt": "2026-08-06T09:19:43.633Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -1318,11 +608,11 @@
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%B0%BE%EB%8B%A4%EB%B3%B4%EB%8B%88%EC%97%AC%EA%B8%B0+%EA%B1%B4%EC%96%B4%EB%AC%BC%C2%B7%EA%B1%B4%EA%B0%95%EC%B9%A9",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-08-05",
+      "lastSeenAt": "2026-08-06",
       "brand": "찾다보니여기 건어물·건강칩",
       "region": "경기도",
       "category": "food-popup",
-      "lastVerifiedAt": "2026-08-05",
+      "lastVerifiedAt": "2026-08-06",
       "status": "ended",
       "menuItems": [],
       "menuSource": "official-event-text",
@@ -1347,18 +637,17 @@
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
-        "checkedOfficialList": false,
+        "checkedOfficialList": true,
         "checkedOfficialDetail": false,
         "checkedEmbeddedData": false,
         "checkedOfficialImages": false,
-        "checkedOperatorSearch": false,
+        "checkedOperatorSearch": true,
         "checkedBrandOfficialSources": false,
         "checkedUrls": [
           "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%B0%BE%EB%8B%A4%EB%B3%B4%EB%8B%88%EC%97%AC%EA%B8%B0+%EA%B1%B4%EC%96%B4%EB%AC%BC%C2%B7%EA%B1%B4%EA%B0%95%EC%B9%A9"
         ],
         "checkedMethods": [
-          "official_list_html",
-          "operator_internal_search"
+          "official_list_html"
         ],
         "imageCandidatesFound": 0,
         "menuCandidatesFound": 0,
@@ -1367,24 +656,21 @@
         "status": "search_incomplete",
         "evidence": [],
         "failureReasons": [
-          "official_list_request_failed",
-          "official_detail_not_identified",
-          "official_detail_images_not_checked",
-          "brand_official_sources_not_checked"
+          "legacy_collector_search_evidence_incomplete"
         ],
-        "checkedAt": "2026-08-06T03:27:15.688Z"
+        "checkedAt": "2026-08-06T09:03:23.113Z"
       },
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-06T04:03:41.871Z"
+        "checkedAt": "2026-08-06T09:19:43.633Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-06T04:03:41.871Z",
+      "lastContentCheckedAt": "2026-08-06T09:19:43.633Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -1402,11 +688,11 @@
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%B2%AD%EC%A3%BC%EB%AF%B8%EC%B9%9C%EB%A7%8C%EB%91%90",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-08-05",
+      "lastSeenAt": "2026-08-06",
       "brand": "청주미친만두",
       "region": "경기도",
       "category": "food-popup",
-      "lastVerifiedAt": "2026-08-05",
+      "lastVerifiedAt": "2026-08-06",
       "status": "ended",
       "menuItems": [],
       "menuSource": "official-event-text",
@@ -1431,18 +717,17 @@
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
-        "checkedOfficialList": false,
+        "checkedOfficialList": true,
         "checkedOfficialDetail": false,
         "checkedEmbeddedData": false,
         "checkedOfficialImages": false,
-        "checkedOperatorSearch": false,
+        "checkedOperatorSearch": true,
         "checkedBrandOfficialSources": false,
         "checkedUrls": [
           "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%B2%AD%EC%A3%BC%EB%AF%B8%EC%B9%9C%EB%A7%8C%EB%91%90"
         ],
         "checkedMethods": [
-          "official_list_html",
-          "operator_internal_search"
+          "official_list_html"
         ],
         "imageCandidatesFound": 0,
         "menuCandidatesFound": 0,
@@ -1451,24 +736,21 @@
         "status": "search_incomplete",
         "evidence": [],
         "failureReasons": [
-          "official_list_request_failed",
-          "official_detail_not_identified",
-          "official_detail_images_not_checked",
-          "brand_official_sources_not_checked"
+          "legacy_collector_search_evidence_incomplete"
         ],
-        "checkedAt": "2026-08-06T03:27:05.019Z"
+        "checkedAt": "2026-08-06T09:03:23.113Z"
       },
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-06T04:03:41.871Z"
+        "checkedAt": "2026-08-06T09:19:43.633Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-06T04:03:41.871Z",
+      "lastContentCheckedAt": "2026-08-06T09:19:43.633Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -1487,14 +769,14 @@
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0333&searchTerm=%ED%90%81%EC%8B%A0%EB%8B%B9+Pop-Up",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-05",
-      "lastSeenAt": "2026-08-05",
+      "lastSeenAt": "2026-08-06",
       "brand": "퐁신당",
       "region": "부산광역시",
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
       "menuSource": "official-event-text",
-      "lastVerifiedAt": "2026-08-05",
+      "lastVerifiedAt": "2026-08-06",
       "status": "ongoing",
       "title": "퐁신당 Pop-Up",
       "branch": "롯데백화점 광복점",
@@ -1515,18 +797,17 @@
       "isEndingSoon": true,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
-        "checkedOfficialList": false,
+        "checkedOfficialList": true,
         "checkedOfficialDetail": false,
         "checkedEmbeddedData": false,
         "checkedOfficialImages": false,
-        "checkedOperatorSearch": false,
+        "checkedOperatorSearch": true,
         "checkedBrandOfficialSources": false,
         "checkedUrls": [
           "https://m.lotteshopping.com/search/searchResult?cstrCd=0333&searchTerm=%ED%90%81%EC%8B%A0%EB%8B%B9+Pop-Up"
         ],
         "checkedMethods": [
-          "official_list_html",
-          "operator_internal_search"
+          "official_list_html"
         ],
         "imageCandidatesFound": 0,
         "menuCandidatesFound": 0,
@@ -1535,315 +816,22 @@
         "status": "search_incomplete",
         "evidence": [],
         "failureReasons": [
-          "official_list_request_failed",
-          "official_detail_not_identified",
-          "official_detail_images_not_checked",
-          "brand_official_sources_not_checked"
+          "legacy_collector_search_evidence_incomplete"
         ],
-        "checkedAt": "2026-08-06T03:27:15.969Z"
+        "checkedAt": "2026-08-06T09:03:23.113Z"
       },
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-06T04:03:41.871Z"
+        "checkedAt": "2026-08-06T09:19:43.633Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-06T04:03:41.871Z",
+      "lastContentCheckedAt": "2026-08-06T09:19:43.633Z",
       "imageCandidates": [],
-      "menuCandidates": [],
-      "ocrStatus": "not_used"
-    },
-    {
-      "id": "shinsegae-shopping:SC00010:8560469",
-      "name": "[떼구르르베이커리] 팝업 스토어",
-      "venue": "신세계백화점 의정부점",
-      "venueType": "백화점",
-      "address": "경기도 의정부시 평화로 525 · 신세계백화점 의정부점 백화점 3층",
-      "startDate": "2026-07-23",
-      "endDate": "2026-08-06",
-      "imageUrl": "https://www.shinsegae.com/cms12/SC00010/info/shopping/brndsingle/__icsFiles/afieldfile/2026/07/28/J6rsTxPCb1E6.jpg",
-      "sourceName": "신세계백화점 공식 쇼핑뉴스",
-      "sourceUrl": "https://www.shinsegae.com/shopping/view.do?mainCd=02&pageLink=%2Fcms12%2FSC00010%2Finfo%2Fshopping%2Fbrndsingle%2F8560469_4597.txt&contentDtlCd=01&contentId=8560469&storeCd=SC00010&brandCd=UB0004152",
-      "sourceGrade": "official",
-      "firstSeenAt": "2026-08-02",
-      "lastSeenAt": "2026-08-05",
-      "brand": "[떼구르르베이커리] 팝업 스토어",
-      "region": "경기도",
-      "category": "food-popup",
-      "lastVerifiedAt": "2026-08-05",
-      "status": "ongoing",
-      "menuItems": [
-        "대표메뉴 및 가격 : 아그작케이크 애플망고/복숭아 각"
-      ],
-      "menuSource": "official-detail",
-      "menus": [
-        {
-          "name": "대표메뉴 및 가격 : 아그작케이크 애플망고/복숭아 각",
-          "price": 13500,
-          "priceText": "13,500원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.shinsegae.com/shopping/view.do?mainCd=02&pageLink=%2Fcms12%2FSC00010%2Finfo%2Fshopping%2Fbrndsingle%2F8560469_4597.txt&contentDtlCd=01&contentId=8560469&storeCd=SC00010&brandCd=UB0004152",
-          "sourceName": "신세계백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        }
-      ],
-      "officialImageUrls": [
-        "https://www.shinsegae.com/cms12/SC00010/info/shopping/brndsingle/__icsFiles/afieldfile/2026/07/28/J6rsTxPCb1E6.jpg"
-      ],
-      "title": "[떼구르르베이커리] 팝업 스토어",
-      "branch": "신세계백화점 의정부점",
-      "latitude": null,
-      "longitude": null,
-      "dDay": 1,
-      "image": "https://www.shinsegae.com/cms12/SC00010/info/shopping/brndsingle/__icsFiles/afieldfile/2026/07/28/J6rsTxPCb1E6.jpg",
-      "officialUrl": "https://www.shinsegae.com/shopping/view.do?mainCd=02&pageLink=%2Fcms12%2FSC00010%2Finfo%2Fshopping%2Fbrndsingle%2F8560469_4597.txt&contentDtlCd=01&contentId=8560469&storeCd=SC00010&brandCd=UB0004152",
-      "sourceItemId": "SC00010:8560469",
-      "tags": [
-        "[떼구르르베이커리] 팝업 스토어",
-        "신세계백화점 의정부점",
-        "경기도",
-        "백화점",
-        "food-popup",
-        "대표메뉴 및 가격 : 아그작케이크 애플망고/복숭아 각"
-      ],
-      "isNew": true,
-      "isEndingSoon": true,
-      "lastUpdated": "2026-08-05",
-      "imageValidation": {
-        "status": "invalid",
-        "reason": "invalid_content_type",
-        "contentType": "text/html",
-        "checkedAt": "2026-08-06T04:03:46.299Z"
-      },
-      "contentQuality": "C",
-      "publishStatus": "review_required",
-      "qualityReasons": [
-        "broken_image",
-        "search_incomplete"
-      ],
-      "lastContentCheckedAt": "2026-08-06T04:03:41.871Z",
-      "contentSearch": {
-        "checkedOfficialList": false,
-        "checkedOfficialDetail": false,
-        "checkedEmbeddedData": false,
-        "checkedOfficialImages": false,
-        "checkedOperatorSearch": false,
-        "checkedBrandOfficialSources": false,
-        "checkedUrls": [
-          "https://www.shinsegae.com/shopping/view.do?mainCd=02&pageLink=%2Fcms12%2FSC00010%2Finfo%2Fshopping%2Fbrndsingle%2F8560469_4597.txt&contentDtlCd=01&contentId=8560469&storeCd=SC00010&brandCd=UB0004152"
-        ],
-        "checkedMethods": [],
-        "imageCandidatesFound": 1,
-        "menuCandidatesFound": 1,
-        "priceCandidatesFound": 1,
-        "descriptionCandidatesFound": 0,
-        "status": "search_incomplete",
-        "evidence": [],
-        "failureReasons": [],
-        "checkedAt": "2026-08-06T04:03:41.871Z"
-      },
-      "imageCandidates": [
-        "https://www.shinsegae.com/cms12/SC00010/info/shopping/brndsingle/__icsFiles/afieldfile/2026/07/28/J6rsTxPCb1E6.jpg"
-      ],
-      "menuCandidates": [
-        {
-          "name": "대표메뉴 및 가격 : 아그작케이크 애플망고/복숭아 각",
-          "price": 13500,
-          "priceText": "13,500원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.shinsegae.com/shopping/view.do?mainCd=02&pageLink=%2Fcms12%2FSC00010%2Finfo%2Fshopping%2Fbrndsingle%2F8560469_4597.txt&contentDtlCd=01&contentId=8560469&storeCd=SC00010&brandCd=UB0004152",
-          "sourceName": "신세계백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        }
-      ],
-      "ocrStatus": "not_used"
-    },
-    {
-      "id": "galleria:gwanggyo:c85957:oneulmojji",
-      "name": "오늘모찌",
-      "venue": "갤러리아 광교",
-      "venueType": "백화점",
-      "address": "경기도 수원시 영통구 광교중앙로 124 · 갤러리아 광교 B1F GOURMET494",
-      "startDate": "2026-07-17",
-      "endDate": "2026-10-31",
-      "imageUrl": "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-oneulmojji.jpg",
-      "officialImageUrls": [
-        "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-oneulmojji.jpg"
-      ],
-      "sourceName": "갤러리아 공식 쇼핑뉴스",
-      "sourceUrl": "https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/c85957?qCategory=PRODUCT_EVENT",
-      "sourceGrade": "official",
-      "firstSeenAt": "2026-08-03",
-      "lastSeenAt": "2026-08-05",
-      "brand": "오늘모찌",
-      "region": "경기도",
-      "category": "food-popup",
-      "menus": [],
-      "menuItems": [],
-      "menuSource": "official-event-text",
-      "lastVerifiedAt": "2026-08-05",
-      "status": "ongoing",
-      "title": "오늘모찌",
-      "branch": "갤러리아 광교",
-      "latitude": null,
-      "longitude": null,
-      "dDay": 87,
-      "image": "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-oneulmojji.jpg",
-      "officialUrl": "https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/c85957?qCategory=PRODUCT_EVENT",
-      "sourceItemId": "gwanggyo:c85957:oneulmojji",
-      "tags": [
-        "오늘모찌",
-        "갤러리아 광교",
-        "경기도",
-        "백화점",
-        "food-popup"
-      ],
-      "isNew": true,
-      "isEndingSoon": false,
-      "lastUpdated": "2026-08-05",
-      "imageValidation": {
-        "status": "valid",
-        "contentType": "image/jpeg",
-        "width": 720,
-        "height": 1200,
-        "checkedAt": "2026-08-06T04:03:46.316Z"
-      },
-      "contentQuality": "C",
-      "publishStatus": "review_required",
-      "qualityReasons": [
-        "search_incomplete"
-      ],
-      "lastContentCheckedAt": "2026-08-06T04:03:41.871Z",
-      "contentSearch": {
-        "checkedOfficialList": false,
-        "checkedOfficialDetail": false,
-        "checkedEmbeddedData": false,
-        "checkedOfficialImages": false,
-        "checkedOperatorSearch": false,
-        "checkedBrandOfficialSources": false,
-        "checkedUrls": [
-          "https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/c85957?qCategory=PRODUCT_EVENT"
-        ],
-        "checkedMethods": [],
-        "imageCandidatesFound": 1,
-        "menuCandidatesFound": 0,
-        "priceCandidatesFound": 0,
-        "descriptionCandidatesFound": 0,
-        "status": "search_incomplete",
-        "evidence": [],
-        "failureReasons": [],
-        "checkedAt": "2026-08-06T04:03:41.871Z"
-      },
-      "imageCandidates": [
-        "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-oneulmojji.jpg"
-      ],
-      "menuCandidates": [],
-      "ocrStatus": "not_used"
-    },
-    {
-      "id": "lotte:jamsil:honey",
-      "name": "안상규벌꿀",
-      "venue": "롯데월드몰",
-      "venueType": "쇼핑몰",
-      "address": "서울특별시 송파구 올림픽로 300 (신천동) · 롯데월드몰",
-      "startDate": "2026-07-15",
-      "endDate": "2026-08-09",
-      "imageUrl": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000546957/20260714212145994_1.jpeg",
-      "sourceName": "롯데쇼핑 공식 행사",
-      "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000546957",
-      "sourceGrade": "official-search",
-      "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-08-05",
-      "brand": "안상규벌꿀",
-      "region": "서울특별시",
-      "category": "food-popup",
-      "lastVerifiedAt": "2026-08-05",
-      "status": "ongoing",
-      "menuItems": [],
-      "menuSource": "official-event-text",
-      "menus": [],
-      "imageSource": "official-detail",
-      "officialImageUrls": [
-        "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000546957/20260714212145994_1.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000546957/202607142121469_9.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000546957/2026071421214611_4.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000546957/2026071421214615_2.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000546957/2026071421214618_2.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000546957/2026071421214621_0.jpeg"
-      ],
-      "title": "안상규벌꿀",
-      "branch": "롯데월드몰",
-      "latitude": null,
-      "longitude": null,
-      "dDay": 4,
-      "image": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000546957/20260714212145994_1.jpeg",
-      "officialUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000546957",
-      "sourceItemId": "jamsil:honey",
-      "tags": [
-        "안상규벌꿀",
-        "롯데월드몰",
-        "서울특별시",
-        "쇼핑몰",
-        "food-popup"
-      ],
-      "isNew": true,
-      "isEndingSoon": false,
-      "lastUpdated": "2026-08-05",
-      "contentSearch": {
-        "checkedOfficialList": false,
-        "checkedOfficialDetail": false,
-        "checkedEmbeddedData": false,
-        "checkedOfficialImages": false,
-        "checkedOperatorSearch": false,
-        "checkedBrandOfficialSources": false,
-        "checkedUrls": [
-          "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000546957"
-        ],
-        "checkedMethods": [
-          "official_list_html",
-          "operator_internal_search"
-        ],
-        "imageCandidatesFound": 6,
-        "menuCandidatesFound": 0,
-        "priceCandidatesFound": 0,
-        "descriptionCandidatesFound": 0,
-        "status": "search_incomplete",
-        "evidence": [],
-        "failureReasons": [
-          "official_list_request_failed",
-          "official_detail_not_identified",
-          "official_detail_images_not_checked",
-          "brand_official_sources_not_checked"
-        ],
-        "checkedAt": "2026-08-06T03:27:15.806Z"
-      },
-      "imageValidation": {
-        "status": "valid",
-        "contentType": "image/jpeg",
-        "width": 750,
-        "height": 750,
-        "checkedAt": "2026-08-06T04:03:46.551Z"
-      },
-      "contentQuality": "C",
-      "publishStatus": "review_required",
-      "qualityReasons": [
-        "search_incomplete"
-      ],
-      "lastContentCheckedAt": "2026-08-06T04:03:41.871Z",
-      "imageCandidates": [
-        "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000546957/20260714212145994_1.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000546957/202607142121469_9.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000546957/2026071421214611_4.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000546957/2026071421214615_2.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000546957/2026071421214618_2.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000546957/2026071421214621_0.jpeg"
-      ],
       "menuCandidates": [],
       "ocrStatus": "not_used"
     },
@@ -1860,11 +848,11 @@
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EB%8F%84%EC%BF%84%EB%B2%A0%EB%A6%AC+%EC%83%9D%EA%B3%BC%EC%9D%BC%EB%AA%A8%EC%B0%8C",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-08-05",
+      "lastSeenAt": "2026-08-06",
       "brand": "도쿄베리 생과일모찌",
       "region": "경기도",
       "category": "food-popup",
-      "lastVerifiedAt": "2026-08-05",
+      "lastVerifiedAt": "2026-08-06",
       "status": "ended",
       "menuItems": [],
       "menuSource": "official-event-text",
@@ -1889,18 +877,17 @@
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
-        "checkedOfficialList": false,
+        "checkedOfficialList": true,
         "checkedOfficialDetail": false,
         "checkedEmbeddedData": false,
         "checkedOfficialImages": false,
-        "checkedOperatorSearch": false,
+        "checkedOperatorSearch": true,
         "checkedBrandOfficialSources": false,
         "checkedUrls": [
           "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EB%8F%84%EC%BF%84%EB%B2%A0%EB%A6%AC+%EC%83%9D%EA%B3%BC%EC%9D%BC%EB%AA%A8%EC%B0%8C"
         ],
         "checkedMethods": [
-          "official_list_html",
-          "operator_internal_search"
+          "official_list_html"
         ],
         "imageCandidatesFound": 0,
         "menuCandidatesFound": 0,
@@ -1909,202 +896,22 @@
         "status": "search_incomplete",
         "evidence": [],
         "failureReasons": [
-          "official_list_request_failed",
-          "official_detail_not_identified",
-          "official_detail_images_not_checked",
-          "brand_official_sources_not_checked"
+          "legacy_collector_search_evidence_incomplete"
         ],
-        "checkedAt": "2026-08-06T03:27:15.659Z"
+        "checkedAt": "2026-08-06T09:03:23.114Z"
       },
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-06T04:03:41.871Z"
+        "checkedAt": "2026-08-06T09:19:43.633Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-06T04:03:41.871Z",
+      "lastContentCheckedAt": "2026-08-06T09:19:43.633Z",
       "imageCandidates": [],
-      "menuCandidates": [],
-      "ocrStatus": "not_used"
-    },
-    {
-      "id": "galleria:gwanggyo:c85957:hanwoomyeongga",
-      "name": "한우명가",
-      "venue": "갤러리아 광교",
-      "venueType": "백화점",
-      "address": "경기도 수원시 영통구 광교중앙로 124 · 갤러리아 광교 B1F GOURMET494",
-      "startDate": "2026-07-10",
-      "endDate": "2026-08-06",
-      "imageUrl": "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-hanwoomyeongga.jpg",
-      "officialImageUrls": [
-        "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-hanwoomyeongga.jpg"
-      ],
-      "sourceName": "갤러리아 공식 쇼핑뉴스",
-      "sourceUrl": "https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/c85957?qCategory=PRODUCT_EVENT",
-      "sourceGrade": "official",
-      "firstSeenAt": "2026-08-03",
-      "lastSeenAt": "2026-08-05",
-      "brand": "한우명가",
-      "region": "경기도",
-      "category": "food-popup",
-      "menus": [],
-      "menuItems": [],
-      "menuSource": "official-event-text",
-      "lastVerifiedAt": "2026-08-05",
-      "status": "ongoing",
-      "title": "한우명가",
-      "branch": "갤러리아 광교",
-      "latitude": null,
-      "longitude": null,
-      "dDay": 1,
-      "image": "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-hanwoomyeongga.jpg",
-      "officialUrl": "https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/c85957?qCategory=PRODUCT_EVENT",
-      "sourceItemId": "gwanggyo:c85957:hanwoomyeongga",
-      "tags": [
-        "한우명가",
-        "갤러리아 광교",
-        "경기도",
-        "백화점",
-        "food-popup"
-      ],
-      "isNew": true,
-      "isEndingSoon": true,
-      "lastUpdated": "2026-08-05",
-      "imageValidation": {
-        "status": "valid",
-        "contentType": "image/jpeg",
-        "width": 720,
-        "height": 1305,
-        "checkedAt": "2026-08-06T04:03:46.639Z"
-      },
-      "contentQuality": "C",
-      "publishStatus": "review_required",
-      "qualityReasons": [
-        "search_incomplete"
-      ],
-      "lastContentCheckedAt": "2026-08-06T04:03:41.871Z",
-      "contentSearch": {
-        "checkedOfficialList": false,
-        "checkedOfficialDetail": false,
-        "checkedEmbeddedData": false,
-        "checkedOfficialImages": false,
-        "checkedOperatorSearch": false,
-        "checkedBrandOfficialSources": false,
-        "checkedUrls": [
-          "https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/c85957?qCategory=PRODUCT_EVENT"
-        ],
-        "checkedMethods": [],
-        "imageCandidatesFound": 1,
-        "menuCandidatesFound": 0,
-        "priceCandidatesFound": 0,
-        "descriptionCandidatesFound": 0,
-        "status": "search_incomplete",
-        "evidence": [],
-        "failureReasons": [],
-        "checkedAt": "2026-08-06T04:03:41.871Z"
-      },
-      "imageCandidates": [
-        "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-hanwoomyeongga.jpg"
-      ],
-      "menuCandidates": [],
-      "ocrStatus": "not_used"
-    },
-    {
-      "id": "lotte:cheongju:ojisan-cheesecake",
-      "name": "오지상 치즈케이크",
-      "venue": "롯데아울렛 청주점",
-      "venueType": "쇼핑몰",
-      "address": "충청북도 청주시 흥덕구 2순환로 1004 · 롯데아울렛 청주점",
-      "startDate": "2026-07-03",
-      "endDate": "2026-08-06",
-      "imageUrl": "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000509439/20260127090749624_7.jpeg",
-      "sourceName": "롯데쇼핑 공식 행사",
-      "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0342&searchTerm=%EC%98%A4%EC%A7%80%EC%83%81+%EC%B9%98%EC%A6%88%EC%BC%80%EC%9D%B4%ED%81%AC",
-      "sourceGrade": "official-search",
-      "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-08-05",
-      "brand": "오지상 치즈케이크",
-      "region": "충청북도",
-      "category": "food-popup",
-      "lastVerifiedAt": "2026-08-05",
-      "status": "ongoing",
-      "menuItems": [],
-      "menuSource": "official-event-text",
-      "menus": [],
-      "imageSource": "official-detail",
-      "officialImageUrls": [
-        "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000509439/20260127090749624_7.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202508/SNM00000000000477442/2025082712294592_4.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202511/SNM00000000000496977/20251126165107365_4.jpeg"
-      ],
-      "title": "오지상 치즈케이크",
-      "branch": "롯데아울렛 청주점",
-      "latitude": null,
-      "longitude": null,
-      "dDay": 1,
-      "image": "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000509439/20260127090749624_7.jpeg",
-      "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0342&searchTerm=%EC%98%A4%EC%A7%80%EC%83%81+%EC%B9%98%EC%A6%88%EC%BC%80%EC%9D%B4%ED%81%AC",
-      "sourceItemId": "cheongju:ojisan-cheesecake",
-      "tags": [
-        "오지상 치즈케이크",
-        "롯데아울렛 청주점",
-        "충청북도",
-        "쇼핑몰",
-        "food-popup"
-      ],
-      "isNew": true,
-      "isEndingSoon": true,
-      "lastUpdated": "2026-08-05",
-      "contentSearch": {
-        "checkedOfficialList": false,
-        "checkedOfficialDetail": false,
-        "checkedEmbeddedData": false,
-        "checkedOfficialImages": false,
-        "checkedOperatorSearch": false,
-        "checkedBrandOfficialSources": false,
-        "checkedUrls": [
-          "https://m.lotteshopping.com/search/searchResult?cstrCd=0342&searchTerm=%EC%98%A4%EC%A7%80%EC%83%81+%EC%B9%98%EC%A6%88%EC%BC%80%EC%9D%B4%ED%81%AC"
-        ],
-        "checkedMethods": [
-          "official_list_html",
-          "operator_internal_search"
-        ],
-        "imageCandidatesFound": 3,
-        "menuCandidatesFound": 0,
-        "priceCandidatesFound": 0,
-        "descriptionCandidatesFound": 0,
-        "status": "search_incomplete",
-        "evidence": [],
-        "failureReasons": [
-          "official_list_request_failed",
-          "official_detail_not_identified",
-          "official_detail_images_not_checked",
-          "brand_official_sources_not_checked"
-        ],
-        "checkedAt": "2026-08-06T03:27:05.018Z"
-      },
-      "imageValidation": {
-        "status": "valid",
-        "contentType": "image/jpeg",
-        "width": 750,
-        "height": 750,
-        "checkedAt": "2026-08-06T04:03:46.721Z"
-      },
-      "contentQuality": "C",
-      "publishStatus": "review_required",
-      "qualityReasons": [
-        "search_incomplete"
-      ],
-      "lastContentCheckedAt": "2026-08-06T04:03:41.871Z",
-      "imageCandidates": [
-        "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000509439/20260127090749624_7.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202508/SNM00000000000477442/2025082712294592_4.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202511/SNM00000000000496977/20251126165107365_4.jpeg"
-      ],
       "menuCandidates": [],
       "ocrStatus": "not_used"
     },
@@ -2121,14 +928,14 @@
       "sourceUrl": "https://www.starfield.co.kr/suwon/tenant/floorInfo",
       "sourceGrade": "official",
       "firstSeenAt": "2026-08-03",
-      "lastSeenAt": "2026-08-05",
+      "lastSeenAt": "2026-08-06",
       "brand": "인텔리젠시아 커피",
       "region": "경기도",
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
       "menuSource": "official-event-text",
-      "lastVerifiedAt": "2026-08-05",
+      "lastVerifiedAt": "2026-08-06",
       "status": "review_required",
       "title": "인텔리젠시아 커피",
       "branch": "스타필드 수원",
@@ -2148,20 +955,8 @@
       "isNew": true,
       "isEndingSoon": true,
       "lastUpdated": "2026-08-05",
-      "imageValidation": {
-        "status": "invalid",
-        "reason": "invalid_url",
-        "checkedAt": "2026-08-06T04:03:41.871Z"
-      },
-      "contentQuality": "C",
-      "publishStatus": "review_required",
-      "qualityReasons": [
-        "missing_dates",
-        "search_incomplete"
-      ],
-      "lastContentCheckedAt": "2026-08-06T04:03:41.871Z",
       "contentSearch": {
-        "checkedOfficialList": false,
+        "checkedOfficialList": true,
         "checkedOfficialDetail": false,
         "checkedEmbeddedData": false,
         "checkedOfficialImages": false,
@@ -2170,16 +965,40 @@
         "checkedUrls": [
           "https://www.starfield.co.kr/suwon/tenant/floorInfo"
         ],
-        "checkedMethods": [],
+        "checkedMethods": [
+          "official_list_html"
+        ],
         "imageCandidatesFound": 0,
-        "menuCandidatesFound": 0,
+        "menuCandidatesFound": 1,
         "priceCandidatesFound": 0,
         "descriptionCandidatesFound": 0,
         "status": "search_incomplete",
-        "evidence": [],
-        "failureReasons": [],
-        "checkedAt": "2026-08-06T04:03:41.871Z"
+        "evidence": [
+          {
+            "sourceUrl": "https://www.starfield.co.kr/suwon/tenant/floorInfo",
+            "sourceName": "스타필드 수원 공식 층별안내·바이츠 플레이스",
+            "contentType": "official_list",
+            "extractedField": "menus",
+            "capturedAt": "2026-08-06T09:03:23.114Z"
+          }
+        ],
+        "failureReasons": [
+          "legacy_collector_search_evidence_incomplete"
+        ],
+        "checkedAt": "2026-08-06T09:03:23.114Z"
       },
+      "imageValidation": {
+        "status": "invalid",
+        "reason": "invalid_url",
+        "checkedAt": "2026-08-06T09:19:43.633Z"
+      },
+      "contentQuality": "C",
+      "publishStatus": "review_required",
+      "qualityReasons": [
+        "missing_dates",
+        "search_incomplete"
+      ],
+      "lastContentCheckedAt": "2026-08-06T09:19:43.633Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -2201,14 +1020,14 @@
       "sourceGrade": "official",
       "category": "food-popup",
       "firstSeenAt": "2026-08-05",
-      "lastSeenAt": "2026-08-05",
+      "lastSeenAt": "2026-08-06",
       "menus": [],
       "menuItems": [],
       "menuSource": "official-event-text",
       "officialImageUrls": [
         "https://nodeul.org/wp-content/themes/nodeul/img/nodeul-ogimage.jpg"
       ],
-      "lastVerifiedAt": "2026-08-05",
+      "lastVerifiedAt": "2026-08-06",
       "status": "ongoing",
       "title": "(수정) 노들섬 푸드트럭 운영 안내(2026년 5~8월)",
       "branch": "노들섬",
@@ -2227,39 +1046,58 @@
       "isNew": true,
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
+      "contentSearch": {
+        "checkedOfficialList": true,
+        "checkedOfficialDetail": false,
+        "checkedEmbeddedData": false,
+        "checkedOfficialImages": true,
+        "checkedOperatorSearch": false,
+        "checkedBrandOfficialSources": false,
+        "checkedUrls": [
+          "https://nodeul.org/%EB%85%B8%EB%93%A4%EC%84%AC-%ED%91%B8%EB%93%9C%ED%8A%B8%EB%9F%AD-%EC%9A%B4%EC%98%81-%EC%95%88%EB%82%B42026%EB%85%84-58%EC%9B%94/",
+          "https://nodeul.org/wp-content/themes/nodeul/img/nodeul-ogimage.jpg"
+        ],
+        "checkedMethods": [
+          "official_list_html"
+        ],
+        "imageCandidatesFound": 1,
+        "menuCandidatesFound": 1,
+        "priceCandidatesFound": 0,
+        "descriptionCandidatesFound": 0,
+        "status": "search_incomplete",
+        "evidence": [
+          {
+            "sourceUrl": "https://nodeul.org/%EB%85%B8%EB%93%A4%EC%84%AC-%ED%91%B8%EB%93%9C%ED%8A%B8%EB%9F%AD-%EC%9A%B4%EC%98%81-%EC%95%88%EB%82%B42026%EB%85%84-58%EC%9B%94/",
+            "sourceName": "노들섬",
+            "contentType": "official_list",
+            "extractedField": "officialImageUrls",
+            "imageUrl": "https://nodeul.org/wp-content/themes/nodeul/img/nodeul-ogimage.jpg",
+            "capturedAt": "2026-08-06T09:03:23.115Z"
+          },
+          {
+            "sourceUrl": "https://nodeul.org/%EB%85%B8%EB%93%A4%EC%84%AC-%ED%91%B8%EB%93%9C%ED%8A%B8%EB%9F%AD-%EC%9A%B4%EC%98%81-%EC%95%88%EB%82%B42026%EB%85%84-58%EC%9B%94/",
+            "sourceName": "노들섬",
+            "contentType": "official_list",
+            "extractedField": "menus",
+            "capturedAt": "2026-08-06T09:03:23.115Z"
+          }
+        ],
+        "failureReasons": [],
+        "checkedAt": "2026-08-06T09:03:23.115Z"
+      },
       "imageValidation": {
         "status": "valid",
         "contentType": "image/jpeg",
         "width": 800,
         "height": 400,
-        "checkedAt": "2026-08-06T04:03:47.050Z"
+        "checkedAt": "2026-08-06T09:19:46.470Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-06T04:03:41.871Z",
-      "contentSearch": {
-        "checkedOfficialList": false,
-        "checkedOfficialDetail": false,
-        "checkedEmbeddedData": false,
-        "checkedOfficialImages": false,
-        "checkedOperatorSearch": false,
-        "checkedBrandOfficialSources": false,
-        "checkedUrls": [
-          "https://nodeul.org/%EB%85%B8%EB%93%A4%EC%84%AC-%ED%91%B8%EB%93%9C%ED%8A%B8%EB%9F%AD-%EC%9A%B4%EC%98%81-%EC%95%88%EB%82%B42026%EB%85%84-58%EC%9B%94/"
-        ],
-        "checkedMethods": [],
-        "imageCandidatesFound": 1,
-        "menuCandidatesFound": 0,
-        "priceCandidatesFound": 0,
-        "descriptionCandidatesFound": 0,
-        "status": "search_incomplete",
-        "evidence": [],
-        "failureReasons": [],
-        "checkedAt": "2026-08-06T04:03:41.871Z"
-      },
+      "lastContentCheckedAt": "2026-08-06T09:19:43.633Z",
       "imageCandidates": [
         "https://nodeul.org/wp-content/themes/nodeul/img/nodeul-ogimage.jpg"
       ],
