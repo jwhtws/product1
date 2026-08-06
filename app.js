@@ -73,7 +73,10 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
   const seoSlug = (label, id) => `${String(label).normalize('NFKC').toLocaleLowerCase('ko-KR').replace(/[^\p{L}\p{N}]+/gu, '-').replace(/^-|-$/g, '').slice(0, 70)}-${Math.abs(hash(id))}`;
   const popupSeoUrl = popup => `/food-popups/${seoSlug(`${popup.name}-${popup.venue}`, popup.id)}/`;
   const restaurantSeoUrl = restaurant => `/restaurant-reviews/${seoSlug(`${restaurant.name}-${restaurant.address}`, restaurant.id || `${restaurant.name}-${restaurant.address}`)}/`;
-  const idOf = restaurant => `${restaurant.name}|${restaurant.address}`;
+  const isPopupRecord = item => Boolean(item?.id && (item.category === 'food-popup' || item.startDate || item.endDate));
+  const legacyIdOf = item => `${item.name}|${item.address}`;
+  const idOf = item => legacyIdOf(item);
+  const savedIdOf = item => isPopupRecord(item) ? `popup:${item.id}` : idOf(item);
   const roadAddressKey = value => searchKey(String(value || '').split(',')[0].replace(/\([^)]*\)/g, ' '));
   const samePlace = (left, right) => {
     if (searchKey(left.name) !== searchKey(right.name)) return false;
@@ -206,7 +209,10 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     const el = $('#toast'); el.textContent = message; el.classList.add('show');
     clearTimeout(toast.timer); toast.timer = setTimeout(() => el.classList.remove('show'), 2200);
   }
-  function savedIds() { return state.serverUser ? state.serverSaved : store.get('saved', []); }
+  function savedIds() {
+    const raw = state.serverUser ? state.serverSaved : store.get('saved', []);
+    return [...new Set(raw)];
+  }
   async function saveUserData(key, value) {
     if (!state.serverUser) return store.set(key, value);
     await api(`/api/user-data/${key}`, { method: 'PUT', body: JSON.stringify({ value }) });
@@ -220,8 +226,29 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     Object.assign(state.serverUser, state.serverProfile);
     updateSavedCount();
   }
-  function isSaved(r) { return savedIds().includes(idOf(r)); }
+  function isSaved(r) {
+    const saved = savedIds();
+    return saved.includes(savedIdOf(r)) || (isPopupRecord(r) && saved.includes(legacyIdOf(r)));
+  }
   function updateSavedCount() { $('#saved-count').textContent = savedIds().length; }
+  function syncSavedUi(item) {
+    const saved = isSaved(item);
+    if (isPopupRecord(item)) {
+      $$('[data-home-save], [data-search-save]').filter(button =>
+        button.dataset.homeSave === item.id || button.dataset.searchSave === item.id
+      ).forEach(button => {
+        button.classList.toggle('is-saved', saved);
+        button.setAttribute('aria-pressed', String(saved));
+        button.setAttribute('aria-label', `${item.title || item.name} ${saved ? '저장 취소' : '저장'}`);
+        button.textContent = saved ? '♥' : '♡';
+      });
+      $$('[data-popup-save]').filter(button => button.dataset.popupSave === item.id).forEach(button => {
+        button.classList.toggle('is-saved', saved);
+        button.setAttribute('aria-pressed', String(saved));
+        button.textContent = saved ? '저장됨' : '저장';
+      });
+    }
+  }
   function renderHomeRankings() {
     const searches = state.popularRestaurants.slice(0, 5);
     const measuredSearches = state.popularRestaurants.filter(restaurant => Number(restaurant.searchCount) > 0).slice(0, 5);
@@ -252,13 +279,17 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
       applySearch();
     }));
   }
-  async function toggleSaved(r) {
-    const saved = savedIds(), id = idOf(r), exists = saved.includes(id);
-    const next = exists ? saved.filter(x => x !== id) : [...saved, id];
+  async function toggleSaved(r, { renderPage = true } = {}) {
+    const saved = savedIds(), id = savedIdOf(r), exists = isSaved(r);
+    const aliases = isPopupRecord(r) ? new Set([id, legacyIdOf(r)]) : new Set([id]);
+    const next = exists ? saved.filter(x => !aliases.has(x)) : [...saved.filter(x => !aliases.has(x)), id];
     if (state.serverUser) state.serverSaved = next;
     await saveUserData('saved', next);
     api('/api/events', { method: 'POST', body: JSON.stringify({ type: 'save', detail: `${exists ? '삭제' : '저장'}: ${r.name}` }) }).catch(() => {});
-    updateSavedCount(); toast(exists ? '저장 목록에서 삭제했어요.' : '가고 싶은 곳에 저장했어요.'); render();
+    updateSavedCount();
+    syncSavedUi(r);
+    toast(exists ? '저장 목록에서 삭제했어요.' : '가고 싶은 곳에 저장했어요.');
+    if (renderPage) render();
   }
   function recordPopularity(restaurants) {
     const popularity = store.get('popularity', {});
@@ -415,11 +446,21 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
   const koreaToday = () => new Intl.DateTimeFormat('en-CA', {
     timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit'
   }).format(new Date());
+  const popupStatusWarnings = new Set();
+  const relatedPopupCache = new Map();
   function popupStatus(popup) {
     const today = koreaToday();
-    if (popup.endDate && popup.endDate < today) return { key: 'ended', label: '종료' };
-    if (popup.startDate > today) return { key: 'upcoming', label: '오픈 예정' };
-    return { key: 'active', label: '영업 중' };
+    const dateStatus = popup.endDate && popup.endDate < today
+      ? { key: 'ended', label: '종료' }
+      : popup.startDate > today
+        ? { key: 'upcoming', label: '오픈 예정' }
+        : { key: 'active', label: '진행 중' };
+    const feedStatus = { ongoing: 'active', active: 'active', upcoming: 'upcoming', ended: 'ended' }[popup.status];
+    if (feedStatus && feedStatus !== dateStatus.key && !popupStatusWarnings.has(popup.id)) {
+      popupStatusWarnings.add(popup.id);
+      console.warn(`[popup-status] ${popup.id}: feed=${popup.status}, dates=${dateStatus.key}; 날짜 계산을 사용합니다.`);
+    }
+    return dateStatus;
   }
   function popupFoodType(popup) {
     const text = searchKey(`${popup.name} ${popup.brand || ''}`);
@@ -469,10 +510,10 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
   }
   function popupDday(popup) {
     const status = popupStatus(popup);
-    if (status.key === 'ended') return '종료';
+    if (status.key === 'ended') return '종료됨';
     if (status.key === 'upcoming') {
       const days = popupDayDiff(popup.startDate);
-      return days === 0 ? '오늘 오픈' : `오픈 D-${days}`;
+      return days === null ? '오픈 예정' : days === 0 ? '오늘 오픈' : `오픈 D-${days}`;
     }
     const days = popupDayDiff(popup.endDate);
     return days === null ? '상시' : days === 0 ? '오늘 종료' : `D-${days}`;
@@ -792,8 +833,8 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     const root = $('#popup-home-content');
     [...root.querySelectorAll('[data-home-popup-id]')].forEach(card => {
       const popup = state.popups.find(item => item.id === card.dataset.homePopupId);
-      card.addEventListener('click', event => { if (!event.target.closest('[data-home-save]')) openPopupDetail(popup); });
-      card.addEventListener('keydown', event => { if ((event.key === 'Enter' || event.key === ' ') && event.target === card) { event.preventDefault(); openPopupDetail(popup); } });
+      card.addEventListener('click', event => { if (!event.target.closest('[data-home-save]')) openPopupDetail(popup, card); });
+      card.addEventListener('keydown', event => { if ((event.key === 'Enter' || event.key === ' ') && event.target === card) { event.preventDefault(); openPopupDetail(popup, card); } });
     });
     [...root.querySelectorAll('[data-home-save]')].forEach(button => button.addEventListener('click', async event => {
       event.stopPropagation();
@@ -925,31 +966,146 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
       // Permission denial and unavailable coordinates keep the explicit region CTA.
     }
   }
-  function openPopupDetail(popup) {
+  function relatedPopups(popup) {
+    const cacheKey = `${popup.id}:${state.popups.length}`;
+    if (relatedPopupCache.has(cacheKey)) return relatedPopupCache.get(cacheKey);
+    const brand = searchKey(popup.brand);
+    const venue = searchKey(popup.venue);
+    const region = searchKey(popupRegionName(popup));
+    const category = popupHomeCategory(popup);
+    const relationshipRank = candidate => {
+      if (brand && searchKey(candidate.brand) === brand) return 0;
+      if (venue && searchKey(candidate.venue) === venue) return 1;
+      if (region && searchKey(popupRegionName(candidate)) === region) return 2;
+      if (popupHomeCategory(candidate) === category) return 3;
+      return 99;
+    };
+    const statusRank = candidate => ({ active: 0, upcoming: 1, ended: 2 })[popupStatus(candidate).key] ?? 3;
+    const rows = state.popups.filter(candidate => candidate.id !== popup.id && relationshipRank(candidate) < 99)
+      .sort((left, right) => statusRank(left) - statusRank(right)
+        || relationshipRank(left) - relationshipRank(right)
+        || String(left.startDate || '').localeCompare(String(right.startDate || '')))
+      .slice(0, 6);
+    relatedPopupCache.set(cacheKey, rows);
+    return rows;
+  }
+  function renderPopupDetailHeader(popup) {
+    const status = popupStatus(popup);
+    const dDay = popupDday(popup);
+    const hasAddress = Boolean(String(popup.address || '').trim());
+    const mapQuery = encodeURIComponent(popup.address || popup.venue || popup.name);
+    const officialImageMissing = popup.imageSource === 'official-image-unavailable';
+    const imageUrl = popup.imageUrl || popup.image || (officialImageMissing ? '' : popupFallbackImage(popup));
+    const imageMarkup = imageUrl
+      ? `<img src="${escapeHtml(imageUrl)}" alt="${escapeHtml(popup.name)} 대표 이미지" width="900" height="506" decoding="async">`
+      : `<div class="popup-detail-image-empty"><span aria-hidden="true">◇</span><strong>공식 대표 이미지 미공개</strong></div>`;
+    return `<div class="detail-cover popup-detail-cover${officialImageMissing ? ' popup-photo-missing' : ''}">${imageMarkup}</div>
+      <header class="detail-hero popup-detail-hero">
+        <span class="category">${escapeHtml(popup.venueType || '쇼핑시설')}</span>
+        <h2 id="detail-title" tabindex="-1">${escapeHtml(popup.name)}</h2>
+        ${popupBrandLabel(popup) ? `<p class="popup-detail-brand">${escapeHtml(popupBrandLabel(popup))}</p>` : ''}
+        <div class="popup-detail-badges" aria-label="팝업 진행 상태">
+          <span class="popup-detail-state popup-${status.key}">${escapeHtml(status.label)}</span>
+          <strong>${escapeHtml(dDay)}</strong>
+          ${popup.isNew === true ? '<span class="popup-detail-new">NEW</span>' : ''}
+        </div>
+        <div class="popup-detail-status popup-${status.key} sr-only"><strong>${escapeHtml(status.label)}</strong><span>${escapeHtml(popupPeriodLabel(popup))}</span></div>
+        <dl class="popup-detail-summary">
+          <div><dt>장소·지점</dt><dd>${escapeHtml(popup.venue || popup.branch || '장소 확인 중')}</dd></div>
+          <div><dt>기간<span class="sr-only">·영업일자</span></dt><dd class="popup-detail-period">${escapeHtml(popupPeriodLabel(popup))}</dd></div>
+          <div><dt>주소<span class="sr-only">·도로명주소</span></dt><dd>${escapeHtml(popup.address || '주소 정보 없음')}</dd></div>
+        </dl>
+        <div class="detail-actions popup-primary-actions" aria-label="주요 행동">
+          ${hasAddress ? `<a class="popup-guide-action" href="https://map.naver.com/p/search/${mapQuery}" target="_blank" rel="noopener noreferrer">길찾기</a>` : '<button class="popup-guide-action" type="button" disabled>길찾기</button>'}
+          ${popup.sourceUrl ? `<a class="primary popup-official-action" href="${escapeHtml(popup.sourceUrl)}" target="_blank" rel="noopener noreferrer">공식 정보</a>` : ''}
+          <button class="ghost ${isSaved(popup) ? 'is-saved' : ''}" type="button" data-popup-save="${escapeHtml(popup.id)}" aria-pressed="${String(isSaved(popup))}">${isSaved(popup) ? '저장됨' : '저장'}</button>
+          <button id="popup-share" class="ghost" type="button" aria-label="${escapeHtml(popup.name)} 공유">공유</button>
+        </div>
+      </header>`;
+  }
+  function renderPopupDetailInfo(popup) {
+    const hasAddress = Boolean(String(popup.address || '').trim());
+    const mapQuery = encodeURIComponent(popup.address || popup.venue || popup.name);
+    return hasAddress ? `<div class="map-links popup-map-links" aria-label="지도 서비스"><a target="_blank" rel="noopener noreferrer" href="https://map.naver.com/p/search/${mapQuery}">네이버 지도</a><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query=${mapQuery}">Google 지도</a></div>` : '';
+  }
+  function renderPopupMenuSection(popup) {
+    const menus = popupMenus(popup);
+    return `<section class="popup-menu-section popup-detail-section"><h3>메뉴·가격</h3>${menus.length
+      ? `<ul class="popup-menu-list">${menus.map(item => `<li><span>${escapeHtml(item.name || item)}</span>${item.price ? `<strong>${escapeHtml(item.price)}</strong>` : ''}</li>`).join('')}</ul><p class="data-source-note">${popup.menuSource === 'official-detail' ? '공식 상세 페이지에 공개된 대표 메뉴와 가격입니다.' : '공식 정보에 공개된 대표 품목입니다.'}</p>`
+      : '<p class="popup-menu-empty">메뉴는 공식 공지에서 확인해 주세요.</p>'}</section>`;
+  }
+  function renderPopupOfficialPhotos(popup) {
+    const photos = [...new Set([...(Array.isArray(popup.officialImageUrls) ? popup.officialImageUrls : []), popup.imageUrl].filter(Boolean))].slice(0, 12);
+    if (!photos.length) return '';
+    return `<section class="official-food-photos popup-detail-section"><div><h3>공식 음식 사진</h3><small>공식 상세 페이지 제공</small></div><div class="official-food-photo-grid">${photos.map((url, index) => `<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer"><img src="${escapeHtml(url)}" alt="${escapeHtml(popup.name)} 공식 음식 사진 ${index + 1}" width="480" height="360" loading="lazy" decoding="async"></a>`).join('')}</div></section>`;
+  }
+  function renderPopupOfficialSource(popup) {
+    return `<section class="popup-official-source popup-detail-section"><h3>공식 출처</h3><p><strong>${escapeHtml(popup.sourceName || '공식 정보')}</strong>${popup.lastVerifiedAt ? `<span>마지막 확인 ${escapeHtml(popup.lastVerifiedAt)}</span>` : ''}</p>${popup.sourceUrl ? `<a class="ghost" href="${escapeHtml(popup.sourceUrl)}" target="_blank" rel="noopener noreferrer">공식 정보 보기</a>` : '<small>공식 링크를 확인 중입니다.</small>'}</section>`;
+  }
+  function renderRelatedPopups(popup, rows) {
+    if (!rows.length) return '';
+    return `<section id="related-popups" class="popup-related popup-detail-section"><div class="popup-related-head"><h3>관련 팝업</h3><small>브랜드·장소·지역·카테고리 기준</small></div><div class="popup-related-grid">${rows.map(row => popupDiscoveryCard(row)).join('')}</div></section>`;
+  }
+  function renderPopupReviewSection(popup) {
+    const reviews = reviewsFor(popup);
+    return `<section class="review-section popup-review-section popup-detail-section"><div class="review-head"><h3>리뷰 <small id="review-count">${reviews.length}</small></h3><select id="review-sort" aria-label="리뷰 정렬"><option value="latest">최신순</option><option value="rating">별점순</option><option value="helpful">유용한순</option></select></div><div class="trust-note">✓ 직접 방문한 팝업 경험을 남겨주세요.</div><form id="review-form"><label>별점<select name="rating"><option value="5">5점</option><option value="4">4점</option><option value="3">3점</option><option value="2">2점</option><option value="1">1점</option></select></label><label class="photo-label">사진 첨부<input name="photo" type="file" accept="image/jpeg,image/png,image/webp"></label><textarea name="text" required maxlength="500" placeholder="메뉴, 맛, 대기시간을 알려주세요."></textarea><button class="primary" type="submit">리뷰 등록</button><p id="review-submit-status" class="review-submit-status" aria-live="polite"></p></form><div id="review-list"></div></section>`;
+  }
+  function renderEndedPopupActions(popup, related) {
+    if (popupStatus(popup).key !== 'ended') return '';
+    const activeRelated = related.some(candidate => popupStatus(candidate).key !== 'ended');
+    return `<aside class="popup-ended-actions popup-detail-section"><strong>이 팝업은 ${escapeHtml(popup.endDate || '표시된 종료일')}에 종료됐어요.</strong><div>${activeRelated ? '<button class="primary" type="button" data-ended-related>현재 진행 중인 비슷한 팝업 보기</button>' : ''}<button class="ghost" type="button" data-all-popups>전체 푸드팝업으로 돌아가기</button></div></aside>`;
+  }
+  function renderPopupReportSection() {
+    return `<section class="popup-report popup-detail-section"><h3>정보 오류 신고</h3><p>기간이나 장소가 실제 정보와 다른가요?</p><button class="ghost" type="button" data-popup-report>정보가 잘못됐나요?</button></section>`;
+  }
+  function renderPopupMobileCta(popup) {
+    const hasAddress = Boolean(String(popup.address || '').trim());
+    const mapQuery = encodeURIComponent(popup.address || popup.venue || popup.name);
+    return `<nav class="popup-mobile-cta" aria-label="팝업 빠른 행동">${hasAddress ? `<a href="https://map.naver.com/p/search/${mapQuery}" target="_blank" rel="noopener noreferrer">길찾기</a>` : '<button type="button" disabled>길찾기</button>'}<button type="button" data-popup-save="${escapeHtml(popup.id)}" aria-pressed="${String(isSaved(popup))}">${isSaved(popup) ? '저장됨' : '저장'}</button>${popup.sourceUrl ? `<a href="${escapeHtml(popup.sourceUrl)}" target="_blank" rel="noopener noreferrer">공식 정보</a>` : ''}</nav>`;
+  }
+  function bindPopupDetail(popup, related) {
+    $$('[data-popup-save]').forEach(button => button.addEventListener('click', () => toggleSaved(popup, { renderPage: false })));
+    $('#popup-share').addEventListener('click', () => shareText(`${popup.name} · ${popup.venue}${popup.address ? ` · ${popup.address}` : ''}`));
+    $('#review-sort').addEventListener('change', renderReviews);
+    $('#review-form').addEventListener('submit', submitReview);
+    $('#modal-content').querySelectorAll('#related-popups .discovery-popup-card').forEach(card => {
+      const candidate = related.find(item => item.id === card.dataset.homePopupId);
+      card.addEventListener('click', event => {
+        if (event.target.closest('[data-home-save]')) return;
+        openPopupDetail(candidate);
+      });
+      card.addEventListener('keydown', event => { if (event.key === 'Enter' && event.target === card) openPopupDetail(candidate); });
+    });
+    $('#modal-content').querySelectorAll('#related-popups [data-home-save]').forEach(button => button.addEventListener('click', event => {
+      event.stopPropagation();
+      const candidate = related.find(item => item.id === button.dataset.homeSave);
+      toggleSaved(candidate, { renderPage: false });
+    }));
+    $('[data-ended-related]')?.addEventListener('click', () => $('#related-popups')?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+    $('[data-all-popups]')?.addEventListener('click', () => {
+      closeModals();
+      showPopupResults();
+    });
+    $('[data-popup-report]')?.addEventListener('click', () => openPanel('contact', { popup }));
+    const reviewForm = $('#review-form');
+    reviewForm.addEventListener('focusin', () => $('#detail-modal').classList.add('review-keyboard-active'));
+    reviewForm.addEventListener('focusout', () => setTimeout(() => {
+      if (!reviewForm.contains(document.activeElement)) $('#detail-modal').classList.remove('review-keyboard-active');
+    }, 0));
+  }
+  function openPopupDetail(popup, origin = null) {
+    if (!popup) return;
     state.current = popup;
     state.currentPopup = popup;
-    const status = popupStatus(popup);
-    const officialImageMissing = popup.imageSource === 'official-image-unavailable';
-    const imageUrl = popup.imageUrl || (officialImageMissing ? '' : popupFallbackImage(popup));
-    const image = imageUrl ? ` style="background-image:url('${escapeHtml(imageUrl).replace(/'/g, '&#39;')}')"` : '';
-    const address = popup.address && popup.address !== popup.venue ? `${popup.venue} · ${popup.address}` : popup.venue;
-    const mapQuery = encodeURIComponent(popup.address || popup.venue);
-    const reviews = reviewsFor(popup);
-    const officialFoodPhotos = [...new Set([...(Array.isArray(popup.officialImageUrls) ? popup.officialImageUrls : []), popup.imageUrl].filter(Boolean))].slice(0, 12);
-    const officialPhotoGallery = officialFoodPhotos.length ? `<section class="official-food-photos"><div><h3>공식 음식 사진</h3><small>공식 상세 페이지 제공</small></div><div class="official-food-photo-grid">${officialFoodPhotos.map((url, index) => `<a href="${escapeHtml(url)}" target="_blank" rel="noopener"><img src="${escapeHtml(url)}" alt="${escapeHtml(popup.name)} 공식 음식 사진 ${index + 1}" loading="lazy"></a>`).join('')}</div></section>` : '';
-    $('#modal-content').innerHTML = `<div class="detail-cover popup-detail-cover${officialImageMissing ? ' popup-photo-missing' : ''}"${image}><span>${officialImageMissing ? '롯데 공식 사진 미공개' : status.label}</span></div>
-      <div class="detail-hero"><div class="detail-heading"><div><span class="category">${escapeHtml(popup.venueType || '쇼핑시설')}</span><h2 id="detail-title">${escapeHtml(popup.name)}</h2><div class="popup-region-badge popup-detail-region">${escapeHtml(popupLocationLabel(popup))}</div><p class="popup-detail-address"><strong>${escapeHtml(popup.venue)}</strong>${popup.address && popup.address !== popup.venue ? ` <span>· ${escapeHtml(popup.address)}</span>` : ''}</p></div></div>
-      <div class="popup-detail-status popup-${status.key}"><strong>${status.label}</strong><span>${escapeHtml(popupPeriodLabel(popup))}</span></div>
-      <div class="detail-actions"><a class="primary" href="${escapeHtml(popup.sourceUrl)}" target="_blank" rel="noopener noreferrer">공식 정보 보기</a><button id="popup-share" class="ghost" type="button">공유</button></div></div>
-      <div class="detail-grid popup-detail-grid"><section class="popup-location-section"><h3>팝업 정보</h3><dl><dt>백화점·지점</dt><dd>${escapeHtml(popup.venue)}</dd><dt>도로명주소</dt><dd>${escapeHtml(popup.address || popup.venue)}</dd><dt>영업일자</dt><dd class="popup-detail-period">${escapeHtml(popupPeriodLabel(popup))}</dd></dl><div class="map-links"><a target="_blank" rel="noopener" href="https://map.naver.com/p/search/${mapQuery}">네이버 지도에서 위치 보기</a><a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${mapQuery}">Google 지도</a></div></section><div class="popup-detail-right"><section class="popup-menu-section"><h3>메뉴</h3>${popupMenus(popup).length ? `<ul class="popup-menu-list">${popupMenus(popup).map(item => `<li><span>${escapeHtml(item.name || item)}</span>${item.price ? `<strong>${escapeHtml(item.price)}</strong>` : ''}</li>`).join('')}</ul>` : '<p class="popup-menu-empty">공식 사이트에 텍스트 메뉴가 공개되지 않았습니다.</p>'}<p class="data-source-note">${popupMenus(popup).length ? (popup.menuSource === 'official-detail' ? '공식 상세 페이지에 공개된 대표메뉴와 가격입니다.' : '공식 검색 결과에 공개된 대표 품목입니다.') : '공식 페이지에 메뉴명과 가격이 추가되면 자동으로 반영됩니다.'}</p></section>${officialPhotoGallery}<section class="review-section popup-review-section"><div class="review-head"><h3>리뷰 <small id="review-count">${reviews.length}</small></h3><select id="review-sort"><option value="latest">최신순</option><option value="rating">별점순</option><option value="helpful">유용한순</option></select></div><div class="trust-note">✓ 직접 방문한 팝업 경험을 남겨주세요.</div><form id="review-form"><label>별점<select name="rating"><option value="5">5점</option><option value="4">4점</option><option value="3">3점</option><option value="2">2점</option><option value="1">1점</option></select></label><label class="photo-label">사진 첨부<input name="photo" type="file" accept="image/jpeg,image/png,image/webp"></label><textarea name="text" required maxlength="500" placeholder="메뉴, 맛, 대기시간을 알려주세요."></textarea><button class="primary" type="submit">리뷰 등록</button><p id="review-submit-status" class="review-submit-status" aria-live="polite"></p></form><div id="review-list"></div></section></div></div>`;
-    $('#detail-modal .modal').scrollTop = 0;
-    $('#detail-modal').classList.add('open'); document.body.classList.add('locked');
+    const related = relatedPopups(popup);
+    const content = $('#modal-content');
+    content.className = 'popup-detail-content';
+    content.innerHTML = `${renderPopupDetailHeader(popup)}<main class="popup-detail-sections popup-detail-right">${renderPopupDetailInfo(popup)}${renderPopupMenuSection(popup)}${renderPopupOfficialPhotos(popup)}${renderPopupOfficialSource(popup)}${renderEndedPopupActions(popup, related)}${renderRelatedPopups(popup, related)}${renderPopupReviewSection(popup)}${renderPopupReportSection()}</main>${renderPopupMobileCta(popup)}`;
+    showDetailModal(origin);
     if (history.state?.mukdangLayer !== 'detail') {
       history.pushState({ ...history.state, mukdang: true, mukdangLayer: 'detail', detailType: 'popup', searchMode: state.searchMode }, '');
     }
-    $('#popup-share').addEventListener('click', () => shareText(`${popup.name} · ${address}`));
-    $('#review-sort').addEventListener('change', renderReviews);
-    $('#review-form').addEventListener('submit', submitReview);
+    bindPopupDetail(popup, related);
     renderReviews();
     loadReviews(popup);
   }
@@ -1028,9 +1184,9 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
           // name click behave exactly like a photo/card click.
           if (link && (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)) return;
           if (link) event.preventDefault();
-          openPopupDetail(popup);
+          openPopupDetail(popup, el);
         });
-        el.addEventListener('keydown', event => { if (event.key === 'Enter' && event.target === el) openPopupDetail(popup); });
+        el.addEventListener('keydown', event => { if (event.key === 'Enter' && event.target === el) openPopupDetail(popup, el); });
       });
       $$('[data-search-save]').forEach(button => button.addEventListener('click', async event => {
         event.stopPropagation();
@@ -1341,8 +1497,10 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
         if (count) count.textContent = data.reviews.length;
         renderReviews();
       }
-      renderHomeRankings();
-      render();
+      if (!state.currentPopup) {
+        renderHomeRankings();
+        render();
+      }
     } catch {
       if (state.current === r && $('#review-list')) $('#review-list').innerHTML = '<p class="empty-reviews">리뷰 서버에 연결할 수 없습니다.</p>';
     }
@@ -1363,7 +1521,8 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     const naverQuery = encodeURIComponent(naverAddress);
     const fullQuery = encodeURIComponent(`${r.name} ${r.address || ''}`);
     const permit = permitDateInfo(r.permitDate);
-    $('#modal-content').innerHTML = `<div id="place-cover" class="detail-cover neutral-photo" data-category-label="${escapeHtml(categoryLabel(r))}"><span>${escapeHtml(categoryLabel(r))} · 사진 없음</span></div><div class="detail-hero"><div class="detail-heading"><div><span class="category">${escapeHtml(r.category || '음식점')}</span><h2 id="detail-title">${escapeHtml(r.name)}</h2><p>${escapeHtml(r.address)}</p></div></div>
+    $('#modal-content').className = '';
+    $('#modal-content').innerHTML = `<div id="place-cover" class="detail-cover neutral-photo" data-category-label="${escapeHtml(categoryLabel(r))}"><span>${escapeHtml(categoryLabel(r))} · 사진 없음</span></div><div class="detail-hero"><div class="detail-heading"><div><span class="category">${escapeHtml(r.category || '음식점')}</span><h2 id="detail-title" tabindex="-1">${escapeHtml(r.name)}</h2><p>${escapeHtml(r.address)}</p></div></div>
       <div class="detail-visuals">${buildingSitePlan(r)}<figure id="restaurant-exterior" class="restaurant-exterior neutral-photo" data-category-label="${escapeHtml(r.name)}"><figcaption><strong>식당 외관·간판</strong><span>실제 사진 확인 중</span></figcaption></figure></div>
       <div class="detail-score"><strong>★ ${r.rating}</strong><span>${priceText(r.price)}</span></div>
       <div class="permit-highlight"><div><span>현재 영업 기간</span><b>${permit ? escapeHtml(permit.duration) : '인허가일 확인 중'}</b></div><div><span>영업 시작일</span><strong>${permit ? escapeHtml(permit.formatted) : '공공 원장에 없음'}</strong></div><small>${permit ? '행정안전부 식품위생 인허가일 기준 · 영업 기간은 날짜 기준으로 매일 자동 계산' : '장소 정보는 확인됐지만 영업 신고일은 공공 원장에서 확인되지 않았습니다 · 매일 재확인'}</small></div>
@@ -1375,8 +1534,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
       <section class="review-section"><div class="review-head"><h3>사용자 리뷰 <small id="review-count">${reviews.length}</small></h3><select id="review-sort"><option value="latest">최신순</option><option value="rating">별점순</option><option value="helpful">유용한순</option></select></div>
       <div class="trust-note">✓ 리뷰는 Cloudflare 서버에 안전하게 저장되며 관리자 검토를 거칩니다.</div>
       <form id="review-form"><label>별점<select name="rating"><option value="5">5점</option><option value="4">4점</option><option value="3">3점</option><option value="2">2점</option><option value="1">1점</option></select></label><textarea name="text" required maxlength="500" placeholder="직접 경험한 맛과 분위기를 알려주세요."></textarea><label class="photo-label">사진 첨부<input name="photo" type="file" accept="image/*"></label><button class="primary" type="submit">리뷰 등록</button><p id="review-submit-status" class="review-submit-status" aria-live="polite"></p></form><div id="review-list"></div></section></div>`;
-    $('#detail-modal .modal').scrollTop = 0;
-    $('#detail-modal').classList.add('open'); document.body.classList.add('locked');
+    showDetailModal();
     if (history.state?.mukdangLayer !== 'detail') {
       history.pushState({ ...history.state, mukdang: true, mukdangLayer: 'detail', searchMode: state.searchMode }, '');
     }
@@ -1523,33 +1681,58 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     return { mime: 'image/jpeg', data: String(dataUrl).split(',')[1] };
   }
 
-  function closeModalsDirect() {
-    $$('.modal-backdrop').forEach(x => x.classList.remove('open'));
+  let modalReturnFocus = null;
+  function focusModalHeading(modal) {
+    const target = modal.querySelector('#detail-title') || modal.querySelector('#panel-title') || modal.querySelector('.modal-close');
+    target?.focus({ preventScroll: true });
+    requestAnimationFrame(() => target?.focus({ preventScroll: true }));
+    setTimeout(() => { if (modal.classList.contains('open')) target?.focus({ preventScroll: true }); }, 50);
+  }
+  function showDetailModal(origin = null) {
+    const backdrop = $('#detail-modal');
+    if (!$$('.modal-backdrop.open').length && !modalReturnFocus) modalReturnFocus = origin || (document.activeElement !== document.body ? document.activeElement : null);
+    backdrop.querySelector('.modal').scrollTop = 0;
+    backdrop.classList.remove('review-keyboard-active');
+    backdrop.classList.add('open');
+    document.body.classList.add('locked');
+    focusModalHeading(backdrop);
+  }
+  function closeModalsDirect({ restoreFocus = true } = {}) {
+    $$('.modal-backdrop').forEach(x => x.classList.remove('open', 'review-keyboard-active'));
     document.body.classList.remove('locked');
+    if (restoreFocus && modalReturnFocus?.isConnected) modalReturnFocus.focus();
+    if (restoreFocus) modalReturnFocus = null;
   }
   function closeModals() {
     if (history.state?.mukdangLayer) history.back();
     else closeModalsDirect();
   }
-  function openPanel(type) {
+  function openPanel(type, context = null) {
+    if (!$$('.modal-backdrop.open').length && !modalReturnFocus) modalReturnFocus = document.activeElement !== document.body ? document.activeElement : null;
     const content = $('#panel-content'); $('#panel-modal').classList.add('open'); document.body.classList.add('locked');
     if (type === 'saved') renderSavedPanel(content);
     else if (type === 'mypage') renderMyPage(content);
-    else if (type === 'contact') renderContactPanel(content);
+    else if (type === 'contact') renderContactPanel(content, context);
     else renderAuth(content);
     if (history.state?.mukdangLayer !== 'panel') {
       history.pushState({ ...history.state, mukdang: true, mukdangLayer: 'panel', panelType: type, searchMode: state.searchMode }, '');
     }
+    focusModalHeading($('#panel-modal'));
   }
-  function renderContactPanel(content) {
+  function renderContactPanel(content, context = null) {
     const email = state.serverUser?.email || '';
-    content.innerHTML = `<h2 id="panel-title">고객 문의</h2><p class="panel-lead">이용 중 불편한 점이나 식당 정보 수정 요청을 보내주세요.</p><form class="profile-form customer-contact" action="https://formspree.io/f/mojgyppj" method="POST"><input type="hidden" name="_subject" value="먹당 고객 문의"><label>문의 유형<select name="문의유형" required><option value="">선택해 주세요</option><option>식당 정보 수정</option><option>리뷰 신고</option><option>회원·로그인</option><option>서비스 오류</option><option>기타</option></select></label><label>답변받을 이메일<input type="email" name="email" required autocomplete="email" value="${escapeHtml(email)}" placeholder="me@example.com"></label><label>문의 내용<textarea name="문의내용" required rows="6" maxlength="2000" placeholder="문의 내용을 자세히 적어주세요."></textarea></label><button class="primary" type="submit">문의 보내기</button></form><p class="fine">보내주신 내용은 문의 답변 목적으로만 사용됩니다.</p>`;
+    const popup = context?.popup;
+    content.innerHTML = `<h2 id="panel-title" tabindex="-1">${popup ? '팝업 정보 오류 신고' : '고객 문의'}</h2><p class="panel-lead">${popup ? `<strong>${escapeHtml(popup.name)}</strong>의 잘못된 정보를 알려주세요.` : '이용 중 불편한 점이나 식당 정보 수정 요청을 보내주세요.'}</p><form class="profile-form customer-contact" action="https://formspree.io/f/mojgyppj" method="POST"><input type="hidden" name="_subject" value="${popup ? '먹당 푸드 팝업 정보 오류 신고' : '먹당 고객 문의'}">${popup ? `<input type="hidden" name="팝업ID" value="${escapeHtml(popup.id)}"><input type="hidden" name="팝업명" value="${escapeHtml(popup.name)}"><input type="hidden" name="공식출처" value="${escapeHtml(popup.sourceUrl || '')}"><input type="hidden" name="문의유형" value="푸드 팝업 정보 수정"><label>신고 사유<select name="신고사유" required><option value="">선택해 주세요</option><option>기간이 다름</option><option>장소가 다름</option><option>이미 종료됨</option><option>푸드 팝업이 아님</option><option>기타</option></select></label>` : '<label>문의 유형<select name="문의유형" required><option value="">선택해 주세요</option><option>식당 정보 수정</option><option>리뷰 신고</option><option>회원·로그인</option><option>서비스 오류</option><option>기타</option></select></label>'}<label>답변받을 이메일<input type="email" name="email" required autocomplete="email" value="${escapeHtml(email)}" placeholder="me@example.com"></label><label>문의 내용<textarea name="문의내용" required rows="6" maxlength="2000" placeholder="${popup ? '어떤 정보가 어떻게 다른지 알려주세요.' : '문의 내용을 자세히 적어주세요.'}"></textarea></label><button class="primary" type="submit">${popup ? '오류 신고 보내기' : '문의 보내기'}</button></form><p class="fine">보내주신 내용은 문의 답변과 정보 확인 목적으로만 사용됩니다.</p>`;
   }
   function renderSavedPanel(content) {
-    const saved = savedIds(), rows = state.all.filter(r => saved.includes(idOf(r)));
+    const saved = savedIds(), rows = [...state.all, ...state.popups].filter(isSaved);
     const lists = state.serverUser ? state.serverLists : store.get('lists', { '가고 싶은 곳': saved });
-    content.innerHTML = `<h2 id="panel-title">나의 맛집 리스트</h2><div class="list-tabs">${Object.keys(lists).map(name => `<button data-list="${escapeHtml(name)}">${escapeHtml(name)} <span>${lists[name].length}</span></button>`).join('')}<button id="new-list">＋ 새 리스트</button></div><div id="saved-grid" class="saved-grid">${rows.map((r, i) => `<button data-saved="${i}"><strong>${escapeHtml(r.name)}</strong><small>${escapeHtml(r.address)}</small></button>`).join('') || '<p class="empty-reviews">저장한 식당이 없습니다.</p>'}</div><button id="share-list" class="ghost">현재 목록 공유</button>`;
-    $$('[data-saved]').forEach(el => el.addEventListener('click', () => openDetail(rows[Number(el.dataset.saved)])));
+    content.innerHTML = `<h2 id="panel-title" tabindex="-1">저장 목록</h2><div class="list-tabs">${Object.keys(lists).map(name => `<button data-list="${escapeHtml(name)}">${escapeHtml(name)} <span>${lists[name].length}</span></button>`).join('')}<button id="new-list">＋ 새 리스트</button></div><div id="saved-grid" class="saved-grid">${rows.map((r, i) => `<button data-saved="${i}"><strong>${escapeHtml(r.name)}</strong><small>${escapeHtml(r.address || r.venue)}</small></button>`).join('') || '<p class="empty-reviews">저장한 장소가 없습니다.</p>'}</div><button id="share-list" class="ghost">현재 목록 공유</button>`;
+    $$('[data-saved]').forEach(el => el.addEventListener('click', () => {
+      const row = rows[Number(el.dataset.saved)];
+      if (isPopupRecord(row)) openPopupDetail(row);
+      else openDetail(row);
+    }));
     $('#new-list').addEventListener('click', async () => {
       const name = prompt('새 리스트 이름을 입력하세요.'); if (!name?.trim()) return;
       const next = state.serverUser ? { ...state.serverLists } : store.get('lists', {});
@@ -1848,11 +2031,27 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     if (e.key === 'Escape') {
       closeHeaderMenu();
       closeModals();
+      return;
+    }
+    if (e.key === 'Tab') {
+      const openModal = $$('.modal-backdrop.open').at(-1);
+      if (!openModal) return;
+      const focusable = [...openModal.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])')]
+        .filter(element => element.getClientRects().length);
+      if (!focusable.length) return;
+      const first = focusable[0], last = focusable.at(-1);
+      if (e.shiftKey && (document.activeElement === first || !openModal.contains(document.activeElement))) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && (document.activeElement === last || !openModal.contains(document.activeElement))) {
+        e.preventDefault();
+        first.focus();
+      }
     }
   });
   window.addEventListener('popstate', event => {
     const next = event.state;
-    closeModalsDirect();
+    closeModalsDirect({ restoreFocus: !next?.mukdangLayer });
     closeHeaderMenu();
     if (!next?.mukdang) return;
     if (next.searchMode && next.searchMode !== state.searchMode) selectSearchMode(next.searchMode, false);
@@ -1861,16 +2060,13 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
       return;
     }
     if (next.mukdangLayer === 'detail' && next.detailType === 'popup' && state.currentPopup) {
-      $('#detail-modal .modal').scrollTop = 0;
-      $('#detail-modal').classList.add('open');
-      document.body.classList.add('locked');
+      showDetailModal();
     } else if (next.mukdangLayer === 'detail' && state.current) {
-      $('#detail-modal .modal').scrollTop = 0;
-      $('#detail-modal').classList.add('open');
-      document.body.classList.add('locked');
+      showDetailModal();
     } else if (next.mukdangLayer === 'panel') {
       $('#panel-modal').classList.add('open');
       document.body.classList.add('locked');
+      focusModalHeading($('#panel-modal'));
     }
   });
   $$('[data-home]').forEach(link => link.addEventListener('click', event => {
