@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-08-04T22:31:45.543Z",
+  "updatedAt": "2026-08-07T01:02:58.550Z",
   "source": {
     "name": "행정안전부 생활_대규모점포",
     "pageUrl": "https://file.localdata.go.kr/file/large_scale_retail_stores/info",
     "downloadUrl": "https://file.localdata.go.kr/file/download/large_scale_retail_stores/info",
-    "sourceRows": 4178
+    "sourceRows": 4179
   },
   "policy": "전국 시설은 푸드팝업 탐색 대상 원장으로만 사용하며 시설 자체를 팝업으로 노출하지 않음",
   "total": 1029,
@@ -1689,6 +1689,17 @@
       "updatedAt": "2025-10-02 15:46:32"
     },
     {
+      "id": "localdata:5530000:2010553021407500002",
+      "name": "메타폴리스몰(METAPOLIS MALL)",
+      "kind": "복합쇼핑몰",
+      "region": "경기도",
+      "address": "경기도 화성시 동탄구 동탄중앙로 220 (반송동)",
+      "phone": "0313717000",
+      "category": "복합쇼핑몰",
+      "permitDate": "2010-12-22",
+      "updatedAt": "2026-08-05 17:57:12"
+    },
+    {
       "id": "localdata:3980000:2017398010807500001",
       "name": "모다아울렛",
       "kind": "아울렛",
@@ -2468,17 +2479,6 @@
       "category": "쇼핑센터",
       "permitDate": "2014-11-20",
       "updatedAt": "2026-04-14 14:50:48"
-    },
-    {
-      "id": "localdata:5530000:2010553021407500002",
-      "name": "타임테라스(TIMES TERRACE)",
-      "kind": "복합쇼핑몰",
-      "region": "경기도",
-      "address": "경기도 화성시 동탄구 동탄중앙로 220 (반송동)",
-      "phone": "0313717000",
-      "category": "복합쇼핑몰",
-      "permitDate": "2010-12-22",
-      "updatedAt": "2023-12-14 10:44:52"
     },
     {
       "id": "localdata:3860000:2007386012607500003",
@@ -3317,17 +3317,6 @@
       "updatedAt": "2024-05-03 15:16:36"
     },
     {
-      "id": "localdata:5310000:2005531001307500001",
-      "name": "(주)이마트 진주점",
-      "kind": "대형마트",
-      "region": "경상남도",
-      "address": "경상남도 진주시 진양호로 477 (인사동)",
-      "phone": "0557491052",
-      "category": "대형마트",
-      "permitDate": "2020-04-29",
-      "updatedAt": "2024-04-24 18:07:33"
-    },
-    {
       "id": "localdata:5310000:2014531014307500001",
       "name": "(주)이마트 진주점",
       "kind": "대형마트",
@@ -3337,6 +3326,17 @@
       "category": "대형마트",
       "permitDate": "2000-08-29",
       "updatedAt": "2015-03-12 13:36:00"
+    },
+    {
+      "id": "localdata:5310000:2005531001307500001",
+      "name": "(주)이마트 진주점",
+      "kind": "대형마트",
+      "region": "경상남도",
+      "address": "경상남도 진주시 진양호로 477 (인사동)",
+      "phone": "0557491052",
+      "category": "대형마트",
+      "permitDate": "2020-04-29",
+      "updatedAt": "2024-04-24 18:07:33"
     },
     {
       "id": "localdata:5330000:2020533022707500002",
