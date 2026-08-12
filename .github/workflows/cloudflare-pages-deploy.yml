@@ -1,4 +1,4 @@
-name: Cloudflare Pages 운영 배포
+name: Cloudflare Pages 자동 배포
 
 on:
   push:
@@ -9,11 +9,18 @@ permissions:
   contents: read
 
 concurrency:
-  group: cloudflare-pages-production
+  group: cloudflare-pages-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
   deploy:
+    name: ${{ matrix.project }} 배포
+    strategy:
+      fail-fast: false
+      matrix:
+        project:
+          - product1
+          - product2
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -30,11 +37,12 @@ jobs:
         run: |
           test -n "$CLOUDFLARE_API_TOKEN" || { echo "::error::CLOUDFLARE_API_TOKEN GitHub Secret이 필요합니다."; exit 1; }
           test -n "$CLOUDFLARE_ACCOUNT_ID" || { echo "::error::CLOUDFLARE_ACCOUNT_ID GitHub Secret이 필요합니다."; exit 1; }
-      - name: product1 운영 프로젝트 배포
+      - name: ${{ matrix.project }} 운영 프로젝트 배포
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy . --project-name=product1 --branch=main
+          command: pages deploy . --project-name=${{ matrix.project }} --branch=main
       - name: mukdang.com 배포 결과 검증
+        if: matrix.project == 'product1'
         run: node scripts/verify-popup-deployment.mjs --url=https://mukdang.com --attempts=8 --interval-ms=15000
