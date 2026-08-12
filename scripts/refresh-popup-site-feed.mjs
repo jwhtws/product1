@@ -53,7 +53,7 @@ try {
       child.once('error', reject);
       child.once('exit', code => resolve(code ?? 1));
     });
-    if (cacheExitCode !== 0) throw new Error(`신세계 공식 이미지 로컬 캐시 실패: exit ${cacheExitCode}`);
+    if (cacheExitCode !== 0) console.warn(`신세계 공식 이미지 로컬 캐시 일부 실패, 수집된 feed는 계속 반영합니다: exit ${cacheExitCode}`);
     const audit = await runPopupContentAudit({
       inputPath: rawPath, outputPath: evaluatedPath, reviewPath, reportPath: auditPath,
       previousRows: currentPayload.popups || []

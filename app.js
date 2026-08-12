@@ -592,7 +592,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
       (!venueFilter || (popup.venueType || '') === venueFilter) &&
       (!state.popupHomeCategoryFilter || popupHomeCategory(popup) === state.popupHomeCategoryFilter) &&
       (!state.popupRetailerFilter || popupRetailer(popup) === state.popupRetailerFilter) &&
-      (state.popupQuickFilter !== 'ending-today' || popup.isEndingSoon === true) &&
+      (state.popupQuickFilter !== 'ending-today' || popup.endDate === koreaToday()) &&
       (state.popupQuickFilter !== 'nearby' || !state.nearbyRegion || popupRegionName(popup) === state.nearbyRegion) &&
       (!state.popupEndingOnly || popup.endDate === koreaToday()) &&
       (!state.popupNewOnly || popup.isNew === true || isNewPopup(popup)) &&
@@ -807,13 +807,22 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     }
     const active = state.popups.filter(popup => popup.status === 'ongoing');
     const popular = active.filter(popup => (popup.tags || []).some(tag => /^(?:인기|popular|trending)$/iu.test(String(tag).trim())));
-    const editorPicks = [...active].sort((a, b) =>
+    const rankedEditorPicks = [...active].sort((a, b) =>
       (Number(Boolean(b.isNew)) * 4 + Number(Boolean(b.image)) * 2 + Math.min((b.tags || []).length, 5))
       - (Number(Boolean(a.isNew)) * 4 + Number(Boolean(a.image)) * 2 + Math.min((a.tags || []).length, 5))
       || String(a.endDate || '9999-12-31').localeCompare(String(b.endDate || '9999-12-31'))
     );
+    const editorPicks = [];
+    const editorPickSources = new Set();
+    for (const popup of rankedEditorPicks) {
+      const source = popup.sourceName || popupRetailer(popup) || popup.id.split(':')[0];
+      if (editorPickSources.has(source)) continue;
+      editorPicks.push(popup);
+      editorPickSources.add(source);
+    }
+    for (const popup of rankedEditorPicks) if (!editorPicks.includes(popup)) editorPicks.push(popup);
     const featured = popular.length ? popular : editorPicks;
-    const endingToday = active.filter(popup => popup.isEndingSoon === true);
+    const endingToday = active.filter(popup => popup.endDate === koreaToday());
     const nearby = state.nearbyEnabled && state.nearbyRegion ? active.filter(popup => popupRegionName(popup) === state.nearbyRegion) : [];
     const regionOrder = Object.keys(popupRegionLabels);
     const regionOptions = [...new Set(state.popups.map(popupRegionName).filter(Boolean))]
@@ -826,7 +835,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
       : `<section class="popup-discovery-section" id="nearby-popups"><div class="home-premium-empty home-premium-empty--compact" role="status"><span aria-hidden="true">⌖</span><strong>이 지역의 진행 중 팝업을 찾지 못했어요</strong><p>다른 지역을 선택하면 새로운 일정을 확인할 수 있어요.</p><button type="button" data-nearby-reselect class="md-button md-button--secondary">지역 다시 선택</button></div></section>`;
     root.innerHTML = [
       discoveryRail('today-discovery', popular.length ? '오늘 인기' : "Editor's Pick", popular.length ? '지금 많이 주목받는 푸드팝업' : '이미지·신규 일정·공식 정보 완성도를 기준으로 골랐어요', featured, { prioritizeFirst: true, horizontal: true }),
-      discoveryRail('ending-today', '오늘 종료', 'Feed 기준 3일 이내 종료되는 팝업이에요', endingToday, { horizontal: true }),
+      discoveryRail('ending-today', '오늘 종료', '오늘이 마지막 영업일인 팝업이에요', endingToday, { horizontal: true }),
       nearbySection,
       `<section class="popup-discovery-section taxonomy-section" id="region-discovery"><div class="md-section-header"><div><h2>지역</h2><p>현재 Feed에 팝업이 있는 지역만 보여드려요.</p></div></div><div class="discovery-taxonomy discovery-taxonomy--chips" aria-label="지역 선택">${regionOptions.map(item => `<button type="button" data-region-filter="${escapeHtml(item.value)}"><strong>${item.label}</strong><span>${item.count}</span></button>`).join('')}</div></section>`,
       `<section class="popup-discovery-section taxonomy-section" id="category-discovery"><div class="md-section-header"><div><h2>카테고리</h2><p>오늘 끌리는 메뉴로 골라보세요.</p></div></div><div class="discovery-taxonomy discovery-taxonomy--chips" aria-label="카테고리 선택">${categoryOptions.map(item => `<button type="button" data-category-filter="${item.key}"><strong>${item.label}</strong><span>${item.count}</span></button>`).join('')}</div></section>`

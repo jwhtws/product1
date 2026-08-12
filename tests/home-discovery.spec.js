@@ -142,10 +142,11 @@ test('Home은 단일 site-feed를 한 번만 읽고 Feed 필드로 카드를 렌
   await expect(page.locator('#today-discovery img').nth(1)).toHaveAttribute('loading', 'lazy');
 });
 
-test('오늘 종료는 isEndingSoon Feed 행만 노출하고 지역·카테고리는 Feed 값으로 구성한다', async ({ page }) => {
+test('오늘 종료는 종료일이 오늘인 Feed 행만 노출하고 지역·카테고리는 Feed 값으로 구성한다', async ({ page }) => {
   await page.goto(homeUrl, { waitUntil: 'domcontentloaded' });
   await expect(page.locator('#active-popup-count')).toContainText(readyPattern, { timeout: 15000 });
-  const endingIds = new Set(siteFeed.popups.filter(row => row.isEndingSoon).map(row => row.id));
+  const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
+  const endingIds = new Set(siteFeed.popups.filter(row => row.endDate === today).map(row => row.id));
   const renderedEndingIds = await page.locator('#ending-today [data-home-popup-id]').evaluateAll(cards => cards.map(card => card.dataset.homePopupId));
   expect(renderedEndingIds.length).toBeGreaterThan(0);
   expect(renderedEndingIds.every(id => endingIds.has(id))).toBe(true);

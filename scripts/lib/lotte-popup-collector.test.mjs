@@ -95,6 +95,16 @@ test('롯데 검색 결과에서 푸드 팝업만 날짜·지점·공식 이미�
   assert.equal(rows[1].venue, '롯데백화점 광복점');
 });
 
+test('롯데 검색 onclick 속성에서 HTML 대신 실제 팝업명을 추출한다', () => {
+  const newsId = 'SNM00000000000552552';
+  const html = `<li>${newsId} onclick="ga4.event('click_event', 'MO_통합검색', '통합검색_검색후_쇼핑정보', '1', '[떡볶이시대]맛있는 분식 Pop-Up'); lddi.App.callAppScheme('a0240', 'detail');"><p>롯데백화점 동탄점 B1 식품관</p><span>8.12 ~ 8.18</span></li>`;
+  const rows = parseLotteSearchResults(html, {
+    storeCode: '0399', storeName: '동탄점', today: '2026-08-12', decodeHtml, clean
+  });
+  assert.equal(rows[0]?.name, '[떡볶이시대]맛있는 분식 Pop-Up');
+  assert.doesNotMatch(rows[0]?.name || '', /onclick|ga4\.event/iu);
+});
+
 test('상세 SNM ID가 없는 공식 검색 카드도 안정적인 ID와 검색 링크로 보존한다', () => {
   const html = card({
     title: '[라이프컬처] Pop-Up',

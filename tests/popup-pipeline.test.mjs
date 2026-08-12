@@ -43,6 +43,13 @@ test('Home·Search·Detail은 같은 운영 feed와 ID를 사용하고 fixture�
   assert.ok(payload.popups.every(row => !/(?:fixture|example\.com|테스트)/iu.test(`${row.id} ${row.sourceUrl}`)));
 });
 
+test('홈 추천은 출처를 고루 노출하고 오늘 종료는 종료일을 정확히 비교한다', async () => {
+  const app = await readFile('app.js', 'utf8');
+  assert.match(app, /editorPickSources\.has\(source\)/u);
+  assert.match(app, /popup\.endDate === koreaToday\(\)/u);
+  assert.doesNotMatch(app, /popupQuickFilter !== 'ending-today' \|\| popup\.isEndingSoon === true/u);
+});
+
 test('종료 팝업도 운영 feed와 SEO 생성 대상에 보존한다', async () => {
   const [payload, seo] = await Promise.all([
     readFile('data/popups.json', 'utf8').then(JSON.parse),

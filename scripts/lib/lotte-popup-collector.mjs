@@ -145,6 +145,13 @@ export function parseLotteSearchResults(html, { storeCode, storeName, today, dec
     if (!venue) continue;
     const dateLineIndex = lines.findIndex(line => lotteDateRange(line, today));
     const titleCandidates = lines.slice(0, dateLineIndex >= 0 ? dateLineIndex : lines.length)
+      .map(line => {
+        if (!/ga4\.event|callAppScheme|onclick=/iu.test(line)) return line;
+        return [...line.matchAll(/'([^']+)'/gu)]
+          .map(candidate => clean(decodeHtml(candidate[1])))
+          .find(candidate => lottePopupWords.test(candidate) && lotteFoodWords.test(candidate)) || '';
+      })
+      .filter(Boolean)
       .filter(line => !/^(?:쇼핑뉴스|행사 종료|상세보기|자세히 보기)$/u.test(line))
       .filter(line => !/(?:백화점|아울렛|롯데몰|쇼핑몰|타임빌라스)\s*[^\n]{1,40}?점/u.test(line));
     const name = titleCandidates.find(line => lottePopupWords.test(line) && lotteFoodWords.test(line))
