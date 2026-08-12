@@ -807,8 +807,10 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     }
     const active = state.popups.filter(popup => popup.status === 'ongoing');
     const popular = active.filter(popup => (popup.tags || []).some(tag => /^(?:인기|popular|trending)$/iu.test(String(tag).trim())));
+    const today = koreaToday();
     const rankedEditorPicks = [...active].sort((a, b) =>
-      (Number(Boolean(b.isNew)) * 4 + Number(Boolean(b.image)) * 2 + Math.min((b.tags || []).length, 5))
+      Number(b.startDate === today) - Number(a.startDate === today)
+      || (Number(Boolean(b.isNew)) * 4 + Number(Boolean(b.image)) * 2 + Math.min((b.tags || []).length, 5))
       - (Number(Boolean(a.isNew)) * 4 + Number(Boolean(a.image)) * 2 + Math.min((a.tags || []).length, 5))
       || String(a.endDate || '9999-12-31').localeCompare(String(b.endDate || '9999-12-31'))
     );
@@ -822,7 +824,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     }
     for (const popup of rankedEditorPicks) if (!editorPicks.includes(popup)) editorPicks.push(popup);
     const featured = popular.length ? popular : editorPicks;
-    const endingToday = active.filter(popup => popup.endDate === koreaToday());
+    const endingToday = active.filter(popup => popup.endDate === today);
     const nearby = state.nearbyEnabled && state.nearbyRegion ? active.filter(popup => popupRegionName(popup) === state.nearbyRegion) : [];
     const regionOrder = Object.keys(popupRegionLabels);
     const regionOptions = [...new Set(state.popups.map(popupRegionName).filter(Boolean))]
@@ -834,7 +836,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
       ? discoveryRail('nearby-popups', '내 주변 팝업', `${popupRegionLabels[state.nearbyRegion] || state.nearbyRegion}에서 지금 만날 수 있어요`, nearby)
       : `<section class="popup-discovery-section" id="nearby-popups"><div class="home-premium-empty home-premium-empty--compact" role="status"><span aria-hidden="true">⌖</span><strong>이 지역의 진행 중 팝업을 찾지 못했어요</strong><p>다른 지역을 선택하면 새로운 일정을 확인할 수 있어요.</p><button type="button" data-nearby-reselect class="md-button md-button--secondary">지역 다시 선택</button></div></section>`;
     root.innerHTML = [
-      discoveryRail('today-discovery', popular.length ? '오늘 인기' : "Editor's Pick", popular.length ? '지금 많이 주목받는 푸드팝업' : '이미지·신규 일정·공식 정보 완성도를 기준으로 골랐어요', featured, { prioritizeFirst: true, horizontal: true }),
+      discoveryRail('today-discovery', popular.length ? '오늘 인기' : "Editor's Pick", popular.length ? '지금 많이 주목받는 푸드팝업' : '오늘 시작한 일정부터 우선해서 골랐어요', featured, { prioritizeFirst: true, horizontal: true }),
       discoveryRail('ending-today', '오늘 종료', '오늘이 마지막 영업일인 팝업이에요', endingToday, { horizontal: true }),
       nearbySection,
       `<section class="popup-discovery-section taxonomy-section" id="region-discovery"><div class="md-section-header"><div><h2>지역</h2><p>현재 Feed에 팝업이 있는 지역만 보여드려요.</p></div></div><div class="discovery-taxonomy discovery-taxonomy--chips" aria-label="지역 선택">${regionOptions.map(item => `<button type="button" data-region-filter="${escapeHtml(item.value)}"><strong>${item.label}</strong><span>${item.count}</span></button>`).join('')}</div></section>`,

@@ -43,20 +43,20 @@ test('Home·Search·Detail은 같은 운영 feed와 ID를 사용하고 fixture�
   assert.ok(payload.popups.every(row => !/(?:fixture|example\.com|테스트)/iu.test(`${row.id} ${row.sourceUrl}`)));
 });
 
-test('홈 추천은 출처를 고루 노출하고 오늘 종료는 종료일을 정확히 비교한다', async () => {
+test('홈 추천은 오늘 시작을 최우선으로 하면서 출처를 고루 노출하고 오늘 종료를 정확히 비교한다', async () => {
   const app = await readFile('app.js', 'utf8');
+  assert.match(app, /Number\(b\.startDate === today\) - Number\(a\.startDate === today\)/u);
   assert.match(app, /editorPickSources\.has\(source\)/u);
-  assert.match(app, /popup\.endDate === koreaToday\(\)/u);
+  assert.match(app, /popup\.endDate === today/u);
   assert.doesNotMatch(app, /popupQuickFilter !== 'ending-today' \|\| popup\.isEndingSoon === true/u);
 });
 
-test('main 푸시는 Cloudflare Pages product1 운영 프로젝트로 자동 배포한다', async () => {
+test('main 푸시는 Cloudflare Pages product1·product2 프로젝트로 자동 배포한다', async () => {
   const workflow = await readFile('.github/workflows/cloudflare-pages-deploy.yml', 'utf8');
   assert.match(workflow, /push:[\s\S]*branches:\s*\[main\]/u);
-  assert.match(workflow, /cloudflare\/wrangler-action@v3/u);
-  assert.match(workflow, /CLOUDFLARE_API_TOKEN/u);
-  assert.match(workflow, /CLOUDFLARE_ACCOUNT_ID/u);
-  assert.match(workflow, /pages deploy \. --project-name=product1 --branch=main/u);
+  assert.match(workflow, /WRANGLER_OAUTH_CONFIG/u);
+  assert.match(workflow, /project:[\s\S]*product1[\s\S]*product2/u);
+  assert.match(workflow, /pages deploy \. --project-name=\$\{\{ matrix\.project \}\} --branch=main/u);
   assert.match(workflow, /verify-popup-deployment\.mjs --url=https:\/\/mukdang\.com/u);
 });
 
