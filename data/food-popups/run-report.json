@@ -4590,24 +4590,24 @@
     }
   ],
   "siteFeed": {
-    "inputCount": 206,
-    "outputCount": 184,
-    "rejectedCount": 22,
-    "qualityExcludedCount": 22,
+    "inputCount": 184,
+    "outputCount": 182,
+    "rejectedCount": 2,
+    "qualityExcludedCount": 0,
     "duplicateRemovedCount": 0,
     "rejectionReasons": {
-      "quality_review_required": 22
+      "manually_excluded": 2
     },
     "statusDistribution": {
       "upcoming": 28,
-      "ongoing": 92,
+      "ongoing": 90,
       "ended": 64
     },
-    "newCount": 100,
-    "endingSoonCount": 59,
+    "newCount": 98,
+    "endingSoonCount": 57,
     "missingImageCount": 0,
     "missingMenuCount": 0,
-    "missingCoordinateCount": 184,
-    "generatedAt": "2026-08-12T06:12:51.136Z"
+    "missingCoordinateCount": 182,
+    "generatedAt": "2026-08-12T07:52:45.698Z"
   }
 }

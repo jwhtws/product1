@@ -88,3 +88,25 @@ test('Feed 파일과 기존 run-report에 누락·중복 사유를 기록한다'
   assert.equal(report.siteFeed.rejectionReasons.duplicate_id, 1);
   assert.equal(report.siteFeed.rejectionReasons.missing_value_officialUrl, 1);
 });
+
+test('수동 제외 팝업은 숨기고 같은 원본의 정상 큐레이션 항목은 유지한다', () => {
+  const excluded = {
+    ...base,
+    id: 'lotte:discovered:0399:SNM00000000000549036',
+    name: '컵빙수의 정석 Pop-Up'
+  };
+  const curated = {
+    ...base,
+    id: 'lotte:dongtan:yoajung',
+    name: '요아정 컵빙수',
+    brand: '요아정',
+    venue: '롯데백화점 동탄점'
+  };
+  const { feed, stats } = buildSiteFeedPayload(
+    { sources: [], stats: {}, popups: [excluded, curated] },
+    { today: '2026-08-05', generatedAt: '2026-08-05T12:00:00.000Z' }
+  );
+
+  assert.deepEqual(feed.popups.map(row => row.id), ['lotte:dongtan:yoajung']);
+  assert.equal(stats.rejectionReasons.manually_excluded, 1);
+});

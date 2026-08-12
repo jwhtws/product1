@@ -14,6 +14,10 @@ const VALUE_REQUIRED = Object.freeze([
   'startDate', 'officialUrl', 'sourceName', 'sourceItemId', 'lastUpdated'
 ]);
 const STATUS = new Set(['upcoming', 'ongoing', 'ended']);
+const MANUALLY_EXCLUDED_POPUP_IDS = new Set([
+  'lotte:discovered:0002:SNM00000000000548809', // 식품닷: 비식품 팝업
+  'lotte:discovered:0399:SNM00000000000549036' // 컵빙수의 정석: 요아정 컵빙수 중복
+]);
 
 const clean = value => String(value ?? '').replace(/<[^>]*>/gu, ' ').replace(/\s+/gu, ' ').trim();
 const normalizeKey = value => clean(value).normalize('NFKC').replace(/[\s·.,()[\]{}'"`~!@#$%^&*+_=|:;?<>/\\-]/gu, '').toLowerCase();
@@ -127,6 +131,10 @@ export function buildSiteFeedPayload(payload, options = {}) {
   };
   const byId = new Map();
   for (const raw of inputRows) {
+    if (MANUALLY_EXCLUDED_POPUP_IDS.has(clean(raw.id))) {
+      reject(stats, 'manually_excluded');
+      continue;
+    }
     if (raw.publishStatus !== 'published' || !['A', 'B'].includes(raw.contentQuality)) {
       reject(stats, raw.publishStatus === 'rejected' ? 'quality_rejected' : 'quality_review_required');
       stats.qualityExcludedCount += 1;
