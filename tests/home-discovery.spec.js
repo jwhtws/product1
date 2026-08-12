@@ -15,12 +15,18 @@ test('팝업 discovery 홈의 핵심 탐색과 저장, 상세 진입이 동작�
   await expect(page.locator('#today-discovery .discovery-popup-card').first()).toBeVisible();
   await expect(page.locator('#today-discovery h2')).toHaveText("Editor's Pick");
   const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
+  const cutoff = new Date(`${today}T00:00:00+09:00`);
+  cutoff.setDate(cutoff.getDate() - 6);
+  const cutoffDate = cutoff.toISOString().slice(0, 10);
   const editorStartDates = await page.locator('#today-discovery .discovery-popup-card').evaluateAll((cards, feed) => cards.map(card => {
     const popup = feed.popups.find(row => row.id === card.dataset.homePopupId);
     return popup?.startDate;
   }), siteFeed);
-  const firstNonToday = editorStartDates.findIndex(date => date !== today);
-  if (firstNonToday >= 0) expect(editorStartDates.slice(firstNonToday)).not.toContain(today);
+  const isRecent = date => date >= cutoffDate && date <= today;
+  const firstOlder = editorStartDates.findIndex(date => !isRecent(date));
+  if (firstOlder >= 0) expect(editorStartDates.slice(firstOlder).some(isRecent)).toBe(false);
+  const recentDates = editorStartDates.filter(isRecent);
+  expect(recentDates).toEqual([...recentDates].sort((a, b) => b.localeCompare(a)));
   await expect(page.locator('#region-discovery [data-region-filter]')).not.toHaveCount(0);
   await expect(page.locator('#nearby-popups')).toHaveCount(0);
 

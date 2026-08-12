@@ -807,8 +807,12 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     }
     const active = state.popups.filter(popup => popup.status === 'ongoing');
     const today = koreaToday();
+    const editorPickCutoff = new Date(`${today}T00:00:00+09:00`);
+    editorPickCutoff.setDate(editorPickCutoff.getDate() - 6);
+    const recentEditorPickStart = popup => popup.startDate >= editorPickCutoff.toISOString().slice(0, 10) && popup.startDate <= today;
     const rankedEditorPicks = [...active].sort((a, b) =>
-      Number(b.startDate === today) - Number(a.startDate === today)
+      Number(recentEditorPickStart(b)) - Number(recentEditorPickStart(a))
+      || (recentEditorPickStart(a) && recentEditorPickStart(b) ? b.startDate.localeCompare(a.startDate) : 0)
       || (Number(Boolean(b.isNew)) * 4 + Number(Boolean(b.image)) * 2 + Math.min((b.tags || []).length, 5))
       - (Number(Boolean(a.isNew)) * 4 + Number(Boolean(a.image)) * 2 + Math.min((a.tags || []).length, 5))
       || String(a.endDate || '9999-12-31').localeCompare(String(b.endDate || '9999-12-31'))
@@ -824,8 +828,10 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
       }
       for (const popup of rows) if (!editorPicks.includes(popup)) editorPicks.push(popup);
     };
-    appendDiversified(rankedEditorPicks.filter(popup => popup.startDate === today));
-    appendDiversified(rankedEditorPicks.filter(popup => popup.startDate !== today));
+    for (const startDate of [...new Set(rankedEditorPicks.filter(recentEditorPickStart).map(popup => popup.startDate))]) {
+      appendDiversified(rankedEditorPicks.filter(popup => popup.startDate === startDate));
+    }
+    appendDiversified(rankedEditorPicks.filter(popup => !recentEditorPickStart(popup)));
     const endingToday = active.filter(popup => popup.endDate === today);
     const nearby = state.nearbyEnabled && state.nearbyRegion ? active.filter(popup => popupRegionName(popup) === state.nearbyRegion) : [];
     const regionOrder = Object.keys(popupRegionLabels);
@@ -838,7 +844,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
       ? discoveryRail('nearby-popups', '내 주변 팝업', `${popupRegionLabels[state.nearbyRegion] || state.nearbyRegion}에서 지금 만날 수 있어요`, nearby)
       : `<section class="popup-discovery-section" id="nearby-popups"><div class="home-premium-empty home-premium-empty--compact" role="status"><span aria-hidden="true">⌖</span><strong>이 지역의 진행 중 팝업을 찾지 못했어요</strong><p>다른 지역을 선택하면 새로운 일정을 확인할 수 있어요.</p><button type="button" data-nearby-reselect class="md-button md-button--secondary">지역 다시 선택</button></div></section>`;
     root.innerHTML = [
-      discoveryRail('today-discovery', "Editor's Pick", '오늘 시작한 일정부터 우선해서 골랐어요', editorPicks, { prioritizeFirst: true, horizontal: true }),
+      discoveryRail('today-discovery', "Editor's Pick", '최근 7일 안에 시작한 일정부터 골랐어요', editorPicks, { prioritizeFirst: true, horizontal: true }),
       discoveryRail('ending-today', '오늘 종료', '오늘이 마지막 영업일인 팝업이에요', endingToday, { horizontal: true }),
       nearbySection,
       `<section class="popup-discovery-section taxonomy-section" id="region-discovery"><div class="md-section-header"><div><h2>지역</h2><p>현재 Feed에 팝업이 있는 지역만 보여드려요.</p></div></div><div class="discovery-taxonomy discovery-taxonomy--chips" aria-label="지역 선택">${regionOptions.map(item => `<button type="button" data-region-filter="${escapeHtml(item.value)}"><strong>${item.label}</strong><span>${item.count}</span></button>`).join('')}</div></section>`,

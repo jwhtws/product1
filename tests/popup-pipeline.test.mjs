@@ -43,11 +43,12 @@ test('Home·Search·Detail은 같은 운영 feed와 ID를 사용하고 fixture�
   assert.ok(payload.popups.every(row => !/(?:fixture|example\.com|테스트)/iu.test(`${row.id} ${row.sourceUrl}`)));
 });
 
-test('홈 추천은 오늘 시작을 최우선으로 하면서 출처를 고루 노출하고 오늘 종료를 정확히 비교한다', async () => {
+test('홈 추천은 최근 7일 시작을 최우선으로 하면서 출처를 고루 노출하고 오늘 종료를 정확히 비교한다', async () => {
   const [app, styles] = await Promise.all([readFile('app.js', 'utf8'), readFile('styles.css', 'utf8')]);
-  assert.match(app, /Number\(b\.startDate === today\) - Number\(a\.startDate === today\)/u);
-  assert.match(app, /appendDiversified\(rankedEditorPicks\.filter\(popup => popup\.startDate === today\)\)/u);
-  assert.match(app, /appendDiversified\(rankedEditorPicks\.filter\(popup => popup\.startDate !== today\)\)/u);
+  assert.match(app, /editorPickCutoff\.setDate\(editorPickCutoff\.getDate\(\) - 6\)/u);
+  assert.match(app, /Number\(recentEditorPickStart\(b\)\) - Number\(recentEditorPickStart\(a\)\)/u);
+  assert.match(app, /b\.startDate\.localeCompare\(a\.startDate\)/u);
+  assert.match(app, /new Set\(rankedEditorPicks\.filter\(recentEditorPickStart\)\.map\(popup => popup\.startDate\)\)/u);
   assert.match(app, /discoveryRail\('today-discovery', "Editor's Pick"/u);
   assert.match(app, /popup\.endDate === today/u);
   assert.doesNotMatch(app, /popupQuickFilter !== 'ending-today' \|\| popup\.isEndingSoon === true/u);
