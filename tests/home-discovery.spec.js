@@ -177,8 +177,9 @@ test('Home 주요 제어는 ARIA, 키보드 포커스와 44px 터치 영역을 �
   await expect(page.locator('#detail-modal')).toHaveClass(/open/u);
 });
 
-test('종료 임박이 없으면 섹션을 숨기고 Feed가 비면 Premium Empty State를 표시한다', async ({ page }) => {
-  let rows = siteFeed.popups.map(row => ({ ...row, isEndingSoon: false }));
+test('오늘 종료가 없으면 섹션을 숨기고 Feed가 비면 Premium Empty State를 표시한다', async ({ page }) => {
+  const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
+  let rows = siteFeed.popups.map(row => ({ ...row, endDate: row.endDate === today ? '2099-12-31' : row.endDate }));
   await page.route(/\/data\/popups\.json/u, route => route.fulfill({
     contentType: 'application/json', body: JSON.stringify({ updatedAt: siteFeed.updatedAt, popups: rows })
   }));
