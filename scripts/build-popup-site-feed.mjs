@@ -66,14 +66,14 @@ function reject(stats, reason) {
 }
 
 function feedRow(row, { today, generatedAt }) {
-  const title = clean(row.title || row.name);
+  const title = clean(row.name || row.title);
   const brand = normalizeBrand(row);
   const venue = clean(row.venue);
   const branch = clean(row.branch || venue);
   const address = clean(row.address);
   const startDate = normalizeFeedDate(row.startDate);
   const endDate = normalizeFeedDate(row.endDate) || null;
-  const officialUrl = clean(row.officialUrl || row.sourceUrl);
+  const officialUrl = clean(row.sourceUrl || row.officialUrl);
   const image = clean(row.image || row.imageUrl || row.officialImageUrls?.[0]) || null;
   const category = normalizeCategory(row.category);
   const status = startDate ? popupFeedStatus(startDate, endDate, today) : '';

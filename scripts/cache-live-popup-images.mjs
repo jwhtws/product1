@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto';
-import { mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
+import { access, mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
 import { extname, join } from 'node:path';
 import { probeOfficialImage } from './lib/popup-content-quality.mjs';
 
@@ -17,6 +17,20 @@ for (const name of await readdir(assetDir)) {
     const bytes = await readFile(join(assetDir, name));
     existingByHash.set(createHash('sha256').update(bytes).digest('hex'), name);
   } catch {}
+}
+
+async function hasExistingLocalImage(row) {
+  const candidates = [row.imageUrl, row.image, ...(row.officialImageUrls || [])];
+  for (const candidate of candidates) {
+    if (typeof candidate !== 'string' || !candidate.startsWith(`${publicRoot}/`)) continue;
+    const filename = decodeURIComponent(new URL(candidate).pathname.split('/').pop() || '');
+    if (!/^[a-zA-Z0-9._-]+$/u.test(filename)) continue;
+    try {
+      await access(join(assetDir, filename));
+      return true;
+    } catch {}
+  }
+  return false;
 }
 
 async function download(url) {
@@ -71,7 +85,12 @@ for (const row of payload.popups) {
     });
     cached += 1;
   } catch (error) {
-    failures.push({ id: row.id, url: originalUrl, error: String(error?.message || error) });
+    const failure = { id: row.id, url: originalUrl, error: String(error?.message || error) };
+    if (await hasExistingLocalImage(row)) {
+      console.warn(`${row.id}: 원본 이미지 재검증 실패, 기존 로컬 캐시 유지 (${failure.error})`);
+    } else {
+      failures.push(failure);
+    }
   }
 }
 
