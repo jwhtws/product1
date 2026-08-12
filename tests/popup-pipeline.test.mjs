@@ -46,7 +46,9 @@ test('Home·Search·Detail은 같은 운영 feed와 ID를 사용하고 fixture�
 test('홈 추천은 오늘 시작을 최우선으로 하면서 출처를 고루 노출하고 오늘 종료를 정확히 비교한다', async () => {
   const [app, styles] = await Promise.all([readFile('app.js', 'utf8'), readFile('styles.css', 'utf8')]);
   assert.match(app, /Number\(b\.startDate === today\) - Number\(a\.startDate === today\)/u);
-  assert.match(app, /editorPickSources\.has\(source\)/u);
+  assert.match(app, /appendDiversified\(rankedEditorPicks\.filter\(popup => popup\.startDate === today\)\)/u);
+  assert.match(app, /appendDiversified\(rankedEditorPicks\.filter\(popup => popup\.startDate !== today\)\)/u);
+  assert.match(app, /discoveryRail\('today-discovery', "Editor's Pick"/u);
   assert.match(app, /popup\.endDate === today/u);
   assert.doesNotMatch(app, /popupQuickFilter !== 'ending-today' \|\| popup\.isEndingSoon === true/u);
   assert.doesNotMatch(styles, /popup-card-rail>\.discovery-popup-card:nth-child\(n\+5\)\{display:none\}/u);
