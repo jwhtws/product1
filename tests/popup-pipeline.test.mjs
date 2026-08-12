@@ -50,6 +50,16 @@ test('홈 추천은 출처를 고루 노출하고 오늘 종료는 종료일을 
   assert.doesNotMatch(app, /popupQuickFilter !== 'ending-today' \|\| popup\.isEndingSoon === true/u);
 });
 
+test('main 푸시는 Cloudflare Pages product1 운영 프로젝트로 자동 배포한다', async () => {
+  const workflow = await readFile('.github/workflows/cloudflare-pages-deploy.yml', 'utf8');
+  assert.match(workflow, /push:[\s\S]*branches:\s*\[main\]/u);
+  assert.match(workflow, /cloudflare\/wrangler-action@v3/u);
+  assert.match(workflow, /CLOUDFLARE_API_TOKEN/u);
+  assert.match(workflow, /CLOUDFLARE_ACCOUNT_ID/u);
+  assert.match(workflow, /pages deploy \. --project-name=product1 --branch=main/u);
+  assert.match(workflow, /verify-popup-deployment\.mjs --url=https:\/\/mukdang\.com/u);
+});
+
 test('종료 팝업도 운영 feed와 SEO 생성 대상에 보존한다', async () => {
   const [payload, seo] = await Promise.all([
     readFile('data/popups.json', 'utf8').then(JSON.parse),
