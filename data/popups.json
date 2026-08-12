@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-07T01:07:04.548Z",
+  "updatedAt": "2026-08-12T03:24:03.935Z",
   "sources": [
     {
       "name": "현대백화점·현대아울렛",
@@ -179,9 +179,9 @@
     "duplicateRemoved": 0,
     "final": 99,
     "status": {
-      "upcoming": 1,
-      "ongoing": 40,
-      "ended": 58
+      "upcoming": 0,
+      "ongoing": 35,
+      "ended": 64
     },
     "photos": {
       "popupCount": 99,
@@ -220,25 +220,23 @@
       "브랜드 공식 · 동원F&B 뉴스"
     ],
     "siteFeed": {
-      "inputCount": 116,
+      "inputCount": 99,
       "outputCount": 99,
-      "rejectedCount": 17,
-      "qualityExcludedCount": 17,
+      "rejectedCount": 0,
+      "qualityExcludedCount": 0,
       "duplicateRemovedCount": 0,
-      "rejectionReasons": {
-        "quality_review_required": 17
-      },
+      "rejectionReasons": {},
       "statusDistribution": {
-        "upcoming": 1,
-        "ongoing": 40,
-        "ended": 58
+        "upcoming": 0,
+        "ongoing": 35,
+        "ended": 64
       },
-      "newCount": 66,
-      "endingSoonCount": 5,
+      "newCount": 15,
+      "endingSoonCount": 27,
       "missingImageCount": 0,
       "missingMenuCount": 0,
       "missingCoordinateCount": 99,
-      "generatedAt": "2026-08-07T01:07:04.548Z"
+      "generatedAt": "2026-08-12T03:24:03.935Z"
     }
   },
   "coverage": {
@@ -292,7 +290,7 @@
       "branch": "신세계백화점 의정부점",
       "latitude": null,
       "longitude": null,
-      "dDay": 24,
+      "dDay": 19,
       "image": "https://mukdang.com/assets/popups/shinsegae/ce6c8606ba5921b55ab0.jpg",
       "officialUrl": "https://www.shinsegae.com/shopping/view.do?mainCd=02&pageLink=%2Fcms12%2FSC00010%2Finfo%2Fshopping%2Fbrndintg%2F8464018_4596.txt&contentDtlCd=01&contentId=8464018&storeCd=SC00010&brandCd=",
       "sourceItemId": "SC00010:8464018",
@@ -304,7 +302,7 @@
         "food-popup",
         "청23"
       ],
-      "isNew": true,
+      "isNew": false,
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
@@ -372,123 +370,6 @@
       "imageOriginalUrl": "https://www.shinsegae.com/cms12/SC00010/info/shopping/brndintg/__icsFiles/afieldfile/2026/06/25/260626_po_ui_.jpg",
       "imageSource": "official-detail-local-copy",
       "imageHash": "ce6c8606ba5921b55ab097085b9ed3496c3786305023df2df27ff3378dd645e5"
-    },
-    {
-      "id": "lotte:jamsil:honey",
-      "name": "안상규벌꿀",
-      "venue": "롯데월드몰",
-      "venueType": "쇼핑몰",
-      "address": "서울특별시 송파구 올림픽로 300 (신천동) · 롯데월드몰",
-      "startDate": "2026-07-15",
-      "endDate": "2026-08-09",
-      "imageUrl": "https://mukdang.com/assets/popups/lotte/jamsil-honey.jpeg",
-      "sourceName": "롯데쇼핑 공식 행사",
-      "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000546957",
-      "sourceGrade": "official-search",
-      "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-08-07",
-      "brand": "안상규벌꿀",
-      "region": "서울특별시",
-      "category": "food-popup",
-      "lastVerifiedAt": "2026-08-07",
-      "status": "ongoing",
-      "menuItems": [
-        "위니 더 푸우 허니버터꿀"
-      ],
-      "menuSource": "official-image",
-      "menus": [
-        {
-          "name": "위니 더 푸우 허니버터꿀",
-          "price": null,
-          "priceText": "가격 미공개",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000546957",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "official_image"
-        }
-      ],
-      "imageSource": "official-detail-local-copy",
-      "officialImageUrls": [
-        "https://mukdang.com/assets/popups/lotte/jamsil-honey.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000546957/20260714212145994_1.jpeg"
-      ],
-      "title": "안상규벌꿀",
-      "branch": "롯데월드몰",
-      "latitude": null,
-      "longitude": null,
-      "dDay": 2,
-      "image": "https://mukdang.com/assets/popups/lotte/jamsil-honey.jpeg",
-      "officialUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000546957",
-      "sourceItemId": "jamsil:honey",
-      "tags": [
-        "안상규벌꿀",
-        "롯데월드몰",
-        "서울특별시",
-        "쇼핑몰",
-        "food-popup",
-        "위니 더 푸우 허니버터꿀"
-      ],
-      "isNew": false,
-      "isEndingSoon": true,
-      "lastUpdated": "2026-08-05",
-      "contentSearch": {
-        "checkedOfficialList": false,
-        "checkedOfficialDetail": false,
-        "checkedEmbeddedData": false,
-        "checkedOfficialImages": false,
-        "checkedOperatorSearch": false,
-        "checkedBrandOfficialSources": false,
-        "checkedUrls": [
-          "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000546957"
-        ],
-        "checkedMethods": [
-          "official_list_html",
-          "operator_internal_search"
-        ],
-        "imageCandidatesFound": 2,
-        "menuCandidatesFound": 1,
-        "priceCandidatesFound": 0,
-        "descriptionCandidatesFound": 0,
-        "status": "found",
-        "evidence": [],
-        "failureReasons": [
-          "official_list_request_failed",
-          "official_detail_not_identified",
-          "official_detail_images_not_checked",
-          "brand_official_sources_not_checked"
-        ],
-        "checkedAt": "2026-08-07T01:04:51.806Z"
-      },
-      "imageOriginalUrl": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000546957/20260714212145994_1.jpeg",
-      "imageValidation": {
-        "status": "valid",
-        "contentType": "image/jpeg",
-        "width": 750,
-        "height": 750,
-        "checkedAt": "2026-08-07T01:07:03.481Z"
-      },
-      "contentQuality": "A",
-      "publishStatus": "published",
-      "qualityReasons": [],
-      "lastContentCheckedAt": "2026-08-07T01:06:55.556Z",
-      "imageCandidates": [
-        "https://mukdang.com/assets/popups/lotte/jamsil-honey.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000546957/20260714212145994_1.jpeg"
-      ],
-      "menuCandidates": [
-        {
-          "name": "위니 더 푸우 허니버터꿀",
-          "price": null,
-          "priceText": "가격 미공개",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000546957",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "official_image"
-        }
-      ],
-      "ocrStatus": "not_used"
     },
     {
       "id": "lotte:dongtan:yummy-fruta",
@@ -571,7 +452,7 @@
       "branch": "롯데백화점 동탄점",
       "latitude": null,
       "longitude": null,
-      "dDay": 69,
+      "dDay": 64,
       "image": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547195/20260715171108398_1.jpeg",
       "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%95%BC%EB%AF%B8%ED%91%B8%EB%A3%A8%EB%94%B0+%EC%B0%A9%EC%A6%99%EC%A3%BC%EC%8A%A4",
       "sourceItemId": "dongtan:yummy-fruta",
@@ -723,7 +604,7 @@
       "branch": "갤러리아 광교",
       "latitude": null,
       "longitude": null,
-      "dDay": 85,
+      "dDay": 80,
       "image": "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-oneulmojji.jpg",
       "officialUrl": "https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/c85957?qCategory=PRODUCT_EVENT",
       "sourceItemId": "gwanggyo:c85957:oneulmojji",
@@ -735,7 +616,7 @@
         "food-popup",
         "과일 통찹쌀떡"
       ],
-      "isNew": true,
+      "isNew": false,
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
@@ -922,7 +803,7 @@
       "branch": "롯데백화점 인천점",
       "latitude": null,
       "longitude": null,
-      "dDay": 6,
+      "dDay": 1,
       "image": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547297/20260716111649115_7.jpeg",
       "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0344&searchTerm=%ED%94%84%EB%9E%91%EC%8A%A4%EB%A3%A8%EB%B8%8C%EB%A5%B4%EB%B0%94%EA%B2%8C%ED%8A%B8",
       "sourceItemId": "incheon:french-louvre-baguette",
@@ -939,7 +820,7 @@
         "초코범벅 바게트"
       ],
       "isNew": false,
-      "isEndingSoon": false,
+      "isEndingSoon": true,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
         "checkedOfficialList": false,
@@ -1240,7 +1121,7 @@
       "branch": "롯데백화점 동탄점",
       "latitude": null,
       "longitude": null,
-      "dDay": 54,
+      "dDay": 49,
       "image": "https://minfo.lotteshopping.com/content/news/202605/SNM00000000000531614/20260507104705644_2.jpeg",
       "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EB%B0%94%EC%83%A4%EC%BB%A4%ED%94%BC",
       "sourceItemId": "dongtan:bacha-coffee",
@@ -1437,274 +1318,6 @@
       "ocrStatus": "not_used"
     },
     {
-      "id": "hyundai:E2202607492968",
-      "name": "[POP-UP] 아페롤",
-      "venue": "현대백화점 무역센터점",
-      "venueType": "백화점",
-      "address": "서울특별시 강남구 테헤란로 517 (삼성동, 무역센터현대백화점) · 현대백화점 무역센터점",
-      "startDate": "2026-07-27",
-      "endDate": "2026-08-09",
-      "imageUrl": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/21/1d3beb1d-e286-4c53-865e-339e1823d0cd.jpg",
-      "sourceName": "현대백화점 공식 쇼핑뉴스",
-      "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2202607492968&branchCd=B00122000&category=",
-      "sourceGrade": "official",
-      "firstSeenAt": "2026-08-03",
-      "lastSeenAt": "2026-08-07",
-      "menus": [
-        {
-          "name": "· 아페롤 스프리츠",
-          "price": 8000,
-          "priceText": "8,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2202607492968&branchCd=B00122000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        },
-        {
-          "name": "· 아페롤 350ml",
-          "price": 20800,
-          "priceText": "20,800원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2202607492968&branchCd=B00122000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        },
-        {
-          "name": "· 아페롤 700ml",
-          "price": 34000,
-          "priceText": "34,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2202607492968&branchCd=B00122000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        },
-        {
-          "name": "· 시그니처 세트",
-          "price": 22000,
-          "priceText": "22,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2202607492968&branchCd=B00122000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        },
-        {
-          "name": "· 시그니처 페어링 세트",
-          "price": 23000,
-          "priceText": "23,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2202607492968&branchCd=B00122000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        },
-        {
-          "name": "· 스페셜 세트",
-          "price": 30000,
-          "priceText": "30,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2202607492968&branchCd=B00122000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        }
-      ],
-      "menuSource": "official-detail",
-      "brand": "아페롤",
-      "region": "서울특별시",
-      "category": "food-popup",
-      "menuItems": [
-        "· 아페롤 스프리츠",
-        "· 아페롤 350ml",
-        "· 아페롤 700ml",
-        "· 시그니처 세트",
-        "· 시그니처 페어링 세트",
-        "· 스페셜 세트"
-      ],
-      "officialImageUrls": [
-        "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/21/1d3beb1d-e286-4c53-865e-339e1823d0cd.jpg"
-      ],
-      "lastVerifiedAt": "2026-08-07",
-      "status": "ongoing",
-      "title": "[POP-UP] 아페롤",
-      "branch": "현대백화점 무역센터점",
-      "latitude": null,
-      "longitude": null,
-      "dDay": 2,
-      "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/21/1d3beb1d-e286-4c53-865e-339e1823d0cd.jpg",
-      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2202607492968&branchCd=B00122000&category=",
-      "sourceItemId": "E2202607492968",
-      "tags": [
-        "아페롤",
-        "현대백화점 무역센터점",
-        "서울특별시",
-        "백화점",
-        "food-popup",
-        "· 아페롤 스프리츠",
-        "· 아페롤 350ml",
-        "· 아페롤 700ml",
-        "· 시그니처 세트",
-        "· 시그니처 페어링 세트"
-      ],
-      "isNew": true,
-      "isEndingSoon": true,
-      "lastUpdated": "2026-08-05",
-      "contentSearch": {
-        "checkedOfficialList": true,
-        "checkedOfficialDetail": true,
-        "checkedEmbeddedData": true,
-        "checkedOfficialImages": true,
-        "checkedOperatorSearch": false,
-        "checkedBrandOfficialSources": false,
-        "checkedUrls": [
-          "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2202607492968&branchCd=B00122000&category=",
-          "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/21/1d3beb1d-e286-4c53-865e-339e1823d0cd.jpg"
-        ],
-        "checkedMethods": [
-          "official_detail_html"
-        ],
-        "imageCandidatesFound": 1,
-        "menuCandidatesFound": 6,
-        "priceCandidatesFound": 6,
-        "descriptionCandidatesFound": 0,
-        "status": "found",
-        "evidence": [
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2202607492968&branchCd=B00122000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "imageUrl": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/21/1d3beb1d-e286-4c53-865e-339e1823d0cd.jpg",
-            "capturedAt": "2026-08-06T09:03:23.112Z"
-          },
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2202607492968&branchCd=B00122000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "capturedAt": "2026-08-06T09:03:23.112Z"
-          },
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2202607492968&branchCd=B00122000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "capturedAt": "2026-08-06T09:03:23.112Z"
-          },
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2202607492968&branchCd=B00122000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "capturedAt": "2026-08-06T09:03:23.112Z"
-          },
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2202607492968&branchCd=B00122000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "capturedAt": "2026-08-06T09:03:23.112Z"
-          },
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2202607492968&branchCd=B00122000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "capturedAt": "2026-08-06T09:03:23.112Z"
-          },
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2202607492968&branchCd=B00122000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "capturedAt": "2026-08-06T09:03:23.112Z"
-          }
-        ],
-        "failureReasons": [],
-        "checkedAt": "2026-08-06T09:03:23.112Z"
-      },
-      "imageValidation": {
-        "status": "valid",
-        "contentType": "image/jpeg",
-        "width": 750,
-        "height": 750,
-        "checkedAt": "2026-08-07T01:07:02.392Z"
-      },
-      "contentQuality": "A",
-      "publishStatus": "published",
-      "qualityReasons": [],
-      "lastContentCheckedAt": "2026-08-07T01:06:55.556Z",
-      "imageCandidates": [
-        "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/21/1d3beb1d-e286-4c53-865e-339e1823d0cd.jpg"
-      ],
-      "menuCandidates": [
-        {
-          "name": "· 아페롤 스프리츠",
-          "price": 8000,
-          "priceText": "8,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2202607492968&branchCd=B00122000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        },
-        {
-          "name": "· 아페롤 350ml",
-          "price": 20800,
-          "priceText": "20,800원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2202607492968&branchCd=B00122000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        },
-        {
-          "name": "· 아페롤 700ml",
-          "price": 34000,
-          "priceText": "34,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2202607492968&branchCd=B00122000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        },
-        {
-          "name": "· 시그니처 세트",
-          "price": 22000,
-          "priceText": "22,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2202607492968&branchCd=B00122000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        },
-        {
-          "name": "· 시그니처 페어링 세트",
-          "price": 23000,
-          "priceText": "23,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2202607492968&branchCd=B00122000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        },
-        {
-          "name": "· 스페셜 세트",
-          "price": 30000,
-          "priceText": "30,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2202607492968&branchCd=B00122000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        }
-      ],
-      "ocrStatus": "not_used"
-    },
-    {
       "id": "hyundai:E4602607492936",
       "name": "빵고미",
       "venue": "더현대 대구",
@@ -1783,7 +1396,7 @@
       "branch": "더현대 대구",
       "latitude": null,
       "longitude": null,
-      "dDay": 6,
+      "dDay": 1,
       "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/21/2174e7a9-d619-4620-9d83-14280f60eee7.png",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4602607492936&branchCd=B00146000&category=",
       "sourceItemId": "E4602607492936",
@@ -1795,7 +1408,7 @@
         "food-popup"
       ],
       "isNew": false,
-      "isEndingSoon": false,
+      "isEndingSoon": true,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
         "checkedOfficialList": true,
@@ -2009,7 +1622,7 @@
       "branch": "신세계백화점 타임스퀘어점",
       "latitude": null,
       "longitude": null,
-      "dDay": 6,
+      "dDay": 1,
       "image": "https://mukdang.com/assets/popups/shinsegae/c48c4547c6f66b1a75d7.jpg",
       "officialUrl": "https://www.shinsegae.com/shopping/view.do?mainCd=02&pageLink=%2Fcms12%2FSC00003%2Finfo%2Fshopping%2Fbrndsingle%2F8576849_4474.txt&contentDtlCd=01&contentId=8576849&storeCd=SC00003&brandCd=UB0006878",
       "sourceItemId": "SC00003:8576849",
@@ -2022,8 +1635,8 @@
         "데일리식빵 M",
         "스트로베리 생식빵"
       ],
-      "isNew": true,
-      "isEndingSoon": false,
+      "isNew": false,
+      "isEndingSoon": true,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
         "checkedOfficialList": true,
@@ -2206,7 +1819,7 @@
       "branch": "롯데백화점 동탄점",
       "latitude": null,
       "longitude": null,
-      "dDay": 5,
+      "dDay": 0,
       "image": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000549036/2026072812105940_5.jpeg",
       "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%9A%94%EC%95%84%EC%A0%95+%EC%BB%B5%EB%B9%99%EC%88%98",
       "sourceItemId": "dongtan:yoajung",
@@ -2223,7 +1836,7 @@
         "딥초코 컵빙수"
       ],
       "isNew": false,
-      "isEndingSoon": false,
+      "isEndingSoon": true,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
         "checkedOfficialList": false,
@@ -2371,7 +1984,7 @@
       "branch": "신세계백화점 스타필드 하남점",
       "latitude": null,
       "longitude": null,
-      "dDay": 7,
+      "dDay": 2,
       "image": "https://mukdang.com/assets/popups/shinsegae/cbd0a41a3c1bc68241fe.jpg",
       "officialUrl": "https://www.shinsegae.com/shopping/view.do?mainCd=02&pageLink=%2Fcms12%2FSC00012%2Finfo%2Fshopping%2Fbrndintg%2F8578550_4636.txt&contentDtlCd=01&contentId=8578550&storeCd=SC00012&brandCd=",
       "sourceItemId": "SC00012:8578550",
@@ -2382,8 +1995,8 @@
         "백화점",
         "food-popup"
       ],
-      "isNew": true,
-      "isEndingSoon": false,
+      "isNew": false,
+      "isEndingSoon": true,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
         "checkedOfficialList": true,
@@ -2615,7 +2228,7 @@
       "branch": "더현대 대구",
       "latitude": null,
       "longitude": null,
-      "dDay": 6,
+      "dDay": 1,
       "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/29/ab4c9e01-a0f3-48e9-af42-39d26cee34fe.jpg",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4602607494433&branchCd=B00146000&category=",
       "sourceItemId": "E4602607494433",
@@ -2631,8 +2244,8 @@
         "머랭쿠키",
         "플레인스콘"
       ],
-      "isNew": true,
-      "isEndingSoon": false,
+      "isNew": false,
+      "isEndingSoon": true,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
         "checkedOfficialList": true,
@@ -2964,7 +2577,7 @@
       "branch": "현대프리미엄아울렛 송도점",
       "latitude": null,
       "longitude": null,
-      "dDay": 6,
+      "dDay": 1,
       "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/15/d39a1c08-973a-4447-a797-47b58e8c4c75.png",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E7402607492119&branchCd=B00174000&category=",
       "sourceItemId": "E7402607492119",
@@ -2978,8 +2591,8 @@
         "길감자 세트",
         "커플 길감자 세트"
       ],
-      "isNew": true,
-      "isEndingSoon": false,
+      "isNew": false,
+      "isEndingSoon": true,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
         "checkedOfficialList": true,
@@ -3177,7 +2790,7 @@
       "branch": "현대프리미엄아울렛 송도점",
       "latitude": null,
       "longitude": null,
-      "dDay": 6,
+      "dDay": 1,
       "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/09/f3bef0f0-0e23-4d22-bdc8-493c1a7b7108.JPG",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E7402607492121&branchCd=B00174000&category=",
       "sourceItemId": "E7402607492121",
@@ -3192,8 +2805,8 @@
         "스위트&디저트 (블루베리·모찌크림·단팥소보로·애플시나몬·코코넛카야잼·초코멜로우)",
         "소프트 베스트 (에그마요·갈릭앤크림치즈·체다치즈·더블치즈감자·올리브·명란감태)"
       ],
-      "isNew": true,
-      "isEndingSoon": false,
+      "isNew": false,
+      "isEndingSoon": true,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
         "checkedOfficialList": true,
@@ -3392,7 +3005,7 @@
       "branch": "현대프리미엄아울렛 김포점",
       "latitude": null,
       "longitude": null,
-      "dDay": 6,
+      "dDay": 1,
       "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/27/84be0425-adc8-4876-8b00-bcb697faba64.jpg",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E7202607493841&branchCd=B00172000&category=",
       "sourceItemId": "E7202607493841",
@@ -3408,7 +3021,7 @@
         "양즈깐루"
       ],
       "isNew": false,
-      "isEndingSoon": false,
+      "isEndingSoon": true,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
         "checkedOfficialList": true,
@@ -3569,418 +3182,6 @@
       "ocrStatus": "not_used"
     },
     {
-      "id": "hyundai:E2902607493865",
-      "name": "네이처스세븐 POP-UP",
-      "venue": "현대백화점 울산점",
-      "venueType": "백화점",
-      "address": "울산광역시 남구 삼산로 261 (삼산동) · 현대백화점 울산점",
-      "startDate": "2026-07-31",
-      "endDate": "2026-08-09",
-      "imageUrl": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/27/8d29155f-6c6e-44e0-98a8-b60e43b124b1.jpg",
-      "sourceName": "현대백화점 공식 쇼핑뉴스",
-      "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
-      "sourceGrade": "official",
-      "firstSeenAt": "2026-08-03",
-      "lastSeenAt": "2026-08-07",
-      "menus": [
-        {
-          "name": "땡큐베리넛츠",
-          "price": 12500,
-          "priceText": "12,500원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        },
-        {
-          "name": "플랜트코코프로틴",
-          "price": 13500,
-          "priceText": "13,500원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        },
-        {
-          "name": "아임파인",
-          "price": 13500,
-          "priceText": "13,500원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        },
-        {
-          "name": "핑크러쉬",
-          "price": 12000,
-          "priceText": "12,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        },
-        {
-          "name": "그린휘슬",
-          "price": 11000,
-          "priceText": "11,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        },
-        {
-          "name": "땅콩 버터",
-          "price": 16000,
-          "priceText": "16,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        },
-        {
-          "name": "피스타치오 버터",
-          "price": 42000,
-          "priceText": "42,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        },
-        {
-          "name": "아몬드 버터",
-          "price": 16000,
-          "priceText": "16,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        }
-      ],
-      "menuSource": "official-detail",
-      "officialImageUrls": [
-        "https://imgprism.ehyundai.com/img1ItemNmPrcTypeInf/imgPath/202607/27/8046a56f-11bd-4abe-aab0-a1d8e15dcf82.jpg",
-        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/0daf4796-8e29-4213-b282-4be9f189961f.jpg",
-        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/57c09b5e-03ce-40c6-8174-9083c90921aa.jpg",
-        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/1573be43-3f41-4870-8e4d-654167502e32.jpg",
-        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/e969d655-f600-47d2-882a-9974fff4b2c5.jpg",
-        "https://imgprism.ehyundai.com/img1ItemNmPrcTypeInf/imgPath/202607/27/d7163b1a-2194-4254-bcac-084c18bcd12e.jpg",
-        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/5499117c-5c29-4e8c-95f9-79a1c7a9455b.jpg",
-        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/c565ad6b-ad33-4a8b-9275-568bac914ead.jpg",
-        "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/27/8d29155f-6c6e-44e0-98a8-b60e43b124b1.jpg"
-      ],
-      "brand": "네이처스세븐",
-      "region": "울산광역시",
-      "category": "food-popup",
-      "menuItems": [
-        "땡큐베리넛츠",
-        "플랜트코코프로틴",
-        "아임파인",
-        "핑크러쉬",
-        "그린휘슬",
-        "땅콩 버터",
-        "피스타치오 버터",
-        "아몬드 버터"
-      ],
-      "lastVerifiedAt": "2026-08-07",
-      "status": "ongoing",
-      "title": "네이처스세븐 POP-UP",
-      "branch": "현대백화점 울산점",
-      "latitude": null,
-      "longitude": null,
-      "dDay": 2,
-      "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/27/8d29155f-6c6e-44e0-98a8-b60e43b124b1.jpg",
-      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
-      "sourceItemId": "E2902607493865",
-      "tags": [
-        "네이처스세븐",
-        "현대백화점 울산점",
-        "울산광역시",
-        "백화점",
-        "food-popup",
-        "땡큐베리넛츠",
-        "플랜트코코프로틴",
-        "아임파인",
-        "핑크러쉬",
-        "그린휘슬"
-      ],
-      "isNew": true,
-      "isEndingSoon": true,
-      "lastUpdated": "2026-08-05",
-      "contentSearch": {
-        "checkedOfficialList": true,
-        "checkedOfficialDetail": true,
-        "checkedEmbeddedData": true,
-        "checkedOfficialImages": true,
-        "checkedOperatorSearch": false,
-        "checkedBrandOfficialSources": false,
-        "checkedUrls": [
-          "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
-          "https://imgprism.ehyundai.com/img1ItemNmPrcTypeInf/imgPath/202607/27/8046a56f-11bd-4abe-aab0-a1d8e15dcf82.jpg",
-          "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/0daf4796-8e29-4213-b282-4be9f189961f.jpg",
-          "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/57c09b5e-03ce-40c6-8174-9083c90921aa.jpg",
-          "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/1573be43-3f41-4870-8e4d-654167502e32.jpg",
-          "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/e969d655-f600-47d2-882a-9974fff4b2c5.jpg",
-          "https://imgprism.ehyundai.com/img1ItemNmPrcTypeInf/imgPath/202607/27/d7163b1a-2194-4254-bcac-084c18bcd12e.jpg",
-          "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/5499117c-5c29-4e8c-95f9-79a1c7a9455b.jpg",
-          "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/c565ad6b-ad33-4a8b-9275-568bac914ead.jpg",
-          "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/27/8d29155f-6c6e-44e0-98a8-b60e43b124b1.jpg"
-        ],
-        "checkedMethods": [
-          "official_detail_html"
-        ],
-        "imageCandidatesFound": 9,
-        "menuCandidatesFound": 8,
-        "priceCandidatesFound": 8,
-        "descriptionCandidatesFound": 0,
-        "status": "found",
-        "evidence": [
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "imageUrl": "https://imgprism.ehyundai.com/img1ItemNmPrcTypeInf/imgPath/202607/27/8046a56f-11bd-4abe-aab0-a1d8e15dcf82.jpg",
-            "capturedAt": "2026-08-06T09:03:23.102Z"
-          },
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "imageUrl": "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/0daf4796-8e29-4213-b282-4be9f189961f.jpg",
-            "capturedAt": "2026-08-06T09:03:23.102Z"
-          },
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "imageUrl": "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/57c09b5e-03ce-40c6-8174-9083c90921aa.jpg",
-            "capturedAt": "2026-08-06T09:03:23.102Z"
-          },
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "imageUrl": "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/1573be43-3f41-4870-8e4d-654167502e32.jpg",
-            "capturedAt": "2026-08-06T09:03:23.102Z"
-          },
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "imageUrl": "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/e969d655-f600-47d2-882a-9974fff4b2c5.jpg",
-            "capturedAt": "2026-08-06T09:03:23.102Z"
-          },
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "imageUrl": "https://imgprism.ehyundai.com/img1ItemNmPrcTypeInf/imgPath/202607/27/d7163b1a-2194-4254-bcac-084c18bcd12e.jpg",
-            "capturedAt": "2026-08-06T09:03:23.102Z"
-          },
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "imageUrl": "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/5499117c-5c29-4e8c-95f9-79a1c7a9455b.jpg",
-            "capturedAt": "2026-08-06T09:03:23.102Z"
-          },
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "imageUrl": "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/c565ad6b-ad33-4a8b-9275-568bac914ead.jpg",
-            "capturedAt": "2026-08-06T09:03:23.102Z"
-          },
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "imageUrl": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/27/8d29155f-6c6e-44e0-98a8-b60e43b124b1.jpg",
-            "capturedAt": "2026-08-06T09:03:23.102Z"
-          },
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "capturedAt": "2026-08-06T09:03:23.102Z"
-          },
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "capturedAt": "2026-08-06T09:03:23.102Z"
-          },
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "capturedAt": "2026-08-06T09:03:23.102Z"
-          },
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "capturedAt": "2026-08-06T09:03:23.102Z"
-          },
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "capturedAt": "2026-08-06T09:03:23.102Z"
-          },
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "capturedAt": "2026-08-06T09:03:23.102Z"
-          },
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "capturedAt": "2026-08-06T09:03:23.102Z"
-          },
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "capturedAt": "2026-08-06T09:03:23.102Z"
-          }
-        ],
-        "failureReasons": [],
-        "checkedAt": "2026-08-06T09:03:23.102Z"
-      },
-      "imageValidation": {
-        "status": "valid",
-        "contentType": "image/jpeg",
-        "width": 750,
-        "height": 750,
-        "checkedAt": "2026-08-07T01:07:00.663Z"
-      },
-      "contentQuality": "A",
-      "publishStatus": "published",
-      "qualityReasons": [],
-      "lastContentCheckedAt": "2026-08-07T01:06:55.556Z",
-      "imageCandidates": [
-        "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/27/8d29155f-6c6e-44e0-98a8-b60e43b124b1.jpg",
-        "https://imgprism.ehyundai.com/img1ItemNmPrcTypeInf/imgPath/202607/27/8046a56f-11bd-4abe-aab0-a1d8e15dcf82.jpg",
-        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/0daf4796-8e29-4213-b282-4be9f189961f.jpg",
-        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/57c09b5e-03ce-40c6-8174-9083c90921aa.jpg",
-        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/1573be43-3f41-4870-8e4d-654167502e32.jpg",
-        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/e969d655-f600-47d2-882a-9974fff4b2c5.jpg",
-        "https://imgprism.ehyundai.com/img1ItemNmPrcTypeInf/imgPath/202607/27/d7163b1a-2194-4254-bcac-084c18bcd12e.jpg",
-        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/5499117c-5c29-4e8c-95f9-79a1c7a9455b.jpg",
-        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/c565ad6b-ad33-4a8b-9275-568bac914ead.jpg"
-      ],
-      "menuCandidates": [
-        {
-          "name": "땡큐베리넛츠",
-          "price": 12500,
-          "priceText": "12,500원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        },
-        {
-          "name": "플랜트코코프로틴",
-          "price": 13500,
-          "priceText": "13,500원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        },
-        {
-          "name": "아임파인",
-          "price": 13500,
-          "priceText": "13,500원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        },
-        {
-          "name": "핑크러쉬",
-          "price": 12000,
-          "priceText": "12,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        },
-        {
-          "name": "그린휘슬",
-          "price": 11000,
-          "priceText": "11,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        },
-        {
-          "name": "땅콩 버터",
-          "price": 16000,
-          "priceText": "16,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        },
-        {
-          "name": "피스타치오 버터",
-          "price": 42000,
-          "priceText": "42,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        },
-        {
-          "name": "아몬드 버터",
-          "price": 16000,
-          "priceText": "16,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        }
-      ],
-      "ocrStatus": "not_used"
-    },
-    {
       "id": "galleria:gwanggyo:c85957:tdbd",
       "name": "더데일리브레드(TDBD)",
       "venue": "갤러리아 광교",
@@ -4022,7 +3223,7 @@
       "branch": "갤러리아 광교",
       "latitude": null,
       "longitude": null,
-      "dDay": 85,
+      "dDay": 80,
       "image": "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-tdbd.jpg",
       "officialUrl": "https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/c85957?qCategory=PRODUCT_EVENT",
       "sourceItemId": "gwanggyo:c85957:tdbd",
@@ -4034,7 +3235,7 @@
         "food-popup",
         "식빵"
       ],
-      "isNew": true,
+      "isNew": false,
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
@@ -4146,7 +3347,7 @@
       "branch": "갤러리아 광교",
       "latitude": null,
       "longitude": null,
-      "dDay": 13,
+      "dDay": 8,
       "image": "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-ageujak.jpg",
       "officialUrl": "https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/c85957?qCategory=PRODUCT_EVENT",
       "sourceItemId": "gwanggyo:c85957:ageujak",
@@ -4158,7 +3359,7 @@
         "food-popup",
         "아그작 케이크"
       ],
-      "isNew": true,
+      "isNew": false,
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
@@ -4270,7 +3471,7 @@
       "branch": "갤러리아 광교",
       "latitude": null,
       "longitude": null,
-      "dDay": 6,
+      "dDay": 1,
       "image": "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-longmadame.jpg",
       "officialUrl": "https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/c85958?qCategory=PRODUCT_EVENT",
       "sourceItemId": "gwanggyo:c85958:longmadame",
@@ -4282,8 +3483,8 @@
         "food-popup",
         "에그타르트"
       ],
-      "isNew": true,
-      "isEndingSoon": false,
+      "isNew": false,
+      "isEndingSoon": true,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
         "checkedOfficialList": true,
@@ -4432,7 +3633,7 @@
       "branch": "롯데백화점 안산점",
       "latitude": null,
       "longitude": null,
-      "dDay": 6,
+      "dDay": 1,
       "image": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547912/20260721093655326_9.jpeg",
       "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0336&searchTerm=%EC%86%8C%EA%B8%88%EC%83%81%ED%9A%8C",
       "sourceItemId": "ansan:salt-market",
@@ -4448,7 +3649,7 @@
         "찹쌀 소금빵"
       ],
       "isNew": false,
-      "isEndingSoon": false,
+      "isEndingSoon": true,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
         "checkedOfficialList": false,
@@ -4626,7 +3827,7 @@
       "branch": "현대백화점 충청점",
       "latitude": null,
       "longitude": null,
-      "dDay": 6,
+      "dDay": 1,
       "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/27/5efe933f-942a-4dc1-85f1-3b71f0a5ffbe.jpg",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4702607493441&branchCd=B00147000&category=",
       "sourceItemId": "E4702607493441",
@@ -4643,7 +3844,7 @@
         "메이플 버터"
       ],
       "isNew": false,
-      "isEndingSoon": false,
+      "isEndingSoon": true,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
         "checkedOfficialList": true,
@@ -4822,7 +4023,7 @@
       "branch": "갤러리아 광교",
       "latitude": null,
       "longitude": null,
-      "dDay": 6,
+      "dDay": 1,
       "image": "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-yoodongbu.jpg",
       "officialUrl": "https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/c85958?qCategory=PRODUCT_EVENT",
       "sourceItemId": "gwanggyo:c85958:yoodongbu",
@@ -4834,8 +4035,8 @@
         "food-popup",
         "치아바타"
       ],
-      "isNew": true,
-      "isEndingSoon": false,
+      "isNew": false,
+      "isEndingSoon": true,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
         "checkedOfficialList": true,
@@ -4946,7 +4147,7 @@
       "branch": "갤러리아 광교",
       "latitude": null,
       "longitude": null,
-      "dDay": 6,
+      "dDay": 1,
       "image": "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-takonottaco.jpg",
       "officialUrl": "https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/c85958?qCategory=PRODUCT_EVENT",
       "sourceItemId": "gwanggyo:c85958:takonottaco",
@@ -4958,8 +4159,8 @@
         "food-popup",
         "한국식 퓨전 타코"
       ],
-      "isNew": true,
-      "isEndingSoon": false,
+      "isNew": false,
+      "isEndingSoon": true,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
         "checkedOfficialList": true,
@@ -5024,261 +4225,6 @@
           "sourceUrl": "https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/c85958?qCategory=PRODUCT_EVENT",
           "sourceName": "갤러리아 공식 쇼핑뉴스",
           "evidenceType": "official_image"
-        }
-      ],
-      "ocrStatus": "not_used"
-    },
-    {
-      "id": "hyundai:E2902607493868",
-      "name": "테쿠루 POP-UP",
-      "venue": "현대백화점 울산점",
-      "venueType": "백화점",
-      "address": "울산광역시 남구 삼산로 261 (삼산동) · 현대백화점 울산점",
-      "startDate": "2026-07-31",
-      "endDate": "2026-08-09",
-      "imageUrl": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/27/f2ff257b-698a-4b23-b88b-3ea61d785687.jpeg",
-      "sourceName": "현대백화점 공식 쇼핑뉴스",
-      "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493868&branchCd=B00129000&category=",
-      "sourceGrade": "official",
-      "firstSeenAt": "2026-08-03",
-      "lastSeenAt": "2026-08-07",
-      "menus": [
-        {
-          "name": "오리지널",
-          "price": 9000,
-          "priceText": "9,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493868&branchCd=B00129000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        },
-        {
-          "name": "매콤데리",
-          "price": 9000,
-          "priceText": "9,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493868&branchCd=B00129000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        },
-        {
-          "name": "체다치즈",
-          "price": 10000,
-          "priceText": "10,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493868&branchCd=B00129000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        },
-        {
-          "name": "대파타코",
-          "price": 10000,
-          "priceText": "10,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493868&branchCd=B00129000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        }
-      ],
-      "menuSource": "official-detail",
-      "officialImageUrls": [
-        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/d626020d-57fb-460a-a181-5ae118b6a715.png",
-        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/68f5e847-7eca-4531-94cb-fa91209bf543.png",
-        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/33f7a23d-2955-4438-94e0-9ec2fdb06a70.png",
-        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/8a57b8af-7540-4ff6-b1b5-e95c373defd6.png",
-        "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/27/f2ff257b-698a-4b23-b88b-3ea61d785687.jpeg"
-      ],
-      "brand": "테쿠루",
-      "region": "울산광역시",
-      "category": "food-popup",
-      "menuItems": [
-        "오리지널",
-        "매콤데리",
-        "체다치즈",
-        "대파타코"
-      ],
-      "lastVerifiedAt": "2026-08-07",
-      "status": "ongoing",
-      "title": "테쿠루 POP-UP",
-      "branch": "현대백화점 울산점",
-      "latitude": null,
-      "longitude": null,
-      "dDay": 2,
-      "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/27/f2ff257b-698a-4b23-b88b-3ea61d785687.jpeg",
-      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493868&branchCd=B00129000&category=",
-      "sourceItemId": "E2902607493868",
-      "tags": [
-        "테쿠루",
-        "현대백화점 울산점",
-        "울산광역시",
-        "백화점",
-        "food-popup",
-        "오리지널",
-        "매콤데리",
-        "체다치즈",
-        "대파타코"
-      ],
-      "isNew": true,
-      "isEndingSoon": true,
-      "lastUpdated": "2026-08-05",
-      "contentSearch": {
-        "checkedOfficialList": true,
-        "checkedOfficialDetail": true,
-        "checkedEmbeddedData": true,
-        "checkedOfficialImages": true,
-        "checkedOperatorSearch": false,
-        "checkedBrandOfficialSources": false,
-        "checkedUrls": [
-          "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493868&branchCd=B00129000&category=",
-          "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/d626020d-57fb-460a-a181-5ae118b6a715.png",
-          "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/68f5e847-7eca-4531-94cb-fa91209bf543.png",
-          "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/33f7a23d-2955-4438-94e0-9ec2fdb06a70.png",
-          "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/8a57b8af-7540-4ff6-b1b5-e95c373defd6.png",
-          "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/27/f2ff257b-698a-4b23-b88b-3ea61d785687.jpeg"
-        ],
-        "checkedMethods": [
-          "official_detail_html"
-        ],
-        "imageCandidatesFound": 5,
-        "menuCandidatesFound": 4,
-        "priceCandidatesFound": 4,
-        "descriptionCandidatesFound": 0,
-        "status": "found",
-        "evidence": [
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493868&branchCd=B00129000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "imageUrl": "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/d626020d-57fb-460a-a181-5ae118b6a715.png",
-            "capturedAt": "2026-08-06T09:03:23.111Z"
-          },
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493868&branchCd=B00129000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "imageUrl": "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/68f5e847-7eca-4531-94cb-fa91209bf543.png",
-            "capturedAt": "2026-08-06T09:03:23.111Z"
-          },
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493868&branchCd=B00129000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "imageUrl": "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/33f7a23d-2955-4438-94e0-9ec2fdb06a70.png",
-            "capturedAt": "2026-08-06T09:03:23.111Z"
-          },
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493868&branchCd=B00129000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "imageUrl": "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/8a57b8af-7540-4ff6-b1b5-e95c373defd6.png",
-            "capturedAt": "2026-08-06T09:03:23.111Z"
-          },
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493868&branchCd=B00129000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "imageUrl": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/27/f2ff257b-698a-4b23-b88b-3ea61d785687.jpeg",
-            "capturedAt": "2026-08-06T09:03:23.111Z"
-          },
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493868&branchCd=B00129000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "capturedAt": "2026-08-06T09:03:23.111Z"
-          },
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493868&branchCd=B00129000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "capturedAt": "2026-08-06T09:03:23.111Z"
-          },
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493868&branchCd=B00129000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "capturedAt": "2026-08-06T09:03:23.111Z"
-          },
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493868&branchCd=B00129000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "capturedAt": "2026-08-06T09:03:23.111Z"
-          }
-        ],
-        "failureReasons": [],
-        "checkedAt": "2026-08-06T09:03:23.111Z"
-      },
-      "imageValidation": {
-        "status": "valid",
-        "contentType": "image/jpeg",
-        "width": 750,
-        "height": 750,
-        "checkedAt": "2026-08-07T01:07:02.145Z"
-      },
-      "contentQuality": "A",
-      "publishStatus": "published",
-      "qualityReasons": [],
-      "lastContentCheckedAt": "2026-08-07T01:06:55.556Z",
-      "imageCandidates": [
-        "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/27/f2ff257b-698a-4b23-b88b-3ea61d785687.jpeg",
-        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/d626020d-57fb-460a-a181-5ae118b6a715.png",
-        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/68f5e847-7eca-4531-94cb-fa91209bf543.png",
-        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/33f7a23d-2955-4438-94e0-9ec2fdb06a70.png",
-        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/8a57b8af-7540-4ff6-b1b5-e95c373defd6.png"
-      ],
-      "menuCandidates": [
-        {
-          "name": "오리지널",
-          "price": 9000,
-          "priceText": "9,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493868&branchCd=B00129000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        },
-        {
-          "name": "매콤데리",
-          "price": 9000,
-          "priceText": "9,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493868&branchCd=B00129000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        },
-        {
-          "name": "체다치즈",
-          "price": 10000,
-          "priceText": "10,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493868&branchCd=B00129000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        },
-        {
-          "name": "대파타코",
-          "price": 10000,
-          "priceText": "10,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493868&branchCd=B00129000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
         }
       ],
       "ocrStatus": "not_used"
@@ -5381,7 +4327,7 @@
       "branch": "현대프리미엄아울렛 송도점",
       "latitude": null,
       "longitude": null,
-      "dDay": 24,
+      "dDay": 19,
       "image": "https://img.ehyundai.com/files/derivedImage/fileValue/202602/05/4c8a3b46-4002-44ab-b684-c0512784fa21_02.jpg",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E7402607494370&branchCd=B00174000&category=",
       "sourceItemId": "E7402607494370",
@@ -5397,7 +4343,7 @@
         "오리지널 로티번 세트(3개입)",
         "버터 로티번 세트(3개입)"
       ],
-      "isNew": true,
+      "isNew": false,
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
@@ -5556,379 +4502,6 @@
           "description": "",
           "imageUrl": "",
           "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E7402607494370&branchCd=B00174000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        }
-      ],
-      "ocrStatus": "not_used"
-    },
-    {
-      "id": "hyundai:E2902607493874",
-      "name": "홍닝차 POP-UP",
-      "venue": "현대백화점 울산점",
-      "venueType": "백화점",
-      "address": "울산광역시 남구 삼산로 261 (삼산동) · 현대백화점 울산점",
-      "startDate": "2026-08-01",
-      "endDate": "2026-08-09",
-      "imageUrl": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/28/3560e6db-6d9a-47d4-8e7a-79f5e81ba807.png",
-      "sourceName": "현대백화점 공식 쇼핑뉴스",
-      "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
-      "sourceGrade": "official",
-      "firstSeenAt": "2026-08-03",
-      "lastSeenAt": "2026-08-07",
-      "menus": [
-        {
-          "name": "오리지널 레몬티",
-          "price": 5900,
-          "priceText": "5,900원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        },
-        {
-          "name": "얼그레이 레몬티",
-          "price": 5900,
-          "priceText": "5,900원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        },
-        {
-          "name": "씨글라스 피치 레몬티",
-          "price": 5900,
-          "priceText": "5,900원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        },
-        {
-          "name": "퓨어 자스민 레몬티",
-          "price": 5900,
-          "priceText": "5,900원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        },
-        {
-          "name": "자스민 파인애플&망고",
-          "price": 6500,
-          "priceText": "6,500원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        },
-        {
-          "name": "화이트 레모네이드",
-          "price": 5900,
-          "priceText": "5,900원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        },
-        {
-          "name": "양쯔깐루 화채",
-          "price": 18000,
-          "priceText": "18,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        }
-      ],
-      "menuSource": "official-detail",
-      "officialImageUrls": [
-        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/f21a1fdf-49d8-4e50-9f1c-8168fd806bcf.jpg",
-        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/41f98cbf-209d-412c-bda1-7e2d8c08e332.jpg",
-        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/202cef01-6769-4b86-a507-1c43eec95c5d.png",
-        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/71f35adc-e0d5-4ea9-abe8-18174c1186d7.jpg",
-        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/97790e8d-7820-4b80-b6e2-328d5a9f6268.jpg",
-        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/799ace07-6bc4-4cdd-988e-fc3bd9400cfb.png",
-        "https://imgprism.ehyundai.com/img1ItemNmPrcTypeInf/imgPath/202607/27/8476ba1b-0950-4955-a8d1-908669890796.png",
-        "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/28/3560e6db-6d9a-47d4-8e7a-79f5e81ba807.png"
-      ],
-      "brand": "홍닝차",
-      "region": "울산광역시",
-      "category": "food-popup",
-      "menuItems": [
-        "오리지널 레몬티",
-        "얼그레이 레몬티",
-        "씨글라스 피치 레몬티",
-        "퓨어 자스민 레몬티",
-        "자스민 파인애플&망고",
-        "화이트 레모네이드",
-        "양쯔깐루 화채"
-      ],
-      "lastVerifiedAt": "2026-08-07",
-      "status": "ongoing",
-      "title": "홍닝차 POP-UP",
-      "branch": "현대백화점 울산점",
-      "latitude": null,
-      "longitude": null,
-      "dDay": 2,
-      "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/28/3560e6db-6d9a-47d4-8e7a-79f5e81ba807.png",
-      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
-      "sourceItemId": "E2902607493874",
-      "tags": [
-        "홍닝차",
-        "현대백화점 울산점",
-        "울산광역시",
-        "백화점",
-        "food-popup",
-        "오리지널 레몬티",
-        "얼그레이 레몬티",
-        "씨글라스 피치 레몬티",
-        "퓨어 자스민 레몬티",
-        "자스민 파인애플&망고"
-      ],
-      "isNew": true,
-      "isEndingSoon": true,
-      "lastUpdated": "2026-08-05",
-      "contentSearch": {
-        "checkedOfficialList": true,
-        "checkedOfficialDetail": true,
-        "checkedEmbeddedData": true,
-        "checkedOfficialImages": true,
-        "checkedOperatorSearch": false,
-        "checkedBrandOfficialSources": false,
-        "checkedUrls": [
-          "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
-          "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/f21a1fdf-49d8-4e50-9f1c-8168fd806bcf.jpg",
-          "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/41f98cbf-209d-412c-bda1-7e2d8c08e332.jpg",
-          "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/202cef01-6769-4b86-a507-1c43eec95c5d.png",
-          "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/71f35adc-e0d5-4ea9-abe8-18174c1186d7.jpg",
-          "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/97790e8d-7820-4b80-b6e2-328d5a9f6268.jpg",
-          "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/799ace07-6bc4-4cdd-988e-fc3bd9400cfb.png",
-          "https://imgprism.ehyundai.com/img1ItemNmPrcTypeInf/imgPath/202607/27/8476ba1b-0950-4955-a8d1-908669890796.png",
-          "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/28/3560e6db-6d9a-47d4-8e7a-79f5e81ba807.png"
-        ],
-        "checkedMethods": [
-          "official_detail_html"
-        ],
-        "imageCandidatesFound": 8,
-        "menuCandidatesFound": 7,
-        "priceCandidatesFound": 7,
-        "descriptionCandidatesFound": 0,
-        "status": "found",
-        "evidence": [
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "imageUrl": "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/f21a1fdf-49d8-4e50-9f1c-8168fd806bcf.jpg",
-            "capturedAt": "2026-08-06T09:03:23.098Z"
-          },
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "imageUrl": "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/41f98cbf-209d-412c-bda1-7e2d8c08e332.jpg",
-            "capturedAt": "2026-08-06T09:03:23.098Z"
-          },
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "imageUrl": "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/202cef01-6769-4b86-a507-1c43eec95c5d.png",
-            "capturedAt": "2026-08-06T09:03:23.098Z"
-          },
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "imageUrl": "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/71f35adc-e0d5-4ea9-abe8-18174c1186d7.jpg",
-            "capturedAt": "2026-08-06T09:03:23.098Z"
-          },
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "imageUrl": "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/97790e8d-7820-4b80-b6e2-328d5a9f6268.jpg",
-            "capturedAt": "2026-08-06T09:03:23.098Z"
-          },
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "imageUrl": "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/799ace07-6bc4-4cdd-988e-fc3bd9400cfb.png",
-            "capturedAt": "2026-08-06T09:03:23.098Z"
-          },
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "imageUrl": "https://imgprism.ehyundai.com/img1ItemNmPrcTypeInf/imgPath/202607/27/8476ba1b-0950-4955-a8d1-908669890796.png",
-            "capturedAt": "2026-08-06T09:03:23.098Z"
-          },
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "imageUrl": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/28/3560e6db-6d9a-47d4-8e7a-79f5e81ba807.png",
-            "capturedAt": "2026-08-06T09:03:23.098Z"
-          },
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "capturedAt": "2026-08-06T09:03:23.098Z"
-          },
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "capturedAt": "2026-08-06T09:03:23.098Z"
-          },
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "capturedAt": "2026-08-06T09:03:23.098Z"
-          },
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "capturedAt": "2026-08-06T09:03:23.098Z"
-          },
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "capturedAt": "2026-08-06T09:03:23.098Z"
-          },
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "capturedAt": "2026-08-06T09:03:23.098Z"
-          },
-          {
-            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
-            "sourceName": "현대백화점 공식 쇼핑뉴스",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "capturedAt": "2026-08-06T09:03:23.098Z"
-          }
-        ],
-        "failureReasons": [],
-        "checkedAt": "2026-08-06T09:03:23.098Z"
-      },
-      "imageValidation": {
-        "status": "valid",
-        "contentType": "image/png",
-        "width": 750,
-        "height": 750,
-        "checkedAt": "2026-08-07T01:06:59.527Z"
-      },
-      "contentQuality": "A",
-      "publishStatus": "published",
-      "qualityReasons": [],
-      "lastContentCheckedAt": "2026-08-07T01:06:55.556Z",
-      "imageCandidates": [
-        "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/28/3560e6db-6d9a-47d4-8e7a-79f5e81ba807.png",
-        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/f21a1fdf-49d8-4e50-9f1c-8168fd806bcf.jpg",
-        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/41f98cbf-209d-412c-bda1-7e2d8c08e332.jpg",
-        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/202cef01-6769-4b86-a507-1c43eec95c5d.png",
-        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/71f35adc-e0d5-4ea9-abe8-18174c1186d7.jpg",
-        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/97790e8d-7820-4b80-b6e2-328d5a9f6268.jpg",
-        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/799ace07-6bc4-4cdd-988e-fc3bd9400cfb.png",
-        "https://imgprism.ehyundai.com/img1ItemNmPrcTypeInf/imgPath/202607/27/8476ba1b-0950-4955-a8d1-908669890796.png"
-      ],
-      "menuCandidates": [
-        {
-          "name": "오리지널 레몬티",
-          "price": 5900,
-          "priceText": "5,900원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        },
-        {
-          "name": "얼그레이 레몬티",
-          "price": 5900,
-          "priceText": "5,900원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        },
-        {
-          "name": "씨글라스 피치 레몬티",
-          "price": 5900,
-          "priceText": "5,900원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        },
-        {
-          "name": "퓨어 자스민 레몬티",
-          "price": 5900,
-          "priceText": "5,900원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        },
-        {
-          "name": "자스민 파인애플&망고",
-          "price": 6500,
-          "priceText": "6,500원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        },
-        {
-          "name": "화이트 레모네이드",
-          "price": 5900,
-          "priceText": "5,900원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
-          "sourceName": "현대백화점 공식 쇼핑뉴스",
-          "evidenceType": "html"
-        },
-        {
-          "name": "양쯔깐루 화채",
-          "price": 18000,
-          "priceText": "18,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
           "sourceName": "현대백화점 공식 쇼핑뉴스",
           "evidenceType": "html"
         }
@@ -6161,7 +4734,7 @@
       "branch": "신세계백화점 의정부점",
       "latitude": null,
       "longitude": null,
-      "dDay": 6,
+      "dDay": 1,
       "officialUrl": "https://www.shinsegae.com/shopping/view.do?mainCd=02&pageLink=%2Fcms12%2FSC00010%2Finfo%2Fshopping%2Fbrndsingle%2F8579689_4597.txt&contentDtlCd=01&contentId=8579689&storeCd=SC00010&brandCd=UB0006880",
       "sourceItemId": "SC00010:8579689",
       "tags": [
@@ -6177,7 +4750,7 @@
         "오징어다리"
       ],
       "isNew": true,
-      "isEndingSoon": false,
+      "isEndingSoon": true,
       "lastUpdated": "2026-08-07"
     },
     {
@@ -6455,7 +5028,7 @@
       "branch": "더현대 대구",
       "latitude": null,
       "longitude": null,
-      "dDay": 6,
+      "dDay": 1,
       "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202603/26/f1e19a52-201f-4dcf-9a99-0fddb4bb0d45.jpg",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4602608494895&branchCd=B00146000&category=",
       "sourceItemId": "E4602608494895",
@@ -6472,7 +5045,7 @@
         "피스타치오 크림 푸딩"
       ],
       "isNew": true,
-      "isEndingSoon": false,
+      "isEndingSoon": true,
       "lastUpdated": "2026-08-07"
     },
     {
@@ -6611,7 +5184,7 @@
       "branch": "더현대 대구",
       "latitude": null,
       "longitude": null,
-      "dDay": 6,
+      "dDay": 1,
       "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202606/15/d8497f9b-e154-4d43-a2bb-b80a42061700.jpg",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4602608494896&branchCd=B00146000&category=",
       "sourceItemId": "E4602608494896",
@@ -6625,7 +5198,7 @@
         "초코 아이스 슈크림"
       ],
       "isNew": true,
-      "isEndingSoon": false,
+      "isEndingSoon": true,
       "lastUpdated": "2026-08-07"
     },
     {
@@ -6836,7 +5409,7 @@
       "branch": "현대백화점 중동점",
       "latitude": null,
       "longitude": null,
-      "dDay": 6,
+      "dDay": 1,
       "image": "https://img.ehyundai.com/files/derivedImage/fileValue/202608/05/2d5a647d-3bc5-4d00-811e-48f0a155d53e_02.jpg",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4302607493644&branchCd=B00143000&category=",
       "sourceItemId": "E4302607493644",
@@ -6851,7 +5424,7 @@
         "술탄케밥"
       ],
       "isNew": true,
-      "isEndingSoon": false,
+      "isEndingSoon": true,
       "lastUpdated": "2026-08-07"
     },
     {
@@ -7018,7 +5591,7 @@
       "branch": "현대백화점 충청점",
       "latitude": null,
       "longitude": null,
-      "dDay": 6,
+      "dDay": 1,
       "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202512/08/ac67c7ae-9cd8-4cde-9e14-2e8ff1e8cf4b.jpg",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4702607494689&branchCd=B00147000&category=",
       "sourceItemId": "E4702607494689",
@@ -7033,7 +5606,7 @@
         "술빵 머핀"
       ],
       "isNew": true,
-      "isEndingSoon": false,
+      "isEndingSoon": true,
       "lastUpdated": "2026-08-06"
     },
     {
@@ -7446,7 +6019,7 @@
       "branch": "더현대 대구",
       "latitude": null,
       "longitude": null,
-      "dDay": 6,
+      "dDay": 1,
       "image": "https://img.ehyundai.com/files/derivedImage/fileValue/202602/25/74bf14ef-999c-4d9a-a802-e8c32feb1d37_02.jpg",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4602608494894&branchCd=B00146000&category=",
       "sourceItemId": "E4602608494894",
@@ -7463,7 +6036,7 @@
         "매콤멸치김밥"
       ],
       "isNew": true,
-      "isEndingSoon": false,
+      "isEndingSoon": true,
       "lastUpdated": "2026-08-07"
     },
     {
@@ -7697,7 +6270,7 @@
       "branch": "더현대 대구",
       "latitude": null,
       "longitude": null,
-      "dDay": 6,
+      "dDay": 1,
       "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/29/4a23a2ed-aaa8-425e-ba1d-a26f1ae02847.jpg",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4602608494899&branchCd=B00146000&category=",
       "sourceItemId": "E4602608494899",
@@ -7714,7 +6287,7 @@
         "선물세트 (4팩)"
       ],
       "isNew": true,
-      "isEndingSoon": false,
+      "isEndingSoon": true,
       "lastUpdated": "2026-08-07"
     },
     {
@@ -7881,7 +6454,7 @@
       "branch": "현대백화점 충청점",
       "latitude": null,
       "longitude": null,
-      "dDay": 6,
+      "dDay": 1,
       "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202608/02/2303b229-8e1f-47bb-a566-c738cffaa1c7.jpg",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4702608494974&branchCd=B00147000&category=",
       "sourceItemId": "E4702608494974",
@@ -7896,7 +6469,7 @@
         "후르츠산도"
       ],
       "isNew": true,
-      "isEndingSoon": false,
+      "isEndingSoon": true,
       "lastUpdated": "2026-08-06"
     },
     {
@@ -8302,7 +6875,7 @@
       "branch": "현대백화점 킨텍스점",
       "latitude": null,
       "longitude": null,
-      "dDay": 6,
+      "dDay": 1,
       "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202606/03/71e8a103-689a-47a2-bf53-b3334686ffe1.jpg",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4502607494727&branchCd=B00145000&category=",
       "sourceItemId": "E4502607494727",
@@ -8319,7 +6892,7 @@
         "오리지널 카레 200g*3"
       ],
       "isNew": true,
-      "isEndingSoon": false,
+      "isEndingSoon": true,
       "lastUpdated": "2026-08-07"
     },
     {
@@ -8569,7 +7142,7 @@
       "branch": "현대백화점 킨텍스점",
       "latitude": null,
       "longitude": null,
-      "dDay": 13,
+      "dDay": 8,
       "image": "https://img.ehyundai.com/files/derivedImage/fileValue/202602/25/3b62ef96-e6aa-453a-a524-e7c756b94cb3_02.png",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4502607494721&branchCd=B00145000&category=",
       "sourceItemId": "E4502607494721",
@@ -8746,7 +7319,7 @@
       "branch": "현대백화점 미아점",
       "latitude": null,
       "longitude": null,
-      "dDay": 6,
+      "dDay": 1,
       "image": "https://img.ehyundai.com/files/derivedImage/fileValue/202509/29/3b89e495-6c13-43b8-85cf-476f7f5c2053_02.jpg",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E1102608495749&branchCd=B00141000&category=",
       "sourceItemId": "E1102608495749",
@@ -8760,7 +7333,7 @@
         "6개"
       ],
       "isNew": true,
-      "isEndingSoon": false,
+      "isEndingSoon": true,
       "lastUpdated": "2026-08-06"
     },
     {
@@ -8983,7 +7556,7 @@
       "branch": "더현대 대구",
       "latitude": null,
       "longitude": null,
-      "dDay": 6,
+      "dDay": 1,
       "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202608/04/a6f82562-debe-4988-a264-f3a6fb481258.jpg",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4602608495500&branchCd=B00146000&category=",
       "sourceItemId": "E4602608495500",
@@ -9000,7 +7573,7 @@
         "ㆍ한우치즈할라피뇨 맛"
       ],
       "isNew": true,
-      "isEndingSoon": false,
+      "isEndingSoon": true,
       "lastUpdated": "2026-08-07"
     },
     {
@@ -9239,7 +7812,7 @@
       "branch": "현대백화점 충청점",
       "latitude": null,
       "longitude": null,
-      "dDay": 6,
+      "dDay": 1,
       "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202608/04/33ac6fa2-d8db-4e6f-9540-7fbc64487ca9.jpg",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4702607494686&branchCd=B00147000&category=",
       "sourceItemId": "E4702607494686",
@@ -9255,7 +7828,7 @@
         "갈릭샤워 타코야끼"
       ],
       "isNew": true,
-      "isEndingSoon": false,
+      "isEndingSoon": true,
       "lastUpdated": "2026-08-06"
     },
     {
@@ -9478,7 +8051,7 @@
       "branch": "더현대 대구",
       "latitude": null,
       "longitude": null,
-      "dDay": 6,
+      "dDay": 1,
       "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202506/19/7886226b-35de-4231-ad81-0fed3edab12c.jpg",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4602608494893&branchCd=B00146000&category=",
       "sourceItemId": "E4602608494893",
@@ -9495,7 +8068,7 @@
         "딸기 구름식빵"
       ],
       "isNew": true,
-      "isEndingSoon": false,
+      "isEndingSoon": true,
       "lastUpdated": "2026-08-07"
     },
     {
@@ -9658,7 +8231,7 @@
         "checkedAt": "2026-08-07T01:06:44.351Z"
       },
       "lastVerifiedAt": "2026-08-07",
-      "status": "upcoming",
+      "status": "ended",
       "imageValidation": {
         "status": "valid",
         "contentType": "image/jpeg",
@@ -9723,7 +8296,7 @@
       "branch": "현대프리미엄아울렛 송도점",
       "latitude": null,
       "longitude": null,
-      "dDay": 1,
+      "dDay": -3,
       "image": "https://img.ehyundai.com/files/derivedImage/fileValue/202304/04/fa3ee694-bead-47c5-8a96-71027c0ec302_02.jpg",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E7402608495260&branchCd=B00174000&category=",
       "sourceItemId": "E7402608495260",
@@ -9741,6 +8314,1431 @@
       "isNew": true,
       "isEndingSoon": false,
       "lastUpdated": "2026-08-07"
+    },
+    {
+      "id": "hyundai:E2202607492968",
+      "name": "[POP-UP] 아페롤",
+      "venue": "현대백화점 무역센터점",
+      "venueType": "백화점",
+      "address": "서울특별시 강남구 테헤란로 517 (삼성동, 무역센터현대백화점) · 현대백화점 무역센터점",
+      "startDate": "2026-07-27",
+      "endDate": "2026-08-09",
+      "imageUrl": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/21/1d3beb1d-e286-4c53-865e-339e1823d0cd.jpg",
+      "sourceName": "현대백화점 공식 쇼핑뉴스",
+      "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2202607492968&branchCd=B00122000&category=",
+      "sourceGrade": "official",
+      "firstSeenAt": "2026-08-03",
+      "lastSeenAt": "2026-08-07",
+      "menus": [
+        {
+          "name": "· 아페롤 스프리츠",
+          "price": 8000,
+          "priceText": "8,000원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2202607492968&branchCd=B00122000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "· 아페롤 350ml",
+          "price": 20800,
+          "priceText": "20,800원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2202607492968&branchCd=B00122000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "· 아페롤 700ml",
+          "price": 34000,
+          "priceText": "34,000원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2202607492968&branchCd=B00122000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "· 시그니처 세트",
+          "price": 22000,
+          "priceText": "22,000원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2202607492968&branchCd=B00122000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "· 시그니처 페어링 세트",
+          "price": 23000,
+          "priceText": "23,000원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2202607492968&branchCd=B00122000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "· 스페셜 세트",
+          "price": 30000,
+          "priceText": "30,000원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2202607492968&branchCd=B00122000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        }
+      ],
+      "menuSource": "official-detail",
+      "brand": "아페롤",
+      "region": "서울특별시",
+      "category": "food-popup",
+      "menuItems": [
+        "· 아페롤 스프리츠",
+        "· 아페롤 350ml",
+        "· 아페롤 700ml",
+        "· 시그니처 세트",
+        "· 시그니처 페어링 세트",
+        "· 스페셜 세트"
+      ],
+      "officialImageUrls": [
+        "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/21/1d3beb1d-e286-4c53-865e-339e1823d0cd.jpg"
+      ],
+      "lastVerifiedAt": "2026-08-07",
+      "status": "ended",
+      "title": "[POP-UP] 아페롤",
+      "branch": "현대백화점 무역센터점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": -3,
+      "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/21/1d3beb1d-e286-4c53-865e-339e1823d0cd.jpg",
+      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2202607492968&branchCd=B00122000&category=",
+      "sourceItemId": "E2202607492968",
+      "tags": [
+        "아페롤",
+        "현대백화점 무역센터점",
+        "서울특별시",
+        "백화점",
+        "food-popup",
+        "· 아페롤 스프리츠",
+        "· 아페롤 350ml",
+        "· 아페롤 700ml",
+        "· 시그니처 세트",
+        "· 시그니처 페어링 세트"
+      ],
+      "isNew": false,
+      "isEndingSoon": false,
+      "lastUpdated": "2026-08-05",
+      "contentSearch": {
+        "checkedOfficialList": true,
+        "checkedOfficialDetail": true,
+        "checkedEmbeddedData": true,
+        "checkedOfficialImages": true,
+        "checkedOperatorSearch": false,
+        "checkedBrandOfficialSources": false,
+        "checkedUrls": [
+          "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2202607492968&branchCd=B00122000&category=",
+          "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/21/1d3beb1d-e286-4c53-865e-339e1823d0cd.jpg"
+        ],
+        "checkedMethods": [
+          "official_detail_html"
+        ],
+        "imageCandidatesFound": 1,
+        "menuCandidatesFound": 6,
+        "priceCandidatesFound": 6,
+        "descriptionCandidatesFound": 0,
+        "status": "found",
+        "evidence": [
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2202607492968&branchCd=B00122000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "officialImageUrls",
+            "imageUrl": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/21/1d3beb1d-e286-4c53-865e-339e1823d0cd.jpg",
+            "capturedAt": "2026-08-06T09:03:23.112Z"
+          },
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2202607492968&branchCd=B00122000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "menus",
+            "capturedAt": "2026-08-06T09:03:23.112Z"
+          },
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2202607492968&branchCd=B00122000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "menus",
+            "capturedAt": "2026-08-06T09:03:23.112Z"
+          },
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2202607492968&branchCd=B00122000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "menus",
+            "capturedAt": "2026-08-06T09:03:23.112Z"
+          },
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2202607492968&branchCd=B00122000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "menus",
+            "capturedAt": "2026-08-06T09:03:23.112Z"
+          },
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2202607492968&branchCd=B00122000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "menus",
+            "capturedAt": "2026-08-06T09:03:23.112Z"
+          },
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2202607492968&branchCd=B00122000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "menus",
+            "capturedAt": "2026-08-06T09:03:23.112Z"
+          }
+        ],
+        "failureReasons": [],
+        "checkedAt": "2026-08-06T09:03:23.112Z"
+      },
+      "imageValidation": {
+        "status": "valid",
+        "contentType": "image/jpeg",
+        "width": 750,
+        "height": 750,
+        "checkedAt": "2026-08-07T01:07:02.392Z"
+      },
+      "contentQuality": "A",
+      "publishStatus": "published",
+      "qualityReasons": [],
+      "lastContentCheckedAt": "2026-08-07T01:06:55.556Z",
+      "imageCandidates": [
+        "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/21/1d3beb1d-e286-4c53-865e-339e1823d0cd.jpg"
+      ],
+      "menuCandidates": [
+        {
+          "name": "· 아페롤 스프리츠",
+          "price": 8000,
+          "priceText": "8,000원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2202607492968&branchCd=B00122000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "· 아페롤 350ml",
+          "price": 20800,
+          "priceText": "20,800원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2202607492968&branchCd=B00122000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "· 아페롤 700ml",
+          "price": 34000,
+          "priceText": "34,000원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2202607492968&branchCd=B00122000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "· 시그니처 세트",
+          "price": 22000,
+          "priceText": "22,000원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2202607492968&branchCd=B00122000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "· 시그니처 페어링 세트",
+          "price": 23000,
+          "priceText": "23,000원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2202607492968&branchCd=B00122000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "· 스페셜 세트",
+          "price": 30000,
+          "priceText": "30,000원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2202607492968&branchCd=B00122000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        }
+      ],
+      "ocrStatus": "not_used"
+    },
+    {
+      "id": "hyundai:E2902607493865",
+      "name": "네이처스세븐 POP-UP",
+      "venue": "현대백화점 울산점",
+      "venueType": "백화점",
+      "address": "울산광역시 남구 삼산로 261 (삼산동) · 현대백화점 울산점",
+      "startDate": "2026-07-31",
+      "endDate": "2026-08-09",
+      "imageUrl": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/27/8d29155f-6c6e-44e0-98a8-b60e43b124b1.jpg",
+      "sourceName": "현대백화점 공식 쇼핑뉴스",
+      "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
+      "sourceGrade": "official",
+      "firstSeenAt": "2026-08-03",
+      "lastSeenAt": "2026-08-07",
+      "menus": [
+        {
+          "name": "땡큐베리넛츠",
+          "price": 12500,
+          "priceText": "12,500원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "플랜트코코프로틴",
+          "price": 13500,
+          "priceText": "13,500원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "아임파인",
+          "price": 13500,
+          "priceText": "13,500원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "핑크러쉬",
+          "price": 12000,
+          "priceText": "12,000원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "그린휘슬",
+          "price": 11000,
+          "priceText": "11,000원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "땅콩 버터",
+          "price": 16000,
+          "priceText": "16,000원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "피스타치오 버터",
+          "price": 42000,
+          "priceText": "42,000원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "아몬드 버터",
+          "price": 16000,
+          "priceText": "16,000원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        }
+      ],
+      "menuSource": "official-detail",
+      "officialImageUrls": [
+        "https://imgprism.ehyundai.com/img1ItemNmPrcTypeInf/imgPath/202607/27/8046a56f-11bd-4abe-aab0-a1d8e15dcf82.jpg",
+        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/0daf4796-8e29-4213-b282-4be9f189961f.jpg",
+        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/57c09b5e-03ce-40c6-8174-9083c90921aa.jpg",
+        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/1573be43-3f41-4870-8e4d-654167502e32.jpg",
+        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/e969d655-f600-47d2-882a-9974fff4b2c5.jpg",
+        "https://imgprism.ehyundai.com/img1ItemNmPrcTypeInf/imgPath/202607/27/d7163b1a-2194-4254-bcac-084c18bcd12e.jpg",
+        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/5499117c-5c29-4e8c-95f9-79a1c7a9455b.jpg",
+        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/c565ad6b-ad33-4a8b-9275-568bac914ead.jpg",
+        "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/27/8d29155f-6c6e-44e0-98a8-b60e43b124b1.jpg"
+      ],
+      "brand": "네이처스세븐",
+      "region": "울산광역시",
+      "category": "food-popup",
+      "menuItems": [
+        "땡큐베리넛츠",
+        "플랜트코코프로틴",
+        "아임파인",
+        "핑크러쉬",
+        "그린휘슬",
+        "땅콩 버터",
+        "피스타치오 버터",
+        "아몬드 버터"
+      ],
+      "lastVerifiedAt": "2026-08-07",
+      "status": "ended",
+      "title": "네이처스세븐 POP-UP",
+      "branch": "현대백화점 울산점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": -3,
+      "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/27/8d29155f-6c6e-44e0-98a8-b60e43b124b1.jpg",
+      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
+      "sourceItemId": "E2902607493865",
+      "tags": [
+        "네이처스세븐",
+        "현대백화점 울산점",
+        "울산광역시",
+        "백화점",
+        "food-popup",
+        "땡큐베리넛츠",
+        "플랜트코코프로틴",
+        "아임파인",
+        "핑크러쉬",
+        "그린휘슬"
+      ],
+      "isNew": false,
+      "isEndingSoon": false,
+      "lastUpdated": "2026-08-05",
+      "contentSearch": {
+        "checkedOfficialList": true,
+        "checkedOfficialDetail": true,
+        "checkedEmbeddedData": true,
+        "checkedOfficialImages": true,
+        "checkedOperatorSearch": false,
+        "checkedBrandOfficialSources": false,
+        "checkedUrls": [
+          "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
+          "https://imgprism.ehyundai.com/img1ItemNmPrcTypeInf/imgPath/202607/27/8046a56f-11bd-4abe-aab0-a1d8e15dcf82.jpg",
+          "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/0daf4796-8e29-4213-b282-4be9f189961f.jpg",
+          "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/57c09b5e-03ce-40c6-8174-9083c90921aa.jpg",
+          "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/1573be43-3f41-4870-8e4d-654167502e32.jpg",
+          "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/e969d655-f600-47d2-882a-9974fff4b2c5.jpg",
+          "https://imgprism.ehyundai.com/img1ItemNmPrcTypeInf/imgPath/202607/27/d7163b1a-2194-4254-bcac-084c18bcd12e.jpg",
+          "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/5499117c-5c29-4e8c-95f9-79a1c7a9455b.jpg",
+          "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/c565ad6b-ad33-4a8b-9275-568bac914ead.jpg",
+          "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/27/8d29155f-6c6e-44e0-98a8-b60e43b124b1.jpg"
+        ],
+        "checkedMethods": [
+          "official_detail_html"
+        ],
+        "imageCandidatesFound": 9,
+        "menuCandidatesFound": 8,
+        "priceCandidatesFound": 8,
+        "descriptionCandidatesFound": 0,
+        "status": "found",
+        "evidence": [
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "officialImageUrls",
+            "imageUrl": "https://imgprism.ehyundai.com/img1ItemNmPrcTypeInf/imgPath/202607/27/8046a56f-11bd-4abe-aab0-a1d8e15dcf82.jpg",
+            "capturedAt": "2026-08-06T09:03:23.102Z"
+          },
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "officialImageUrls",
+            "imageUrl": "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/0daf4796-8e29-4213-b282-4be9f189961f.jpg",
+            "capturedAt": "2026-08-06T09:03:23.102Z"
+          },
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "officialImageUrls",
+            "imageUrl": "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/57c09b5e-03ce-40c6-8174-9083c90921aa.jpg",
+            "capturedAt": "2026-08-06T09:03:23.102Z"
+          },
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "officialImageUrls",
+            "imageUrl": "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/1573be43-3f41-4870-8e4d-654167502e32.jpg",
+            "capturedAt": "2026-08-06T09:03:23.102Z"
+          },
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "officialImageUrls",
+            "imageUrl": "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/e969d655-f600-47d2-882a-9974fff4b2c5.jpg",
+            "capturedAt": "2026-08-06T09:03:23.102Z"
+          },
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "officialImageUrls",
+            "imageUrl": "https://imgprism.ehyundai.com/img1ItemNmPrcTypeInf/imgPath/202607/27/d7163b1a-2194-4254-bcac-084c18bcd12e.jpg",
+            "capturedAt": "2026-08-06T09:03:23.102Z"
+          },
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "officialImageUrls",
+            "imageUrl": "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/5499117c-5c29-4e8c-95f9-79a1c7a9455b.jpg",
+            "capturedAt": "2026-08-06T09:03:23.102Z"
+          },
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "officialImageUrls",
+            "imageUrl": "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/c565ad6b-ad33-4a8b-9275-568bac914ead.jpg",
+            "capturedAt": "2026-08-06T09:03:23.102Z"
+          },
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "officialImageUrls",
+            "imageUrl": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/27/8d29155f-6c6e-44e0-98a8-b60e43b124b1.jpg",
+            "capturedAt": "2026-08-06T09:03:23.102Z"
+          },
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "menus",
+            "capturedAt": "2026-08-06T09:03:23.102Z"
+          },
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "menus",
+            "capturedAt": "2026-08-06T09:03:23.102Z"
+          },
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "menus",
+            "capturedAt": "2026-08-06T09:03:23.102Z"
+          },
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "menus",
+            "capturedAt": "2026-08-06T09:03:23.102Z"
+          },
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "menus",
+            "capturedAt": "2026-08-06T09:03:23.102Z"
+          },
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "menus",
+            "capturedAt": "2026-08-06T09:03:23.102Z"
+          },
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "menus",
+            "capturedAt": "2026-08-06T09:03:23.102Z"
+          },
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "menus",
+            "capturedAt": "2026-08-06T09:03:23.102Z"
+          }
+        ],
+        "failureReasons": [],
+        "checkedAt": "2026-08-06T09:03:23.102Z"
+      },
+      "imageValidation": {
+        "status": "valid",
+        "contentType": "image/jpeg",
+        "width": 750,
+        "height": 750,
+        "checkedAt": "2026-08-07T01:07:00.663Z"
+      },
+      "contentQuality": "A",
+      "publishStatus": "published",
+      "qualityReasons": [],
+      "lastContentCheckedAt": "2026-08-07T01:06:55.556Z",
+      "imageCandidates": [
+        "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/27/8d29155f-6c6e-44e0-98a8-b60e43b124b1.jpg",
+        "https://imgprism.ehyundai.com/img1ItemNmPrcTypeInf/imgPath/202607/27/8046a56f-11bd-4abe-aab0-a1d8e15dcf82.jpg",
+        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/0daf4796-8e29-4213-b282-4be9f189961f.jpg",
+        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/57c09b5e-03ce-40c6-8174-9083c90921aa.jpg",
+        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/1573be43-3f41-4870-8e4d-654167502e32.jpg",
+        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/e969d655-f600-47d2-882a-9974fff4b2c5.jpg",
+        "https://imgprism.ehyundai.com/img1ItemNmPrcTypeInf/imgPath/202607/27/d7163b1a-2194-4254-bcac-084c18bcd12e.jpg",
+        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/5499117c-5c29-4e8c-95f9-79a1c7a9455b.jpg",
+        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/c565ad6b-ad33-4a8b-9275-568bac914ead.jpg"
+      ],
+      "menuCandidates": [
+        {
+          "name": "땡큐베리넛츠",
+          "price": 12500,
+          "priceText": "12,500원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "플랜트코코프로틴",
+          "price": 13500,
+          "priceText": "13,500원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "아임파인",
+          "price": 13500,
+          "priceText": "13,500원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "핑크러쉬",
+          "price": 12000,
+          "priceText": "12,000원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "그린휘슬",
+          "price": 11000,
+          "priceText": "11,000원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "땅콩 버터",
+          "price": 16000,
+          "priceText": "16,000원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "피스타치오 버터",
+          "price": 42000,
+          "priceText": "42,000원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "아몬드 버터",
+          "price": 16000,
+          "priceText": "16,000원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493865&branchCd=B00129000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        }
+      ],
+      "ocrStatus": "not_used"
+    },
+    {
+      "id": "lotte:jamsil:honey",
+      "name": "안상규벌꿀",
+      "venue": "롯데월드몰",
+      "venueType": "쇼핑몰",
+      "address": "서울특별시 송파구 올림픽로 300 (신천동) · 롯데월드몰",
+      "startDate": "2026-07-15",
+      "endDate": "2026-08-09",
+      "imageUrl": "https://mukdang.com/assets/popups/lotte/jamsil-honey.jpeg",
+      "sourceName": "롯데쇼핑 공식 행사",
+      "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000546957",
+      "sourceGrade": "official-search",
+      "firstSeenAt": "2026-07-30",
+      "lastSeenAt": "2026-08-07",
+      "brand": "안상규벌꿀",
+      "region": "서울특별시",
+      "category": "food-popup",
+      "lastVerifiedAt": "2026-08-07",
+      "status": "ended",
+      "menuItems": [
+        "위니 더 푸우 허니버터꿀"
+      ],
+      "menuSource": "official-image",
+      "menus": [
+        {
+          "name": "위니 더 푸우 허니버터꿀",
+          "price": null,
+          "priceText": "가격 미공개",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000546957",
+          "sourceName": "롯데쇼핑 공식 행사",
+          "evidenceType": "official_image"
+        }
+      ],
+      "imageSource": "official-detail-local-copy",
+      "officialImageUrls": [
+        "https://mukdang.com/assets/popups/lotte/jamsil-honey.jpeg",
+        "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000546957/20260714212145994_1.jpeg"
+      ],
+      "title": "안상규벌꿀",
+      "branch": "롯데월드몰",
+      "latitude": null,
+      "longitude": null,
+      "dDay": -3,
+      "image": "https://mukdang.com/assets/popups/lotte/jamsil-honey.jpeg",
+      "officialUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000546957",
+      "sourceItemId": "jamsil:honey",
+      "tags": [
+        "안상규벌꿀",
+        "롯데월드몰",
+        "서울특별시",
+        "쇼핑몰",
+        "food-popup",
+        "위니 더 푸우 허니버터꿀"
+      ],
+      "isNew": false,
+      "isEndingSoon": false,
+      "lastUpdated": "2026-08-05",
+      "contentSearch": {
+        "checkedOfficialList": false,
+        "checkedOfficialDetail": false,
+        "checkedEmbeddedData": false,
+        "checkedOfficialImages": false,
+        "checkedOperatorSearch": false,
+        "checkedBrandOfficialSources": false,
+        "checkedUrls": [
+          "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000546957"
+        ],
+        "checkedMethods": [
+          "official_list_html",
+          "operator_internal_search"
+        ],
+        "imageCandidatesFound": 2,
+        "menuCandidatesFound": 1,
+        "priceCandidatesFound": 0,
+        "descriptionCandidatesFound": 0,
+        "status": "found",
+        "evidence": [],
+        "failureReasons": [
+          "official_list_request_failed",
+          "official_detail_not_identified",
+          "official_detail_images_not_checked",
+          "brand_official_sources_not_checked"
+        ],
+        "checkedAt": "2026-08-07T01:04:51.806Z"
+      },
+      "imageOriginalUrl": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000546957/20260714212145994_1.jpeg",
+      "imageValidation": {
+        "status": "valid",
+        "contentType": "image/jpeg",
+        "width": 750,
+        "height": 750,
+        "checkedAt": "2026-08-07T01:07:03.481Z"
+      },
+      "contentQuality": "A",
+      "publishStatus": "published",
+      "qualityReasons": [],
+      "lastContentCheckedAt": "2026-08-07T01:06:55.556Z",
+      "imageCandidates": [
+        "https://mukdang.com/assets/popups/lotte/jamsil-honey.jpeg",
+        "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000546957/20260714212145994_1.jpeg"
+      ],
+      "menuCandidates": [
+        {
+          "name": "위니 더 푸우 허니버터꿀",
+          "price": null,
+          "priceText": "가격 미공개",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000546957",
+          "sourceName": "롯데쇼핑 공식 행사",
+          "evidenceType": "official_image"
+        }
+      ],
+      "ocrStatus": "not_used"
+    },
+    {
+      "id": "hyundai:E2902607493868",
+      "name": "테쿠루 POP-UP",
+      "venue": "현대백화점 울산점",
+      "venueType": "백화점",
+      "address": "울산광역시 남구 삼산로 261 (삼산동) · 현대백화점 울산점",
+      "startDate": "2026-07-31",
+      "endDate": "2026-08-09",
+      "imageUrl": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/27/f2ff257b-698a-4b23-b88b-3ea61d785687.jpeg",
+      "sourceName": "현대백화점 공식 쇼핑뉴스",
+      "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493868&branchCd=B00129000&category=",
+      "sourceGrade": "official",
+      "firstSeenAt": "2026-08-03",
+      "lastSeenAt": "2026-08-07",
+      "menus": [
+        {
+          "name": "오리지널",
+          "price": 9000,
+          "priceText": "9,000원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493868&branchCd=B00129000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "매콤데리",
+          "price": 9000,
+          "priceText": "9,000원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493868&branchCd=B00129000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "체다치즈",
+          "price": 10000,
+          "priceText": "10,000원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493868&branchCd=B00129000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "대파타코",
+          "price": 10000,
+          "priceText": "10,000원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493868&branchCd=B00129000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        }
+      ],
+      "menuSource": "official-detail",
+      "officialImageUrls": [
+        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/d626020d-57fb-460a-a181-5ae118b6a715.png",
+        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/68f5e847-7eca-4531-94cb-fa91209bf543.png",
+        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/33f7a23d-2955-4438-94e0-9ec2fdb06a70.png",
+        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/8a57b8af-7540-4ff6-b1b5-e95c373defd6.png",
+        "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/27/f2ff257b-698a-4b23-b88b-3ea61d785687.jpeg"
+      ],
+      "brand": "테쿠루",
+      "region": "울산광역시",
+      "category": "food-popup",
+      "menuItems": [
+        "오리지널",
+        "매콤데리",
+        "체다치즈",
+        "대파타코"
+      ],
+      "lastVerifiedAt": "2026-08-07",
+      "status": "ended",
+      "title": "테쿠루 POP-UP",
+      "branch": "현대백화점 울산점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": -3,
+      "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/27/f2ff257b-698a-4b23-b88b-3ea61d785687.jpeg",
+      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493868&branchCd=B00129000&category=",
+      "sourceItemId": "E2902607493868",
+      "tags": [
+        "테쿠루",
+        "현대백화점 울산점",
+        "울산광역시",
+        "백화점",
+        "food-popup",
+        "오리지널",
+        "매콤데리",
+        "체다치즈",
+        "대파타코"
+      ],
+      "isNew": false,
+      "isEndingSoon": false,
+      "lastUpdated": "2026-08-05",
+      "contentSearch": {
+        "checkedOfficialList": true,
+        "checkedOfficialDetail": true,
+        "checkedEmbeddedData": true,
+        "checkedOfficialImages": true,
+        "checkedOperatorSearch": false,
+        "checkedBrandOfficialSources": false,
+        "checkedUrls": [
+          "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493868&branchCd=B00129000&category=",
+          "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/d626020d-57fb-460a-a181-5ae118b6a715.png",
+          "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/68f5e847-7eca-4531-94cb-fa91209bf543.png",
+          "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/33f7a23d-2955-4438-94e0-9ec2fdb06a70.png",
+          "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/8a57b8af-7540-4ff6-b1b5-e95c373defd6.png",
+          "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/27/f2ff257b-698a-4b23-b88b-3ea61d785687.jpeg"
+        ],
+        "checkedMethods": [
+          "official_detail_html"
+        ],
+        "imageCandidatesFound": 5,
+        "menuCandidatesFound": 4,
+        "priceCandidatesFound": 4,
+        "descriptionCandidatesFound": 0,
+        "status": "found",
+        "evidence": [
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493868&branchCd=B00129000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "officialImageUrls",
+            "imageUrl": "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/d626020d-57fb-460a-a181-5ae118b6a715.png",
+            "capturedAt": "2026-08-06T09:03:23.111Z"
+          },
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493868&branchCd=B00129000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "officialImageUrls",
+            "imageUrl": "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/68f5e847-7eca-4531-94cb-fa91209bf543.png",
+            "capturedAt": "2026-08-06T09:03:23.111Z"
+          },
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493868&branchCd=B00129000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "officialImageUrls",
+            "imageUrl": "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/33f7a23d-2955-4438-94e0-9ec2fdb06a70.png",
+            "capturedAt": "2026-08-06T09:03:23.111Z"
+          },
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493868&branchCd=B00129000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "officialImageUrls",
+            "imageUrl": "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/8a57b8af-7540-4ff6-b1b5-e95c373defd6.png",
+            "capturedAt": "2026-08-06T09:03:23.111Z"
+          },
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493868&branchCd=B00129000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "officialImageUrls",
+            "imageUrl": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/27/f2ff257b-698a-4b23-b88b-3ea61d785687.jpeg",
+            "capturedAt": "2026-08-06T09:03:23.111Z"
+          },
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493868&branchCd=B00129000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "menus",
+            "capturedAt": "2026-08-06T09:03:23.111Z"
+          },
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493868&branchCd=B00129000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "menus",
+            "capturedAt": "2026-08-06T09:03:23.111Z"
+          },
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493868&branchCd=B00129000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "menus",
+            "capturedAt": "2026-08-06T09:03:23.111Z"
+          },
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493868&branchCd=B00129000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "menus",
+            "capturedAt": "2026-08-06T09:03:23.111Z"
+          }
+        ],
+        "failureReasons": [],
+        "checkedAt": "2026-08-06T09:03:23.111Z"
+      },
+      "imageValidation": {
+        "status": "valid",
+        "contentType": "image/jpeg",
+        "width": 750,
+        "height": 750,
+        "checkedAt": "2026-08-07T01:07:02.145Z"
+      },
+      "contentQuality": "A",
+      "publishStatus": "published",
+      "qualityReasons": [],
+      "lastContentCheckedAt": "2026-08-07T01:06:55.556Z",
+      "imageCandidates": [
+        "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/27/f2ff257b-698a-4b23-b88b-3ea61d785687.jpeg",
+        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/d626020d-57fb-460a-a181-5ae118b6a715.png",
+        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/68f5e847-7eca-4531-94cb-fa91209bf543.png",
+        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/33f7a23d-2955-4438-94e0-9ec2fdb06a70.png",
+        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/8a57b8af-7540-4ff6-b1b5-e95c373defd6.png"
+      ],
+      "menuCandidates": [
+        {
+          "name": "오리지널",
+          "price": 9000,
+          "priceText": "9,000원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493868&branchCd=B00129000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "매콤데리",
+          "price": 9000,
+          "priceText": "9,000원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493868&branchCd=B00129000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "체다치즈",
+          "price": 10000,
+          "priceText": "10,000원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493868&branchCd=B00129000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "대파타코",
+          "price": 10000,
+          "priceText": "10,000원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493868&branchCd=B00129000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        }
+      ],
+      "ocrStatus": "not_used"
+    },
+    {
+      "id": "hyundai:E2902607493874",
+      "name": "홍닝차 POP-UP",
+      "venue": "현대백화점 울산점",
+      "venueType": "백화점",
+      "address": "울산광역시 남구 삼산로 261 (삼산동) · 현대백화점 울산점",
+      "startDate": "2026-08-01",
+      "endDate": "2026-08-09",
+      "imageUrl": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/28/3560e6db-6d9a-47d4-8e7a-79f5e81ba807.png",
+      "sourceName": "현대백화점 공식 쇼핑뉴스",
+      "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
+      "sourceGrade": "official",
+      "firstSeenAt": "2026-08-03",
+      "lastSeenAt": "2026-08-07",
+      "menus": [
+        {
+          "name": "오리지널 레몬티",
+          "price": 5900,
+          "priceText": "5,900원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "얼그레이 레몬티",
+          "price": 5900,
+          "priceText": "5,900원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "씨글라스 피치 레몬티",
+          "price": 5900,
+          "priceText": "5,900원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "퓨어 자스민 레몬티",
+          "price": 5900,
+          "priceText": "5,900원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "자스민 파인애플&망고",
+          "price": 6500,
+          "priceText": "6,500원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "화이트 레모네이드",
+          "price": 5900,
+          "priceText": "5,900원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "양쯔깐루 화채",
+          "price": 18000,
+          "priceText": "18,000원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        }
+      ],
+      "menuSource": "official-detail",
+      "officialImageUrls": [
+        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/f21a1fdf-49d8-4e50-9f1c-8168fd806bcf.jpg",
+        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/41f98cbf-209d-412c-bda1-7e2d8c08e332.jpg",
+        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/202cef01-6769-4b86-a507-1c43eec95c5d.png",
+        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/71f35adc-e0d5-4ea9-abe8-18174c1186d7.jpg",
+        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/97790e8d-7820-4b80-b6e2-328d5a9f6268.jpg",
+        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/799ace07-6bc4-4cdd-988e-fc3bd9400cfb.png",
+        "https://imgprism.ehyundai.com/img1ItemNmPrcTypeInf/imgPath/202607/27/8476ba1b-0950-4955-a8d1-908669890796.png",
+        "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/28/3560e6db-6d9a-47d4-8e7a-79f5e81ba807.png"
+      ],
+      "brand": "홍닝차",
+      "region": "울산광역시",
+      "category": "food-popup",
+      "menuItems": [
+        "오리지널 레몬티",
+        "얼그레이 레몬티",
+        "씨글라스 피치 레몬티",
+        "퓨어 자스민 레몬티",
+        "자스민 파인애플&망고",
+        "화이트 레모네이드",
+        "양쯔깐루 화채"
+      ],
+      "lastVerifiedAt": "2026-08-07",
+      "status": "ended",
+      "title": "홍닝차 POP-UP",
+      "branch": "현대백화점 울산점",
+      "latitude": null,
+      "longitude": null,
+      "dDay": -3,
+      "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/28/3560e6db-6d9a-47d4-8e7a-79f5e81ba807.png",
+      "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
+      "sourceItemId": "E2902607493874",
+      "tags": [
+        "홍닝차",
+        "현대백화점 울산점",
+        "울산광역시",
+        "백화점",
+        "food-popup",
+        "오리지널 레몬티",
+        "얼그레이 레몬티",
+        "씨글라스 피치 레몬티",
+        "퓨어 자스민 레몬티",
+        "자스민 파인애플&망고"
+      ],
+      "isNew": false,
+      "isEndingSoon": false,
+      "lastUpdated": "2026-08-05",
+      "contentSearch": {
+        "checkedOfficialList": true,
+        "checkedOfficialDetail": true,
+        "checkedEmbeddedData": true,
+        "checkedOfficialImages": true,
+        "checkedOperatorSearch": false,
+        "checkedBrandOfficialSources": false,
+        "checkedUrls": [
+          "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
+          "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/f21a1fdf-49d8-4e50-9f1c-8168fd806bcf.jpg",
+          "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/41f98cbf-209d-412c-bda1-7e2d8c08e332.jpg",
+          "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/202cef01-6769-4b86-a507-1c43eec95c5d.png",
+          "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/71f35adc-e0d5-4ea9-abe8-18174c1186d7.jpg",
+          "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/97790e8d-7820-4b80-b6e2-328d5a9f6268.jpg",
+          "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/799ace07-6bc4-4cdd-988e-fc3bd9400cfb.png",
+          "https://imgprism.ehyundai.com/img1ItemNmPrcTypeInf/imgPath/202607/27/8476ba1b-0950-4955-a8d1-908669890796.png",
+          "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/28/3560e6db-6d9a-47d4-8e7a-79f5e81ba807.png"
+        ],
+        "checkedMethods": [
+          "official_detail_html"
+        ],
+        "imageCandidatesFound": 8,
+        "menuCandidatesFound": 7,
+        "priceCandidatesFound": 7,
+        "descriptionCandidatesFound": 0,
+        "status": "found",
+        "evidence": [
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "officialImageUrls",
+            "imageUrl": "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/f21a1fdf-49d8-4e50-9f1c-8168fd806bcf.jpg",
+            "capturedAt": "2026-08-06T09:03:23.098Z"
+          },
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "officialImageUrls",
+            "imageUrl": "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/41f98cbf-209d-412c-bda1-7e2d8c08e332.jpg",
+            "capturedAt": "2026-08-06T09:03:23.098Z"
+          },
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "officialImageUrls",
+            "imageUrl": "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/202cef01-6769-4b86-a507-1c43eec95c5d.png",
+            "capturedAt": "2026-08-06T09:03:23.098Z"
+          },
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "officialImageUrls",
+            "imageUrl": "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/71f35adc-e0d5-4ea9-abe8-18174c1186d7.jpg",
+            "capturedAt": "2026-08-06T09:03:23.098Z"
+          },
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "officialImageUrls",
+            "imageUrl": "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/97790e8d-7820-4b80-b6e2-328d5a9f6268.jpg",
+            "capturedAt": "2026-08-06T09:03:23.098Z"
+          },
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "officialImageUrls",
+            "imageUrl": "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/799ace07-6bc4-4cdd-988e-fc3bd9400cfb.png",
+            "capturedAt": "2026-08-06T09:03:23.098Z"
+          },
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "officialImageUrls",
+            "imageUrl": "https://imgprism.ehyundai.com/img1ItemNmPrcTypeInf/imgPath/202607/27/8476ba1b-0950-4955-a8d1-908669890796.png",
+            "capturedAt": "2026-08-06T09:03:23.098Z"
+          },
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "officialImageUrls",
+            "imageUrl": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/28/3560e6db-6d9a-47d4-8e7a-79f5e81ba807.png",
+            "capturedAt": "2026-08-06T09:03:23.098Z"
+          },
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "menus",
+            "capturedAt": "2026-08-06T09:03:23.098Z"
+          },
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "menus",
+            "capturedAt": "2026-08-06T09:03:23.098Z"
+          },
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "menus",
+            "capturedAt": "2026-08-06T09:03:23.098Z"
+          },
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "menus",
+            "capturedAt": "2026-08-06T09:03:23.098Z"
+          },
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "menus",
+            "capturedAt": "2026-08-06T09:03:23.098Z"
+          },
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "menus",
+            "capturedAt": "2026-08-06T09:03:23.098Z"
+          },
+          {
+            "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
+            "sourceName": "현대백화점 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "menus",
+            "capturedAt": "2026-08-06T09:03:23.098Z"
+          }
+        ],
+        "failureReasons": [],
+        "checkedAt": "2026-08-06T09:03:23.098Z"
+      },
+      "imageValidation": {
+        "status": "valid",
+        "contentType": "image/png",
+        "width": 750,
+        "height": 750,
+        "checkedAt": "2026-08-07T01:06:59.527Z"
+      },
+      "contentQuality": "A",
+      "publishStatus": "published",
+      "qualityReasons": [],
+      "lastContentCheckedAt": "2026-08-07T01:06:55.556Z",
+      "imageCandidates": [
+        "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/28/3560e6db-6d9a-47d4-8e7a-79f5e81ba807.png",
+        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/f21a1fdf-49d8-4e50-9f1c-8168fd806bcf.jpg",
+        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/41f98cbf-209d-412c-bda1-7e2d8c08e332.jpg",
+        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/202cef01-6769-4b86-a507-1c43eec95c5d.png",
+        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/71f35adc-e0d5-4ea9-abe8-18174c1186d7.jpg",
+        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/27/97790e8d-7820-4b80-b6e2-328d5a9f6268.jpg",
+        "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202607/27/799ace07-6bc4-4cdd-988e-fc3bd9400cfb.png",
+        "https://imgprism.ehyundai.com/img1ItemNmPrcTypeInf/imgPath/202607/27/8476ba1b-0950-4955-a8d1-908669890796.png"
+      ],
+      "menuCandidates": [
+        {
+          "name": "오리지널 레몬티",
+          "price": 5900,
+          "priceText": "5,900원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "얼그레이 레몬티",
+          "price": 5900,
+          "priceText": "5,900원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "씨글라스 피치 레몬티",
+          "price": 5900,
+          "priceText": "5,900원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "퓨어 자스민 레몬티",
+          "price": 5900,
+          "priceText": "5,900원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "자스민 파인애플&망고",
+          "price": 6500,
+          "priceText": "6,500원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "화이트 레모네이드",
+          "price": 5900,
+          "priceText": "5,900원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "양쯔깐루 화채",
+          "price": 18000,
+          "priceText": "18,000원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902607493874&branchCd=B00129000&category=",
+          "sourceName": "현대백화점 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        }
+      ],
+      "ocrStatus": "not_used"
     },
     {
       "id": "shinsegae-shopping:SC00003:8578435",
@@ -9807,7 +9805,7 @@
       "branch": "신세계백화점 타임스퀘어점",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://mukdang.com/assets/popups/shinsegae/bd3ac8e3e4dd9ec52b4a.jpg",
       "officialUrl": "https://www.shinsegae.com/shopping/view.do?mainCd=02&pageLink=%2Fcms12%2FSC00003%2Finfo%2Fshopping%2Fbrndsingle%2F8578435_4474.txt&contentDtlCd=01&contentId=8578435&storeCd=SC00003&brandCd=UB0004152",
       "sourceItemId": "SC00003:8578435",
@@ -9821,7 +9819,7 @@
         "쫀득 쿠키바(12-13종) (개)",
         "두바이 필링 샌드쿠키 (개)"
       ],
-      "isNew": true,
+      "isNew": false,
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
@@ -10092,7 +10090,7 @@
       "branch": "더현대 대구",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/24/1eece98e-a959-43f6-9aaf-d1b87d84587c.jpg",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4602607493809&branchCd=B00146000&category=",
       "sourceItemId": "E4602607493809",
@@ -10108,7 +10106,7 @@
         "참외 소프트아이스크림(컵/콘)",
         "복숭아 소프트아이스크림(컵/콘)"
       ],
-      "isNew": true,
+      "isNew": false,
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
@@ -10442,7 +10440,7 @@
       "branch": "더현대 대구",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202505/20/2f3e6c9e-b2c1-4e28-a2df-9a10651d1c6f.jpg",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4602607493810&branchCd=B00146000&category=",
       "sourceItemId": "E4602607493810",
@@ -10457,7 +10455,7 @@
         "어썸팝콘 클래식솔트",
         "어썸팝콘 말차"
       ],
-      "isNew": true,
+      "isNew": false,
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
@@ -10652,7 +10650,7 @@
       "branch": "신세계백화점 의정부점",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://mukdang.com/assets/popups/shinsegae/sc00010-8560469.jpg",
       "officialUrl": "https://www.shinsegae.com/shopping/view.do?mainCd=02&pageLink=%2Fcms12%2FSC00010%2Finfo%2Fshopping%2Fbrndsingle%2F8560469_4597.txt&contentDtlCd=01&contentId=8560469&storeCd=SC00010&brandCd=UB0004152",
       "sourceItemId": "SC00010:8560469",
@@ -10666,7 +10664,7 @@
         "아그작케이크 애플망고",
         "아그작케이크 피스타치오"
       ],
-      "isNew": true,
+      "isNew": false,
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
@@ -10837,7 +10835,7 @@
       "branch": "신세계백화점 의정부점",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://mukdang.com/assets/popups/shinsegae/dd8bc73c5e06890fa88d.jpg",
       "officialUrl": "https://www.shinsegae.com/shopping/view.do?mainCd=02&pageLink=%2Fcms12%2FSC00010%2Finfo%2Fshopping%2Fbrndsingle%2F8568366_4597.txt&contentDtlCd=01&contentId=8568366&storeCd=SC00010&brandCd=UB0006880",
       "sourceItemId": "SC00010:8568366",
@@ -10853,7 +10851,7 @@
         "클래식 콩절미",
         "선물세트"
       ],
-      "isNew": true,
+      "isNew": false,
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
@@ -11049,7 +11047,7 @@
       "branch": "신세계백화점 타임스퀘어점",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://mukdang.com/assets/popups/shinsegae/8587aaf5b0e349097d89.jpg",
       "officialUrl": "https://www.shinsegae.com/shopping/view.do?mainCd=02&pageLink=%2Fcms12%2FSC00003%2Finfo%2Fshopping%2Fbrndsingle%2F8576847_4474.txt&contentDtlCd=01&contentId=8576847&storeCd=SC00003&brandCd=UB0004152",
       "sourceItemId": "SC00003:8576847",
@@ -11062,7 +11060,7 @@
         "모찌 (말차초코 / 카스테라) 각",
         "모찌 (딸기 / 바스크 치즈케이크) 각"
       ],
-      "isNew": true,
+      "isNew": false,
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
@@ -11207,7 +11205,7 @@
       "branch": "신세계백화점 타임스퀘어점",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://mukdang.com/assets/popups/shinsegae/f69a63add793441c0737.png",
       "officialUrl": "https://www.shinsegae.com/shopping/view.do?mainCd=02&pageLink=%2Fcms12%2FSC00003%2Finfo%2Fshopping%2Fbrndsingle%2F8577774_4474.txt&contentDtlCd=01&contentId=8577774&storeCd=SC00003&brandCd=UB0004152",
       "sourceItemId": "SC00003:8577774",
@@ -11220,7 +11218,7 @@
         "번 2종 각",
         "생크림번 4종 각"
       ],
-      "isNew": true,
+      "isNew": false,
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
@@ -11387,7 +11385,7 @@
       "branch": "신세계백화점 의정부점",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://mukdang.com/assets/popups/shinsegae/7905a3ea6f648ef791ac.jpg",
       "officialUrl": "https://www.shinsegae.com/shopping/view.do?mainCd=02&pageLink=%2Fcms12%2FSC00010%2Finfo%2Fshopping%2Fbrndsingle%2F8568467_4597.txt&contentDtlCd=01&contentId=8568467&storeCd=SC00010&brandCd=UB0006878",
       "sourceItemId": "SC00010:8568467",
@@ -11402,7 +11400,7 @@
         "브라운치즈 에그타르트",
         "밀크 에그타르트"
       ],
-      "isNew": true,
+      "isNew": false,
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
@@ -11647,7 +11645,7 @@
       "branch": "신세계백화점 의정부점",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://mukdang.com/assets/popups/shinsegae/5e0da2c65f0f36a588ae.jpg",
       "officialUrl": "https://www.shinsegae.com/shopping/view.do?mainCd=02&pageLink=%2Fcms12%2FSC00010%2Finfo%2Fshopping%2Fbrndsingle%2F8516545_4597.txt&contentDtlCd=01&contentId=8516545&storeCd=SC00010&brandCd=UB0004152",
       "sourceItemId": "SC00010:8516545",
@@ -11663,7 +11661,7 @@
         "구름크림떡(6개입)",
         "초코초꾸떡(6개입)"
       ],
-      "isNew": true,
+      "isNew": false,
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
@@ -11899,7 +11897,7 @@
       "branch": "신세계백화점 의정부점",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://mukdang.com/assets/popups/shinsegae/7a86e5b2a051f207eebe.jpg",
       "officialUrl": "https://www.shinsegae.com/shopping/view.do?mainCd=02&pageLink=%2Fcms12%2FSC00010%2Finfo%2Fshopping%2Fbrndsingle%2F8527508_4597.txt&contentDtlCd=01&contentId=8527508&storeCd=SC00010&brandCd=UB0003790",
       "sourceItemId": "SC00010:8527508",
@@ -11912,7 +11910,7 @@
         "대표메뉴 및 가격 : 직화튤립/직화무뼈 닭발 각",
         "직화튤립/직화무뼈 닭발 각"
       ],
-      "isNew": true,
+      "isNew": false,
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
@@ -12095,7 +12093,7 @@
       "branch": "신세계백화점 타임스퀘어점",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://mukdang.com/assets/popups/shinsegae/fe1d61ec0869a1ce4b9d.png",
       "officialUrl": "https://www.shinsegae.com/shopping/view.do?mainCd=02&pageLink=%2Fcms12%2FSC00003%2Finfo%2Fshopping%2Fbrndsingle%2F8568278_4474.txt&contentDtlCd=01&contentId=8568278&storeCd=SC00003&brandCd=UB0004152",
       "sourceItemId": "SC00003:8568278",
@@ -12111,7 +12109,7 @@
         "멜론/타코/야끼소바 시오빵 (각/개)",
         "쪽파/명란/갈릭 시오빵 (각/개)"
       ],
-      "isNew": true,
+      "isNew": false,
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
@@ -12330,7 +12328,7 @@
       "branch": "신세계백화점 타임스퀘어점",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://mukdang.com/assets/popups/shinsegae/5802a3ced7f9f123592e.png",
       "officialUrl": "https://www.shinsegae.com/shopping/view.do?mainCd=02&pageLink=%2Fcms12%2FSC00003%2Finfo%2Fshopping%2Fbrndsingle%2F8576848_4474.txt&contentDtlCd=01&contentId=8576848&storeCd=SC00003&brandCd=UB0004152",
       "sourceItemId": "SC00003:8576848",
@@ -12342,7 +12340,7 @@
         "food-popup",
         "요거트 산도 2종 각"
       ],
-      "isNew": true,
+      "isNew": false,
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
@@ -12496,7 +12494,7 @@
       "branch": "현대백화점 중동점",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://img.ehyundai.com/files/derivedImage/fileValue/202607/29/7d85a36b-9bea-4bd1-b4e7-39dc53f939d5_02.png",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4302607493645&branchCd=B00143000&category=",
       "sourceItemId": "E4302607493645",
@@ -12511,7 +12509,7 @@
         "빛고을명가 떡갈비 스테이크",
         "엉클토스트"
       ],
-      "isNew": true,
+      "isNew": false,
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
@@ -12760,7 +12758,7 @@
       "branch": "현대백화점 킨텍스점",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202405/29/364a4c2e-5b61-484b-9793-10c6dd8d8a90.jpg",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4502607494110&branchCd=B00145000&category=",
       "sourceItemId": "E4502607494110",
@@ -12775,7 +12773,7 @@
         "낙지롱칩 (순한맛/1봉)",
         "낙지롱칩 (매운맛/1봉)"
       ],
-      "isNew": true,
+      "isNew": false,
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
@@ -13002,7 +13000,7 @@
       "branch": "롯데백화점 본점",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000548665/20260727111443394_3.jpeg",
       "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0001&searchTerm=%EA%B0%93%EA%B5%AC%EC%9A%B4%EB%B9%B5%EA%B3%B5%EC%9E%A5",
       "sourceItemId": "main:fresh-bread",
@@ -13173,7 +13171,7 @@
       "branch": "현대백화점 킨텍스점",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://img.ehyundai.com/files/derivedImage/fileValue/202607/28/5ce222b8-bddd-499c-a2ca-af85fe9becfb_02.JPG",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4502607494064&branchCd=B00145000&category=",
       "sourceItemId": "E4502607494064",
@@ -13187,7 +13185,7 @@
         "기백삼계탕 2팩(2kg)",
         "흑미 막걸리 술빵"
       ],
-      "isNew": true,
+      "isNew": false,
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
@@ -13399,7 +13397,7 @@
       "branch": "더현대 대구",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202605/07/af102d29-cd2e-4566-a7bf-d44b269adf5b.JPG",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4602607493812&branchCd=B00146000&category=",
       "sourceItemId": "E4602607493812",
@@ -13615,7 +13613,7 @@
       "branch": "롯데백화점 본점",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000533681/20260722190911672_2.jpeg",
       "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0001&searchTerm=%EA%B8%80%EB%9D%BC%EC%87%BC+%EC%88%98%EC%A0%9C+%EC%95%84%EC%9D%B4%EC%8A%A4%ED%81%AC%EB%A6%BC",
       "sourceItemId": "main:glaceau",
@@ -13749,7 +13747,7 @@
       "branch": "현대백화점 충청점",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202603/25/543f39b2-3197-4d0b-8a30-6959304267e3.jpg",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4702607493547&branchCd=B00147000&category=",
       "sourceItemId": "E4702607493547",
@@ -13762,7 +13760,7 @@
         "오직 전복죽",
         "오직 미역국"
       ],
-      "isNew": true,
+      "isNew": false,
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
@@ -13944,7 +13942,7 @@
       "branch": "현대백화점 압구정본점",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202605/27/7d9ed388-3811-4f64-8758-5565ab840409.jpg",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2102607494257&branchCd=B00121000&category=",
       "sourceItemId": "E2102607494257",
@@ -13959,7 +13957,7 @@
         "라이스볼 강정(1봉)",
         "약과(1봉)"
       ],
-      "isNew": true,
+      "isNew": false,
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
@@ -14185,7 +14183,7 @@
       "branch": "롯데백화점 건대스타시티점",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://minfo.lotteshopping.com/content/news/202407/SNM00000000000387996/20240715153135420_8.jpeg",
       "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0028&searchTerm=%EB%84%88%EA%B5%AC%EB%A6%AC%EB%B2%A0%EC%9D%B4%EA%B8%80",
       "sourceItemId": "global:neoguri-bagel",
@@ -14392,7 +14390,7 @@
       "branch": "현대백화점 충청점",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://img.ehyundai.com/files/derivedImage/fileValue/202306/11/8f130513-37d6-430e-bac1-8b105f5436a9_02.png",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4702607493434&branchCd=B00147000&category=",
       "sourceItemId": "E4702607493434",
@@ -14407,7 +14405,7 @@
         "오코노미야끼 베이컨",
         "오코노미야끼 해물"
       ],
-      "isNew": true,
+      "isNew": false,
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
@@ -14605,7 +14603,7 @@
       "branch": "현대백화점 압구정본점",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202508/05/061a1ec7-20ca-4828-8b21-86ef3aaa3af2.jpg",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2102607494295&branchCd=B00121000&category=",
       "sourceItemId": "E2102607494295",
@@ -14620,7 +14618,7 @@
         "리미티드 박스 천황도",
         "리미티드 박스 아카스키"
       ],
-      "isNew": true,
+      "isNew": false,
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
@@ -14865,7 +14863,7 @@
       "branch": "롯데아울렛 청주점",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://minfo.lotteshopping.com/content/news/202606/SNM00000000000543073/20260625131239774_1.jpeg",
       "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0342&searchTerm=%EB%8F%99%EB%B4%89+%EC%97%90%EA%B7%B8%ED%83%80%EB%A5%B4%ED%8A%B8",
       "sourceItemId": "cheongju:dongbong",
@@ -15072,7 +15070,7 @@
       "branch": "갤러리아 타임월드",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://product1-84t.pages.dev/assets/popups/galleria/timeworld-dessert-planet.jpg",
       "officialUrl": "https://dept.galleria.co.kr/store-info/timeworld/promotion/shopping-news/c85834?qCategory=NEWOPENING_POPUP",
       "sourceItemId": "timeworld:c85834:dessert-planet",
@@ -15087,7 +15085,7 @@
         "오레오 크로넛",
         "두바이 크로플"
       ],
-      "isNew": true,
+      "isNew": false,
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
@@ -15287,7 +15285,7 @@
       "branch": "현대백화점 킨텍스점",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/27/39962bcc-3753-42d3-b6ed-1abd9faafcef.jpg",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4502607493918&branchCd=B00145000&category=",
       "sourceItemId": "E4502607493918",
@@ -15302,7 +15300,7 @@
         "아이슬란딕 요거트 '띠크'",
         "아이슬란딕 요거트 '마일드'"
       ],
-      "isNew": true,
+      "isNew": false,
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
@@ -15517,7 +15515,7 @@
       "branch": "현대백화점 압구정본점",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://img.ehyundai.com/files/derivedImage/fileValue/202410/01/a53f6ce9-132f-438e-82e3-ff2b603b871b_02.jpg",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2102607494369&branchCd=B00121000&category=",
       "sourceItemId": "E2102607494369",
@@ -15706,7 +15704,7 @@
       "branch": "현대백화점 천호점",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202606/03/71e8a103-689a-47a2-bf53-b3334686ffe1.jpg",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E1102607494209&branchCd=B00126000&category=",
       "sourceItemId": "E1102607494209",
@@ -15721,7 +15719,7 @@
         "콘크림치즈스노우 고로케",
         "새우 고로케"
       ],
-      "isNew": true,
+      "isNew": false,
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
@@ -16035,7 +16033,7 @@
       "branch": "롯데백화점 본점",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547885/20260720123252388_7.jpeg",
       "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0001&searchTerm=%EB%B0%80%EB%B9%9B+%ED%81%AC%EB%A6%BC%EC%B9%98%EC%A6%88%EB%B9%B5",
       "sourceItemId": "main:milbit",
@@ -16276,7 +16274,7 @@
       "branch": "갤러리아 타임월드",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://product1-84t.pages.dev/assets/popups/galleria/timeworld-beatzel.jpg",
       "officialUrl": "https://dept.galleria.co.kr/store-info/timeworld/promotion/shopping-news/c85834?qCategory=NEWOPENING_POPUP",
       "sourceItemId": "timeworld:c85834:beatzel",
@@ -16290,7 +16288,7 @@
         "크림치즈 프레즐",
         "시그니처 토마콘 프레즐"
       ],
-      "isNew": true,
+      "isNew": false,
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
@@ -16745,7 +16743,7 @@
       "branch": "롯데백화점 노원점",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000545103/20260704192816729_9.jpeg",
       "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=%EB%B2%A0%EC%9D%B4%EA%B8%80%EB%A6%AC%EC%8A%A4%ED%8A%B8%C2%B7%EB%9D%BC%ED%81%AC%EB%A3%A8%EB%9C%A8",
       "sourceItemId": "nowon:bagelist",
@@ -17182,7 +17180,7 @@
       "branch": "현대백화점 미아점",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202512/16/fcd2a73e-6512-4051-a531-b991d1b40176.jpg",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E1102607494412&branchCd=B00141000&category=",
       "sourceItemId": "E1102607494412",
@@ -17523,7 +17521,7 @@
       "branch": "더현대 대구",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://img.ehyundai.com/files/derivedImage/fileValue/202509/16/73533c6d-af3e-4d70-90a6-6aca89f7f0c2_02.jpg",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4602607493807&branchCd=B00146000&category=",
       "sourceItemId": "E4602607493807",
@@ -17894,7 +17892,7 @@
       "branch": "현대백화점 미아점",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202606/23/5f6f6349-5f91-42df-9b02-9ad233b5bcea.jpg",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E1102607494403&branchCd=B00141000&category=",
       "sourceItemId": "E1102607494403",
@@ -18158,7 +18156,7 @@
       "branch": "현대백화점 충청점",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202506/25/36c3ab36-f045-4259-abab-6e61c084bc3f.png",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4702607493683&branchCd=B00147000&category=",
       "sourceItemId": "E4702607493683",
@@ -18173,7 +18171,7 @@
         "디카페인 드립백",
         "홀빈 원두"
       ],
-      "isNew": true,
+      "isNew": false,
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
@@ -18405,7 +18403,7 @@
       "branch": "현대백화점 충청점",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202505/12/b1f5e957-fbd2-4d34-8e72-874a272f2917.jpg",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4702607493534&branchCd=B00147000&category=",
       "sourceItemId": "E4702607493534",
@@ -18419,7 +18417,7 @@
         "초밥 / 후토마끼류",
         "회덮밥 재료"
       ],
-      "isNew": true,
+      "isNew": false,
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
@@ -18670,7 +18668,7 @@
       "branch": "롯데백화점 동탄점",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000543235/20260708153218511_4.jpeg",
       "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%8B%9C%EC%98%A4%ED%8C%A1%EC%95%BC+%EC%86%8C%EA%B8%88%EB%B9%B5",
       "sourceItemId": "dongtan:siopanya",
@@ -18889,7 +18887,7 @@
       "branch": "현대백화점 충청점",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202602/25/6e5261c8-12c9-448d-bf90-135cf7d2b5c8.jpg",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4702607493532&branchCd=B00147000&category=",
       "sourceItemId": "E4702607493532",
@@ -18904,7 +18902,7 @@
         "말린 굴",
         "버터구이 오징어"
       ],
-      "isNew": true,
+      "isNew": false,
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
@@ -19078,7 +19076,7 @@
       "branch": "현대백화점 압구정본점",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202403/27/8e1238df-c06c-49e6-90de-4fee94b19b49.jpg",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2102607494345&branchCd=B00121000&category=",
       "sourceItemId": "E2102607494345",
@@ -19245,7 +19243,7 @@
       "branch": "현대백화점 킨텍스점",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/27/894951f6-fb6a-4cd7-a65c-50d47305a2d5.jpg",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4502607493903&branchCd=B00145000&category=",
       "sourceItemId": "E4502607493903",
@@ -19259,7 +19257,7 @@
         "오야밀 밤 미숫가루 라떼",
         "오야밀 선물세트"
       ],
-      "isNew": true,
+      "isNew": false,
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
@@ -19437,7 +19435,7 @@
       "branch": "롯데아울렛 청주점",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://mukdang.com/assets/popups/lotte/cheongju-ojisan-cheesecake.jpeg",
       "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0342&searchTerm=%EC%98%A4%EC%A7%80%EC%83%81+%EC%B9%98%EC%A6%88%EC%BC%80%EC%9D%B4%ED%81%AC",
       "sourceItemId": "cheongju:ojisan-cheesecake",
@@ -19586,7 +19584,7 @@
       "branch": "현대백화점 압구정본점",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/28/4c0cbcbd-2655-4c5e-bb7d-267cfb4af4bc.jpg",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2102607494261&branchCd=B00121000&category=",
       "sourceItemId": "E2102607494261",
@@ -19601,7 +19599,7 @@
         "4구 박스",
         "6구 박스"
       ],
-      "isNew": true,
+      "isNew": false,
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
@@ -19920,7 +19918,7 @@
       "branch": "더현대 대구",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://img.ehyundai.com/files/derivedImage/fileValue/202601/12/02242f51-eaf4-4562-81ba-a7c54658efb0_02.jpg",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4602607493805&branchCd=B00146000&category=",
       "sourceItemId": "E4602607493805",
@@ -20381,7 +20379,7 @@
       "branch": "롯데백화점 센텀시티점",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://minfo.lotteshopping.com/content/news/202507/SNM00000000000470512/20250723190429244_4.jpeg",
       "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0027&searchTerm=%EC%A0%95%EB%82%A8%EB%AF%B8%EB%AA%85%EA%B3%BC+%EA%B5%AC%ED%99%A9%EC%9E%91%EB%AC%BC%EB%B9%B5",
       "sourceItemId": "centum:potato-bread",
@@ -20590,7 +20588,7 @@
       "branch": "현대백화점 충청점",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://img.ehyundai.com/files/derivedImage/fileValue/202311/15/4f1dc282-9994-4ab4-b5de-354a9eafa2ff_02.jpg",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4702607493440&branchCd=B00147000&category=",
       "sourceItemId": "E4702607493440",
@@ -20604,7 +20602,7 @@
         "소보로 마늘빵",
         "아몬드 마늘빵"
       ],
-      "isNew": true,
+      "isNew": false,
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
@@ -20771,7 +20769,7 @@
       "branch": "현대백화점 압구정본점",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/29/f6df6add-f716-4e76-a12a-21682eb3bcb8.png",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2102607494378&branchCd=B00121000&category=",
       "sourceItemId": "E2102607494378",
@@ -20913,7 +20911,7 @@
       "branch": "갤러리아 광교",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-kickstaco.jpg",
       "officialUrl": "https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/c85958?qCategory=PRODUCT_EVENT",
       "sourceItemId": "gwanggyo:c85958:kickstaco",
@@ -20925,7 +20923,7 @@
         "food-popup",
         "치미창가"
       ],
-      "isNew": true,
+      "isNew": false,
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
@@ -21137,7 +21135,7 @@
       "branch": "더현대 대구",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://img.ehyundai.com/files/derivedImage/fileValue/202510/15/af49da80-613e-4691-8b04-df5d0c8ccbbb_02.jpg",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4602607493804&branchCd=B00146000&category=",
       "sourceItemId": "E4602607493804",
@@ -21153,7 +21151,7 @@
         "시오 타코야끼 (12알)",
         "체다치즈 타코야끼 (12알)"
       ],
-      "isNew": true,
+      "isNew": false,
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
@@ -21450,7 +21448,7 @@
       "branch": "현대백화점 충청점",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202507/17/61b47e0c-4b4b-49b8-a806-57bcc7c0c866.jpg",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4702607493437&branchCd=B00147000&category=",
       "sourceItemId": "E4702607493437",
@@ -21610,7 +21608,7 @@
       "branch": "현대백화점 압구정본점",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202603/19/22dc1180-9c79-4ed0-b1f6-262f84604685.jpg",
       "officialUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2102607494258&branchCd=B00121000&category=",
       "sourceItemId": "E2102607494258",
@@ -21622,7 +21620,7 @@
         "food-popup",
         "자두밀크티 (500ml)"
       ],
-      "isNew": true,
+      "isNew": false,
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
@@ -21734,7 +21732,7 @@
       "branch": "갤러리아 광교",
       "latitude": null,
       "longitude": null,
-      "dDay": -1,
+      "dDay": -6,
       "image": "https://product1-84t.pages.dev/assets/popups/galleria/gwanggyo-hanwoomyeongga.jpg",
       "officialUrl": "https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/c85957?qCategory=PRODUCT_EVENT",
       "sourceItemId": "gwanggyo:c85957:hanwoomyeongga",
@@ -21746,7 +21744,7 @@
         "food-popup",
         "한우 스테이크빵"
       ],
-      "isNew": true,
+      "isNew": false,
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
@@ -21897,7 +21895,7 @@
       "branch": "롯데백화점 노원점",
       "latitude": null,
       "longitude": null,
-      "dDay": -4,
+      "dDay": -9,
       "image": "https://minfo.lotteshopping.com/content/news/202604/SNM00000000000530497/20260428165516181_6.jpeg",
       "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=%EB%8F%99%ED%99%94%EC%86%8D%EB%94%B8%EA%B8%B0+%EA%B3%BC%EC%9D%BC%EC%B2%AD%26%EC%9E%BC",
       "sourceItemId": "nowon:strawberry",
@@ -22100,7 +22098,7 @@
       "branch": "롯데백화점 노원점",
       "latitude": null,
       "longitude": null,
-      "dDay": -4,
+      "dDay": -9,
       "image": "https://minfo.lotteshopping.com/content/news/202605/SNM00000000000536429/20260528170140437_4.jpeg",
       "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=%EB%A1%A4%EC%8A%A4%EB%A1%A4%EC%8A%A4+%EB%B6%88%EC%B4%88%EB%B0%A5",
       "sourceItemId": "nowon:rollsrolls",
@@ -22289,7 +22287,7 @@
       "branch": "롯데백화점 노원점",
       "latitude": null,
       "longitude": null,
-      "dDay": -4,
+      "dDay": -9,
       "image": "https://minfo.lotteshopping.com/content/news/202507/SNM00000000000470286/20250731135233966_9.jpeg",
       "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=%EB%A9%94%EC%A2%85%EC%9B%90%EC%8A%A4%EC%9D%B4%EC%96%B4+%EC%BC%80%EC%9D%B4%ED%81%AC",
       "sourceItemId": "nowon:maison-once-year",
@@ -22467,7 +22465,7 @@
       "branch": "롯데백화점 노원점",
       "latitude": null,
       "longitude": null,
-      "dDay": -4,
+      "dDay": -9,
       "image": "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000548015/2026080413515446_9.jpeg",
       "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=%EC%95%84%EB%A5%B4%EB%84%9B+%EC%88%98%EC%A0%9C+%ED%94%BC%EC%B9%B8%26%ED%98%B8%EB%91%90",
       "sourceItemId": "nowon:arenut",
@@ -22706,7 +22704,7 @@
       "branch": "롯데백화점 노원점",
       "latitude": null,
       "longitude": null,
-      "dDay": -4,
+      "dDay": -9,
       "image": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547993/20260720181243581_6.jpeg",
       "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=%EC%A7%91%EB%B0%A5%EC%9E%A5%EC%9D%B8+%EA%B5%AD%ED%83%95%EB%A5%98",
       "sourceItemId": "nowon:home-meal",
@@ -22903,7 +22901,7 @@
       "branch": "롯데몰 동부산점",
       "latitude": null,
       "longitude": null,
-      "dDay": -5,
+      "dDay": -10,
       "image": "https://lotteblog.s3.ap-northeast-2.amazonaws.com/wp-content/uploads/2026/06/%EB%A1%AF%EB%8D%B0%EC%A7%80%EC%A3%BC_%EC%88%A8%EA%B2%B0%ED%86%B5%EC%8B%9D%EB%B9%B5%ED%8C%9D%EC%97%85_344x260-1-300x227.jpg",
       "officialUrl": "https://blog.lotte.co.kr/50904",
       "sourceItemId": "blog:breath-bread:dongbusan",
@@ -22914,7 +22912,7 @@
         "쇼핑몰",
         "food-popup"
       ],
-      "isNew": true,
+      "isNew": false,
       "isEndingSoon": false,
       "lastUpdated": "2026-08-05",
       "contentSearch": {
@@ -23019,7 +23017,7 @@
       "branch": "롯데백화점 센텀시티점",
       "latitude": null,
       "longitude": null,
-      "dDay": -8,
+      "dDay": -13,
       "image": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000550477/20260731184425479_4.jpeg",
       "officialUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0027&searchTerm=%EC%8B%9D%ED%92%88%EA%B4%80+%EC%88%98%EC%A0%9C%EC%96%B4%EB%AC%B5",
       "sourceItemId": "centum:fishcake",

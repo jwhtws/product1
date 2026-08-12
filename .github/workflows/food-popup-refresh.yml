@@ -48,7 +48,7 @@ jobs:
         run: node scripts/refresh-popup-venues.mjs
       - name: 공식 목록 수집부터 상세 보강·교차탐색·품질검사·사용자 Feed 생성
         id: popup_refresh
-        run: node scripts/refresh-popup-site-feed.mjs --strict ${{ github.event_name == 'workflow_dispatch' && inputs.scope != 'all' && format('--retailer={0}', inputs.scope) || '' }}
+        run: node scripts/refresh-popup-site-feed.mjs ${{ github.event_name == 'workflow_dispatch' && inputs.scope != 'all' && format('--retailer={0}', inputs.scope) || '' }}
       - name: 일부 출처 실패 알림
         if: steps.popup_refresh.outcome == 'success'
         continue-on-error: true

@@ -8,7 +8,8 @@ test('일일 workflow가 한국시간 06:20에 단일 실행되고 실패를 알
   assert.match(workflow, /workflow_dispatch:/u);
   assert.match(workflow, /group:\s*food-popup-refresh/u);
   assert.match(workflow, /cancel-in-progress:\s*false/u);
-  assert.match(workflow, /refresh-popup-site-feed\.mjs --strict/u);
+  assert.match(workflow, /run: node scripts\/refresh-popup-site-feed\.mjs/u);
+  assert.doesNotMatch(workflow, /refresh-popup-site-feed\.mjs --strict/u);
   assert.match(workflow, /audit:data-sources/u);
   assert.match(workflow, /seo:build/u);
   assert.match(workflow, /verify-popup-deployment\.mjs/u);
@@ -22,6 +23,9 @@ test('collector 실패·0건·급감에서 기존 사용자 feed를 원자적으
   assert.match(refresh, /candidatePath/u);
   assert.match(refresh, /maxPublishDrop/u);
   assert.match(refresh, /rename\(candidatePath, outputPath\)/u);
+  assert.match(refresh, /기존 공개 feed의 날짜 상태만 갱신/u);
+  assert.match(refresh, /기존 공개 feed를 오늘 날짜 기준으로 배포/u);
+  assert.match(refresh, /buildPopupSiteFeed\(\{ inputPath: outputPath, outputPath: candidatePath, reportPath \}\)/u);
   assert.match(collector, /기존 데이터 보존/u);
   assert.match(collector, /공식 수집 결과 급감 보호/u);
   assert.match(collector, /retainedPrevious/u);

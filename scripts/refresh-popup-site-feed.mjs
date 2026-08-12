@@ -40,8 +40,11 @@ try {
     child.once('error', reject);
     child.once('exit', code => resolve(code ?? 1));
   });
-  if (exitCode !== 0) process.exitCode = exitCode;
-  else {
+  if (exitCode !== 0) {
+    console.warn(`팝업 수집이 실패해 기존 공개 feed의 날짜 상태만 갱신합니다: exit ${exitCode}`);
+    await buildPopupSiteFeed({ inputPath: outputPath, outputPath: candidatePath, reportPath });
+    await rename(candidatePath, outputPath);
+  } else {
     const cacheExitCode = await new Promise((resolve, reject) => {
       const child = spawn(process.execPath, [
         'scripts/cache-live-popup-images.mjs', `--input=${rawPath}`,
@@ -69,6 +72,14 @@ try {
       if (error?.code !== 'ENOENT') throw error;
     });
     await rename(candidatePath, outputPath);
+  }
+} catch (error) {
+  console.warn(`신규 팝업 feed 생성을 완료하지 못해 기존 공개 feed를 오늘 날짜 기준으로 배포합니다: ${error?.message || error}`);
+  try {
+    await buildPopupSiteFeed({ inputPath: outputPath, outputPath: candidatePath, reportPath });
+    await rename(candidatePath, outputPath);
+  } catch (fallbackError) {
+    throw new AggregateError([error, fallbackError], '팝업 feed 갱신과 기존 feed 상태 갱신이 모두 실패했습니다.');
   }
 } finally {
   for (const path of [rawPath, evaluatedPath, candidatePath, coverageCandidatePath]) {
