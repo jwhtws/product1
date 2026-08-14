@@ -449,6 +449,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
   const popupStatusWarnings = new Set();
   const hiddenPopupIds = new Set(['lotte:discovered:0349:SNM00000000000549702']);
   const relatedPopupCache = new Map();
+  let popupMapInstance = null;
   function popupStatus(popup) {
     const today = koreaToday();
     const dateStatus = popup.endDate && popup.endDate < today
@@ -799,6 +800,66 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
       <div class="popup-card-rail${horizontal ? ' popup-card-rail--horizontal' : ''}">${rows.slice(0, 8).map((popup, index) => popupDiscoveryCard(popup, prioritizeFirst && index === 0)).join('')}</div>
     </section>`;
   }
+  function popupMapSection() {
+    return `<section class="popup-discovery-section popup-map-section" id="popup-map-section"><div class="md-section-header"><div><h2>푸드팝업 지도</h2><p>실제 지도에서 진행 중인 팝업 위치를 확인하세요.</p></div><span id="popup-map-count">위치 확인 중</span></div><div id="popup-map" class="popup-map" role="application" aria-label="진행 중인 푸드팝업 위치 지도"><div class="popup-map-loading">지도와 팝업 위치를 불러오는 중…</div></div></section>`;
+  }
+  function loadPopupMapLibrary() {
+    if (window.L) return Promise.resolve(window.L);
+    if (window.popupMapLibraryPromise) return window.popupMapLibraryPromise;
+    window.popupMapLibraryPromise = new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+      script.integrity = 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=';
+      script.crossOrigin = '';
+      script.onload = () => resolve(window.L);
+      script.onerror = () => reject(new Error('지도 라이브러리를 불러오지 못했습니다.'));
+      document.head.append(script);
+    });
+    return window.popupMapLibraryPromise;
+  }
+  async function renderPopupMap(rows) {
+    const root = $('#popup-map');
+    if (!root) return;
+    const venues = [...rows.reduce((map, popup) => {
+      const key = popup.address || popup.venue;
+      if (key && !map.has(key)) map.set(key, popup);
+      return map;
+    }, new Map()).values()].slice(0, 40);
+    try {
+      const L = await loadPopupMapLibrary();
+      if (!root.isConnected) return;
+      if (popupMapInstance) popupMapInstance.remove();
+      root.innerHTML = '';
+      popupMapInstance = L.map(root, { scrollWheelZoom: false }).setView([36.35, 127.85], 7);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '&copy; OpenStreetMap contributors' }).addTo(popupMapInstance);
+      const markers = [];
+      for (let index = 0; index < venues.length; index += 4) {
+        const batch = venues.slice(index, index + 4);
+        const results = await Promise.all(batch.map(async popup => {
+          if (Number.isFinite(Number(popup.latitude)) && Number.isFinite(Number(popup.longitude))) return { popup, latitude: Number(popup.latitude), longitude: Number(popup.longitude) };
+          const response = await fetch(publicApiUrl(`/api/geocode?address=${encodeURIComponent(popup.address || popup.venue)}`));
+          if (!response.ok) return null;
+          const point = await response.json();
+          return Number.isFinite(Number(point.latitude)) && Number.isFinite(Number(point.longitude)) ? { popup, latitude: Number(point.latitude), longitude: Number(point.longitude) } : null;
+        }));
+        for (const result of results.filter(Boolean)) {
+          const marker = L.marker([result.latitude, result.longitude]).addTo(popupMapInstance);
+          const popup = result.popup;
+          marker.bindPopup(`<strong>${escapeHtml(popup.title)}</strong><span>${escapeHtml(popup.venue)}</span><button type="button" data-leaflet-popup-id="${escapeHtml(popup.id)}">상세 보기</button>`);
+          marker.on('popupopen', event => event.popup.getElement()?.querySelector('[data-leaflet-popup-id]')?.addEventListener('click', () => openPopupDetail(popup, root)));
+          markers.push(marker);
+        }
+      }
+      if (markers.length) popupMapInstance.fitBounds(L.featureGroup(markers).getBounds().pad(.12), { maxZoom: 13 });
+      $('#popup-map-count').textContent = `${markers.length}곳 표시`;
+      if (!markers.length) root.insertAdjacentHTML('beforeend', '<div class="popup-map-empty">표시 가능한 위치가 없습니다.</div>');
+    } catch (error) {
+      root.innerHTML = `<div class="popup-map-error">지도를 불러오지 못했습니다.<button type="button" data-map-retry>다시 시도</button></div>`;
+      root.querySelector('[data-map-retry]')?.addEventListener('click', () => renderPopupMap(rows));
+      $('#popup-map-count').textContent = '불러오기 실패';
+      console.warn(error);
+    }
+  }
   function renderPopupDiscovery() {
     const root = $('#popup-home-content');
     if (!root) return;
@@ -837,11 +898,6 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     appendDiversified(rankedEditorPicks.filter(popup => !recentEditorPickStart(popup)));
     const endingToday = active.filter(popup => popup.endDate === today);
     const nearby = state.nearbyEnabled && state.nearbyRegion ? active.filter(popup => popupRegionName(popup) === state.nearbyRegion) : [];
-    const regionOrder = Object.keys(popupRegionLabels);
-    const regionOptions = [...new Set(state.popups.map(popupRegionName).filter(Boolean))]
-      .sort((a, b) => (regionOrder.indexOf(a) < 0 ? 99 : regionOrder.indexOf(a)) - (regionOrder.indexOf(b) < 0 ? 99 : regionOrder.indexOf(b)) || a.localeCompare(b, 'ko'))
-      .map(value => ({ label: popupRegionLabels[value] || value, value, count: state.popups.filter(popup => popupRegionName(popup) === value).length }));
-    const categoryOptions = Object.entries(popupCategoryLabels).map(([key, label]) => ({ key, label, count: state.popups.filter(popup => popupHomeCategory(popup) === key).length })).filter(item => item.count);
     $('#active-popup-count').textContent = `${active.length.toLocaleString('ko-KR')}개 진행 중`;
     const nearbySection = !state.nearbyEnabled ? '' : nearby.length
       ? discoveryRail('nearby-popups', '내 주변 팝업', `${popupRegionLabels[state.nearbyRegion] || state.nearbyRegion}에서 지금 만날 수 있어요`, nearby)
@@ -850,10 +906,10 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
       discoveryRail('today-discovery', "Editor's Pick", '최근 7일 안에 시작한 일정부터 골랐어요', editorPicks, { prioritizeFirst: true, horizontal: true }),
       discoveryRail('ending-today', '오늘 종료', '오늘이 마지막 영업일인 팝업이에요', endingToday, { horizontal: true }),
       nearbySection,
-      `<section class="popup-discovery-section taxonomy-section" id="region-discovery"><div class="md-section-header"><div><h2>지역</h2><p>현재 Feed에 팝업이 있는 지역만 보여드려요.</p></div></div><div class="discovery-taxonomy discovery-taxonomy--chips" aria-label="지역 선택">${regionOptions.map(item => `<button type="button" data-region-filter="${escapeHtml(item.value)}"><strong>${item.label}</strong><span>${item.count}</span></button>`).join('')}</div></section>`,
-      `<section class="popup-discovery-section taxonomy-section" id="category-discovery"><div class="md-section-header"><div><h2>카테고리</h2><p>오늘 끌리는 메뉴로 골라보세요.</p></div></div><div class="discovery-taxonomy discovery-taxonomy--chips" aria-label="카테고리 선택">${categoryOptions.map(item => `<button type="button" data-category-filter="${item.key}"><strong>${item.label}</strong><span>${item.count}</span></button>`).join('')}</div></section>`
+      popupMapSection()
     ].join('');
     bindPopupDiscovery();
+    renderPopupMap(active);
     syncNearbyControls();
   }
   function bindPopupDiscovery() {

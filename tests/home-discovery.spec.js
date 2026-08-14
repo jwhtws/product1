@@ -35,7 +35,8 @@ test('팝업 discovery 홈의 핵심 탐색과 저장, 상세 진입이 동작�
   if (firstOlder >= 0) expect(editorStartDates.slice(firstOlder).some(isRecent)).toBe(false);
   const recentDates = editorStartDates.filter(isRecent);
   expect(recentDates).toEqual([...recentDates].sort((a, b) => b.localeCompare(a)));
-  await expect(page.locator('#region-discovery [data-region-filter]')).not.toHaveCount(0);
+  await expect(page.locator('#region-discovery, #category-discovery')).toHaveCount(0);
+  await expect(page.locator('#popup-map')).toBeVisible();
   await expect(page.locator('#nearby-popups')).toHaveCount(0);
 
   const card = page.locator('#today-discovery .discovery-popup-card').first();
@@ -105,17 +106,12 @@ test('위치 권한이 이미 허용되면 가까운 지역 섹션을 자동 노
   await expect(page.locator('#nearby-popups .discovery-popup-card').first()).toBeVisible();
 });
 
-test('지역과 카테고리는 기존 전체 목록 필터로 연결된다', async ({ page }) => {
+test('지역과 카테고리 탐색 대신 실제 팝업 지도를 제공한다', async ({ page }) => {
   await page.goto(homeUrl, { waitUntil: 'domcontentloaded' });
   await expect(page.locator('#active-popup-count')).toContainText(readyPattern, { timeout: 15000 });
-  const region = await page.locator('[data-region-filter]').first().getAttribute('data-region-filter');
-  await page.locator('[data-region-filter]').first().click();
-  await expect(page.locator('#popup-region-filter')).toHaveValue(region);
-  await expect(page.locator('#restaurant-grid .popup-card').first()).toBeVisible();
-
-  await page.locator('[data-category-filter]').first().click();
-  await expect(page.locator('#discover-title')).toContainText('푸드 팝업');
-  await expect(page.locator('#restaurant-grid .popup-card').first()).toBeVisible();
+  await expect(page.locator('#region-discovery, #category-discovery')).toHaveCount(0);
+  await expect(page.locator('#popup-map-section h2')).toHaveText('푸드팝업 지도');
+  await expect(page.locator('#popup-map')).toBeVisible();
 });
 
 test('Hero 검색은 자동완성과 기존 팝업 목록 검색을 유지한다', async ({ page }) => {
@@ -162,7 +158,7 @@ test('Home은 단일 site-feed를 한 번만 읽고 Feed 필드로 카드를 렌
   await expect(page.locator('#today-discovery img').nth(1)).toHaveAttribute('loading', 'lazy');
 });
 
-test('오늘 종료는 종료일이 오늘인 Feed 행만 노출하고 지역·카테고리는 Feed 값으로 구성한다', async ({ page }) => {
+test('오늘 종료는 종료일이 오늘인 Feed 행만 노출하고 지도는 활성 팝업을 입력으로 사용한다', async ({ page }) => {
   await page.goto(homeUrl, { waitUntil: 'domcontentloaded' });
   await expect(page.locator('#active-popup-count')).toContainText(readyPattern, { timeout: 15000 });
   const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
@@ -171,11 +167,8 @@ test('오늘 종료는 종료일이 오늘인 Feed 행만 노출하고 지역·�
   expect(renderedEndingIds.length).toBeGreaterThan(0);
   expect(renderedEndingIds.every(id => endingIds.has(id))).toBe(true);
 
-  const regionLabels = await page.locator('#region-discovery [data-region-filter] strong').allTextContents();
-  expect(regionLabels).not.toHaveLength(0);
-  expect(regionLabels).not.toContain('전국');
-  const categoryLabels = await page.locator('#category-discovery [data-category-filter] strong').allTextContents();
-  expect(categoryLabels.every(label => ['디저트', '베이커리', '식사', '카페', '주류', '간식'].includes(label))).toBe(true);
+  await expect(page.locator('#popup-map-section')).toBeVisible();
+  await expect(page.locator('#region-discovery, #category-discovery')).toHaveCount(0);
 });
 
 test('Home 주요 제어는 ARIA, 키보드 포커스와 44px 터치 영역을 제공한다', async ({ page }) => {
