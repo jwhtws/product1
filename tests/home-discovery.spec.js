@@ -21,6 +21,7 @@ test('팝업 discovery 홈의 핵심 탐색과 저장, 상세 진입이 동작�
   const firstEditorPopup = siteFeed.popups.find(row => row.id === firstEditorId);
   const expectedEditorImage = firstEditorPopup.image || firstEditorPopup.imageUrl;
   if (expectedEditorImage) await expect(firstEditorCard.locator('img')).toHaveAttribute('src', expectedEditorImage);
+  await expect(firstEditorCard.locator('.popup-region-badge')).toHaveText(/서울특별시|부산광역시|대구광역시|인천광역시|광주광역시|대전광역시|울산광역시|세종특별자치시|경기도|강원특별자치도|충청북도|충청남도|전북특별자치도|전라남도|경상북도|경상남도|제주특별자치도/u);
   const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
   const cutoff = new Date(`${today}T00:00:00+09:00`);
   cutoff.setDate(cutoff.getDate() - 6);

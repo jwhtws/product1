@@ -783,10 +783,11 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
         <button class="popup-save ${saved ? 'is-saved' : ''}" type="button" data-home-save="${escapeHtml(popup.id)}" aria-label="${escapeHtml(title)} ${saved ? '저장 취소' : '저장'}" aria-pressed="${String(saved)}">${saved ? '♥' : '♡'}</button>
       </div>
       <div class="discovery-popup-body">
-        <p class="popup-card-brand">${escapeHtml(popup.brand)}</p>
         <div class="popup-card-meta"><span>${escapeHtml(popupCategoryLabels[popupHomeCategory(popup)])}</span><strong>${escapeHtml(dDay)}</strong></div>
+        <p class="popup-card-brand">${escapeHtml(popup.brand)}</p>
         <h3>${escapeHtml(title)}</h3>
-        <p class="popup-card-venue">${escapeHtml(popup.venue)}</p>
+        <div class="popup-region-badge">${escapeHtml(popupLocationLabel(popup))}</div>
+        <p class="popup-card-venue"><strong>${escapeHtml(popup.venue)}</strong>${popup.branch && popup.branch !== popup.venue ? ` <span>· ${escapeHtml(popup.branch)}</span>` : ''}</p>
         <p class="popup-card-period">${escapeHtml(popupPeriodLabel(popup))}</p>
       </div>
     </article>`;
