@@ -251,7 +251,7 @@
       "operator": "AK플라자",
       "sourceType": "department_store",
       "officialUrl": "https://www.akplaza.com/",
-      "eventUrl": "https://www.akplaza.com/board/event/list",
+      "eventUrl": "https://www.akplaza.com/board/news/list?category=11&store=02",
       "branches": [
         "AK플라자·AK& 경기 권역",
         "AK플라자·AK& 강원 권역",
@@ -288,9 +288,9 @@
       "currentCollector": "AK플라자",
       "collectorFile": "scripts/refresh-food-popups.mjs",
       "testFile": "tests/collectors/akplaza.test.mjs",
-      "lastVerifiedAt": "2026-08-04",
+      "lastVerifiedAt": "2026-08-14",
       "verificationEvidence": [
-        "https://www.akplaza.com/board/event/list",
+        "https://www.akplaza.com/board/news/list?category=11&store=02",
         "scripts/refresh-food-popups.mjs",
         "tests/fixtures/food-popups/akplaza.json",
         "tests/collectors/akplaza.test.mjs",
