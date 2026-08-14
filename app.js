@@ -819,21 +819,12 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     const root = $('#popup-map');
     if (!root) return;
     const venues = [...rows.reduce((map, popup) => {
-      const key = popup.address || popup.venue;
+      const key = popup.venue || popup.address;
       if (!key) return map;
       if (!map.has(key)) map.set(key, { popup, popups: [] });
       map.get(key).popups.push(popup);
       return map;
     }, new Map()).values()];
-    const regionFallbacks = { '서울특별시': [37.5665, 126.978], '경기도': [37.4138, 127.5183], '인천광역시': [37.4563, 126.7052], '부산광역시': [35.1796, 129.0756], '대구광역시': [35.8714, 128.6014], '대전광역시': [36.3504, 127.3845], '광주광역시': [35.1595, 126.8526], '울산광역시': [35.5384, 129.3114], '세종특별자치시': [36.48, 127.289], '강원특별자치도': [37.8228, 128.1555], '충청북도': [36.8, 127.7], '충청남도': [36.5184, 126.8], '전북특별자치도': [35.7175, 127.153], '전라남도': [34.8679, 126.991], '경상북도': [36.4919, 128.8889], '경상남도': [35.4606, 128.2132], '제주특별자치도': [33.4996, 126.5312] };
-    const fallbackPoint = popup => {
-      const locationText = `${popup.region || ''} ${popup.address || ''} ${popup.venue || ''}`;
-      const region = Object.keys(regionFallbacks).find(name => locationText.includes(name)) || popupRegionName(popup);
-      const center = regionFallbacks[region];
-      if (!center) return null;
-      const seed = [...String(popup.venue || popup.id)].reduce((value, char) => (value * 31 + char.codePointAt(0)) >>> 0, 0);
-      return { popup, latitude: center[0] + ((seed % 17) - 8) * .008, longitude: center[1] + ((Math.floor(seed / 17) % 17) - 8) * .01 };
-    };
     try {
       const L = await loadPopupMapLibrary();
       if (!root.isConnected) return;
@@ -862,8 +853,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
               if (Number.isFinite(Number(point.latitude)) && Number.isFinite(Number(point.longitude))) return { popup, popups, latitude: Number(point.latitude), longitude: Number(point.longitude) };
             }
           } catch (error) { console.warn('팝업 좌표 조회 실패', popup.id, error); }
-          const fallback = fallbackPoint(popup);
-          return fallback ? { ...fallback, popups } : null;
+          return null;
         }));
         for (const result of results.filter(Boolean)) {
           const popup = result.popup;
