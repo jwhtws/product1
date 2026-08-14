@@ -820,9 +820,11 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     if (!root) return;
     const venues = [...rows.reduce((map, popup) => {
       const key = popup.address || popup.venue;
-      if (key && !map.has(key)) map.set(key, popup);
+      if (!key) return map;
+      if (!map.has(key)) map.set(key, { popup, popups: [] });
+      map.get(key).popups.push(popup);
       return map;
-    }, new Map()).values()].slice(0, 40);
+    }, new Map()).values()];
     const regionFallbacks = { '서울특별시': [37.5665, 126.978], '경기도': [37.4138, 127.5183], '인천광역시': [37.4563, 126.7052], '부산광역시': [35.1796, 129.0756], '대구광역시': [35.8714, 128.6014], '대전광역시': [36.3504, 127.3845], '광주광역시': [35.1595, 126.8526], '울산광역시': [35.5384, 129.3114], '세종특별자치시': [36.48, 127.289], '강원특별자치도': [37.8228, 128.1555], '충청북도': [36.8, 127.7], '충청남도': [36.5184, 126.8], '전북특별자치도': [35.7175, 127.153], '전라남도': [34.8679, 126.991], '경상북도': [36.4919, 128.8889], '경상남도': [35.4606, 128.2132], '제주특별자치도': [33.4996, 126.5312] };
     const fallbackPoint = popup => {
       const locationText = `${popup.region || ''} ${popup.address || ''} ${popup.venue || ''}`;
@@ -849,29 +851,36 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
       const markers = [];
       for (let index = 0; index < venues.length; index += 4) {
         const batch = venues.slice(index, index + 4);
-        const results = await Promise.all(batch.map(async popup => {
+        const results = await Promise.all(batch.map(async group => {
+          const { popup, popups } = group;
           const hasCoordinates = popup.latitude !== null && popup.latitude !== undefined && popup.latitude !== '' && popup.longitude !== null && popup.longitude !== undefined && popup.longitude !== '' && Number.isFinite(Number(popup.latitude)) && Number.isFinite(Number(popup.longitude));
-          if (hasCoordinates) return { popup, latitude: Number(popup.latitude), longitude: Number(popup.longitude) };
+          if (hasCoordinates) return { popup, popups, latitude: Number(popup.latitude), longitude: Number(popup.longitude) };
           try {
             const response = await fetch(publicApiUrl(`/api/geocode?address=${encodeURIComponent(popup.address || popup.venue)}&name=${encodeURIComponent(popup.venue || popup.title)}`), { signal: AbortSignal.timeout(4000) });
             if (response.ok) {
               const point = await response.json();
-              if (Number.isFinite(Number(point.latitude)) && Number.isFinite(Number(point.longitude))) return { popup, latitude: Number(point.latitude), longitude: Number(point.longitude) };
+              if (Number.isFinite(Number(point.latitude)) && Number.isFinite(Number(point.longitude))) return { popup, popups, latitude: Number(point.latitude), longitude: Number(point.longitude) };
             }
           } catch (error) { console.warn('팝업 좌표 조회 실패', popup.id, error); }
-          return fallbackPoint(popup);
+          const fallback = fallbackPoint(popup);
+          return fallback ? { ...fallback, popups } : null;
         }));
         for (const result of results.filter(Boolean)) {
           const popup = result.popup;
+          const popupNames = result.popups.map(item => item.title);
           const markerIcon = L.divIcon({ className: 'popup-location-marker', html: '<span aria-hidden="true"></span>', iconSize: [34, 42], iconAnchor: [17, 42], popupAnchor: [0, -38] });
           const marker = L.marker([result.latitude, result.longitude], { icon: markerIcon, title: popup.venue }).addTo(popupMapInstance);
-          marker.bindPopup(`<strong>${escapeHtml(popup.title)}</strong><span>${escapeHtml(popup.venue)}</span><button type="button" data-leaflet-popup-id="${escapeHtml(popup.id)}">상세 보기</button>`);
-          marker.on('popupopen', event => event.popup.getElement()?.querySelector('[data-leaflet-popup-id]')?.addEventListener('click', () => openPopupDetail(popup, root)));
+          marker.bindTooltip(popupNames.map(escapeHtml).join(' · '), { permanent: true, direction: 'top', offset: [0, -38], className: 'popup-map-name-label' });
+          marker.bindPopup(`<strong>${escapeHtml(popup.venue)}</strong><div class="popup-map-popup-list">${result.popups.map(item => `<button type="button" data-leaflet-popup-id="${escapeHtml(item.id)}">${escapeHtml(item.title)}</button>`).join('')}</div>`);
+          marker.on('popupopen', event => event.popup.getElement()?.querySelectorAll('[data-leaflet-popup-id]').forEach(button => button.addEventListener('click', () => {
+            const selected = result.popups.find(item => item.id === button.dataset.leafletPopupId);
+            if (selected) openPopupDetail(selected, root);
+          })));
           markers.push(marker);
         }
       }
       if (markers.length) popupMapInstance.fitBounds(L.featureGroup(markers).getBounds().pad(.12), { maxZoom: 13 });
-      $('#popup-map-count').textContent = `${markers.length}곳 표시`;
+      $('#popup-map-count').textContent = `${rows.length}개 팝업 · ${markers.length}곳`;
       if (!markers.length) root.insertAdjacentHTML('beforeend', '<div class="popup-map-empty">표시 가능한 위치가 없습니다.</div>');
     } catch (error) {
       root.innerHTML = `<div class="popup-map-error">지도를 불러오지 못했습니다.<button type="button" data-map-retry>다시 시도</button></div>`;
