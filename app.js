@@ -868,9 +868,13 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
         for (const result of results.filter(Boolean)) {
           const popup = result.popup;
           const popupNames = result.popups.map(item => item.title);
+          const popupMapLabel = value => {
+            const characters = [...String(value || '')];
+            return characters.length > 7 ? `${characters.slice(0, 7).join('')}....` : characters.join('');
+          };
           const markerIcon = L.divIcon({ className: 'popup-location-marker', html: '<span aria-hidden="true"></span>', iconSize: [34, 42], iconAnchor: [17, 42], popupAnchor: [0, -38] });
           const marker = L.marker([result.latitude, result.longitude], { icon: markerIcon, title: popup.venue }).addTo(popupMapInstance);
-          marker.bindTooltip(popupNames.map(escapeHtml).join(' · '), { permanent: true, direction: 'top', offset: [0, -38], className: 'popup-map-name-label' });
+          marker.bindTooltip(popupNames.map(name => escapeHtml(popupMapLabel(name))).join(' · '), { permanent: true, direction: 'top', offset: [0, -38], className: 'popup-map-name-label' });
           marker.bindPopup(`<strong>${escapeHtml(popup.venue)}</strong><div class="popup-map-popup-list">${result.popups.map(item => `<button type="button" data-leaflet-popup-id="${escapeHtml(item.id)}">${escapeHtml(item.title)}</button>`).join('')}</div>`);
           marker.on('popupopen', event => event.popup.getElement()?.querySelectorAll('[data-leaflet-popup-id]').forEach(button => button.addEventListener('click', () => {
             const selected = result.popups.find(item => item.id === button.dataset.leafletPopupId);

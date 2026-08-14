@@ -65,7 +65,8 @@ test('홈 추천은 최근 7일 시작을 최우선으로 하면서 출처를 �
   assert.match(app, /function loadPopupMapLibrary\(\)/u);
   assert.match(app, /const fallback = fallbackPoint\(popup\)/u);
   assert.doesNotMatch(app, /\.values\(\)\]\.slice\(0, 40\)/u);
-  assert.match(app, /bindTooltip\(popupNames\.map\(escapeHtml\)\.join\(' · '\)/u);
+  assert.match(app, /characters\.length > 7 \? `\$\{characters\.slice\(0, 7\)\.join\(''\)\}\.\.\.\.`/u);
+  assert.match(app, /bindTooltip\(popupNames\.map\(name => escapeHtml\(popupMapLabel\(name\)\)\)\.join\(' · '\)/u);
   assert.match(app, /\$\{rows\.length\}개 팝업 · \$\{markers\.length\}곳/u);
   assert.match(app, /\/api\/geocode\?address=.*&name=/u);
   assert.match(app, /popup\.latitude !== null[\s\S]*popup\.longitude !== null/u);
