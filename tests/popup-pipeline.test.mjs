@@ -59,7 +59,8 @@ test('홈 추천은 최근 7일 시작을 최우선으로 하면서 출처를 �
   assert.match(app, /function renderPopupMap\(rows\)/u);
   assert.match(app, /vendor\/leaflet\/leaflet\.js/u);
   assert.doesNotMatch(app, /unpkg\.com\/leaflet/u);
-  assert.match(app, /tile\.openstreetmap\.org/u);
+  assert.match(app, /\/api\/map-tile\?z=\{z\}&x=\{x\}&y=\{y\}/u);
+  assert.doesNotMatch(app, /tile\.openstreetmap\.org/u);
   assert.match(app, /\/api\/geocode\?address=.*&name=/u);
   assert.match(app, /popup\.latitude !== null[\s\S]*popup\.longitude !== null/u);
   assert.doesNotMatch(app, /id="region-discovery"/u);

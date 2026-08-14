@@ -829,7 +829,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
       if (popupMapInstance) popupMapInstance.remove();
       root.innerHTML = '';
       popupMapInstance = L.map(root, { scrollWheelZoom: false }).setView([36.35, 127.85], 7);
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '&copy; OpenStreetMap contributors' }).addTo(popupMapInstance);
+      L.tileLayer('/api/map-tile?z={z}&x={x}&y={y}', { maxZoom: 19, attribution: '지도 © VWorld' }).addTo(popupMapInstance);
       const markers = [];
       for (let index = 0; index < venues.length; index += 4) {
         const batch = venues.slice(index, index + 4);
@@ -842,7 +842,8 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
           return Number.isFinite(Number(point.latitude)) && Number.isFinite(Number(point.longitude)) ? { popup, latitude: Number(point.latitude), longitude: Number(point.longitude) } : null;
         }));
         for (const result of results.filter(Boolean)) {
-          const marker = L.marker([result.latitude, result.longitude]).addTo(popupMapInstance);
+          const markerIcon = L.divIcon({ className: 'popup-location-marker', html: '<span aria-hidden="true"></span>', iconSize: [34, 42], iconAnchor: [17, 42], popupAnchor: [0, -38] });
+          const marker = L.marker([result.latitude, result.longitude], { icon: markerIcon, title: popup.venue }).addTo(popupMapInstance);
           const popup = result.popup;
           marker.bindPopup(`<strong>${escapeHtml(popup.title)}</strong><span>${escapeHtml(popup.venue)}</span><button type="button" data-leaflet-popup-id="${escapeHtml(popup.id)}">상세 보기</button>`);
           marker.on('popupopen', event => event.popup.getElement()?.querySelector('[data-leaflet-popup-id]')?.addEventListener('click', () => openPopupDetail(popup, root)));
