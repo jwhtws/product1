@@ -837,7 +837,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
         const batch = venues.slice(index, index + 4);
         const results = await Promise.all(batch.map(async popup => {
           if (Number.isFinite(Number(popup.latitude)) && Number.isFinite(Number(popup.longitude))) return { popup, latitude: Number(popup.latitude), longitude: Number(popup.longitude) };
-          const response = await fetch(publicApiUrl(`/api/geocode?address=${encodeURIComponent(popup.address || popup.venue)}`));
+          const response = await fetch(publicApiUrl(`/api/geocode?address=${encodeURIComponent(popup.address || popup.venue)}&name=${encodeURIComponent(popup.venue || popup.title)}`));
           if (!response.ok) return null;
           const point = await response.json();
           return Number.isFinite(Number(point.latitude)) && Number.isFinite(Number(point.longitude)) ? { popup, latitude: Number(point.latitude), longitude: Number(point.longitude) } : null;

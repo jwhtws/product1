@@ -4,11 +4,13 @@ const json = (data, status = 200, cache = `public, max-age=${CACHE_SECONDS}`) =>
 const cleanAddress = value => String(value || '').normalize('NFKC').split('·')[0].split(',')[0].replace(/\s*\([^)]*\)\s*/gu, ' ').replace(/\s+/gu, ' ').trim();
 
 export async function onRequestGet(context) {
-  const address = cleanAddress(new URL(context.request.url).searchParams.get('address'));
+  const requestUrl = new URL(context.request.url);
+  const address = cleanAddress(requestUrl.searchParams.get('address'));
+  const name = String(requestUrl.searchParams.get('name') || '').trim();
   if (!address) return json({ error: 'address가 필요합니다.' }, 400, 'no-store');
   if (!context.env.VWORLD_API_KEY) return json({ error: '지도 API가 연결되지 않았습니다.' }, 503, 'no-store');
   const cache = caches.default;
-  const cacheKey = new Request(`${new URL(context.request.url).origin}/api/geocode?address=${encodeURIComponent(address)}&cache=v1`);
+  const cacheKey = new Request(`${requestUrl.origin}/api/geocode?address=${encodeURIComponent(address)}&name=${encodeURIComponent(name)}&cache=v2`);
   const cached = await cache.match(cacheKey);
   if (cached) return cached;
   const domain = context.env.VWORLD_DOMAIN || 'mukdang.com';
@@ -23,7 +25,7 @@ export async function onRequestGet(context) {
     return outgoing;
   }
   if (context.env.NAVER_CLIENT_ID && context.env.NAVER_CLIENT_SECRET) {
-    const response = await fetch(`https://openapi.naver.com/v1/search/local.json?query=${encodeURIComponent(address)}&display=5`, { headers: { 'X-Naver-Client-Id': context.env.NAVER_CLIENT_ID, 'X-Naver-Client-Secret': context.env.NAVER_CLIENT_SECRET } });
+    const response = await fetch(`https://openapi.naver.com/v1/search/local.json?query=${encodeURIComponent(name || address)}&display=5`, { headers: { 'X-Naver-Client-Id': context.env.NAVER_CLIENT_ID, 'X-Naver-Client-Secret': context.env.NAVER_CLIENT_SECRET } });
     if (response.ok) {
       const item = (await response.json()).items?.find(row => row.mapx && row.mapy);
       const longitude = Number(item?.mapx) / 10000000;
