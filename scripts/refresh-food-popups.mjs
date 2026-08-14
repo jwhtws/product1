@@ -8,6 +8,7 @@ import { createBatch3Collectors } from './collectors/batch3-popup-venues.mjs';
 import { createVerifiedVenueCollectors } from './collectors/batch3-verified-venues.mjs';
 import { createBatch4BrandCollectors } from './collectors/batch4-brand-newsrooms.mjs';
 import { collectTimesSquareSitemap } from './collectors/times-square-sitemap.mjs';
+import { extractOfficialMenuCandidates } from './lib/popup-content-quality.mjs';
 import { assertNotBlockedPage, BlockPageError, hardenedFetch } from './lib/hardened-fetch.mjs';
 import {
   createCollectorStats,
@@ -988,6 +989,31 @@ async function collectGalleria() {
           const endDate = `${date[4]}-${date[5]}-${date[6]}`;
           if (new Date(`${endDate}T23:59:59+09:00`) < keepSince) continue;
           const venueType = ['02', '03', '04', '05'].includes(storeCode) ? '백화점' : '쇼핑몰';
+          const sourceUrl = sequence ? `https://www.akplaza.com/board/news/view?store=${storeCode}&seq=${sequence}` : listUrl;
+          let detailHtml = '';
+          if (sequence) {
+            const detailResponse = await fetch(sourceUrl, {
+              headers: { 'user-agent': 'mukdang-popup-indexer/1.0 (+https://mukdang.com)' },
+              signal: AbortSignal.timeout(20_000)
+            });
+            if (detailResponse.ok) detailHtml = await detailResponse.text();
+          }
+          const officialImageUrls = [...new Set([
+            imageUrl,
+            ...[...detailHtml.matchAll(/<img[^>]+(?:src|data-src)=["']([^"']+)/giu)].map(item => item[1])
+          ].filter(url => /^https:\/\/img-www\.akplaza\.com\/upload\//iu.test(url)))];
+          const akMenus = [...detailHtml.matchAll(/<div class="goods-item[\s\S]*?(?=<div class="goods-item|<\/section>|$)/giu)].map(item => {
+            const name = clean(item[0].match(/class="goods-name[^"']*"[^>]*>([\s\S]*?)<\/a>/iu)?.[1]);
+            const priceText = [...item[0].matchAll(/class="text (?:discount|sale)-price[^"']*"[^>]*>([\s\S]*?)<\/span>/giu)]
+              .map(price => clean(price[1])).find(price => /[\d,]+\s*원/u.test(price)) || '';
+            return name && /[\d,]+\s*원/u.test(priceText) ? {
+              name, price: priceText, priceText, sourceUrl,
+              sourceName: 'AK플라자 공식 쇼핑뉴스', evidenceType: 'html'
+            } : null;
+          }).filter(Boolean);
+          const menus = [...extractOfficialMenuCandidates(detailHtml, {
+            sourceUrl, sourceName: 'AK플라자 공식 쇼핑뉴스'
+          }), ...akMenus];
           rows.push({
             id: `ak:${storeCode}:${sequence || stableHash(title)}`,
             name: title,
@@ -996,9 +1022,13 @@ async function collectGalleria() {
             address: `AK플라자 ${storeName}점`,
             startDate,
             endDate,
-            imageUrl,
+            imageUrl: officialImageUrls[0] || imageUrl,
+            officialImageUrls,
+            imageSource: 'official-detail',
+            menus,
+            menuSource: 'official-detail',
             sourceName: 'AK플라자 공식 쇼핑뉴스',
-            sourceUrl: sequence ? `https://www.akplaza.com/board/news/view?store=${storeCode}&seq=${sequence}` : listUrl,
+            sourceUrl,
             sourceGrade: 'official',
             firstSeenAt: today,
             lastSeenAt: today
