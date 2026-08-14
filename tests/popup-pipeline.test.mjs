@@ -53,6 +53,9 @@ test('홈 추천은 최근 7일 시작을 최우선으로 하면서 출처를 �
   assert.match(app, /hiddenPopupIds\.has\(popup\.id\)/u);
   assert.match(app, /new Set\(rankedEditorPicks\.filter\(recentEditorPickStart\)\.map\(popup => popup\.startDate\)\)/u);
   assert.match(app, /discoveryRail\('today-discovery', "Editor's Pick"/u);
+  assert.match(app, /function popupThumbnailUrl\(popup\)/u);
+  assert.match(app, /const imageUrl = popupThumbnailUrl\(popup\)/u);
+  assert.doesNotMatch(app, /const imageUrl = popup\.image \|\| fallbackImages/u);
   assert.match(app, /popup\.endDate === today/u);
   assert.doesNotMatch(app, /popupQuickFilter !== 'ending-today' \|\| popup\.isEndingSoon === true/u);
   assert.doesNotMatch(styles, /popup-card-rail>\.discovery-popup-card:nth-child\(n\+5\)\{display:none\}/u);

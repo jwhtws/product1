@@ -748,10 +748,14 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     }
     return false;
   }
+  function popupThumbnailUrl(popup) {
+    const officialImageMissing = popup.imageSource === 'official-image-unavailable';
+    return popup.image || popup.imageUrl || (officialImageMissing ? '' : popupFallbackImage(popup));
+  }
   function popupCard(popup) {
     const status = popupStatus(popup);
     const officialImageMissing = popup.imageSource === 'official-image-unavailable';
-    const imageUrl = popup.image || popup.imageUrl || (officialImageMissing ? '' : popupFallbackImage(popup));
+    const imageUrl = popupThumbnailUrl(popup);
     const image = imageUrl ? ` style="background-image:url('${escapeHtml(imageUrl).replace(/'/g, '&#39;')}')"` : '';
     const saved = isSaved(popup);
     return `<article class="restaurant-card popup-card popup-${status.key}" tabindex="0" data-popup-id="${escapeHtml(popup.id)}">
@@ -768,14 +772,13 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
   }
   function popupDiscoveryCard(popup, priority = false) {
     const status = popupStatus(popup);
-    const fallbackImages = { dessert: 'assets/food/western-ai.png', bakery: 'assets/food/western-ai.png', meal: 'assets/food/korean-ai.png', cafe: 'assets/food/cafe-ai.png', alcohol: 'assets/food/western-ai.png', snack: 'assets/food/korean-ai.png' };
-    const imageUrl = popup.image || fallbackImages[popupHomeCategory(popup)];
+    const imageUrl = popupThumbnailUrl(popup);
     const saved = isSaved(popup);
     const dDay = popupDday(popup);
     const title = popup.title;
     return `<article class="md-card md-card--popup discovery-popup-card popup-${status.key}" tabindex="0" data-home-popup-id="${escapeHtml(popup.id)}" aria-label="${escapeHtml(`${popup.brand} ${title}, ${status.label}, ${dDay}`)}">
-      <div class="discovery-popup-image">
-        <img src="${escapeHtml(imageUrl)}" alt="${escapeHtml(title)} 대표 이미지" width="560" height="360" ${priority ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">
+      <div class="discovery-popup-image${imageUrl ? '' : ' popup-photo-missing'}">
+        ${imageUrl ? `<img src="${escapeHtml(imageUrl)}" alt="${escapeHtml(title)} 대표 이미지" width="560" height="360" ${priority ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">` : '<small>공식 사진 미제공</small>'}
         <div class="discovery-popup-badges"><span class="md-badge ${status.key === 'active' ? 'md-badge--success' : ''}">${escapeHtml(status.label)}</span>${popup.isNew ? '<span class="md-badge popup-new-badge">NEW</span>' : ''}</div>
         <button class="popup-save ${saved ? 'is-saved' : ''}" type="button" data-home-save="${escapeHtml(popup.id)}" aria-label="${escapeHtml(title)} ${saved ? '저장 취소' : '저장'}" aria-pressed="${String(saved)}">${saved ? '♥' : '♡'}</button>
       </div>

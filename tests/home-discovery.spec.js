@@ -16,6 +16,11 @@ test('팝업 discovery 홈의 핵심 탐색과 저장, 상세 진입이 동작�
   expect(await page.locator('.popup-discovery-hero').evaluate(element => element.getBoundingClientRect().height)).toBeLessThanOrEqual(510);
   await expect(page.locator('#today-discovery .discovery-popup-card').first()).toBeVisible();
   await expect(page.locator('#today-discovery h2')).toHaveText("Editor's Pick");
+  const firstEditorCard = page.locator('#today-discovery .discovery-popup-card').first();
+  const firstEditorId = await firstEditorCard.getAttribute('data-home-popup-id');
+  const firstEditorPopup = siteFeed.popups.find(row => row.id === firstEditorId);
+  const expectedEditorImage = firstEditorPopup.image || firstEditorPopup.imageUrl;
+  if (expectedEditorImage) await expect(firstEditorCard.locator('img')).toHaveAttribute('src', expectedEditorImage);
   const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
   const cutoff = new Date(`${today}T00:00:00+09:00`);
   cutoff.setDate(cutoff.getDate() - 6);
