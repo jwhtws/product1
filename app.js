@@ -829,7 +829,14 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
       if (popupMapInstance) popupMapInstance.remove();
       root.innerHTML = '';
       popupMapInstance = L.map(root, { scrollWheelZoom: false }).setView([36.35, 127.85], 7);
-      L.tileLayer('/api/map-tile?z={z}&x={x}&y={y}', { maxZoom: 19, attribution: '지도 © VWorld' }).addTo(popupMapInstance);
+      const primaryTiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png', { subdomains: 'abcd', maxZoom: 19, attribution: '&copy; OpenStreetMap &copy; CARTO' }).addTo(popupMapInstance);
+      let fallbackTilesAdded = false;
+      primaryTiles.on('tileerror', () => {
+        if (fallbackTilesAdded) return;
+        fallbackTilesAdded = true;
+        primaryTiles.remove();
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '&copy; OpenStreetMap contributors' }).addTo(popupMapInstance);
+      });
       const markers = [];
       for (let index = 0; index < venues.length; index += 4) {
         const batch = venues.slice(index, index + 4);
