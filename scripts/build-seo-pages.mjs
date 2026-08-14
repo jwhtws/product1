@@ -87,7 +87,7 @@ const listing = ({ title, description, links, route, intro = '', backHref = '/fo
   schema: { '@context': 'https://schema.org', '@type': 'CollectionPage', name: title, description, url: `${origin}${route}` },
   body: `<span class="eyebrow">먹당 검색 가이드</span><h1>${escapeHtml(title)}</h1><p class="lead">${escapeHtml(description)}</p>${intro ? `<p class="lead">${escapeHtml(intro)}</p>` : ''}<ul class="menu">${links.map(item => `<li><a href="${item.route}">${escapeHtml(item.title)}</a></li>`).join('')}</ul><div class="actions"><a class="secondary" href="${backHref}">${escapeHtml(backLabel)}</a></div>`
 });
-fs.writeFileSync('food-popups/index.html', listing({ title: '전국 푸드 팝업 일정 | 먹당', description: '백화점과 쇼핑몰에서 열리는 최신 푸드 팝업의 기간과 지점을 확인하세요.', links: popupLinks, route: '/food-popups/' }));
+fs.writeFileSync('food-popups/index.html', listing({ title: '전국 푸드팝업 일정·위치 | 오늘 갈 팝업 찾기 - 먹당', description: '전국 백화점과 쇼핑몰에서 진행 중인 푸드팝업·디저트 팝업스토어의 일정, 운영 기간, 지점과 지도 위치를 확인하세요.', links: popupLinks, route: '/food-popups/', intro: '롯데·현대·신세계·갤러리아 등 주요 백화점과 쇼핑몰의 식품관 팝업 일정을 공식 출처 기준으로 매일 갱신합니다.' }));
 fs.writeFileSync('restaurant-reviews/index.html', listing({ title: '전국 맛집 리뷰와 주소 | 먹당', description: '먹당에서 많이 찾는 전국 맛집의 위치와 방문자 리뷰 정보를 확인하세요.', links: restaurantLinks, route: '/restaurant-reviews/', backHref: '/', backLabel: '먹당에서 맛집 찾기' }));
 
 const landingLinks = [];

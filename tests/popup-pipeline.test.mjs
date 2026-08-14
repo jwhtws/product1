@@ -44,7 +44,7 @@ test('Home·Search·Detail은 같은 운영 feed와 ID를 사용하고 fixture�
 });
 
 test('홈 추천은 최근 7일 시작을 최우선으로 하면서 출처를 고루 노출하고 오늘 종료를 정확히 비교한다', async () => {
-  const [app, styles] = await Promise.all([readFile('app.js', 'utf8'), readFile('styles.css', 'utf8')]);
+  const [app, styles, home] = await Promise.all([readFile('app.js', 'utf8'), readFile('styles.css', 'utf8'), readFile('index.html', 'utf8')]);
   assert.match(app, /editorPickCutoff\.setDate\(editorPickCutoff\.getDate\(\) - 6\)/u);
   assert.match(app, /Number\(recentEditorPickStart\(b\)\) - Number\(recentEditorPickStart\(a\)\)/u);
   assert.match(app, /b\.startDate\.localeCompare\(a\.startDate\)/u);
@@ -67,6 +67,8 @@ test('홈 추천은 최근 7일 시작을 최우선으로 하면서 출처를 �
   assert.match(app, /const key = mapVenueName\(popup\) \|\| popup\.address/u);
   assert.doesNotMatch(app, /\.values\(\)\]\.slice\(0, 40\)/u);
   assert.doesNotMatch(app, /bindTooltip\(/u);
+  assert.match(home, /<title>전국 푸드팝업 일정·위치 \| 오늘 갈 팝업 찾기 - 먹당<\/title>/u);
+  assert.match(home, /"@type":"CollectionPage"[\s\S]*"about":\["푸드팝업","디저트 팝업스토어","백화점 팝업 일정"\]/u);
   assert.match(app, /\$\{rows\.length\}개 팝업 · \$\{markers\.length\}곳/u);
   assert.match(app, /\/api\/geocode\?address=.*&name=/u);
   assert.match(app, /popup\.latitude !== null[\s\S]*popup\.longitude !== null/u);
