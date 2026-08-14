@@ -62,6 +62,8 @@ test('홈 추천은 최근 7일 시작을 최우선으로 하면서 출처를 �
   assert.match(app, /basemaps\.cartocdn\.com\/rastertiles\/voyager/u);
   assert.match(app, /primaryTiles\.on\('tileerror'/u);
   assert.match(app, /tile\.openstreetmap\.org/u);
+  assert.match(app, /function loadPopupMapLibrary\(\)/u);
+  assert.match(app, /return fallbackPoint\(popup\)/u);
   assert.match(app, /\/api\/geocode\?address=.*&name=/u);
   assert.match(app, /popup\.latitude !== null[\s\S]*popup\.longitude !== null/u);
   assert.doesNotMatch(app, /id="region-discovery"/u);

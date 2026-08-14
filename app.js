@@ -823,10 +823,19 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
       if (key && !map.has(key)) map.set(key, popup);
       return map;
     }, new Map()).values()].slice(0, 40);
+    const regionFallbacks = { '서울특별시': [37.5665, 126.978], '경기도': [37.4138, 127.5183], '인천광역시': [37.4563, 126.7052], '부산광역시': [35.1796, 129.0756], '대구광역시': [35.8714, 128.6014], '대전광역시': [36.3504, 127.3845], '광주광역시': [35.1595, 126.8526], '울산광역시': [35.5384, 129.3114], '세종특별자치시': [36.48, 127.289], '강원특별자치도': [37.8228, 128.1555], '충청북도': [36.8, 127.7], '충청남도': [36.5184, 126.8], '전북특별자치도': [35.7175, 127.153], '전라남도': [34.8679, 126.991], '경상북도': [36.4919, 128.8889], '경상남도': [35.4606, 128.2132], '제주특별자치도': [33.4996, 126.5312] };
+    const fallbackPoint = popup => {
+      const locationText = `${popup.region || ''} ${popup.address || ''} ${popup.venue || ''}`;
+      const region = Object.keys(regionFallbacks).find(name => locationText.includes(name)) || popupRegionName(popup);
+      const center = regionFallbacks[region];
+      if (!center) return null;
+      const seed = [...String(popup.venue || popup.id)].reduce((value, char) => (value * 31 + char.codePointAt(0)) >>> 0, 0);
+      return { popup, latitude: center[0] + ((seed % 17) - 8) * .008, longitude: center[1] + ((Math.floor(seed / 17) % 17) - 8) * .01 };
+    };
     try {
       const L = await loadPopupMapLibrary();
       if (!root.isConnected) return;
-      if (popupMapInstance) popupMapInstance.remove();
+      if (popupMapInstance) { try { popupMapInstance.remove(); } catch {} popupMapInstance = null; }
       root.innerHTML = '';
       popupMapInstance = L.map(root, { scrollWheelZoom: false }).setView([36.35, 127.85], 7);
       const primaryTiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png', { subdomains: 'abcd', maxZoom: 19, attribution: '&copy; OpenStreetMap &copy; CARTO' }).addTo(popupMapInstance);
@@ -843,15 +852,19 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
         const results = await Promise.all(batch.map(async popup => {
           const hasCoordinates = popup.latitude !== null && popup.latitude !== undefined && popup.latitude !== '' && popup.longitude !== null && popup.longitude !== undefined && popup.longitude !== '' && Number.isFinite(Number(popup.latitude)) && Number.isFinite(Number(popup.longitude));
           if (hasCoordinates) return { popup, latitude: Number(popup.latitude), longitude: Number(popup.longitude) };
-          const response = await fetch(publicApiUrl(`/api/geocode?address=${encodeURIComponent(popup.address || popup.venue)}&name=${encodeURIComponent(popup.venue || popup.title)}`));
-          if (!response.ok) return null;
-          const point = await response.json();
-          return Number.isFinite(Number(point.latitude)) && Number.isFinite(Number(point.longitude)) ? { popup, latitude: Number(point.latitude), longitude: Number(point.longitude) } : null;
+          try {
+            const response = await fetch(publicApiUrl(`/api/geocode?address=${encodeURIComponent(popup.address || popup.venue)}&name=${encodeURIComponent(popup.venue || popup.title)}`), { signal: AbortSignal.timeout(4000) });
+            if (response.ok) {
+              const point = await response.json();
+              if (Number.isFinite(Number(point.latitude)) && Number.isFinite(Number(point.longitude))) return { popup, latitude: Number(point.latitude), longitude: Number(point.longitude) };
+            }
+          } catch (error) { console.warn('팝업 좌표 조회 실패', popup.id, error); }
+          return fallbackPoint(popup);
         }));
         for (const result of results.filter(Boolean)) {
+          const popup = result.popup;
           const markerIcon = L.divIcon({ className: 'popup-location-marker', html: '<span aria-hidden="true"></span>', iconSize: [34, 42], iconAnchor: [17, 42], popupAnchor: [0, -38] });
           const marker = L.marker([result.latitude, result.longitude], { icon: markerIcon, title: popup.venue }).addTo(popupMapInstance);
-          const popup = result.popup;
           marker.bindPopup(`<strong>${escapeHtml(popup.title)}</strong><span>${escapeHtml(popup.venue)}</span><button type="button" data-leaflet-popup-id="${escapeHtml(popup.id)}">상세 보기</button>`);
           marker.on('popupopen', event => event.popup.getElement()?.querySelector('[data-leaflet-popup-id]')?.addEventListener('click', () => openPopupDetail(popup, root)));
           markers.push(marker);
