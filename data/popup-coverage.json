@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-08-13T22:09:53.143Z",
+  "updatedAt": "2026-08-14T21:47:44.021Z",
   "summary": {
     "nationwideVenueTotal": 1027,
-    "verifiedPopupVenueCount": 39,
-    "officialFeedMonitoredCount": 95,
-    "collectorNeededCount": 932,
+    "verifiedPopupVenueCount": 40,
+    "officialFeedMonitoredCount": 98,
+    "collectorNeededCount": 929,
     "disclaimer": "시설 원장은 전국 탐색 범위이며, 화면에는 공식 출처에서 시작일과 종료일을 확인한 푸드팝업만 표시합니다."
   },
   "venues": [
@@ -176,7 +176,7 @@
       "region": "강원특별자치도",
       "kind": "쇼핑센터",
       "collector": "AK플라자",
-      "status": "adapter-needed",
+      "status": "official-feed-monitored",
       "popupCount": 0
     },
     {
@@ -690,7 +690,7 @@
       "kind": "백화점",
       "collector": "현대백화점·현대아울렛",
       "status": "verified-popup-found",
-      "popupCount": 2
+      "popupCount": 3
     },
     {
       "venueId": "localdata:3860000:2003386010707500006",
@@ -699,7 +699,7 @@
       "kind": "백화점",
       "collector": "현대백화점·현대아울렛",
       "status": "verified-popup-found",
-      "popupCount": 2
+      "popupCount": 3
     },
     {
       "venueId": "localdata:5590000:2013559014807500001",
@@ -951,7 +951,7 @@
       "kind": "백화점",
       "collector": "롯데백화점·롯데아울렛·롯데몰",
       "status": "verified-popup-found",
-      "popupCount": 19
+      "popupCount": 20
     },
     {
       "venueId": "localdata:3940000:2000394000007500022",
@@ -960,7 +960,7 @@
       "kind": "백화점",
       "collector": "롯데백화점·롯데아울렛·롯데몰",
       "status": "verified-popup-found",
-      "popupCount": 2
+      "popupCount": 5
     },
     {
       "venueId": "localdata:3980000:2010398007807500001",
@@ -1158,7 +1158,7 @@
       "kind": "백화점",
       "collector": "롯데백화점·롯데아울렛·롯데몰",
       "status": "verified-popup-found",
-      "popupCount": 2
+      "popupCount": 5
     },
     {
       "venueId": "localdata:3930000:1999393000007500001",
@@ -1563,7 +1563,7 @@
       "kind": "복합쇼핑몰",
       "collector": "스타필드·스타필드시티",
       "status": "verified-popup-found",
-      "popupCount": 1
+      "popupCount": 2
     },
     {
       "venueId": "localdata:3860000:2019386053307500001",
@@ -1679,7 +1679,7 @@
       "region": "경기도",
       "kind": "쇼핑센터",
       "collector": "AK플라자",
-      "status": "adapter-needed",
+      "status": "official-feed-monitored",
       "popupCount": 0
     },
     {
@@ -2166,7 +2166,7 @@
       "kind": "백화점",
       "collector": "현대백화점·현대아울렛",
       "status": "verified-popup-found",
-      "popupCount": 6
+      "popupCount": 7
     },
     {
       "venueId": "localdata:3780000:2015378021907500001",
@@ -2507,8 +2507,8 @@
       "region": "경기도",
       "kind": "복합쇼핑몰",
       "collector": "AK플라자",
-      "status": "adapter-needed",
-      "popupCount": 0
+      "status": "verified-popup-found",
+      "popupCount": 5
     },
     {
       "venueId": "localdata:4020000:2016402010807500001",
@@ -4533,7 +4533,7 @@
       "kind": "백화점",
       "collector": "롯데백화점·롯데아울렛·롯데몰",
       "status": "verified-popup-found",
-      "popupCount": 2
+      "popupCount": 3
     },
     {
       "venueId": "localdata:3330000:2008333008207500001",
@@ -5577,7 +5577,7 @@
       "kind": "백화점",
       "collector": "롯데백화점·롯데아울렛·롯데몰",
       "status": "verified-popup-found",
-      "popupCount": 4
+      "popupCount": 5
     },
     {
       "venueId": "localdata:3010000:2012301010007500002",
@@ -6000,7 +6000,7 @@
       "kind": "백화점",
       "collector": "신세계백화점",
       "status": "verified-popup-found",
-      "popupCount": 26
+      "popupCount": 27
     },
     {
       "venueId": "localdata:3210000:2005321007607500007",
