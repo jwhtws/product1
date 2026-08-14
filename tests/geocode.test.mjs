@@ -18,3 +18,15 @@ test('군산점의 공식 롯데몰 명칭을 좌표 검색에 사용한다', ()
   const mall = { title: '롯데몰 군산점', roadAddress: '전북특별자치도 군산시 조촌로 130', mapx: '1260000000', mapy: '359000000' };
   assert.equal(selectNaverItem([mall], '롯데백화점 군산점', '롯데백화점 군산점'), mall);
 });
+
+test('쇼핑몰과 아울렛을 백화점으로 잘못 수집한 지점명을 교정한다', () => {
+  const fixtures = [
+    ['롯데백화점 은평점', '롯데몰 은평점'],
+    ['롯데백화점 수지점', '롯데몰 수지점'],
+    ['롯데백화점 광교점', '롯데아울렛 광교점']
+  ];
+  for (const [collected, official] of fixtures) {
+    const item = { title: official, roadAddress: '경기도 테스트시 테스트로 1', mapx: '1270000000', mapy: '370000000' };
+    assert.equal(selectNaverItem([item], collected, collected), item);
+  }
+});

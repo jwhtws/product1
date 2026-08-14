@@ -64,7 +64,7 @@ test('홈 추천은 최근 7일 시작을 최우선으로 하면서 출처를 �
   assert.match(app, /tile\.openstreetmap\.org/u);
   assert.match(app, /function loadPopupMapLibrary\(\)/u);
   assert.doesNotMatch(app, /fallbackPoint/u);
-  assert.match(app, /const key = popup\.venue \|\| popup\.address/u);
+  assert.match(app, /const key = mapVenueName\(popup\) \|\| popup\.address/u);
   assert.doesNotMatch(app, /\.values\(\)\]\.slice\(0, 40\)/u);
   assert.doesNotMatch(app, /bindTooltip\(/u);
   assert.match(app, /\$\{rows\.length\}개 팝업 · \$\{markers\.length\}곳/u);

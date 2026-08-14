@@ -818,10 +818,15 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
   async function renderPopupMap(rows) {
     const root = $('#popup-map');
     if (!root) return;
+    const venueAliases = new Map([
+      ['롯데백화점 군산점', '롯데몰 군산점'], ['롯데백화점 은평점', '롯데몰 은평점'],
+      ['롯데백화점 수지점', '롯데몰 수지점'], ['롯데백화점 광교점', '롯데아울렛 광교점']
+    ]);
+    const mapVenueName = popup => venueAliases.get(popup.venue) || popup.venue;
     const venues = [...rows.reduce((map, popup) => {
-      const key = popup.venue || popup.address;
+      const key = mapVenueName(popup) || popup.address;
       if (!key) return map;
-      if (!map.has(key)) map.set(key, { popup, popups: [] });
+      if (!map.has(key)) map.set(key, { popup, popups: [], venueName: key });
       map.get(key).popups.push(popup);
       return map;
     }, new Map()).values()];
@@ -843,11 +848,11 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
       for (let index = 0; index < venues.length; index += 4) {
         const batch = venues.slice(index, index + 4);
         const results = await Promise.all(batch.map(async group => {
-          const { popup, popups } = group;
+          const { popup, popups, venueName } = group;
           const hasCoordinates = popup.latitude !== null && popup.latitude !== undefined && popup.latitude !== '' && popup.longitude !== null && popup.longitude !== undefined && popup.longitude !== '' && Number.isFinite(Number(popup.latitude)) && Number.isFinite(Number(popup.longitude));
           if (hasCoordinates) return { popup, popups, latitude: Number(popup.latitude), longitude: Number(popup.longitude) };
           try {
-            const response = await fetch(publicApiUrl(`/api/geocode?address=${encodeURIComponent(popup.address || popup.venue)}&name=${encodeURIComponent(popup.venue || popup.title)}`), { signal: AbortSignal.timeout(4000) });
+            const response = await fetch(publicApiUrl(`/api/geocode?address=${encodeURIComponent(popup.address || venueName)}&name=${encodeURIComponent(venueName || popup.title)}`), { signal: AbortSignal.timeout(4000) });
             if (response.ok) {
               const point = await response.json();
               if (Number.isFinite(Number(point.latitude)) && Number.isFinite(Number(point.longitude))) return { popup, popups, latitude: Number(point.latitude), longitude: Number(point.longitude) };
@@ -858,8 +863,9 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
         for (const result of results.filter(Boolean)) {
           const popup = result.popup;
           const markerIcon = L.divIcon({ className: 'popup-location-marker', html: '<span aria-hidden="true"></span>', iconSize: [34, 42], iconAnchor: [17, 42], popupAnchor: [0, -38] });
-          const marker = L.marker([result.latitude, result.longitude], { icon: markerIcon, title: popup.venue }).addTo(popupMapInstance);
-          marker.bindPopup(`<strong>${escapeHtml(popup.venue)}</strong><div class="popup-map-popup-list">${result.popups.map(item => `<button type="button" data-leaflet-popup-id="${escapeHtml(item.id)}">${escapeHtml(item.title)}</button>`).join('')}</div>`);
+          const venueName = mapVenueName(popup);
+          const marker = L.marker([result.latitude, result.longitude], { icon: markerIcon, title: venueName }).addTo(popupMapInstance);
+          marker.bindPopup(`<strong>${escapeHtml(venueName)}</strong><div class="popup-map-popup-list">${result.popups.map(item => `<button type="button" data-leaflet-popup-id="${escapeHtml(item.id)}">${escapeHtml(item.title)}</button>`).join('')}</div>`);
           marker.on('popupopen', event => event.popup.getElement()?.querySelectorAll('[data-leaflet-popup-id]').forEach(button => button.addEventListener('click', () => {
             const selected = result.popups.find(item => item.id === button.dataset.leafletPopupId);
             if (selected) openPopupDetail(selected, root);

@@ -4,7 +4,12 @@ const json = (data, status = 200, cache = `public, max-age=${CACHE_SECONDS}`) =>
 export const cleanAddress = value => String(value || '').normalize('NFKC').split('·')[0].replace(/\s*\([^)]*\)\s*/gu, ' ').split(',')[0].replace(/\s+/gu, ' ').trim();
 const cleanText = value => String(value || '').replace(/<[^>]*>/gu, '').normalize('NFKC').replace(/[^가-힣a-z0-9]/giu, '').toLowerCase();
 const addressTokens = value => String(value || '').normalize('NFKC').replace(/[(),·]/gu, ' ').split(/\s+/u).filter(token => token.length >= 2);
-const venueAliases = new Map([['롯데백화점 군산점', '롯데몰 군산점']]);
+const venueAliases = new Map([
+  ['롯데백화점 군산점', '롯데몰 군산점'],
+  ['롯데백화점 은평점', '롯데몰 은평점'],
+  ['롯데백화점 수지점', '롯데몰 수지점'],
+  ['롯데백화점 광교점', '롯데아울렛 광교점']
+]);
 
 export function selectNaverItem(items, name, address) {
   const expectedName = cleanText(venueAliases.get(name) || name);
