@@ -808,9 +808,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     if (window.popupMapLibraryPromise) return window.popupMapLibraryPromise;
     window.popupMapLibraryPromise = new Promise((resolve, reject) => {
       const script = document.createElement('script');
-      script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
-      script.integrity = 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=';
-      script.crossOrigin = '';
+      script.src = 'vendor/leaflet/leaflet.js?v=1.9.4';
       script.onload = () => resolve(window.L);
       script.onerror = () => reject(new Error('지도 라이브러리를 불러오지 못했습니다.'));
       document.head.append(script);
