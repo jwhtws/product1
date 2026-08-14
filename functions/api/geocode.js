@@ -22,5 +22,18 @@ export async function onRequestGet(context) {
     context.waitUntil(cache.put(cacheKey, outgoing.clone()));
     return outgoing;
   }
+  if (context.env.NAVER_CLIENT_ID && context.env.NAVER_CLIENT_SECRET) {
+    const response = await fetch(`https://openapi.naver.com/v1/search/local.json?query=${encodeURIComponent(address)}&display=5`, { headers: { 'X-Naver-Client-Id': context.env.NAVER_CLIENT_ID, 'X-Naver-Client-Secret': context.env.NAVER_CLIENT_SECRET } });
+    if (response.ok) {
+      const item = (await response.json()).items?.find(row => row.mapx && row.mapy);
+      const longitude = Number(item?.mapx) / 10000000;
+      const latitude = Number(item?.mapy) / 10000000;
+      if (Number.isFinite(latitude) && Number.isFinite(longitude)) {
+        const outgoing = json({ latitude, longitude, provider: 'Naver Local' });
+        context.waitUntil(cache.put(cacheKey, outgoing.clone()));
+        return outgoing;
+      }
+    }
+  }
   return json({ found: false }, 404, 'public, max-age=86400');
 }
