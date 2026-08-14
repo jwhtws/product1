@@ -447,6 +447,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit'
   }).format(new Date());
   const popupStatusWarnings = new Set();
+  const hiddenPopupIds = new Set(['lotte:discovered:0349:SNM00000000000549702']);
   const relatedPopupCache = new Map();
   function popupStatus(popup) {
     const today = koreaToday();
@@ -766,18 +767,16 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     </article>`;
   }
   function popupDiscoveryCard(popup, priority = false) {
-    const status = { key: popup.status, label: ({ ongoing: '진행 중', upcoming: '오픈 예정', ended: '종료' })[popup.status] || '일정 확인' };
+    const status = popupStatus(popup);
     const fallbackImages = { dessert: 'assets/food/western-ai.png', bakery: 'assets/food/western-ai.png', meal: 'assets/food/korean-ai.png', cafe: 'assets/food/cafe-ai.png', alcohol: 'assets/food/western-ai.png', snack: 'assets/food/korean-ai.png' };
     const imageUrl = popup.image || fallbackImages[popupHomeCategory(popup)];
     const saved = isSaved(popup);
-    const dDay = popup.status === 'ended' ? '종료' : popup.status === 'upcoming'
-      ? (popup.dDay === 0 ? '오늘 오픈' : `오픈 D-${popup.dDay}`)
-      : popup.dDay === null ? '상시' : popup.dDay === 0 ? '오늘 종료' : `D-${popup.dDay}`;
+    const dDay = popupDday(popup);
     const title = popup.title;
     return `<article class="md-card md-card--popup discovery-popup-card popup-${status.key}" tabindex="0" data-home-popup-id="${escapeHtml(popup.id)}" aria-label="${escapeHtml(`${popup.brand} ${title}, ${status.label}, ${dDay}`)}">
       <div class="discovery-popup-image">
         <img src="${escapeHtml(imageUrl)}" alt="${escapeHtml(title)} 대표 이미지" width="560" height="360" ${priority ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">
-        <div class="discovery-popup-badges"><span class="md-badge ${status.key === 'ongoing' ? 'md-badge--success' : ''}">${escapeHtml(status.label)}</span>${popup.isNew ? '<span class="md-badge popup-new-badge">NEW</span>' : ''}</div>
+        <div class="discovery-popup-badges"><span class="md-badge ${status.key === 'active' ? 'md-badge--success' : ''}">${escapeHtml(status.label)}</span>${popup.isNew ? '<span class="md-badge popup-new-badge">NEW</span>' : ''}</div>
         <button class="popup-save ${saved ? 'is-saved' : ''}" type="button" data-home-save="${escapeHtml(popup.id)}" aria-label="${escapeHtml(title)} ${saved ? '저장 취소' : '저장'}" aria-pressed="${String(saved)}">${saved ? '♥' : '♡'}</button>
       </div>
       <div class="discovery-popup-body">
@@ -805,7 +804,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
       root.querySelector('[data-feed-retry]').addEventListener('click', () => location.reload());
       return;
     }
-    const active = state.popups.filter(popup => popup.status === 'ongoing');
+    const active = state.popups.filter(popup => popupStatus(popup).key === 'active');
     const today = koreaToday();
     const editorPickCutoff = new Date(`${today}T00:00:00+09:00`);
     editorPickCutoff.setDate(editorPickCutoff.getDate() - 6);
@@ -1176,7 +1175,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     $('#popular-quick-searches').hidden = popupMode;
     $('#home-rankings').hidden = popupMode;
     $('.source-note').hidden = popupMode;
-    $('#popup-search-v2').hidden = !popupMode;
+    $('#popup-search-v2').hidden = true;
     if (popupMode) {
       renderPopupDiscovery();
       const query = state.popupSearchQuery;
@@ -1965,7 +1964,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     $('#nearby-popups')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
   $('#header-search').addEventListener('click', () => {
-    const input = state.searchMode === 'popup' ? $('#popup-search-input') : $('#search-input');
+    const input = $('#search-input');
     input.focus();
     input.scrollIntoView({ behavior: 'smooth', block: 'center' });
   });
@@ -2113,7 +2112,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
     if (popupsResponse.ok) {
       const popupData = await popupsResponse.json();
       state.popups = Array.isArray(popupData.popups)
-        ? popupData.popups.filter(popup => !popup.publishStatus || popup.publishStatus === 'published')
+        ? popupData.popups.filter(popup => (!popup.publishStatus || popup.publishStatus === 'published') && !hiddenPopupIds.has(popup.id))
         : [];
       state.popupUpdatedAt = popupData.updatedAt;
       const popupRegions = [...new Set(state.popups.map(popupRegionName).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'ko'));

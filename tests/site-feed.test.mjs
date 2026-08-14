@@ -110,3 +110,13 @@ test('수동 제외 팝업은 숨기고 같은 원본의 정상 큐레이션 항
   assert.deepEqual(feed.popups.map(row => row.id), ['lotte:dongtan:yoajung']);
   assert.equal(stats.rejectionReasons.manually_excluded, 1);
 });
+
+test('롯데 비식품 주얼리 팝업은 공개 Feed에서 제외한다', () => {
+  const jewelry = { ...base, id: 'lotte:discovered:0349:SNM00000000000549702', name: '주얼리 Pop-Up' };
+  const { feed, stats } = buildSiteFeedPayload(
+    { sources: [], stats: {}, popups: [jewelry] },
+    { today: '2026-08-14', generatedAt: '2026-08-14T00:00:00.000Z' }
+  );
+  assert.equal(feed.popups.length, 0);
+  assert.equal(stats.rejectionReasons.manually_excluded, 1);
+});

@@ -16,7 +16,8 @@ const VALUE_REQUIRED = Object.freeze([
 const STATUS = new Set(['upcoming', 'ongoing', 'ended']);
 const MANUALLY_EXCLUDED_POPUP_IDS = new Set([
   'lotte:discovered:0002:SNM00000000000548809', // 식품닷: 비식품 팝업
-  'lotte:discovered:0399:SNM00000000000549036' // 컵빙수의 정석: 요아정 컵빙수 중복
+  'lotte:discovered:0399:SNM00000000000549036', // 컵빙수의 정석: 요아정 컵빙수 중복
+  'lotte:discovered:0349:SNM00000000000549702' // 주얼리: 비식품 팝업
 ]);
 
 const clean = value => String(value ?? '').replace(/<[^>]*>/gu, ' ').replace(/\s+/gu, ' ').trim();

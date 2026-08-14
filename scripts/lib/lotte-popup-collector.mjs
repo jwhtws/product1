@@ -11,7 +11,7 @@ const storeCodes = new Map([
 
 const lottePopupWords = /(팝업(?:\s*스토어)?|POP[\s-]*UP(?:\s*STORE)?)/iu;
 const lotteFoodWords = /(꽈배기|술빵|모찌|떡|절미|빵|베이커리|베이글|제과|페스츄리|디저트|케이크|쿠키|초콜릿|아이스크림|젤라또|도넛|마카롱|푸딩|타르트|약과|한과|오란다|구움과자|과일|복숭아|감자|요거트|미숫가루|카페|커피|로스터리|홍닝차|티룸|음료|주스|맥주|와인|막걸리|포장마차|분식|김밥|라면|국수|냉면|만두|스시|초밥|야끼|타코|닭|치킨|고기|육회|곱창|족발|해산물|오징어|건어물|반찬|김치|식품|푸드|F&B|FNB|맛집|셰프|요리|농산|수산|축산)/iu;
-const lotteNonHumanFood = /(반려|펫|강아지|고양이|사료)/u;
+const lotteNonHumanFood = /(반려|펫|강아지|고양이|사료|주얼리|쥬얼리|목걸이|팔찌|bracelet|necklace)/iu;
 const lotteSeedStores = new Map([['0333', '광복점']]);
 
 const knownMenus = new Map([

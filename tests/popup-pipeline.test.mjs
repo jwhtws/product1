@@ -48,6 +48,9 @@ test('홈 추천은 최근 7일 시작을 최우선으로 하면서 출처를 �
   assert.match(app, /editorPickCutoff\.setDate\(editorPickCutoff\.getDate\(\) - 6\)/u);
   assert.match(app, /Number\(recentEditorPickStart\(b\)\) - Number\(recentEditorPickStart\(a\)\)/u);
   assert.match(app, /b\.startDate\.localeCompare\(a\.startDate\)/u);
+  assert.match(app, /state\.popups\.filter\(popup => popupStatus\(popup\)\.key === 'active'\)/u);
+  assert.match(app, /\$\('#popup-search-v2'\)\.hidden = true/u);
+  assert.match(app, /hiddenPopupIds\.has\(popup\.id\)/u);
   assert.match(app, /new Set\(rankedEditorPicks\.filter\(recentEditorPickStart\)\.map\(popup => popup\.startDate\)\)/u);
   assert.match(app, /discoveryRail\('today-discovery', "Editor's Pick"/u);
   assert.match(app, /popup\.endDate === today/u);
