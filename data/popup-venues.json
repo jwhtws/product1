@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-08-13T22:06:50.537Z",
+  "updatedAt": "2026-08-16T21:38:02.906Z",
   "source": {
     "name": "행정안전부 생활_대규모점포",
     "pageUrl": "https://file.localdata.go.kr/file/large_scale_retail_stores/info",
     "downloadUrl": "https://file.localdata.go.kr/file/download/large_scale_retail_stores/info",
-    "sourceRows": 4179
+    "sourceRows": 4181
   },
   "policy": "전국 시설은 푸드팝업 탐색 대상 원장으로만 사용하며 시설 자체를 팝업으로 노출하지 않음",
   "total": 1027,
@@ -3317,17 +3317,6 @@
       "updatedAt": "2024-05-03 15:16:36"
     },
     {
-      "id": "localdata:5310000:2014531014307500001",
-      "name": "(주)이마트 진주점",
-      "kind": "대형마트",
-      "region": "경상남도",
-      "address": "경상남도 진주시 진양호로 477-0 (인사동)",
-      "phone": "0557491234",
-      "category": "대형마트",
-      "permitDate": "2000-08-29",
-      "updatedAt": "2015-03-12 13:36:00"
-    },
-    {
       "id": "localdata:5310000:2005531001307500001",
       "name": "(주)이마트 진주점",
       "kind": "대형마트",
@@ -3337,6 +3326,17 @@
       "category": "대형마트",
       "permitDate": "2020-04-29",
       "updatedAt": "2024-04-24 18:07:33"
+    },
+    {
+      "id": "localdata:5310000:2014531014307500001",
+      "name": "(주)이마트 진주점",
+      "kind": "대형마트",
+      "region": "경상남도",
+      "address": "경상남도 진주시 진양호로 477-0 (인사동)",
+      "phone": "0557491234",
+      "category": "대형마트",
+      "permitDate": "2000-08-29",
+      "updatedAt": "2015-03-12 13:36:00"
     },
     {
       "id": "localdata:5330000:2020533022707500002",
