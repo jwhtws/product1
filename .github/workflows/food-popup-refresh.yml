@@ -84,6 +84,12 @@ jobs:
           git add data/popups.json data/popup-review-queue.json data/popup-content-audit.json data/popup-venues.json data/popup-coverage.json assets/popups food-popups restaurant-reviews sitemap.xml
           git commit -m "data: 푸드 팝업 일간 갱신"
           git push
+      - name: Deploy refreshed feed to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: 8d2f3113c1898979a0d13c5b2a840809
+          command: pages deploy . --project-name=product1 --branch=main --commit-dirty=true
       - name: Cloudflare Pages 운영 배포 결과 검증
         run: node scripts/verify-popup-deployment.mjs --url=https://mukdang.com --attempts=12 --interval-ms=30000
       - name: 네이버에 변경 URL 알림
