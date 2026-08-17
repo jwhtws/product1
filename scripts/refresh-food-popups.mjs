@@ -2,7 +2,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname } from 'node:path';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
-import { collectLottePopups, discoverLottePopups } from './lib/lotte-popup-collector.mjs';
+import { collectLottePopups, discoverLottePopups, discoverLotteShoppingInfoPopups } from './lib/lotte-popup-collector.mjs';
 import { selectCollectors } from './collectors/registry.mjs';
 import { createBatch3Collectors } from './collectors/batch3-popup-venues.mjs';
 import { createVerifiedVenueCollectors } from './collectors/batch3-verified-venues.mjs';
@@ -1115,9 +1115,11 @@ async function collectCuratedOfficial() {
   }
   let discoveredRows = [];
   try {
-    discoveredRows = await discoverLottePopups({
-      today, fetchResilient, clean, decodeHtml, fast: retailerScope === 'lotte'
-    });
+    const discoveryOptions = { today, fetchResilient, clean, decodeHtml, fast: retailerScope === 'lotte' };
+    const [mobileRows, shoppingInfoRows] = await Promise.all([
+      discoverLottePopups(discoveryOptions), discoverLotteShoppingInfoPopups(discoveryOptions)
+    ]);
+    discoveredRows = [...mobileRows, ...shoppingInfoRows];
   } catch (error) {
     console.warn(`롯데 전 지점 쇼핑뉴스 자동 발견 실패 · 수동 검증 목록 보존: ${error.message}`);
   }

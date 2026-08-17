@@ -5,6 +5,7 @@ import {
   discoverLottePopups,
   officialImages,
   parseLotteSearchResults,
+  parseLotteShoppingInfoResults,
   parseLotteStoreLinks
 } from './lotte-popup-collector.mjs';
 
@@ -14,6 +15,21 @@ const decodeHtml = value => clean(String(value || '')
   .replace(/&lt;/gu, '<').replace(/&gt;/gu, '>'));
 const uniqueMenus = menus => menus;
 const normalizedText = value => clean(value).replace(/\s+/gu, '').toLowerCase();
+
+test('롯데 PC 쇼핑정보에서 해당 지점의 예정 식품 팝업만 수집한다', () => {
+  const html = `
+    <li><strong>[동경생초코파이] Pop-Up</strong><p>백화점 안산점 본관 B1 특설행사장</p><span>8.21(금) ~ 8.27(목)</span></li>
+    <li><strong>[미샤] 신상품 Pop-Up</strong><p>백화점 안산점 3F</p><span>8.20 ~ 8.23</span></li>
+    <li><strong>[손정옥] 언양불고기 Pop-Up</strong><p>백화점 잠실점 B1</p><span>8.21 ~ 8.27</span></li>`;
+  const rows = parseLotteShoppingInfoResults(html, {
+    storeCode: '0336', storeName: '안산점', storeType: '백화점', today: '2026-08-17', decodeHtml, clean
+  });
+  assert.equal(rows.length, 1);
+  assert.equal(rows[0].name, '[동경생초코파이] Pop-Up');
+  assert.equal(rows[0].venue, '롯데백화점 안산점');
+  assert.equal(rows[0].startDate, '2026-08-21');
+  assert.match(rows[0].sourceUrl, /cstrCd=0336/u);
+});
 
 const card = ({ newsId = '', title, venue, dates, image = '' }) => `
   <li class="shopping-news-card">

@@ -12,6 +12,7 @@ const storeCodes = new Map([
 const lottePopupWords = /(팝업(?:\s*스토어)?|POP[\s-]*UP(?:\s*STORE)?)/iu;
 const lotteFoodWords = /(꽈배기|술빵|모찌|떡|절미|빵|베이커리|베이글|제과|페스츄리|디저트|케이크|쿠키|초콜릿|아이스크림|젤라또|도넛|마카롱|푸딩|타르트|약과|한과|오란다|구움과자|과일|복숭아|감자|요거트|미숫가루|카페|커피|로스터리|홍닝차|티룸|음료|주스|맥주|와인|막걸리|포장마차|분식|김밥|라면|국수|냉면|만두|스시|초밥|야끼|타코|닭|치킨|고기|육회|곱창|족발|해산물|오징어|건어물|반찬|김치|식품|푸드|F&B|FNB|맛집|셰프|요리|농산|수산|축산)/iu;
 const lotteNonHumanFood = /(반려|펫|강아지|고양이|사료|주얼리|쥬얼리|목걸이|팔찌|bracelet|necklace)/iu;
+const lotteShoppingInfoFoodWords = /(?:빵|베이커리|카스테라|초코|초콜릿|케이크|쿠키|디저트|떡|모찌|과자|타르트|도넛|베이글|푸딩|젤라또|아이스크림|음료|커피|차|주스|식품|푸드|맛집|셰프|레스토랑|치킨|만두|김밥|라면|국수|스시|초밥|고기|육회|반찬|김치|과일|간식|불고기|옥수수|젤리|캔디|돼지|두부|육개장|말차)/iu;
 const lotteSeedStores = new Map([['0333', '광복점']]);
 
 const knownMenus = new Map([
@@ -207,6 +208,89 @@ export function parseLotteSearchResults(html, { storeCode, storeName, today, dec
     });
   }
   return rows;
+}
+
+export function parseLotteShoppingInfoResults(html, { storeCode, storeName, storeType = '백화점', today, decodeHtml, clean }) {
+  const rows = [];
+  const expectedLocation = `${storeType} ${storeName}`;
+  for (const match of String(html || '').matchAll(/<li\b[\s\S]*?<\/li>/giu)) {
+    const lines = htmlLines(match[0], decodeHtml, clean);
+    const searchable = lines.join(' ');
+    const dates = lotteDateRange(searchable, today) || (() => {
+      const match = searchable.match(/(\d{1,2})[.\-/](\d{1,2})(?:\([^)]+\))?\s*~\s*(\d{1,2})[.\-/](\d{1,2})/u);
+      if (!match) return null;
+      const year = today.slice(0, 4);
+      return {
+        startDate: `${year}-${match[1].padStart(2, '0')}-${match[2].padStart(2, '0')}`,
+        endDate: `${year}-${match[3].padStart(2, '0')}-${match[4].padStart(2, '0')}`
+      };
+    })();
+    if (!dates || dates.endDate < today || !searchable.includes(expectedLocation)
+      || !lottePopupWords.test(searchable) || !lotteShoppingInfoFoodWords.test(searchable) || lotteNonHumanFood.test(searchable)) continue;
+    const title = lines.find(line => lottePopupWords.test(line) && lotteShoppingInfoFoodWords.test(line))
+      || lines.find(line => lottePopupWords.test(line));
+    if (!title) continue;
+    const venuePrefix = storeType === '백화점' ? '롯데백화점' : storeType === '아울렛' ? '롯데아울렛' : '롯데몰';
+    const venue = `${venuePrefix} ${storeName}`;
+    const sourceUrl = `https://www.lotteshopping.com/contents/shpgInfo?cstrCd=${storeCode}&cntsTpCd=C00903`;
+    rows.push({
+      id: `lotte:shopping-info:${storeCode}:${stableLotteKey(`${title}|${dates.startDate}|${dates.endDate}`)}`,
+      name: title.replace(/^(?:D-\d+\s*)?행사 종료\s*/u, '').trim(), venue,
+      venueType: storeType === '백화점' ? '백화점' : '쇼핑몰', address: venue,
+      ...dates, imageUrl: null, imageSource: 'official-image-unavailable',
+      sourceName: '롯데쇼핑 공식 쇼핑정보', sourceUrl, sourceGrade: 'official',
+      firstSeenAt: today, lastSeenAt: today
+    });
+  }
+  return rows;
+}
+
+export async function discoverLotteShoppingInfoPopups({ today, clean, decodeHtml, fast = false }) {
+  const origin = 'https://www.lotteshopping.com';
+  const seedUrl = `${origin}/contents/shpgInfo?cstrCd=0001&cntsTpCd=C00903`;
+  const seed = await fetch(seedUrl, { headers: { 'user-agent': 'mukdang-popup-indexer/1.0 (+https://mukdang.com)' }, signal: AbortSignal.timeout(fast ? 8_000 : 15_000) });
+  if (!seed.ok) throw new Error(`롯데 쇼핑정보 지점 목록 응답 ${seed.status}`);
+  const seedHtml = await seed.text();
+  const stores = [...seedHtml.matchAll(/changeCstrInfo\((\{[^)]*?"selCstrCd":"(\d{4})"[^)]*?\})\)/gu)].flatMap(match => {
+    try {
+      const data = JSON.parse(match[1]);
+      const type = data.lrclsDtlCdNm || data.mstrlrclsNm || '';
+      return /백화점|아울렛|쇼핑몰/u.test(type) ? [{ code: match[2], name: clean(data.cstrDspNm), type }] : [];
+    } catch { return []; }
+  });
+  const uniqueStores = [...new Map(stores.map(store => [store.code, store])).values()];
+  const results = [];
+  let cursor = 0;
+  async function worker() {
+    while (cursor < uniqueStores.length) {
+      const store = uniqueStores[cursor++];
+      const pageUrl = `${origin}/contents/shpgInfo?cstrCd=${store.code}&cntsTpCd=C00903`;
+      try {
+        const initial = await fetch(pageUrl, { headers: { 'user-agent': 'mukdang-popup-indexer/1.0 (+https://mukdang.com)' }, signal: AbortSignal.timeout(fast ? 8_000 : 15_000) });
+        await initial.text();
+        const cookieMap = new Map();
+        for (const value of initial.headers.getSetCookie?.() || [initial.headers.get('set-cookie') || '']) {
+          const pair = value.split(';')[0];
+          if (pair) cookieMap.set(pair.slice(0, pair.indexOf('=')), pair);
+        }
+        const response = await fetch(`${origin}/contents/shpgInfoList`, {
+          method: 'POST', body: new URLSearchParams({ cntsTpCd: 'C00903', page: '1', size: '12', totalCnt: '0' }),
+          headers: {
+            'content-type': 'application/x-www-form-urlencoded; charset=UTF-8', 'x-requested-with': 'XMLHttpRequest',
+            referer: pageUrl, cookie: [...cookieMap.values()].join('; '), 'user-agent': 'mukdang-popup-indexer/1.0 (+https://mukdang.com)'
+          }, signal: AbortSignal.timeout(fast ? 8_000 : 15_000)
+        });
+        if (response.ok) results.push(...parseLotteShoppingInfoResults(await response.text(), {
+          storeCode: store.code, storeName: store.name, storeType: store.type, today, decodeHtml, clean
+        }));
+      } catch (error) {
+        console.warn(`롯데 ${store.name} PC 쇼핑정보 보존 처리: ${error.message}`);
+      }
+    }
+  }
+  await Promise.all(Array.from({ length: Math.min(fast ? 12 : 6, uniqueStores.length) }, () => worker()));
+  console.log(`롯데 PC 쇼핑정보 전수 발견: 공식 지점 ${uniqueStores.length}곳 · 푸드 팝업 ${results.length}건`);
+  return results;
 }
 
 export async function discoverLottePopups({ today, fetchResilient, clean, decodeHtml, fast = false }) {
