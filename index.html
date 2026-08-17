@@ -8,27 +8,30 @@
       location.replace(`https://mukdang.com${location.pathname.replace(/^\/product1/, '')}${location.search}${location.hash}`);
     }
   </script>
-  <meta name="description" content="전국 백화점과 쇼핑몰에서 진행 중인 푸드팝업·디저트 팝업스토어의 일정, 기간, 지점과 지도 위치를 먹당에서 확인하세요.">
+  <meta name="description" content="먹당은 전국 백화점·쇼핑몰의 푸드팝업과 디저트 팝업스토어 일정, 기간, 지점, 지도 위치를 매일 모아 보여주는 푸드팝업 정보 서비스입니다.">
+  <meta name="application-name" content="먹당">
+  <meta name="apple-mobile-web-app-title" content="먹당">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="mukdang.com">
-  <meta property="og:title" content="전국 푸드팝업 일정·위치 | 먹당">
-  <meta property="og:description" content="오늘 갈 수 있는 전국 푸드팝업과 디저트 팝업스토어의 기간, 지점, 지도 위치를 한눈에 확인하세요.">
+  <meta property="og:site_name" content="먹당">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:title" content="먹당 | 전국 푸드팝업 일정·위치·지도">
+  <meta property="og:description" content="먹당에서 오늘 갈 수 있는 전국 푸드팝업과 디저트 팝업스토어의 기간, 지점, 지도 위치를 확인하세요.">
   <meta property="og:url" content="https://mukdang.com/">
   <link rel="canonical" href="https://mukdang.com/">
-  <title>전국 푸드팝업 일정·위치 | 오늘 갈 팝업 찾기 - 먹당</title>
+  <title>먹당 | 전국 푸드팝업 일정·위치·지도</title>
   <link rel="sitemap" type="application/xml" href="https://mukdang.com/sitemap.xml">
   <link rel="stylesheet" href="design-system/theme.css?v=1">
   <link rel="stylesheet" href="design-system/components.css?v=1">
   <link rel="stylesheet" href="vendor/leaflet/leaflet.css?v=1.9.4">
   <link rel="stylesheet" href="styles.css?v=20260814-named-popup-map">
   <script type="application/ld+json">
-    {"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://mukdang.com/#website","name":"먹당","alternateName":["mukdang.com","전국 푸드팝업 먹당"],"url":"https://mukdang.com/","description":"전국 푸드팝업 일정과 위치를 찾는 서비스"},{"@type":"CollectionPage","name":"전국 푸드팝업 일정·위치","url":"https://mukdang.com/food-popups/","description":"백화점과 쇼핑몰에서 진행 중인 푸드팝업과 디저트 팝업스토어의 일정, 기간, 지점과 지도 위치 안내","isPartOf":{"@id":"https://mukdang.com/#website"},"about":["푸드팝업","디저트 팝업스토어","백화점 팝업 일정"]}]}
+    {"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mukdang.com/#organization","name":"먹당","alternateName":"Mukdang","url":"https://mukdang.com/"},{"@type":"WebSite","@id":"https://mukdang.com/#website","name":"먹당","alternateName":["먹당 푸드팝업","Mukdang","mukdang.com"],"url":"https://mukdang.com/","description":"전국 푸드팝업 일정과 지도 위치를 매일 제공하는 먹당","inLanguage":"ko-KR","publisher":{"@id":"https://mukdang.com/#organization"}},{"@type":"CollectionPage","name":"먹당 전국 푸드팝업 일정·위치·지도","url":"https://mukdang.com/food-popups/","description":"백화점과 쇼핑몰에서 진행 중인 푸드팝업과 디저트 팝업스토어의 일정, 기간, 지점과 지도 위치 안내","isPartOf":{"@id":"https://mukdang.com/#website"},"about":["푸드팝업","디저트 팝업스토어","백화점 팝업 일정"]}]}
   </script>
 </head>
 <body>
   <header class="topbar shell discovery-topbar">
-    <a class="brand" href="./" data-home aria-label="mukdang.com 메인 화면">mukdang<span>.com</span></a>
+    <a class="brand" href="./" data-home aria-label="먹당 푸드팝업 메인 화면">먹당<span> · 푸드팝업</span></a>
     <nav class="desktop-discovery-nav" aria-label="푸드 팝업 탐색">
       <button type="button" data-home-filter="region">지역</button>
       <button type="button" data-home-filter="category">카테고리</button>
@@ -47,7 +50,7 @@
       <nav id="header-nav" class="nav" aria-label="주요 메뉴" hidden>
         <button id="auth-button" type="button">로그인</button>
         <button type="button" data-open-panel="mypage">마이페이지</button>
-        <a href="#discover">맛집 찾기</a>
+        <a href="#discover">푸드팝업 찾기</a>
         <button type="button" data-open-panel="saved">저장 목록</button>
         <button type="button" data-open-panel="contact">고객 문의</button>
         <button id="menu-logout" type="button" hidden>로그아웃</button>
@@ -169,7 +172,7 @@
   </nav>
 
   <footer class="footer">
-    <div class="footer-brand"><strong>mukdang.com</strong><span>Find a table you can trust.</span></div>
+    <div class="footer-brand"><strong>먹당</strong><span>전국 푸드팝업 일정과 위치</span></div>
     <nav class="footer-seo-links" aria-label="검색 가이드"><a href="/food-popups/">푸드 팝업 일정</a><a href="/restaurant-reviews/">식당 리뷰</a></nav>
     <details class="partnership">
       <summary>제휴문의</summary>

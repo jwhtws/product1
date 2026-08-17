@@ -67,7 +67,11 @@ test('홈 추천은 최근 7일 시작을 최우선으로 하면서 출처를 �
   assert.match(app, /const key = mapVenueName\(popup\) \|\| popup\.address/u);
   assert.doesNotMatch(app, /\.values\(\)\]\.slice\(0, 40\)/u);
   assert.doesNotMatch(app, /bindTooltip\(/u);
-  assert.match(home, /<title>전국 푸드팝업 일정·위치 \| 오늘 갈 팝업 찾기 - 먹당<\/title>/u);
+  assert.match(home, /<title>먹당 \| 전국 푸드팝업 일정·위치·지도<\/title>/u);
+  assert.match(home, /<meta property="og:site_name" content="먹당">/u);
+  assert.match(home, /"@type":"WebSite"[\s\S]*"name":"먹당"[\s\S]*"alternateName":\["먹당 푸드팝업","Mukdang","mukdang.com"\]/u);
+  assert.match(home, />먹당<span> · 푸드팝업<\/span><\/a>/u);
+  assert.doesNotMatch(home, />맛집 찾기<\/a>/u);
   assert.match(home, /"@type":"CollectionPage"[\s\S]*"about":\["푸드팝업","디저트 팝업스토어","백화점 팝업 일정"\]/u);
   assert.match(app, /\$\{rows\.length\}개 팝업 · \$\{markers\.length\}곳/u);
   assert.match(app, /\/api\/geocode\?address=.*&name=/u);
