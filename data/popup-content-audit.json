@@ -1,44 +1,56 @@
 {
-  "generatedAt": "2026-08-16T21:41:43.745Z",
-  "sourceFeedUpdatedAt": "2026-08-16T21:41:43.687Z",
+  "generatedAt": "2026-08-17T07:03:34.261Z",
+  "sourceFeedUpdatedAt": "2026-08-17T07:03:34.141Z",
   "stats": {
     "total": {
-      "totalCollected": 268,
-      "publishedCount": 241,
-      "reviewRequiredCount": 27,
+      "totalCollected": 272,
+      "publishedCount": 244,
+      "reviewRequiredCount": 28,
       "rejectedCount": 0,
-      "validImageCount": 257,
+      "validImageCount": 261,
       "missingImageCount": 11,
-      "menuCompleteCount": 244,
-      "missingMenuCount": 24,
-      "priceKnownCount": 226,
-      "descriptionCompleteCount": 234,
-      "searchIncompleteCount": 25,
+      "menuCompleteCount": 247,
+      "missingMenuCount": 25,
+      "priceKnownCount": 229,
+      "descriptionCompleteCount": 232,
+      "searchIncompleteCount": 26,
       "parseFailedCount": 0,
       "notPublishedBySourceCount": 0,
       "upcomingCount": 18,
-      "ongoingCount": 108,
+      "ongoingCount": 112,
       "endedCount": 141,
-      "newlyPublishedCount": 2,
-      "newlyEndedCount": 4,
+      "newlyPublishedCount": 4,
+      "newlyEndedCount": 0,
       "qualityDistribution": {
-        "A": 211,
-        "B": 30,
-        "C": 27
+        "A": 209,
+        "B": 35,
+        "C": 28
       },
       "asOfDate": "2026-08-17"
     },
     "bySource": {
       "롯데쇼핑 공식 행사": {
-        "totalCollected": 141,
-        "imageCompletenessRate": 0.9362,
-        "menuCompletenessRate": 0.8936,
-        "priceCompletenessRate": 0.8652,
-        "publishRate": 0.8794,
-        "searchIncompleteRate": 0.1064,
+        "totalCollected": 139,
+        "imageCompletenessRate": 0.9353,
+        "menuCompletenessRate": 0.8921,
+        "priceCompletenessRate": 0.8633,
+        "publishRate": 0.8777,
+        "searchIncompleteRate": 0.1079,
         "parseFailureRate": 0,
         "reviewRequiredReasons": {
           "search_incomplete": 17
+        }
+      },
+      "AK플라자 공식 쇼핑뉴스": {
+        "totalCollected": 11,
+        "imageCompletenessRate": 1,
+        "menuCompletenessRate": 0.9091,
+        "priceCompletenessRate": 0.9091,
+        "publishRate": 0.9091,
+        "searchIncompleteRate": 0.0909,
+        "parseFailureRate": 0,
+        "reviewRequiredReasons": {
+          "search_incomplete": 1
         }
       },
       "현대백화점 공식 쇼핑뉴스": {
@@ -52,16 +64,6 @@
         "reviewRequiredReasons": {
           "search_incomplete": 3
         }
-      },
-      "AK플라자 공식 쇼핑뉴스": {
-        "totalCollected": 5,
-        "imageCompletenessRate": 1,
-        "menuCompletenessRate": 1,
-        "priceCompletenessRate": 1,
-        "publishRate": 1,
-        "searchIncompleteRate": 0,
-        "parseFailureRate": 0,
-        "reviewRequiredReasons": {}
       },
       "갤러리아 공식 쇼핑뉴스": {
         "totalCollected": 12,
@@ -120,6 +122,17 @@
       "name": "[늘봄육개장] POP-UP",
       "venue": "롯데백화점 일산점",
       "status": "upcoming",
+      "publishStatus": "review_required",
+      "qualityReasons": [
+        "search_incomplete"
+      ],
+      "contentSearchStatus": "search_incomplete"
+    },
+    {
+      "id": "ak:03:28019",
+      "name": "[봄날엔] 인기 디저트 POP-UP",
+      "venue": "AK플라자 분당점",
+      "status": "ongoing",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
@@ -436,7 +449,7 @@
         "contentType": "image/jpeg",
         "width": 670,
         "height": 670,
-        "checkedAt": "2026-08-16T21:41:44.875Z"
+        "checkedAt": "2026-08-17T07:03:34.537Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -580,7 +593,7 @@
         "contentType": "image/jpeg",
         "width": 670,
         "height": 670,
-        "checkedAt": "2026-08-16T21:41:45.013Z"
+        "checkedAt": "2026-08-17T07:03:34.553Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -800,7 +813,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:44.953Z"
+        "checkedAt": "2026-08-17T07:03:34.548Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -1078,7 +1091,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:45.017Z"
+        "checkedAt": "2026-08-17T07:03:34.557Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -1189,7 +1202,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:45.523Z"
+        "checkedAt": "2026-08-17T07:03:34.604Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -1398,7 +1411,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:45.339Z"
+        "checkedAt": "2026-08-17T07:03:34.581Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -1578,7 +1591,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:45.243Z"
+        "checkedAt": "2026-08-17T07:03:34.612Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -1827,7 +1840,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:45.249Z"
+        "checkedAt": "2026-08-17T07:03:34.611Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -1971,7 +1984,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:45.507Z"
+        "checkedAt": "2026-08-17T07:03:34.602Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -2106,7 +2119,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:45.449Z"
+        "checkedAt": "2026-08-17T07:03:34.650Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -2191,7 +2204,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:45.551Z"
+        "checkedAt": "2026-08-17T07:03:34.653Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -2351,46 +2364,6 @@
           "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000553252",
           "sourceName": "롯데쇼핑 공식 행사",
           "evidenceType": "html"
-        },
-        {
-          "name": "에그타르트 오리지날",
-          "price": 3800,
-          "priceText": "3,800 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000553252",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "에그타르트 크림치즈",
-          "price": 4300,
-          "priceText": "4,300 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000553252",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "에그타르트 피스타치오",
-          "price": 5300,
-          "priceText": "5,300 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000553252",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "에그타르트 블루베리",
-          "price": 5300,
-          "priceText": "5,300 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000553252",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
         }
       ],
       "parserFailureReason": null,
@@ -2410,7 +2383,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:45.646Z"
+        "checkedAt": "2026-08-17T07:03:34.621Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -2572,7 +2545,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:45.727Z"
+        "checkedAt": "2026-08-17T07:03:34.631Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -2821,7 +2794,7 @@
         "contentType": "image/jpeg",
         "width": 670,
         "height": 451,
-        "checkedAt": "2026-08-16T21:41:45.730Z"
+        "checkedAt": "2026-08-17T07:03:34.654Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -3070,7 +3043,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:45.784Z"
+        "checkedAt": "2026-08-17T07:03:34.669Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -3236,7 +3209,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:45.339Z"
+        "checkedAt": "2026-08-17T07:03:34.581Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -3416,7 +3389,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:45.869Z"
+        "checkedAt": "2026-08-17T07:03:34.681Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -3538,7 +3511,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:45.933Z"
+        "checkedAt": "2026-08-17T07:03:34.684Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -3658,6 +3631,208 @@
       "ocrStatus": "not_used"
     },
     {
+      "id": "ak:05:27943",
+      "name": "[떼구르르 베이커리] POP-UP STORE",
+      "venue": "AK플라자 원주점",
+      "sourceName": "AK플라자 공식 쇼핑뉴스",
+      "status": "ongoing",
+      "contentQuality": "B",
+      "publishStatus": "published",
+      "qualityReasons": [],
+      "imageValidation": {
+        "status": "valid",
+        "contentType": "image/jpeg",
+        "width": 450,
+        "height": 450,
+        "checkedAt": "2026-08-17T07:03:34.769Z"
+      },
+      "contentSearch": {
+        "checkedOfficialList": true,
+        "checkedOfficialDetail": true,
+        "checkedEmbeddedData": true,
+        "checkedOfficialImages": true,
+        "checkedOperatorSearch": false,
+        "checkedBrandOfficialSources": false,
+        "checkedUrls": [
+          "https://www.akplaza.com/board/news/view?store=05&seq=27943",
+          "https://img-www.akplaza.com/upload/edm/news/27943/e1812806-7971-4def-8315-19672b6b9202.jpg",
+          "https://img-www.akplaza.com/upload/edm/news/27943/67bbcbc0-1534-4921-bfc3-873d05814cca.jpg"
+        ],
+        "checkedMethods": [
+          "official_detail_html"
+        ],
+        "imageCandidatesFound": 2,
+        "menuCandidatesFound": 8,
+        "priceCandidatesFound": 8,
+        "descriptionCandidatesFound": 0,
+        "status": "found",
+        "evidence": [
+          {
+            "sourceUrl": "https://www.akplaza.com/board/news/view?store=05&seq=27943",
+            "sourceName": "AK플라자 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "officialImageUrls",
+            "imageUrl": "https://img-www.akplaza.com/upload/edm/news/27943/e1812806-7971-4def-8315-19672b6b9202.jpg",
+            "capturedAt": "2026-08-17T07:03:30.683Z"
+          },
+          {
+            "sourceUrl": "https://www.akplaza.com/board/news/view?store=05&seq=27943",
+            "sourceName": "AK플라자 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "officialImageUrls",
+            "imageUrl": "https://img-www.akplaza.com/upload/edm/news/27943/67bbcbc0-1534-4921-bfc3-873d05814cca.jpg",
+            "capturedAt": "2026-08-17T07:03:30.683Z"
+          },
+          {
+            "sourceUrl": "https://www.akplaza.com/board/news/view?store=05&seq=27943",
+            "sourceName": "AK플라자 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "menus",
+            "capturedAt": "2026-08-17T07:03:30.683Z"
+          },
+          {
+            "sourceUrl": "https://www.akplaza.com/board/news/view?store=05&seq=27943",
+            "sourceName": "AK플라자 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "menus",
+            "capturedAt": "2026-08-17T07:03:30.683Z"
+          },
+          {
+            "sourceUrl": "https://www.akplaza.com/board/news/view?store=05&seq=27943",
+            "sourceName": "AK플라자 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "menus",
+            "capturedAt": "2026-08-17T07:03:30.683Z"
+          },
+          {
+            "sourceUrl": "https://www.akplaza.com/board/news/view?store=05&seq=27943",
+            "sourceName": "AK플라자 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "menus",
+            "capturedAt": "2026-08-17T07:03:30.683Z"
+          },
+          {
+            "sourceUrl": "https://www.akplaza.com/board/news/view?store=05&seq=27943",
+            "sourceName": "AK플라자 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "menus",
+            "capturedAt": "2026-08-17T07:03:30.683Z"
+          },
+          {
+            "sourceUrl": "https://www.akplaza.com/board/news/view?store=05&seq=27943",
+            "sourceName": "AK플라자 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "menus",
+            "capturedAt": "2026-08-17T07:03:30.683Z"
+          },
+          {
+            "sourceUrl": "https://www.akplaza.com/board/news/view?store=05&seq=27943",
+            "sourceName": "AK플라자 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "menus",
+            "capturedAt": "2026-08-17T07:03:30.683Z"
+          },
+          {
+            "sourceUrl": "https://www.akplaza.com/board/news/view?store=05&seq=27943",
+            "sourceName": "AK플라자 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "menus",
+            "capturedAt": "2026-08-17T07:03:30.683Z"
+          }
+        ],
+        "failureReasons": [],
+        "checkedAt": "2026-08-17T07:03:30.683Z"
+      },
+      "imageCandidates": [
+        "https://img-www.akplaza.com/upload/edm/news/27943/e1812806-7971-4def-8315-19672b6b9202.jpg",
+        "https://img-www.akplaza.com/upload/edm/news/27943/67bbcbc0-1534-4921-bfc3-873d05814cca.jpg"
+      ],
+      "menuCandidates": [
+        {
+          "name": "피치 아그작 케이크",
+          "price": 13500,
+          "priceText": "13,500원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.akplaza.com/board/news/view?store=05&seq=27943",
+          "sourceName": "AK플라자 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "애플망고 아그작 케이크",
+          "price": 13500,
+          "priceText": "13,500원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.akplaza.com/board/news/view?store=05&seq=27943",
+          "sourceName": "AK플라자 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "피스타치오 아그작 케이크",
+          "price": 13500,
+          "priceText": "13,500원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.akplaza.com/board/news/view?store=05&seq=27943",
+          "sourceName": "AK플라자 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "두바이 피쵸 감자 쫀득빵",
+          "price": 10800,
+          "priceText": "10,800원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.akplaza.com/board/news/view?store=05&seq=27943",
+          "sourceName": "AK플라자 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "가나슈 오레오 감자 쫀득빵",
+          "price": 9800,
+          "priceText": "9,800원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.akplaza.com/board/news/view?store=05&seq=27943",
+          "sourceName": "AK플라자 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "블루베리 치즈케이크 감자 쫀득빵",
+          "price": 9800,
+          "priceText": "9,800원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.akplaza.com/board/news/view?store=05&seq=27943",
+          "sourceName": "AK플라자 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "크런치 황치즈 감자 쫀득빵",
+          "price": 9800,
+          "priceText": "9,800원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.akplaza.com/board/news/view?store=05&seq=27943",
+          "sourceName": "AK플라자 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "시나몬 로투스 감자 쫀득빵",
+          "price": 9800,
+          "priceText": "9,800원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.akplaza.com/board/news/view?store=05&seq=27943",
+          "sourceName": "AK플라자 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        }
+      ],
+      "parserFailureReason": null,
+      "ocrStatus": "not_used"
+    },
+    {
       "id": "lotte:discovered:0342:SNM00000000000551532",
       "name": "[떡마마] Pop-Up",
       "venue": "롯데아울렛 청주점",
@@ -3671,7 +3846,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:45.944Z"
+        "checkedAt": "2026-08-17T07:03:34.686Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -4036,7 +4211,7 @@
         "contentType": "image/jpeg",
         "width": 990,
         "height": 990,
-        "checkedAt": "2026-08-16T21:41:48.142Z"
+        "checkedAt": "2026-08-17T07:03:34.783Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -4180,7 +4355,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:46.141Z"
+        "checkedAt": "2026-08-17T07:03:34.701Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -4366,56 +4541,6 @@
           "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552532",
           "sourceName": "롯데쇼핑 공식 행사",
           "evidenceType": "html"
-        },
-        {
-          "name": "대왕 과일모찌 망고",
-          "price": 12500,
-          "priceText": "12,500 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552532",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "대왕 과일모찌 메론",
-          "price": 12500,
-          "priceText": "12,500 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552532",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "대왕 과일모찌 블루베리",
-          "price": 12500,
-          "priceText": "12,500 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552532",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "대왕 과일모찌 귤",
-          "price": 12500,
-          "priceText": "12,500 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552532",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "대왕 과일모찌 복숭아",
-          "price": 12500,
-          "priceText": "12,500 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552532",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
         }
       ],
       "parserFailureReason": null,
@@ -4435,7 +4560,7 @@
         "contentType": "image/jpeg",
         "width": 720,
         "height": 720,
-        "checkedAt": "2026-08-16T21:41:48.018Z"
+        "checkedAt": "2026-08-17T07:03:34.763Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -4464,7 +4589,7 @@
             "contentType": "official_detail",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://img-www.akplaza.com/upload/edm/news/28008/3f258219-8ec5-4d4b-81c0-c81e19b1fad1.jpg",
-            "capturedAt": "2026-08-16T21:41:30.403Z"
+            "capturedAt": "2026-08-17T07:03:30.671Z"
           },
           {
             "sourceUrl": "https://www.akplaza.com/board/news/view?store=02&seq=28008",
@@ -4472,53 +4597,53 @@
             "contentType": "official_detail",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://img-www.akplaza.com/upload/edm/news/28008/becd7030-3c3d-413c-afc0-81dbd696bf2b.jpg",
-            "capturedAt": "2026-08-16T21:41:30.403Z"
+            "capturedAt": "2026-08-17T07:03:30.671Z"
           },
           {
             "sourceUrl": "https://www.akplaza.com/board/news/view?store=02&seq=28008",
             "sourceName": "AK플라자 공식 쇼핑뉴스",
             "contentType": "official_detail",
             "extractedField": "menus",
-            "capturedAt": "2026-08-16T21:41:30.403Z"
+            "capturedAt": "2026-08-17T07:03:30.671Z"
           },
           {
             "sourceUrl": "https://www.akplaza.com/board/news/view?store=02&seq=28008",
             "sourceName": "AK플라자 공식 쇼핑뉴스",
             "contentType": "official_detail",
             "extractedField": "menus",
-            "capturedAt": "2026-08-16T21:41:30.403Z"
+            "capturedAt": "2026-08-17T07:03:30.671Z"
           },
           {
             "sourceUrl": "https://www.akplaza.com/board/news/view?store=02&seq=28008",
             "sourceName": "AK플라자 공식 쇼핑뉴스",
             "contentType": "official_detail",
             "extractedField": "menus",
-            "capturedAt": "2026-08-16T21:41:30.403Z"
+            "capturedAt": "2026-08-17T07:03:30.671Z"
           },
           {
             "sourceUrl": "https://www.akplaza.com/board/news/view?store=02&seq=28008",
             "sourceName": "AK플라자 공식 쇼핑뉴스",
             "contentType": "official_detail",
             "extractedField": "menus",
-            "capturedAt": "2026-08-16T21:41:30.403Z"
+            "capturedAt": "2026-08-17T07:03:30.671Z"
           },
           {
             "sourceUrl": "https://www.akplaza.com/board/news/view?store=02&seq=28008",
             "sourceName": "AK플라자 공식 쇼핑뉴스",
             "contentType": "official_detail",
             "extractedField": "menus",
-            "capturedAt": "2026-08-16T21:41:30.403Z"
+            "capturedAt": "2026-08-17T07:03:30.671Z"
           },
           {
             "sourceUrl": "https://www.akplaza.com/board/news/view?store=02&seq=28008",
             "sourceName": "AK플라자 공식 쇼핑뉴스",
             "contentType": "official_detail",
             "extractedField": "menus",
-            "capturedAt": "2026-08-16T21:41:30.403Z"
+            "capturedAt": "2026-08-17T07:03:30.671Z"
           }
         ],
         "failureReasons": [],
-        "checkedAt": "2026-08-16T21:41:30.403Z"
+        "checkedAt": "2026-08-17T07:03:30.671Z"
       },
       "imageCandidates": [
         "https://img-www.akplaza.com/upload/edm/news/28008/3f258219-8ec5-4d4b-81c0-c81e19b1fad1.jpg",
@@ -4603,7 +4728,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:46.135Z"
+        "checkedAt": "2026-08-17T07:03:34.717Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -4841,7 +4966,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:46.350Z"
+        "checkedAt": "2026-08-17T07:03:34.735Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -5046,7 +5171,7 @@
         "contentType": "image/jpeg",
         "width": 1003,
         "height": 1003,
-        "checkedAt": "2026-08-16T21:41:47.916Z"
+        "checkedAt": "2026-08-17T07:03:34.811Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -5302,7 +5427,7 @@
         "contentType": "image/png",
         "width": 764,
         "height": 764,
-        "checkedAt": "2026-08-16T21:41:48.590Z"
+        "checkedAt": "2026-08-17T07:03:34.857Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -5503,7 +5628,7 @@
         "contentType": "image/jpeg",
         "width": 764,
         "height": 764,
-        "checkedAt": "2026-08-16T21:41:49.072Z"
+        "checkedAt": "2026-08-17T07:03:34.821Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -5725,7 +5850,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:48.239Z"
+        "checkedAt": "2026-08-17T07:03:34.799Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -5880,7 +6005,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:48.352Z"
+        "checkedAt": "2026-08-17T07:03:34.815Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -6089,7 +6214,7 @@
         "contentType": "image/jpeg",
         "width": 670,
         "height": 670,
-        "checkedAt": "2026-08-16T21:41:48.448Z"
+        "checkedAt": "2026-08-17T07:03:34.827Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -6249,46 +6374,6 @@
           "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552555",
           "sourceName": "롯데쇼핑 공식 행사",
           "evidenceType": "html"
-        },
-        {
-          "name": "통모모산도",
-          "price": 11500,
-          "priceText": "11,500 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552555",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "용과 후르츠산도",
-          "price": 11900,
-          "priceText": "11,900 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552555",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "메론 산도",
-          "price": 9900,
-          "priceText": "9,900 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552555",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "망고산도",
-          "price": 12500,
-          "priceText": "12,500 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552555",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
         }
       ],
       "parserFailureReason": null,
@@ -6308,7 +6393,7 @@
         "contentType": "image/jpeg",
         "width": 335,
         "height": 335,
-        "checkedAt": "2026-08-16T21:41:48.539Z"
+        "checkedAt": "2026-08-17T07:03:34.838Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -6528,7 +6613,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:48.679Z"
+        "checkedAt": "2026-08-17T07:03:34.841Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -6748,7 +6833,7 @@
         "contentType": "image/jpeg",
         "width": 720,
         "height": 720,
-        "checkedAt": "2026-08-16T21:41:48.697Z"
+        "checkedAt": "2026-08-17T07:03:34.845Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -6777,7 +6862,7 @@
             "contentType": "official_detail",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://img-www.akplaza.com/upload/edm/news/28010/c6074074-4289-44c0-8dde-cdd8b88c3089.jpg",
-            "capturedAt": "2026-08-16T21:41:30.402Z"
+            "capturedAt": "2026-08-17T07:03:30.670Z"
           },
           {
             "sourceUrl": "https://www.akplaza.com/board/news/view?store=02&seq=28010",
@@ -6785,39 +6870,39 @@
             "contentType": "official_detail",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://img-www.akplaza.com/upload/edm/news/28010/6346927a-39a4-4039-84ce-40f29a487258.jpg",
-            "capturedAt": "2026-08-16T21:41:30.402Z"
+            "capturedAt": "2026-08-17T07:03:30.670Z"
           },
           {
             "sourceUrl": "https://www.akplaza.com/board/news/view?store=02&seq=28010",
             "sourceName": "AK플라자 공식 쇼핑뉴스",
             "contentType": "official_detail",
             "extractedField": "menus",
-            "capturedAt": "2026-08-16T21:41:30.402Z"
+            "capturedAt": "2026-08-17T07:03:30.670Z"
           },
           {
             "sourceUrl": "https://www.akplaza.com/board/news/view?store=02&seq=28010",
             "sourceName": "AK플라자 공식 쇼핑뉴스",
             "contentType": "official_detail",
             "extractedField": "menus",
-            "capturedAt": "2026-08-16T21:41:30.402Z"
+            "capturedAt": "2026-08-17T07:03:30.670Z"
           },
           {
             "sourceUrl": "https://www.akplaza.com/board/news/view?store=02&seq=28010",
             "sourceName": "AK플라자 공식 쇼핑뉴스",
             "contentType": "official_detail",
             "extractedField": "menus",
-            "capturedAt": "2026-08-16T21:41:30.402Z"
+            "capturedAt": "2026-08-17T07:03:30.670Z"
           },
           {
             "sourceUrl": "https://www.akplaza.com/board/news/view?store=02&seq=28010",
             "sourceName": "AK플라자 공식 쇼핑뉴스",
             "contentType": "official_detail",
             "extractedField": "menus",
-            "capturedAt": "2026-08-16T21:41:30.402Z"
+            "capturedAt": "2026-08-17T07:03:30.670Z"
           }
         ],
         "failureReasons": [],
-        "checkedAt": "2026-08-16T21:41:30.402Z"
+        "checkedAt": "2026-08-17T07:03:30.670Z"
       },
       "imageCandidates": [
         "https://img-www.akplaza.com/upload/edm/news/28010/c6074074-4289-44c0-8dde-cdd8b88c3089.jpg",
@@ -6882,7 +6967,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:48.796Z"
+        "checkedAt": "2026-08-17T07:03:34.868Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -7283,7 +7368,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:48.888Z"
+        "checkedAt": "2026-08-17T07:03:34.869Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -7684,7 +7769,7 @@
         "contentType": "image/gif",
         "width": 640,
         "height": 640,
-        "checkedAt": "2026-08-16T21:41:49.252Z"
+        "checkedAt": "2026-08-17T07:03:34.884Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -8121,7 +8206,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:49.041Z"
+        "checkedAt": "2026-08-17T07:03:34.888Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -8357,6 +8442,75 @@
       "ocrStatus": "not_used"
     },
     {
+      "id": "ak:03:28019",
+      "name": "[봄날엔] 인기 디저트 POP-UP",
+      "venue": "AK플라자 분당점",
+      "sourceName": "AK플라자 공식 쇼핑뉴스",
+      "status": "ongoing",
+      "contentQuality": "C",
+      "publishStatus": "review_required",
+      "qualityReasons": [
+        "search_incomplete"
+      ],
+      "imageValidation": {
+        "status": "valid",
+        "contentType": "image/jpeg",
+        "width": 780,
+        "height": 780,
+        "checkedAt": "2026-08-17T07:03:34.883Z"
+      },
+      "contentSearch": {
+        "checkedOfficialList": true,
+        "checkedOfficialDetail": true,
+        "checkedEmbeddedData": true,
+        "checkedOfficialImages": true,
+        "checkedOperatorSearch": false,
+        "checkedBrandOfficialSources": false,
+        "checkedUrls": [
+          "https://www.akplaza.com/board/news/view?store=03&seq=28019",
+          "https://img-www.akplaza.com/upload/edm/news/28019/0fbac920-c96c-4cff-af6b-bbea0c329508.jpg",
+          "https://img-www.akplaza.com/upload/edm/news/28019/f904b959-97f5-470a-b9f5-f10af50bcbad.jpg"
+        ],
+        "checkedMethods": [
+          "official_detail_html"
+        ],
+        "imageCandidatesFound": 2,
+        "menuCandidatesFound": 0,
+        "priceCandidatesFound": 0,
+        "descriptionCandidatesFound": 0,
+        "status": "search_incomplete",
+        "evidence": [
+          {
+            "sourceUrl": "https://www.akplaza.com/board/news/view?store=03&seq=28019",
+            "sourceName": "AK플라자 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "officialImageUrls",
+            "imageUrl": "https://img-www.akplaza.com/upload/edm/news/28019/0fbac920-c96c-4cff-af6b-bbea0c329508.jpg",
+            "capturedAt": "2026-08-17T07:03:30.680Z"
+          },
+          {
+            "sourceUrl": "https://www.akplaza.com/board/news/view?store=03&seq=28019",
+            "sourceName": "AK플라자 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "officialImageUrls",
+            "imageUrl": "https://img-www.akplaza.com/upload/edm/news/28019/f904b959-97f5-470a-b9f5-f10af50bcbad.jpg",
+            "capturedAt": "2026-08-17T07:03:30.680Z"
+          }
+        ],
+        "failureReasons": [
+          "legacy_collector_search_evidence_incomplete"
+        ],
+        "checkedAt": "2026-08-17T07:03:30.680Z"
+      },
+      "imageCandidates": [
+        "https://img-www.akplaza.com/upload/edm/news/28019/0fbac920-c96c-4cff-af6b-bbea0c329508.jpg",
+        "https://img-www.akplaza.com/upload/edm/news/28019/f904b959-97f5-470a-b9f5-f10af50bcbad.jpg"
+      ],
+      "menuCandidates": [],
+      "parserFailureReason": null,
+      "ocrStatus": "not_used"
+    },
+    {
       "id": "lotte:discovered:0334:SNM00000000000552679",
       "name": "[삼부자 푸드]직화 닭발 맛집 Pop-up",
       "venue": "롯데백화점 중동점",
@@ -8370,7 +8524,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:49.126Z"
+        "checkedAt": "2026-08-17T07:03:34.887Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -8492,7 +8646,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:45.727Z"
+        "checkedAt": "2026-08-17T07:03:34.631Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -8699,6 +8853,106 @@
       "ocrStatus": "not_used"
     },
     {
+      "id": "ak:03:28020",
+      "name": "[서녹씨] 모찌 POP-UP",
+      "venue": "AK플라자 분당점",
+      "sourceName": "AK플라자 공식 쇼핑뉴스",
+      "status": "ongoing",
+      "contentQuality": "B",
+      "publishStatus": "published",
+      "qualityReasons": [],
+      "imageValidation": {
+        "status": "valid",
+        "contentType": "image/jpeg",
+        "width": 780,
+        "height": 780,
+        "checkedAt": "2026-08-17T07:03:34.911Z"
+      },
+      "contentSearch": {
+        "checkedOfficialList": true,
+        "checkedOfficialDetail": true,
+        "checkedEmbeddedData": true,
+        "checkedOfficialImages": true,
+        "checkedOperatorSearch": false,
+        "checkedBrandOfficialSources": false,
+        "checkedUrls": [
+          "https://www.akplaza.com/board/news/view?store=03&seq=28020",
+          "https://img-www.akplaza.com/upload/edm/news/28020/9afe0586-7a19-47cf-b2f7-9cac0d7318b5.jpg",
+          "https://img-www.akplaza.com/upload/edm/news/28020/73873023-047b-48f4-8b44-6be91f085e1d.jpg"
+        ],
+        "checkedMethods": [
+          "official_detail_html"
+        ],
+        "imageCandidatesFound": 2,
+        "menuCandidatesFound": 2,
+        "priceCandidatesFound": 2,
+        "descriptionCandidatesFound": 0,
+        "status": "found",
+        "evidence": [
+          {
+            "sourceUrl": "https://www.akplaza.com/board/news/view?store=03&seq=28020",
+            "sourceName": "AK플라자 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "officialImageUrls",
+            "imageUrl": "https://img-www.akplaza.com/upload/edm/news/28020/9afe0586-7a19-47cf-b2f7-9cac0d7318b5.jpg",
+            "capturedAt": "2026-08-17T07:03:30.677Z"
+          },
+          {
+            "sourceUrl": "https://www.akplaza.com/board/news/view?store=03&seq=28020",
+            "sourceName": "AK플라자 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "officialImageUrls",
+            "imageUrl": "https://img-www.akplaza.com/upload/edm/news/28020/73873023-047b-48f4-8b44-6be91f085e1d.jpg",
+            "capturedAt": "2026-08-17T07:03:30.677Z"
+          },
+          {
+            "sourceUrl": "https://www.akplaza.com/board/news/view?store=03&seq=28020",
+            "sourceName": "AK플라자 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "menus",
+            "capturedAt": "2026-08-17T07:03:30.677Z"
+          },
+          {
+            "sourceUrl": "https://www.akplaza.com/board/news/view?store=03&seq=28020",
+            "sourceName": "AK플라자 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "menus",
+            "capturedAt": "2026-08-17T07:03:30.677Z"
+          }
+        ],
+        "failureReasons": [],
+        "checkedAt": "2026-08-17T07:03:30.677Z"
+      },
+      "imageCandidates": [
+        "https://img-www.akplaza.com/upload/edm/news/28020/9afe0586-7a19-47cf-b2f7-9cac0d7318b5.jpg",
+        "https://img-www.akplaza.com/upload/edm/news/28020/73873023-047b-48f4-8b44-6be91f085e1d.jpg"
+      ],
+      "menuCandidates": [
+        {
+          "name": "딸기모찌",
+          "price": 25000,
+          "priceText": "25,000원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.akplaza.com/board/news/view?store=03&seq=28020",
+          "sourceName": "AK플라자 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "과일모찌",
+          "price": 26000,
+          "priceText": "26,000원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.akplaza.com/board/news/view?store=03&seq=28020",
+          "sourceName": "AK플라자 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        }
+      ],
+      "parserFailureReason": null,
+      "ocrStatus": "not_used"
+    },
+    {
       "id": "lotte:discovered:0026:SNM00000000000552206",
       "name": "[시오사쿠] 소금빵 Pop-Up",
       "venue": "롯데백화점 미아점",
@@ -8712,7 +8966,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:49.235Z"
+        "checkedAt": "2026-08-17T07:03:34.913Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -9054,116 +9308,6 @@
           "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552206",
           "sourceName": "롯데쇼핑 공식 행사",
           "evidenceType": "html"
-        },
-        {
-          "name": "오사카 시오빵 (1개)",
-          "price": 4000,
-          "priceText": "4,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552206",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "오사카 크랙 시오빵 (1개)",
-          "price": 4000,
-          "priceText": "4,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552206",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "미니 시오빵 (1개)",
-          "price": 7000,
-          "priceText": "7,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552206",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "두바이 시오빵 (1개)",
-          "price": 9000,
-          "priceText": "9,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552206",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "멜론 시오빵 (1개)",
-          "price": 6500,
-          "priceText": "6,500 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552206",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "야끼소바 시오빵 (1개)",
-          "price": 6500,
-          "priceText": "6,500 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552206",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "명란 시오빵 (1개)",
-          "price": 6000,
-          "priceText": "6,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552206",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "불닭 시오빵 (1개)",
-          "price": 6000,
-          "priceText": "6,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552206",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "카스테라 시오빵 (1개)",
-          "price": 6000,
-          "priceText": "6,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552206",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "시오빵 러스크 (1개)",
-          "price": 4500,
-          "priceText": "4,500 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552206",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "미니 쇼쿠판 (1개)",
-          "price": 6500,
-          "priceText": "6,500 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552206",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
         }
       ],
       "parserFailureReason": null,
@@ -9185,7 +9329,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:49.335Z"
+        "checkedAt": "2026-08-17T07:03:34.916Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -9279,6 +9423,89 @@
       "ocrStatus": "not_used"
     },
     {
+      "id": "ak:11:28191",
+      "name": "[아이프레시] 계란빵 팝업",
+      "venue": "AK플라자 광명점",
+      "sourceName": "AK플라자 공식 쇼핑뉴스",
+      "status": "ongoing",
+      "contentQuality": "B",
+      "publishStatus": "published",
+      "qualityReasons": [],
+      "imageValidation": {
+        "status": "valid",
+        "contentType": "image/jpeg",
+        "width": 500,
+        "height": 500,
+        "checkedAt": "2026-08-17T07:03:34.915Z"
+      },
+      "contentSearch": {
+        "checkedOfficialList": true,
+        "checkedOfficialDetail": true,
+        "checkedEmbeddedData": true,
+        "checkedOfficialImages": true,
+        "checkedOperatorSearch": false,
+        "checkedBrandOfficialSources": false,
+        "checkedUrls": [
+          "https://www.akplaza.com/board/news/view?store=11&seq=28191",
+          "https://img-www.akplaza.com/upload/edm/news/28191/1df5df92-dcaa-47d6-908b-455248cef4ef.jpg",
+          "https://img-www.akplaza.com/upload/edm/news/28191/850c2d8a-65be-4446-a1cd-b80ea1f6cfd7.jpg"
+        ],
+        "checkedMethods": [
+          "official_detail_html"
+        ],
+        "imageCandidatesFound": 2,
+        "menuCandidatesFound": 1,
+        "priceCandidatesFound": 1,
+        "descriptionCandidatesFound": 0,
+        "status": "found",
+        "evidence": [
+          {
+            "sourceUrl": "https://www.akplaza.com/board/news/view?store=11&seq=28191",
+            "sourceName": "AK플라자 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "officialImageUrls",
+            "imageUrl": "https://img-www.akplaza.com/upload/edm/news/28191/1df5df92-dcaa-47d6-908b-455248cef4ef.jpg",
+            "capturedAt": "2026-08-17T07:03:30.685Z"
+          },
+          {
+            "sourceUrl": "https://www.akplaza.com/board/news/view?store=11&seq=28191",
+            "sourceName": "AK플라자 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "officialImageUrls",
+            "imageUrl": "https://img-www.akplaza.com/upload/edm/news/28191/850c2d8a-65be-4446-a1cd-b80ea1f6cfd7.jpg",
+            "capturedAt": "2026-08-17T07:03:30.685Z"
+          },
+          {
+            "sourceUrl": "https://www.akplaza.com/board/news/view?store=11&seq=28191",
+            "sourceName": "AK플라자 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "menus",
+            "capturedAt": "2026-08-17T07:03:30.685Z"
+          }
+        ],
+        "failureReasons": [],
+        "checkedAt": "2026-08-17T07:03:30.685Z"
+      },
+      "imageCandidates": [
+        "https://img-www.akplaza.com/upload/edm/news/28191/1df5df92-dcaa-47d6-908b-455248cef4ef.jpg",
+        "https://img-www.akplaza.com/upload/edm/news/28191/850c2d8a-65be-4446-a1cd-b80ea1f6cfd7.jpg"
+      ],
+      "menuCandidates": [
+        {
+          "name": "1개",
+          "price": 2500,
+          "priceText": "2,500원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.akplaza.com/board/news/view?store=11&seq=28191",
+          "sourceName": "AK플라자 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        }
+      ],
+      "parserFailureReason": null,
+      "ocrStatus": "not_used"
+    },
+    {
       "id": "lotte:discovered:0334:SNM00000000000552897",
       "name": "[야심잔기지떡] pop-up촉촉쫄깃한 맛",
       "venue": "롯데백화점 중동점",
@@ -9292,7 +9519,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:49.374Z"
+        "checkedAt": "2026-08-17T07:03:34.950Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -9505,7 +9732,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:49.438Z"
+        "checkedAt": "2026-08-17T07:03:34.931Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -9743,7 +9970,7 @@
         "contentType": "image/jpeg",
         "width": 335,
         "height": 335,
-        "checkedAt": "2026-08-16T21:41:49.437Z"
+        "checkedAt": "2026-08-17T07:03:34.951Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -10131,6 +10358,140 @@
       "ocrStatus": "not_used"
     },
     {
+      "id": "ak:03:28026",
+      "name": "[연근팩토리] 건강 간식 POP-UP",
+      "venue": "AK플라자 분당점",
+      "sourceName": "AK플라자 공식 쇼핑뉴스",
+      "status": "ongoing",
+      "contentQuality": "B",
+      "publishStatus": "published",
+      "qualityReasons": [],
+      "imageValidation": {
+        "status": "valid",
+        "contentType": "image/jpeg",
+        "width": 780,
+        "height": 780,
+        "checkedAt": "2026-08-17T07:03:34.935Z"
+      },
+      "contentSearch": {
+        "checkedOfficialList": true,
+        "checkedOfficialDetail": true,
+        "checkedEmbeddedData": true,
+        "checkedOfficialImages": true,
+        "checkedOperatorSearch": false,
+        "checkedBrandOfficialSources": false,
+        "checkedUrls": [
+          "https://www.akplaza.com/board/news/view?store=03&seq=28026",
+          "https://img-www.akplaza.com/upload/edm/news/28026/02c9996a-e3a1-4cca-9e52-0833a93a5982.jpg",
+          "https://img-www.akplaza.com/upload/edm/news/28026/f0607e05-5306-4f49-bdae-cf3ac577e91e.jpg"
+        ],
+        "checkedMethods": [
+          "official_detail_html"
+        ],
+        "imageCandidatesFound": 2,
+        "menuCandidatesFound": 4,
+        "priceCandidatesFound": 4,
+        "descriptionCandidatesFound": 0,
+        "status": "found",
+        "evidence": [
+          {
+            "sourceUrl": "https://www.akplaza.com/board/news/view?store=03&seq=28026",
+            "sourceName": "AK플라자 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "officialImageUrls",
+            "imageUrl": "https://img-www.akplaza.com/upload/edm/news/28026/02c9996a-e3a1-4cca-9e52-0833a93a5982.jpg",
+            "capturedAt": "2026-08-17T07:03:30.676Z"
+          },
+          {
+            "sourceUrl": "https://www.akplaza.com/board/news/view?store=03&seq=28026",
+            "sourceName": "AK플라자 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "officialImageUrls",
+            "imageUrl": "https://img-www.akplaza.com/upload/edm/news/28026/f0607e05-5306-4f49-bdae-cf3ac577e91e.jpg",
+            "capturedAt": "2026-08-17T07:03:30.676Z"
+          },
+          {
+            "sourceUrl": "https://www.akplaza.com/board/news/view?store=03&seq=28026",
+            "sourceName": "AK플라자 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "menus",
+            "capturedAt": "2026-08-17T07:03:30.676Z"
+          },
+          {
+            "sourceUrl": "https://www.akplaza.com/board/news/view?store=03&seq=28026",
+            "sourceName": "AK플라자 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "menus",
+            "capturedAt": "2026-08-17T07:03:30.676Z"
+          },
+          {
+            "sourceUrl": "https://www.akplaza.com/board/news/view?store=03&seq=28026",
+            "sourceName": "AK플라자 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "menus",
+            "capturedAt": "2026-08-17T07:03:30.676Z"
+          },
+          {
+            "sourceUrl": "https://www.akplaza.com/board/news/view?store=03&seq=28026",
+            "sourceName": "AK플라자 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "menus",
+            "capturedAt": "2026-08-17T07:03:30.676Z"
+          }
+        ],
+        "failureReasons": [],
+        "checkedAt": "2026-08-17T07:03:30.676Z"
+      },
+      "imageCandidates": [
+        "https://img-www.akplaza.com/upload/edm/news/28026/02c9996a-e3a1-4cca-9e52-0833a93a5982.jpg",
+        "https://img-www.akplaza.com/upload/edm/news/28026/f0607e05-5306-4f49-bdae-cf3ac577e91e.jpg"
+      ],
+      "menuCandidates": [
+        {
+          "name": "동결건조 딸기(120g)",
+          "price": 13000,
+          "priceText": "13,000원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.akplaza.com/board/news/view?store=03&seq=28026",
+          "sourceName": "AK플라자 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "카사바칩김맛(300g)",
+          "price": 7000,
+          "priceText": "7,000원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.akplaza.com/board/news/view?store=03&seq=28026",
+          "sourceName": "AK플라자 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "③ 꽃징어(꽃보다오징어, 90g)",
+          "price": 13000,
+          "priceText": "13,000원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.akplaza.com/board/news/view?store=03&seq=28026",
+          "sourceName": "AK플라자 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "④ 구운뚱문어(300g)",
+          "price": 13000,
+          "priceText": "13,000원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.akplaza.com/board/news/view?store=03&seq=28026",
+          "sourceName": "AK플라자 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        }
+      ],
+      "parserFailureReason": null,
+      "ocrStatus": "not_used"
+    },
+    {
       "id": "lotte:discovered:0027:SNM00000000000551881",
       "name": "[영도할매 꼬마김밥]Pop-Up",
       "venue": "롯데백화점 센텀시티점",
@@ -10144,7 +10505,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:49.569Z"
+        "checkedAt": "2026-08-17T07:03:34.961Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -10534,46 +10895,6 @@
           "evidenceType": "html"
         },
         {
-          "name": "크레미와사마요 꼬마김밥",
-          "price": 3500,
-          "priceText": "3,500 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000551881",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "참치와사마요 꼬마김밥",
-          "price": 3500,
-          "priceText": "3,500 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000551881",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "멸치 꼬마김밥",
-          "price": 3500,
-          "priceText": "3,500 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000551881",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "스팸 꼬마김밥",
-          "price": 3500,
-          "priceText": "3,500 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000551881",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
           "name": "매운오뎅 꼬마김밥 /일미 꼬마김밥 각",
           "price": 3500,
           "priceText": "3,500 원",
@@ -10651,7 +10972,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:49.598Z"
+        "checkedAt": "2026-08-17T07:03:34.952Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -10773,7 +11094,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:49.633Z"
+        "checkedAt": "2026-08-17T07:03:34.978Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -10993,7 +11314,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:49.661Z"
+        "checkedAt": "2026-08-17T07:03:34.974Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -11205,66 +11526,6 @@
           "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552608",
           "sourceName": "롯데쇼핑 공식 행사",
           "evidenceType": "html"
-        },
-        {
-          "name": "호두찰식빵",
-          "price": 8000,
-          "priceText": "8,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552608",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "어니언킹",
-          "price": 6600,
-          "priceText": "6,600 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552608",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "암브로와즈",
-          "price": 12000,
-          "priceText": "12,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552608",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "우유바구니",
-          "price": 6900,
-          "priceText": "6,900 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552608",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "햄 루꼴라 포카치아 샌드위치",
-          "price": 15900,
-          "priceText": "15,900 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552608",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "레몬새우딜 포카치아 샌드위치",
-          "price": 14900,
-          "priceText": "14,900 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552608",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
         }
       ],
       "parserFailureReason": null,
@@ -11284,7 +11545,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:49.779Z"
+        "checkedAt": "2026-08-17T07:03:34.979Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -11591,7 +11852,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:49.811Z"
+        "checkedAt": "2026-08-17T07:03:35.003Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -11858,7 +12119,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:49.907Z"
+        "checkedAt": "2026-08-17T07:03:35.002Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -12049,7 +12310,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:49.874Z"
+        "checkedAt": "2026-08-17T07:03:35.004Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -12242,7 +12503,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:50.011Z"
+        "checkedAt": "2026-08-17T07:03:35.013Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -12327,7 +12588,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:50.040Z"
+        "checkedAt": "2026-08-17T07:03:35.023Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -12464,7 +12725,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:50.075Z"
+        "checkedAt": "2026-08-17T07:03:35.018Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -12626,7 +12887,7 @@
         "contentType": "image/jpeg",
         "width": 720,
         "height": 720,
-        "checkedAt": "2026-08-16T21:41:50.374Z"
+        "checkedAt": "2026-08-17T07:03:35.031Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -12655,7 +12916,7 @@
             "contentType": "official_detail",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://img-www.akplaza.com/upload/edm/news/28011/e57adacb-a46d-4473-9226-da14845005a6.jpg",
-            "capturedAt": "2026-08-16T21:41:30.401Z"
+            "capturedAt": "2026-08-17T07:03:30.669Z"
           },
           {
             "sourceUrl": "https://www.akplaza.com/board/news/view?store=02&seq=28011",
@@ -12663,74 +12924,74 @@
             "contentType": "official_detail",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://img-www.akplaza.com/upload/edm/news/28011/e9580b08-e9a7-4fc3-a033-86ad61068fef.jpg",
-            "capturedAt": "2026-08-16T21:41:30.401Z"
+            "capturedAt": "2026-08-17T07:03:30.669Z"
           },
           {
             "sourceUrl": "https://www.akplaza.com/board/news/view?store=02&seq=28011",
             "sourceName": "AK플라자 공식 쇼핑뉴스",
             "contentType": "official_detail",
             "extractedField": "menus",
-            "capturedAt": "2026-08-16T21:41:30.401Z"
+            "capturedAt": "2026-08-17T07:03:30.669Z"
           },
           {
             "sourceUrl": "https://www.akplaza.com/board/news/view?store=02&seq=28011",
             "sourceName": "AK플라자 공식 쇼핑뉴스",
             "contentType": "official_detail",
             "extractedField": "menus",
-            "capturedAt": "2026-08-16T21:41:30.401Z"
+            "capturedAt": "2026-08-17T07:03:30.669Z"
           },
           {
             "sourceUrl": "https://www.akplaza.com/board/news/view?store=02&seq=28011",
             "sourceName": "AK플라자 공식 쇼핑뉴스",
             "contentType": "official_detail",
             "extractedField": "menus",
-            "capturedAt": "2026-08-16T21:41:30.401Z"
+            "capturedAt": "2026-08-17T07:03:30.669Z"
           },
           {
             "sourceUrl": "https://www.akplaza.com/board/news/view?store=02&seq=28011",
             "sourceName": "AK플라자 공식 쇼핑뉴스",
             "contentType": "official_detail",
             "extractedField": "menus",
-            "capturedAt": "2026-08-16T21:41:30.401Z"
+            "capturedAt": "2026-08-17T07:03:30.669Z"
           },
           {
             "sourceUrl": "https://www.akplaza.com/board/news/view?store=02&seq=28011",
             "sourceName": "AK플라자 공식 쇼핑뉴스",
             "contentType": "official_detail",
             "extractedField": "menus",
-            "capturedAt": "2026-08-16T21:41:30.401Z"
+            "capturedAt": "2026-08-17T07:03:30.669Z"
           },
           {
             "sourceUrl": "https://www.akplaza.com/board/news/view?store=02&seq=28011",
             "sourceName": "AK플라자 공식 쇼핑뉴스",
             "contentType": "official_detail",
             "extractedField": "menus",
-            "capturedAt": "2026-08-16T21:41:30.401Z"
+            "capturedAt": "2026-08-17T07:03:30.669Z"
           },
           {
             "sourceUrl": "https://www.akplaza.com/board/news/view?store=02&seq=28011",
             "sourceName": "AK플라자 공식 쇼핑뉴스",
             "contentType": "official_detail",
             "extractedField": "menus",
-            "capturedAt": "2026-08-16T21:41:30.401Z"
+            "capturedAt": "2026-08-17T07:03:30.669Z"
           },
           {
             "sourceUrl": "https://www.akplaza.com/board/news/view?store=02&seq=28011",
             "sourceName": "AK플라자 공식 쇼핑뉴스",
             "contentType": "official_detail",
             "extractedField": "menus",
-            "capturedAt": "2026-08-16T21:41:30.401Z"
+            "capturedAt": "2026-08-17T07:03:30.669Z"
           },
           {
             "sourceUrl": "https://www.akplaza.com/board/news/view?store=02&seq=28011",
             "sourceName": "AK플라자 공식 쇼핑뉴스",
             "contentType": "official_detail",
             "extractedField": "menus",
-            "capturedAt": "2026-08-16T21:41:30.401Z"
+            "capturedAt": "2026-08-17T07:03:30.669Z"
           }
         ],
         "failureReasons": [],
-        "checkedAt": "2026-08-16T21:41:30.401Z"
+        "checkedAt": "2026-08-17T07:03:30.669Z"
       },
       "imageCandidates": [
         "https://img-www.akplaza.com/upload/edm/news/28011/e57adacb-a46d-4473-9226-da14845005a6.jpg",
@@ -12845,7 +13106,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:50.225Z"
+        "checkedAt": "2026-08-17T07:03:35.054Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -13068,66 +13329,6 @@
           "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000551880",
           "sourceName": "롯데쇼핑 공식 행사",
           "evidenceType": "html"
-        },
-        {
-          "name": "오리지널계란빵",
-          "price": 3000,
-          "priceText": "3,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000551880",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "햄치즈계란빵",
-          "price": 3500,
-          "priceText": "3,500 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000551880",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "베이컨치즈계란빵",
-          "price": 3500,
-          "priceText": "3,500 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000551880",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "고구마치즈계란빵",
-          "price": 3500,
-          "priceText": "3,500 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000551880",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "땅콩빵 20개",
-          "price": 5000,
-          "priceText": "5,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000551880",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "땅콩빵 50개",
-          "price": 10000,
-          "priceText": "10,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000551880",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
         }
       ],
       "parserFailureReason": null,
@@ -13147,7 +13348,7 @@
         "contentType": "image/jpeg",
         "width": 670,
         "height": 947,
-        "checkedAt": "2026-08-16T21:41:50.247Z"
+        "checkedAt": "2026-08-17T07:03:35.051Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -13305,7 +13506,7 @@
         "contentType": "image/jpeg",
         "width": 751,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:50.466Z"
+        "checkedAt": "2026-08-17T07:03:35.085Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -13417,7 +13618,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:50.451Z"
+        "checkedAt": "2026-08-17T07:03:35.064Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -13691,76 +13892,6 @@
           "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552733",
           "sourceName": "롯데쇼핑 공식 행사",
           "evidenceType": "html"
-        },
-        {
-          "name": "튀김젓가락 1벌",
-          "price": 30000,
-          "priceText": "30,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552733",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "주걱",
-          "price": 30000,
-          "priceText": "30,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552733",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "발지압기",
-          "price": 20000,
-          "priceText": "20,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552733",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "대나무빗",
-          "price": 50000,
-          "priceText": "50,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552733",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "오동나무베게",
-          "price": 60000,
-          "priceText": "60,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552733",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "도마",
-          "price": 50000,
-          "priceText": "50,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552733",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "싸리채반",
-          "price": 150000,
-          "priceText": "150,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552733",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
         }
       ],
       "parserFailureReason": null,
@@ -13780,7 +13911,7 @@
         "contentType": "image/png",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:50.740Z"
+        "checkedAt": "2026-08-17T07:03:35.238Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -13980,7 +14111,7 @@
         "contentType": "image/jpeg",
         "width": 640,
         "height": 480,
-        "checkedAt": "2026-08-16T21:41:51.312Z"
+        "checkedAt": "2026-08-17T07:03:35.133Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -14037,7 +14168,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:50.642Z"
+        "checkedAt": "2026-08-17T07:03:35.084Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -14181,7 +14312,7 @@
         "contentType": "image/jpeg",
         "width": 1080,
         "height": 1080,
-        "checkedAt": "2026-08-16T21:41:50.996Z"
+        "checkedAt": "2026-08-17T07:03:35.113Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -14375,7 +14506,7 @@
         "contentType": "image/jpeg",
         "width": 764,
         "height": 764,
-        "checkedAt": "2026-08-16T21:41:50.836Z"
+        "checkedAt": "2026-08-17T07:03:35.097Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -14475,7 +14606,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:50.917Z"
+        "checkedAt": "2026-08-17T07:03:35.112Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -14599,7 +14730,7 @@
         "contentType": "image/png",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:51.027Z"
+        "checkedAt": "2026-08-17T07:03:35.184Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -14709,7 +14840,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:51.172Z"
+        "checkedAt": "2026-08-17T07:03:35.164Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -14819,7 +14950,7 @@
         "contentType": "image/png",
         "width": 764,
         "height": 764,
-        "checkedAt": "2026-08-16T21:41:51.184Z"
+        "checkedAt": "2026-08-17T07:03:35.150Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -14973,7 +15104,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:51.503Z"
+        "checkedAt": "2026-08-17T07:03:35.274Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -15080,7 +15211,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:51.371Z"
+        "checkedAt": "2026-08-17T07:03:35.182Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -15481,7 +15612,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:51.442Z"
+        "checkedAt": "2026-08-17T07:03:35.229Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -15554,7 +15685,7 @@
         "contentType": "image/jpeg",
         "width": 764,
         "height": 764,
-        "checkedAt": "2026-08-16T21:41:51.506Z"
+        "checkedAt": "2026-08-17T07:03:35.197Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -15708,7 +15839,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:51.554Z"
+        "checkedAt": "2026-08-17T07:03:35.226Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -15815,7 +15946,7 @@
         "contentType": "image/png",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:52.574Z"
+        "checkedAt": "2026-08-17T07:03:35.271Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -16037,7 +16168,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:51.702Z"
+        "checkedAt": "2026-08-17T07:03:35.244Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -16159,7 +16290,7 @@
         "contentType": "image/png",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:51.677Z"
+        "checkedAt": "2026-08-17T07:03:35.254Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -16428,7 +16559,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:51.751Z"
+        "checkedAt": "2026-08-17T07:03:35.269Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -16610,7 +16741,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:51.881Z"
+        "checkedAt": "2026-08-17T07:03:35.272Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -16684,7 +16815,7 @@
         "contentType": "image/jpeg",
         "width": 745,
         "height": 745,
-        "checkedAt": "2026-08-16T21:41:51.974Z"
+        "checkedAt": "2026-08-17T07:03:35.299Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -16933,7 +17064,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:51.979Z"
+        "checkedAt": "2026-08-17T07:03:35.299Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -17199,36 +17330,6 @@
           "evidenceType": "html"
         },
         {
-          "name": "떡볶이 Bowl",
-          "price": 6500,
-          "priceText": "6,500 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552552",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "어묵 Cup",
-          "price": 5500,
-          "priceText": "5,500 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552552",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "순대 bowl",
-          "price": 5500,
-          "priceText": "5,500 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552552",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
           "name": "떡대 김밥 1EA 주꾸미 미나리 1EA 잠봉 할라피뇨 감법 1EA 각",
           "price": 4500,
           "priceText": "4,500 원",
@@ -17257,26 +17358,6 @@
           "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552552",
           "sourceName": "롯데쇼핑 공식 행사",
           "evidenceType": "html"
-        },
-        {
-          "name": "떡튀순",
-          "price": 19000,
-          "priceText": "19,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552552",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "떡튀어",
-          "price": 19000,
-          "priceText": "19,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552552",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
         }
       ],
       "parserFailureReason": null,
@@ -17296,7 +17377,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:45.339Z"
+        "checkedAt": "2026-08-17T07:03:34.581Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -17476,7 +17557,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:52.079Z"
+        "checkedAt": "2026-08-17T07:03:35.298Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -17913,7 +17994,7 @@
         "contentType": "image/jpeg",
         "width": 720,
         "height": 360,
-        "checkedAt": "2026-08-16T21:41:51.976Z"
+        "checkedAt": "2026-08-17T07:03:35.279Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -17989,7 +18070,7 @@
         "contentType": "image/jpeg",
         "width": 720,
         "height": 360,
-        "checkedAt": "2026-08-16T21:41:51.976Z"
+        "checkedAt": "2026-08-17T07:03:35.281Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -18047,7 +18128,7 @@
         "contentType": "image/jpeg",
         "width": 720,
         "height": 360,
-        "checkedAt": "2026-08-16T21:41:51.977Z"
+        "checkedAt": "2026-08-17T07:03:35.282Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -18138,7 +18219,7 @@
         "contentType": "image/jpeg",
         "width": 720,
         "height": 360,
-        "checkedAt": "2026-08-16T21:41:51.977Z"
+        "checkedAt": "2026-08-17T07:03:35.283Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -18229,7 +18310,7 @@
         "contentType": "image/jpeg",
         "width": 720,
         "height": 360,
-        "checkedAt": "2026-08-16T21:41:51.978Z"
+        "checkedAt": "2026-08-17T07:03:35.284Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -18303,7 +18384,7 @@
         "contentType": "image/jpeg",
         "width": 990,
         "height": 990,
-        "checkedAt": "2026-08-16T21:41:48.142Z"
+        "checkedAt": "2026-08-17T07:03:34.783Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -18437,7 +18518,7 @@
         "contentType": "image/jpeg",
         "width": 5906,
         "height": 5906,
-        "checkedAt": "2026-08-16T21:41:52.234Z"
+        "checkedAt": "2026-08-17T07:03:35.335Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -18613,7 +18694,7 @@
         "contentType": "image/jpeg",
         "width": 925,
         "height": 925,
-        "checkedAt": "2026-08-16T21:41:52.153Z"
+        "checkedAt": "2026-08-17T07:03:35.309Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -18680,7 +18761,7 @@
         "contentType": "image/jpeg",
         "width": 990,
         "height": 990,
-        "checkedAt": "2026-08-16T21:41:48.142Z"
+        "checkedAt": "2026-08-17T07:03:34.783Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -18834,7 +18915,7 @@
         "contentType": "image/jpeg",
         "width": 663,
         "height": 663,
-        "checkedAt": "2026-08-16T21:41:52.278Z"
+        "checkedAt": "2026-08-17T07:03:35.329Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -19021,7 +19102,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:52.514Z"
+        "checkedAt": "2026-08-17T07:03:35.358Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -19212,7 +19293,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:52.487Z"
+        "checkedAt": "2026-08-17T07:03:35.357Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -19302,7 +19383,7 @@
         "contentType": "image/jpeg",
         "width": 720,
         "height": 720,
-        "checkedAt": "2026-08-16T21:41:52.899Z"
+        "checkedAt": "2026-08-17T07:03:35.386Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -19331,7 +19412,7 @@
             "contentType": "official_detail",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://img-www.akplaza.com/upload/edm/news/27891/9282c072-7145-4027-a490-8c9e410dd2f3.jpg",
-            "capturedAt": "2026-08-16T21:41:30.404Z"
+            "capturedAt": "2026-08-17T07:03:30.672Z"
           },
           {
             "sourceUrl": "https://www.akplaza.com/board/news/view?store=02&seq=27891",
@@ -19339,60 +19420,60 @@
             "contentType": "official_detail",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://img-www.akplaza.com/upload/edm/news/27891/da3e9d1e-7cb3-472a-b181-c6a619297342.jpg",
-            "capturedAt": "2026-08-16T21:41:30.404Z"
+            "capturedAt": "2026-08-17T07:03:30.672Z"
           },
           {
             "sourceUrl": "https://www.akplaza.com/board/news/view?store=02&seq=27891",
             "sourceName": "AK플라자 공식 쇼핑뉴스",
             "contentType": "official_detail",
             "extractedField": "menus",
-            "capturedAt": "2026-08-16T21:41:30.404Z"
+            "capturedAt": "2026-08-17T07:03:30.672Z"
           },
           {
             "sourceUrl": "https://www.akplaza.com/board/news/view?store=02&seq=27891",
             "sourceName": "AK플라자 공식 쇼핑뉴스",
             "contentType": "official_detail",
             "extractedField": "menus",
-            "capturedAt": "2026-08-16T21:41:30.404Z"
+            "capturedAt": "2026-08-17T07:03:30.672Z"
           },
           {
             "sourceUrl": "https://www.akplaza.com/board/news/view?store=02&seq=27891",
             "sourceName": "AK플라자 공식 쇼핑뉴스",
             "contentType": "official_detail",
             "extractedField": "menus",
-            "capturedAt": "2026-08-16T21:41:30.404Z"
+            "capturedAt": "2026-08-17T07:03:30.672Z"
           },
           {
             "sourceUrl": "https://www.akplaza.com/board/news/view?store=02&seq=27891",
             "sourceName": "AK플라자 공식 쇼핑뉴스",
             "contentType": "official_detail",
             "extractedField": "menus",
-            "capturedAt": "2026-08-16T21:41:30.404Z"
+            "capturedAt": "2026-08-17T07:03:30.672Z"
           },
           {
             "sourceUrl": "https://www.akplaza.com/board/news/view?store=02&seq=27891",
             "sourceName": "AK플라자 공식 쇼핑뉴스",
             "contentType": "official_detail",
             "extractedField": "menus",
-            "capturedAt": "2026-08-16T21:41:30.404Z"
+            "capturedAt": "2026-08-17T07:03:30.672Z"
           },
           {
             "sourceUrl": "https://www.akplaza.com/board/news/view?store=02&seq=27891",
             "sourceName": "AK플라자 공식 쇼핑뉴스",
             "contentType": "official_detail",
             "extractedField": "menus",
-            "capturedAt": "2026-08-16T21:41:30.404Z"
+            "capturedAt": "2026-08-17T07:03:30.672Z"
           },
           {
             "sourceUrl": "https://www.akplaza.com/board/news/view?store=02&seq=27891",
             "sourceName": "AK플라자 공식 쇼핑뉴스",
             "contentType": "official_detail",
             "extractedField": "menus",
-            "capturedAt": "2026-08-16T21:41:30.404Z"
+            "capturedAt": "2026-08-17T07:03:30.672Z"
           }
         ],
         "failureReasons": [],
-        "checkedAt": "2026-08-16T21:41:30.404Z"
+        "checkedAt": "2026-08-17T07:03:30.672Z"
       },
       "imageCandidates": [
         "https://img-www.akplaza.com/upload/edm/news/27891/9282c072-7145-4027-a490-8c9e410dd2f3.jpg",
@@ -19489,7 +19570,7 @@
         "contentType": "image/jpeg",
         "width": 670,
         "height": 4791,
-        "checkedAt": "2026-08-16T21:41:53.050Z"
+        "checkedAt": "2026-08-17T07:03:35.384Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -19563,7 +19644,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:52.721Z"
+        "checkedAt": "2026-08-17T07:03:35.395Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -19964,7 +20045,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:52.812Z"
+        "checkedAt": "2026-08-17T07:03:35.391Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -20248,66 +20329,6 @@
           "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000551548",
           "sourceName": "롯데쇼핑 공식 행사",
           "evidenceType": "html"
-        },
-        {
-          "name": "오리지날 에그타르트",
-          "price": 3700,
-          "priceText": "3,700 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000551548",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "피칸 타르트",
-          "price": 3800,
-          "priceText": "3,800 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000551548",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "바스크 치즈 타르트",
-          "price": 3800,
-          "priceText": "3,800 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000551548",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "초코 타르트",
-          "price": 3800,
-          "priceText": "3,800 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000551548",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "블루베리 크림치즈타르트",
-          "price": 4800,
-          "priceText": "4,800 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000551548",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "두바이 에그타르트",
-          "price": 4800,
-          "priceText": "4,800 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000551548",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
         }
       ],
       "parserFailureReason": null,
@@ -20327,7 +20348,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:52.974Z"
+        "checkedAt": "2026-08-17T07:03:35.413Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -20634,7 +20655,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:53.029Z"
+        "checkedAt": "2026-08-17T07:03:35.411Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -21112,146 +21133,6 @@
           "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000550893",
           "sourceName": "롯데쇼핑 공식 행사",
           "evidenceType": "html"
-        },
-        {
-          "name": "갈릭 쌀 닭강정",
-          "price": 4500,
-          "priceText": "4,500 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000550893",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "칠리 쌀 닭강정",
-          "price": 4500,
-          "priceText": "4,500 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000550893",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "크림 쌀 닭강정",
-          "price": 4500,
-          "priceText": "4,500 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000550893",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "양념 쌀 닭강정",
-          "price": 4500,
-          "priceText": "4,500 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000550893",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "간장 쌀 새우강정",
-          "price": 6500,
-          "priceText": "6,500 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000550893",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "칠리 쌀 새우강정",
-          "price": 6500,
-          "priceText": "6,500 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000550893",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "매콤 쌀 새우강정",
-          "price": 6500,
-          "priceText": "6,500 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000550893",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "갈릭 쌀 새우강정",
-          "price": 6500,
-          "priceText": "6,500 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000550893",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "숯불 바베큐 파닭꼬치",
-          "price": 6000,
-          "priceText": "6,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000550893",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "치즈 바베큐 파닭꼬치",
-          "price": 6000,
-          "priceText": "6,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000550893",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "데리야끼 파닭꼬치",
-          "price": 6000,
-          "priceText": "6,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000550893",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "파닭꼬치 4개 골라서",
-          "price": 22000,
-          "priceText": "22,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000550893",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "오리지널 소시지 제주 흑돼지 떡갈비 꼬치",
-          "price": 6000,
-          "priceText": "6,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000550893",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "매콤 소시지 제주 흑돼지 떡갈비 꼬치",
-          "price": 6000,
-          "priceText": "6,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000550893",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
         }
       ],
       "parserFailureReason": null,
@@ -21271,7 +21152,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:53.140Z"
+        "checkedAt": "2026-08-17T07:03:35.419Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -21554,7 +21435,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:53.220Z"
+        "checkedAt": "2026-08-17T07:03:35.417Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -21785,7 +21666,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:53.271Z"
+        "checkedAt": "2026-08-17T07:03:35.434Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -21952,6 +21833,123 @@
       "ocrStatus": "not_used"
     },
     {
+      "id": "ak:03:27932",
+      "name": "[브레더스] 신규 POP-UP",
+      "venue": "AK플라자 분당점",
+      "sourceName": "AK플라자 공식 쇼핑뉴스",
+      "status": "ongoing",
+      "contentQuality": "B",
+      "publishStatus": "published",
+      "qualityReasons": [],
+      "imageValidation": {
+        "status": "valid",
+        "contentType": "image/jpeg",
+        "width": 780,
+        "height": 780,
+        "checkedAt": "2026-08-17T07:03:35.428Z"
+      },
+      "contentSearch": {
+        "checkedOfficialList": true,
+        "checkedOfficialDetail": true,
+        "checkedEmbeddedData": true,
+        "checkedOfficialImages": true,
+        "checkedOperatorSearch": false,
+        "checkedBrandOfficialSources": false,
+        "checkedUrls": [
+          "https://www.akplaza.com/board/news/view?store=03&seq=27932",
+          "https://img-www.akplaza.com/upload/edm/news/27932/bb0543ee-5afd-43a2-b302-37b901e457a4.jpg",
+          "https://img-www.akplaza.com/upload/edm/news/27932/2f194af4-222f-405f-94fd-5927811bf47e.jpg"
+        ],
+        "checkedMethods": [
+          "official_detail_html"
+        ],
+        "imageCandidatesFound": 2,
+        "menuCandidatesFound": 3,
+        "priceCandidatesFound": 3,
+        "descriptionCandidatesFound": 0,
+        "status": "found",
+        "evidence": [
+          {
+            "sourceUrl": "https://www.akplaza.com/board/news/view?store=03&seq=27932",
+            "sourceName": "AK플라자 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "officialImageUrls",
+            "imageUrl": "https://img-www.akplaza.com/upload/edm/news/27932/bb0543ee-5afd-43a2-b302-37b901e457a4.jpg",
+            "capturedAt": "2026-08-17T07:03:30.682Z"
+          },
+          {
+            "sourceUrl": "https://www.akplaza.com/board/news/view?store=03&seq=27932",
+            "sourceName": "AK플라자 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "officialImageUrls",
+            "imageUrl": "https://img-www.akplaza.com/upload/edm/news/27932/2f194af4-222f-405f-94fd-5927811bf47e.jpg",
+            "capturedAt": "2026-08-17T07:03:30.682Z"
+          },
+          {
+            "sourceUrl": "https://www.akplaza.com/board/news/view?store=03&seq=27932",
+            "sourceName": "AK플라자 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "menus",
+            "capturedAt": "2026-08-17T07:03:30.682Z"
+          },
+          {
+            "sourceUrl": "https://www.akplaza.com/board/news/view?store=03&seq=27932",
+            "sourceName": "AK플라자 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "menus",
+            "capturedAt": "2026-08-17T07:03:30.682Z"
+          },
+          {
+            "sourceUrl": "https://www.akplaza.com/board/news/view?store=03&seq=27932",
+            "sourceName": "AK플라자 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "menus",
+            "capturedAt": "2026-08-17T07:03:30.682Z"
+          }
+        ],
+        "failureReasons": [],
+        "checkedAt": "2026-08-17T07:03:30.682Z"
+      },
+      "imageCandidates": [
+        "https://img-www.akplaza.com/upload/edm/news/27932/bb0543ee-5afd-43a2-b302-37b901e457a4.jpg",
+        "https://img-www.akplaza.com/upload/edm/news/27932/2f194af4-222f-405f-94fd-5927811bf47e.jpg"
+      ],
+      "menuCandidates": [
+        {
+          "name": "달덩이 에그타르트",
+          "price": 3500,
+          "priceText": "3,500원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.akplaza.com/board/news/view?store=03&seq=27932",
+          "sourceName": "AK플라자 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "달덩이 크림치즈 타르트",
+          "price": 4500,
+          "priceText": "4,500원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.akplaza.com/board/news/view?store=03&seq=27932",
+          "sourceName": "AK플라자 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        },
+        {
+          "name": "달덩이 블루베리 크림치즈 타르트",
+          "price": 4200,
+          "priceText": "4,200원",
+          "description": "",
+          "imageUrl": "",
+          "sourceUrl": "https://www.akplaza.com/board/news/view?store=03&seq=27932",
+          "sourceName": "AK플라자 공식 쇼핑뉴스",
+          "evidenceType": "html"
+        }
+      ],
+      "parserFailureReason": null,
+      "ocrStatus": "not_used"
+    },
+    {
       "id": "shinsegae-shopping:SC00008:8583690",
       "name": "[빵빵이와옥지의 럽스타그램] 팝업스토어",
       "venue": "신세계백화점 센텀시티점",
@@ -21967,7 +21965,7 @@
         "contentType": "image/jpeg",
         "width": 2154,
         "height": 1020,
-        "checkedAt": "2026-08-16T21:41:53.052Z"
+        "checkedAt": "2026-08-17T07:03:35.419Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -22025,7 +22023,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:53.276Z"
+        "checkedAt": "2026-08-17T07:03:35.436Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -22274,7 +22272,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:53.333Z"
+        "checkedAt": "2026-08-17T07:03:35.454Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -22425,7 +22423,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:53.423Z"
+        "checkedAt": "2026-08-17T07:03:35.451Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -22576,7 +22574,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:53.482Z"
+        "checkedAt": "2026-08-17T07:03:35.461Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -22730,16 +22728,6 @@
           "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000551407",
           "sourceName": "롯데쇼핑 공식 행사",
           "evidenceType": "html"
-        },
-        {
-          "name": "쑥인절미(통팥앙금) 3EA",
-          "price": 9000,
-          "priceText": "9,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000551407",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
         }
       ],
       "parserFailureReason": null,
@@ -22759,7 +22747,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:53.469Z"
+        "checkedAt": "2026-08-17T07:03:35.461Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -22906,7 +22894,7 @@
         "contentType": "image/jpeg",
         "width": 670,
         "height": 539,
-        "checkedAt": "2026-08-16T21:41:53.528Z"
+        "checkedAt": "2026-08-17T07:03:35.477Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -23144,7 +23132,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:53.621Z"
+        "checkedAt": "2026-08-17T07:03:35.491Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -23306,7 +23294,7 @@
         "contentType": "image/jpeg",
         "width": 764,
         "height": 764,
-        "checkedAt": "2026-08-16T21:41:53.718Z"
+        "checkedAt": "2026-08-17T07:03:35.512Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -23413,7 +23401,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:45.646Z"
+        "checkedAt": "2026-08-17T07:03:34.621Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -23575,7 +23563,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:53.705Z"
+        "checkedAt": "2026-08-17T07:03:35.485Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -23699,7 +23687,7 @@
         "contentType": "image/png",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:53.786Z"
+        "checkedAt": "2026-08-17T07:03:35.513Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -23756,7 +23744,7 @@
         "contentType": "image/jpeg",
         "width": 1440,
         "height": 1440,
-        "checkedAt": "2026-08-16T21:41:53.830Z"
+        "checkedAt": "2026-08-17T07:03:35.525Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -24019,7 +24007,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:54.021Z"
+        "checkedAt": "2026-08-17T07:03:35.533Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -24171,7 +24159,7 @@
         "status": "review_required",
         "reason": "dimensions_unreadable",
         "contentType": "image/jpeg",
-        "checkedAt": "2026-08-16T21:41:54.079Z"
+        "checkedAt": "2026-08-17T07:03:35.701Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -24261,7 +24249,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:54.036Z"
+        "checkedAt": "2026-08-17T07:03:35.597Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -24368,7 +24356,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:54.084Z"
+        "checkedAt": "2026-08-17T07:03:35.552Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -24650,7 +24638,7 @@
         "contentType": "image/png",
         "width": 1080,
         "height": 1080,
-        "checkedAt": "2026-08-16T21:41:54.270Z"
+        "checkedAt": "2026-08-17T07:03:35.606Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -24824,7 +24812,7 @@
         "contentType": "image/jpeg",
         "width": 764,
         "height": 764,
-        "checkedAt": "2026-08-16T21:41:50.836Z"
+        "checkedAt": "2026-08-17T07:03:35.097Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -24934,7 +24922,7 @@
         "contentType": "image/png",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:54.258Z"
+        "checkedAt": "2026-08-17T07:03:35.599Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -25058,7 +25046,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:54.277Z"
+        "checkedAt": "2026-08-17T07:03:35.613Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -25199,7 +25187,7 @@
         "contentType": "image/jpeg",
         "width": 335,
         "height": 335,
-        "checkedAt": "2026-08-16T21:41:54.259Z"
+        "checkedAt": "2026-08-17T07:03:35.614Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -25448,7 +25436,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:54.489Z"
+        "checkedAt": "2026-08-17T07:03:35.634Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -25584,7 +25572,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:54.468Z"
+        "checkedAt": "2026-08-17T07:03:35.633Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -25974,126 +25962,6 @@
           "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000551465",
           "sourceName": "롯데쇼핑 공식 행사",
           "evidenceType": "html"
-        },
-        {
-          "name": "망고 젤리(200g)",
-          "price": 6000,
-          "priceText": "6,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000551465",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "리치 젤리(200g)",
-          "price": 6000,
-          "priceText": "6,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000551465",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "샤인머스켓 젤리(200g)",
-          "price": 6000,
-          "priceText": "6,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000551465",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "배도라지 젤리(200g)",
-          "price": 6000,
-          "priceText": "6,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000551465",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "군고구마 젤리(200g)",
-          "price": 6000,
-          "priceText": "6,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000551465",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "흑깨생강 젤리(200g)",
-          "price": 5000,
-          "priceText": "5,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000551465",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "딸기맛 쫀득쿠키(200g)",
-          "price": 6000,
-          "priceText": "6,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000551465",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "초코딸기맛 쫀득쿠키(200g)",
-          "price": 6000,
-          "priceText": "6,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000551465",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "황금 꿀고구마칩(150g)",
-          "price": 6000,
-          "priceText": "6,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000551465",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "비타링 캔디(120g)",
-          "price": 8000,
-          "priceText": "8,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000551465",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "비타링 캔디(160g)",
-          "price": 11000,
-          "priceText": "11,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000551465",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "비타링 캔디(250g)",
-          "price": 15000,
-          "priceText": "15,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000551465",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
         }
       ],
       "parserFailureReason": null,
@@ -26113,7 +25981,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:54.523Z"
+        "checkedAt": "2026-08-17T07:03:35.672Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -26277,7 +26145,7 @@
         "contentType": "image/jpeg",
         "width": 335,
         "height": 335,
-        "checkedAt": "2026-08-16T21:41:54.469Z"
+        "checkedAt": "2026-08-17T07:03:35.668Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -27002,7 +26870,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:54.642Z"
+        "checkedAt": "2026-08-17T07:03:35.659Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -27145,7 +27013,7 @@
         "contentType": "image/jpeg",
         "width": 640,
         "height": 480,
-        "checkedAt": "2026-08-16T21:41:54.830Z"
+        "checkedAt": "2026-08-17T07:03:35.703Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -27202,7 +27070,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:54.689Z"
+        "checkedAt": "2026-08-17T07:03:35.699Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -27585,7 +27453,7 @@
         "contentType": "image/png",
         "width": 720,
         "height": 360,
-        "checkedAt": "2026-08-16T21:41:54.526Z"
+        "checkedAt": "2026-08-17T07:03:35.675Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -27676,7 +27544,7 @@
         "contentType": "image/png",
         "width": 720,
         "height": 360,
-        "checkedAt": "2026-08-16T21:41:54.535Z"
+        "checkedAt": "2026-08-17T07:03:35.676Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -27750,7 +27618,7 @@
         "contentType": "image/jpeg",
         "width": 720,
         "height": 360,
-        "checkedAt": "2026-08-16T21:41:54.535Z"
+        "checkedAt": "2026-08-17T07:03:35.677Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -27841,7 +27709,7 @@
         "contentType": "image/jpeg",
         "width": 720,
         "height": 360,
-        "checkedAt": "2026-08-16T21:41:54.536Z"
+        "checkedAt": "2026-08-17T07:03:35.679Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -27932,7 +27800,7 @@
         "contentType": "image/jpeg",
         "width": 720,
         "height": 360,
-        "checkedAt": "2026-08-16T21:41:54.536Z"
+        "checkedAt": "2026-08-17T07:03:35.681Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -28006,7 +27874,7 @@
         "contentType": "image/jpeg",
         "width": 720,
         "height": 360,
-        "checkedAt": "2026-08-16T21:41:54.536Z"
+        "checkedAt": "2026-08-17T07:03:35.682Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -28148,7 +28016,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:54.736Z"
+        "checkedAt": "2026-08-17T07:03:35.713Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -28381,7 +28249,7 @@
         "contentType": "image/png",
         "width": 720,
         "height": 360,
-        "checkedAt": "2026-08-16T21:41:54.642Z"
+        "checkedAt": "2026-08-17T07:03:35.700Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -28439,7 +28307,7 @@
         "contentType": "image/jpeg",
         "width": 720,
         "height": 360,
-        "checkedAt": "2026-08-16T21:41:54.643Z"
+        "checkedAt": "2026-08-17T07:03:35.702Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -28547,7 +28415,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:54.868Z"
+        "checkedAt": "2026-08-17T07:03:35.720Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -28680,7 +28548,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:54.924Z"
+        "checkedAt": "2026-08-17T07:03:35.715Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -28973,7 +28841,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:54.946Z"
+        "checkedAt": "2026-08-17T07:03:35.721Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -29257,66 +29125,6 @@
           "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549522",
           "sourceName": "롯데쇼핑 공식 행사",
           "evidenceType": "html"
-        },
-        {
-          "name": "오리지날 에그타르트",
-          "price": 3700,
-          "priceText": "3,700 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549522",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "피칸 타르트",
-          "price": 3800,
-          "priceText": "3,800 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549522",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "바스크 치즈 타르트",
-          "price": 3800,
-          "priceText": "3,800 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549522",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "초코 타르트",
-          "price": 3800,
-          "priceText": "3,800 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549522",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "블루베리 크림치즈타르트",
-          "price": 4800,
-          "priceText": "4,800 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549522",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "두바이 에그타르트",
-          "price": 4800,
-          "priceText": "4,800 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549522",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
         }
       ],
       "parserFailureReason": null,
@@ -29336,7 +29144,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:49.235Z"
+        "checkedAt": "2026-08-17T07:03:34.913Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -29678,116 +29486,6 @@
           "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549744",
           "sourceName": "롯데쇼핑 공식 행사",
           "evidenceType": "html"
-        },
-        {
-          "name": "오사카 시오빵 (1개)",
-          "price": 4500,
-          "priceText": "4,500 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549744",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "오사카 크랙 시오빵 (1개)",
-          "price": 4000,
-          "priceText": "4,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549744",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "미니 시오빵 (1개)",
-          "price": 7000,
-          "priceText": "7,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549744",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "두바이 시오빵 (1개)",
-          "price": 9000,
-          "priceText": "9,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549744",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "멜론 시오빵 (1개)",
-          "price": 6500,
-          "priceText": "6,500 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549744",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "야끼소바 시오빵 (1개)",
-          "price": 6500,
-          "priceText": "6,500 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549744",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "명란 시오빵 (1개)",
-          "price": 6000,
-          "priceText": "6,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549744",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "불닭 시오빵 (1개)",
-          "price": 6000,
-          "priceText": "6,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549744",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "카스테라 시오빵 (1개)",
-          "price": 6000,
-          "priceText": "6,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549744",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "시오빵 러스크 (1개)",
-          "price": 4500,
-          "priceText": "4,500 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549744",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "미니 쇼쿠판 (1개)",
-          "price": 6500,
-          "priceText": "6,500 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549744",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
         }
       ],
       "parserFailureReason": null,
@@ -29807,7 +29505,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:55.003Z"
+        "checkedAt": "2026-08-17T07:03:35.748Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -30056,7 +29754,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:55.094Z"
+        "checkedAt": "2026-08-17T07:03:35.743Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -30334,7 +30032,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:55.128Z"
+        "checkedAt": "2026-08-17T07:03:35.741Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -30514,7 +30212,7 @@
         "contentType": "image/jpeg",
         "width": 1080,
         "height": 1080,
-        "checkedAt": "2026-08-16T21:41:55.188Z"
+        "checkedAt": "2026-08-17T07:03:35.750Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -30682,7 +30380,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:55.252Z"
+        "checkedAt": "2026-08-17T07:03:35.786Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -30840,7 +30538,7 @@
         "contentType": "image/jpeg",
         "width": 300,
         "height": 227,
-        "checkedAt": "2026-08-16T21:41:55.921Z"
+        "checkedAt": "2026-08-17T07:03:35.863Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -30904,7 +30602,7 @@
         "contentType": "image/png",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:51.677Z"
+        "checkedAt": "2026-08-17T07:03:35.254Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -31149,7 +30847,7 @@
         "contentType": "image/jpeg",
         "width": 720,
         "height": 720,
-        "checkedAt": "2026-08-16T21:41:55.128Z"
+        "checkedAt": "2026-08-17T07:03:35.749Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -31218,7 +30916,7 @@
         "contentType": "image/jpeg",
         "width": 335,
         "height": 335,
-        "checkedAt": "2026-08-16T21:41:55.308Z"
+        "checkedAt": "2026-08-17T07:03:35.783Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -31380,7 +31078,7 @@
         "contentType": "image/jpeg",
         "width": 1280,
         "height": 1280,
-        "checkedAt": "2026-08-16T21:41:55.390Z"
+        "checkedAt": "2026-08-17T07:03:35.791Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -31650,7 +31348,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:55.476Z"
+        "checkedAt": "2026-08-17T07:03:35.799Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -31794,7 +31492,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:55.539Z"
+        "checkedAt": "2026-08-17T07:03:35.811Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -32357,7 +32055,7 @@
         "contentType": "image/jpeg",
         "width": 670,
         "height": 654,
-        "checkedAt": "2026-08-16T21:41:55.580Z"
+        "checkedAt": "2026-08-17T07:03:35.812Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -32577,7 +32275,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:55.691Z"
+        "checkedAt": "2026-08-17T07:03:35.821Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -32728,7 +32426,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:55.772Z"
+        "checkedAt": "2026-08-17T07:03:35.833Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -33183,7 +32881,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:55.797Z"
+        "checkedAt": "2026-08-17T07:03:35.836Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -33276,7 +32974,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:55.916Z"
+        "checkedAt": "2026-08-17T07:03:35.850Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -33601,7 +33299,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:56.003Z"
+        "checkedAt": "2026-08-17T07:03:35.852Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -33966,7 +33664,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:56.071Z"
+        "checkedAt": "2026-08-17T07:03:35.897Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -34291,7 +33989,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:56.133Z"
+        "checkedAt": "2026-08-17T07:03:35.869Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -34511,7 +34209,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:55.094Z"
+        "checkedAt": "2026-08-17T07:03:35.743Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -34789,7 +34487,7 @@
         "contentType": "image/png",
         "width": 837,
         "height": 837,
-        "checkedAt": "2026-08-16T21:41:56.179Z"
+        "checkedAt": "2026-08-17T07:03:35.899Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -34963,7 +34661,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:56.231Z"
+        "checkedAt": "2026-08-17T07:03:35.887Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -35149,56 +34847,6 @@
           "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549865",
           "sourceName": "롯데쇼핑 공식 행사",
           "evidenceType": "html"
-        },
-        {
-          "name": "망고산도",
-          "price": 8500,
-          "priceText": "8,500 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549865",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "복숭아산도",
-          "price": 8500,
-          "priceText": "8,500 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549865",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "후르츠산도",
-          "price": 9500,
-          "priceText": "9,500 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549865",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "파인애플산도",
-          "price": 8000,
-          "priceText": "8,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549865",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "메론산도",
-          "price": 8500,
-          "priceText": "8,500 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549865",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
         }
       ],
       "parserFailureReason": null,
@@ -35218,7 +34866,7 @@
         "contentType": "image/png",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:56.322Z"
+        "checkedAt": "2026-08-17T07:03:35.944Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -35345,7 +34993,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:56.379Z"
+        "checkedAt": "2026-08-17T07:03:35.942Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -35469,7 +35117,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:56.371Z"
+        "checkedAt": "2026-08-17T07:03:35.930Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -35633,7 +35281,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:56.408Z"
+        "checkedAt": "2026-08-17T07:03:35.929Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -35787,7 +35435,7 @@
         "contentType": "image/jpeg",
         "width": 2000,
         "height": 2000,
-        "checkedAt": "2026-08-16T21:41:56.562Z"
+        "checkedAt": "2026-08-17T07:03:35.965Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -35924,7 +35572,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:56.548Z"
+        "checkedAt": "2026-08-17T07:03:36.043Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -36078,7 +35726,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:56.596Z"
+        "checkedAt": "2026-08-17T07:03:35.982Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -36188,7 +35836,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:56.609Z"
+        "checkedAt": "2026-08-17T07:03:35.994Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -36312,7 +35960,7 @@
         "contentType": "image/jpeg",
         "width": 745,
         "height": 745,
-        "checkedAt": "2026-08-16T21:41:51.974Z"
+        "checkedAt": "2026-08-17T07:03:35.299Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -36431,7 +36079,7 @@
         "contentType": "image/png",
         "width": 760,
         "height": 760,
-        "checkedAt": "2026-08-16T21:41:56.807Z"
+        "checkedAt": "2026-08-17T07:03:36.044Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -36555,7 +36203,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:56.809Z"
+        "checkedAt": "2026-08-17T07:03:36.026Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -36827,7 +36475,7 @@
         "contentType": "image/jpeg",
         "width": 720,
         "height": 1200,
-        "checkedAt": "2026-08-16T21:41:56.923Z"
+        "checkedAt": "2026-08-17T07:03:36.147Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -36900,7 +36548,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:56.791Z"
+        "checkedAt": "2026-08-17T07:03:36.050Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -37044,7 +36692,7 @@
         "contentType": "image/jpeg",
         "width": 720,
         "height": 1200,
-        "checkedAt": "2026-08-16T21:41:56.866Z"
+        "checkedAt": "2026-08-17T07:03:36.156Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -37117,7 +36765,7 @@
         "contentType": "image/jpeg",
         "width": 720,
         "height": 1200,
-        "checkedAt": "2026-08-16T21:41:56.918Z"
+        "checkedAt": "2026-08-17T07:03:36.160Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -37190,7 +36838,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:57.008Z"
+        "checkedAt": "2026-08-17T07:03:36.061Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -37354,7 +37002,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:57.051Z"
+        "checkedAt": "2026-08-17T07:03:36.094Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -37518,7 +37166,7 @@
         "contentType": "image/jpeg",
         "width": 961,
         "height": 961,
-        "checkedAt": "2026-08-16T21:41:57.115Z"
+        "checkedAt": "2026-08-17T07:03:36.131Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -37618,7 +37266,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:54.084Z"
+        "checkedAt": "2026-08-17T07:03:35.552Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -37782,7 +37430,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:57.142Z"
+        "checkedAt": "2026-08-17T07:03:36.304Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -37946,7 +37594,7 @@
         "contentType": "image/jpeg",
         "width": 764,
         "height": 764,
-        "checkedAt": "2026-08-16T21:41:57.182Z"
+        "checkedAt": "2026-08-17T07:03:36.170Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -38226,7 +37874,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:57.284Z"
+        "checkedAt": "2026-08-17T07:03:36.191Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -38482,7 +38130,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:57.341Z"
+        "checkedAt": "2026-08-17T07:03:36.258Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -38636,7 +38284,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:57.331Z"
+        "checkedAt": "2026-08-17T07:03:36.202Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -38732,7 +38380,7 @@
         "contentType": "image/png",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:57.431Z"
+        "checkedAt": "2026-08-17T07:03:36.239Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -38900,7 +38548,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:57.466Z"
+        "checkedAt": "2026-08-17T07:03:36.243Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -39037,7 +38685,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:57.508Z"
+        "checkedAt": "2026-08-17T07:03:36.273Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -39178,7 +38826,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:50.917Z"
+        "checkedAt": "2026-08-17T07:03:35.112Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -39302,7 +38950,7 @@
         "contentType": "image/jpeg",
         "width": 989,
         "height": 989,
-        "checkedAt": "2026-08-16T21:41:57.577Z"
+        "checkedAt": "2026-08-17T07:03:36.294Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -39392,7 +39040,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:57.685Z"
+        "checkedAt": "2026-08-17T07:03:36.313Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -39529,7 +39177,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:57.651Z"
+        "checkedAt": "2026-08-17T07:03:36.314Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -39653,7 +39301,7 @@
         "contentType": "image/jpeg",
         "width": 720,
         "height": 1200,
-        "checkedAt": "2026-08-16T21:41:57.670Z"
+        "checkedAt": "2026-08-17T07:03:36.337Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -39726,7 +39374,7 @@
         "contentType": "image/jpeg",
         "width": 764,
         "height": 764,
-        "checkedAt": "2026-08-16T21:41:57.777Z"
+        "checkedAt": "2026-08-17T07:03:36.326Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -40057,7 +39705,7 @@
         "contentType": "image/jpeg",
         "width": 1079,
         "height": 1079,
-        "checkedAt": "2026-08-16T21:41:57.831Z"
+        "checkedAt": "2026-08-17T07:03:36.342Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -40174,7 +39822,7 @@
         "contentType": "image/png",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:57.922Z"
+        "checkedAt": "2026-08-17T07:03:36.390Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -40264,7 +39912,7 @@
         "contentType": "image/jpeg",
         "width": 720,
         "height": 1200,
-        "checkedAt": "2026-08-16T21:41:57.739Z"
+        "checkedAt": "2026-08-17T07:03:36.378Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -40337,7 +39985,7 @@
         "contentType": "image/jpeg",
         "width": 720,
         "height": 1305,
-        "checkedAt": "2026-08-16T21:41:57.906Z"
+        "checkedAt": "2026-08-17T07:03:36.389Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -40410,7 +40058,7 @@
         "contentType": "image/jpeg",
         "width": 764,
         "height": 764,
-        "checkedAt": "2026-08-16T21:41:57.982Z"
+        "checkedAt": "2026-08-17T07:03:36.378Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -40646,7 +40294,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:58.072Z"
+        "checkedAt": "2026-08-17T07:03:36.448Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -40810,7 +40458,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:58.122Z"
+        "checkedAt": "2026-08-17T07:03:36.447Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -40917,7 +40565,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:58.167Z"
+        "checkedAt": "2026-08-17T07:03:36.435Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -40992,7 +40640,7 @@
         "contentType": "image/jpeg",
         "width": 670,
         "height": 670,
-        "checkedAt": "2026-08-16T21:41:58.192Z"
+        "checkedAt": "2026-08-17T07:03:36.434Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -41066,7 +40714,7 @@
         "contentType": "image/jpeg",
         "width": 720,
         "height": 720,
-        "checkedAt": "2026-08-16T21:41:58.073Z"
+        "checkedAt": "2026-08-17T07:03:36.436Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -41174,7 +40822,7 @@
         "contentType": "image/jpeg",
         "width": 720,
         "height": 720,
-        "checkedAt": "2026-08-16T21:41:58.073Z"
+        "checkedAt": "2026-08-17T07:03:36.437Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -41316,7 +40964,7 @@
         "contentType": "image/jpeg",
         "width": 720,
         "height": 720,
-        "checkedAt": "2026-08-16T21:41:58.074Z"
+        "checkedAt": "2026-08-17T07:03:36.438Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -41407,7 +41055,7 @@
         "contentType": "image/png",
         "width": 720,
         "height": 720,
-        "checkedAt": "2026-08-16T21:41:58.075Z"
+        "checkedAt": "2026-08-17T07:03:36.443Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -41498,7 +41146,7 @@
         "contentType": "image/jpeg",
         "width": 720,
         "height": 720,
-        "checkedAt": "2026-08-16T21:41:58.075Z"
+        "checkedAt": "2026-08-17T07:03:36.440Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -41623,7 +41271,7 @@
         "contentType": "image/jpeg",
         "width": 720,
         "height": 720,
-        "checkedAt": "2026-08-16T21:41:58.076Z"
+        "checkedAt": "2026-08-17T07:03:36.446Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -41697,7 +41345,7 @@
         "contentType": "image/png",
         "width": 720,
         "height": 720,
-        "checkedAt": "2026-08-16T21:41:58.077Z"
+        "checkedAt": "2026-08-17T07:03:36.450Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -41771,7 +41419,7 @@
         "contentType": "image/jpeg",
         "width": 720,
         "height": 720,
-        "checkedAt": "2026-08-16T21:41:58.077Z"
+        "checkedAt": "2026-08-17T07:03:36.449Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -41864,7 +41512,7 @@
         "contentType": "image/jpeg",
         "width": 1687,
         "height": 2249,
-        "checkedAt": "2026-08-16T21:41:58.632Z"
+        "checkedAt": "2026-08-17T07:03:36.524Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -42046,7 +41694,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:58.331Z"
+        "checkedAt": "2026-08-17T07:03:36.487Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -42155,7 +41803,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:58.424Z"
+        "checkedAt": "2026-08-17T07:03:36.500Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -42313,7 +41961,7 @@
         "contentType": "image/png",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:58.393Z"
+        "checkedAt": "2026-08-17T07:03:36.508Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -42477,7 +42125,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:58.511Z"
+        "checkedAt": "2026-08-17T07:03:36.523Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -42737,7 +42385,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:48.796Z"
+        "checkedAt": "2026-08-17T07:03:34.868Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -43138,7 +42786,7 @@
         "contentType": "image/jpeg",
         "width": 694,
         "height": 694,
-        "checkedAt": "2026-08-16T21:41:58.615Z"
+        "checkedAt": "2026-08-17T07:03:36.522Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -43358,7 +43006,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:58.643Z"
+        "checkedAt": "2026-08-17T07:03:36.535Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -43450,7 +43098,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:58.764Z"
+        "checkedAt": "2026-08-17T07:03:36.535Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -43520,7 +43168,7 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-16T21:41:43.745Z"
+        "checkedAt": "2026-08-17T07:03:34.261Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -43570,7 +43218,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:58.990Z"
+        "checkedAt": "2026-08-17T07:03:36.560Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -43669,7 +43317,7 @@
         "contentType": "image/jpeg",
         "width": 720,
         "height": 1260,
-        "checkedAt": "2026-08-16T21:41:58.856Z"
+        "checkedAt": "2026-08-17T07:03:36.567Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -43793,7 +43441,7 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-16T21:41:43.745Z"
+        "checkedAt": "2026-08-17T07:03:34.261Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -43844,7 +43492,7 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-16T21:41:43.745Z"
+        "checkedAt": "2026-08-17T07:03:34.261Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -43894,7 +43542,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:58.877Z"
+        "checkedAt": "2026-08-17T07:03:36.566Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -44045,408 +43693,6 @@
       "ocrStatus": "not_used"
     },
     {
-      "id": "lotte:dongtan:bacha-coffee",
-      "name": "바샤커피",
-      "venue": "롯데백화점 동탄점",
-      "sourceName": "롯데쇼핑 공식 행사",
-      "status": "ongoing",
-      "contentQuality": "A",
-      "publishStatus": "published",
-      "qualityReasons": [],
-      "imageValidation": {
-        "status": "valid",
-        "contentType": "image/jpeg",
-        "width": 750,
-        "height": 750,
-        "checkedAt": "2026-08-16T21:41:48.796Z"
-      },
-      "contentSearch": {
-        "checkedOfficialList": true,
-        "checkedOfficialDetail": true,
-        "checkedEmbeddedData": true,
-        "checkedOfficialImages": true,
-        "checkedOperatorSearch": true,
-        "checkedBrandOfficialSources": false,
-        "checkedUrls": [
-          "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EB%B0%94%EC%83%A4%EC%BB%A4%ED%94%BC",
-          "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-          "https://minfo.lotteshopping.com/content/news/202605/SNM00000000000531614/20260507104705644_2.jpeg",
-          "https://minfo.lotteshopping.com/content/news/202603/SNM00000000000518271/20260306152438765_7.jpeg",
-          "https://minfo.lotteshopping.com/content/news/202504/SNM00000000000450272/20250424173900243_8.jpeg",
-          "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000508377/20260122135049702_7.jpeg",
-          "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000508377/20260122135049697_9.jpeg",
-          "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000508377/20260122135755948_8.jpeg",
-          "https://minfo.lotteshopping.com/content/news/202603/SNM00000000000518271/20260306152438775_7.jpeg",
-          "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000508377/20260122161103108_2.jpeg",
-          "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000508377/20260122161103113_1.jpeg",
-          "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000508377/20260122161103117_3.jpeg",
-          "https://minfo.lotteshopping.com/content/news/202603/SNM00000000000518271/20260306152438793_2.jpeg",
-          "https://minfo.lotteshopping.com/content/news/202603/SNM00000000000518271/20260306152438798_1.jpeg"
-        ],
-        "checkedMethods": [
-          "official_list_html",
-          "operator_internal_search",
-          "embedded_json_scan",
-          "official_detail_html",
-          "official_detail_embedded_json",
-          "official_image_candidate_scan"
-        ],
-        "imageCandidatesFound": 12,
-        "menuCandidatesFound": 12,
-        "priceCandidatesFound": 12,
-        "descriptionCandidatesFound": 0,
-        "status": "found",
-        "evidence": [
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "selector": "og:image|embedded JSON|img|srcset|background-image",
-            "imageUrl": "https://minfo.lotteshopping.com/content/news/202605/SNM00000000000531614/20260507104705644_2.jpeg",
-            "capturedAt": "2026-08-16T21:38:20.848Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "selector": "og:image|embedded JSON|img|srcset|background-image",
-            "imageUrl": "https://minfo.lotteshopping.com/content/news/202603/SNM00000000000518271/20260306152438765_7.jpeg",
-            "capturedAt": "2026-08-16T21:38:20.848Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "selector": "og:image|embedded JSON|img|srcset|background-image",
-            "imageUrl": "https://minfo.lotteshopping.com/content/news/202504/SNM00000000000450272/20250424173900243_8.jpeg",
-            "capturedAt": "2026-08-16T21:38:20.848Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "selector": "og:image|embedded JSON|img|srcset|background-image",
-            "imageUrl": "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000508377/20260122135049702_7.jpeg",
-            "capturedAt": "2026-08-16T21:38:20.848Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "selector": "og:image|embedded JSON|img|srcset|background-image",
-            "imageUrl": "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000508377/20260122135049697_9.jpeg",
-            "capturedAt": "2026-08-16T21:38:20.848Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "selector": "og:image|embedded JSON|img|srcset|background-image",
-            "imageUrl": "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000508377/20260122135755948_8.jpeg",
-            "capturedAt": "2026-08-16T21:38:20.848Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "selector": "og:image|embedded JSON|img|srcset|background-image",
-            "imageUrl": "https://minfo.lotteshopping.com/content/news/202603/SNM00000000000518271/20260306152438775_7.jpeg",
-            "capturedAt": "2026-08-16T21:38:20.848Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "selector": "og:image|embedded JSON|img|srcset|background-image",
-            "imageUrl": "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000508377/20260122161103108_2.jpeg",
-            "capturedAt": "2026-08-16T21:38:20.848Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "selector": "og:image|embedded JSON|img|srcset|background-image",
-            "imageUrl": "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000508377/20260122161103113_1.jpeg",
-            "capturedAt": "2026-08-16T21:38:20.848Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "selector": "og:image|embedded JSON|img|srcset|background-image",
-            "imageUrl": "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000508377/20260122161103117_3.jpeg",
-            "capturedAt": "2026-08-16T21:38:20.848Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "selector": "og:image|embedded JSON|img|srcset|background-image",
-            "imageUrl": "https://minfo.lotteshopping.com/content/news/202603/SNM00000000000518271/20260306152438793_2.jpeg",
-            "capturedAt": "2026-08-16T21:38:20.848Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "selector": "og:image|embedded JSON|img|srcset|background-image",
-            "imageUrl": "https://minfo.lotteshopping.com/content/news/202603/SNM00000000000518271/20260306152438798_1.jpeg",
-            "capturedAt": "2026-08-16T21:38:20.848Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "selector": "detail text price line and nearest product name",
-            "capturedAt": "2026-08-16T21:38:20.848Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "selector": "detail text price line and nearest product name",
-            "capturedAt": "2026-08-16T21:38:20.848Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "selector": "detail text price line and nearest product name",
-            "capturedAt": "2026-08-16T21:38:20.848Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "selector": "detail text price line and nearest product name",
-            "capturedAt": "2026-08-16T21:38:20.848Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "selector": "detail text price line and nearest product name",
-            "capturedAt": "2026-08-16T21:38:20.848Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "selector": "detail text price line and nearest product name",
-            "capturedAt": "2026-08-16T21:38:20.848Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "selector": "detail text price line and nearest product name",
-            "capturedAt": "2026-08-16T21:38:20.848Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "selector": "detail text price line and nearest product name",
-            "capturedAt": "2026-08-16T21:38:20.848Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "selector": "detail text price line and nearest product name",
-            "capturedAt": "2026-08-16T21:38:20.848Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "selector": "detail text price line and nearest product name",
-            "capturedAt": "2026-08-16T21:38:20.848Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "selector": "detail text price line and nearest product name",
-            "capturedAt": "2026-08-16T21:38:20.848Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "selector": "detail text price line and nearest product name",
-            "capturedAt": "2026-08-16T21:38:20.848Z"
-          }
-        ],
-        "failureReasons": [
-          "brand_official_sources_not_checked"
-        ],
-        "checkedAt": "2026-08-16T21:38:20.848Z"
-      },
-      "imageCandidates": [
-        "https://minfo.lotteshopping.com/content/news/202605/SNM00000000000531614/20260507104705644_2.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202603/SNM00000000000518271/20260306152438765_7.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202504/SNM00000000000450272/20250424173900243_8.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000508377/20260122135049702_7.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000508377/20260122135049697_9.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000508377/20260122135755948_8.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202603/SNM00000000000518271/20260306152438775_7.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000508377/20260122161103108_2.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000508377/20260122161103113_1.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000508377/20260122161103117_3.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202603/SNM00000000000518271/20260306152438793_2.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202603/SNM00000000000518271/20260306152438798_1.jpeg"
-      ],
-      "menuCandidates": [
-        {
-          "name": "밀라노 모닝 커피 드립백(12개입)",
-          "price": 42000,
-          "priceText": "42,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "1910 커피 드립백 (12개입)",
-          "price": 42000,
-          "priceText": "42,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "캐러멜로 모닝 커피 드립백 (12개입)",
-          "price": 42000,
-          "priceText": "42,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "톨테카 초콜릿 커피 드립백 (12개입)",
-          "price": 42000,
-          "priceText": "42,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "마운트 케냐 커피 드립백 (12개입)",
-          "price": 42000,
-          "priceText": "42,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "네비게이터 커피 드립백 세트(25개입)",
-          "price": 84000,
-          "priceText": "84,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "익스플로러 커피 드립백 세트(25개입)",
-          "price": 84000,
-          "priceText": "84,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "어쏘티트 커피 드립백 세트(25개입)",
-          "price": 84000,
-          "priceText": "84,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "노마드컬렉션 밀라노 모닝 커피 원두 250g",
-          "price": 65000,
-          "priceText": "65,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "노마드컬렉션 1910 커피 원두 250g",
-          "price": 65000,
-          "priceText": "65,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "노마드컬렉션 아이 러브 파리 커피 원두 250g",
-          "price": 65000,
-          "priceText": "65,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "노마드컬렉션 블루마운틴 월렌포드 커피 원두 250g",
-          "price": 540000,
-          "priceText": "540,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        }
-      ],
-      "parserFailureReason": null,
-      "ocrStatus": "not_used"
-    },
-    {
       "id": "galleria:timeworld:c85834:beatzel",
       "name": "바잇첼",
       "venue": "갤러리아 타임월드",
@@ -44460,7 +43706,7 @@
         "contentType": "image/jpeg",
         "width": 720,
         "height": 1240,
-        "checkedAt": "2026-08-16T21:41:58.828Z"
+        "checkedAt": "2026-08-17T07:03:36.585Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -44567,7 +43813,7 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-16T21:41:43.745Z"
+        "checkedAt": "2026-08-17T07:03:34.261Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -44618,7 +43864,7 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-16T21:41:43.745Z"
+        "checkedAt": "2026-08-17T07:03:34.261Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -44668,7 +43914,7 @@
         "contentType": "image/jpeg",
         "width": 335,
         "height": 335,
-        "checkedAt": "2026-08-16T21:41:59.002Z"
+        "checkedAt": "2026-08-17T07:03:36.601Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -44767,7 +44013,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:59.076Z"
+        "checkedAt": "2026-08-17T07:03:36.586Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -44898,7 +44144,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:59.152Z"
+        "checkedAt": "2026-08-17T07:03:36.602Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -45039,7 +44285,7 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-16T21:41:43.745Z"
+        "checkedAt": "2026-08-17T07:03:34.261Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -45090,7 +44336,7 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-16T21:41:43.745Z"
+        "checkedAt": "2026-08-17T07:03:34.261Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -45139,7 +44385,7 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-16T21:41:43.745Z"
+        "checkedAt": "2026-08-17T07:03:34.261Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -45190,7 +44436,7 @@
         "contentType": "image/jpeg",
         "width": 720,
         "height": 360,
-        "checkedAt": "2026-08-16T21:41:58.991Z"
+        "checkedAt": "2026-08-17T07:03:36.592Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -45274,7 +44520,7 @@
         "contentType": "image/png",
         "width": 720,
         "height": 720,
-        "checkedAt": "2026-08-16T21:41:58.992Z"
+        "checkedAt": "2026-08-17T07:03:36.597Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -45450,7 +44696,7 @@
         "contentType": "image/jpeg",
         "width": 720,
         "height": 720,
-        "checkedAt": "2026-08-16T21:41:58.992Z"
+        "checkedAt": "2026-08-17T07:03:36.599Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -45643,7 +44889,7 @@
         "contentType": "image/jpeg",
         "width": 335,
         "height": 335,
-        "checkedAt": "2026-08-16T21:41:59.165Z"
+        "checkedAt": "2026-08-17T07:03:36.618Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -45921,7 +45167,7 @@
         "contentType": "image/jpeg",
         "width": 720,
         "height": 1200,
-        "checkedAt": "2026-08-16T21:41:59.235Z"
+        "checkedAt": "2026-08-17T07:03:36.630Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -45994,7 +45240,7 @@
         "contentType": "image/jpeg",
         "width": 335,
         "height": 335,
-        "checkedAt": "2026-08-16T21:41:59.165Z"
+        "checkedAt": "2026-08-17T07:03:36.618Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -46124,7 +45370,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:59.264Z"
+        "checkedAt": "2026-08-17T07:03:36.615Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -46302,199 +45548,6 @@
       "ocrStatus": "not_used"
     },
     {
-      "id": "lotte:dongtan:yummy-fruta",
-      "name": "야미푸루따 착즙주스",
-      "venue": "롯데백화점 동탄점",
-      "sourceName": "롯데쇼핑 공식 행사",
-      "status": "ongoing",
-      "contentQuality": "A",
-      "publishStatus": "published",
-      "qualityReasons": [],
-      "imageValidation": {
-        "status": "valid",
-        "contentType": "image/jpeg",
-        "width": 750,
-        "height": 750,
-        "checkedAt": "2026-08-16T21:41:59.264Z"
-      },
-      "contentSearch": {
-        "checkedOfficialList": true,
-        "checkedOfficialDetail": true,
-        "checkedEmbeddedData": true,
-        "checkedOfficialImages": true,
-        "checkedOperatorSearch": true,
-        "checkedBrandOfficialSources": false,
-        "checkedUrls": [
-          "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%95%BC%EB%AF%B8%ED%91%B8%EB%A3%A8%EB%94%B0+%EC%B0%A9%EC%A6%99%EC%A3%BC%EC%8A%A4",
-          "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%95%BC%EB%AF%B8%ED%91%B8%EB%A3%A8%EB%94%B0",
-          "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000547195",
-          "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547195/20260715171108398_1.jpeg",
-          "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000547195/20260813185624801_3.jpeg",
-          "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547195/20260715171108424_8.jpeg",
-          "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547195/20260715184905847_6.jpeg",
-          "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547195/20260715184905854_9.jpeg",
-          "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547195/20260715184905858_3.jpeg"
-        ],
-        "checkedMethods": [
-          "official_list_html",
-          "operator_internal_search",
-          "embedded_json_scan",
-          "official_detail_html",
-          "official_detail_embedded_json",
-          "official_image_candidate_scan"
-        ],
-        "imageCandidatesFound": 6,
-        "menuCandidatesFound": 4,
-        "priceCandidatesFound": 4,
-        "descriptionCandidatesFound": 0,
-        "status": "found",
-        "evidence": [
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000547195",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "selector": "og:image|embedded JSON|img|srcset|background-image",
-            "imageUrl": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547195/20260715171108398_1.jpeg",
-            "capturedAt": "2026-08-16T21:38:21.162Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000547195",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "selector": "og:image|embedded JSON|img|srcset|background-image",
-            "imageUrl": "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000547195/20260813185624801_3.jpeg",
-            "capturedAt": "2026-08-16T21:38:21.162Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000547195",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "selector": "og:image|embedded JSON|img|srcset|background-image",
-            "imageUrl": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547195/20260715171108424_8.jpeg",
-            "capturedAt": "2026-08-16T21:38:21.162Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000547195",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "selector": "og:image|embedded JSON|img|srcset|background-image",
-            "imageUrl": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547195/20260715184905847_6.jpeg",
-            "capturedAt": "2026-08-16T21:38:21.162Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000547195",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "selector": "og:image|embedded JSON|img|srcset|background-image",
-            "imageUrl": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547195/20260715184905854_9.jpeg",
-            "capturedAt": "2026-08-16T21:38:21.162Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000547195",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "selector": "og:image|embedded JSON|img|srcset|background-image",
-            "imageUrl": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547195/20260715184905858_3.jpeg",
-            "capturedAt": "2026-08-16T21:38:21.162Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000547195",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "selector": "detail text price line and nearest product name",
-            "capturedAt": "2026-08-16T21:38:21.162Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000547195",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "selector": "detail text price line and nearest product name",
-            "capturedAt": "2026-08-16T21:38:21.162Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000547195",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "selector": "detail text price line and nearest product name",
-            "capturedAt": "2026-08-16T21:38:21.162Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000547195",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "selector": "detail text price line and nearest product name",
-            "capturedAt": "2026-08-16T21:38:21.162Z"
-          }
-        ],
-        "failureReasons": [
-          "brand_official_sources_not_checked"
-        ],
-        "checkedAt": "2026-08-16T21:38:21.162Z"
-      },
-      "imageCandidates": [
-        "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547195/20260715171108398_1.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000547195/20260813185624801_3.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547195/20260715171108424_8.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547195/20260715184905847_6.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547195/20260715184905854_9.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547195/20260715184905858_3.jpeg"
-      ],
-      "menuCandidates": [
-        {
-          "name": "오렌지 주스 R",
-          "price": 7900,
-          "priceText": "7,900원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000547195",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "오자몽주스 R",
-          "price": 7900,
-          "priceText": "7,900원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000547195",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "시트러스 비타민 주스 R",
-          "price": 7900,
-          "priceText": "7,900원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000547195",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "자몽주스 R",
-          "price": 7900,
-          "priceText": "7,900원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000547195",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        }
-      ],
-      "parserFailureReason": null,
-      "ocrStatus": "not_used"
-    },
-    {
       "id": "lotte:jamsil:honey",
       "name": "안상규벌꿀",
       "venue": "롯데월드몰",
@@ -46508,7 +45561,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:59.153Z"
+        "checkedAt": "2026-08-17T07:03:36.619Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -46572,7 +45625,7 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-16T21:41:43.745Z"
+        "checkedAt": "2026-08-17T07:03:34.261Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -46622,7 +45675,7 @@
         "contentType": "image/jpeg",
         "width": 335,
         "height": 335,
-        "checkedAt": "2026-08-16T21:41:59.329Z"
+        "checkedAt": "2026-08-17T07:03:36.648Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -46967,7 +46020,7 @@
         "contentType": "image/jpeg",
         "width": 335,
         "height": 335,
-        "checkedAt": "2026-08-16T21:41:59.373Z"
+        "checkedAt": "2026-08-17T07:03:36.648Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -47098,7 +46151,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:55.797Z"
+        "checkedAt": "2026-08-17T07:03:35.836Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -47825,7 +46878,7 @@
         "contentType": "image/jpeg",
         "width": 720,
         "height": 1305,
-        "checkedAt": "2026-08-16T21:41:59.285Z"
+        "checkedAt": "2026-08-17T07:03:36.645Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -47898,7 +46951,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:59.488Z"
+        "checkedAt": "2026-08-17T07:03:36.658Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -48017,7 +47070,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:59.285Z"
+        "checkedAt": "2026-08-17T07:03:36.647Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -48081,7 +47134,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:59.496Z"
+        "checkedAt": "2026-08-17T07:03:36.667Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -48319,7 +47372,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:59.539Z"
+        "checkedAt": "2026-08-17T07:03:36.669Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -48405,7 +47458,7 @@
         "contentType": "image/jpeg",
         "width": 720,
         "height": 720,
-        "checkedAt": "2026-08-16T21:41:59.373Z"
+        "checkedAt": "2026-08-17T07:03:36.650Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -48475,7 +47528,7 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-16T21:41:43.745Z"
+        "checkedAt": "2026-08-17T07:03:34.261Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -48520,7 +47573,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:59.599Z"
+        "checkedAt": "2026-08-17T07:03:36.676Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -48628,7 +47681,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:59.779Z"
+        "checkedAt": "2026-08-17T07:03:36.683Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -48743,7 +47796,7 @@
         "contentType": "image/jpeg",
         "width": 720,
         "height": 720,
-        "checkedAt": "2026-08-16T21:41:59.962Z"
+        "checkedAt": "2026-08-17T07:03:36.694Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,
@@ -48772,7 +47825,7 @@
             "contentType": "official_detail",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://img-www.akplaza.com/upload/edm/news/25701/1edf704b-797e-44be-9854-d9439eba39cf.jpg",
-            "capturedAt": "2026-08-16T21:41:30.404Z"
+            "capturedAt": "2026-08-17T07:03:30.674Z"
           },
           {
             "sourceUrl": "https://www.akplaza.com/board/news/view?store=02&seq=25701",
@@ -48780,60 +47833,60 @@
             "contentType": "official_detail",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://img-www.akplaza.com/upload/edm/news/25701/9792faa5-4193-4c16-9394-afee4d462264.jpg",
-            "capturedAt": "2026-08-16T21:41:30.404Z"
+            "capturedAt": "2026-08-17T07:03:30.674Z"
           },
           {
             "sourceUrl": "https://www.akplaza.com/board/news/view?store=02&seq=25701",
             "sourceName": "AK플라자 공식 쇼핑뉴스",
             "contentType": "official_detail",
             "extractedField": "menus",
-            "capturedAt": "2026-08-16T21:41:30.404Z"
+            "capturedAt": "2026-08-17T07:03:30.674Z"
           },
           {
             "sourceUrl": "https://www.akplaza.com/board/news/view?store=02&seq=25701",
             "sourceName": "AK플라자 공식 쇼핑뉴스",
             "contentType": "official_detail",
             "extractedField": "menus",
-            "capturedAt": "2026-08-16T21:41:30.404Z"
+            "capturedAt": "2026-08-17T07:03:30.674Z"
           },
           {
             "sourceUrl": "https://www.akplaza.com/board/news/view?store=02&seq=25701",
             "sourceName": "AK플라자 공식 쇼핑뉴스",
             "contentType": "official_detail",
             "extractedField": "menus",
-            "capturedAt": "2026-08-16T21:41:30.404Z"
+            "capturedAt": "2026-08-17T07:03:30.674Z"
           },
           {
             "sourceUrl": "https://www.akplaza.com/board/news/view?store=02&seq=25701",
             "sourceName": "AK플라자 공식 쇼핑뉴스",
             "contentType": "official_detail",
             "extractedField": "menus",
-            "capturedAt": "2026-08-16T21:41:30.404Z"
+            "capturedAt": "2026-08-17T07:03:30.674Z"
           },
           {
             "sourceUrl": "https://www.akplaza.com/board/news/view?store=02&seq=25701",
             "sourceName": "AK플라자 공식 쇼핑뉴스",
             "contentType": "official_detail",
             "extractedField": "menus",
-            "capturedAt": "2026-08-16T21:41:30.404Z"
+            "capturedAt": "2026-08-17T07:03:30.674Z"
           },
           {
             "sourceUrl": "https://www.akplaza.com/board/news/view?store=02&seq=25701",
             "sourceName": "AK플라자 공식 쇼핑뉴스",
             "contentType": "official_detail",
             "extractedField": "menus",
-            "capturedAt": "2026-08-16T21:41:30.404Z"
+            "capturedAt": "2026-08-17T07:03:30.674Z"
           },
           {
             "sourceUrl": "https://www.akplaza.com/board/news/view?store=02&seq=25701",
             "sourceName": "AK플라자 공식 쇼핑뉴스",
             "contentType": "official_detail",
             "extractedField": "menus",
-            "capturedAt": "2026-08-16T21:41:30.404Z"
+            "capturedAt": "2026-08-17T07:03:30.674Z"
           }
         ],
         "failureReasons": [],
-        "checkedAt": "2026-08-16T21:41:30.404Z"
+        "checkedAt": "2026-08-17T07:03:30.674Z"
       },
       "imageCandidates": [
         "https://img-www.akplaza.com/upload/edm/news/25701/1edf704b-797e-44be-9854-d9439eba39cf.jpg",
@@ -48930,7 +47983,7 @@
         "contentType": "image/jpeg",
         "width": 800,
         "height": 400,
-        "checkedAt": "2026-08-16T21:42:00.346Z"
+        "checkedAt": "2026-08-17T07:03:36.760Z"
       },
       "contentSearch": {
         "checkedOfficialList": true,

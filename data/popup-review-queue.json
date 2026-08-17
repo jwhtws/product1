@@ -1,43 +1,55 @@
 {
-  "generatedAt": "2026-08-16T21:41:43.745Z",
+  "generatedAt": "2026-08-17T07:03:34.261Z",
   "stats": {
     "total": {
-      "totalCollected": 268,
-      "publishedCount": 241,
-      "reviewRequiredCount": 27,
+      "totalCollected": 272,
+      "publishedCount": 244,
+      "reviewRequiredCount": 28,
       "rejectedCount": 0,
-      "validImageCount": 257,
+      "validImageCount": 261,
       "missingImageCount": 11,
-      "menuCompleteCount": 244,
-      "missingMenuCount": 24,
-      "priceKnownCount": 226,
-      "descriptionCompleteCount": 234,
-      "searchIncompleteCount": 25,
+      "menuCompleteCount": 247,
+      "missingMenuCount": 25,
+      "priceKnownCount": 229,
+      "descriptionCompleteCount": 232,
+      "searchIncompleteCount": 26,
       "parseFailedCount": 0,
       "notPublishedBySourceCount": 0,
       "upcomingCount": 18,
-      "ongoingCount": 108,
+      "ongoingCount": 112,
       "endedCount": 141,
-      "newlyPublishedCount": 2,
-      "newlyEndedCount": 4,
+      "newlyPublishedCount": 4,
+      "newlyEndedCount": 0,
       "qualityDistribution": {
-        "A": 211,
-        "B": 30,
-        "C": 27
+        "A": 209,
+        "B": 35,
+        "C": 28
       },
       "asOfDate": "2026-08-17"
     },
     "bySource": {
       "롯데쇼핑 공식 행사": {
-        "totalCollected": 141,
-        "imageCompletenessRate": 0.9362,
-        "menuCompletenessRate": 0.8936,
-        "priceCompletenessRate": 0.8652,
-        "publishRate": 0.8794,
-        "searchIncompleteRate": 0.1064,
+        "totalCollected": 139,
+        "imageCompletenessRate": 0.9353,
+        "menuCompletenessRate": 0.8921,
+        "priceCompletenessRate": 0.8633,
+        "publishRate": 0.8777,
+        "searchIncompleteRate": 0.1079,
         "parseFailureRate": 0,
         "reviewRequiredReasons": {
           "search_incomplete": 17
+        }
+      },
+      "AK플라자 공식 쇼핑뉴스": {
+        "totalCollected": 11,
+        "imageCompletenessRate": 1,
+        "menuCompletenessRate": 0.9091,
+        "priceCompletenessRate": 0.9091,
+        "publishRate": 0.9091,
+        "searchIncompleteRate": 0.0909,
+        "parseFailureRate": 0,
+        "reviewRequiredReasons": {
+          "search_incomplete": 1
         }
       },
       "현대백화점 공식 쇼핑뉴스": {
@@ -51,16 +63,6 @@
         "reviewRequiredReasons": {
           "search_incomplete": 3
         }
-      },
-      "AK플라자 공식 쇼핑뉴스": {
-        "totalCollected": 5,
-        "imageCompletenessRate": 1,
-        "menuCompletenessRate": 1,
-        "priceCompletenessRate": 1,
-        "publishRate": 1,
-        "searchIncompleteRate": 0,
-        "parseFailureRate": 0,
-        "reviewRequiredReasons": {}
       },
       "갤러리아 공식 쇼핑뉴스": {
         "totalCollected": 12,
@@ -206,18 +208,108 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:45.449Z"
+        "checkedAt": "2026-08-17T07:03:34.650Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-16T21:41:43.745Z",
+      "lastContentCheckedAt": "2026-08-17T07:03:34.261Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000553245/2026081416200616_3.jpeg",
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000553245/2026081416200631_6.jpeg",
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000553245/2026081416200638_4.jpeg"
+      ],
+      "menuCandidates": [],
+      "ocrStatus": "not_used"
+    },
+    {
+      "id": "ak:03:28019",
+      "name": "[봄날엔] 인기 디저트 POP-UP",
+      "venue": "AK플라자 분당점",
+      "venueType": "백화점",
+      "address": "AK플라자 분당점",
+      "startDate": "2026-08-14",
+      "endDate": "2026-08-20",
+      "imageUrl": "https://img-www.akplaza.com/upload/edm/news/28019/0fbac920-c96c-4cff-af6b-bbea0c329508.jpg",
+      "officialImageUrls": [
+        "https://img-www.akplaza.com/upload/edm/news/28019/0fbac920-c96c-4cff-af6b-bbea0c329508.jpg",
+        "https://img-www.akplaza.com/upload/edm/news/28019/f904b959-97f5-470a-b9f5-f10af50bcbad.jpg"
+      ],
+      "imageSource": "official-detail",
+      "menus": [],
+      "menuSource": "official-detail",
+      "sourceName": "AK플라자 공식 쇼핑뉴스",
+      "sourceUrl": "https://www.akplaza.com/board/news/view?store=03&seq=28019",
+      "sourceGrade": "official",
+      "firstSeenAt": "2026-08-17",
+      "lastSeenAt": "2026-08-17",
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "menuItems": [],
+      "contentSearch": {
+        "checkedOfficialList": true,
+        "checkedOfficialDetail": true,
+        "checkedEmbeddedData": true,
+        "checkedOfficialImages": true,
+        "checkedOperatorSearch": false,
+        "checkedBrandOfficialSources": false,
+        "checkedUrls": [
+          "https://www.akplaza.com/board/news/view?store=03&seq=28019",
+          "https://img-www.akplaza.com/upload/edm/news/28019/0fbac920-c96c-4cff-af6b-bbea0c329508.jpg",
+          "https://img-www.akplaza.com/upload/edm/news/28019/f904b959-97f5-470a-b9f5-f10af50bcbad.jpg"
+        ],
+        "checkedMethods": [
+          "official_detail_html"
+        ],
+        "imageCandidatesFound": 2,
+        "menuCandidatesFound": 0,
+        "priceCandidatesFound": 0,
+        "descriptionCandidatesFound": 0,
+        "status": "search_incomplete",
+        "evidence": [
+          {
+            "sourceUrl": "https://www.akplaza.com/board/news/view?store=03&seq=28019",
+            "sourceName": "AK플라자 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "officialImageUrls",
+            "imageUrl": "https://img-www.akplaza.com/upload/edm/news/28019/0fbac920-c96c-4cff-af6b-bbea0c329508.jpg",
+            "capturedAt": "2026-08-17T07:03:30.680Z"
+          },
+          {
+            "sourceUrl": "https://www.akplaza.com/board/news/view?store=03&seq=28019",
+            "sourceName": "AK플라자 공식 쇼핑뉴스",
+            "contentType": "official_detail",
+            "extractedField": "officialImageUrls",
+            "imageUrl": "https://img-www.akplaza.com/upload/edm/news/28019/f904b959-97f5-470a-b9f5-f10af50bcbad.jpg",
+            "capturedAt": "2026-08-17T07:03:30.680Z"
+          }
+        ],
+        "failureReasons": [
+          "legacy_collector_search_evidence_incomplete"
+        ],
+        "checkedAt": "2026-08-17T07:03:30.680Z"
+      },
+      "lastVerifiedAt": "2026-08-17",
+      "status": "ongoing",
+      "imageValidation": {
+        "status": "valid",
+        "contentType": "image/jpeg",
+        "width": 780,
+        "height": 780,
+        "checkedAt": "2026-08-17T07:03:34.883Z"
+      },
+      "contentQuality": "C",
+      "publishStatus": "review_required",
+      "qualityReasons": [
+        "search_incomplete"
+      ],
+      "lastContentCheckedAt": "2026-08-17T07:03:34.261Z",
+      "imageCandidates": [
+        "https://img-www.akplaza.com/upload/edm/news/28019/0fbac920-c96c-4cff-af6b-bbea0c329508.jpg",
+        "https://img-www.akplaza.com/upload/edm/news/28019/f904b959-97f5-470a-b9f5-f10af50bcbad.jpg"
       ],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -336,14 +428,14 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:49.335Z"
+        "checkedAt": "2026-08-17T07:03:34.916Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-16T21:41:43.745Z",
+      "lastContentCheckedAt": "2026-08-17T07:03:34.261Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000551904/20260807144045914_2.jpeg",
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000551904/20260807144045930_7.jpeg",
@@ -446,14 +538,14 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:50.011Z"
+        "checkedAt": "2026-08-17T07:03:35.013Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-16T21:41:43.745Z",
+      "lastContentCheckedAt": "2026-08-17T07:03:34.261Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000550921/20260803145458604_4.jpeg",
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000550921/20260803145458620_5.jpeg",
@@ -752,76 +844,6 @@
           "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552733",
           "sourceName": "롯데쇼핑 공식 행사",
           "evidenceType": "html"
-        },
-        {
-          "name": "튀김젓가락 1벌",
-          "price": 30000,
-          "priceText": "30,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552733",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "주걱",
-          "price": 30000,
-          "priceText": "30,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552733",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "발지압기",
-          "price": 20000,
-          "priceText": "20,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552733",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "대나무빗",
-          "price": 50000,
-          "priceText": "50,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552733",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "오동나무베게",
-          "price": 60000,
-          "priceText": "60,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552733",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "도마",
-          "price": 50000,
-          "priceText": "50,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552733",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "싸리채반",
-          "price": 150000,
-          "priceText": "150,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552733",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
         }
       ],
       "menuItems": [
@@ -833,14 +855,7 @@
         "도마",
         "50,000 원",
         "싸리채반",
-        "150,000 원",
-        "튀김젓가락 1벌",
-        "주걱",
-        "발지압기",
-        "대나무빗",
-        "오동나무베게",
-        "도마",
-        "싸리채반"
+        "150,000 원"
       ],
       "lastVerifiedAt": "2026-08-17",
       "status": "ongoing",
@@ -849,14 +864,14 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:50.451Z"
+        "checkedAt": "2026-08-17T07:03:35.064Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-16T21:41:43.745Z",
+      "lastContentCheckedAt": "2026-08-17T07:03:34.261Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000552733/2026081215342862_8.jpeg",
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000552733/20260812153428147_4.jpeg"
@@ -951,76 +966,6 @@
           "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552733",
           "sourceName": "롯데쇼핑 공식 행사",
           "evidenceType": "html"
-        },
-        {
-          "name": "튀김젓가락 1벌",
-          "price": 30000,
-          "priceText": "30,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552733",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "주걱",
-          "price": 30000,
-          "priceText": "30,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552733",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "발지압기",
-          "price": 20000,
-          "priceText": "20,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552733",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "대나무빗",
-          "price": 50000,
-          "priceText": "50,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552733",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "오동나무베게",
-          "price": 60000,
-          "priceText": "60,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552733",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "도마",
-          "price": 50000,
-          "priceText": "50,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552733",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "싸리채반",
-          "price": 150000,
-          "priceText": "150,000 원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552733",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
         }
       ],
       "ocrStatus": "not_used",
@@ -1089,14 +1034,14 @@
         "contentType": "image/jpeg",
         "width": 640,
         "height": 480,
-        "checkedAt": "2026-08-16T21:41:51.312Z"
+        "checkedAt": "2026-08-17T07:03:35.133Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-16T21:41:43.745Z",
+      "lastContentCheckedAt": "2026-08-17T07:03:34.261Z",
       "imageCandidates": [
         "https://cdndept.galleria.co.kr//image/dept/edm-content/2026/G0814_25s.jpg"
       ],
@@ -1184,14 +1129,14 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:51.881Z"
+        "checkedAt": "2026-08-17T07:03:35.272Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-16T21:41:43.745Z",
+      "lastContentCheckedAt": "2026-08-17T07:03:34.261Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202604/SNM00000000000529691/20260425135653938_8.jpeg",
         "https://minfo.lotteshopping.com/content/news/202604/SNM00000000000529691/20260425135653948_2.jpeg"
@@ -1267,14 +1212,14 @@
         "contentType": "image/jpeg",
         "width": 720,
         "height": 360,
-        "checkedAt": "2026-08-16T21:41:51.976Z"
+        "checkedAt": "2026-08-17T07:03:35.281Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-16T21:41:43.745Z",
+      "lastContentCheckedAt": "2026-08-17T07:03:34.261Z",
       "imageCandidates": [
         "https://mukdang.com/assets/popups/shinsegae/8c4baeb7b8f95a1bbb0d.jpg",
         "https://www.shinsegae.com/cms12/SC00012/info/shopping/brndintg/__icsFiles/afieldfile/2026/08/13/0814APPha11.jpg"
@@ -1355,14 +1300,14 @@
         "contentType": "image/jpeg",
         "width": 925,
         "height": 925,
-        "checkedAt": "2026-08-16T21:41:52.153Z"
+        "checkedAt": "2026-08-17T07:03:35.309Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-16T21:41:43.745Z",
+      "lastContentCheckedAt": "2026-08-17T07:03:34.261Z",
       "imageCandidates": [
         "https://img.ehyundai.com/files/derivedImage/fileValue/202608/08/4947b505-73ad-4a66-8552-628aef9eb155_02.jpg",
         "https://imgprism.ehyundai.com/derivedImage/fileValue/202608/08/4947b505-73ad-4a66-8552-628aef9eb155_01.jpg"
@@ -1451,14 +1396,14 @@
         "contentType": "image/jpeg",
         "width": 670,
         "height": 4791,
-        "checkedAt": "2026-08-16T21:41:53.050Z"
+        "checkedAt": "2026-08-17T07:03:35.384Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-16T21:41:43.745Z",
+      "lastContentCheckedAt": "2026-08-17T07:03:34.261Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000551162/20260804143859925_4.jpeg",
         "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547661/20260717184854621_0.jpeg"
@@ -1534,14 +1479,14 @@
         "contentType": "image/jpeg",
         "width": 2154,
         "height": 1020,
-        "checkedAt": "2026-08-16T21:41:53.052Z"
+        "checkedAt": "2026-08-17T07:03:35.419Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-16T21:41:43.745Z",
+      "lastContentCheckedAt": "2026-08-17T07:03:34.261Z",
       "imageCandidates": [
         "https://mukdang.com/assets/popups/shinsegae/804afb23c9242b9cc849.jpg",
         "https://www.shinsegae.com/cms12/SC00008/info/shopping/brndintg/__icsFiles/afieldfile/2026/08/06/bbangbbang360.jpg"
@@ -1612,14 +1557,14 @@
         "contentType": "image/png",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-16T21:41:53.786Z"
+        "checkedAt": "2026-08-17T07:03:35.513Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-16T21:41:43.745Z",
+      "lastContentCheckedAt": "2026-08-17T07:03:34.261Z",
       "imageCandidates": [
         "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202604/08/91cd14c8-90b2-44ff-86ab-498c1b60ee13.png"
       ],
@@ -1725,14 +1670,14 @@
         "status": "review_required",
         "reason": "dimensions_unreadable",
         "contentType": "image/jpeg",
-        "checkedAt": "2026-08-16T21:41:54.079Z"
+        "checkedAt": "2026-08-17T07:03:35.701Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-16T21:41:43.745Z",
+      "lastContentCheckedAt": "2026-08-17T07:03:34.261Z",
       "imageCandidates": [
         "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202603/25/998186a8-5406-44e3-a9e8-65f953fece42.jpg"
       ],
@@ -1823,14 +1768,14 @@
         "contentType": "image/jpeg",
         "width": 640,
         "height": 480,
-        "checkedAt": "2026-08-16T21:41:54.830Z"
+        "checkedAt": "2026-08-17T07:03:35.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-16T21:41:43.745Z",
+      "lastContentCheckedAt": "2026-08-17T07:03:34.261Z",
       "imageCandidates": [
         "https://cdndept.galleria.co.kr//image/dept/edm-content/2026/G0807_21s.jpg"
       ],
@@ -1905,14 +1850,14 @@
         "contentType": "image/png",
         "width": 720,
         "height": 360,
-        "checkedAt": "2026-08-16T21:41:54.642Z"
+        "checkedAt": "2026-08-17T07:03:35.700Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-16T21:41:43.745Z",
+      "lastContentCheckedAt": "2026-08-17T07:03:34.261Z",
       "imageCandidates": [
         "https://mukdang.com/assets/popups/shinsegae/020305070f60c353d8dc.png",
         "https://www.shinsegae.com/cms12/SC00003/info/shopping/brndsingle/__icsFiles/afieldfile/2026/08/05/1bCscCnHaOSl.png"
@@ -2001,14 +1946,14 @@
         "contentType": "image/jpeg",
         "width": 670,
         "height": 670,
-        "checkedAt": "2026-08-16T21:41:58.192Z"
+        "checkedAt": "2026-08-17T07:03:36.434Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-16T21:41:43.745Z",
+      "lastContentCheckedAt": "2026-08-17T07:03:34.261Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000549268/20260729122830165_8.jpeg",
         "https://minfo.lotteshopping.com/content/news/202602/SNM00000000000511522/20260204123804171_6.jpeg"
@@ -2228,14 +2173,14 @@
         "contentType": "image/jpeg",
         "width": 1687,
         "height": 2249,
-        "checkedAt": "2026-08-16T21:41:58.632Z"
+        "checkedAt": "2026-08-17T07:03:36.524Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-16T21:41:43.745Z",
+      "lastContentCheckedAt": "2026-08-17T07:03:34.261Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/prfl/202505/PRFL2025050818072491.jpg",
         "https://minfo.lotteshopping.com/content/news/202510/SNM00000000000489497/20251027133127740_0.jpeg",
@@ -2361,14 +2306,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-16T21:41:43.745Z"
+        "checkedAt": "2026-08-17T07:03:34.261Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-16T21:41:43.745Z",
+      "lastContentCheckedAt": "2026-08-17T07:03:34.261Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -2447,14 +2392,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-16T21:41:43.745Z"
+        "checkedAt": "2026-08-17T07:03:34.261Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-16T21:41:43.745Z",
+      "lastContentCheckedAt": "2026-08-17T07:03:34.261Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -2532,14 +2477,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-16T21:41:43.745Z"
+        "checkedAt": "2026-08-17T07:03:34.261Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-16T21:41:43.745Z",
+      "lastContentCheckedAt": "2026-08-17T07:03:34.261Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -2618,14 +2563,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-16T21:41:43.745Z"
+        "checkedAt": "2026-08-17T07:03:34.261Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-16T21:41:43.745Z",
+      "lastContentCheckedAt": "2026-08-17T07:03:34.261Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -2703,14 +2648,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-16T21:41:43.745Z"
+        "checkedAt": "2026-08-17T07:03:34.261Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-16T21:41:43.745Z",
+      "lastContentCheckedAt": "2026-08-17T07:03:34.261Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -2789,14 +2734,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-16T21:41:43.745Z"
+        "checkedAt": "2026-08-17T07:03:34.261Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-16T21:41:43.745Z",
+      "lastContentCheckedAt": "2026-08-17T07:03:34.261Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -2873,14 +2818,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-16T21:41:43.745Z"
+        "checkedAt": "2026-08-17T07:03:34.261Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-16T21:41:43.745Z",
+      "lastContentCheckedAt": "2026-08-17T07:03:34.261Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -2959,14 +2904,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-16T21:41:43.745Z"
+        "checkedAt": "2026-08-17T07:03:34.261Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-16T21:41:43.745Z",
+      "lastContentCheckedAt": "2026-08-17T07:03:34.261Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -3044,14 +2989,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-16T21:41:43.745Z"
+        "checkedAt": "2026-08-17T07:03:34.261Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-16T21:41:43.745Z",
+      "lastContentCheckedAt": "2026-08-17T07:03:34.261Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -3123,7 +3068,7 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-16T21:41:43.745Z"
+        "checkedAt": "2026-08-17T07:03:34.261Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
@@ -3131,7 +3076,7 @@
         "missing_dates",
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-16T21:41:43.745Z",
+      "lastContentCheckedAt": "2026-08-17T07:03:34.261Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -3328,14 +3273,14 @@
         "contentType": "image/jpeg",
         "width": 800,
         "height": 400,
-        "checkedAt": "2026-08-16T21:42:00.346Z"
+        "checkedAt": "2026-08-17T07:03:36.760Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-16T21:41:43.745Z",
+      "lastContentCheckedAt": "2026-08-17T07:03:34.261Z",
       "imageCandidates": [
         "https://nodeul.org/wp-content/themes/nodeul/img/nodeul-ogimage.jpg",
         "https://nodeul.org/wp-content/plugins/iamport-payment/dist/bundle-main.js?ver=20190105",

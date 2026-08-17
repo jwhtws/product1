@@ -984,7 +984,12 @@ async function collectGalleria() {
           if (sequence) { seenSequences.add(sequence); newSequenceCount += 1; }
           const dates = [...clean(block).matchAll(/(\d{4})\.(\d{2})\.(\d{2})\s*~\s*(\d{4})\.(\d{2})\.(\d{2})/g)];
           const searchable = `${title} ${summary}`;
-          if (!title || !dates.length || !/팝업|POP[\s-]*UP/iu.test(searchable) || !foodWords.test(searchable)) continue;
+          // AK category 12 is the official food-hall category. Some cards expose
+          // only a brand name (for example, "[브레더스] 신규 POP-UP") and leave
+          // the summary empty, so keyword matching alone incorrectly drops them.
+          const isOfficialFoodCategory = category === '12';
+          if (!title || !dates.length || !/팝업|POP[\s-]*UP/iu.test(searchable)
+            || (!isOfficialFoodCategory && !foodWords.test(searchable))) continue;
           const date = dates[0];
           const startDate = `${date[1]}-${date[2]}-${date[3]}`;
           const endDate = `${date[4]}-${date[5]}-${date[6]}`;
@@ -1010,11 +1015,23 @@ async function collectGalleria() {
             return name && /[\d,]+\s*원/u.test(priceText) ? {
               name, price: priceText, priceText, sourceUrl,
               sourceName: 'AK플라자 공식 쇼핑뉴스', evidenceType: 'html'
-            } : null;
+              } : null;
           }).filter(Boolean);
+          const akTextMenus = [...detailHtml.matchAll(/<p[^>]*class=["'][^"']*\bpara-text\b[^"']*["'][^>]*>([\s\S]*?)<\/p>/giu)]
+            .flatMap(item => String(item[1] || '')
+              .replace(/<br\s*\/?\s*>/giu, '\n')
+              .replace(/<[^>]+>/gu, ' ')
+              .replace(/&amp;/gu, '&').replace(/&quot;/gu, '"').replace(/&#39;/gu, "'")
+              .split(/\r?\n/gu))
+            .map(line => clean(line).match(/^(.{2,100}?)\s+([\d,]+\s*원)(?:\s|$)/u))
+            .filter(Boolean)
+            .map(match => ({
+              name: clean(match[1]), price: clean(match[2]), priceText: clean(match[2]), sourceUrl,
+              sourceName: 'AK플라자 공식 쇼핑뉴스', evidenceType: 'html'
+            }));
           const menus = [...extractOfficialMenuCandidates(detailHtml, {
             sourceUrl, sourceName: 'AK플라자 공식 쇼핑뉴스'
-          }), ...akMenus];
+          }), ...akMenus, ...akTextMenus];
           rows.push({
             id: `ak:${storeCode}:${sequence || stableHash(title)}`,
             name: title,
@@ -1031,6 +1048,9 @@ async function collectGalleria() {
             sourceName: 'AK플라자 공식 쇼핑뉴스',
             sourceUrl,
             sourceGrade: 'official',
+            // A fresh official-detail parse must not inherit a previous
+            // review-only reason after menus become available.
+            qualityReasons: [],
             firstSeenAt: today,
             lastSeenAt: today
           });
