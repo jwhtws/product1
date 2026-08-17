@@ -21,7 +21,6 @@ jobs:
       matrix:
         project:
           - product1
-          - product2
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
