@@ -832,7 +832,7 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
       if (!root.isConnected) return;
       if (popupMapInstance) { try { popupMapInstance.remove(); } catch {} popupMapInstance = null; }
       root.innerHTML = '';
-      popupMapInstance = L.map(root, { scrollWheelZoom: false }).setView([36.35, 127.85], 7);
+      popupMapInstance = L.map(root, { scrollWheelZoom: true }).setView([36.35, 127.85], 7);
       const primaryTiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png', { subdomains: 'abcd', maxZoom: 19, attribution: '&copy; OpenStreetMap &copy; CARTO' }).addTo(popupMapInstance);
       let fallbackTilesAdded = false;
       primaryTiles.on('tileerror', () => {
