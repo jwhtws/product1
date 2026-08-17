@@ -1,5 +1,6 @@
 import { api } from './js/api.js';
 import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
+import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
 
 (async function () {
   const $ = selector => document.querySelector(selector);
@@ -818,11 +819,7 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
   async function renderPopupMap(rows) {
     const root = $('#popup-map');
     if (!root) return;
-    const venueAliases = new Map([
-      ['롯데백화점 군산점', '롯데몰 군산점'], ['롯데백화점 은평점', '롯데몰 은평점'],
-      ['롯데백화점 수지점', '롯데몰 수지점'], ['롯데백화점 광교점', '롯데아울렛 광교점']
-    ]);
-    const mapVenueName = popup => venueAliases.get(popup.venue) || popup.venue;
+    const mapVenueName = popup => popupMapLocations.get(popup.venue)?.name || popup.venue;
     const venues = [...rows.reduce((map, popup) => {
       const key = mapVenueName(popup) || popup.address;
       if (!key) return map;
@@ -849,6 +846,8 @@ import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
         const batch = venues.slice(index, index + 4);
         const results = await Promise.all(batch.map(async group => {
           const { popup, popups, venueName } = group;
+          const verifiedLocation = popupMapLocations.get(popup.venue);
+          if (verifiedLocation) return { popup, popups, latitude: verifiedLocation.latitude, longitude: verifiedLocation.longitude };
           const hasCoordinates = popup.latitude !== null && popup.latitude !== undefined && popup.latitude !== '' && popup.longitude !== null && popup.longitude !== undefined && popup.longitude !== '' && Number.isFinite(Number(popup.latitude)) && Number.isFinite(Number(popup.longitude));
           if (hasCoordinates) return { popup, popups, latitude: Number(popup.latitude), longitude: Number(popup.longitude) };
           try {
