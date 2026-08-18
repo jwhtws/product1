@@ -832,8 +832,11 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
       if (!root.isConnected) return;
       if (popupMapInstance) { try { popupMapInstance.remove(); } catch {} popupMapInstance = null; }
       root.innerHTML = '';
-      root.classList.add('popup-map-transit-only');
       popupMapInstance = L.map(root, { scrollWheelZoom: true, zoomControl: false }).setView([36.35, 127.85], 7);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; OpenStreetMap contributors'
+      }).addTo(popupMapInstance);
       L.control.zoom({ position: 'bottomright' }).addTo(popupMapInstance);
       L.control.scale({ position: 'bottomleft', imperial: false }).addTo(popupMapInstance);
       popupMapInstance.attributionControl.addAttribution('&copy; OpenStreetMap contributors · ODbL');
@@ -899,23 +902,7 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
       }
       if (markers.length) {
         const allMarkerBounds = L.featureGroup(markers).getBounds().pad(.12);
-        const capitalMarkers = markers.filter(marker => {
-          const point = marker.getLatLng();
-          return point.lat >= 36.8 && point.lat <= 38.2 && point.lng >= 125.8 && point.lng <= 128;
-        });
-        const initialMarkers = capitalMarkers.length >= 2 ? capitalMarkers : markers;
-        popupMapInstance.fitBounds(L.featureGroup(initialMarkers).getBounds().pad(.16), { maxZoom: 11 });
-        const overviewControl = L.control({ position: 'topleft' });
-        overviewControl.onAdd = () => {
-          const button = L.DomUtil.create('button', 'popup-map-overview-control');
-          button.type = 'button';
-          button.textContent = '전국 보기';
-          button.title = '전국 팝업 위치를 한눈에 보기';
-          L.DomEvent.disableClickPropagation(button);
-          L.DomEvent.on(button, 'click', () => popupMapInstance.fitBounds(allMarkerBounds, { maxZoom: 13 }));
-          return button;
-        };
-        overviewControl.addTo(popupMapInstance);
+        popupMapInstance.fitBounds(allMarkerBounds, { maxZoom: 8 });
       }
       $('#popup-map-count').textContent = `${rows.length}개 팝업 · ${markers.length}곳`;
       if (!markers.length) root.insertAdjacentHTML('beforeend', '<div class="popup-map-empty">표시 가능한 위치가 없습니다.</div>');
