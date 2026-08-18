@@ -60,8 +60,11 @@ test('홈 추천은 최근 7일 시작을 최우선으로 하면서 출처를 �
   assert.match(app, /vendor\/leaflet\/leaflet\.js/u);
   assert.doesNotMatch(app, /unpkg\.com\/leaflet/u);
   assert.match(app, /basemaps\.cartocdn\.com\/rastertiles\/voyager/u);
-  assert.match(app, /primaryTiles\.on\('tileerror'/u);
+  assert.match(app, /detailedTiles\.on\('tileerror'/u);
   assert.match(app, /tile\.openstreetmap\.org/u);
+  assert.match(app, /tile\.memomaps\.de\/tilegen/u);
+  assert.match(app, /'대중교통 지도': transitTiles/u);
+  assert.match(app, /L\.control\.scale/u);
   assert.match(app, /function loadPopupMapLibrary\(\)/u);
   assert.doesNotMatch(app, /fallbackPoint/u);
   assert.match(app, /const key = mapVenueName\(popup\) \|\| popup\.address/u);
