@@ -903,7 +903,7 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
             interactive: false,
             icon: L.divIcon({
               className: 'transit-station-label-wrap',
-              html: `<span class="transit-station-dot"></span><span class="transit-station-label">${escapeHtml(name)}역</span>`,
+              html: `<span class="transit-station-label">${escapeHtml(name)}역</span>`,
               iconSize: [96, 20],
               iconAnchor: [5, 10]
             })
