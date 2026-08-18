@@ -66,6 +66,8 @@ test('홈 추천은 최근 7일 시작을 최우선으로 하면서 출처를 �
   assert.match(app, /transitTiles = L\.tileLayer[\s\S]+\.addTo\(popupMapInstance\)/u);
   assert.doesNotMatch(app, /L\.control\.layers/u);
   assert.match(app, /L\.control\.scale/u);
+  assert.match(app, /const capitalMarkers = markers\.filter/u);
+  assert.match(app, /button\.textContent = '전국 보기'/u);
   assert.match(app, /function loadPopupMapLibrary\(\)/u);
   assert.doesNotMatch(app, /fallbackPoint/u);
   assert.match(app, /const key = mapVenueName\(popup\) \|\| popup\.address/u);

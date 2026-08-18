@@ -881,7 +881,26 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
           markers.push(marker);
         }
       }
-      if (markers.length) popupMapInstance.fitBounds(L.featureGroup(markers).getBounds().pad(.12), { maxZoom: 13 });
+      if (markers.length) {
+        const allMarkerBounds = L.featureGroup(markers).getBounds().pad(.12);
+        const capitalMarkers = markers.filter(marker => {
+          const point = marker.getLatLng();
+          return point.lat >= 36.8 && point.lat <= 38.2 && point.lng >= 125.8 && point.lng <= 128;
+        });
+        const initialMarkers = capitalMarkers.length >= 2 ? capitalMarkers : markers;
+        popupMapInstance.fitBounds(L.featureGroup(initialMarkers).getBounds().pad(.16), { maxZoom: 11 });
+        const overviewControl = L.control({ position: 'topleft' });
+        overviewControl.onAdd = () => {
+          const button = L.DomUtil.create('button', 'popup-map-overview-control');
+          button.type = 'button';
+          button.textContent = '전국 보기';
+          button.title = '전국 팝업 위치를 한눈에 보기';
+          L.DomEvent.disableClickPropagation(button);
+          L.DomEvent.on(button, 'click', () => popupMapInstance.fitBounds(allMarkerBounds, { maxZoom: 13 }));
+          return button;
+        };
+        overviewControl.addTo(popupMapInstance);
+      }
       $('#popup-map-count').textContent = `${rows.length}개 팝업 · ${markers.length}곳`;
       if (!markers.length) root.insertAdjacentHTML('beforeend', '<div class="popup-map-empty">표시 가능한 위치가 없습니다.</div>');
     } catch (error) {
