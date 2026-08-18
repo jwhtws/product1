@@ -833,32 +833,22 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
       if (popupMapInstance) { try { popupMapInstance.remove(); } catch {} popupMapInstance = null; }
       root.innerHTML = '';
       popupMapInstance = L.map(root, { scrollWheelZoom: true, zoomControl: false }).setView([36.35, 127.85], 7);
-      const detailedTiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; OpenStreetMap contributors'
-      }).addTo(popupMapInstance);
-      const cleanTiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png', {
-        subdomains: 'abcd',
-        maxZoom: 19,
-        attribution: '&copy; OpenStreetMap &copy; CARTO'
-      });
       const transitTiles = L.tileLayer('https://tile.memomaps.de/tilegen/{z}/{x}/{y}.png', {
         maxZoom: 18,
         attribution: '&copy; OpenStreetMap contributors · ÖPNVKarte'
+      }).addTo(popupMapInstance);
+      const fallbackTiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; OpenStreetMap contributors'
       });
       L.control.zoom({ position: 'bottomright' }).addTo(popupMapInstance);
       L.control.scale({ position: 'bottomleft', imperial: false }).addTo(popupMapInstance);
-      L.control.layers(
-        { '상세 지도': detailedTiles, '대중교통 지도': transitTiles, '깔끔한 지도': cleanTiles },
-        null,
-        { position: 'topright', collapsed: false }
-      ).addTo(popupMapInstance);
       let fallbackTilesAdded = false;
-      detailedTiles.on('tileerror', () => {
+      transitTiles.on('tileerror', () => {
         if (fallbackTilesAdded) return;
         fallbackTilesAdded = true;
-        detailedTiles.remove();
-        cleanTiles.addTo(popupMapInstance);
+        transitTiles.remove();
+        fallbackTiles.addTo(popupMapInstance);
       });
       const markers = [];
       for (let index = 0; index < venues.length; index += 4) {
