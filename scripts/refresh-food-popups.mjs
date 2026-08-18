@@ -238,16 +238,42 @@ function parseHyundaiImageUrls(html, sourceUrl) {
     try {
       const url = new URL(raw, sourceUrl);
       if (!/^(?:imgprism|img)\.ehyundai\.com$/iu.test(url.hostname)) continue;
-      if (!/(?:derivedImage\/fileValue|ItemNmPrcTypeInf\/imgPath)/iu.test(url.pathname)) continue;
+      if (!/(?:derivedImage\/fileValue|ItemNmPrcTypeInf\/imgPath|evntCrdInf\/imgPath|imgTypeInf\/imgPath)/iu.test(url.pathname)) continue;
       urls.push(url.href);
     } catch {}
   }
   return [...new Set(urls)].slice(0, 12);
 }
 
+const hyundaiVerifiedMenus = new Map([
+  ['E2702607493632', [
+    ['요시키의 어둠의 흑임자 라떼', '9,000원'],
+    ['히카루의 비밀 요거트 쉐이크', '9,000원'],
+    ['타나카의 각설탕 녹차', '9,000원'],
+    ['아사코의 해맑은 소다 스무디', '9,000원'],
+    ['유타의 정열의 딸기 주스', '9,000원'],
+    ['유키의 차분한 핑크 카모마일', '9,000원'],
+    ['요시키가 한국에서 먹은 컵떡볶이!', '7,000원'],
+    ['히카루가 한국에서 먹은 회오리 감자!', '10,000원'],
+    ['블루 하와이 빙수', '15,000원'],
+    ['요시키의 아침 식사', '15,000원'],
+    ['히카루가 좋아하는 고로케', '10,000원']
+  ].map(([name, price]) => ({ name, price, evidenceType: 'official_image' }))]
+]);
+
+function parseHyundaiDetailDates(html) {
+  const text = decodeHtml(String(html || '')
+    .replace(/<script\b[\s\S]*?<\/script>/giu, ' ')
+    .replace(/<style\b[\s\S]*?<\/style>/giu, ' '));
+  const range = text.match(/(\d{1,2}\.\d{1,2}(?:\([^)]*\))?)\s*~\s*(\d{1,2}\.\d{1,2}(?:\([^)]*\))?)/u);
+  if (!range) return {};
+  return { startDate: eventDate(range[1]), endDate: eventDate(range[2]) };
+}
+
 async function collectHyundai() {
   const rows = [];
   const seen = new Set();
+  const detailHtmlById = new Map();
   const stats = createCollectorStats();
   const base = 'https://www.ehyundai.com/newPortal/search/result.do';
   for (const searchWord of ['pop up', '식품', '푸드', '베이커리', '디저트', '카페', '커피', '떡', '빵', '분식']) {
@@ -264,15 +290,27 @@ async function collectHyundai() {
       if (seen.has(event.EVNT_CRD_CD)) { recordCollectorRejection(stats, 'duplicate_source_item'); continue; }
       seen.add(event.EVNT_CRD_CD);
       const searchable = clean(`${event.EVNT_CRD_NM} ${event.BRAND_NM} ${event.TITL}`);
-      if (!popupWords.test(searchable)) { recordCollectorRejection(stats, 'not_popup'); continue; }
+      const isFoodCollaborationCafe = /콜라보\s*카페\s*(?:F\s*&\s*B|FNB)\b/iu.test(searchable);
+      if (!popupWords.test(searchable) && !isFoodCollaborationCafe) { recordCollectorRejection(stats, 'not_popup'); continue; }
       if (!foodWords.test(searchable)) { recordCollectorRejection(stats, 'not_food'); continue; }
       if (nonHumanFood.test(searchable)) { recordCollectorRejection(stats, 'non_human_food'); continue; }
-      const startDate = eventDate(event.EVNT_STRT_DT);
-      const endDate = eventDate(event.EVNT_END_DT);
+      const branchCode = `B001${event.STORE_CD}00`;
+      const sourceUrl = `https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=${encodeURIComponent(event.EVNT_CRD_CD)}&branchCd=${branchCode}&category=`;
+      let startDate = eventDate(event.EVNT_STRT_DT);
+      let endDate = eventDate(event.EVNT_END_DT);
+      if (!startDate || !endDate) {
+        try {
+          const response = await fetchResilient(sourceUrl);
+          if (response.ok) {
+            const html = await response.text();
+            detailHtmlById.set(event.EVNT_CRD_CD, html);
+            ({ startDate, endDate } = parseHyundaiDetailDates(html));
+          }
+        } catch {}
+      }
       if (!startDate || !endDate) { recordCollectorRejection(stats, 'invalid_date'); continue; }
       if (new Date(`${endDate}T23:59:59+09:00`) < keepSince) { recordCollectorRejection(stats, 'expired'); continue; }
       const name = clean(event.EVNT_CRD_NM).replace(/^\[(?:POP[\s-]*UP STORE|팝업스토어)\]\s*/iu, '');
-      const branchCode = `B001${event.STORE_CD}00`;
       const storeName = clean(event.STORE_NM);
       const venue = /(현대|더현대|커넥트)/u.test(storeName) ? storeName : `현대백화점 ${storeName}`;
       rows.push({
@@ -285,8 +323,9 @@ async function collectHyundai() {
         endDate,
         imageUrl: String(event.EVNT_IMG || ''),
         sourceName: '현대백화점 공식 쇼핑뉴스',
-        sourceUrl: `https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=${encodeURIComponent(event.EVNT_CRD_CD)}&branchCd=${branchCode}&category=`,
+        sourceUrl,
         sourceGrade: 'official',
+        qualityReasons: [],
         firstSeenAt: today,
         lastSeenAt: today
       });
@@ -296,10 +335,14 @@ async function collectHyundai() {
   }
   const detailed = await Promise.all(rows.map(async row => {
     try {
-      const response = await fetchResilient(row.sourceUrl);
-      if (!response.ok) return row;
-      const html = await response.text();
-      const menus = parseHyundaiMenus(html);
+      let html = detailHtmlById.get(row.id.replace(/^hyundai:/u, ''));
+      if (!html) {
+        const response = await fetchResilient(row.sourceUrl);
+        if (!response.ok) return row;
+        html = await response.text();
+      }
+      const sourceId = row.id.replace(/^hyundai:/u, '');
+      const menus = uniqueMenus([...parseHyundaiMenus(html), ...(hyundaiVerifiedMenus.get(sourceId) || [])]);
       const officialImageUrls = parseHyundaiImageUrls(html, row.sourceUrl);
       return {
         ...row,
