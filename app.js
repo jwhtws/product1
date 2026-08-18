@@ -832,23 +832,39 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
       if (!root.isConnected) return;
       if (popupMapInstance) { try { popupMapInstance.remove(); } catch {} popupMapInstance = null; }
       root.innerHTML = '';
+      root.classList.add('popup-map-transit-only');
       popupMapInstance = L.map(root, { scrollWheelZoom: true, zoomControl: false }).setView([36.35, 127.85], 7);
-      const transitTiles = L.tileLayer('https://tile.memomaps.de/tilegen/{z}/{x}/{y}.png', {
-        maxZoom: 18,
-        attribution: '&copy; OpenStreetMap contributors · ÖPNVKarte'
-      }).addTo(popupMapInstance);
-      const fallbackTiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; OpenStreetMap contributors'
-      });
       L.control.zoom({ position: 'bottomright' }).addTo(popupMapInstance);
       L.control.scale({ position: 'bottomleft', imperial: false }).addTo(popupMapInstance);
-      let fallbackTilesAdded = false;
-      transitTiles.on('tileerror', () => {
-        if (fallbackTilesAdded) return;
-        fallbackTilesAdded = true;
-        transitTiles.remove();
-        fallbackTiles.addTo(popupMapInstance);
+      popupMapInstance.attributionControl.addAttribution('&copy; OpenStreetMap contributors · ODbL');
+      const transitResponse = await fetch('data/korea-transit-lines.geojson?v=20260818-1');
+      if (!transitResponse.ok) throw new Error(`철도 노선 데이터 응답 ${transitResponse.status}`);
+      const transitData = await transitResponse.json();
+      L.geoJSON(transitData, {
+        filter: feature => feature.properties?.kind !== 'label',
+        interactive: false,
+        style: feature => ({
+          color: feature.properties.colour,
+          weight: feature.properties.kind === 'commuter' ? 4 : 5,
+          opacity: .94,
+          lineCap: 'round',
+          lineJoin: 'round',
+          className: `transit-line transit-${feature.properties.kind}`
+        })
+      }).addTo(popupMapInstance);
+      transitData.features.filter(feature => feature.properties?.kind === 'label').forEach(feature => {
+        const [longitude, latitude] = feature.geometry.coordinates;
+        const label = escapeHtml(feature.properties.ref || feature.properties.name);
+        const name = escapeHtml(feature.properties.name);
+        L.marker([latitude, longitude], {
+          interactive: false,
+          icon: L.divIcon({
+            className: 'transit-line-label-wrap',
+            html: `<span class="transit-line-label" style="--line-color:${escapeHtml(feature.properties.colour)}" title="${name}">${label}</span>`,
+            iconSize: [54, 24],
+            iconAnchor: [27, 12]
+          })
+        }).addTo(popupMapInstance);
       });
       const markers = [];
       for (let index = 0; index < venues.length; index += 4) {

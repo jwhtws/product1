@@ -117,6 +117,9 @@ test('지역과 카테고리 탐색 대신 실제 팝업 지도를 제공한다'
   await expect(page.locator('#popup-map .leaflet-control-layers')).toHaveCount(0);
   await expect(page.locator('#popup-map .leaflet-control-scale')).toBeVisible();
   await expect(page.locator('#popup-map .popup-map-overview-control')).toHaveText('전국 보기');
+  await expect(page.locator('#popup-map .leaflet-tile')).toHaveCount(0);
+  expect(await page.locator('#popup-map .transit-line').count()).toBeGreaterThan(100);
+  await expect(page.locator('#popup-map .transit-line-label').first()).toBeVisible();
   await expect(page.locator('#popup-map .popup-map-error')).toHaveCount(0);
 });
 
