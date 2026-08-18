@@ -2,6 +2,7 @@ import { spawn } from 'node:child_process';
 import { mkdir, readFile, rename, unlink, writeFile } from 'node:fs/promises';
 import { dirname } from 'node:path';
 import { buildPopupSiteFeed } from './build-popup-site-feed.mjs';
+import { buildPopupPublicFeed } from './build-popup-public-feed.mjs';
 import { runPopupContentAudit } from './audit-popup-content.mjs';
 
 const args = process.argv.slice(2);
@@ -86,3 +87,5 @@ try {
     await unlink(path).catch(error => { if (error?.code !== 'ENOENT') throw error; });
   }
 }
+
+if (outputPath === 'data/popups.json') await buildPopupPublicFeed({ inputPath: outputPath });

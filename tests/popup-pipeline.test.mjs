@@ -32,15 +32,23 @@ test('collector 실패·0건·급감에서 기존 사용자 feed를 원자적으
 });
 
 test('Home·Search·Detail은 같은 운영 feed와 ID를 사용하고 fixture는 포함하지 않는다', async () => {
-  const [app, seo, payload] = await Promise.all([
+  const [app, seo, payload, publicPayload, rawFeed, publicFeed] = await Promise.all([
     readFile('app.js', 'utf8'), readFile('scripts/build-seo-pages.mjs', 'utf8'),
-    readFile('data/popups.json', 'utf8').then(JSON.parse)
+    readFile('data/popups.json', 'utf8').then(JSON.parse),
+    readFile('data/popups-public.json', 'utf8').then(JSON.parse),
+    readFile('data/popups.json', 'utf8'), readFile('data/popups-public.json', 'utf8')
   ]);
-  assert.match(app, /new URL\('data\/popups\.json', location\.href\)/u);
+  assert.match(app, /new URL\('data\/popups-public\.json\?v=2', location\.href\)/u);
+  assert.doesNotMatch(app, /fetch\(popupFeedUrl, \{ cache: 'no-store' \}\)/u);
   assert.match(app, /state\.popups = Array\.isArray\(popupData\.popups\)/u);
   assert.match(app, /state\.popups\.find\(item => item\.id ===/u);
   assert.match(seo, /readFileSync\('data\/popups\.json'/u);
   assert.ok(payload.popups.every(row => !/(?:fixture|example\.com|테스트)/iu.test(`${row.id} ${row.sourceUrl}`)));
+  const published = payload.popups.filter(row => !row.publishStatus || row.publishStatus === 'published');
+  assert.deepEqual(publicPayload.popups.map(row => row.id), published.map(row => row.id));
+  assert.ok(publicPayload.popups.every(row => !('contentSearch' in row) && !('menuCandidates' in row) && !('imageCandidates' in row)));
+  assert.ok(publicPayload.popups.every(row => Array.isArray(row.menus) && Array.isArray(row.officialImageUrls)));
+  assert.ok(Buffer.byteLength(publicFeed) < Buffer.byteLength(rawFeed) * 0.35);
 });
 
 test('홈 추천은 최근 7일 시작을 최우선으로 하면서 출처를 고루 노출하고 오늘 종료를 정확히 비교한다', async () => {

@@ -2210,12 +2210,11 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
   try {
     // Home consumes the same-origin unified site feed exactly once. The cache
     // key exposes the newest collector build without reaching into raw data.
-    const popupFeedUrl = new URL('data/popups.json', location.href);
-    popupFeedUrl.searchParams.set('v', String(Date.now()));
+    const popupFeedUrl = new URL('data/popups-public.json?v=2', location.href);
     const [regionsResponse, previewsResponse, popupsResponse] = await Promise.all([
       fetch('data/restaurants/regions.json?v=20260728-4'),
       fetch('data/restaurants/previews.json?v=20260728-4'),
-      fetch(popupFeedUrl, { cache: 'no-store' })
+      fetch(popupFeedUrl)
     ]);
     if (!regionsResponse.ok || !previewsResponse.ok) throw Error('목록 로드 실패');
     const regionData = await regionsResponse.json(), previews = await previewsResponse.json();
@@ -2243,23 +2242,27 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
       if (!nearbyFromUrl) autoDetectNearbyRegion(popupRegions);
     }
     window.__MEOKDANG_REGIONS__ = regionData.regions; state.preview = enrich(mixPreviews(previews)); state.all = state.preview;
-    await loadPopularRestaurants();
     regionData.regions.forEach(r => $('#region-filter').insertAdjacentHTML('beforeend', `<option value="${escapeHtml(r.name)}">${escapeHtml(r.name)}</option>`));
     [...new Set(state.preview.map(r => r.category).filter(Boolean))].sort().forEach(c => $('#category-filter').insertAdjacentHTML('beforeend', `<option>${escapeHtml(c)}</option>`));
-    try {
-      const auth = await api('/api/auth/me');
-      state.serverUser = auth.user;
-      if (state.serverUser) await loadUserData();
-      syncAuthMenu();
-      const latest = await api('/api/reviews');
-      state.serverReviews.set('__latest__', latest.reviews);
-      state.reviewSummaries = new Map(Object.entries(latest.summaries || {}));
-    } catch {}
     updateSavedCount(); render();
     armEntryHistory();
     $('#search-button').disabled = false;
     $('#search-button').textContent = '검색';
     resolveReady();
+    void (async () => {
+      await loadPopularRestaurants();
+      render();
+      try {
+        const auth = await api('/api/auth/me');
+        state.serverUser = auth.user;
+        if (state.serverUser) await loadUserData();
+        syncAuthMenu();
+        const latest = await api('/api/reviews');
+        state.serverReviews.set('__latest__', latest.reviews);
+        state.reviewSummaries = new Map(Object.entries(latest.summaries || {}));
+        render();
+      } catch {}
+    })();
   } catch (error) {
     console.error(error);
     $('#app-state').textContent = '식당 데이터를 불러오지 못했습니다. 새로고침해 주세요.';

@@ -10,6 +10,7 @@
     "audit:live-popup-content": "node scripts/audit-live-popup-content.mjs",
     "data:refresh-popups": "node scripts/refresh-popup-site-feed.mjs",
     "data:build-site-feed": "node scripts/build-popup-site-feed.mjs",
+    "data:build-public-popup-feed": "node scripts/build-popup-public-feed.mjs",
     "data:refresh-lotte": "node scripts/refresh-popup-site-feed.mjs --lotte-only",
     "data:refresh-hyundai": "node scripts/refresh-popup-site-feed.mjs --retailer=hyundai",
     "data:refresh-shinsegae": "node scripts/refresh-popup-site-feed.mjs --retailer=shinsegae",
