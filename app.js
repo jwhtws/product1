@@ -871,9 +871,22 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
           })
         }));
       });
-      const nationalHubs = new Set(['서울', '수원', '천안아산', '대전', '동대구', '부산', '울산', '광주송정', '전주', '익산', '목포', '여수엑스포', '강릉', '춘천', '인천공항1터미널']);
+      const nationalHubs = new Set(['서울', '시청', '강남', '잠실', '홍대입구', '인천시청', '수원', '대전', '서대전네거리', '동대구', '반월당', '부산', '서면', '울산', '태화강', '광주송정', '상무', '전주', '춘천', '강릉']);
       const stationFeatures = transitData.features.filter(feature => feature.properties?.kind === 'station');
+      const stationNameCounts = stationFeatures.reduce((counts, feature) => counts.set(feature.properties.name, (counts.get(feature.properties.name) || 0) + 1), new Map());
       const stationLayer = L.layerGroup().addTo(popupMapInstance);
+      const placeLayer = L.layerGroup().addTo(popupMapInstance);
+      const placeLabels = [
+        ['서울', 37.5665, 126.978], ['인천', 37.4563, 126.7052], ['수원', 37.2636, 127.0286],
+        ['춘천', 37.8813, 127.7298], ['강릉', 37.7519, 128.8761], ['청주', 36.6424, 127.489],
+        ['대전', 36.3504, 127.3845], ['전주', 35.8242, 127.148], ['광주', 35.1595, 126.8526],
+        ['대구', 35.8714, 128.6014], ['울산', 35.5384, 129.3114], ['부산', 35.1796, 129.0756],
+        ['창원', 35.2279, 128.6811], ['포항', 36.019, 129.3435], ['제주', 33.4996, 126.5312]
+      ];
+      placeLabels.forEach(([name, latitude, longitude]) => L.marker([latitude, longitude], {
+        interactive: false,
+        icon: L.divIcon({ className: 'transit-place-label-wrap', html: `<span class="transit-place-label">${name}</span>`, iconSize: [54, 20], iconAnchor: [27, 10] })
+      }).addTo(placeLayer));
       const renderStationNames = () => {
         const zoom = popupMapInstance.getZoom();
         const bounds = popupMapInstance.getBounds().pad(.08);
@@ -883,7 +896,8 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
         stationFeatures.forEach(feature => {
           const [longitude, latitude] = feature.geometry.coordinates;
           const name = feature.properties.name;
-          const visible = zoom >= 11 || (zoom >= 9 && feature.properties.major) || (zoom < 9 && nationalHubs.has(name));
+          const transferStation = (stationNameCounts.get(name) || 0) > 1;
+          const visible = zoom >= 10 || (zoom >= 9 && (feature.properties.major || transferStation)) || (zoom < 9 && nationalHubs.has(name));
           if (!visible || !bounds.contains([latitude, longitude])) return;
           L.marker([latitude, longitude], {
             interactive: false,

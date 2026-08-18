@@ -75,6 +75,9 @@ test('홈 추천은 최근 7일 시작을 최우선으로 하면서 출처를 �
   assert.match(app, /feature\.properties\.colour/u);
   assert.match(app, /feature\.properties\?\.kind === 'station'/u);
   assert.match(styles, /\.transit-station-label/u);
+  assert.match(app, /stationNameCounts/u);
+  assert.match(app, /const placeLabels = \[/u);
+  assert.match(styles, /\.transit-place-label/u);
   assert.doesNotMatch(app, /L\.control\.layers/u);
   assert.match(app, /L\.control\.scale/u);
   assert.doesNotMatch(app, /const capitalMarkers = markers\.filter/u);
