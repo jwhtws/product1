@@ -261,6 +261,13 @@ const hyundaiVerifiedMenus = new Map([
   ].map(([name, price]) => ({ name, price, evidenceType: 'official_image' }))]
 ]);
 
+// Hyundai occasionally leaves both API and detail-page date fields empty even
+// though the official campaign image publishes a fixed popup period. Keep
+// image-verified periods here so those cards are not silently discarded.
+const hyundaiVerifiedDates = new Map([
+  ['E7902608496606', { startDate: '2026-07-16', endDate: '2026-09-02' }]
+]);
+
 function parseHyundaiDetailDates(html) {
   const text = decodeHtml(String(html || '')
     .replace(/<script\b[\s\S]*?<\/script>/giu, ' ')
@@ -276,7 +283,10 @@ async function collectHyundai() {
   const detailHtmlById = new Map();
   const stats = createCollectorStats();
   const base = 'https://www.ehyundai.com/newPortal/search/result.do';
-  for (const searchWord of ['pop up', '식품', '푸드', '베이커리', '디저트', '카페', '커피', '떡', '빵', '분식']) {
+  for (const searchWord of [
+    'pop up', 'pop-up', 'popup', '팝업', '콜라보', 'F&B', 'FNB',
+    '식품', '푸드', '베이커리', '디저트', '카페', '커피', '떡', '빵', '분식'
+  ]) {
    for (let page = 1; page <= 50; page += 1) {
     const params = new URLSearchParams({
       searchWord, code: '', splitCode: '', convertCheck: 'false',
@@ -307,6 +317,9 @@ async function collectHyundai() {
             ({ startDate, endDate } = parseHyundaiDetailDates(html));
           }
         } catch {}
+      }
+      if (!startDate || !endDate) {
+        ({ startDate, endDate } = hyundaiVerifiedDates.get(event.EVNT_CRD_CD) || {});
       }
       if (!startDate || !endDate) { recordCollectorRejection(stats, 'invalid_date'); continue; }
       if (new Date(`${endDate}T23:59:59+09:00`) < keepSince) { recordCollectorRejection(stats, 'expired'); continue; }
