@@ -833,14 +833,14 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
       if (popupMapInstance) { try { popupMapInstance.remove(); } catch {} popupMapInstance = null; }
       root.innerHTML = '';
       popupMapInstance = L.map(root, { scrollWheelZoom: true, zoomControl: false }).setView([36.35, 127.85], 7);
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
         maxZoom: 19,
-        attribution: '&copy; OpenStreetMap contributors'
+        attribution: '&copy; OpenStreetMap contributors &copy; CARTO'
       }).addTo(popupMapInstance);
       L.control.zoom({ position: 'bottomright' }).addTo(popupMapInstance);
       L.control.scale({ position: 'bottomleft', imperial: false }).addTo(popupMapInstance);
       popupMapInstance.attributionControl.addAttribution('&copy; OpenStreetMap contributors · ODbL');
-      const transitResponse = await fetch('data/korea-transit-lines.geojson?v=20260818-1');
+      const transitResponse = await fetch('data/korea-transit-lines.geojson?v=20260818-stations-1');
       if (!transitResponse.ok) throw new Error(`철도 노선 데이터 응답 ${transitResponse.status}`);
       const transitData = await transitResponse.json();
       L.geoJSON(transitData, {
@@ -855,11 +855,13 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
           className: `transit-line transit-${feature.properties.kind}`
         })
       }).addTo(popupMapInstance);
+      const routeLabelLayer = L.layerGroup().addTo(popupMapInstance);
+      const routeLabelMarkers = [];
       transitData.features.filter(feature => feature.properties?.kind === 'label').forEach(feature => {
         const [longitude, latitude] = feature.geometry.coordinates;
         const label = escapeHtml(feature.properties.ref || feature.properties.name);
         const name = escapeHtml(feature.properties.name);
-        L.marker([latitude, longitude], {
+        routeLabelMarkers.push(L.marker([latitude, longitude], {
           interactive: false,
           icon: L.divIcon({
             className: 'transit-line-label-wrap',
@@ -867,8 +869,35 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
             iconSize: [54, 24],
             iconAnchor: [27, 12]
           })
-        }).addTo(popupMapInstance);
+        }));
       });
+      const nationalHubs = new Set(['서울', '수원', '천안아산', '대전', '동대구', '부산', '울산', '광주송정', '전주', '익산', '목포', '여수엑스포', '강릉', '춘천', '인천공항1터미널']);
+      const stationFeatures = transitData.features.filter(feature => feature.properties?.kind === 'station');
+      const stationLayer = L.layerGroup().addTo(popupMapInstance);
+      const renderStationNames = () => {
+        const zoom = popupMapInstance.getZoom();
+        const bounds = popupMapInstance.getBounds().pad(.08);
+        stationLayer.clearLayers();
+        routeLabelLayer.clearLayers();
+        if (zoom >= 9) routeLabelMarkers.forEach(marker => marker.addTo(routeLabelLayer));
+        stationFeatures.forEach(feature => {
+          const [longitude, latitude] = feature.geometry.coordinates;
+          const name = feature.properties.name;
+          const visible = zoom >= 11 || (zoom >= 9 && feature.properties.major) || (zoom < 9 && nationalHubs.has(name));
+          if (!visible || !bounds.contains([latitude, longitude])) return;
+          L.marker([latitude, longitude], {
+            interactive: false,
+            icon: L.divIcon({
+              className: 'transit-station-label-wrap',
+              html: `<span class="transit-station-dot"></span><span class="transit-station-label">${escapeHtml(name)}역</span>`,
+              iconSize: [96, 20],
+              iconAnchor: [5, 10]
+            })
+          }).addTo(stationLayer);
+        });
+      };
+      popupMapInstance.on('zoomend moveend', renderStationNames);
+      renderStationNames();
       const markers = [];
       for (let index = 0; index < venues.length; index += 4) {
         const batch = venues.slice(index, index + 4);

@@ -69,10 +69,12 @@ test('홈 추천은 최근 7일 시작을 최우선으로 하면서 출처를 �
   assert.doesNotMatch(app, /unpkg\.com\/leaflet/u);
   assert.doesNotMatch(app, /basemaps\.cartocdn\.com\/rastertiles\/voyager/u);
   assert.match(app, /L\.tileLayer/u);
-  assert.match(app, /tile\.openstreetmap\.org/u);
+  assert.match(app, /basemaps\.cartocdn\.com\/light_nolabels/u);
   assert.match(app, /data\/korea-transit-lines\.geojson/u);
   assert.match(app, /L\.geoJSON\(transitData/u);
   assert.match(app, /feature\.properties\.colour/u);
+  assert.match(app, /feature\.properties\?\.kind === 'station'/u);
+  assert.match(styles, /\.transit-station-label/u);
   assert.doesNotMatch(app, /L\.control\.layers/u);
   assert.match(app, /L\.control\.scale/u);
   assert.doesNotMatch(app, /const capitalMarkers = markers\.filter/u);

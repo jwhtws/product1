@@ -1,6 +1,6 @@
 import { writeFile } from 'node:fs/promises';
 
-const endpoint = 'https://overpass.kumi.systems/api/interpreter';
+const endpoint = 'https://overpass-api.de/api/interpreter';
 const query = `[out:json][timeout:240];
 area(3600307756)->.kr;
 (
@@ -19,6 +19,8 @@ if (!response.ok) throw new Error(`Overpass ${response.status}: ${await response
 const payload = await response.json();
 const features = [];
 const routeKeys = new Set();
+
+const stationCandidates = new Map();
 
 const simplify = geometry => {
   const points = geometry.map(point => [Number(point.lon.toFixed(5)), Number(point.lat.toFixed(5))]);
@@ -54,6 +56,17 @@ for (let index = 0; index < selectedRoutes.length; index += 3) {
     return { route, payload: await fullResponse.json() };
   }));
   for (const { route, payload: full } of fullRoutes) {
+    for (const element of full.elements || []) {
+      const tags = element.tags || {};
+      const latitude = Number(element.lat ?? element.center?.lat);
+      const longitude = Number(element.lon ?? element.center?.lon);
+      const name = String(tags['name:ko'] || tags.name || '').trim();
+      const isStation = tags.railway === 'station' || tags.public_transport === 'station' || tags.public_transport === 'stop_position';
+      if (!isStation || !name || !Number.isFinite(latitude) || !Number.isFinite(longitude)) continue;
+      const cleanName = name.replace(/\s*역$/u, '');
+      const key = `${cleanName}|${latitude.toFixed(4)}|${longitude.toFixed(4)}`;
+      stationCandidates.set(key, { name: cleanName, latitude, longitude, major: route.tags.route === 'train' || tags.train === 'yes' });
+    }
     const nodes = new Map(full.elements.filter(item => item.type === 'node').map(item => [item.id, { lat: item.lat, lon: item.lon }]));
     const relation = full.elements.find(item => item.type === 'relation' && item.id === route.id);
     const memberWays = new Set((relation?.members || []).filter(member => member.type === 'way').map(member => member.ref));
@@ -77,6 +90,14 @@ for (let index = 0; index < selectedRoutes.length; index += 3) {
     });
     }
   }
+}
+
+for (const { name, latitude, longitude, major } of stationCandidates.values()) {
+  features.push({
+    type: 'Feature',
+    properties: { kind: 'station', name, major },
+    geometry: { type: 'Point', coordinates: [Number(longitude.toFixed(5)), Number(latitude.toFixed(5))] }
+  });
 }
 
 const output = { type: 'FeatureCollection', generatedAt: new Date().toISOString(), source: 'OpenStreetMap Overpass · ODbL', features };
