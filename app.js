@@ -932,7 +932,7 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
         }));
         for (const result of results.filter(Boolean)) {
           const popup = result.popup;
-          const markerIcon = L.divIcon({ className: 'popup-location-marker', html: '<span aria-hidden="true"></span>', iconSize: [34, 42], iconAnchor: [17, 42], popupAnchor: [0, -38] });
+          const markerIcon = L.divIcon({ className: 'popup-location-marker', html: '<span aria-hidden="true"></span>', iconSize: [18, 18], iconAnchor: [9, 9], popupAnchor: [0, -12] });
           const venueName = mapVenueName(popup);
           const marker = L.marker([result.latitude, result.longitude], { icon: markerIcon, title: venueName }).addTo(popupMapInstance);
           marker.bindPopup(`<strong>${escapeHtml(venueName)}</strong><div class="popup-map-popup-list">${result.popups.map(item => `<button type="button" data-leaflet-popup-id="${escapeHtml(item.id)}">${escapeHtml(item.title)}</button>`).join('')}</div>`);
