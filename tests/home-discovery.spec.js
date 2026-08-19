@@ -113,12 +113,12 @@ test('지역과 카테고리 탐색 대신 실제 팝업 지도를 제공한다'
   await expect(page.locator('#popup-map-section h2')).toHaveText('푸드팝업 지도');
   await expect(page.locator('#popup-map')).toBeVisible();
   await expect(page.locator('#popup-map')).toHaveClass(/leaflet-container/u, { timeout: 15000 });
-  await expect(page.locator('#popup-map .popup-location-marker').first()).toBeVisible({ timeout: 15000 });
+  await expect(page.locator('#popup-map .maplibregl-canvas')).toBeVisible({ timeout: 30000 });
+  await expect(page.locator('#popup-map .popup-location-marker').first()).toBeVisible({ timeout: 30000 });
   await expect(page.locator('#popup-map img.leaflet-marker-icon')).toHaveCount(0);
   await expect(page.locator('#popup-map .leaflet-control-layers')).toHaveCount(0);
   await expect(page.locator('#popup-map .leaflet-control-scale')).toBeVisible();
   await expect(page.locator('#popup-map .popup-map-overview-control')).toHaveCount(0);
-  expect(await page.locator('#popup-map .leaflet-tile').count()).toBeGreaterThan(0);
   await expect.poll(() => page.locator('#popup-map .transit-line').count(), { timeout: 15000 }).toBeGreaterThan(100);
   await expect(page.locator('#popup-map .transit-station-label, #popup-map .transit-place-label')).toHaveCount(0);
   await expect(page.locator('#popup-map .popup-map-error')).toHaveCount(0);

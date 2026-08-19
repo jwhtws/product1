@@ -805,15 +805,21 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
     return `<section class="popup-discovery-section popup-map-section" id="popup-map-section"><div class="md-section-header"><div><h2>푸드팝업 지도</h2><p>실제 지도에서 진행 중인 팝업 위치를 확인하세요.</p></div><span id="popup-map-count">위치 확인 중</span></div><div id="popup-map" class="popup-map" role="application" aria-label="진행 중인 푸드팝업 위치 지도"><div class="popup-map-loading">지도와 팝업 위치를 불러오는 중…</div></div></section>`;
   }
   function loadPopupMapLibrary() {
-    if (window.L) return Promise.resolve(window.L);
+    if (window.L?.maplibreGL && window.maplibregl) return Promise.resolve(window.L);
     if (window.popupMapLibraryPromise) return window.popupMapLibraryPromise;
-    window.popupMapLibraryPromise = new Promise((resolve, reject) => {
+    const loadScript = src => new Promise((resolve, reject) => {
       const script = document.createElement('script');
-      script.src = 'vendor/leaflet/leaflet.js?v=1.9.4';
-      script.onload = () => resolve(window.L);
-      script.onerror = () => reject(new Error('지도 라이브러리를 불러오지 못했습니다.'));
+      script.src = src;
+      script.onload = resolve;
+      script.onerror = () => reject(new Error(`지도 라이브러리를 불러오지 못했습니다: ${src}`));
       document.head.append(script);
     });
+    window.popupMapLibraryPromise = (async () => {
+      if (!window.L) await loadScript('vendor/leaflet/leaflet.js?v=1.9.4');
+      if (!window.maplibregl) await loadScript('vendor/maplibre/maplibre-gl.js?v=5.12.0');
+      if (!window.L.maplibreGL) await loadScript('vendor/maplibre/leaflet-maplibre-gl.js?v=0.1.4');
+      return window.L;
+    })();
     return window.popupMapLibraryPromise;
   }
   async function renderPopupMap(rows) {
@@ -833,10 +839,19 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
       if (popupMapInstance) { try { popupMapInstance.remove(); } catch {} popupMapInstance = null; }
       root.innerHTML = '';
       popupMapInstance = L.map(root, { scrollWheelZoom: true, zoomControl: false }).setView([36.35, 127.85], 7);
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; OpenStreetMap contributors'
-      }).addTo(popupMapInstance);
+      const styleResponse = await fetch('vendor/maplibre/liberty-style.json?v=20260819-1');
+      if (!styleResponse.ok) throw new Error(`벡터 지도 스타일 응답 ${styleResponse.status}`);
+      const vectorStyle = await styleResponse.json();
+      const hiddenRoadLabelIds = new Set(['highway-name-path', 'highway-name-minor', 'highway-name-major', 'highway-shield-non-us', 'highway-shield-us-interstate', 'road_shield_us']);
+      vectorStyle.layers.forEach(layer => {
+        if (hiddenRoadLabelIds.has(layer.id)) layer.layout = { ...layer.layout, visibility: 'none' };
+        if (layer.id === 'poi_transit') {
+          layer.filter = ['==', ['get', 'class'], 'rail'];
+          layer.layout = { ...layer.layout, 'text-size': 17, 'icon-size': .8 };
+          layer.paint = { ...layer.paint, 'text-color': '#172033', 'text-halo-width': 2 };
+        }
+      });
+      L.maplibreGL({ style: vectorStyle, attributionControl: false }).addTo(popupMapInstance);
       L.control.zoom({ position: 'bottomright' }).addTo(popupMapInstance);
       L.control.scale({ position: 'bottomleft', imperial: false }).addTo(popupMapInstance);
       popupMapInstance.attributionControl.addAttribution('&copy; OpenStreetMap contributors · ODbL');

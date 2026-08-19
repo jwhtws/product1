@@ -68,8 +68,11 @@ test('홈 추천은 최근 7일 시작을 최우선으로 하면서 출처를 �
   assert.match(app, /vendor\/leaflet\/leaflet\.js/u);
   assert.doesNotMatch(app, /unpkg\.com\/leaflet/u);
   assert.doesNotMatch(app, /basemaps\.cartocdn\.com\/rastertiles\/voyager/u);
-  assert.match(app, /L\.tileLayer/u);
-  assert.match(app, /tile\.openstreetmap\.org/u);
+  assert.match(app, /L\.maplibreGL/u);
+  assert.match(app, /vendor\/maplibre\/liberty-style\.json/u);
+  assert.match(app, /hiddenRoadLabelIds/u);
+  assert.match(app, /layer\.id === 'poi_transit'/u);
+  assert.match(app, /'text-size': 17/u);
   assert.match(app, /data\/korea-transit-lines\.geojson/u);
   assert.match(app, /L\.geoJSON\(transitData/u);
   assert.match(app, /feature\.properties\.colour/u);
