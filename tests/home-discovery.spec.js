@@ -114,6 +114,7 @@ test('지역과 카테고리 탐색 대신 실제 팝업 지도를 제공한다'
   await expect(page.locator('#popup-map')).toBeVisible();
   await expect(page.locator('#popup-map')).toHaveClass(/leaflet-container/u, { timeout: 15000 });
   await expect(page.locator('#popup-map .popup-location-marker').first()).toBeVisible({ timeout: 15000 });
+  await expect(page.locator('#popup-map img.leaflet-marker-icon')).toHaveCount(0);
   await expect(page.locator('#popup-map .leaflet-control-layers')).toHaveCount(0);
   await expect(page.locator('#popup-map .leaflet-control-scale')).toBeVisible();
   await expect(page.locator('#popup-map .popup-map-overview-control')).toHaveCount(0);

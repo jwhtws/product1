@@ -844,7 +844,7 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
       if (!transitResponse.ok) throw new Error(`철도 노선 데이터 응답 ${transitResponse.status}`);
       const transitData = await transitResponse.json();
       L.geoJSON(transitData, {
-        filter: feature => feature.properties?.kind !== 'label',
+        filter: feature => ['subway', 'commuter'].includes(feature.properties?.kind),
         interactive: false,
         style: feature => ({
           color: feature.properties.colour,
