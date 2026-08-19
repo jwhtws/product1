@@ -8,4 +8,6 @@ test('restaurant thumbnails do not show a category label', async () => {
   assert.match(app, /<div class="listing-photo neutral-photo" data-place-photo><span data-photo-badge>사진 없음<\/span><\/div>/u);
   assert.doesNotMatch(app, /data-place-photo data-category-label=/u);
   assert.doesNotMatch(app, /data-photo-badge>\$\{escapeHtml\(categoryLabel\(r\)\)\}/u);
+  assert.match(app, /<div class="card-top restaurant-card-top"><button class="save/u);
+  assert.doesNotMatch(app, /<div class="card-top"><span class="category">\$\{escapeHtml\(r\.category \|\| '음식점'\)\}<\/span>/u);
 });
