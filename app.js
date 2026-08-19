@@ -833,9 +833,9 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
       if (popupMapInstance) { try { popupMapInstance.remove(); } catch {} popupMapInstance = null; }
       root.innerHTML = '';
       popupMapInstance = L.map(root, { scrollWheelZoom: true, zoomControl: false }).setView([36.35, 127.85], 7);
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
-        attribution: '&copy; OpenStreetMap contributors &copy; CARTO'
+        attribution: '&copy; OpenStreetMap contributors'
       }).addTo(popupMapInstance);
       L.control.zoom({ position: 'bottomright' }).addTo(popupMapInstance);
       L.control.scale({ position: 'bottomleft', imperial: false }).addTo(popupMapInstance);
@@ -871,47 +871,13 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
           })
         }));
       });
-      const nationalHubs = new Set(['서울', '시청', '강남', '잠실', '홍대입구', '인천시청', '수원', '대전', '서대전네거리', '동대구', '반월당', '부산', '서면', '울산', '태화강', '광주송정', '상무', '전주', '춘천', '강릉']);
-      const stationFeatures = transitData.features.filter(feature => feature.properties?.kind === 'station');
-      const stationNameCounts = stationFeatures.reduce((counts, feature) => counts.set(feature.properties.name, (counts.get(feature.properties.name) || 0) + 1), new Map());
-      const stationLayer = L.layerGroup().addTo(popupMapInstance);
-      const placeLayer = L.layerGroup().addTo(popupMapInstance);
-      const placeLabels = [
-        ['서울', 37.5665, 126.978], ['인천', 37.4563, 126.7052], ['수원', 37.2636, 127.0286],
-        ['춘천', 37.8813, 127.7298], ['강릉', 37.7519, 128.8761], ['청주', 36.6424, 127.489],
-        ['대전', 36.3504, 127.3845], ['전주', 35.8242, 127.148], ['광주', 35.1595, 126.8526],
-        ['대구', 35.8714, 128.6014], ['울산', 35.5384, 129.3114], ['부산', 35.1796, 129.0756],
-        ['창원', 35.2279, 128.6811], ['포항', 36.019, 129.3435], ['제주', 33.4996, 126.5312]
-      ];
-      placeLabels.forEach(([name, latitude, longitude]) => L.marker([latitude, longitude], {
-        interactive: false,
-        icon: L.divIcon({ className: 'transit-place-label-wrap', html: `<span class="transit-place-label">${name}</span>`, iconSize: [54, 20], iconAnchor: [27, 10] })
-      }).addTo(placeLayer));
-      const renderStationNames = () => {
+      const renderRouteLabels = () => {
         const zoom = popupMapInstance.getZoom();
-        const bounds = popupMapInstance.getBounds().pad(.08);
-        stationLayer.clearLayers();
         routeLabelLayer.clearLayers();
         if (zoom >= 9) routeLabelMarkers.forEach(marker => marker.addTo(routeLabelLayer));
-        stationFeatures.forEach(feature => {
-          const [longitude, latitude] = feature.geometry.coordinates;
-          const name = feature.properties.name;
-          const transferStation = (stationNameCounts.get(name) || 0) > 1;
-          const visible = zoom >= 10 || (zoom >= 9 && (feature.properties.major || transferStation)) || (zoom < 9 && nationalHubs.has(name));
-          if (!visible || !bounds.contains([latitude, longitude])) return;
-          L.marker([latitude, longitude], {
-            interactive: false,
-            icon: L.divIcon({
-              className: 'transit-station-label-wrap',
-              html: `<span class="transit-station-label">${escapeHtml(name)}역</span>`,
-              iconSize: [96, 20],
-              iconAnchor: [5, 10]
-            })
-          }).addTo(stationLayer);
-        });
       };
-      popupMapInstance.on('zoomend moveend', renderStationNames);
-      renderStationNames();
+      popupMapInstance.on('zoomend', renderRouteLabels);
+      renderRouteLabels();
       const markers = [];
       for (let index = 0; index < venues.length; index += 4) {
         const batch = venues.slice(index, index + 4);
