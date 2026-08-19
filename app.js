@@ -436,7 +436,7 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
     const ratingText = reviewSummary?.count ? `★ ${reviewSummary.average.toFixed(1)}` : '리뷰 없음';
     const ratingDetail = reviewSummary?.count ? `리뷰 ${reviewSummary.count}개` : '첫 리뷰를 기다려요';
     return `<article class="restaurant-card" tabindex="0" data-index="${index}" data-place-key="${Math.abs(hash(idOf(r)))}">
-      <div class="listing-photo neutral-photo" data-place-photo data-category-label="${escapeHtml(categoryLabel(r))}"><span data-photo-badge>${escapeHtml(categoryLabel(r))} · 사진 없음</span></div>
+      <div class="listing-photo neutral-photo" data-place-photo><span data-photo-badge>사진 없음</span></div>
       <div class="card-body"><div class="card-top"><span class="category">${escapeHtml(r.category || '음식점')}</span><button class="save ${isSaved(r) ? 'active' : ''}" data-save="${index}" type="button" aria-label="저장">♡</button></div>
       <div class="card-identity"><h3>${state.seoRestaurantIds.has(idOf(r)) ? `<a class="seo-detail-link" href="${escapeHtml(restaurantSeoUrl(r))}">${escapeHtml(r.name)}</a>` : escapeHtml(r.name)}</h3></div><p class="address">${escapeHtml(r.address)}</p>
       <div class="tenure-badge"><span>영업 기간</span><strong>${permit ? escapeHtml(permit.duration) : '인허가일 확인 중'}</strong></div>
