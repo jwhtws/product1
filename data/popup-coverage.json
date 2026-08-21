@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-08-20T21:50:46.679Z",
+  "updatedAt": "2026-08-21T21:47:01.481Z",
   "summary": {
     "nationwideVenueTotal": 1027,
-    "verifiedPopupVenueCount": 46,
-    "officialFeedMonitoredCount": 92,
-    "collectorNeededCount": 935,
+    "verifiedPopupVenueCount": 47,
+    "officialFeedMonitoredCount": 95,
+    "collectorNeededCount": 932,
     "disclaimer": "시설 원장은 전국 탐색 범위이며, 화면에는 공식 출처에서 시작일과 종료일을 확인한 푸드팝업만 표시합니다."
   },
   "venues": [
@@ -690,7 +690,7 @@
       "kind": "백화점",
       "collector": "현대백화점·현대아울렛",
       "status": "verified-popup-found",
-      "popupCount": 3
+      "popupCount": 4
     },
     {
       "venueId": "localdata:3860000:2003386010707500006",
@@ -699,7 +699,7 @@
       "kind": "백화점",
       "collector": "현대백화점·현대아울렛",
       "status": "verified-popup-found",
-      "popupCount": 3
+      "popupCount": 4
     },
     {
       "venueId": "localdata:5590000:2013559014807500001",
@@ -951,7 +951,7 @@
       "kind": "백화점",
       "collector": "롯데백화점·롯데아울렛·롯데몰",
       "status": "verified-popup-found",
-      "popupCount": 25
+      "popupCount": 27
     },
     {
       "venueId": "localdata:3940000:2000394000007500022",
@@ -960,7 +960,7 @@
       "kind": "백화점",
       "collector": "롯데백화점·롯데아울렛·롯데몰",
       "status": "verified-popup-found",
-      "popupCount": 10
+      "popupCount": 9
     },
     {
       "venueId": "localdata:3980000:2010398007807500001",
@@ -1158,7 +1158,7 @@
       "kind": "백화점",
       "collector": "롯데백화점·롯데아울렛·롯데몰",
       "status": "verified-popup-found",
-      "popupCount": 10
+      "popupCount": 9
     },
     {
       "venueId": "localdata:3930000:1999393000007500001",
@@ -2166,7 +2166,7 @@
       "kind": "백화점",
       "collector": "현대백화점·현대아울렛",
       "status": "verified-popup-found",
-      "popupCount": 7
+      "popupCount": 12
     },
     {
       "venueId": "localdata:3780000:2015378021907500001",
@@ -3389,8 +3389,8 @@
       "region": "경상북도",
       "kind": "백화점",
       "collector": "롯데백화점·롯데아울렛·롯데몰",
-      "status": "official-feed-monitored",
-      "popupCount": 0
+      "status": "verified-popup-found",
+      "popupCount": 1
     },
     {
       "venueId": "localdata:5020000:2006502013207500001",
@@ -5568,7 +5568,7 @@
       "kind": "백화점",
       "collector": "롯데백화점·롯데아울렛·롯데몰",
       "status": "verified-popup-found",
-      "popupCount": 8
+      "popupCount": 9
     },
     {
       "venueId": "localdata:3080000:2006308009207500001",
@@ -5577,7 +5577,7 @@
       "kind": "백화점",
       "collector": "롯데백화점·롯데아울렛·롯데몰",
       "status": "verified-popup-found",
-      "popupCount": 5
+      "popupCount": 6
     },
     {
       "venueId": "localdata:3010000:2012301010007500002",
@@ -6000,7 +6000,7 @@
       "kind": "백화점",
       "collector": "신세계백화점",
       "status": "verified-popup-found",
-      "popupCount": 28
+      "popupCount": 36
     },
     {
       "venueId": "localdata:3210000:2005321007607500007",
@@ -6008,7 +6008,7 @@
       "region": "서울특별시",
       "kind": "백화점",
       "collector": "신세계백화점",
-      "status": "adapter-needed",
+      "status": "official-feed-monitored",
       "popupCount": 0
     },
     {
@@ -6369,7 +6369,7 @@
       "kind": "쇼핑센터",
       "collector": "타임스퀘어 공식 사이트맵",
       "status": "verified-popup-found",
-      "popupCount": 17
+      "popupCount": 21
     },
     {
       "venueId": "localdata:3200000:2009320013107500001",
@@ -8762,7 +8762,7 @@
       "region": "충청남도",
       "kind": "백화점",
       "collector": "신세계백화점",
-      "status": "adapter-needed",
+      "status": "official-feed-monitored",
       "popupCount": 0
     },
     {
