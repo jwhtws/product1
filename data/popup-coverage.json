@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-08-22T21:45:08.620Z",
+  "updatedAt": "2026-08-23T06:57:13.971Z",
   "summary": {
     "nationwideVenueTotal": 1027,
     "verifiedPopupVenueCount": 47,
-    "officialFeedMonitoredCount": 95,
-    "collectorNeededCount": 932,
+    "officialFeedMonitoredCount": 98,
+    "collectorNeededCount": 929,
     "disclaimer": "시설 원장은 전국 탐색 범위이며, 화면에는 공식 출처에서 시작일과 종료일을 확인한 푸드팝업만 표시합니다."
   },
   "venues": [
@@ -176,7 +176,7 @@
       "region": "강원특별자치도",
       "kind": "쇼핑센터",
       "collector": "AK플라자",
-      "status": "adapter-needed",
+      "status": "official-feed-monitored",
       "popupCount": 0
     },
     {
@@ -1679,7 +1679,7 @@
       "region": "경기도",
       "kind": "쇼핑센터",
       "collector": "AK플라자",
-      "status": "adapter-needed",
+      "status": "official-feed-monitored",
       "popupCount": 0
     },
     {
@@ -2508,7 +2508,7 @@
       "kind": "복합쇼핑몰",
       "collector": "AK플라자",
       "status": "verified-popup-found",
-      "popupCount": 5
+      "popupCount": 15
     },
     {
       "venueId": "localdata:4020000:2016402010807500001",
@@ -5613,7 +5613,7 @@
       "kind": "백화점",
       "collector": "롯데백화점·롯데아울렛·롯데몰",
       "status": "verified-popup-found",
-      "popupCount": 14
+      "popupCount": 15
     },
     {
       "venueId": "localdata:3050000:2010305010007500001",

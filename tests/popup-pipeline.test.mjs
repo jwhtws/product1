@@ -124,3 +124,12 @@ test('종료 팝업도 운영 feed와 SEO 생성 대상에 보존한다', async 
   assert.match(seo, /for \(const popup of detailPopups\)/u);
   assert.match(seo, /popupDetailLinks/u);
 });
+
+test('AK 수원점 이미지형 복합 행사를 개별 푸드팝업으로 분리한다', async () => {
+  const collector = await readFile('scripts/refresh-food-popups.mjs', 'utf8');
+  for (const brand of ['더데일리브레드', '이스터서울', '카운팅스타', '앵그리포테이토', '청23', '버터앤츄']) {
+    assert.match(collector, new RegExp(brand, 'u'));
+  }
+  assert.match(collector, /board\/event\/view\?store=02&seq=3378/u);
+  assert.match(collector, /for \(const \[brand, menuName\] of event\.brands\)/u);
+});

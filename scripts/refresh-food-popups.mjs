@@ -910,6 +910,22 @@ const akStores = [
   ['11', '광명'], ['12', '금정'], ['51', '홍대'], ['52', '기흥'], ['53', '세종']
 ];
 
+// AK also publishes image-only composite event pages whose list title does
+// not expose the individual food brands. Preserve the verified tenants as
+// separate searchable popup records until AK provides structured text.
+const akVerifiedCompositePopups = [
+  {
+    storeCode: '02', sequence: '3378', startDate: '2026-08-21', endDate: '2026-09-17',
+    detailUrl: 'https://www.akplaza.com/board/event/view?store=02&seq=3378',
+    imageUrl: 'https://m.akplaza.com/upload/event/202608/new_renewal/s_nr_04.png',
+    brands: [
+      ['더데일리브레드', '프리미엄 베이커리'], ['이스터서울', '베이커리·디저트'],
+      ['카운팅스타', '정통 아메리칸 쿠키'], ['앵그리포테이토', '감자튀김'],
+      ['청23', '생과일 디저트'], ['버터앤츄', '구움과자']
+    ]
+  }
+];
+
 const galleriaStores = [
   ['luxuryhall', '갤러리아 명품관'], ['timeworld', '갤러리아 타임월드'],
   ['gwanggyo', '갤러리아 광교'], ['centercity', '갤러리아 센터시티'], ['jinju', '갤러리아 진주']
@@ -1017,6 +1033,23 @@ async function collectGalleria() {
 
   async function collectAkPlaza() {
     const rows = [];
+    for (const event of akVerifiedCompositePopups) {
+      const storeName = akStores.find(([storeCode]) => storeCode === event.storeCode)?.[1];
+      if (!storeName || new Date(`${event.endDate}T23:59:59+09:00`) < keepSince) continue;
+      for (const [brand, menuName] of event.brands) {
+        const menu = { name: menuName, price: null, priceText: '', sourceUrl: event.detailUrl,
+          sourceName: 'AK플라자 공식 이벤트', evidenceType: 'official_image' };
+        rows.push({
+          id: `ak:${event.storeCode}:${event.sequence}:${stableHash(brand)}`,
+          name: brand, brand, venue: `AK플라자 ${storeName}점`, venueType: '백화점',
+          address: `AK플라자 ${storeName}점`, startDate: event.startDate, endDate: event.endDate,
+          imageUrl: event.imageUrl, officialImageUrls: [event.imageUrl],
+          description: `${brand}가 AK플라자 ${storeName}점 디저트 & 스낵 스트리트존에서 선보이는 공식 푸드 팝업입니다.`,
+          menus: [menu], menuItems: [menuName], sourceName: 'AK플라자 공식 이벤트',
+          sourceUrl: event.detailUrl, sourceGrade: 'official', firstSeenAt: today, lastSeenAt: today
+        });
+      }
+    }
     for (const [storeCode, storeName] of akStores) {
       const seenSequences = new Set();
       for (const category of ['11', '12']) {
