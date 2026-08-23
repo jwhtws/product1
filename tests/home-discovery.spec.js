@@ -170,6 +170,7 @@ test('Home은 단일 site-feed를 한 번만 읽고 Feed 필드로 카드를 렌
 
 test('오늘 종료는 종료일이 오늘인 Feed 행만 노출하고 지도는 활성 팝업을 입력으로 사용한다', async ({ page }) => {
   await page.goto(homeUrl, { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('[data-popup-quick="ending-today"]')).toHaveCount(0);
   await expect(page.locator('#active-popup-count')).toContainText(readyPattern, { timeout: 15000 });
   const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
   const endingIds = new Set(siteFeed.popups.filter(row => row.endDate === today).map(row => row.id));
