@@ -84,20 +84,10 @@ jobs:
           git add data/popups.json data/popup-review-queue.json data/popup-content-audit.json data/popup-venues.json data/popup-coverage.json assets/popups food-popups restaurant-reviews sitemap.xml
           git commit -m "data: 푸드 팝업 일간 갱신"
           git push
-      - name: Prepare Cloudflare deployment credential
-        env:
-          WRANGLER_OAUTH_CONFIG: ${{ secrets.WRANGLER_OAUTH_CONFIG }}
-        run: |
-          test -n "$WRANGLER_OAUTH_CONFIG" || { echo "::error::WRANGLER_OAUTH_CONFIG secret is required"; exit 1; }
-          printf '%s' "$WRANGLER_OAUTH_CONFIG" | base64 --decode > "$RUNNER_TEMP/wrangler-oauth.toml"
-          token="$(sed -n 's/^oauth_token[[:space:]]*=[[:space:]]*"\(.*\)"/\1/p' "$RUNNER_TEMP/wrangler-oauth.toml")"
-          test -n "$token" || { echo "::error::oauth_token is missing"; exit 1; }
-          echo "::add-mask::$token"
-          echo "CLOUDFLARE_API_TOKEN=$token" >> "$GITHUB_ENV"
       - name: Deploy refreshed feed to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
-          apiToken: ${{ env.CLOUDFLARE_API_TOKEN }}
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: 8d2f3113c1898979a0d13c5b2a840809
           command: pages deploy . --project-name=product1 --branch=main --commit-dirty=true
       - name: Cloudflare Pages 운영 배포 결과 검증
