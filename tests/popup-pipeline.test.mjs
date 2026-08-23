@@ -72,13 +72,12 @@ test('홈 추천은 최근 7일 시작을 최우선으로 하면서 출처를 �
   assert.match(app, /vendor\/maplibre\/liberty-style\.json/u);
   assert.match(app, /hiddenRoadLabelIds/u);
   assert.match(app, /layer\.id === 'poi_transit'/u);
-  assert.match(app, /'text-size': 17/u);
-  assert.match(app, /data\/korea-transit-lines\.geojson/u);
-  assert.match(app, /L\.geoJSON\(transitData/u);
-  assert.match(app, /feature\.properties\.colour/u);
+  assert.match(app, /layer\.id === 'poi_transit'.*visibility: 'none'/u);
+  assert.doesNotMatch(app, /data\/korea-transit-lines\.geojson/u);
+  assert.doesNotMatch(app, /L\.geoJSON\(transitData/u);
   assert.doesNotMatch(app, /transit-station-label/u);
   assert.doesNotMatch(styles, /popup-location-marker>span:after/u);
-  assert.match(app, /\['subway', 'commuter'\]\.includes\(feature\.properties\?\.kind\)/u);
+  assert.doesNotMatch(app, /\['subway', 'commuter'\]\.includes\(feature\.properties\?\.kind\)/u);
   assert.doesNotMatch(app, /const placeLabels = \[/u);
   assert.doesNotMatch(app, /L\.control\.layers/u);
   assert.match(app, /L\.control\.scale/u);

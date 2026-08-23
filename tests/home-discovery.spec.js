@@ -119,7 +119,7 @@ test('지역과 카테고리 탐색 대신 실제 팝업 지도를 제공한다'
   await expect(page.locator('#popup-map .leaflet-control-layers')).toHaveCount(0);
   await expect(page.locator('#popup-map .leaflet-control-scale')).toBeVisible();
   await expect(page.locator('#popup-map .popup-map-overview-control')).toHaveCount(0);
-  await expect.poll(() => page.locator('#popup-map .transit-line').count(), { timeout: 15000 }).toBeGreaterThan(100);
+  await expect(page.locator('#popup-map .transit-line, #popup-map .transit-line-label')).toHaveCount(0);
   await expect(page.locator('#popup-map .transit-station-label, #popup-map .transit-place-label')).toHaveCount(0);
   await expect(page.locator('#popup-map .popup-map-error')).toHaveCount(0);
 });
