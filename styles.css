@@ -215,3 +215,31 @@
 .popup-map .leaflet-control-scale-line{border-color:#353a35;background:rgba(255,255,255,.9);color:#252925;font-weight:800}.popup-map .leaflet-control-zoom{border:0;box-shadow:0 5px 18px rgba(30,35,31,.16)}.popup-map .leaflet-control-zoom a{color:#252925}
 @media(max-width:767px){.popup-map-name-label{max-width:145px;font-size:9px!important}.popup-map-name-label:nth-of-type(n+13){display:none}}
 .restaurant-card-top{justify-content:flex-end}
+
+/* Keep the desktop surface identical to the phone layout. */
+@media(min-width:768px){
+  body{padding-bottom:64px}
+  .shell{width:min(100% - 28px,560px)}
+  .discovery-topbar{height:62px}
+  .desktop-discovery-nav,.discovery-topbar .header-menu{display:none}
+  .header-action>span{display:none}
+  .mobile-bottom-nav{left:50%;right:auto;display:grid;width:min(100%,560px);transform:translateX(-50%)}
+  .popup-discovery-hero{min-height:350px;width:min(100% - 28px,560px);padding:var(--md-space-6) var(--md-space-4);border-radius:var(--md-radius-2xl)}
+  .popup-discovery-hero h1.hero-slogan{font-size:clamp(36px,12vw,48px)}
+  .popup-discovery-hero .hero-description{font-size:16px!important}
+  .popup-discovery-hero .search-mode{width:100%}
+  .popup-discovery-hero .searchbar{min-height:58px}
+  .popup-discovery-hero .searchbar .primary{min-width:64px;min-height:48px}
+  .popup-card-rail,.popup-home-skeleton{grid-auto-columns:minmax(260px,82%)}
+  .popup-card-rail{margin-right:calc(var(--md-space-4) * -1 + 2px)}
+  .discovery-taxonomy{grid-template-columns:repeat(2,1fr)}
+  .discovery-taxonomy--chips{flex-wrap:nowrap;margin-right:calc(var(--md-space-4) * -1 + 2px);overflow-x:auto;scrollbar-width:none}
+  .popup-discovery-section{padding:var(--md-space-10) 0}
+  .popup-discovery-section .md-section-header h2{font-size:24px}
+  .popup-map{height:460px;border-radius:var(--md-radius-xl)}
+  .footer{display:grid;width:min(100% - 28px,560px);margin:auto;padding:35px 0}
+  .footer>*{min-width:0;max-width:100%}
+  .footer .partnership,.footer .contact-form{width:100%}
+  .footer small{margin-left:0}
+  .modal{width:min(560px,100%);padding:24px 18px;border-radius:18px}
+}
