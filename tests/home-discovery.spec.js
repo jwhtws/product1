@@ -51,50 +51,16 @@ test('팝업 discovery 홈의 핵심 탐색과 저장, 상세 진입이 동작�
 
   await expect(page.locator('#new-this-week, #retailer-discovery, #brand-discovery, #department-discovery, #all-popups')).toHaveCount(0);
   await expect(page.locator('#today-discovery .popup-new-badge').first()).toHaveText('NEW');
-  await page.locator('.popup-quick-actions [data-popup-quick="calendar"]').click();
+  await expect(page.locator('.popup-quick-actions, [data-popup-quick]')).toHaveCount(0);
   await expect(page.locator('#discover-title')).toHaveText('전체 푸드 팝업');
   await expect(page.locator('#restaurant-grid .popup-card').first()).toBeVisible();
   expect(errors).toEqual([]);
 });
 
-test('내 주변은 지역 선택 후 ON/OFF 토글되고 URL과 결과가 복원된다', async ({ page }) => {
+test('검색창 아래 빠른 탐색 버튼을 노출하지 않는다', async ({ page }) => {
   await page.goto(homeUrl, { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('#active-popup-count')).toContainText(/\d+개/u, { timeout: 15000 });
-  const allSummary = await page.locator('#result-summary').textContent();
-  await expect(page.locator('#nearby-popups')).toHaveCount(0);
-  await page.locator('.popup-quick-actions [data-popup-quick="nearby"]').click();
-  await expect(page.locator('#nearby-region-picker')).toBeVisible();
-  const region = await page.locator('#nearby-region option').last().getAttribute('value');
-  await page.locator('#nearby-region').selectOption(region);
-  await page.locator('#nearby-apply').click();
-  await expect(page.locator('#nearby-popups')).toBeVisible();
-  await expect(page.locator('#nearby-popups h2')).toHaveText('내 주변 팝업');
-  await expect(page.locator('#discover-title')).toHaveText('전체 푸드 팝업');
-  await expect(page.locator('#result-summary')).toHaveText(allSummary);
-  const nearbyToggle = page.locator('.popup-quick-actions [data-popup-quick="nearby"]');
-  await expect(nearbyToggle).toHaveAttribute('aria-pressed', 'true');
-  await expect(nearbyToggle).toHaveClass(/md-button--primary/u);
-  await expect(page).toHaveURL(new RegExp(`nearby=${encodeURIComponent(region)}`, 'u'));
-  await page.reload({ waitUntil: 'domcontentloaded' });
-  await expect(page.locator('#active-popup-count')).toContainText(/\d+개/u, { timeout: 15000 });
-  await expect(page.locator('.popup-quick-actions [data-popup-quick="nearby"]')).toHaveAttribute('aria-pressed', 'true');
-  await expect(page.locator('#nearby-popups')).toBeVisible();
-  await page.locator('.popup-quick-actions [data-popup-quick="nearby"]').click();
-  await expect(page.locator('.popup-quick-actions [data-popup-quick="nearby"]')).toHaveAttribute('aria-pressed', 'false');
-  await expect(page).not.toHaveURL(/nearby=/u);
-  await expect(page.locator('#discover-title')).toHaveText('전체 푸드 팝업');
-  await expect(page.locator('#nearby-popups')).toHaveCount(0);
-});
-
-test('내 주변 지역 선택창은 버튼을 다시 누르면 닫힌다', async ({ page }) => {
-  await page.goto(homeUrl, { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('#active-popup-count')).toContainText(/\d+개/u, { timeout: 15000 });
-  const nearbyToggle = page.locator('.popup-quick-actions [data-popup-quick="nearby"]');
-  await nearbyToggle.click();
-  await expect(page.locator('#nearby-region-picker')).toBeVisible();
-  await nearbyToggle.click();
+  await expect(page.locator('.popup-quick-actions, [data-popup-quick]')).toHaveCount(0);
   await expect(page.locator('#nearby-region-picker')).toBeHidden();
-  await expect(nearbyToggle).toHaveAttribute('aria-pressed', 'false');
 });
 
 test('위치 권한이 이미 허용되면 가까운 지역 섹션을 자동 노출한다', async ({ context, page }) => {
@@ -170,7 +136,7 @@ test('Home은 단일 site-feed를 한 번만 읽고 Feed 필드로 카드를 렌
 
 test('오늘 종료는 종료일이 오늘인 Feed 행만 노출하고 지도는 활성 팝업을 입력으로 사용한다', async ({ page }) => {
   await page.goto(homeUrl, { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('[data-popup-quick="ending-today"]')).toHaveCount(0);
+  await expect(page.locator('.popup-quick-actions, [data-popup-quick]')).toHaveCount(0);
   await expect(page.locator('#active-popup-count')).toContainText(readyPattern, { timeout: 15000 });
   const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
   const endingIds = new Set(siteFeed.popups.filter(row => row.endDate === today).map(row => row.id));
@@ -191,7 +157,6 @@ test('Home 주요 제어는 ARIA, 키보드 포커스와 44px 터치 영역을 �
     return { width: rect.width, height: rect.height };
   }));
   expect(sizes.every(size => size.width >= 44 && size.height >= 44)).toBe(true);
-  await expect(page.locator('[data-popup-quick="nearby"]')).toHaveAttribute('aria-pressed', 'false');
   await expect(page.locator('#today-discovery .popup-save').first()).toHaveAttribute('aria-label', /저장/u);
 
   const card = page.locator('#today-discovery .discovery-popup-card').first();
