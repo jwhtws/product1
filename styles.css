@@ -243,3 +243,8 @@
   .footer small{margin-left:0}
   .modal{width:min(900px,100%);padding:32px;border-radius:24px}
 }
+
+@media(max-width:850px){
+  .filter-toggle{display:none!important}
+  .filters:not(.open){display:grid}
+}

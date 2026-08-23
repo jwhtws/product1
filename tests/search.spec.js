@@ -219,10 +219,8 @@ test('모바일에서 푸드 팝업 필터를 열고 적용한다', async ({ pag
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto(process.env.TEST_BASE_URL || 'http://127.0.0.1:8765/', { waitUntil: 'domcontentloaded' });
   await expect(page.locator('#search-button')).toBeEnabled({ timeout: 15000 });
-  await expect(page.locator('#popup-filters')).not.toBeVisible();
-  await page.locator('#filter-toggle').click();
   await expect(page.locator('#popup-filters')).toBeVisible();
-  await expect(page.locator('#filter-toggle')).toHaveAttribute('aria-expanded', 'true');
+  await expect(page.locator('#filter-toggle')).not.toBeVisible();
   await page.locator('#popup-food-filter').selectOption('bakery');
   await expect(page.locator('.popup-card').first()).toBeVisible();
 });

@@ -116,8 +116,8 @@ for (const viewport of [
     const submit = await page.locator('#popup-search-submit').boundingBox();
     expect(submit.height).toBeGreaterThanOrEqual(44);
     if (viewport.width <= 850) {
-      await page.locator('#filter-toggle').click();
       await expect(page.locator('#popup-filters')).toBeVisible();
+      await expect(page.locator('#filter-toggle')).not.toBeVisible();
     }
   });
 }
