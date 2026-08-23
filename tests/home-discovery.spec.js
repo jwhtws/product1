@@ -182,13 +182,13 @@ test('오늘 종료가 없으면 섹션을 숨기고 Feed가 비면 Premium Empt
   await expect(page.locator('.home-premium-empty')).toContainText('새로운 푸드팝업을 확인하고 있어요');
 });
 
-test('1024px 노트북에서도 핸드폰 화면 구성을 유지한다', async ({ page }) => {
+test('1024px 노트북에서는 핸드폰 UI를 웹 비율로 확장한다', async ({ page }) => {
   await page.setViewportSize({ width: 1024, height: 768 });
   await page.goto(homeUrl, { waitUntil: 'domcontentloaded' });
   await expect(page.locator('#active-popup-count')).toContainText(readyPattern, { timeout: 15000 });
   await expect(page.locator('.desktop-discovery-nav')).not.toBeVisible();
   await expect(page.locator('.mobile-bottom-nav')).toBeVisible();
-  expect(await page.locator('.shell').first().evaluate(element => element.getBoundingClientRect().width)).toBeLessThanOrEqual(560);
+  expect(await page.locator('.shell').first().evaluate(element => element.getBoundingClientRect().width)).toBeGreaterThan(900);
   await expect(page.locator('#today-discovery .discovery-popup-card')).toHaveCount(8);
   const rail = await page.locator('#today-discovery .popup-card-rail').evaluate(element => ({ scrollWidth: element.scrollWidth, clientWidth: element.clientWidth }));
   expect(rail.scrollWidth).toBeGreaterThan(rail.clientWidth);
