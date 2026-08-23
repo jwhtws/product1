@@ -140,10 +140,12 @@ test('종료일이 지난 팝업은 카드와 상세 화면에 종료로 표시�
 test('종료된 팝업은 모든 정렬에서 영업 중 팝업 뒤로 배치한다', async ({ page }) => {
   await page.goto(process.env.TEST_BASE_URL || 'http://127.0.0.1:8765/', { waitUntil: 'domcontentloaded' });
   await expect(page.locator('#search-button')).toBeEnabled({ timeout: 15000 });
-  for (const sort of ['food', 'status', 'ending', 'newest', 'start']) {
+  for (const sort of ['food', 'ending', 'ended', 'upcoming', 'newest', 'start']) {
     await page.locator('#popup-sort-filter').selectOption(sort);
     await expect(page.locator('.popup-card')).toHaveCount(24);
-    await expect(page.locator('.popup-card.popup-ended')).toHaveCount(0);
+    if (sort === 'ended') await expect(page.locator('.popup-card').first()).toHaveClass(/popup-ended/u);
+    else if (sort === 'upcoming') await expect(page.locator('.popup-card').first()).toHaveClass(/popup-upcoming/u);
+    else await expect(page.locator('.popup-card.popup-ended')).toHaveCount(0);
   }
 });
 

@@ -583,7 +583,6 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
     const query = searchKey(state.popupSearchQuery);
     const categoryFilter = $('#popup-food-filter')?.value || '';
     const regionFilter = searchKey($('#popup-region-filter')?.value || '');
-    const statusFilter = $('#popup-status-filter')?.value || '';
     const venueFilter = $('#popup-venue-filter')?.value || '';
     const sort = $('#popup-sort-filter')?.value || 'recommend';
     const order = { active: 0, upcoming: 1, ended: 2 };
@@ -591,7 +590,6 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
       (!query || popupSearchText(popup).includes(query)) &&
       (!categoryFilter || popupHomeCategory(popup) === categoryFilter) &&
       (!regionFilter || searchKey(popupRegionName(popup)).includes(regionFilter)) &&
-      (!statusFilter || popupStatus(popup).key === statusFilter) &&
       (!venueFilter || (popup.venueType || '') === venueFilter) &&
       (!state.popupHomeCategoryFilter || popupHomeCategory(popup) === state.popupHomeCategoryFilter) &&
       (!state.popupRetailerFilter || popupRetailer(popup) === state.popupRetailerFilter) &&
@@ -605,6 +603,16 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
       // of the user's secondary sort choice.
       const leftStatus = popupStatus(left).key;
       const rightStatus = popupStatus(right).key;
+      if (sort === 'ended') {
+        const statusDiff = Number(rightStatus === 'ended') - Number(leftStatus === 'ended');
+        if (statusDiff) return statusDiff;
+        if (leftStatus === 'ended') return (right.endDate || '').localeCompare(left.endDate || '');
+      }
+      if (sort === 'upcoming') {
+        const statusDiff = Number(rightStatus === 'upcoming') - Number(leftStatus === 'upcoming');
+        if (statusDiff) return statusDiff;
+        if (leftStatus === 'upcoming') return left.startDate.localeCompare(right.startDate);
+      }
       const endedDiff = Number(leftStatus === 'ended') - Number(rightStatus === 'ended');
       if (endedDiff) return endedDiff;
       if (sort === 'recommend') return popupRecommendationScore(right, query) - popupRecommendationScore(left, query) || left.title.localeCompare(right.title, 'ko');
@@ -1002,7 +1010,6 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
     syncPopupSearchInputs(query);
     $('#popup-region-filter').value = region;
     $('#popup-food-filter').value = '';
-    $('#popup-status-filter').value = '';
     $('#popup-venue-filter').value = '';
     if (quick === 'nearby') {
       state.nearbyRegion = region || state.nearbyRegion;
@@ -2014,35 +2021,6 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
     syncNearbyControls();
   }));
   $('#popup-filter-reset').addEventListener('click', resetPopupSearchFilters);
-  $('#popup-ending-filter').addEventListener('click', () => {
-    state.popupEndingOnly = !state.popupEndingOnly;
-    state.page = 1;
-    render();
-  });
-  $('#popup-new-filter').addEventListener('click', () => {
-    state.popupNewOnly = !state.popupNewOnly;
-    state.page = 1;
-    render();
-  });
-  $('#popup-nearby-filter').addEventListener('click', () => {
-    if (state.popupNearbyOnly) {
-      state.popupNearbyOnly = false;
-      state.page = 1;
-      render();
-      return;
-    }
-    const region = $('#popup-region-filter').value || state.nearbyRegion || store.get('nearby-region', '');
-    if (!region) {
-      $('#popup-region-filter').focus();
-      return toast('지역을 먼저 선택해 주세요.');
-    }
-    state.nearbyRegion = region;
-    state.popupNearbyOnly = true;
-    $('#popup-region-filter').value = region;
-    store.set('nearby-region', region);
-    state.page = 1;
-    render();
-  });
   $('#filter-reset').addEventListener('click', resetFilters);
   $$('.popup-quick-actions [data-popup-quick]').forEach(button => button.addEventListener('click', () => handlePopupQuick(button.dataset.popupQuick)));
   $('#nearby-apply').addEventListener('click', () => {

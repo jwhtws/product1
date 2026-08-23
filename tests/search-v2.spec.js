@@ -65,14 +65,9 @@ test('지역·카테고리·상태·NEW·내 주변 필터와 네 정렬을 조�
   const activeNew = siteFeed.popups.find(row => row.status === 'ongoing' && row.isNew);
   expect(activeNew).toBeTruthy();
   await page.locator('#popup-region-filter').selectOption(activeNew.region);
-  await page.locator('#popup-status-filter').selectOption('active');
-  await page.locator('#popup-new-filter').click();
-  await expect(page.locator('#popup-new-filter')).toHaveAttribute('aria-pressed', 'true');
-  await page.locator('#popup-nearby-filter').click();
-  await expect(page.locator('#popup-nearby-filter')).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.locator('#popup-status-filter, #popup-ending-filter, #popup-new-filter, #popup-nearby-filter')).toHaveCount(0);
   await expect(page.locator('.popup-card').first()).toBeVisible();
-  await expect(page.locator('.popup-card.popup-ended')).toHaveCount(0);
-  for (const sort of ['recommend', 'newest', 'ending', 'name']) {
+  for (const sort of ['recommend', 'newest', 'ending', 'ended', 'upcoming', 'name']) {
     await page.locator('#popup-sort-filter').selectOption(sort);
     await expect(page.locator('.popup-card').first()).toBeVisible();
   }

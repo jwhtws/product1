@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="design-system/components.css?v=1">
   <link rel="stylesheet" href="vendor/leaflet/leaflet.css?v=1.9.4">
   <link rel="stylesheet" href="vendor/maplibre/maplibre-gl.css?v=5.12.0">
-  <link rel="stylesheet" href="styles.css?v=20260823-mobile-filters-visible">
+  <link rel="stylesheet" href="styles.css?v=20260823-simplified-filters">
   <script type="application/ld+json">
     {"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mukdang.com/#organization","name":"먹당","alternateName":"Mukdang","url":"https://mukdang.com/"},{"@type":"WebSite","@id":"https://mukdang.com/#website","name":"먹당","alternateName":["먹당 푸드팝업","Mukdang","mukdang.com"],"url":"https://mukdang.com/","description":"전국 푸드팝업 일정과 지도 위치를 매일 제공하는 먹당","inLanguage":"ko-KR","publisher":{"@id":"https://mukdang.com/#organization"}},{"@type":"CollectionPage","name":"먹당 전국 푸드팝업 일정·위치·지도","url":"https://mukdang.com/food-popups/","description":"백화점과 쇼핑몰에서 진행 중인 푸드팝업과 디저트 팝업스토어의 일정, 기간, 지점과 지도 위치 안내","isPartOf":{"@id":"https://mukdang.com/#website"},"about":["푸드팝업","디저트 팝업스토어","백화점 팝업 일정"]}]}
   </script>
@@ -127,14 +127,8 @@
       <div id="popup-filters" class="filters popup-filters" aria-label="푸드 팝업 필터 및 정렬" hidden>
         <label>지역<select id="popup-region-filter"><option value="">전국</option></select></label>
         <label>카테고리<select id="popup-food-filter"><option value="">전체</option><option value="dessert">디저트</option><option value="bakery">베이커리</option><option value="meal">식사</option><option value="cafe">카페</option><option value="alcohol">주류</option><option value="snack">간식</option></select></label>
-        <label>진행 상태<select id="popup-status-filter"><option value="">전체</option><option value="active">진행 중</option><option value="upcoming">오픈 예정</option><option value="ended">종료</option></select></label>
         <label>장소 유형<select id="popup-venue-filter"><option value="">전체</option><option value="백화점">백화점</option><option value="쇼핑몰">쇼핑몰</option><option value="대형마트">대형마트</option></select></label>
-        <label>정렬<select id="popup-sort-filter"><option value="recommend">추천</option><option value="newest">최신</option><option value="ending">종료 임박</option><option value="name">이름순</option><option value="food">카테고리순</option><option value="status">진행 상태순</option><option value="start">시작일순</option></select></label>
-        <div class="popup-filter-toggles" role="group" aria-label="빠른 필터">
-          <button id="popup-ending-filter" class="md-chip" type="button" aria-pressed="false">오늘 종료</button>
-          <button id="popup-new-filter" class="md-chip" type="button" aria-pressed="false">NEW</button>
-          <button id="popup-nearby-filter" class="md-chip" type="button" aria-pressed="false">내 주변</button>
-        </div>
+        <label>정렬<select id="popup-sort-filter"><option value="recommend">추천</option><option value="newest">최신</option><option value="ending">종료 임박</option><option value="ended">종료</option><option value="upcoming">오픈 예정</option><option value="name">이름순</option><option value="food">카테고리순</option><option value="start">시작일순</option></select></label>
         <button id="popup-filter-reset" class="ghost" type="button">정렬·필터 초기화</button>
       </div>
 
