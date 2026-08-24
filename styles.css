@@ -248,3 +248,19 @@
   .filter-toggle{display:none!important}
   .filters:not(.open){display:grid}
 }
+
+/* Poong Today-inspired search: quiet surface, one clear action. */
+.popup-discovery-hero{min-height:auto;padding-top:48px;padding-bottom:52px}
+.popup-discovery-hero .search-wrap{max-width:600px}
+.popup-discovery-hero .searchbar{grid-template-columns:minmax(0,1fr) 64px;min-height:64px;padding:0;border:0;border-radius:10px;background:#f3f4f6;box-shadow:none}
+.popup-discovery-hero .searchbar:focus-within{background:#f3f4f6;box-shadow:0 0 0 2px #111827}
+.popup-discovery-hero .searchbar input{padding:0 8px 0 28px;background:transparent;color:#111827;font-size:16px;font-weight:500}
+.popup-discovery-hero .searchbar input::placeholder{color:#9ca3af}
+.popup-discovery-hero .searchbar .primary{position:relative;min-width:64px;min-height:64px;margin:0;padding:0;border-radius:0 10px 10px 0;background:transparent;color:transparent;font-size:0}
+.popup-discovery-hero .searchbar .primary::before{content:"";position:absolute;left:22px;top:20px;width:15px;height:15px;border:2px solid #111827;border-radius:50%}
+.popup-discovery-hero .searchbar .primary::after{content:"";position:absolute;left:38px;top:37px;width:9px;height:2px;border-radius:2px;background:#111827;transform:rotate(45deg);transform-origin:left center}
+.popup-discovery-hero .searchbar .primary:disabled{opacity:.35}
+.popup-discovery-hero .searchbar .primary:not(:disabled):hover{background:#e5e7eb}
+.popup-discovery-hero .searchbar .primary:focus-visible{outline:2px solid #111827;outline-offset:-4px}
+.popup-discovery-hero .quick-categories[hidden]{display:none!important}
+@media(max-width:767px){.popup-discovery-hero{min-height:auto;padding-top:32px;padding-bottom:38px}.popup-discovery-hero .searchbar{grid-template-columns:minmax(0,1fr) 56px;min-height:58px}.popup-discovery-hero .searchbar input{padding-left:20px;font-size:15px}.popup-discovery-hero .searchbar .primary{min-width:56px;min-height:58px}.popup-discovery-hero .searchbar .primary::before{left:18px;top:17px}.popup-discovery-hero .searchbar .primary::after{left:34px;top:34px}}
