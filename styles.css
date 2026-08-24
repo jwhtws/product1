@@ -300,3 +300,10 @@
 .discovery-topbar .menu-toggle{border:0;background:transparent}
 .discovery-topbar .menu-toggle:hover{background:var(--md-gray-100)}
 .discovery-topbar .menu-toggle:focus-visible{outline:0;box-shadow:var(--md-focus-ring)}
+
+/* One-line search promise with a restrained emphasis. */
+.popup-discovery-hero .hero-description{display:flex!important;align-items:center;justify-content:center;gap:10px;max-width:none;margin:0 auto 12px!important;color:#6b7280!important;font-size:16px!important;line-height:1.4!important;white-space:nowrap}
+.popup-discovery-hero .hero-description span{display:inline!important}
+.popup-discovery-hero .hero-description strong{display:inline-flex;align-items:center;color:#111827;font-weight:800;letter-spacing:-.035em}
+.popup-discovery-hero .hero-description strong::before{width:4px;height:4px;margin-right:10px;border-radius:50%;background:var(--md-color-primary);content:""}
+@media(max-width:767px){.popup-discovery-hero .hero-description{gap:7px;font-size:14px!important}.popup-discovery-hero .hero-description strong::before{margin-right:7px}}
