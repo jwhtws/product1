@@ -268,6 +268,44 @@ const hyundaiVerifiedDates = new Map([
   ['E7902608496606', { startDate: '2026-07-16', endDate: '2026-09-02' }]
 ]);
 
+// Hyundai's search API does not publish every short-term food vendor. A dated
+// on-site report is used only when it identifies the branch, operating period,
+// vendor and actual products. These rows expire normally and remain visibly
+// distinguishable from retailer-official records via sourceGrade.
+const hyundaiFieldReportUrl = 'https://blog.naver.com/ekxxccmm/224385951765';
+const hyundaiFieldReportImage = 'https://blogthumb.pstatic.net/MjAyNjA4MjFfODkg/MDAxNzg3MzA4NTgyNDQ4.8-xxiKP_N4UDfPlz0YLw45WfRokxnkLgMazu7jgzlhMg.NKoH_1HaCSyxAuV_kKxoqO77PBJRUTXm6L02PFnuPJ8g.JPEG/KakaoTalk_20260821_193558217.jpg?type=w2';
+const hyundaiFieldVerifiedPopups = [
+  ['쫀득네모네', [['츄러볼 오리지널', '8,500원'], ['츄러볼 기타 맛', '9,500원'], ['소스', '3,000원']]],
+  ['너로다', [['크림떡', '6,500원'], ['몬스터 왁뿌떡', '10,500원'], ['꿀떡', '4,500원']]],
+  ['브루클린 칩스칩스', [['바게트', '13,000원'], ['바게트 대용량', '25,000원'], ['감자튀김', '8,000원']]],
+  ['미담 수제 고로케', [['수제 고로케', '4,500원'], ['도넛·페이스트리', '2,000원']]],
+  ['브라더 빠스', [['빠스 소', '10,000원'], ['빠스 중', '15,000원'], ['빠스 대', '20,000원'], ['식혜·수정과', '4,000원']]],
+  ['밀크번', [['밀크번', '3,000원'], ['밀크번 세트', '10,000원']]],
+  ['너구리베이글', [['플레인 베이글', '3,000원'], ['베이글', '4,500원']]],
+  ['유니드마이요거트', [['유기농 요거트', '가격 미공개']]]
+].map(([name, menuPairs]) => ({
+  id: `hyundai-field:B00146000:20260821:${stableHash(name)}`,
+  name,
+  venue: '더현대 대구',
+  venueType: '백화점',
+  address: '대구광역시 중구 달구벌대로 2077 · 더현대 대구',
+  startDate: '2026-08-21',
+  endDate: '2026-08-27',
+  imageUrl: hyundaiFieldReportImage,
+  officialImageUrls: [hyundaiFieldReportImage],
+  menus: menuPairs.map(([menuName, price]) => ({
+    name: menuName, price, sourceUrl: hyundaiFieldReportUrl,
+    sourceName: '더현대 대구 현장 방문 기록', evidenceType: 'field_report'
+  })),
+  menuSource: 'verified-field-report',
+  sourceName: '더현대 대구 현장 방문 기록',
+  sourceUrl: hyundaiFieldReportUrl,
+  sourceGrade: 'verified-field',
+  qualityReasons: [],
+  firstSeenAt: today,
+  lastSeenAt: today
+}));
+
 function parseHyundaiDetailDates(html) {
   const text = decodeHtml(String(html || '')
     .replace(/<script\b[\s\S]*?<\/script>/giu, ' ')
@@ -364,7 +402,8 @@ async function collectHyundai() {
       };
     } catch { return row; }
   }));
-  return { rows: detailed, stats };
+  for (const row of hyundaiFieldVerifiedPopups) stats.discoveredCount += 1;
+  return { rows: [...detailed, ...hyundaiFieldVerifiedPopups], stats };
 }
 
 const starfieldVenues = [
@@ -1482,7 +1521,7 @@ const fulfilledCollectorNames = new Set(collectors
 // them after endDate instead.
 const retainedPrevious = previous;
 const merged = new Map(retainedPrevious
-  .filter(row => ['official', 'official-search'].includes(row.sourceGrade))
+  .filter(row => ['official', 'official-search', 'verified-field'].includes(row.sourceGrade))
   .map(row => [row.id, normalizePopup(row)]));
 for (const row of collected) {
   const normalized = normalizePopup(row);
@@ -1516,7 +1555,7 @@ const popups = [...deduped.values()]
   .filter(row => !row.endDate || row.endDate >= row.startDate)
   .sort((left, right) => right.startDate.localeCompare(left.startDate) || left.name.localeCompare(right.name, 'ko'));
 
-const retainedOfficialCount = retainedPrevious.filter(row => ['official', 'official-search'].includes(row.sourceGrade)).length;
+const retainedOfficialCount = retainedPrevious.filter(row => ['official', 'official-search', 'verified-field'].includes(row.sourceGrade)).length;
 if (retainedOfficialCount >= 10 && popups.length < retainedOfficialCount * 0.8) {
   throw new Error(`공식 수집 결과 급감 보호: 정책상 유지 대상 ${retainedOfficialCount}건 → ${popups.length}건 (20% 이상 감소), 파일 반영 중단`);
 }

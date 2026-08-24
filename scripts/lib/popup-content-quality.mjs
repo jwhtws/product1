@@ -322,7 +322,7 @@ export function evaluatePopupContent(row, {
     'missing_valid_image', 'missing_menu', 'search_incomplete', 'parse_failed', 'low_confidence_ocr'
   ].includes(reason));
   const contentQuality = requiredComplete ? (hasUsefulDescription(row) ? 'A' : 'B') : 'C';
-  const rejected = !['official', 'official-search'].includes(row.sourceGrade) || /(?:fixture|example\.com|테스트)/iu.test(`${row.id} ${row.sourceUrl}`);
+  const rejected = !['official', 'official-search', 'verified-field'].includes(row.sourceGrade) || /(?:fixture|example\.com|테스트)/iu.test(`${row.id} ${row.sourceUrl}`);
   const publishStatus = rejected ? 'rejected' : contentQuality === 'C' ? 'review_required' : 'published';
   if (validImage && validMenu) search.status = 'found';
   else if (parserFailed) search.status = 'parse_failed';

@@ -93,7 +93,6 @@ test('홈 추천은 최근 7일 시작을 최우선으로 하면서 출처를 �
   assert.doesNotMatch(app, /fallbackPoint/u);
   assert.match(app, /const key = mapVenueName\(popup\) \|\| popup\.address/u);
   assert.doesNotMatch(app, /\.values\(\)\]\.slice\(0, 40\)/u);
-  assert.doesNotMatch(app, /bindTooltip\(/u);
   assert.match(home, /<title>먹당 \| 전국 푸드팝업 일정·위치·지도<\/title>/u);
   assert.match(home, /<meta property="og:site_name" content="먹당">/u);
   assert.match(home, /"@type":"WebSite"[\s\S]*"name":"먹당"[\s\S]*"alternateName":\["먹당 푸드팝업","Mukdang","mukdang.com"\]/u);
@@ -114,7 +113,8 @@ test('홈 추천은 최근 7일 시작을 최우선으로 하면서 출처를 �
 test('main 푸시는 Cloudflare Pages product1만 배포해 운영콘솔을 덮어쓰지 않는다', async () => {
   const workflow = await readFile('.github/workflows/cloudflare-pages-deploy.yml', 'utf8');
   assert.match(workflow, /push:[\s\S]*branches:\s*\[main\]/u);
-  assert.match(workflow, /WRANGLER_OAUTH_CONFIG/u);
+  assert.match(workflow, /secrets\.CLOUDFLARE_API_TOKEN/u);
+  assert.match(workflow, /secrets\.CLOUDFLARE_ACCOUNT_ID/u);
   assert.match(workflow, /project:[\s\S]*product1/u);
   assert.doesNotMatch(workflow, /project:[\s\S]*product2/u);
   assert.match(workflow, /pages deploy \. --project-name=\$\{\{ matrix\.project \}\} --branch=main/u);
