@@ -275,3 +275,20 @@
 .home-popular-searches button b{color:#ef4b2f}.home-popular-searches button span{overflow:hidden;max-width:90px;text-overflow:ellipsis;white-space:nowrap}.home-popular-searches button small{color:#9ca3af;white-space:nowrap}.home-popular-searches-empty{color:#9ca3af;font-size:11px}
 @media(max-width:767px){.home-popular-searches{justify-content:flex-start;overflow-x:auto}.home-popular-searches button{flex:none}}
 @media(max-width:767px){.popup-discovery-hero{min-height:auto;padding-top:32px;padding-bottom:38px}.popup-discovery-hero .searchbar{grid-template-columns:minmax(0,1fr) 56px;min-height:58px}.popup-discovery-hero .searchbar input{padding-left:20px;font-size:15px}.popup-discovery-hero .searchbar .primary{min-width:56px;min-height:58px}.popup-discovery-hero .searchbar .primary::before{left:18px;top:17px}.popup-discovery-hero .searchbar .primary::after{left:34px;top:34px}}
+
+/* Flat search layout: same canvas as the page, with mode controls beside search. */
+.popup-discovery-hero{width:min(100% - 40px,1180px);margin-top:0;padding:44px 0 50px;overflow:visible;border:0;border-radius:0;background:transparent;box-shadow:none}
+.popup-discovery-hero::before,.popup-discovery-hero::after{display:none}
+.popup-discovery-hero .hero-description{margin-bottom:10px!important}
+.popup-discovery-hero .hero-kicker{margin-bottom:18px}
+.search-interface-row{display:flex;align-items:stretch;gap:12px;width:min(920px,100%);margin:0 auto}
+.search-interface-row .search-mode{display:flex;flex:0 0 190px;width:190px;margin:0;padding:4px}
+.search-interface-row .search-mode button{flex:1;min-width:0;padding-inline:8px;white-space:nowrap}
+.search-interface-row .search-wrap{flex:1;max-width:none;margin:0}
+.popup-discovery-hero .searchbar{min-height:74px}
+.popup-discovery-hero .searchbar .primary{min-width:72px;min-height:74px}
+.popup-discovery-hero .searchbar .primary::before{left:25px;top:25px}
+.popup-discovery-hero .searchbar .primary::after{left:41px;top:42px}
+.home-search-quick-links{justify-content:flex-start;width:min(920px,100%);max-width:none;margin-top:10px;padding-left:202px}
+.home-popular-searches{max-width:718px;margin-left:calc((100% - min(920px,100%))/2 + 202px);margin-right:auto}
+@media(max-width:767px){.popup-discovery-hero{width:min(100% - 28px,1180px);padding:28px 0 34px}.search-interface-row{gap:8px}.search-interface-row .search-mode{flex-basis:112px;width:112px;padding:3px}.search-interface-row .search-mode button{padding:6px 3px;font-size:11px}.popup-discovery-hero .searchbar{min-height:64px}.popup-discovery-hero .searchbar .primary{min-width:56px;min-height:64px}.popup-discovery-hero .searchbar .primary::before{left:18px;top:20px}.popup-discovery-hero .searchbar .primary::after{left:34px;top:37px}.home-search-quick-links{padding-left:120px}.home-popular-searches{max-width:calc(100% - 120px);margin-left:120px}}

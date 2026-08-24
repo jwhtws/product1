@@ -15,7 +15,8 @@ test('팝업 discovery 홈의 핵심 탐색과 저장, 상세 진입이 동작�
   await expect(page.locator('#ending-today-count')).toHaveText(/오늘 종료 \d+개/u);
   await expect(page.locator('input[type="search"]:visible')).toHaveCount(1);
   await expect(page.locator('#home-popular-search-toggle')).toHaveText('인기검색');
-  await expect(page.locator('.home-search-quick-links [data-popup-quick="ending-today"]')).toHaveText('오늘종료');
+  await expect(page.locator('.home-search-quick-links')).not.toContainText('빠른 검색');
+  await expect(page.locator('.home-search-quick-links')).not.toContainText('오늘종료');
   expect(await page.locator('.popup-discovery-hero').evaluate(element => element.getBoundingClientRect().height)).toBeLessThanOrEqual(510);
   await expect(page.locator('#today-discovery .discovery-popup-card').first()).toBeVisible();
   await expect(page.locator('#today-discovery h2')).toHaveText("Editor's Pick");
