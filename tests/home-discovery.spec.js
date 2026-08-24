@@ -9,7 +9,7 @@ test('팝업 discovery 홈의 핵심 탐색과 저장, 상세 진입이 동작�
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));
   await page.goto(homeUrl, { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('.hero-slogan')).toHaveText('오늘 갈 푸드팝업');
+  await expect(page.locator('.hero-slogan')).toHaveCount(0);
   await expect(page.locator('.hero-description')).toContainText('전국 푸드팝업을가장 빠르게 찾는 곳');
   await expect(page.locator('#active-popup-count')).toContainText(readyPattern, { timeout: 15000 });
   await expect(page.locator('input[type="search"]:visible')).toHaveCount(1);
