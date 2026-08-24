@@ -13,7 +13,7 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
     filters: { query: '', region: '', category: '', price: '', sort: 'recommend' },
     current: null, currentPopup: null, progress: '', searchSession: null, searchMode: 'popup', serverUser: null, serverReviews: new Map(),
     serverSaved: [], serverLists: {}, serverProfile: {}, reviewSummaries: new Map(), popularRestaurantCount: 0, popularRestaurants: [],
-    popups: [], popupUpdatedAt: null, popupSearchQuery: '', popupQuickFilter: '', popupHomeCategoryFilter: '', popupRetailerFilter: '',
+    popups: [], popupUpdatedAt: null, popupSearchQuery: '', popupQuickFilter: '', popupHomeCategoryFilter: '', popupRetailerFilter: '', popupPopularQueries: [],
     popupEndingOnly: false, popupNewOnly: false, popupNearbyOnly: false, nearbyRegion: '', nearbyEnabled: false, seoRestaurantIds: new Set()
   };
   const store = {
@@ -667,22 +667,42 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
     store.set('popup-recent-searches', next);
   }
   function popupPopularSearches() {
-    const active = state.popups.filter(popup => popupStatus(popup).key !== 'ended');
-    const counts = new Map();
-    const add = (type, value, weight = 1) => {
-      const label = String(value || '').trim();
-      if (!label) return;
-      const id = `${type}:${label}`;
-      const current = counts.get(id) || { type, query: label, count: 0 };
-      current.count += weight;
-      counts.set(id, current);
-    };
-    active.forEach(popup => {
-      add('brand', popup.brand, 3);
-      add('region', popupRegionName(popup), 2);
-      add('category', popupCategoryLabels[popupHomeCategory(popup)]);
-    });
-    return [...counts.values()].sort((left, right) => right.count - left.count || left.query.localeCompare(right.query, 'ko')).slice(0, 6);
+    return state.popupPopularQueries.slice(0, 6);
+  }
+  async function loadPopupPopularSearches() {
+    try {
+      const response = await fetch(publicApiUrl('/api/events?type=popular-searches&scope=popup'));
+      if (!response.ok) return;
+      const data = await response.json();
+      let searches = Array.isArray(data.searches) ? data.searches : [];
+      if (!searches.length) {
+        const fallbackResponse = await fetch(publicApiUrl('/api/events?type=popular-searches'));
+        if (fallbackResponse.ok) {
+          const fallbackData = await fallbackResponse.json();
+          searches = (Array.isArray(fallbackData.searches) ? fallbackData.searches : []).filter(item => {
+            const query = searchKey(item?.query);
+            return query && state.popups.some(popup => popupSearchText(popup).includes(query));
+          });
+        }
+      }
+      state.popupPopularQueries = searches
+        .filter(item => item?.query && Number(item.count) > 0)
+        .slice(0, 6);
+    } catch {}
+  }
+  function renderHomePopularSearches() {
+    const root = $('#home-popular-searches');
+    if (!root) return;
+    const searches = popupPopularSearches();
+    root.innerHTML = searches.length
+      ? searches.map((item, index) => `<button type="button" data-home-popular-query="${escapeHtml(item.query)}"><b>${index + 1}</b><span>${escapeHtml(item.query)}</span><small>${Number(item.count).toLocaleString('ko-KR')}회</small></button>`).join('')
+      : '<span class="home-popular-searches-empty">아직 집계된 팝업 검색어가 없어요.</span>';
+    $$('[data-home-popular-query]').forEach(button => button.addEventListener('click', () => {
+      applyPopupSearch(button.dataset.homePopularQuery);
+      root.hidden = true;
+      $('#home-popular-search-toggle').setAttribute('aria-expanded', 'false');
+      $('#discover').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }));
   }
   function syncPopupSearchInputs(value = state.popupSearchQuery) {
     ['#search-input', '#popup-search-input'].forEach(selector => {
@@ -698,7 +718,10 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
     state.popupRetailerFilter = '';
     state.page = 1;
     syncPopupSearchInputs();
-    if (record) recordPopupSearch(state.popupSearchQuery, type);
+    if (record) {
+      recordPopupSearch(state.popupSearchQuery, type);
+      if (state.popupSearchQuery) api('/api/events', { method: 'POST', body: JSON.stringify({ type: 'popup-search', detail: state.popupSearchQuery }) }).catch(() => {});
+    }
     ['#suggestions', '#popup-search-suggestions'].forEach(selector => {
       const root = $(selector);
       if (root) root.innerHTML = '';
@@ -718,7 +741,8 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
     const button = (item, recent = false) => `<button type="button" class="md-chip" data-popup-query="${escapeHtml(item.query)}" data-popup-query-type="${escapeHtml(item.type || 'query')}">${recent ? '<span aria-hidden="true">↗</span>' : ''}${escapeHtml(item.query)}</button>`;
     const recent = popupRecentSearches();
     recentRoot.innerHTML = recent.length ? recent.map(item => button(item, true)).join('') : '<span class="popup-search-hint">아직 검색 기록이 없어요.</span>';
-    popularRoot.innerHTML = popupPopularSearches().map(item => button(item)).join('');
+    const popular = popupPopularSearches();
+    popularRoot.innerHTML = popular.length ? popular.map(item => button(item)).join('') : '<span class="popup-search-hint">아직 집계된 팝업 검색어가 없어요.</span>';
     $$('[data-popup-query]').forEach(element => element.addEventListener('click', () => {
       applyPopupSearch(element.dataset.popupQuery, element.dataset.popupQueryType || 'query');
       $('#popup-search-input')?.focus();
@@ -907,6 +931,7 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
     if (!root) return;
     if (!state.popups.length) {
       $('#active-popup-count').textContent = '진행 중인 공식 일정 0개';
+      $('#ending-today-count').textContent = '오늘 종료 0개';
       root.innerHTML = '<div class="home-premium-empty" role="status"><span aria-hidden="true">✦</span><strong>새로운 푸드팝업을 확인하고 있어요</strong><p>공식 일정이 확인되는 즉시 이곳에 가장 먼저 소개할게요.</p><button type="button" class="md-button md-button--secondary" data-feed-retry>다시 확인</button></div>';
       root.querySelector('[data-feed-retry]').addEventListener('click', () => location.reload());
       return;
@@ -941,6 +966,7 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
     const endingToday = active.filter(popup => popup.endDate === today);
     const nearby = state.nearbyEnabled && state.nearbyRegion ? active.filter(popup => popupRegionName(popup) === state.nearbyRegion) : [];
     $('#active-popup-count').textContent = `${active.length.toLocaleString('ko-KR')}개 진행 중`;
+    $('#ending-today-count').textContent = `오늘 종료 ${endingToday.length.toLocaleString('ko-KR')}개`;
     const nearbySection = !state.nearbyEnabled ? '' : nearby.length
       ? discoveryRail('nearby-popups', '내 주변 팝업', `${popupRegionLabels[state.nearbyRegion] || state.nearbyRegion}에서 지금 만날 수 있어요`, nearby)
       : `<section class="popup-discovery-section" id="nearby-popups"><div class="home-premium-empty home-premium-empty--compact" role="status"><span aria-hidden="true">⌖</span><strong>이 지역의 진행 중 팝업을 찾지 못했어요</strong><p>다른 지역을 선택하면 새로운 일정을 확인할 수 있어요.</p><button type="button" data-nearby-reselect class="md-button md-button--secondary">지역 다시 선택</button></div></section>`;
@@ -2023,6 +2049,13 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
   $('#filter-reset').addEventListener('click', resetFilters);
   $$('.popup-quick-actions [data-popup-quick]').forEach(button => button.addEventListener('click', () => handlePopupQuick(button.dataset.popupQuick)));
   $$('.home-search-quick-links [data-popup-quick]').forEach(button => button.addEventListener('click', () => handlePopupQuick(button.dataset.popupQuick)));
+  $('#home-popular-search-toggle').addEventListener('click', () => {
+    const root = $('#home-popular-searches');
+    const expanded = root.hidden;
+    renderHomePopularSearches();
+    root.hidden = !expanded;
+    $('#home-popular-search-toggle').setAttribute('aria-expanded', String(expanded));
+  });
   $('#nearby-apply').addEventListener('click', () => {
     const region = $('#nearby-region').value;
     if (!region) return toast('지역을 먼저 선택해 주세요.');
@@ -2213,7 +2246,8 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
     $('#search-button').textContent = '검색';
     resolveReady();
     void (async () => {
-      await loadPopularRestaurants();
+      await Promise.all([loadPopularRestaurants(), loadPopupPopularSearches()]);
+      renderHomePopularSearches();
       render();
       try {
         const auth = await api('/api/auth/me');

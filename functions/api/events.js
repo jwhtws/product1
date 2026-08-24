@@ -1,19 +1,20 @@
 import { body, currentUser, json } from '../_lib/auth.js';
 
-const allowedTypes = new Set(['search', 'save', 'list']);
+const allowedTypes = new Set(['search', 'popup-search', 'save', 'list']);
 
 export async function onRequestGet(context) {
   const url = new URL(context.request.url);
   if (url.searchParams.get('type') !== 'popular-searches') return json({ error: '지원하지 않는 조회입니다.' }, 400);
+  const eventType = url.searchParams.get('scope') === 'popup' ? 'popup-search' : 'search';
   const since = Date.now() - (30 * 24 * 60 * 60 * 1000);
   const result = await context.env.DB.prepare(`
     SELECT TRIM(detail) AS query, COUNT(*) AS search_count, MAX(created_at) AS last_searched_at
     FROM activity_events
-    WHERE event_type = 'search' AND created_at >= ? AND LENGTH(TRIM(detail)) >= 2
+    WHERE event_type = ? AND created_at >= ? AND LENGTH(TRIM(detail)) >= 2
     GROUP BY LOWER(TRIM(detail))
     ORDER BY search_count DESC, last_searched_at DESC
     LIMIT 20
-  `).bind(since).all();
+  `).bind(eventType, since).all();
   return new Response(JSON.stringify({
     searches: (result.results || []).map(row => ({
       query: row.query,

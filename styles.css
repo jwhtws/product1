@@ -268,4 +268,10 @@
 .home-search-quick-links button{padding:3px 0;border:0;background:transparent;color:#4b5563;font-size:12px;font-weight:650}
 .home-search-quick-links button:hover{color:#111827;text-decoration:underline;text-underline-offset:3px}
 .home-search-quick-links button:focus-visible{outline:2px solid #111827;outline-offset:4px;border-radius:2px}
+.hero-kicker b{color:#9ca3af;font-weight:500}.hero-kicker #ending-today-count{color:#4b5563}
+.home-popular-searches{display:flex;align-items:center;justify-content:center;gap:10px;max-width:600px;margin:10px auto 0;padding:10px 14px;border-radius:10px;background:#fff;box-shadow:0 8px 24px rgba(17,24,39,.07)}
+.home-popular-searches[hidden]{display:none!important}
+.home-popular-searches button{display:flex;align-items:center;gap:5px;min-width:0;padding:3px;border:0;background:transparent;color:#374151;font-size:11px}
+.home-popular-searches button b{color:#ef4b2f}.home-popular-searches button span{overflow:hidden;max-width:90px;text-overflow:ellipsis;white-space:nowrap}.home-popular-searches button small{color:#9ca3af;white-space:nowrap}.home-popular-searches-empty{color:#9ca3af;font-size:11px}
+@media(max-width:767px){.home-popular-searches{justify-content:flex-start;overflow-x:auto}.home-popular-searches button{flex:none}}
 @media(max-width:767px){.popup-discovery-hero{min-height:auto;padding-top:32px;padding-bottom:38px}.popup-discovery-hero .searchbar{grid-template-columns:minmax(0,1fr) 56px;min-height:58px}.popup-discovery-hero .searchbar input{padding-left:20px;font-size:15px}.popup-discovery-hero .searchbar .primary{min-width:56px;min-height:58px}.popup-discovery-hero .searchbar .primary::before{left:18px;top:17px}.popup-discovery-hero .searchbar .primary::after{left:34px;top:34px}}

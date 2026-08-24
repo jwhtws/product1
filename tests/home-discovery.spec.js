@@ -12,8 +12,9 @@ test('팝업 discovery 홈의 핵심 탐색과 저장, 상세 진입이 동작�
   await expect(page.locator('.hero-slogan')).toHaveCount(0);
   await expect(page.locator('.hero-description')).toContainText('전국 푸드팝업을가장 빠르게 찾는 곳');
   await expect(page.locator('#active-popup-count')).toContainText(readyPattern, { timeout: 15000 });
+  await expect(page.locator('#ending-today-count')).toHaveText(/오늘 종료 \d+개/u);
   await expect(page.locator('input[type="search"]:visible')).toHaveCount(1);
-  await expect(page.locator('.home-search-quick-links [data-popup-quick="popular"]')).toHaveText('인기검색');
+  await expect(page.locator('#home-popular-search-toggle')).toHaveText('인기검색');
   await expect(page.locator('.home-search-quick-links [data-popup-quick="ending-today"]')).toHaveText('오늘종료');
   expect(await page.locator('.popup-discovery-hero').evaluate(element => element.getBoundingClientRect().height)).toBeLessThanOrEqual(510);
   await expect(page.locator('#today-discovery .discovery-popup-card').first()).toBeVisible();

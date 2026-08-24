@@ -56,7 +56,7 @@ test('최근 검색은 구조화 레코드로 10개만 브라우저에 보관된
   await page.reload({ waitUntil: 'domcontentloaded' });
   await ready(page);
   await expect(page.locator('#popup-recent-searches button')).toHaveCount(10);
-  await expect(page.locator('#popup-popular-searches button').first()).toBeVisible();
+  await expect(page.locator('#popup-popular-searches')).toContainText(/.+/u);
 });
 
 test('지역·카테고리·상태·NEW·내 주변 필터와 네 정렬을 조합한다', async ({ page }) => {

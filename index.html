@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="design-system/theme.css?v=1">
   <link rel="stylesheet" href="design-system/components.css?v=1">
   <link rel="stylesheet" href="vendor/leaflet/leaflet.css?v=1.9.4">
-  <link rel="stylesheet" href="styles.css?v=20260824-search-quick-links">
+  <link rel="stylesheet" href="styles.css?v=20260824-real-popular-search">
   <script type="application/ld+json">
     {"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://mukdang.com/#organization","name":"먹당","alternateName":"Mukdang","url":"https://mukdang.com/"},{"@type":"WebSite","@id":"https://mukdang.com/#website","name":"먹당","alternateName":["먹당 푸드팝업","Mukdang","mukdang.com"],"url":"https://mukdang.com/","description":"전국 푸드팝업 일정과 지도 위치를 매일 제공하는 먹당","inLanguage":"ko-KR","publisher":{"@id":"https://mukdang.com/#organization"}},{"@type":"CollectionPage","name":"먹당 전국 푸드팝업 일정·위치·지도","url":"https://mukdang.com/food-popups/","description":"백화점과 쇼핑몰에서 진행 중인 푸드팝업과 디저트 팝업스토어의 일정, 기간, 지점과 지도 위치 안내","isPartOf":{"@id":"https://mukdang.com/#website"},"about":["푸드팝업","디저트 팝업스토어","백화점 팝업 일정"]}]}
   </script>
@@ -62,7 +62,7 @@
   <main id="home">
     <section class="hero shell popup-discovery-hero">
       <p class="hero-description"><span>전국 푸드팝업을</span><span>가장 빠르게 찾는 곳</span></p>
-      <span class="hero-kicker"><i aria-hidden="true"></i><strong id="active-popup-count">공식 일정을 불러오는 중</strong></span>
+      <span class="hero-kicker"><i aria-hidden="true"></i><strong id="active-popup-count">공식 일정을 불러오는 중</strong><b aria-hidden="true">·</b><strong id="ending-today-count">오늘 종료 확인 중</strong></span>
       <div class="search-mode" role="tablist" aria-label="검색 대상">
         <button type="button" role="tab" aria-selected="false" data-search-mode="restaurant">식당</button>
         <button class="active" type="button" role="tab" aria-selected="true" data-search-mode="popup">푸드 팝업</button>
@@ -76,9 +76,10 @@
       </div>
       <div class="home-search-quick-links" aria-label="빠른 검색">
         <span>빠른 검색</span>
-        <button type="button" data-popup-quick="popular">인기검색</button>
+        <button type="button" id="home-popular-search-toggle" aria-expanded="false" aria-controls="home-popular-searches">인기검색</button>
         <button type="button" data-popup-quick="ending-today">오늘종료</button>
       </div>
+      <div id="home-popular-searches" class="home-popular-searches" aria-label="실제 인기 검색어" hidden></div>
       <div id="popular-quick-searches" class="quick-categories" aria-label="최근 30일 인기 검색 식당">
         <span>인기 검색</span><small>검색 순위를 집계하고 있습니다.</small>
       </div>
@@ -189,6 +190,6 @@
     <article class="modal panel-modal"><button class="modal-close" data-close type="button" aria-label="닫기">×</button><div id="panel-content"></div></article>
   </div>
   <div id="toast" class="toast" role="status"></div>
-  <script type="module" src="app.js?v=20260824-search-quick-links"></script>
+  <script type="module" src="app.js?v=20260824-real-popular-search"></script>
 </body>
 </html>
