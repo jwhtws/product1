@@ -72,6 +72,8 @@ test('홈 추천은 최근 7일 시작을 최우선으로 하면서 출처를 �
   assert.doesNotMatch(app, /vendor\/maplibre\/liberty-style\.json/u);
   assert.match(app, /World_Street_Map\/MapServer\/tile/u);
   assert.doesNotMatch(app, /World_Light_Gray_Base/u);
+  assert.match(app, /maxNativeZoom: 16/u);
+  assert.match(app, /maxZoom: 19/u);
   assert.match(app, /L\.tileLayer/u);
   assert.doesNotMatch(app, /data\/korea-transit-lines\.geojson/u);
   assert.doesNotMatch(app, /L\.geoJSON\(transitData/u);

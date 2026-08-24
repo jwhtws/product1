@@ -846,6 +846,7 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
       root.innerHTML = '';
       popupMapInstance = L.map(root, { scrollWheelZoom: true, zoomControl: false }).setView([36.35, 127.85], 7);
       L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+        maxNativeZoom: 16,
         maxZoom: 19,
         attribution: 'Tiles &copy; Esri'
       }).addTo(popupMapInstance);
