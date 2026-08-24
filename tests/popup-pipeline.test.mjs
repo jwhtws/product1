@@ -77,6 +77,10 @@ test('홈 추천은 최근 7일 시작을 최우선으로 하면서 출처를 �
   assert.doesNotMatch(app, /L\.geoJSON\(transitData/u);
   assert.doesNotMatch(app, /transit-station-label/u);
   assert.doesNotMatch(styles, /popup-location-marker>span:after/u);
+  assert.match(app, /popupCount > 1/u);
+  assert.match(app, /popup-location-marker-count/u);
+  assert.match(app, /bindTooltip\(escapeHtml\(venueName\)/u);
+  assert.match(styles, /white-space:nowrap!important/u);
   assert.doesNotMatch(app, /\['subway', 'commuter'\]\.includes\(feature\.properties\?\.kind\)/u);
   assert.doesNotMatch(app, /const placeLabels = \[/u);
   assert.doesNotMatch(app, /L\.control\.layers/u);
