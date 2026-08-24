@@ -263,4 +263,9 @@
 .popup-discovery-hero .searchbar .primary:not(:disabled):hover{background:#e5e7eb}
 .popup-discovery-hero .searchbar .primary:focus-visible{outline:2px solid #111827;outline-offset:-4px}
 .popup-discovery-hero .quick-categories[hidden]{display:none!important}
+.home-search-quick-links{display:flex;align-items:center;justify-content:center;gap:18px;max-width:600px;margin:12px auto 0;color:#6b7280;font-size:12px}
+.home-search-quick-links span{font-weight:700}
+.home-search-quick-links button{padding:3px 0;border:0;background:transparent;color:#4b5563;font-size:12px;font-weight:650}
+.home-search-quick-links button:hover{color:#111827;text-decoration:underline;text-underline-offset:3px}
+.home-search-quick-links button:focus-visible{outline:2px solid #111827;outline-offset:4px;border-radius:2px}
 @media(max-width:767px){.popup-discovery-hero{min-height:auto;padding-top:32px;padding-bottom:38px}.popup-discovery-hero .searchbar{grid-template-columns:minmax(0,1fr) 56px;min-height:58px}.popup-discovery-hero .searchbar input{padding-left:20px;font-size:15px}.popup-discovery-hero .searchbar .primary{min-width:56px;min-height:58px}.popup-discovery-hero .searchbar .primary::before{left:18px;top:17px}.popup-discovery-hero .searchbar .primary::after{left:34px;top:34px}}

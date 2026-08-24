@@ -1290,7 +1290,7 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
       const popupPages = Math.max(1, Math.ceil(rows.length / 24));
       state.page = Math.min(state.page, popupPages);
       const shown = rows.slice((state.page - 1) * 24, state.page * 24);
-      const quickTitles = { 'ending-today': '오늘 종료하는 푸드 팝업', nearby: `${state.nearbyRegion || '선택 지역'} 푸드 팝업` };
+      const quickTitles = { popular: '인기 푸드 팝업', 'ending-today': '오늘 종료하는 푸드 팝업', nearby: `${state.nearbyRegion || '선택 지역'} 푸드 팝업` };
       $('#discover-title').textContent = query ? `‘${query}’ 푸드 팝업` : state.popupHomeCategoryFilter ? `${popupCategoryLabels[state.popupHomeCategoryFilter]} 푸드 팝업` : state.popupRetailerFilter ? '선택한 쇼핑시설의 푸드 팝업' : quickTitles[state.popupQuickFilter] || '전체 푸드 팝업';
       $('#result-summary').textContent = `${rows.length.toLocaleString('ko-KR')}건 · 영업 중 ${activeCount.toLocaleString('ko-KR')} · 오픈 예정 ${upcomingCount.toLocaleString('ko-KR')} · 종료 ${endedCount.toLocaleString('ko-KR')}`;
       $('#app-state').textContent = state.popupUpdatedAt
@@ -2022,6 +2022,7 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
   $('#popup-filter-reset').addEventListener('click', resetPopupSearchFilters);
   $('#filter-reset').addEventListener('click', resetFilters);
   $$('.popup-quick-actions [data-popup-quick]').forEach(button => button.addEventListener('click', () => handlePopupQuick(button.dataset.popupQuick)));
+  $$('.home-search-quick-links [data-popup-quick]').forEach(button => button.addEventListener('click', () => handlePopupQuick(button.dataset.popupQuick)));
   $('#nearby-apply').addEventListener('click', () => {
     const region = $('#nearby-region').value;
     if (!region) return toast('지역을 먼저 선택해 주세요.');
