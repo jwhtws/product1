@@ -292,3 +292,11 @@
 .home-search-quick-links{justify-content:flex-start;width:min(920px,100%);max-width:none;margin-top:10px;padding-left:202px}
 .home-popular-searches{max-width:718px;margin-left:calc((100% - min(920px,100%))/2 + 202px);margin-right:auto}
 @media(max-width:767px){.popup-discovery-hero{width:min(100% - 28px,1180px);padding:28px 0 34px}.search-interface-row{gap:8px}.search-interface-row .search-mode{flex-basis:112px;width:112px;padding:3px}.search-interface-row .search-mode button{padding:6px 3px;font-size:11px}.popup-discovery-hero .searchbar{min-height:64px}.popup-discovery-hero .searchbar .primary{min-width:56px;min-height:64px}.popup-discovery-hero .searchbar .primary::before{left:18px;top:20px}.popup-discovery-hero .searchbar .primary::after{left:34px;top:37px}.home-search-quick-links{padding-left:120px}.home-popular-searches{max-width:calc(100% - 120px);margin-left:120px}}
+
+/* Restore the top-right navigation trigger on both phone and web layouts. */
+.discovery-topbar{gap:8px}
+.discovery-topbar .header-menu{display:block;flex:0 0 auto;margin-left:0}
+.discovery-topbar #header-account{display:none}
+.discovery-topbar .menu-toggle{border:0;background:transparent}
+.discovery-topbar .menu-toggle:hover{background:var(--md-gray-100)}
+.discovery-topbar .menu-toggle:focus-visible{outline:0;box-shadow:var(--md-focus-ring)}
