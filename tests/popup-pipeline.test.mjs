@@ -72,8 +72,8 @@ test('홈 추천은 최근 7일 시작을 최우선으로 하면서 출처를 �
   assert.doesNotMatch(app, /vendor\/maplibre\/liberty-style\.json/u);
   assert.match(app, /World_Street_Map\/MapServer\/tile/u);
   assert.doesNotMatch(app, /World_Light_Gray_Base/u);
-  assert.match(app, /maxNativeZoom: 16/u);
-  assert.match(app, /maxZoom: 19/u);
+  assert.match(app, /maxNativeZoom: 15/u);
+  assert.match(app, /maxZoom: 15/u);
   assert.match(app, /L\.tileLayer/u);
   assert.doesNotMatch(app, /data\/korea-transit-lines\.geojson/u);
   assert.doesNotMatch(app, /L\.geoJSON\(transitData/u);
@@ -101,6 +101,8 @@ test('홈 추천은 최근 7일 시작을 최우선으로 하면서 출처를 �
   assert.match(home, /"@type":"CollectionPage"[\s\S]*"about":\["푸드팝업","디저트 팝업스토어","백화점 팝업 일정"\]/u);
   assert.match(app, /\$\{rows\.length\}개 팝업 · \$\{markers\.length\}곳/u);
   assert.match(app, /\/api\/geocode\?address=.*&name=/u);
+  assert.match(app, /\/api\/geocode\?query=/u);
+  assert.match(app, /popupDistanceKm\(popup\) <= 15/u);
   assert.match(app, /popup\.latitude !== null[\s\S]*popup\.longitude !== null/u);
   assert.doesNotMatch(app, /id="region-discovery"/u);
   assert.doesNotMatch(app, /id="category-discovery"/u);

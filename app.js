@@ -13,7 +13,7 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
     filters: { query: '', region: '', category: '', price: '', sort: 'recommend' },
     current: null, currentPopup: null, progress: '', searchSession: null, searchMode: 'popup', serverUser: null, serverReviews: new Map(),
     serverSaved: [], serverLists: {}, serverProfile: {}, reviewSummaries: new Map(), popularRestaurantCount: 0, popularRestaurants: [],
-    popups: [], popupUpdatedAt: null, popupSearchQuery: '', popupQuickFilter: '', popupHomeCategoryFilter: '', popupRetailerFilter: '', popupPopularQueries: [],
+    popups: [], popupUpdatedAt: null, popupSearchQuery: '', popupLocationSearch: null, popupQuickFilter: '', popupHomeCategoryFilter: '', popupRetailerFilter: '', popupPopularQueries: [],
     popupEndingOnly: false, popupNewOnly: false, popupNearbyOnly: false, nearbyRegion: '', nearbyEnabled: false, seoRestaurantIds: new Set()
   };
   const store = {
@@ -564,6 +564,21 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
       popup.category, ...(Array.isArray(popup.tags) ? popup.tags : [])
     ].filter(Boolean).join(' '));
   }
+  function popupCoordinates(popup) {
+    const verified = popupMapLocations.get(popup.venue);
+    const latitude = Number(verified?.latitude ?? popup.latitude);
+    const longitude = Number(verified?.longitude ?? popup.longitude);
+    return Number.isFinite(latitude) && Number.isFinite(longitude) ? { latitude, longitude } : null;
+  }
+  function popupDistanceKm(popup, target = state.popupLocationSearch) {
+    const point = popupCoordinates(popup);
+    if (!point || !target) return Number.POSITIVE_INFINITY;
+    const radians = degrees => degrees * Math.PI / 180;
+    const latitudeDelta = radians(point.latitude - target.latitude);
+    const longitudeDelta = radians(point.longitude - target.longitude);
+    const value = Math.sin(latitudeDelta / 2) ** 2 + Math.cos(radians(target.latitude)) * Math.cos(radians(point.latitude)) * Math.sin(longitudeDelta / 2) ** 2;
+    return 6371 * 2 * Math.atan2(Math.sqrt(value), Math.sqrt(1 - value));
+  }
   function popupRecommendationScore(popup, query) {
     const status = popupStatus(popup).key;
     let score = status === 'active' ? 60 : status === 'upcoming' ? 40 : 0;
@@ -587,7 +602,8 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
     const sort = $('#popup-sort-filter')?.value || 'recommend';
     const order = { active: 0, upcoming: 1, ended: 2 };
     return state.popups.filter(popup =>
-      (!query || popupSearchText(popup).includes(query)) &&
+      (!query || state.popupLocationSearch || popupSearchText(popup).includes(query)) &&
+      (!state.popupLocationSearch || popupDistanceKm(popup) <= 15) &&
       (!categoryFilter || popupHomeCategory(popup) === categoryFilter) &&
       (!regionFilter || searchKey(popupRegionName(popup)).includes(regionFilter)) &&
       (!venueFilter || (popup.venueType || '') === venueFilter) &&
@@ -599,6 +615,7 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
       (!state.popupNewOnly || popup.isNew === true || isNewPopup(popup)) &&
       (!state.popupNearbyOnly || !state.nearbyRegion || popupRegionName(popup) === state.nearbyRegion)
     ).sort((left, right) => {
+      if (state.popupLocationSearch) return popupDistanceKm(left) - popupDistanceKm(right);
       // Closed events always belong after active/upcoming events, regardless
       // of the user's secondary sort choice.
       const leftStatus = popupStatus(left).key;
@@ -710,8 +727,9 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
       if (input && input.value !== value) input.value = value;
     });
   }
-  function applyPopupSearch(query, type = 'query', record = true) {
+  async function applyPopupSearch(query, type = 'query', record = true) {
     state.popupSearchQuery = String(query || '').trim();
+    state.popupLocationSearch = null;
     state.filters.query = state.popupSearchQuery;
     state.popupQuickFilter = '';
     state.popupHomeCategoryFilter = '';
@@ -733,6 +751,17 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
       input.removeAttribute('aria-activedescendant');
     });
     render();
+    const directMatches = state.popupSearchQuery && state.popups.some(popup => popupSearchText(popup).includes(searchKey(state.popupSearchQuery)));
+    const locationLike = /(?:역|동|읍|면|리|로|길|번길|대로|거리|사거리|공원|터미널|공항|시청|구청|군청)(?:\s*\d+(?:-\d+)?)?$/u.test(state.popupSearchQuery) || /(?:특별시|광역시|특별자치|[가-힣]+[시군구])\s+/u.test(state.popupSearchQuery);
+    if (!state.popupSearchQuery || (directMatches && !locationLike) || type !== 'query') return;
+    try {
+      const response = await fetch(publicApiUrl(`/api/geocode?query=${encodeURIComponent(state.popupSearchQuery)}`), { signal: AbortSignal.timeout(5000) });
+      if (!response.ok) return;
+      const point = await response.json();
+      if (!Number.isFinite(Number(point.latitude)) || !Number.isFinite(Number(point.longitude)) || state.popupSearchQuery !== String(query || '').trim()) return;
+      state.popupLocationSearch = { latitude: Number(point.latitude), longitude: Number(point.longitude), label: point.label || state.popupSearchQuery };
+      render();
+    } catch (error) { console.warn('장소 주변 팝업 검색 실패', error); }
   }
   function renderPopupSearchMeta() {
     const recentRoot = $('#popup-recent-searches');
@@ -870,8 +899,8 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
       root.innerHTML = '';
       popupMapInstance = L.map(root, { scrollWheelZoom: true, zoomControl: false }).setView([36.35, 127.85], 7);
       L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
-        maxNativeZoom: 16,
-        maxZoom: 19,
+        maxNativeZoom: 15,
+        maxZoom: 15,
         attribution: 'Tiles &copy; Esri'
       }).addTo(popupMapInstance);
       L.control.zoom({ position: 'bottomright' }).addTo(popupMapInstance);
@@ -1027,6 +1056,7 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
     state.popupHomeCategoryFilter = homeCategory;
     state.popupRetailerFilter = retailer;
     state.popupSearchQuery = query;
+    state.popupLocationSearch = null;
     state.filters.query = query;
     state.popupEndingOnly = false;
     state.popupNewOnly = false;
@@ -1317,7 +1347,7 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
       state.page = Math.min(state.page, popupPages);
       const shown = rows.slice((state.page - 1) * 24, state.page * 24);
       const quickTitles = { popular: '인기 푸드 팝업', 'ending-today': '오늘 종료하는 푸드 팝업', nearby: `${state.nearbyRegion || '선택 지역'} 푸드 팝업` };
-      $('#discover-title').textContent = query ? `‘${query}’ 푸드 팝업` : state.popupHomeCategoryFilter ? `${popupCategoryLabels[state.popupHomeCategoryFilter]} 푸드 팝업` : state.popupRetailerFilter ? '선택한 쇼핑시설의 푸드 팝업' : quickTitles[state.popupQuickFilter] || '전체 푸드 팝업';
+      $('#discover-title').textContent = state.popupLocationSearch ? `‘${state.popupLocationSearch.label}’ 주변 푸드 팝업` : query ? `‘${query}’ 푸드 팝업` : state.popupHomeCategoryFilter ? `${popupCategoryLabels[state.popupHomeCategoryFilter]} 푸드 팝업` : state.popupRetailerFilter ? '선택한 쇼핑시설의 푸드 팝업' : quickTitles[state.popupQuickFilter] || '전체 푸드 팝업';
       $('#result-summary').textContent = `${rows.length.toLocaleString('ko-KR')}건 · 영업 중 ${activeCount.toLocaleString('ko-KR')} · 오픈 예정 ${upcomingCount.toLocaleString('ko-KR')} · 종료 ${endedCount.toLocaleString('ko-KR')}`;
       $('#app-state').textContent = state.popupUpdatedAt
         ? `공식 쇼핑시설 일정 기준 · ${new Date(state.popupUpdatedAt).toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' })} 갱신`
@@ -1602,7 +1632,7 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
   function resetFilters() {
     $('#search-input').value = ''; $$('#filters select, #popup-filters select').forEach(select => { select.selectedIndex = 0; });
     state.filters = { query: '', region: '', category: '', price: '', sort: 'recommend' };
-    state.popupSearchQuery = ''; state.popupQuickFilter = ''; state.popupHomeCategoryFilter = ''; state.popupRetailerFilter = '';
+    state.popupSearchQuery = ''; state.popupLocationSearch = null; state.popupQuickFilter = ''; state.popupHomeCategoryFilter = ''; state.popupRetailerFilter = '';
     state.popupEndingOnly = false; state.popupNewOnly = false; state.popupNearbyOnly = false; state.nearbyRegion = ''; state.nearbyEnabled = false;
     updateNearbyUrl('');
     state.searchSession = null; state.all = state.preview; state.page = 1; render();
@@ -1610,6 +1640,7 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
   function resetPopupSearchFilters() {
     $$('#popup-filters select').forEach(select => { select.selectedIndex = 0; });
     state.popupSearchQuery = '';
+    state.popupLocationSearch = null;
     state.filters.query = '';
     state.popupQuickFilter = '';
     state.popupHomeCategoryFilter = '';

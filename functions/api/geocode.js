@@ -32,13 +32,29 @@ export async function onRequestGet(context) {
   const requestUrl = new URL(context.request.url);
   const address = cleanAddress(requestUrl.searchParams.get('address'));
   const name = String(requestUrl.searchParams.get('name') || '').trim();
-  if (!address) return json({ error: 'address가 필요합니다.' }, 400, 'no-store');
-  if (!context.env.VWORLD_API_KEY) return json({ error: '지도 API가 연결되지 않았습니다.' }, 503, 'no-store');
+  const query = String(requestUrl.searchParams.get('query') || '').trim();
+  if (!address && !query) return json({ error: 'address 또는 query가 필요합니다.' }, 400, 'no-store');
+  if (!context.env.VWORLD_API_KEY && !context.env.NAVER_CLIENT_ID) return json({ error: '지도 API가 연결되지 않았습니다.' }, 503, 'no-store');
   const cache = caches.default;
-  const cacheKey = new Request(`${requestUrl.origin}/api/geocode?address=${encodeURIComponent(address)}&name=${encodeURIComponent(name)}&cache=v3`);
+  const cacheKey = new Request(`${requestUrl.origin}/api/geocode?address=${encodeURIComponent(address)}&name=${encodeURIComponent(name)}&query=${encodeURIComponent(query)}&cache=v4`);
   const cached = await cache.match(cacheKey);
   if (cached) return cached;
   const domain = context.env.VWORLD_DOMAIN || 'mukdang.com';
+  if (query && context.env.NAVER_CLIENT_ID && context.env.NAVER_CLIENT_SECRET) {
+    const response = await fetch(`https://openapi.naver.com/v1/search/local.json?query=${encodeURIComponent(query)}&display=5`, { headers: { 'X-Naver-Client-Id': context.env.NAVER_CLIENT_ID, 'X-Naver-Client-Secret': context.env.NAVER_CLIENT_SECRET } });
+    if (response.ok) {
+      const item = ((await response.json()).items || []).find(candidate => candidate?.mapx && candidate?.mapy);
+      const longitude = Number(item?.mapx) / 10000000;
+      const latitude = Number(item?.mapy) / 10000000;
+      if (Number.isFinite(latitude) && Number.isFinite(longitude)) {
+        const outgoing = json({ latitude, longitude, provider: 'Naver Local', label: String(item.title || query).replace(/<[^>]*>/gu, ''), address: item.roadAddress || item.address || '' });
+        context.waitUntil(cache.put(cacheKey, outgoing.clone()));
+        return outgoing;
+      }
+    }
+  }
+  if (query) return json({ found: false }, 404, 'public, max-age=86400');
+  if (!context.env.VWORLD_API_KEY) return json({ found: false }, 404, 'public, max-age=86400');
   for (const type of ['road', 'parcel']) {
     const params = new URLSearchParams({ service: 'address', request: 'getCoord', version: '2.0', crs: 'EPSG:4326', address, refine: 'true', simple: 'false', format: 'json', type, key: context.env.VWORLD_API_KEY, domain });
     const response = await fetch(`${VWORLD_ADDRESS}?${params}`, { headers: { accept: 'application/json', origin: `https://${domain}`, referer: `https://${domain}/` } });
