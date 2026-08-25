@@ -150,3 +150,12 @@ test('갤러리아 광교 이미지형 G.LAB 일정을 개별 푸드팝업으로
   assert.match(collector, /G0821_18\.jpg/u);
   assert.match(collector, /\['NEWOPENING_POPUP', 'PRODUCT_EVENT'\]/u);
 });
+
+test('더현대 대구는 공식 검색 카드만 쓰고 테이블웨어 팝업을 제외한다', async () => {
+  const collector = await readFile('scripts/refresh-food-popups.mjs', 'utf8');
+  assert.doesNotMatch(collector, /blog\.naver\.com|verified-field|현장 방문 기록/u);
+  assert.match(collector, /hyundaiNonFoodSourceIds = new Set\(\['E4602608498344'\]\)/u);
+  for (const seed of ['쫀득네모네', '너로다', '밀크번', '브루클린', '미담', '브라더']) {
+    assert.match(collector, new RegExp(seed, 'u'));
+  }
+});
