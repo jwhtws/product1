@@ -53,10 +53,10 @@ export async function onRequestGet(context) {
       }
     }
   }
-  if (query) return json({ found: false }, 404, 'public, max-age=86400');
   if (!context.env.VWORLD_API_KEY) return json({ found: false }, 404, 'public, max-age=86400');
+  const lookupAddress = address || cleanAddress(query);
   for (const type of ['road', 'parcel']) {
-    const params = new URLSearchParams({ service: 'address', request: 'getCoord', version: '2.0', crs: 'EPSG:4326', address, refine: 'true', simple: 'false', format: 'json', type, key: context.env.VWORLD_API_KEY, domain });
+    const params = new URLSearchParams({ service: 'address', request: 'getCoord', version: '2.0', crs: 'EPSG:4326', address: lookupAddress, refine: 'true', simple: 'false', format: 'json', type, key: context.env.VWORLD_API_KEY, domain });
     const response = await fetch(`${VWORLD_ADDRESS}?${params}`, { headers: { accept: 'application/json', origin: `https://${domain}`, referer: `https://${domain}/` } });
     if (!response.ok) continue;
     const point = (await response.json())?.response?.result?.point;
