@@ -898,10 +898,10 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
       if (popupMapInstance) { try { popupMapInstance.remove(); } catch {} popupMapInstance = null; }
       root.innerHTML = '';
       popupMapInstance = L.map(root, { scrollWheelZoom: true, zoomControl: false }).setView([36.35, 127.85], 7);
-      L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
-        maxNativeZoom: 15,
-        maxZoom: 15,
-        attribution: 'Tiles &copy; Esri'
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxNativeZoom: 19,
+        maxZoom: 19,
+        attribution: '&copy; OpenStreetMap contributors'
       }).addTo(popupMapInstance);
       L.control.zoom({ position: 'bottomright' }).addTo(popupMapInstance);
       L.control.scale({ position: 'bottomleft', imperial: false }).addTo(popupMapInstance);
