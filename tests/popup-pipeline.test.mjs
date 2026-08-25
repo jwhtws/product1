@@ -141,3 +141,12 @@ test('AK 수원점 이미지형 복합 행사를 개별 푸드팝업으로 분�
   assert.match(collector, /board\/event\/view\?store=02&seq=3378/u);
   assert.match(collector, /for \(const \[brand, menuName\] of event\.brands\)/u);
 });
+
+test('갤러리아 광교 이미지형 G.LAB 일정을 개별 푸드팝업으로 분리한다', async () => {
+  const collector = await readFile('scripts/refresh-food-popups.mjs', 'utf8');
+  for (const brand of ['오이스', '조선 가마솥 옥수수', '미트충전소', '전주떡집']) {
+    assert.match(collector, new RegExp(brand, 'u'));
+  }
+  assert.match(collector, /G0821_18\.jpg/u);
+  assert.match(collector, /\['NEWOPENING_POPUP', 'PRODUCT_EVENT'\]/u);
+});

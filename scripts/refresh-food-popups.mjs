@@ -1020,6 +1020,10 @@ async function collectGalleria() {
     }
   );
   const gwanggyoSchedules = [
+    ['c86460:oise', '오이스', '2026-08-21', '2026-08-27', 'c86460', 'https://cdndept.galleria.co.kr/image/dept/edm-content/2026/G0821_18.jpg', '샌드 디저트'],
+    ['c86460:corn', '조선 가마솥 옥수수', '2026-08-14', '2026-08-27', 'c86460', 'https://cdndept.galleria.co.kr/image/dept/edm-content/2026/G0821_18.jpg', '가마솥 옥수수'],
+    ['c86460:meat', '미트충전소', '2026-08-21', '2026-08-27', 'c86460', 'https://cdndept.galleria.co.kr/image/dept/edm-content/2026/G0821_18.jpg', '바비큐'],
+    ['c86460:jeonju', '전주떡집', '2026-08-21', '2026-09-03', 'c86460', 'https://cdndept.galleria.co.kr/image/dept/edm-content/2026/G0821_18.jpg', '피자 설기'],
     ['c85958:yoodongbu', '유동부치아바타', '2026-07-31', '2026-08-13', 'c85958', 'gwanggyo-yoodongbu.jpg', '치아바타'],
     ['c85958:longmadame', '롱마담 에그타르트', '2026-07-31', '2026-08-13', 'c85958', 'gwanggyo-longmadame.jpg', '에그타르트'],
     ['c85958:kickstaco', '킥스타코', '2026-07-31', '2026-08-06', 'c85958', 'gwanggyo-kickstaco.jpg', '치미창가'],
@@ -1031,7 +1035,9 @@ async function collectGalleria() {
   ];
   for (const [key, name, startDate, endDate, cardId, imageName, productName] of gwanggyoSchedules) {
     const sourceUrl = `https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/${cardId}?qCategory=PRODUCT_EVENT`;
-    const imageUrl = `https://product1-84t.pages.dev/assets/popups/galleria/${imageName}`;
+    const imageUrl = /^https:\/\//u.test(imageName)
+      ? imageName
+      : `https://product1-84t.pages.dev/assets/popups/galleria/${imageName}`;
     rows.push({
       id: `galleria:gwanggyo:${key}`, name, venue: '갤러리아 광교', venueType: '백화점',
       address: '경기도 수원시 영통구 광교중앙로 124 · 갤러리아 광교 B1F GOURMET494',
@@ -1047,11 +1053,16 @@ async function collectGalleria() {
   stats.discoveredCount = rows.length;
   for (const [slug, venue] of galleriaStores) {
     try {
-      const listUrl = `https://dept.galleria.co.kr/store-info/${slug}/promotion/shopping-news?qCategory=NEWOPENING_POPUP`;
-      const listResponse = await fetchResilient(listUrl);
-      if (!listResponse.ok) { console.warn(`갤러리아 ${venue} 응답 ${listResponse.status}`); continue; }
-      const listHtml = await listResponse.text();
-      const links = [...new Set([...listHtml.matchAll(new RegExp(`href="(/store-info/${slug}/promotion/shopping-news/c\\d+)(?:\\?[^\"]*)?"`, 'gi'))].map(match => match[1]))].slice(0, 80);
+      const listHtml = (await Promise.all(['NEWOPENING_POPUP', 'PRODUCT_EVENT'].map(async qCategory => {
+        const listUrl = `https://dept.galleria.co.kr/store-info/${slug}/promotion/shopping-news?qCategory=${qCategory}`;
+        const listResponse = await fetchResilient(listUrl);
+        if (!listResponse.ok) {
+          console.warn(`갤러리아 ${venue} ${qCategory} 응답 ${listResponse.status}`);
+          return '';
+        }
+        return listResponse.text();
+      }))).join('\n');
+      const links = [...new Set([...listHtml.matchAll(new RegExp(`href="(/store-info/${slug}/promotion/shopping-news/c\\d+)(?:\\?[^\"]*)?"`, 'gi'))].map(match => match[1]))].slice(0, 160);
       for (const path of links) {
         const response = await fetchResilient(`https://dept.galleria.co.kr${path}?qCategory=NEWOPENING_POPUP`);
         if (!response.ok) continue;
