@@ -560,7 +560,7 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
   }
   function popupSearchText(popup) {
     return searchKey([
-      popup.title, popup.brand, popup.venue, popup.branch, popupRegionName(popup),
+      popup.title, popup.brand, popup.venue, popup.branch, popup.address, popupRegionName(popup),
       popup.category, ...(Array.isArray(popup.tags) ? popup.tags : [])
     ].filter(Boolean).join(' '));
   }
