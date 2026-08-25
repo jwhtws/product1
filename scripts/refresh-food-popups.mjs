@@ -8,6 +8,7 @@ import { createBatch3Collectors } from './collectors/batch3-popup-venues.mjs';
 import { createVerifiedVenueCollectors } from './collectors/batch3-verified-venues.mjs';
 import { createBatch4BrandCollectors } from './collectors/batch4-brand-newsrooms.mjs';
 import { collectTimesSquareSitemap } from './collectors/times-square-sitemap.mjs';
+import { hyundaiBranchApiUrl, hyundaiDirectBranches, parseHyundaiBranchItems } from './lib/hyundai-branch-parser.mjs';
 import { extractOfficialMenuCandidates } from './lib/popup-content-quality.mjs';
 import { assertNotBlockedPage, BlockPageError, hardenedFetch } from './lib/hardened-fetch.mjs';
 import {
@@ -321,6 +322,21 @@ async function collectHyundai() {
   const detailHtmlById = new Map();
   const stats = createCollectorStats();
   const base = 'https://www.ehyundai.com/newPortal/search/result.do';
+  for (const branch of hyundaiDirectBranches) {
+    try {
+      const data = await fetchJson(hyundaiBranchApiUrl(branch));
+      const items = Array.isArray(data?.result?.items) ? data.result.items : [];
+      stats.discoveredCount += items.length;
+      const directRows = parseHyundaiBranchItems(data, branch, {
+        keepSince: keepSince.toISOString().slice(0, 10),
+        seen
+      }).map(row => ({ ...row, firstSeenAt: today, lastSeenAt: today }));
+      rows.push(...directRows);
+    } catch (error) {
+      recordCollectorRejection(stats, `direct_branch_failed:${branch.branchCode}`);
+      console.warn(`[현대 직접수집] ${branch.venue}: ${error.message}`);
+    }
+  }
   for (const searchWord of [
     'pop up', 'pop-up', 'popup', '팝업', '콜라보', 'F&B', 'FNB',
     '식품', '푸드', '베이커리', '디저트', '카페', '커피', '떡', '빵', '분식'
