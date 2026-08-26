@@ -574,7 +574,13 @@ async function collectShinsegaeShoppingNews() {
         if (detail.menus.length) menus = detail.menus;
         detailImages = detail.imageUrls;
       } catch {}
-      const imageUrl = detailImages[0] || (imagePath.startsWith('http') ? imagePath : `https://www.shinsegae.com${imagePath}`);
+      // imgUrl2 is Shinsegae's card thumbnail (normally square), while the
+      // first detail background is commonly a wide banner. Prefer the card
+      // thumbnail so 4:3 Mukdang cards do not severely crop the official art.
+      const cardImageUrl = imagePath
+        ? (imagePath.startsWith('http') ? imagePath : `https://www.shinsegae.com${imagePath}`)
+        : '';
+      const imageUrl = cardImageUrl || detailImages[0] || '';
       rows.push({
         id: `shinsegae-shopping:${storeCd}:${card.id}`,
         name: clean(card.title1), venue, venueType: '백화점',
@@ -584,7 +590,9 @@ async function collectShinsegaeShoppingNews() {
         sourceName: '신세계백화점 공식 쇼핑뉴스',
         sourceUrl,
         sourceGrade: 'official', firstSeenAt: today, lastSeenAt: today,
-        ...(detailImages.length ? { officialImageUrls: detailImages } : {}),
+        ...((cardImageUrl || detailImages.length) ? {
+          officialImageUrls: [...new Set([cardImageUrl, ...detailImages].filter(Boolean))]
+        } : {}),
         ...(menus.length ? { menus, menuSource: 'official-detail' } : {})
       });
     }
@@ -1528,12 +1536,19 @@ const merged = new Map(retainedPrevious
 for (const row of collected) {
   const normalized = normalizePopup(row);
   const old = merged.get(normalized.id);
-  const keepLocalOfficialImage = /official-detail-local-copy/u.test(old?.imageSource || '');
+  const keepLocalOfficialImage = /official-detail-local-copy/u.test(old?.imageSource || '')
+    && old?.imageOriginalUrl === normalized.imageUrl;
   const keepRicherOfficialMenus = (old?.menus?.length || 0) > (normalized.menus?.length || 0)
     && /official/u.test(old?.menuSource || '');
   merged.set(normalized.id, {
     ...old,
     ...normalized,
+    ...(!keepLocalOfficialImage && /official-detail-local-copy/u.test(old?.imageSource || '') ? {
+      imageOriginalUrl: normalized.imageUrl,
+      imageSource: 'official-detail',
+      imageHash: undefined,
+      imageValidation: undefined
+    } : {}),
     ...(keepLocalOfficialImage ? {
       imageUrl: old.imageUrl, image: old.image, imageSource: old.imageSource,
       imageOriginalUrl: old.imageOriginalUrl, officialImageUrls: old.officialImageUrls

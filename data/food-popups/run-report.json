@@ -1,36 +1,35 @@
 {
-  "runId": "food-popups-20260825063146823-27308",
-  "scope": "hyundai",
-  "startedAt": "2026-08-25T06:31:46.823Z",
-  "finishedAt": "2026-08-25T06:32:07.789Z",
-  "durationMs": 20966,
-  "totalDiscovered": 495,
+  "runId": "food-popups-20260826023205186-5052",
+  "scope": "shinsegae",
+  "startedAt": "2026-08-26T02:32:05.186Z",
+  "finishedAt": "2026-08-26T02:32:09.792Z",
+  "durationMs": 4606,
+  "totalDiscovered": 379,
   "totalFetched": 0,
-  "totalAccepted": 24,
-  "totalRejected": 432,
+  "totalAccepted": 15,
+  "totalRejected": 364,
   "totalDuplicates": 0,
   "totalErrors": 0,
   "sources": [
     {
-      "source": "현대백화점·현대아울렛",
-      "discoveredCount": 495,
+      "source": "신세계백화점",
+      "discoveredCount": 379,
       "fetchedCount": 0,
-      "acceptedCount": 24,
-      "rejectedCount": 432,
+      "acceptedCount": 15,
+      "rejectedCount": 364,
       "duplicateCount": 0,
       "errorCount": 0,
       "rejectionReasons": {
-        "not_food": 165,
-        "invalid_date": 1,
-        "duplicate_source_item": 239,
-        "not_popup": 27
+        "invalid_date": 18,
+        "not_food": 20,
+        "not_popup": 326
       },
       "errors": [],
-      "startedAt": "2026-08-25T06:31:46.997Z",
-      "finishedAt": "2026-08-25T06:32:07.055Z",
+      "startedAt": "2026-08-26T02:32:05.364Z",
+      "finishedAt": "2026-08-26T02:32:08.992Z",
       "healthStatus": "degraded",
-      "healthMessage": "24건 승인",
-      "lastSuccessfulAt": "2026-08-25T06:32:07.055Z",
+      "healthMessage": "15건 승인",
+      "lastSuccessfulAt": "2026-08-26T02:32:08.992Z",
       "consecutiveFailureCount": 0,
       "anomalyFlags": [
         "error_rate_50"
@@ -38,24 +37,25 @@
     }
   ],
   "siteFeed": {
-    "inputCount": 430,
-    "outputCount": 336,
-    "rejectedCount": 94,
-    "qualityExcludedCount": 94,
-    "duplicateRemovedCount": 0,
+    "inputCount": 442,
+    "outputCount": 343,
+    "rejectedCount": 99,
+    "qualityExcludedCount": 98,
+    "duplicateRemovedCount": 1,
     "rejectionReasons": {
-      "quality_review_required": 94
+      "quality_review_required": 98,
+      "duplicate_identity": 1
     },
     "statusDistribution": {
-      "upcoming": 6,
+      "upcoming": 12,
       "ongoing": 133,
-      "ended": 197
+      "ended": 198
     },
     "newCount": 93,
-    "endingSoonCount": 70,
+    "endingSoonCount": 69,
     "missingImageCount": 0,
     "missingMenuCount": 0,
-    "missingCoordinateCount": 336,
-    "generatedAt": "2026-08-25T06:32:12.487Z"
+    "missingCoordinateCount": 343,
+    "generatedAt": "2026-08-26T02:32:15.147Z"
   }
 }

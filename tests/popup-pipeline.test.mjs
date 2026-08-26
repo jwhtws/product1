@@ -17,6 +17,15 @@ test('일일 workflow가 한국시간 06:20에 단일 실행되고 실패를 알
   assert.match(workflow, /issues\.create/u);
 });
 
+test('Shinsegae card thumbnails take priority over detail banners and stale local copies', async () => {
+  const collector = await readFile('scripts/refresh-food-popups.mjs', 'utf8');
+  assert.match(collector, /const imagePath = String\(card\.imgUrl2 \|\| card\.imgUrl1 \|\| ''\)/u);
+  assert.match(collector, /const imageUrl = cardImageUrl \|\| detailImages\[0\] \|\| ''/u);
+  assert.match(collector, /officialImageUrls: \[\.\.\.new Set\(\[cardImageUrl, \.\.\.detailImages\]/u);
+  assert.match(collector, /old\?\.imageOriginalUrl === normalized\.imageUrl/u);
+  assert.match(collector, /imageOriginalUrl: normalized\.imageUrl/u);
+});
+
 test('collector 실패·0건·급감에서 기존 사용자 feed를 원자적으로 보존한다', async () => {
   const refresh = await readFile('scripts/refresh-popup-site-feed.mjs', 'utf8');
   const collector = await readFile('scripts/refresh-food-popups.mjs', 'utf8');
