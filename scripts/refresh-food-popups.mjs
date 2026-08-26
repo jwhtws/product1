@@ -972,6 +972,10 @@ async function collectGalleria() {
   const rows = [];
   const stats = createCollectorStats();
   const seenSourceIds = new Set();
+  const galleriaSplitSourceIds = new Set([
+    'luxuryhall:c86469', 'timeworld:c86376',
+    'gwanggyo:c86460', 'gwanggyo:c86459'
+  ]);
   // G.LAB is a popup venue, not a food brand. Emit only the named brands
   // published inside an official G.LAB schedule.
   const timeworldDessertSource = 'https://dept.galleria.co.kr/store-info/timeworld/promotion/shopping-news/c85834?qCategory=NEWOPENING_POPUP';
@@ -1032,6 +1036,31 @@ async function collectGalleria() {
       menuSource: 'official-image'
     });
   }
+  const compositeSchedules = [
+    ['luxuryhall', '갤러리아 명품관', 'c86469', 'godny', '고드니', '2026-08-20', '2026-08-27', 'L0824_08.jpg', '파티시에 구움과자'],
+    ['luxuryhall', '갤러리아 명품관', 'c86469', 'artichoke-lab', '아티초크라보', '2026-08-20', '2026-09-03', 'L0824_08.jpg', '사워도우 브레드'],
+    ['luxuryhall', '갤러리아 명품관', 'c86469', 'pain-musee', '팡뮤제', '2026-08-20', '2026-08-27', 'L0824_08.jpg', '방부제 없는 케이크'],
+    ['luxuryhall', '갤러리아 명품관', 'c86469', 'emily-churros', '에밀리츄러스', '2026-08-14', '2026-08-27', 'L0824_08.jpg', '오븐에 구운 츄러스'],
+    ['timeworld', '갤러리아 타임월드', 'c86376', 'gamjadang', '감자당', '2026-08-21', '2026-09-03', 'T0821_19.jpg', '쫀득 감자당·핫도그'],
+    ['timeworld', '갤러리아 타임월드', 'c86376', 'dangdo', '당도', '2026-08-21', '2026-09-03', 'T0821_19.jpg', '후르츠 쫀득샌드'],
+    ['timeworld', '갤러리아 타임월드', 'c86376', 'kimssine-taco', '김씨네타코', '2026-08-21', '2026-09-03', 'T0821_19.jpg', '치미창가·치즈스틱'],
+    ['jinju', '갤러리아 진주점', 'c86442', 'sanche', '산체', '2026-08-21', '2026-09-03', 'J0821_20.jpg', '컴팩트 허니 보틀'],
+    ['jinju', '갤러리아 진주점', 'c86440', 'snack-channel', '간식채널', '2026-08-14', '2026-08-27', 'J0821_18.jpg', '동결건조 과일 간식'],
+    ['jinju', '갤러리아 진주점', 'c86439', 'dangdo', '당도', '2026-08-14', '2026-08-27', 'J0821_17.jpg', '생과일 쫀득 베이글샌드']
+  ];
+  for (const [slug, venue, cardId, brandId, name, startDate, endDate, imageName, productName] of compositeSchedules) {
+    const sourceUrl = `https://dept.galleria.co.kr/store-info/${slug}/promotion/shopping-news/${cardId}?qCategory=NEWOPENING_POPUP`;
+    const imageUrl = `https://cdndept.galleria.co.kr/image/dept/edm-content/2026/${imageName}`;
+    rows.push({
+      id: `galleria:${slug}:${cardId}:${brandId}`, name, venue, venueType: '백화점',
+      address: venue, startDate, endDate, imageUrl, officialImageUrls: [imageUrl],
+      sourceName: '갤러리아 공식 쇼핑뉴스', sourceUrl, sourceGrade: 'official',
+      firstSeenAt: today, lastSeenAt: today,
+      menus: [{ name: productName, price: '', priceText: '가격 미공개', sourceUrl,
+        sourceName: '갤러리아 공식 쇼핑뉴스', evidenceType: 'official_image' }],
+      menuSource: 'official-image'
+    });
+  }
   stats.discoveredCount = rows.length;
   for (const [slug, venue] of galleriaStores) {
     try {
@@ -1050,6 +1079,7 @@ async function collectGalleria() {
         if (!response.ok) continue;
         stats.discoveredCount += 1;
         const sourceId = `${slug}:${path.split('/').pop()}`;
+        if (galleriaSplitSourceIds.has(sourceId)) { recordCollectorRejection(stats, 'split_composite_parent'); continue; }
         if (seenSourceIds.has(sourceId)) { recordCollectorRejection(stats, 'duplicate_source_item'); continue; }
         seenSourceIds.add(sourceId);
         const html = await response.text();

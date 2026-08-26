@@ -161,6 +161,17 @@ test('갤러리아 광교 이미지형 G.LAB 일정을 개별 푸드팝업으로
   assert.match(collector, /\['NEWOPENING_POPUP', 'PRODUCT_EVENT'\]/u);
 });
 
+test('갤러리아 전 지점의 복합 식품 일정은 브랜드별 팝업으로 분리한다', async () => {
+  const collector = await readFile('scripts/refresh-food-popups.mjs', 'utf8');
+  for (const brand of ['고드니', '아티초크라보', '팡뮤제', '에밀리츄러스', '감자당', '김씨네타코', '산체', '간식채널']) {
+    assert.match(collector, new RegExp(brand, 'u'));
+  }
+  assert.match(collector, /galleriaSplitSourceIds/u);
+  assert.match(collector, /split_composite_parent/u);
+  assert.match(collector, /luxuryhall:c86469/u);
+  assert.match(collector, /timeworld:c86376/u);
+});
+
 test('더현대 대구는 공식 검색 카드만 쓰고 테이블웨어 팝업을 제외한다', async () => {
   const collector = await readFile('scripts/refresh-food-popups.mjs', 'utf8');
   assert.doesNotMatch(collector, /blog\.naver\.com|verified-field|현장 방문 기록/u);

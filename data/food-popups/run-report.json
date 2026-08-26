@@ -1,35 +1,35 @@
 {
-  "runId": "food-popups-20260826023205186-5052",
-  "scope": "shinsegae",
-  "startedAt": "2026-08-26T02:32:05.186Z",
-  "finishedAt": "2026-08-26T02:32:09.792Z",
-  "durationMs": 4606,
-  "totalDiscovered": 379,
+  "runId": "food-popups-20260826050505699-16376",
+  "scope": "galleria",
+  "startedAt": "2026-08-26T05:05:05.699Z",
+  "finishedAt": "2026-08-26T05:05:23.237Z",
+  "durationMs": 17538,
+  "totalDiscovered": 84,
   "totalFetched": 0,
-  "totalAccepted": 15,
-  "totalRejected": 364,
+  "totalAccepted": 24,
+  "totalRejected": 60,
   "totalDuplicates": 0,
   "totalErrors": 0,
   "sources": [
     {
-      "source": "신세계백화점",
-      "discoveredCount": 379,
+      "source": "갤러리아",
+      "discoveredCount": 84,
       "fetchedCount": 0,
-      "acceptedCount": 15,
-      "rejectedCount": 364,
+      "acceptedCount": 24,
+      "rejectedCount": 60,
       "duplicateCount": 0,
       "errorCount": 0,
       "rejectionReasons": {
-        "invalid_date": 18,
-        "not_food": 20,
-        "not_popup": 326
+        "invalid_date": 15,
+        "split_composite_parent": 4,
+        "not_popup": 41
       },
       "errors": [],
-      "startedAt": "2026-08-26T02:32:05.364Z",
-      "finishedAt": "2026-08-26T02:32:08.992Z",
+      "startedAt": "2026-08-26T05:05:05.802Z",
+      "finishedAt": "2026-08-26T05:05:22.491Z",
       "healthStatus": "degraded",
-      "healthMessage": "15건 승인",
-      "lastSuccessfulAt": "2026-08-26T02:32:08.992Z",
+      "healthMessage": "24건 승인",
+      "lastSuccessfulAt": "2026-08-26T05:05:22.491Z",
       "consecutiveFailureCount": 0,
       "anomalyFlags": [
         "error_rate_50"
@@ -37,25 +37,24 @@
     }
   ],
   "siteFeed": {
-    "inputCount": 442,
-    "outputCount": 343,
-    "rejectedCount": 99,
+    "inputCount": 451,
+    "outputCount": 353,
+    "rejectedCount": 98,
     "qualityExcludedCount": 98,
-    "duplicateRemovedCount": 1,
+    "duplicateRemovedCount": 0,
     "rejectionReasons": {
-      "quality_review_required": 98,
-      "duplicate_identity": 1
+      "quality_review_required": 98
     },
     "statusDistribution": {
       "upcoming": 12,
-      "ongoing": 133,
+      "ongoing": 143,
       "ended": 198
     },
-    "newCount": 93,
-    "endingSoonCount": 69,
+    "newCount": 103,
+    "endingSoonCount": 74,
     "missingImageCount": 0,
     "missingMenuCount": 0,
-    "missingCoordinateCount": 343,
-    "generatedAt": "2026-08-26T02:32:15.147Z"
+    "missingCoordinateCount": 353,
+    "generatedAt": "2026-08-26T05:05:28.950Z"
   }
 }
