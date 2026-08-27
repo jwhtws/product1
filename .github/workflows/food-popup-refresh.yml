@@ -3,6 +3,9 @@ name: 푸드 팝업 매일 갱신
 on:
   schedule:
     - cron: "20 21 * * *"
+    # Backup for GitHub-hosted schedule delays (07:20 KST).
+    # The concurrency group below serializes overlapping refreshes.
+    - cron: "20 22 * * *"
   workflow_dispatch:
     inputs:
       scope:
@@ -75,13 +78,13 @@ jobs:
           node -e "const d=require('./data/popups.json'); const a=require('./data/popup-content-audit.json').stats.total; const s=d.stats.status; console.log('### 푸드 팝업 갱신 결과\n- 공개: '+d.stats.final+'건 / 검토: '+a.reviewRequiredCount+'건 / 거절: '+a.rejectedCount+'건\n- 품질: A '+a.qualityDistribution.A+' / B '+a.qualityDistribution.B+' / C '+a.qualityDistribution.C+'\n- 영업 중: '+s.ongoing+'건 / 오픈 예정: '+s.upcoming+'건 / 종료: '+s.ended+'건\n- 유효 이미지: '+a.validImageCount+'건 / 메뉴: '+a.menuCompleteCount+'건')" >> "$GITHUB_STEP_SUMMARY"
       - name: 변경사항 반영
         run: |
-          if git diff --quiet data/popups.json data/popup-review-queue.json data/popup-content-audit.json data/popup-venues.json data/popup-coverage.json assets/popups food-popups restaurant-reviews sitemap.xml; then
+          if git diff --quiet data/popups.json data/popups-public.json data/food-popups/run-report.json data/popup-review-queue.json data/popup-content-audit.json data/popup-venues.json data/popup-coverage.json assets/popups food-popups restaurant-reviews sitemap.xml; then
             echo "팝업 변경 없음" >> "$GITHUB_STEP_SUMMARY"
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/popups.json data/popup-review-queue.json data/popup-content-audit.json data/popup-venues.json data/popup-coverage.json assets/popups food-popups restaurant-reviews sitemap.xml
+          git add data/popups.json data/popups-public.json data/food-popups/run-report.json data/popup-review-queue.json data/popup-content-audit.json data/popup-venues.json data/popup-coverage.json assets/popups food-popups restaurant-reviews sitemap.xml
           git commit -m "data: 푸드 팝업 일간 갱신"
           git push
       - name: Deploy refreshed feed to Cloudflare Pages

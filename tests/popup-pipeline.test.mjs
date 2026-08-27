@@ -5,10 +5,14 @@ import test from 'node:test';
 test('일일 workflow가 한국시간 06:20에 단일 실행되고 실패를 알린다', async () => {
   const workflow = await readFile('.github/workflows/food-popup-refresh.yml', 'utf8');
   assert.match(workflow, /cron:\s*"20 21 \* \* \*"/u);
+  assert.match(workflow, /cron:\s*"20 22 \* \* \*"/u);
+  assert.equal((workflow.match(/cron:/gu) || []).length, 2);
   assert.match(workflow, /workflow_dispatch:/u);
   assert.match(workflow, /group:\s*food-popup-refresh/u);
   assert.match(workflow, /cancel-in-progress:\s*false/u);
   assert.match(workflow, /run: node scripts\/refresh-popup-site-feed\.mjs/u);
+  assert.match(workflow, /git add[^\n]*data\/popups-public\.json/u);
+  assert.match(workflow, /git add[^\n]*data\/food-popups\/run-report\.json/u);
   assert.doesNotMatch(workflow, /refresh-popup-site-feed\.mjs --strict/u);
   assert.match(workflow, /audit:data-sources/u);
   assert.match(workflow, /seo:build/u);
