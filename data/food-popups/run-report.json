@@ -1,60 +1,54 @@
 {
-  "runId": "food-popups-20260826050505699-16376",
-  "scope": "galleria",
-  "startedAt": "2026-08-26T05:05:05.699Z",
-  "finishedAt": "2026-08-26T05:05:23.237Z",
-  "durationMs": 17538,
-  "totalDiscovered": 84,
-  "totalFetched": 0,
-  "totalAccepted": 24,
-  "totalRejected": 60,
+  "runId": "food-popups-20260828023255288-12436",
+  "scope": "ipark",
+  "startedAt": "2026-08-28T02:32:55.288Z",
+  "finishedAt": "2026-08-28T02:33:01.032Z",
+  "durationMs": 5744,
+  "totalDiscovered": 1,
+  "totalFetched": 1,
+  "totalAccepted": 1,
+  "totalRejected": 0,
   "totalDuplicates": 0,
   "totalErrors": 0,
   "sources": [
     {
-      "source": "갤러리아",
-      "discoveredCount": 84,
-      "fetchedCount": 0,
-      "acceptedCount": 24,
-      "rejectedCount": 60,
+      "source": "아이파크몰",
+      "discoveredCount": 1,
+      "fetchedCount": 1,
+      "acceptedCount": 1,
+      "rejectedCount": 0,
       "duplicateCount": 0,
       "errorCount": 0,
-      "rejectionReasons": {
-        "invalid_date": 15,
-        "split_composite_parent": 4,
-        "not_popup": 41
-      },
+      "rejectionReasons": {},
       "errors": [],
-      "startedAt": "2026-08-26T05:05:05.802Z",
-      "finishedAt": "2026-08-26T05:05:22.491Z",
-      "healthStatus": "degraded",
-      "healthMessage": "24건 승인",
-      "lastSuccessfulAt": "2026-08-26T05:05:22.491Z",
+      "startedAt": "2026-08-28T02:32:55.861Z",
+      "finishedAt": "2026-08-28T02:32:59.551Z",
+      "healthStatus": "healthy",
+      "healthMessage": "1건 승인",
+      "lastSuccessfulAt": "2026-08-28T02:32:59.551Z",
       "consecutiveFailureCount": 0,
-      "anomalyFlags": [
-        "error_rate_50"
-      ]
+      "anomalyFlags": []
     }
   ],
   "siteFeed": {
-    "inputCount": 451,
-    "outputCount": 353,
-    "rejectedCount": 98,
-    "qualityExcludedCount": 98,
+    "inputCount": 464,
+    "outputCount": 362,
+    "rejectedCount": 102,
+    "qualityExcludedCount": 102,
     "duplicateRemovedCount": 0,
     "rejectionReasons": {
-      "quality_review_required": 98
+      "quality_review_required": 102
     },
     "statusDistribution": {
-      "upcoming": 12,
-      "ongoing": 143,
-      "ended": 198
+      "upcoming": 5,
+      "ongoing": 87,
+      "ended": 270
     },
-    "newCount": 103,
-    "endingSoonCount": 74,
+    "newCount": 91,
+    "endingSoonCount": 20,
     "missingImageCount": 0,
     "missingMenuCount": 0,
-    "missingCoordinateCount": 353,
-    "generatedAt": "2026-08-26T05:05:28.950Z"
+    "missingCoordinateCount": 361,
+    "generatedAt": "2026-08-28T02:33:06.557Z"
   }
 }

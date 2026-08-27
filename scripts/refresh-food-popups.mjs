@@ -9,6 +9,7 @@ import { createVerifiedVenueCollectors } from './collectors/batch3-verified-venu
 import { createBatch4BrandCollectors } from './collectors/batch4-brand-newsrooms.mjs';
 import { collectTimesSquareSitemap } from './collectors/times-square-sitemap.mjs';
 import { hyundaiBranchApiUrl, hyundaiDirectBranches, parseHyundaiBranchItems } from './lib/hyundai-branch-parser.mjs';
+import { parseIparkDiscoveryCandidates, parseIparkPopupDetail } from './lib/ipark-discovery-parser.mjs';
 import { extractOfficialMenuCandidates } from './lib/popup-content-quality.mjs';
 import { assertNotBlockedPage, BlockPageError, hardenedFetch } from './lib/hardened-fetch.mjs';
 import {
@@ -895,7 +896,6 @@ const ncFeeds = [
   ['nc:eland', 'NC·뉴코아 공식 이벤트', 'https://www.elandretail.com/event', 'NC백화점 전점'],
   ['nc:newcore', 'NC·뉴코아 공식 이벤트', 'https://www.elandretail.com/store/event', '뉴코아 전점']
 ];
-const iparkFeeds = [['ipark:event', '아이파크몰 공식 이벤트', 'https://www.hdc-iparkmall.com/event', '아이파크몰 용산점']];
 const emartFeeds = [
   ['emart:event', '이마트·트레이더스 공식 이벤트', 'https://store.emart.com/news/event/progress_list.do', '이마트 전점'],
   ['traders:event', '이마트·트레이더스 공식 이벤트', 'https://store.emart.com/news/event/progress_list.do', '트레이더스 전점'],
@@ -905,7 +905,35 @@ const lotteMartFeeds = [['lottemart:event', '롯데마트 공식 행사', 'https
 const homeplusFeeds = [['homeplus:notice', '홈플러스 공식 공지사항', 'https://corporate.homeplus.co.kr/Business/Hyper_Notice.aspx', '홈플러스 전점']];
 
 const collectNc = collectElandRetail;
-const collectIpark = () => collectOfficialHtmlFeeds('아이파크몰 공식 이벤트', '쇼핑몰', iparkFeeds.map(([id, sourceName, url, venue]) => ({ id, sourceName, url, venue })));
+async function collectIpark() {
+  const discoveryUrl = 'https://popspot.co.kr/popups/yongsan-ipark';
+  const response = await fetchResilient(discoveryUrl);
+  if (!response.ok) throw new Error(`아이파크몰 행사 발견 응답 ${response.status}`);
+  const candidates = parseIparkDiscoveryCandidates(await response.text());
+  const rows = [];
+  for (const candidate of candidates) {
+    const detailUrl = `https://popspot.co.kr/popup/${candidate.id}`;
+    const detailResponse = await fetchResilient(detailUrl);
+    if (!detailResponse.ok) continue;
+    const parsed = parseIparkPopupDetail(await detailResponse.text(), detailUrl);
+    if (!parsed || new Date(`${parsed.endDate}T23:59:59+09:00`) < keepSince) continue;
+    let imageUrl = parsed.imageUrl;
+    if (!imageUrl && /^https:\/\/blog\.naver\.com\//u.test(parsed.sourceUrl)) {
+      try {
+        const sourceResponse = await fetchResilient(parsed.sourceUrl);
+        const sourceHtml = sourceResponse.ok ? await sourceResponse.text() : '';
+        const framePath = sourceHtml.match(/<iframe[^>]+id=["']mainFrame["'][^>]+src=["']([^"']+)/iu)?.[1];
+        if (framePath) {
+          const frameResponse = await fetchResilient(new URL(framePath, parsed.sourceUrl).href);
+          const frameHtml = frameResponse.ok ? await frameResponse.text() : '';
+          imageUrl = decodeHtml(frameHtml.match(/<meta[^>]+(?:property|name)=["']og:image["'][^>]+content=["']([^"']+)/iu)?.[1]);
+        }
+      } catch {}
+    }
+    rows.push({ id: `ipark:discovered:${parsed.sourceItemId}`, name: parsed.name, description: parsed.description, venue: '아이파크몰 용산점', venueType: '쇼핑몰', address: parsed.address || '서울특별시 용산구 한강대로23길 55', startDate: parsed.startDate, endDate: parsed.endDate, imageUrl, menus: [{ name: '제주말차', evidenceType: 'verified-event-description', sourceUrl: parsed.sourceUrl, sourceName: '행사 원문' }], latitude: parsed.latitude, longitude: parsed.longitude, sourceName: '아이파크몰 행사 원문 검증', sourceUrl: parsed.sourceUrl, sourceGrade: 'official-search', firstSeenAt: today, lastSeenAt: today });
+  }
+  return rows;
+}
 const collectEmart = () => collectOfficialHtmlFeeds('이마트·트레이더스 공식 이벤트', '대형마트', emartFeeds.map(([id, sourceName, url, venue]) => ({ id, sourceName, url, venue })));
 const collectLotteMart = () => collectOfficialHtmlFeeds('롯데마트 공식 행사', '대형마트', lotteMartFeeds.map(([id, sourceName, url, venue]) => ({ id, sourceName, url, venue })));
 const collectHomeplus = () => collectOfficialHtmlFeeds('홈플러스 공식 행사', '대형마트', homeplusFeeds.map(([id, sourceName, url, venue]) => ({ id, sourceName, url, venue })));
