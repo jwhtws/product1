@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-08-25T21:49:16.192Z",
+  "updatedAt": "2026-08-27T00:54:40.061Z",
   "summary": {
     "nationwideVenueTotal": 1027,
     "verifiedPopupVenueCount": 48,
-    "officialFeedMonitoredCount": 98,
-    "collectorNeededCount": 929,
+    "officialFeedMonitoredCount": 95,
+    "collectorNeededCount": 932,
     "disclaimer": "시설 원장은 전국 탐색 범위이며, 화면에는 공식 출처에서 시작일과 종료일을 확인한 푸드팝업만 표시합니다."
   },
   "venues": [
@@ -176,7 +176,7 @@
       "region": "강원특별자치도",
       "kind": "쇼핑센터",
       "collector": "AK플라자",
-      "status": "official-feed-monitored",
+      "status": "adapter-needed",
       "popupCount": 0
     },
     {
@@ -960,7 +960,7 @@
       "kind": "백화점",
       "collector": "롯데백화점·롯데아울렛·롯데몰",
       "status": "verified-popup-found",
-      "popupCount": 9
+      "popupCount": 12
     },
     {
       "venueId": "localdata:3980000:2010398007807500001",
@@ -1158,7 +1158,7 @@
       "kind": "백화점",
       "collector": "롯데백화점·롯데아울렛·롯데몰",
       "status": "verified-popup-found",
-      "popupCount": 9
+      "popupCount": 12
     },
     {
       "venueId": "localdata:3930000:1999393000007500001",
@@ -1679,7 +1679,7 @@
       "region": "경기도",
       "kind": "쇼핑센터",
       "collector": "AK플라자",
-      "status": "official-feed-monitored",
+      "status": "adapter-needed",
       "popupCount": 0
     },
     {
@@ -3921,7 +3921,7 @@
       "kind": "백화점",
       "collector": "갤러리아",
       "status": "verified-popup-found",
-      "popupCount": 2
+      "popupCount": 5
     },
     {
       "venueId": "localdata:3660000:1996366001507500026",
@@ -5586,7 +5586,7 @@
       "kind": "백화점",
       "collector": "롯데백화점·롯데아울렛·롯데몰",
       "status": "verified-popup-found",
-      "popupCount": 5
+      "popupCount": 6
     },
     {
       "venueId": "localdata:3230000:2014323019807500011",
@@ -6837,7 +6837,7 @@
       "kind": "백화점",
       "collector": "롯데백화점·롯데아울렛·롯데몰",
       "status": "verified-popup-found",
-      "popupCount": 6
+      "popupCount": 7
     },
     {
       "venueId": "localdata:3720000:2006372003907500001",
