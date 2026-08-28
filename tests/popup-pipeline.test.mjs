@@ -165,6 +165,16 @@ test('갤러리아 광교 이미지형 G.LAB 일정을 개별 푸드팝업으로
   assert.match(collector, /\['NEWOPENING_POPUP', 'PRODUCT_EVENT'\]/u);
 });
 
+test('일일 예약이 누락되면 독립 감시 workflow가 운영 피드를 확인하고 재실행한다', async () => {
+  const watchdog = await readFile('.github/workflows/food-popup-refresh-watchdog.yml', 'utf8');
+  assert.match(watchdog, /cron:\s*"20 23 \* \* \*"/u);
+  assert.match(watchdog, /cron:\s*"20 0 \* \* \*"/u);
+  assert.match(watchdog, /Asia\/Seoul/u);
+  assert.match(watchdog, /popups-public\.json\?watchdog=/u);
+  assert.match(watchdog, /if: steps\.freshness\.outputs\.fresh != 'true'/u);
+  assert.match(watchdog, /gh workflow run food-popup-refresh\.yml --ref main -f scope=all/u);
+});
+
 test('갤러리아 전 지점의 복합 식품 일정은 브랜드별 팝업으로 분리한다', async () => {
   const collector = await readFile('scripts/refresh-food-popups.mjs', 'utf8');
   for (const brand of ['고드니', '아티초크라보', '팡뮤제', '에밀리츄러스', '감자당', '김씨네타코', '산체', '간식채널']) {
