@@ -1,44 +1,44 @@
 {
-  "generatedAt": "2026-08-28T06:12:47.321Z",
+  "generatedAt": "2026-08-29T03:17:03.703Z",
   "stats": {
     "total": {
-      "totalCollected": 531,
-      "publishedCount": 406,
-      "reviewRequiredCount": 125,
+      "totalCollected": 536,
+      "publishedCount": 408,
+      "reviewRequiredCount": 128,
       "rejectedCount": 0,
-      "validImageCount": 438,
-      "missingImageCount": 93,
-      "menuCompleteCount": 421,
-      "missingMenuCount": 110,
-      "priceKnownCount": 380,
-      "descriptionCompleteCount": 431,
-      "searchIncompleteCount": 111,
+      "validImageCount": 440,
+      "missingImageCount": 96,
+      "menuCompleteCount": 423,
+      "missingMenuCount": 113,
+      "priceKnownCount": 382,
+      "descriptionCompleteCount": 432,
+      "searchIncompleteCount": 114,
       "parseFailedCount": 7,
       "notPublishedBySourceCount": 0,
-      "upcomingCount": 20,
-      "ongoingCount": 180,
-      "endedCount": 330,
-      "newlyPublishedCount": 2,
+      "upcomingCount": 23,
+      "ongoingCount": 181,
+      "endedCount": 331,
+      "newlyPublishedCount": 3,
       "newlyEndedCount": 0,
       "qualityDistribution": {
         "A": 338,
-        "B": 68,
-        "C": 125
+        "B": 70,
+        "C": 128
       },
-      "asOfDate": "2026-08-28"
+      "asOfDate": "2026-08-29"
     },
     "bySource": {
       "롯데쇼핑 공식 행사": {
-        "totalCollected": 301,
-        "imageCompletenessRate": 0.7209,
-        "menuCompletenessRate": 0.6711,
-        "priceCompletenessRate": 0.6578,
-        "publishRate": 0.6478,
-        "searchIncompleteRate": 0.3056,
-        "parseFailureRate": 0.0233,
+        "totalCollected": 306,
+        "imageCompletenessRate": 0.7157,
+        "menuCompletenessRate": 0.6667,
+        "priceCompletenessRate": 0.6536,
+        "publishRate": 0.6438,
+        "searchIncompleteRate": 0.3105,
+        "parseFailureRate": 0.0229,
         "reviewRequiredReasons": {
           "parse_failed": 7,
-          "search_incomplete": 99,
+          "search_incomplete": 102,
           "conflicting_sources": 2,
           "broken_image": 5
         }
@@ -164,7 +164,7 @@
       "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552390",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-27",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "parserFailureReason": "price_text_detected_menu_parse_empty",
       "contentSearch": {
         "checkedOfficialList": true,
@@ -201,7 +201,7 @@
             "extractedField": "officialImageUrls",
             "selector": "og:image|embedded JSON|img|srcset|background-image",
             "imageUrl": "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000552390/20260811170658803_4.jpeg",
-            "capturedAt": "2026-08-28T06:11:20.974Z"
+            "capturedAt": "2026-08-29T03:12:39.172Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552390",
@@ -210,7 +210,7 @@
             "extractedField": "officialImageUrls",
             "selector": "og:image|embedded JSON|img|srcset|background-image",
             "imageUrl": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000544677/20260727183138148_3.jpeg",
-            "capturedAt": "2026-08-28T06:11:20.974Z"
+            "capturedAt": "2026-08-29T03:12:39.172Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552390",
@@ -219,7 +219,7 @@
             "extractedField": "officialImageUrls",
             "selector": "og:image|embedded JSON|img|srcset|background-image",
             "imageUrl": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000544677/20260701214505212_0.jpeg",
-            "capturedAt": "2026-08-28T06:11:20.974Z"
+            "capturedAt": "2026-08-29T03:12:39.172Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552390",
@@ -228,35 +228,35 @@
             "extractedField": "officialImageUrls",
             "selector": "og:image|embedded JSON|img|srcset|background-image",
             "imageUrl": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000544677/20260727183138211_1.jpeg",
-            "capturedAt": "2026-08-28T06:11:20.974Z"
+            "capturedAt": "2026-08-29T03:12:39.172Z"
           }
         ],
         "failureReasons": [
           "price_text_detected_menu_parse_empty",
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-08-28T06:11:20.974Z"
+        "checkedAt": "2026-08-29T03:12:39.172Z"
       },
       "brand": null,
       "region": null,
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "upcoming",
       "imageValidation": {
         "status": "valid",
         "contentType": "image/jpeg",
         "width": 670,
         "height": 947,
-        "checkedAt": "2026-08-28T06:12:48.433Z"
+        "checkedAt": "2026-08-29T03:17:04.530Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "parse_failed"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000552390/20260811170658803_4.jpeg",
         "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000544677/20260727183138148_3.jpeg",
@@ -280,7 +280,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0359&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-22",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -316,19 +316,87 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "upcoming",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
+      "imageCandidates": [],
+      "menuCandidates": [],
+      "ocrStatus": "not_used"
+    },
+    {
+      "id": "lotte:shopping-info:0334:sqb1ud",
+      "name": "소금빵 Pop-Up",
+      "venue": "롯데백화점 중동점",
+      "venueType": "백화점",
+      "address": "롯데백화점 중동점",
+      "startDate": "2026-09-04",
+      "endDate": "2026-09-17",
+      "imageUrl": null,
+      "imageSource": "official-image-unavailable",
+      "sourceName": "롯데쇼핑 공식 행사",
+      "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0334&cntsTpCd=C00903",
+      "sourceGrade": "official-search",
+      "firstSeenAt": "2026-08-29",
+      "lastSeenAt": "2026-08-29",
+      "contentSearch": {
+        "checkedOfficialList": true,
+        "checkedOfficialDetail": false,
+        "checkedEmbeddedData": true,
+        "checkedOfficialImages": false,
+        "checkedOperatorSearch": true,
+        "checkedBrandOfficialSources": false,
+        "checkedUrls": [
+          "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0334&cntsTpCd=C00903&searchTerm=%EC%86%8C%EA%B8%88%EB%B9%B5+Pop-Up",
+          "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0334&cntsTpCd=C00903&searchTerm=%EC%86%8C%EA%B8%88%EB%B9%B5",
+          "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0334&cntsTpCd=C00903&searchTerm=%EC%86%8C%EA%B8%88%EB%B9%B5+Pop+Up",
+          "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0334&cntsTpCd=C00903"
+        ],
+        "checkedMethods": [
+          "official_list_html",
+          "operator_internal_search",
+          "embedded_json_scan"
+        ],
+        "imageCandidatesFound": 0,
+        "menuCandidatesFound": 0,
+        "priceCandidatesFound": 0,
+        "descriptionCandidatesFound": 0,
+        "status": "search_incomplete",
+        "evidence": [],
+        "failureReasons": [
+          "official_detail_not_identified",
+          "official_detail_images_not_checked",
+          "brand_official_sources_not_checked"
+        ],
+        "checkedAt": "2026-08-29T03:12:39.460Z"
+      },
+      "brand": null,
+      "region": "경기도",
+      "category": "food-popup",
+      "menus": [],
+      "menuItems": [],
+      "lastVerifiedAt": "2026-08-29",
+      "status": "upcoming",
+      "imageValidation": {
+        "status": "invalid",
+        "reason": "invalid_url",
+        "checkedAt": "2026-08-29T03:17:03.703Z"
+      },
+      "contentQuality": "C",
+      "publishStatus": "review_required",
+      "qualityReasons": [
+        "search_incomplete"
+      ],
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -347,7 +415,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0342&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-17",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -384,19 +452,87 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "upcoming",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
+      "imageCandidates": [],
+      "menuCandidates": [],
+      "ocrStatus": "not_used"
+    },
+    {
+      "id": "lotte:shopping-info:0335:1wqbror",
+      "name": "술빵/만두 Pop-Up",
+      "venue": "롯데백화점 구리점",
+      "venueType": "백화점",
+      "address": "롯데백화점 구리점",
+      "startDate": "2026-09-04",
+      "endDate": "2026-09-23",
+      "imageUrl": null,
+      "imageSource": "official-image-unavailable",
+      "sourceName": "롯데쇼핑 공식 행사",
+      "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0335&cntsTpCd=C00903",
+      "sourceGrade": "official-search",
+      "firstSeenAt": "2026-08-29",
+      "lastSeenAt": "2026-08-29",
+      "contentSearch": {
+        "checkedOfficialList": true,
+        "checkedOfficialDetail": false,
+        "checkedEmbeddedData": true,
+        "checkedOfficialImages": false,
+        "checkedOperatorSearch": true,
+        "checkedBrandOfficialSources": false,
+        "checkedUrls": [
+          "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0335&cntsTpCd=C00903&searchTerm=%EC%88%A0%EB%B9%B5%2F%EB%A7%8C%EB%91%90+Pop-Up",
+          "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0335&cntsTpCd=C00903&searchTerm=%EC%88%A0%EB%B9%B5",
+          "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0335&cntsTpCd=C00903&searchTerm=%EC%88%A0%EB%B9%B5+%EB%A7%8C%EB%91%90+Pop+Up",
+          "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0335&cntsTpCd=C00903"
+        ],
+        "checkedMethods": [
+          "official_list_html",
+          "operator_internal_search",
+          "embedded_json_scan"
+        ],
+        "imageCandidatesFound": 0,
+        "menuCandidatesFound": 0,
+        "priceCandidatesFound": 0,
+        "descriptionCandidatesFound": 0,
+        "status": "search_incomplete",
+        "evidence": [],
+        "failureReasons": [
+          "official_detail_not_identified",
+          "official_detail_images_not_checked",
+          "brand_official_sources_not_checked"
+        ],
+        "checkedAt": "2026-08-29T03:12:39.358Z"
+      },
+      "brand": null,
+      "region": null,
+      "category": "food-popup",
+      "menus": [],
+      "menuItems": [],
+      "lastVerifiedAt": "2026-08-29",
+      "status": "upcoming",
+      "imageValidation": {
+        "status": "invalid",
+        "reason": "invalid_url",
+        "checkedAt": "2026-08-29T03:17:03.703Z"
+      },
+      "contentQuality": "C",
+      "publishStatus": "review_required",
+      "qualityReasons": [
+        "search_incomplete"
+      ],
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -415,7 +551,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0012&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-26",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -452,19 +588,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "upcoming",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -483,7 +619,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0342&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-17",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -520,19 +656,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "upcoming",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -551,7 +687,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0021&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-28",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": true,
@@ -580,19 +716,19 @@
           "official_detail_images_not_checked",
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-08-28T06:11:23.211Z"
+        "checkedAt": "2026-08-29T03:12:41.159Z"
       },
       "brand": null,
       "region": "광주광역시",
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "upcoming",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
@@ -600,7 +736,7 @@
         "conflicting_sources",
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -619,7 +755,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0021&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-28",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": true,
@@ -655,12 +791,12 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "upcoming",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
@@ -668,7 +804,7 @@
         "conflicting_sources",
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -687,7 +823,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0011&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-27",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -724,19 +860,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "upcoming",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -755,7 +891,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0017&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-28",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -785,26 +921,26 @@
           "official_detail_images_not_checked",
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-08-28T06:11:22.915Z"
+        "checkedAt": "2026-08-29T03:12:41.002Z"
       },
       "brand": null,
       "region": null,
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "upcoming",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -831,7 +967,7 @@
       "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000555152",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-28",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "parserFailureReason": "price_text_detected_menu_parse_empty",
       "contentSearch": {
         "checkedOfficialList": true,
@@ -870,7 +1006,7 @@
             "extractedField": "officialImageUrls",
             "selector": "og:image|embedded JSON|img|srcset|background-image",
             "imageUrl": "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000555152/20260825185524164_3.jpeg",
-            "capturedAt": "2026-08-28T06:11:17.769Z"
+            "capturedAt": "2026-08-29T03:12:35.850Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000555152",
@@ -879,7 +1015,7 @@
             "extractedField": "officialImageUrls",
             "selector": "og:image|embedded JSON|img|srcset|background-image",
             "imageUrl": "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000555152/20260825190820287_0.jpeg",
-            "capturedAt": "2026-08-28T06:11:17.769Z"
+            "capturedAt": "2026-08-29T03:12:35.850Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000555152",
@@ -888,7 +1024,7 @@
             "extractedField": "officialImageUrls",
             "selector": "og:image|embedded JSON|img|srcset|background-image",
             "imageUrl": "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000555152/20260825190820295_9.jpeg",
-            "capturedAt": "2026-08-28T06:11:17.769Z"
+            "capturedAt": "2026-08-29T03:12:35.850Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000555152",
@@ -897,7 +1033,7 @@
             "extractedField": "officialImageUrls",
             "selector": "og:image|embedded JSON|img|srcset|background-image",
             "imageUrl": "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000555152/20260825191506274_1.jpeg",
-            "capturedAt": "2026-08-28T06:11:17.769Z"
+            "capturedAt": "2026-08-29T03:12:35.850Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000555152",
@@ -906,7 +1042,7 @@
             "extractedField": "officialImageUrls",
             "selector": "og:image|embedded JSON|img|srcset|background-image",
             "imageUrl": "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000555152/20260825191506282_7.jpeg",
-            "capturedAt": "2026-08-28T06:11:17.769Z"
+            "capturedAt": "2026-08-29T03:12:35.850Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000555152",
@@ -915,35 +1051,35 @@
             "extractedField": "officialImageUrls",
             "selector": "og:image|embedded JSON|img|srcset|background-image",
             "imageUrl": "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000555152/20260825191837235_5.jpeg",
-            "capturedAt": "2026-08-28T06:11:17.769Z"
+            "capturedAt": "2026-08-29T03:12:35.850Z"
           }
         ],
         "failureReasons": [
           "price_text_detected_menu_parse_empty",
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-08-28T06:11:17.769Z"
+        "checkedAt": "2026-08-29T03:12:35.850Z"
       },
       "brand": null,
       "region": "부산광역시",
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "valid",
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-28T06:12:49.234Z"
+        "checkedAt": "2026-08-29T03:17:05.427Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "parse_failed"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000555152/20260825185524164_3.jpeg",
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000555152/20260825190820287_0.jpeg",
@@ -976,7 +1112,7 @@
       "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000554461",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-22",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "parserFailureReason": "price_text_detected_menu_parse_empty",
       "contentSearch": {
         "checkedOfficialList": true,
@@ -1014,7 +1150,7 @@
             "extractedField": "officialImageUrls",
             "selector": "og:image|embedded JSON|img|srcset|background-image",
             "imageUrl": "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000551551/20260805173614918_9.jpeg",
-            "capturedAt": "2026-08-28T06:11:20.289Z"
+            "capturedAt": "2026-08-29T03:12:38.434Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000554461",
@@ -1023,7 +1159,7 @@
             "extractedField": "officialImageUrls",
             "selector": "og:image|embedded JSON|img|srcset|background-image",
             "imageUrl": "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000551551/20260805173614933_4.jpeg",
-            "capturedAt": "2026-08-28T06:11:20.289Z"
+            "capturedAt": "2026-08-29T03:12:38.434Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000554461",
@@ -1032,7 +1168,7 @@
             "extractedField": "officialImageUrls",
             "selector": "og:image|embedded JSON|img|srcset|background-image",
             "imageUrl": "https://minfo.lotteshopping.com/content/news/202606/SNM00000000000535534/20260625141049149_5.jpeg",
-            "capturedAt": "2026-08-28T06:11:20.289Z"
+            "capturedAt": "2026-08-29T03:12:38.434Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000554461",
@@ -1041,7 +1177,7 @@
             "extractedField": "officialImageUrls",
             "selector": "og:image|embedded JSON|img|srcset|background-image",
             "imageUrl": "https://minfo.lotteshopping.com/content/news/202606/SNM00000000000535534/20260625141049153_7.jpeg",
-            "capturedAt": "2026-08-28T06:11:20.289Z"
+            "capturedAt": "2026-08-29T03:12:38.434Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000554461",
@@ -1050,35 +1186,35 @@
             "extractedField": "officialImageUrls",
             "selector": "og:image|embedded JSON|img|srcset|background-image",
             "imageUrl": "https://minfo.lotteshopping.com/content/news/202606/SNM00000000000535534/20260625141049158_3.jpeg",
-            "capturedAt": "2026-08-28T06:11:20.289Z"
+            "capturedAt": "2026-08-29T03:12:38.434Z"
           }
         ],
         "failureReasons": [
           "price_text_detected_menu_parse_empty",
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-08-28T06:11:20.289Z"
+        "checkedAt": "2026-08-29T03:12:38.434Z"
       },
       "brand": null,
       "region": null,
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "valid",
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-28T06:12:49.654Z"
+        "checkedAt": "2026-08-29T03:17:05.791Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "parse_failed"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000551551/20260805173614918_9.jpeg",
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000551551/20260805173614933_4.jpeg",
@@ -1103,7 +1239,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0012&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-26",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -1139,19 +1275,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -1172,7 +1308,7 @@
         "search_incomplete"
       ],
       "firstSeenAt": "2026-08-28",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "officialImageUrls": [
         "https://imgprism.ehyundai.com/evntCrdInf/imgPath/202608/13/5fb5209c-b053-4ea8-b8cc-871fbadef081.png",
         "https://imgprism.ehyundai.com/imgTypeInf/imgPath/202608/26/714b71f7-47b9-4fb9-97b7-b1e9a7222a25.png",
@@ -1213,7 +1349,7 @@
             "contentType": "official_list",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://imgprism.ehyundai.com/evntCrdInf/imgPath/202608/13/5fb5209c-b053-4ea8-b8cc-871fbadef081.png",
-            "capturedAt": "2026-08-28T06:12:30.707Z"
+            "capturedAt": "2026-08-29T03:16:47.682Z"
           },
           {
             "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E7902608499071&branchCd=B00179000&category=",
@@ -1221,7 +1357,7 @@
             "contentType": "official_list",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://imgprism.ehyundai.com/imgTypeInf/imgPath/202608/26/714b71f7-47b9-4fb9-97b7-b1e9a7222a25.png",
-            "capturedAt": "2026-08-28T06:12:30.707Z"
+            "capturedAt": "2026-08-29T03:16:47.682Z"
           },
           {
             "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E7902608499071&branchCd=B00179000&category=",
@@ -1229,7 +1365,7 @@
             "contentType": "official_list",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://imgprism.ehyundai.com/imgTypeInf/imgPath/202608/23/ad634d6f-e2cb-43d7-a0ce-e9c85ffc6ef9.png",
-            "capturedAt": "2026-08-28T06:12:30.707Z"
+            "capturedAt": "2026-08-29T03:16:47.682Z"
           },
           {
             "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E7902608499071&branchCd=B00179000&category=",
@@ -1237,26 +1373,26 @@
             "contentType": "official_list",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202608/13/d7323b8a-3536-4eb2-87d9-ffd48bcb96e8.png",
-            "capturedAt": "2026-08-28T06:12:30.707Z"
+            "capturedAt": "2026-08-29T03:16:47.682Z"
           }
         ],
         "failureReasons": [
           "legacy_collector_search_evidence_incomplete"
         ],
-        "checkedAt": "2026-08-28T06:12:30.707Z"
+        "checkedAt": "2026-08-29T03:16:47.682Z"
       },
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "valid",
         "contentType": "image/png",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-28T06:12:51.767Z"
+        "checkedAt": "2026-08-29T03:17:07.734Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [
         "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202608/13/d7323b8a-3536-4eb2-87d9-ffd48bcb96e8.png",
         "https://imgprism.ehyundai.com/evntCrdInf/imgPath/202608/13/5fb5209c-b053-4ea8-b8cc-871fbadef081.png",
@@ -1280,7 +1416,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0010&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-28",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -1310,26 +1446,26 @@
           "official_detail_images_not_checked",
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-08-28T06:11:21.126Z"
+        "checkedAt": "2026-08-29T03:12:39.243Z"
       },
       "brand": null,
       "region": "서울특별시",
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -1348,7 +1484,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0024&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-28",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -1378,26 +1514,26 @@
           "official_detail_images_not_checked",
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-08-28T02:48:15.963Z"
+        "checkedAt": "2026-08-29T03:12:39.519Z"
       },
       "brand": null,
       "region": "대구광역시",
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -1416,7 +1552,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0335&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-28",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -1453,19 +1589,87 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
+      "imageCandidates": [],
+      "menuCandidates": [],
+      "ocrStatus": "not_used"
+    },
+    {
+      "id": "lotte:shopping-info:0024:zv1gg3",
+      "name": "불향가득 불초밥 Pop-Up",
+      "venue": "롯데백화점 상인점",
+      "venueType": "백화점",
+      "address": "대구광역시 달서구 월배로 232 (상인동, 롯데백화점상인점) · 롯데백화점 상인점",
+      "startDate": "2026-08-28",
+      "endDate": "2026-09-03",
+      "imageUrl": null,
+      "imageSource": "official-image-unavailable",
+      "sourceName": "롯데쇼핑 공식 행사",
+      "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0024&cntsTpCd=C00903",
+      "sourceGrade": "official-search",
+      "firstSeenAt": "2026-08-29",
+      "lastSeenAt": "2026-08-29",
+      "contentSearch": {
+        "checkedOfficialList": true,
+        "checkedOfficialDetail": false,
+        "checkedEmbeddedData": true,
+        "checkedOfficialImages": false,
+        "checkedOperatorSearch": true,
+        "checkedBrandOfficialSources": false,
+        "checkedUrls": [
+          "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0024&cntsTpCd=C00903&searchTerm=%EB%B6%88%ED%96%A5%EA%B0%80%EB%93%9D+%EB%B6%88%EC%B4%88%EB%B0%A5+Pop-Up",
+          "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0024&cntsTpCd=C00903&searchTerm=%EB%B6%88%ED%96%A5%EA%B0%80%EB%93%9D",
+          "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0024&cntsTpCd=C00903&searchTerm=%EB%B6%88%ED%96%A5%EA%B0%80%EB%93%9D+%EB%B6%88%EC%B4%88%EB%B0%A5+Pop+Up",
+          "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0024&cntsTpCd=C00903"
+        ],
+        "checkedMethods": [
+          "official_list_html",
+          "operator_internal_search",
+          "embedded_json_scan"
+        ],
+        "imageCandidatesFound": 0,
+        "menuCandidatesFound": 0,
+        "priceCandidatesFound": 0,
+        "descriptionCandidatesFound": 0,
+        "status": "search_incomplete",
+        "evidence": [],
+        "failureReasons": [
+          "official_detail_not_identified",
+          "official_detail_images_not_checked",
+          "brand_official_sources_not_checked"
+        ],
+        "checkedAt": "2026-08-29T03:12:40.366Z"
+      },
+      "brand": null,
+      "region": "대구광역시",
+      "category": "food-popup",
+      "menus": [],
+      "menuItems": [],
+      "lastVerifiedAt": "2026-08-29",
+      "status": "ongoing",
+      "imageValidation": {
+        "status": "invalid",
+        "reason": "invalid_url",
+        "checkedAt": "2026-08-29T03:17:03.703Z"
+      },
+      "contentQuality": "C",
+      "publishStatus": "review_required",
+      "qualityReasons": [
+        "search_incomplete"
+      ],
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -1484,7 +1688,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0335&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-28",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -1521,19 +1725,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -1552,7 +1756,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0336&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-28",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -1589,19 +1793,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -1620,7 +1824,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0015&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-28",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -1657,19 +1861,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -1688,7 +1892,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0010&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-28",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -1718,26 +1922,26 @@
           "official_detail_images_not_checked",
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-08-28T06:11:21.129Z"
+        "checkedAt": "2026-08-29T03:12:39.248Z"
       },
       "brand": null,
       "region": "서울특별시",
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -1756,7 +1960,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0333&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-28",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -1786,26 +1990,26 @@
           "official_detail_images_not_checked",
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-08-28T06:11:22.170Z"
+        "checkedAt": "2026-08-29T03:12:39.470Z"
       },
       "brand": null,
       "region": "부산광역시",
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -1824,7 +2028,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0399&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-23",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -1861,19 +2065,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -1892,7 +2096,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0001&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-28",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -1928,19 +2132,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -1959,7 +2163,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0335&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-27",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -1996,19 +2200,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -2027,7 +2231,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0399&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-28",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -2057,26 +2261,26 @@
           "official_detail_images_not_checked",
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-08-28T06:11:21.254Z"
+        "checkedAt": "2026-08-29T03:12:39.297Z"
       },
       "brand": null,
       "region": "경기도",
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -2100,7 +2304,7 @@
       "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000553732",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-21",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "parserFailureReason": "price_text_detected_menu_parse_empty",
       "contentSearch": {
         "checkedOfficialList": true,
@@ -2136,7 +2340,7 @@
             "extractedField": "officialImageUrls",
             "selector": "og:image|embedded JSON|img|srcset|background-image",
             "imageUrl": "https://minfo.lotteshopping.com/content/news/202407/SNM00000000000389485/20240723175243510_2.jpeg",
-            "capturedAt": "2026-08-28T06:11:19.709Z"
+            "capturedAt": "2026-08-29T03:12:37.792Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000553732",
@@ -2145,7 +2349,7 @@
             "extractedField": "officialImageUrls",
             "selector": "og:image|embedded JSON|img|srcset|background-image",
             "imageUrl": "https://minfo.lotteshopping.com/content/news/202204/SNM00000000000203857/20220406163006781_3.jpeg",
-            "capturedAt": "2026-08-28T06:11:19.709Z"
+            "capturedAt": "2026-08-29T03:12:37.792Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000553732",
@@ -2154,35 +2358,35 @@
             "extractedField": "officialImageUrls",
             "selector": "og:image|embedded JSON|img|srcset|background-image",
             "imageUrl": "https://minfo.lotteshopping.com/content/news/202204/SNM00000000000203857/20220406163006793_3.jpeg",
-            "capturedAt": "2026-08-28T06:11:19.709Z"
+            "capturedAt": "2026-08-29T03:12:37.792Z"
           }
         ],
         "failureReasons": [
           "price_text_detected_menu_parse_empty",
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-08-28T06:11:19.709Z"
+        "checkedAt": "2026-08-29T03:12:37.792Z"
       },
       "brand": null,
       "region": "경기도",
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "valid",
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-28T06:12:53.136Z"
+        "checkedAt": "2026-08-29T03:17:09.083Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "parse_failed"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202407/SNM00000000000389485/20240723175243510_2.jpeg",
         "https://minfo.lotteshopping.com/content/news/202204/SNM00000000000203857/20220406163006781_3.jpeg",
@@ -2205,7 +2409,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0331&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-27",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -2241,19 +2445,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -2272,7 +2476,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0027&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-28",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -2302,26 +2506,26 @@
           "official_detail_images_not_checked",
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-08-28T06:11:22.312Z"
+        "checkedAt": "2026-08-29T03:12:40.891Z"
       },
       "brand": null,
       "region": "부산광역시",
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -2344,7 +2548,7 @@
       "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000554299",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-21",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "parserFailureReason": "price_text_detected_menu_parse_empty",
       "contentSearch": {
         "checkedOfficialList": true,
@@ -2402,21 +2606,21 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "valid",
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-28T06:12:53.450Z"
+        "checkedAt": "2026-08-29T03:17:09.343Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "parse_failed"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000554299/20260820181115325_6.jpeg",
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000554299/20260820181115348_5.jpeg"
@@ -2438,7 +2642,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0347&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-20",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -2474,19 +2678,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -2505,7 +2709,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0399&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-20",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -2542,19 +2746,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -2573,7 +2777,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0347&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-21",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -2610,19 +2814,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -2641,7 +2845,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0352&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-21",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -2678,19 +2882,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -2714,7 +2918,7 @@
       "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000553826",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-19",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "parserFailureReason": "price_text_detected_menu_parse_empty",
       "contentSearch": {
         "checkedOfficialList": true,
@@ -2782,21 +2986,21 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "imageValidation": {
         "status": "valid",
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-28T06:12:53.835Z"
+        "checkedAt": "2026-08-29T03:17:09.593Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "parse_failed"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000542913/20260701094639661_3.jpeg",
         "https://minfo.lotteshopping.com/content/news/202606/SNM00000000000542913/20260624173306813_6.jpeg",
@@ -2819,7 +3023,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0025&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-20",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -2855,19 +3059,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -2890,7 +3094,7 @@
       "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000553975",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-20",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": true,
@@ -2946,21 +3150,21 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "imageValidation": {
         "status": "valid",
         "contentType": "image/jpeg",
         "width": 670,
         "height": 4791,
-        "checkedAt": "2026-08-28T06:12:54.913Z"
+        "checkedAt": "2026-08-29T03:17:10.707Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000553975/20260819142930983_1.jpeg",
         "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547661/20260717184854621_0.jpeg"
@@ -2987,7 +3191,7 @@
       "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000553439",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-22",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "parserFailureReason": "price_text_detected_menu_parse_empty",
       "contentSearch": {
         "checkedOfficialList": true,
@@ -3023,7 +3227,7 @@
             "extractedField": "officialImageUrls",
             "selector": "og:image|embedded JSON|img|srcset|background-image",
             "imageUrl": "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000509190/20260125142331372_1.jpeg",
-            "capturedAt": "2026-08-28T06:11:18.574Z"
+            "capturedAt": "2026-08-29T03:12:36.692Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000553439",
@@ -3032,7 +3236,7 @@
             "extractedField": "officialImageUrls",
             "selector": "og:image|embedded JSON|img|srcset|background-image",
             "imageUrl": "https://minfo.lotteshopping.com/content/news/202412/SNM00000000000421507/20241221155712985_6.jpeg",
-            "capturedAt": "2026-08-28T06:11:18.574Z"
+            "capturedAt": "2026-08-29T03:12:36.692Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000553439",
@@ -3041,35 +3245,35 @@
             "extractedField": "officialImageUrls",
             "selector": "og:image|embedded JSON|img|srcset|background-image",
             "imageUrl": "https://minfo.lotteshopping.com/content/news/202412/SNM00000000000421507/20241221155004247_9.jpeg",
-            "capturedAt": "2026-08-28T06:11:18.574Z"
+            "capturedAt": "2026-08-29T03:12:36.692Z"
           }
         ],
         "failureReasons": [
           "price_text_detected_menu_parse_empty",
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-08-28T06:11:18.574Z"
+        "checkedAt": "2026-08-29T03:12:36.692Z"
       },
       "brand": null,
       "region": "서울특별시",
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "valid",
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-28T06:12:55.448Z"
+        "checkedAt": "2026-08-29T03:17:11.157Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "parse_failed"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000509190/20260125142331372_1.jpeg",
         "https://minfo.lotteshopping.com/content/news/202412/SNM00000000000421507/20241221155712985_6.jpeg",
@@ -3102,7 +3306,7 @@
       "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000553247",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-15",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "menus": [
         {
           "name": "참모싯잎 개떡150g",
@@ -3335,14 +3539,14 @@
         "모듬 찹쌀떡 6알",
         "흰인절미 250g"
       ],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "valid",
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-28T06:12:48.548Z"
+        "checkedAt": "2026-08-29T03:17:04.823Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
@@ -3350,7 +3554,7 @@
         "broken_image",
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202502/SNM00000000000433244/20250226163120706_0.jpeg",
         "https://minfo.lotteshopping.com/content/news/202307/SNM00000000000299612/20230706121415911_3.jpeg",
@@ -3466,7 +3670,7 @@
       "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000554074",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-20",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": true,
@@ -3500,7 +3704,7 @@
             "extractedField": "officialImageUrls",
             "selector": "og:image|embedded JSON|img|srcset|background-image",
             "imageUrl": "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000554074/2026081918532169_9.jpeg",
-            "capturedAt": "2026-08-28T06:11:18.306Z"
+            "capturedAt": "2026-08-29T03:12:36.362Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000554074",
@@ -3509,34 +3713,34 @@
             "extractedField": "officialImageUrls",
             "selector": "og:image|embedded JSON|img|srcset|background-image",
             "imageUrl": "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000554074/2026081918532186_1.jpeg",
-            "capturedAt": "2026-08-28T06:11:18.306Z"
+            "capturedAt": "2026-08-29T03:12:36.362Z"
           }
         ],
         "failureReasons": [
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-08-28T06:11:18.306Z"
+        "checkedAt": "2026-08-29T03:12:36.362Z"
       },
       "brand": null,
       "region": "서울특별시",
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "valid",
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-28T06:12:56.190Z"
+        "checkedAt": "2026-08-29T03:17:11.897Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000554074/2026081918532169_9.jpeg",
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000554074/2026081918532186_1.jpeg"
@@ -3558,7 +3762,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0333&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-17",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -3595,19 +3799,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -3626,7 +3830,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0023&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-19",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -3663,19 +3867,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -3694,7 +3898,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0333&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-19",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -3731,19 +3935,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -3781,7 +3985,7 @@
       "sourceUrl": "https://www.akplaza.com/board/event/view?store=02&seq=3378",
       "sourceGrade": "official",
       "firstSeenAt": "2026-08-23",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "region": "경기도",
       "category": "food-popup",
       "contentSearch": {
@@ -3823,12 +4027,12 @@
         "failureReasons": [],
         "checkedAt": "2026-08-25T21:49:15.652Z"
       },
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "invalid",
         "reason": "http_400",
-        "checkedAt": "2026-08-28T06:12:57.385Z"
+        "checkedAt": "2026-08-29T03:17:13.109Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
@@ -3836,7 +4040,7 @@
         "broken_image",
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [
         "https://m.akplaza.com/upload/event/202608/new_renewal/s_nr_04.png"
       ],
@@ -3887,7 +4091,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0011&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-17",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -3924,19 +4128,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -3955,7 +4159,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0335&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-19",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -3992,19 +4196,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -4023,7 +4227,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0340&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-19",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -4060,19 +4264,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -4091,7 +4295,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0340&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-22",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -4128,19 +4332,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -4159,7 +4363,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0335&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-26",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -4196,19 +4400,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -4227,7 +4431,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0006&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-22",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -4264,19 +4468,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -4295,7 +4499,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0011&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-17",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -4332,19 +4536,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -4382,7 +4586,7 @@
       "sourceUrl": "https://www.akplaza.com/board/event/view?store=02&seq=3378",
       "sourceGrade": "official",
       "firstSeenAt": "2026-08-23",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "region": "경기도",
       "category": "food-popup",
       "contentSearch": {
@@ -4424,12 +4628,12 @@
         "failureReasons": [],
         "checkedAt": "2026-08-25T21:49:15.655Z"
       },
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "invalid",
         "reason": "http_400",
-        "checkedAt": "2026-08-28T06:12:57.385Z"
+        "checkedAt": "2026-08-29T03:17:13.109Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
@@ -4437,7 +4641,7 @@
         "broken_image",
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [
         "https://m.akplaza.com/upload/event/202608/new_renewal/s_nr_04.png"
       ],
@@ -4488,7 +4692,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0017&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-19",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -4525,19 +4729,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -4556,7 +4760,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0024&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-21",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -4593,19 +4797,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -4624,7 +4828,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0340&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-25",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -4661,19 +4865,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -4711,7 +4915,7 @@
       "sourceUrl": "https://www.akplaza.com/board/event/view?store=02&seq=3378",
       "sourceGrade": "official",
       "firstSeenAt": "2026-08-23",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "region": "경기도",
       "category": "food-popup",
       "contentSearch": {
@@ -4753,12 +4957,12 @@
         "failureReasons": [],
         "checkedAt": "2026-08-25T21:49:15.654Z"
       },
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "invalid",
         "reason": "http_400",
-        "checkedAt": "2026-08-28T06:12:57.385Z"
+        "checkedAt": "2026-08-29T03:17:13.109Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
@@ -4766,7 +4970,7 @@
         "broken_image",
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [
         "https://m.akplaza.com/upload/event/202608/new_renewal/s_nr_04.png"
       ],
@@ -4817,7 +5021,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0002&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-19",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -4854,19 +5058,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -4885,7 +5089,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0024&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-21",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -4922,19 +5126,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -4972,7 +5176,7 @@
       "sourceUrl": "https://www.akplaza.com/board/event/view?store=02&seq=3378",
       "sourceGrade": "official",
       "firstSeenAt": "2026-08-23",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "region": "경기도",
       "category": "food-popup",
       "contentSearch": {
@@ -5014,12 +5218,12 @@
         "failureReasons": [],
         "checkedAt": "2026-08-25T21:49:15.653Z"
       },
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "invalid",
         "reason": "http_400",
-        "checkedAt": "2026-08-28T06:12:57.385Z"
+        "checkedAt": "2026-08-29T03:17:13.109Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
@@ -5027,7 +5231,7 @@
         "broken_image",
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [
         "https://m.akplaza.com/upload/event/202608/new_renewal/s_nr_04.png"
       ],
@@ -5078,7 +5282,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0341&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-19",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -5115,19 +5319,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -5146,7 +5350,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0335&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-20",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -5183,19 +5387,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -5233,7 +5437,7 @@
       "sourceUrl": "https://www.akplaza.com/board/event/view?store=02&seq=3378",
       "sourceGrade": "official",
       "firstSeenAt": "2026-08-23",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "region": "경기도",
       "category": "food-popup",
       "contentSearch": {
@@ -5275,12 +5479,12 @@
         "failureReasons": [],
         "checkedAt": "2026-08-25T21:49:15.655Z"
       },
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "invalid",
         "reason": "http_400",
-        "checkedAt": "2026-08-28T06:12:57.385Z"
+        "checkedAt": "2026-08-29T03:17:13.109Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
@@ -5288,7 +5492,7 @@
         "broken_image",
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [
         "https://m.akplaza.com/upload/event/202608/new_renewal/s_nr_04.png"
       ],
@@ -5358,7 +5562,7 @@
       "sourceUrl": "https://www.akplaza.com/board/event/view?store=02&seq=3378",
       "sourceGrade": "official",
       "firstSeenAt": "2026-08-23",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "region": "경기도",
       "category": "food-popup",
       "contentSearch": {
@@ -5400,12 +5604,12 @@
         "failureReasons": [],
         "checkedAt": "2026-08-25T21:49:15.653Z"
       },
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "invalid",
         "reason": "http_400",
-        "checkedAt": "2026-08-28T06:12:57.385Z"
+        "checkedAt": "2026-08-29T03:17:13.109Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
@@ -5413,7 +5617,7 @@
         "broken_image",
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [
         "https://m.akplaza.com/upload/event/202608/new_renewal/s_nr_04.png"
       ],
@@ -5464,7 +5668,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0002&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-21",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -5501,19 +5705,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -5532,7 +5736,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0399&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-28",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -5568,19 +5772,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
-      "status": "ongoing",
+      "lastVerifiedAt": "2026-08-29",
+      "status": "ended",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -5599,7 +5803,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0335&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-19",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -5636,19 +5840,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -5672,7 +5876,7 @@
       "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000553245",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-15",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": true,
@@ -5738,21 +5942,21 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "imageValidation": {
         "status": "valid",
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-28T06:12:59.362Z"
+        "checkedAt": "2026-08-29T03:17:15.369Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000553245/2026081416200616_3.jpeg",
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000553245/2026081416200631_6.jpeg",
@@ -5775,7 +5979,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0341&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-17",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -5812,19 +6016,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -5843,7 +6047,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0336&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-17",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -5880,19 +6084,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -5911,7 +6115,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0399&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-22",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -5948,19 +6152,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -5979,7 +6183,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0013&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-22",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -6016,19 +6220,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -6047,7 +6251,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0006&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-22",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -6084,19 +6288,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -6115,7 +6319,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0340&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-24",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -6152,19 +6356,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -6182,7 +6386,7 @@
       "sourceUrl": "https://www.shinsegae.com/shopping/view.do?mainCd=02&pageLink=%2Fcms12%2FSC00010%2Finfo%2Fshopping%2Fbrndsingle%2F8591046_4597.txt&contentDtlCd=01&contentId=8591046&storeCd=SC00010&brandCd=UB0006880",
       "sourceGrade": "official",
       "firstSeenAt": "2026-08-22",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "menus": [
         {
           "name": "꿀호떡",
@@ -6299,7 +6503,7 @@
         "failureReasons": [],
         "checkedAt": "2026-08-27T00:54:39.552Z"
       },
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "image": "https://mukdang.com/assets/popups/shinsegae/693ffbbb41915612c4e8.bmp",
       "imageOriginalUrl": "https://www.shinsegae.com/cms12/SC00010/info/shopping/brndsingle/__icsFiles/afieldfile/2026/08/20/fpB7aXwF5xJ4.bmp",
@@ -6309,7 +6513,7 @@
         "status": "invalid",
         "reason": "invalid_content_type",
         "contentType": "application/octet-stream",
-        "checkedAt": "2026-08-28T06:12:59.288Z"
+        "checkedAt": "2026-08-29T03:17:15.359Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
@@ -6317,7 +6521,7 @@
         "broken_image",
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [
         "https://mukdang.com/assets/popups/shinsegae/693ffbbb41915612c4e8.bmp",
         "https://www.shinsegae.com/cms12/SC00010/info/shopping/brndsingle/__icsFiles/afieldfile/2026/08/20/fpB7aXwF5xJ4.bmp"
@@ -6380,7 +6584,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0025&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-21",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -6416,19 +6620,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -6447,7 +6651,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0010&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-21",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -6484,19 +6688,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -6515,7 +6719,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0399&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-17",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -6552,19 +6756,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -6583,7 +6787,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0001&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-17",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -6619,19 +6823,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -6650,7 +6854,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0339&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-17",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -6686,19 +6890,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -6717,7 +6921,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0344&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-19",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -6754,19 +6958,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -6791,7 +6995,7 @@
       "sourceUrl": "https://www.akplaza.com/board/news/view?store=03&seq=28019",
       "sourceGrade": "official",
       "firstSeenAt": "2026-08-17",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "brand": null,
       "region": null,
       "category": "food-popup",
@@ -6839,21 +7043,21 @@
         ],
         "checkedAt": "2026-08-19T21:46:26.688Z"
       },
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "imageValidation": {
         "status": "valid",
         "contentType": "image/jpeg",
         "width": 780,
         "height": 780,
-        "checkedAt": "2026-08-28T06:13:00.657Z"
+        "checkedAt": "2026-08-29T03:17:16.890Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [
         "https://img-www.akplaza.com/upload/edm/news/28019/0fbac920-c96c-4cff-af6b-bbea0c329508.jpg",
         "https://img-www.akplaza.com/upload/edm/news/28019/f904b959-97f5-470a-b9f5-f10af50bcbad.jpg"
@@ -6884,7 +7088,7 @@
       "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552680",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-15",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "menus": [
         {
           "name": "참모싯잎 개떡(1팩)",
@@ -7088,14 +7292,14 @@
         "전통 찹쌀떡(1팩)",
         "인절미 250g"
       ],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "imageValidation": {
         "status": "valid",
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-28T06:12:48.548Z"
+        "checkedAt": "2026-08-29T03:17:04.823Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
@@ -7103,7 +7307,7 @@
         "broken_image",
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202502/SNM00000000000433244/20250226163120706_0.jpeg",
         "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000549410/20260727165033358_9.jpeg",
@@ -7211,7 +7415,7 @@
       "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000551904",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-12",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": true,
@@ -7297,21 +7501,21 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "imageValidation": {
         "status": "valid",
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-28T06:13:00.835Z"
+        "checkedAt": "2026-08-29T03:17:17.120Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000551904/20260807144045914_2.jpeg",
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000551904/20260807144045930_7.jpeg",
@@ -7341,7 +7545,7 @@
       "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552682",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-12",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "menus": [
         {
           "name": "유일닭강정 오리지널 맛",
@@ -7448,14 +7652,14 @@
         "유일닭강정 오리지널 맛",
         "유일닭강정 반반(오리지널 맛+매운맛)"
       ],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "imageValidation": {
         "status": "valid",
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-28T06:13:01.181Z"
+        "checkedAt": "2026-08-29T03:17:17.435Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
@@ -7463,7 +7667,7 @@
         "broken_image",
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000552682/20260812102804328_5.jpeg",
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000552682/20260812103017253_3.jpeg",
@@ -7533,7 +7737,7 @@
       "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000550921",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-14",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": true,
@@ -7599,21 +7803,21 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "imageValidation": {
         "status": "valid",
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-28T06:13:01.376Z"
+        "checkedAt": "2026-08-29T03:17:17.646Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000550921/20260803145458604_4.jpeg",
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000550921/20260803145458620_5.jpeg",
@@ -7636,7 +7840,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0335&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-19",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -7673,19 +7877,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -7704,7 +7908,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0335&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-17",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -7741,19 +7945,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -7772,7 +7976,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0025&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-17",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -7809,19 +8013,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -7844,7 +8048,7 @@
       "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552733",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-12",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": true,
@@ -8129,21 +8333,21 @@
         "싸리채반",
         "150,000 원"
       ],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "imageValidation": {
         "status": "valid",
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-28T06:13:02.018Z"
+        "checkedAt": "2026-08-29T03:17:18.217Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000552733/2026081215342862_8.jpeg",
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000552733/20260812153428147_4.jpeg"
@@ -8257,7 +8461,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0017&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-17",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -8294,19 +8498,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -8325,7 +8529,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0025&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-17",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -8361,19 +8565,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -8392,7 +8596,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0399&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-17",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -8429,19 +8633,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -8460,7 +8664,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0344&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-18",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -8497,19 +8701,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -8527,7 +8731,7 @@
       "sourceUrl": "https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/c86277",
       "sourceGrade": "official",
       "firstSeenAt": "2026-08-14",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "brand": null,
       "region": "경기도",
       "category": "food-popup",
@@ -8570,21 +8774,21 @@
         ],
         "checkedAt": "2026-08-19T21:46:26.681Z"
       },
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "imageValidation": {
         "status": "valid",
         "contentType": "image/jpeg",
         "width": 640,
         "height": 480,
-        "checkedAt": "2026-08-28T06:13:02.450Z"
+        "checkedAt": "2026-08-29T03:17:18.783Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [
         "https://cdndept.galleria.co.kr//image/dept/edm-content/2026/G0814_25s.jpg"
       ],
@@ -8605,7 +8809,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0344&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-19",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -8642,19 +8846,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -8673,7 +8877,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0022&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-26",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -8710,19 +8914,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -8741,7 +8945,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0335&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-17",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -8777,19 +8981,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -8808,7 +9012,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0006&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-19",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -8845,19 +9049,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -8880,7 +9084,7 @@
       "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552160",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-12",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": true,
@@ -8936,21 +9140,21 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "imageValidation": {
         "status": "valid",
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-28T06:13:03.385Z"
+        "checkedAt": "2026-08-29T03:17:19.638Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202604/SNM00000000000529691/20260425135653938_8.jpeg",
         "https://minfo.lotteshopping.com/content/news/202604/SNM00000000000529691/20260425135653948_2.jpeg"
@@ -8982,7 +9186,7 @@
       "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552819",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-14",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "menus": [
         {
           "name": "블루베리 베이글",
@@ -9215,14 +9419,14 @@
         "할라피뇨 에멘탈 베이글",
         "무화과 베이글"
       ],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "imageValidation": {
         "status": "valid",
         "contentType": "image/jpeg",
         "width": 745,
         "height": 745,
-        "checkedAt": "2026-08-28T06:13:03.416Z"
+        "checkedAt": "2026-08-29T03:17:19.688Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
@@ -9230,7 +9434,7 @@
         "broken_image",
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202407/SNM00000000000387996/20240715153135420_8.jpeg",
         "https://minfo.lotteshopping.com/content/news/202504/SNM00000000000449687/20250423131942884_6.jpeg",
@@ -9341,7 +9545,7 @@
       "sourceUrl": "https://www.shinsegae.com/shopping/view.do?mainCd=02&pageLink=%2Fcms12%2FSC00012%2Finfo%2Fshopping%2Fbrndintg%2F8590183_4636.txt&contentDtlCd=01&contentId=8590183&storeCd=SC00012&brandCd=",
       "sourceGrade": "official",
       "firstSeenAt": "2026-08-15",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "officialImageUrls": [
         "https://mukdang.com/assets/popups/shinsegae/5fd5cfe4142f384b701d.jpg",
         "https://www.shinsegae.com/cms12/SC00012/info/shopping/brndintg/__icsFiles/afieldfile/2026/08/13/0814APPha10.jpg",
@@ -9395,7 +9599,7 @@
         ],
         "checkedAt": "2026-08-27T00:54:39.552Z"
       },
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "image": "https://mukdang.com/assets/popups/shinsegae/5fd5cfe4142f384b701d.jpg",
       "imageOriginalUrl": "https://www.shinsegae.com/cms12/SC00012/info/shopping/brndintg/__icsFiles/afieldfile/2026/08/13/0814APPha10.jpg",
@@ -9405,7 +9609,7 @@
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [
         "https://mukdang.com/assets/popups/shinsegae/5fd5cfe4142f384b701d.jpg",
         "https://www.shinsegae.com/cms12/SC00012/info/shopping/brndintg/__icsFiles/afieldfile/2026/08/13/0814APPha10.jpg",
@@ -9419,7 +9623,7 @@
         "contentType": "image/jpeg",
         "width": 720,
         "height": 720,
-        "checkedAt": "2026-08-28T06:13:03.396Z"
+        "checkedAt": "2026-08-29T03:17:19.639Z"
       }
     },
     {
@@ -9436,7 +9640,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0359&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-19",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -9473,19 +9677,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -9503,7 +9707,7 @@
       "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E2902608496121&branchCd=B00129000&category=",
       "sourceGrade": "official",
       "firstSeenAt": "2026-08-14",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "officialImageUrls": [
         "https://imgprism.ehyundai.com/derivedImage/fileValue/202608/08/4947b505-73ad-4a66-8552-628aef9eb155_01.jpg",
         "https://imgprism.ehyundai.com/imgTypeInf/imgPath/202608/08/1652bb45-6e23-4462-8bc3-d703ddec4331.jpg",
@@ -9566,21 +9770,21 @@
         ],
         "checkedAt": "2026-08-19T21:46:26.670Z"
       },
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "imageValidation": {
         "status": "valid",
         "contentType": "image/jpeg",
         "width": 925,
         "height": 925,
-        "checkedAt": "2026-08-28T06:13:03.557Z"
+        "checkedAt": "2026-08-29T03:17:19.829Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [
         "https://img.ehyundai.com/files/derivedImage/fileValue/202608/08/4947b505-73ad-4a66-8552-628aef9eb155_02.jpg",
         "https://imgprism.ehyundai.com/derivedImage/fileValue/202608/08/4947b505-73ad-4a66-8552-628aef9eb155_01.jpg",
@@ -9607,7 +9811,7 @@
       "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000551162",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-12",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": true,
@@ -9663,21 +9867,21 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "imageValidation": {
         "status": "valid",
         "contentType": "image/jpeg",
         "width": 670,
         "height": 4791,
-        "checkedAt": "2026-08-28T06:13:04.176Z"
+        "checkedAt": "2026-08-29T03:17:20.352Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000551162/20260804143859925_4.jpeg",
         "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547661/20260717184854621_0.jpeg"
@@ -9698,7 +9902,7 @@
       "sourceUrl": "https://www.shinsegae.com/shopping/view.do?mainCd=02&pageLink=%2Fcms12%2FSC00008%2Finfo%2Fshopping%2Fbrndintg%2F8583690_4552.txt&contentDtlCd=01&contentId=8583690&storeCd=SC00008&brandCd=",
       "sourceGrade": "official",
       "firstSeenAt": "2026-08-07",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "officialImageUrls": [
         "https://mukdang.com/assets/popups/shinsegae/804afb23c9242b9cc849.jpg",
         "https://www.shinsegae.com/cms12/SC00008/info/shopping/brndintg/__icsFiles/afieldfile/2026/08/06/bbangbbang360.jpg"
@@ -9742,7 +9946,7 @@
         ],
         "checkedAt": "2026-08-23T06:57:13.335Z"
       },
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "image": "https://mukdang.com/assets/popups/shinsegae/804afb23c9242b9cc849.jpg",
       "imageOriginalUrl": "https://www.shinsegae.com/cms12/SC00008/info/shopping/brndintg/__icsFiles/afieldfile/2026/08/06/bbangbbang360.jpg",
@@ -9753,14 +9957,14 @@
         "contentType": "image/jpeg",
         "width": 2154,
         "height": 1020,
-        "checkedAt": "2026-08-28T06:13:04.276Z"
+        "checkedAt": "2026-08-29T03:17:20.524Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [
         "https://mukdang.com/assets/popups/shinsegae/804afb23c9242b9cc849.jpg",
         "https://www.shinsegae.com/cms12/SC00008/info/shopping/brndintg/__icsFiles/afieldfile/2026/08/06/bbangbbang360.jpg"
@@ -9781,7 +9985,7 @@
       "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4602608494898&branchCd=B00146000&category=",
       "sourceGrade": "official",
       "firstSeenAt": "2026-08-07",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "brand": null,
       "region": "대구광역시",
       "category": "food-popup",
@@ -9824,21 +10028,21 @@
         ],
         "checkedAt": "2026-08-12T22:08:08.877Z"
       },
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "imageValidation": {
         "status": "valid",
         "contentType": "image/png",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-08-28T06:13:04.789Z"
+        "checkedAt": "2026-08-29T03:17:21.077Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [
         "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202604/08/91cd14c8-90b2-44ff-86ab-498c1b60ee13.png"
       ],
@@ -9858,7 +10062,7 @@
       "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4702607494685&branchCd=B00147000&category=",
       "sourceGrade": "official",
       "firstSeenAt": "2026-08-06",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "menus": [
         {
           "name": "닭꼬치",
@@ -9938,20 +10142,20 @@
         "failureReasons": [],
         "checkedAt": "2026-08-12T22:08:08.877Z"
       },
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "imageValidation": {
         "status": "review_required",
         "reason": "dimensions_unreadable",
         "contentType": "image/jpeg",
-        "checkedAt": "2026-08-28T06:13:04.827Z"
+        "checkedAt": "2026-08-29T03:17:21.100Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [
         "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202603/25/998186a8-5406-44e3-a9e8-65f953fece42.jpg"
       ],
@@ -9992,7 +10196,7 @@
       "sourceUrl": "https://dept.galleria.co.kr/store-info/gwanggyo/promotion/shopping-news/c86128",
       "sourceGrade": "official",
       "firstSeenAt": "2026-08-07",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "brand": null,
       "region": "경기도",
       "category": "food-popup",
@@ -10035,21 +10239,21 @@
         ],
         "checkedAt": "2026-08-12T22:08:08.884Z"
       },
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "imageValidation": {
         "status": "valid",
         "contentType": "image/jpeg",
         "width": 640,
         "height": 480,
-        "checkedAt": "2026-08-28T06:13:05.435Z"
+        "checkedAt": "2026-08-29T03:17:21.754Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [
         "https://cdndept.galleria.co.kr//image/dept/edm-content/2026/G0807_21s.jpg"
       ],
@@ -10069,7 +10273,7 @@
       "sourceUrl": "https://www.shinsegae.com/shopping/view.do?mainCd=02&pageLink=%2Fcms12%2FSC00003%2Finfo%2Fshopping%2Fbrndsingle%2F8582966_4474.txt&contentDtlCd=01&contentId=8582966&storeCd=SC00003&brandCd=UB0004288",
       "sourceGrade": "official",
       "firstSeenAt": "2026-08-07",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "officialImageUrls": [
         "https://mukdang.com/assets/popups/shinsegae/020305070f60c353d8dc.png",
         "https://www.shinsegae.com/cms12/SC00003/info/shopping/brndsingle/__icsFiles/afieldfile/2026/08/05/1bCscCnHaOSl.png"
@@ -10113,7 +10317,7 @@
         ],
         "checkedAt": "2026-08-12T22:08:08.881Z"
       },
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "image": "https://mukdang.com/assets/popups/shinsegae/020305070f60c353d8dc.png",
       "imageOriginalUrl": "https://www.shinsegae.com/cms12/SC00003/info/shopping/brndsingle/__icsFiles/afieldfile/2026/08/05/1bCscCnHaOSl.png",
@@ -10124,14 +10328,14 @@
         "contentType": "image/png",
         "width": 720,
         "height": 360,
-        "checkedAt": "2026-08-28T06:13:05.186Z"
+        "checkedAt": "2026-08-29T03:17:21.470Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [
         "https://mukdang.com/assets/popups/shinsegae/020305070f60c353d8dc.png",
         "https://www.shinsegae.com/cms12/SC00003/info/shopping/brndsingle/__icsFiles/afieldfile/2026/08/05/1bCscCnHaOSl.png"
@@ -10153,7 +10357,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0027&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-17",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -10190,19 +10394,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -10220,11 +10424,11 @@
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0028&searchTerm=%EB%84%88%EA%B5%AC%EB%A6%AC%EB%B2%A0%EC%9D%B4%EA%B8%80",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "brand": null,
       "region": "서울특별시",
       "category": "food-popup",
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "menuItems": [
         "블루베리 베이글",
@@ -10357,14 +10561,14 @@
           "official_detail_images_not_checked",
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-08-28T06:11:15.640Z"
+        "checkedAt": "2026-08-29T03:12:33.696Z"
       },
       "imageValidation": {
         "status": "valid",
         "contentType": "image/jpeg",
         "width": 745,
         "height": 745,
-        "checkedAt": "2026-08-28T06:13:03.416Z"
+        "checkedAt": "2026-08-29T03:17:19.688Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
@@ -10372,7 +10576,7 @@
         "broken_image",
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202407/SNM00000000000387996/20240715153135420_8.jpeg",
         "https://minfo.lotteshopping.com/content/news/202504/SNM00000000000449687/20250423131942884_6.jpeg",
@@ -10465,7 +10669,7 @@
       "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549268",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-12",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": true,
@@ -10521,21 +10725,21 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "imageValidation": {
         "status": "valid",
         "contentType": "image/jpeg",
         "width": 670,
         "height": 670,
-        "checkedAt": "2026-08-28T06:13:07.836Z"
+        "checkedAt": "2026-08-29T03:17:23.984Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000549268/20260729122830165_8.jpeg",
         "https://minfo.lotteshopping.com/content/news/202602/SNM00000000000511522/20260204123804171_6.jpeg"
@@ -10556,11 +10760,11 @@
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EB%A7%8C%EC%84%9D%EB%8B%AD%EA%B0%95%EC%A0%95",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "brand": null,
       "region": "경기도",
       "category": "food-popup",
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "menuItems": [
         "보통맛(뼈)",
@@ -10663,21 +10867,21 @@
           "official_detail_images_not_checked",
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-08-28T06:11:16.524Z"
+        "checkedAt": "2026-08-29T03:12:34.555Z"
       },
       "imageValidation": {
         "status": "valid",
         "contentType": "image/jpeg",
         "width": 1687,
         "height": 2249,
-        "checkedAt": "2026-08-28T06:13:08.166Z"
+        "checkedAt": "2026-08-29T03:17:24.285Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/prfl/202505/PRFL2025050818072491.jpg",
         "https://minfo.lotteshopping.com/content/news/202510/SNM00000000000489497/20251027133127740_0.jpeg",
@@ -10743,11 +10947,11 @@
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0344&searchTerm=%EB%8B%B4%EC%95%84%ED%97%8C+%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84+%EB%AA%A8%EC%B0%8C",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "brand": null,
       "region": "인천광역시",
       "category": "food-popup",
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "menuItems": [],
       "menuSource": "official-event-text",
@@ -10798,19 +11002,19 @@
           "official_detail_images_not_checked",
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-08-28T06:11:17.426Z"
+        "checkedAt": "2026-08-29T03:12:35.474Z"
       },
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -10829,14 +11033,14 @@
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0333&searchTerm=%EB%9D%BC%EC%9D%B4%ED%94%84%EC%BB%AC%EC%B2%98+Pop-Up",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-05",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "brand": null,
       "region": "부산광역시",
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
       "menuSource": "official-event-text",
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "title": "라이프컬처 Pop-Up",
       "branch": "롯데백화점 광복점",
@@ -10884,19 +11088,19 @@
           "official_detail_images_not_checked",
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-08-28T06:11:17.491Z"
+        "checkedAt": "2026-08-29T03:12:35.477Z"
       },
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -10914,11 +11118,11 @@
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0344&searchTerm=%EB%A3%A8%EC%86%94+%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84+%EC%9D%B4%EC%9C%A0%EC%8B%9D",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "brand": null,
       "region": "인천광역시",
       "category": "food-popup",
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "menuItems": [],
       "menuSource": "official-event-text",
@@ -10969,19 +11173,19 @@
           "official_detail_images_not_checked",
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-08-28T06:11:17.418Z"
+        "checkedAt": "2026-08-29T03:12:35.468Z"
       },
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -10999,11 +11203,11 @@
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0336&searchTerm=%EC%84%9C%EC%9A%B8%EB%A1%A4+%EC%B2%A0%ED%8C%90%ED%94%BC%EC%9E%90%26%ED%8A%80%EC%9D%BC",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "brand": null,
       "region": "경기도",
       "category": "food-popup",
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "menuItems": [],
       "menuSource": "official-event-text",
@@ -11055,19 +11259,19 @@
           "official_detail_images_not_checked",
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-08-28T06:11:17.118Z"
+        "checkedAt": "2026-08-29T03:12:35.159Z"
       },
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -11085,11 +11289,11 @@
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0336&searchTerm=%EC%88%98%EC%88%98%EB%8C%80%EC%9E%A5%EA%B5%B0+%EC%A0%84%ED%86%B5%EA%B0%84%EC%8B%9D",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "brand": null,
       "region": "경기도",
       "category": "food-popup",
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "menuItems": [],
       "menuSource": "official-event-text",
@@ -11140,19 +11344,19 @@
           "official_detail_images_not_checked",
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-08-28T06:11:17.132Z"
+        "checkedAt": "2026-08-29T03:12:35.178Z"
       },
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -11170,11 +11374,11 @@
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%B0%BE%EB%8B%A4%EB%B3%B4%EB%8B%88%EC%97%AC%EA%B8%B0+%EA%B1%B4%EC%96%B4%EB%AC%BC%C2%B7%EA%B1%B4%EA%B0%95%EC%B9%A9",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "brand": null,
       "region": "경기도",
       "category": "food-popup",
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "menuItems": [],
       "menuSource": "official-event-text",
@@ -11226,19 +11430,19 @@
           "official_detail_images_not_checked",
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-08-28T06:11:16.806Z"
+        "checkedAt": "2026-08-29T03:12:34.844Z"
       },
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -11256,11 +11460,11 @@
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%B2%AD%EC%A3%BC%EB%AF%B8%EC%B9%9C%EB%A7%8C%EB%91%90",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "brand": null,
       "region": "경기도",
       "category": "food-popup",
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "menuItems": [],
       "menuSource": "official-event-text",
@@ -11310,19 +11514,19 @@
           "official_detail_images_not_checked",
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-08-28T06:11:16.549Z"
+        "checkedAt": "2026-08-29T03:12:34.609Z"
       },
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -11341,14 +11545,14 @@
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0333&searchTerm=%ED%90%81%EC%8B%A0%EB%8B%B9+Pop-Up",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-05",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "brand": null,
       "region": "부산광역시",
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
       "menuSource": "official-event-text",
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "title": "퐁신당 Pop-Up",
       "branch": "롯데백화점 광복점",
@@ -11396,19 +11600,19 @@
           "official_detail_images_not_checked",
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-08-28T06:11:17.705Z"
+        "checkedAt": "2026-08-29T03:12:35.725Z"
       },
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -11427,7 +11631,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0002&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-21",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -11463,19 +11667,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -11493,11 +11697,11 @@
       "sourceUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EB%8F%84%EC%BF%84%EB%B2%A0%EB%A6%AC+%EC%83%9D%EA%B3%BC%EC%9D%BC%EB%AA%A8%EC%B0%8C",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-07-30",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "brand": null,
       "region": "경기도",
       "category": "food-popup",
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ended",
       "menuItems": [],
       "menuSource": "official-event-text",
@@ -11548,19 +11752,19 @@
           "official_detail_images_not_checked",
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-08-28T06:11:16.604Z"
+        "checkedAt": "2026-08-29T03:12:34.666Z"
       },
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -11579,7 +11783,7 @@
       "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0399&cntsTpCd=C00903",
       "sourceGrade": "official-search",
       "firstSeenAt": "2026-08-22",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "contentSearch": {
         "checkedOfficialList": true,
         "checkedOfficialDetail": false,
@@ -11616,19 +11820,19 @@
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -11646,14 +11850,14 @@
       "sourceUrl": "https://www.starfield.co.kr/suwon/tenant/floorInfo",
       "sourceGrade": "official",
       "firstSeenAt": "2026-08-03",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "brand": null,
       "region": "경기도",
       "category": "food-popup",
       "menus": [],
       "menuItems": [],
       "menuSource": "official-event-text",
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "review_required",
       "title": "인텔리젠시아 커피",
       "branch": "스타필드 수원",
@@ -11695,12 +11899,12 @@
         "failureReasons": [
           "legacy_collector_search_evidence_incomplete"
         ],
-        "checkedAt": "2026-08-28T06:12:30.711Z"
+        "checkedAt": "2026-08-29T03:16:47.684Z"
       },
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-08-28T06:12:47.321Z"
+        "checkedAt": "2026-08-29T03:17:03.703Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
@@ -11708,7 +11912,7 @@
         "missing_dates",
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -11730,7 +11934,7 @@
       "sourceGrade": "official",
       "category": "food-popup",
       "firstSeenAt": "2026-08-05",
-      "lastSeenAt": "2026-08-28",
+      "lastSeenAt": "2026-08-29",
       "menus": [],
       "menuItems": [],
       "menuSource": "official-event-text",
@@ -11748,7 +11952,7 @@
         "https://nodeul.org/wp-includes/js/jquery/ui/dialog.min.js?ver=1.13.2",
         "https://nodeul.org/wp-content/plugins/dnx_custom_plugin/includes/popModal.min.js"
       ],
-      "lastVerifiedAt": "2026-08-28",
+      "lastVerifiedAt": "2026-08-29",
       "status": "ongoing",
       "title": "(수정) 노들섬 푸드트럭 운영 안내(2026년 5~8월)",
       "branch": "노들섬",
@@ -11804,7 +12008,7 @@
             "contentType": "official_list",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://nodeul.org/wp-content/themes/nodeul/img/nodeul-ogimage.jpg",
-            "capturedAt": "2026-08-28T06:12:30.809Z"
+            "capturedAt": "2026-08-29T03:16:47.778Z"
           },
           {
             "sourceUrl": "https://nodeul.org/%EB%85%B8%EB%93%A4%EC%84%AC-%ED%91%B8%EB%93%9C%ED%8A%B8%EB%9F%AD-%EC%9A%B4%EC%98%81-%EC%95%88%EB%82%B42026%EB%85%84-58%EC%9B%94/",
@@ -11812,7 +12016,7 @@
             "contentType": "official_list",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://nodeul.org/wp-content/plugins/iamport-payment/dist/bundle-main.js?ver=20190105",
-            "capturedAt": "2026-08-28T06:12:30.809Z"
+            "capturedAt": "2026-08-29T03:16:47.778Z"
           },
           {
             "sourceUrl": "https://nodeul.org/%EB%85%B8%EB%93%A4%EC%84%AC-%ED%91%B8%EB%93%9C%ED%8A%B8%EB%9F%AD-%EC%9A%B4%EC%98%81-%EC%95%88%EB%82%B42026%EB%85%84-58%EC%9B%94/",
@@ -11820,7 +12024,7 @@
             "contentType": "official_list",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://nodeul.org/wp-content/plugins/theme-my-login/modules/themed-profiles/themed-profiles.js?ver=930bc62922baad6b3b2f4ac276595c60",
-            "capturedAt": "2026-08-28T06:12:30.809Z"
+            "capturedAt": "2026-08-29T03:16:47.778Z"
           },
           {
             "sourceUrl": "https://nodeul.org/%EB%85%B8%EB%93%A4%EC%84%AC-%ED%91%B8%EB%93%9C%ED%8A%B8%EB%9F%AD-%EC%9A%B4%EC%98%81-%EC%95%88%EB%82%B42026%EB%85%84-58%EC%9B%94/",
@@ -11828,7 +12032,7 @@
             "contentType": "official_list",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://nodeul.org/wp-includes/js/jquery/ui/core.min.js?ver=1.13.2",
-            "capturedAt": "2026-08-28T06:12:30.809Z"
+            "capturedAt": "2026-08-29T03:16:47.778Z"
           },
           {
             "sourceUrl": "https://nodeul.org/%EB%85%B8%EB%93%A4%EC%84%AC-%ED%91%B8%EB%93%9C%ED%8A%B8%EB%9F%AD-%EC%9A%B4%EC%98%81-%EC%95%88%EB%82%B42026%EB%85%84-58%EC%9B%94/",
@@ -11836,7 +12040,7 @@
             "contentType": "official_list",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://nodeul.org/wp-includes/js/jquery/ui/mouse.min.js?ver=1.13.2",
-            "capturedAt": "2026-08-28T06:12:30.809Z"
+            "capturedAt": "2026-08-29T03:16:47.778Z"
           },
           {
             "sourceUrl": "https://nodeul.org/%EB%85%B8%EB%93%A4%EC%84%AC-%ED%91%B8%EB%93%9C%ED%8A%B8%EB%9F%AD-%EC%9A%B4%EC%98%81-%EC%95%88%EB%82%B42026%EB%85%84-58%EC%9B%94/",
@@ -11844,7 +12048,7 @@
             "contentType": "official_list",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://nodeul.org/wp-includes/js/jquery/ui/resizable.min.js?ver=1.13.2",
-            "capturedAt": "2026-08-28T06:12:30.809Z"
+            "capturedAt": "2026-08-29T03:16:47.778Z"
           },
           {
             "sourceUrl": "https://nodeul.org/%EB%85%B8%EB%93%A4%EC%84%AC-%ED%91%B8%EB%93%9C%ED%8A%B8%EB%9F%AD-%EC%9A%B4%EC%98%81-%EC%95%88%EB%82%B42026%EB%85%84-58%EC%9B%94/",
@@ -11852,7 +12056,7 @@
             "contentType": "official_list",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://nodeul.org/wp-includes/js/jquery/ui/draggable.min.js?ver=1.13.2",
-            "capturedAt": "2026-08-28T06:12:30.809Z"
+            "capturedAt": "2026-08-29T03:16:47.778Z"
           },
           {
             "sourceUrl": "https://nodeul.org/%EB%85%B8%EB%93%A4%EC%84%AC-%ED%91%B8%EB%93%9C%ED%8A%B8%EB%9F%AD-%EC%9A%B4%EC%98%81-%EC%95%88%EB%82%B42026%EB%85%84-58%EC%9B%94/",
@@ -11860,7 +12064,7 @@
             "contentType": "official_list",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://nodeul.org/wp-includes/js/jquery/ui/controlgroup.min.js?ver=1.13.2",
-            "capturedAt": "2026-08-28T06:12:30.809Z"
+            "capturedAt": "2026-08-29T03:16:47.778Z"
           },
           {
             "sourceUrl": "https://nodeul.org/%EB%85%B8%EB%93%A4%EC%84%AC-%ED%91%B8%EB%93%9C%ED%8A%B8%EB%9F%AD-%EC%9A%B4%EC%98%81-%EC%95%88%EB%82%B42026%EB%85%84-58%EC%9B%94/",
@@ -11868,7 +12072,7 @@
             "contentType": "official_list",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://nodeul.org/wp-includes/js/jquery/ui/checkboxradio.min.js?ver=1.13.2",
-            "capturedAt": "2026-08-28T06:12:30.809Z"
+            "capturedAt": "2026-08-29T03:16:47.778Z"
           },
           {
             "sourceUrl": "https://nodeul.org/%EB%85%B8%EB%93%A4%EC%84%AC-%ED%91%B8%EB%93%9C%ED%8A%B8%EB%9F%AD-%EC%9A%B4%EC%98%81-%EC%95%88%EB%82%B42026%EB%85%84-58%EC%9B%94/",
@@ -11876,7 +12080,7 @@
             "contentType": "official_list",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://nodeul.org/wp-includes/js/jquery/ui/button.min.js?ver=1.13.2",
-            "capturedAt": "2026-08-28T06:12:30.809Z"
+            "capturedAt": "2026-08-29T03:16:47.778Z"
           },
           {
             "sourceUrl": "https://nodeul.org/%EB%85%B8%EB%93%A4%EC%84%AC-%ED%91%B8%EB%93%9C%ED%8A%B8%EB%9F%AD-%EC%9A%B4%EC%98%81-%EC%95%88%EB%82%B42026%EB%85%84-58%EC%9B%94/",
@@ -11884,7 +12088,7 @@
             "contentType": "official_list",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://nodeul.org/wp-includes/js/jquery/ui/dialog.min.js?ver=1.13.2",
-            "capturedAt": "2026-08-28T06:12:30.809Z"
+            "capturedAt": "2026-08-29T03:16:47.778Z"
           },
           {
             "sourceUrl": "https://nodeul.org/%EB%85%B8%EB%93%A4%EC%84%AC-%ED%91%B8%EB%93%9C%ED%8A%B8%EB%9F%AD-%EC%9A%B4%EC%98%81-%EC%95%88%EB%82%B42026%EB%85%84-58%EC%9B%94/",
@@ -11892,20 +12096,20 @@
             "contentType": "official_list",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://nodeul.org/wp-content/plugins/dnx_custom_plugin/includes/popModal.min.js",
-            "capturedAt": "2026-08-28T06:12:30.809Z"
+            "capturedAt": "2026-08-29T03:16:47.778Z"
           }
         ],
         "failureReasons": [
           "legacy_collector_search_evidence_incomplete"
         ],
-        "checkedAt": "2026-08-28T06:12:30.809Z"
+        "checkedAt": "2026-08-29T03:16:47.778Z"
       },
       "imageValidation": {
         "status": "valid",
         "contentType": "image/jpeg",
         "width": 800,
         "height": 400,
-        "checkedAt": "2026-08-28T06:13:09.436Z"
+        "checkedAt": "2026-08-29T03:17:25.636Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
@@ -11913,7 +12117,7 @@
         "search_incomplete",
         "broken_image"
       ],
-      "lastContentCheckedAt": "2026-08-28T06:12:47.321Z",
+      "lastContentCheckedAt": "2026-08-29T03:17:03.703Z",
       "imageCandidates": [
         "https://nodeul.org/wp-content/themes/nodeul/img/nodeul-ogimage.jpg",
         "https://nodeul.org/wp-content/plugins/iamport-payment/dist/bundle-main.js?ver=20190105",

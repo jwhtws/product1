@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-08-28T06:12:31.378Z",
+  "updatedAt": "2026-08-29T03:16:48.332Z",
   "summary": {
-    "nationwideVenueTotal": 1027,
+    "nationwideVenueTotal": 1026,
     "verifiedPopupVenueCount": 49,
     "officialFeedMonitoredCount": 96,
-    "collectorNeededCount": 931,
+    "collectorNeededCount": 930,
     "disclaimer": "시설 원장은 전국 탐색 범위이며, 화면에는 공식 출처에서 시작일과 종료일을 확인한 푸드팝업만 표시합니다."
   },
   "venues": [
@@ -3732,7 +3732,7 @@
       "kind": "백화점",
       "collector": "롯데백화점·롯데아울렛·롯데몰",
       "status": "verified-popup-found",
-      "popupCount": 8
+      "popupCount": 9
     },
     {
       "venueId": "localdata:3420000:2010342009007500001",
@@ -8381,15 +8381,6 @@
     {
       "venueId": "localdata:4711000:2024471101507500001",
       "name": "홈플러스(주) 김제점",
-      "region": "전북특별자치도",
-      "kind": "대형마트",
-      "collector": "홈플러스",
-      "status": "adapter-needed",
-      "popupCount": 0
-    },
-    {
-      "venueId": "localdata:4681000:2006468012007500002",
-      "name": "홈플러스(주) 익산점",
       "region": "전북특별자치도",
       "kind": "대형마트",
       "collector": "홈플러스",
