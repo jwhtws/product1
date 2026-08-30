@@ -62,6 +62,9 @@ test('단일 Site Feed는 필수 필드, 중복, Status, D-Day, NEW, 종료 임�
   assert.equal(ongoing.officialUrl, base.sourceUrl);
   assert.equal(ongoing.sourceUrl, base.sourceUrl);
   assert.equal(ongoing.sourceItemId, 'test:1');
+  assert.match(ongoing.editorialDescription, /테스트커피는 성수 테스트키친에서 선보이는/u);
+  assert.match(ongoing.editorialDescription, /공식 메뉴/u);
+  assert.equal((ongoing.editorialDescription.match(/[.] /gu) || []).length >= 5, true);
   assert.equal(ongoing.latitude, null);
   assert.equal(ongoing.longitude, null);
   assert.equal(upcoming.status, 'upcoming');

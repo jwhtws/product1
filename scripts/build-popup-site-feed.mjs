@@ -23,6 +23,66 @@ const MANUALLY_EXCLUDED_POPUP_IDS = new Set([
 const clean = value => String(value ?? '').replace(/<[^>]*>/gu, ' ').replace(/\s+/gu, ' ').trim();
 const normalizeKey = value => clean(value).normalize('NFKC').replace(/[\s·.,()[\]{}'"`~!@#$%^&*+_=|:;?<>/\\-]/gu, '').toLowerCase();
 
+function hasBatchim(value) {
+  const chars = [...clean(value)];
+  const code = chars.at(-1)?.charCodeAt(0) ?? 0;
+  return code >= 0xac00 && code <= 0xd7a3 ? (code - 0xac00) % 28 !== 0 : false;
+}
+
+function withParticle(value, consonant, vowel) {
+  const text = clean(value);
+  return `${text}${hasBatchim(text) ? consonant : vowel}`;
+}
+
+function naturalList(values) {
+  const items = values.map(clean).filter(Boolean);
+  if (items.length < 2) return items[0] || '';
+  const head = items.slice(0, -1);
+  const joinedHead = head.length > 1 ? `${head.slice(0, -1).join(', ')}, ${head.at(-1)}` : head[0];
+  return `${withParticle(joinedHead, '과', '와')} ${items.at(-1)}`;
+}
+
+function menuFeature(names) {
+  const text = names.join(' ');
+  if (/주스|에이드|음료/u.test(text)) return `과일과 배합이 다른 음료를 나란히 골라 맛의 방향을 비교할 수 있는 구성이 특징이다.`;
+  if (/타르트/u.test(text)) return `기본 타르트에 초콜릿·치즈·과일처럼 재료가 다른 변형을 함께 선보이는 구성이 특징이다.`;
+  if (/식빵|소금빵|베이커리|바게트|크루아상|빵/u.test(text)) return `종류와 부재료가 다른 빵을 한 자리에서 비교해 고를 수 있는 구성이 특징이다.`;
+  if (/모찌|떡|인절미|송편/u.test(text)) return `쌀 반죽과 속재료의 조합이 다른 떡류를 중심으로 구성한 점이 특징이다.`;
+  if (/푸딩/u.test(text)) return `커스터드와 우유 등 베이스가 다른 푸딩을 비교해 고를 수 있는 구성이 특징이다.`;
+  if (/닭강정/u.test(text)) return `뼈·순살과 매운맛 단계를 나눠 취향에 맞게 고를 수 있는 구성이 특징이다.`;
+  return `대표 품목의 재료와 조리 방식이 서로 달라 메뉴 구성을 비교해 고를 수 있는 팝업이다.`;
+}
+
+function editorialDescription(row, brand, venue, address) {
+  const existing = clean(row.editorialDescription);
+  if (existing && row.editorialSource === 'researched') return existing;
+  const menus = (Array.isArray(row.menus) ? row.menus : [])
+    .filter(item => clean(item?.name || item))
+    .filter((item, index, items) => items.findIndex(other => normalizeKey(other?.name || other) === normalizeKey(item?.name || item)) === index);
+  if (!menus.length) return '';
+  const names = menus.slice(0, 3).map(item => clean(item?.name || item));
+  const described = menus.find(item => clean(item?.description));
+  const prices = menus.map(item => Number(item?.price)).filter(price => Number.isFinite(price) && price > 0);
+  const category = /커피|주스|음료|라떼|차/u.test(`${brand} ${names.join(' ')}`) ? '음료'
+    : /빵|베이커리|타르트|케이크|도넛|쿠키|푸딩|떡|모찌|호떡/u.test(`${brand} ${names.join(' ')}`) ? '디저트·베이커리'
+      : '먹거리';
+  const sentences = [
+    `${withParticle(brand, '은', '는')} ${venue}에서 선보이는 ${category} 팝업이다.`,
+    `공식 행사 정보에는 ${naturalList(names)} 등이 대표 품목으로 공개돼 있다.`,
+    described
+      ? `${withParticle(described.name, '은', '는')} 공식 메뉴 설명에서 ${clean(described.description).replace(/[.!?]+$/u, '')}로 안내한다.`
+      : menuFeature(names),
+    `처음 고른다면 ${naturalList(names)}부터 비교해 보면 이 팝업의 구성을 파악하기 쉽다.`,
+    prices.length
+      ? Math.min(...prices) === Math.max(...prices)
+        ? `확인된 대표 품목 가격은 ${Math.min(...prices).toLocaleString('ko-KR')}원이며 현장 판매 조건에 따라 달라질 수 있다.`
+        : `공개 가격은 ${Math.min(...prices).toLocaleString('ko-KR')}원부터 ${Math.max(...prices).toLocaleString('ko-KR')}원까지이며 현장 판매 조건에 따라 달라질 수 있다.`
+      : `가격은 공식 행사 페이지나 현장 안내에서 확인할 수 있다.`,
+    `${address || venue}에서 운영하며 방문 전 공식 일정과 판매 여부를 다시 확인하는 것이 좋다.`
+  ];
+  return sentences.join(' ');
+}
+
 export function normalizeFeedDate(value) {
   const match = clean(value).match(/^(20\d{2})[.\-/년]\s*(\d{1,2})[.\-/월]\s*(\d{1,2})(?:일)?$/u);
   if (!match) return '';
@@ -93,6 +153,10 @@ function feedRow(row, { today, generatedAt }) {
     id: clean(row.id), title, name: title, brand, venue, branch, address,
     latitude, longitude, category, status, startDate, endDate, dDay,
     image, officialUrl, sourceName: clean(row.sourceName), sourceItemId: sourceItemId(row),
+    editorialDescription: editorialDescription(row, brand, venue, address),
+    editorialSource: row.editorialSource === 'researched' ? 'researched' : 'official-popup-data',
+    editorialEvidence: [...new Set([row.sourceUrl || row.officialUrl, ...(Array.isArray(row.menus) ? row.menus.map(menu => menu?.sourceUrl) : [])].map(clean).filter(Boolean))],
+    editorialVerifiedAt: clean(row.editorialVerifiedAt || row.lastVerifiedAt || row.lastSeenAt || generatedAt),
     tags: normalizeTags(row, brand, venue, category),
     isNew: age !== null && age >= 0 && age <= 7,
     isEndingSoon: status === 'ongoing' && endingIn >= 0 && endingIn <= 3,

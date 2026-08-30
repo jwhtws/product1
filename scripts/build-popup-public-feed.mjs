@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 const INTERNAL_FIELDS = new Set([
   'contentSearch', 'menuCandidates', 'imageCandidates', 'imageValidation',
   'qualityReasons', 'lastContentCheckedAt', 'ocrStatus', 'imageOriginalUrl',
-  'sourceItemId', 'officialUrl'
+  'sourceItemId', 'officialUrl', 'editorialEvidence', 'editorialSource'
 ]);
 
 export async function buildPopupPublicFeed({

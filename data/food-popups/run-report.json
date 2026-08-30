@@ -5328,24 +5328,22 @@
     }
   ],
   "siteFeed": {
-    "inputCount": 541,
-    "outputCount": 410,
-    "rejectedCount": 131,
-    "qualityExcludedCount": 131,
+    "inputCount": 409,
+    "outputCount": 409,
+    "rejectedCount": 0,
+    "qualityExcludedCount": 0,
     "duplicateRemovedCount": 0,
-    "rejectionReasons": {
-      "quality_review_required": 131
-    },
+    "rejectionReasons": {},
     "statusDistribution": {
       "upcoming": 14,
-      "ongoing": 126,
+      "ongoing": 125,
       "ended": 270
     },
-    "newCount": 99,
+    "newCount": 98,
     "endingSoonCount": 29,
     "missingImageCount": 0,
     "missingMenuCount": 0,
-    "missingCoordinateCount": 409,
+    "missingCoordinateCount": 408,
     "generatedAt": "2026-08-30T00:29:14.404Z"
   }
 }
