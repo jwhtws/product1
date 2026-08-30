@@ -14,14 +14,7 @@ concurrency:
 
 jobs:
   deploy:
-    name: ${{ matrix.project }} 배포
-    strategy:
-      fail-fast: false
-      max-parallel: 1
-      matrix:
-        project:
-          - product1
-          - product2
+    name: product1 배포
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -31,15 +24,11 @@ jobs:
           node-version: 22
       - name: 배포 전 검증
         run: npm run check
-      - name: ${{ matrix.project }} 운영 프로젝트 배포
+      - name: product1 운영 프로젝트 배포
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy . --project-name=${{ matrix.project }} --branch=main --commit-dirty=true
+          command: pages deploy . --project-name=product1 --branch=main --commit-dirty=true
       - name: mukdang.com 배포 결과 검증
-        if: matrix.project == 'product1'
         run: node scripts/verify-popup-deployment.mjs --url=https://mukdang.com --attempts=8 --interval-ms=15000
-      - name: product2 미리보기 배포 결과 검증
-        if: matrix.project == 'product2'
-        run: node scripts/verify-popup-deployment.mjs --url=https://product2-ezo.pages.dev --attempts=8 --interval-ms=15000
