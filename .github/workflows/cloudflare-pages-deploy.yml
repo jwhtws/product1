@@ -21,6 +21,7 @@ jobs:
       matrix:
         project:
           - product1
+          - product2
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -39,3 +40,6 @@ jobs:
       - name: mukdang.com 배포 결과 검증
         if: matrix.project == 'product1'
         run: node scripts/verify-popup-deployment.mjs --url=https://mukdang.com --attempts=8 --interval-ms=15000
+      - name: product2 미리보기 배포 결과 검증
+        if: matrix.project == 'product2'
+        run: node scripts/verify-popup-deployment.mjs --url=https://product2-ezo.pages.dev --attempts=8 --interval-ms=15000

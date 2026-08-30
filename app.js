@@ -21,7 +21,7 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
     set(key, value) { localStorage.setItem(`meokdang-${key}`, JSON.stringify(value)); }
   };
   const escapeHtml = value => String(value ?? '').replace(/[&<>'"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[c]));
-  const apiOrigin = location.hostname.endsWith('github.io') ? 'https://mukdang.com' : '';
+  const apiOrigin = location.hostname.endsWith('github.io') || location.hostname === 'product2-ezo.pages.dev' ? 'https://mukdang.com' : '';
   const publicApiUrl = path => `${apiOrigin}${path}`;
   const searchKey = value => String(value ?? '').toLocaleLowerCase('ko-KR').replace(/[^\p{L}\p{N}]+/gu, '');
   const initials = value => [...String(value ?? '')].map(char => {
@@ -152,6 +152,8 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
       if (!response.ok) return;
       const data = await response.json();
       const searches = Array.isArray(data.searches) ? data.searches.slice(0, 14) : [];
+      state.popupPopularSearches = searches.slice(0, 6);
+      renderPopupSearchMeta();
       if (!searches.length) return;
       const candidates = await Promise.all(searches.map(async search => {
         const query = searchKey(search.query);
@@ -738,7 +740,7 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
     syncPopupSearchInputs();
     if (record) {
       recordPopupSearch(state.popupSearchQuery, type);
-      if (state.popupSearchQuery) api('/api/events', { method: 'POST', body: JSON.stringify({ type: 'popup-search', detail: state.popupSearchQuery }) }).catch(() => {});
+      if (state.popupSearchQuery) api(publicApiUrl('/api/events'), { method: 'POST', body: JSON.stringify({ type: 'popup-search', detail: state.popupSearchQuery }) }).catch(() => {});
     }
     ['#suggestions', '#popup-search-suggestions'].forEach(selector => {
       const root = $(selector);
@@ -767,7 +769,7 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
     const recentRoot = $('#popup-recent-searches');
     const popularRoot = $('#popup-popular-searches');
     if (!recentRoot || !popularRoot) return;
-    const button = (item, recent = false) => `<button type="button" class="md-chip" data-popup-query="${escapeHtml(item.query)}" data-popup-query-type="${escapeHtml(item.type || 'query')}">${recent ? '<span aria-hidden="true">↗</span>' : ''}${escapeHtml(item.query)}</button>`;
+    const button = (item, recent = false) => `<button type="button" class="md-chip" data-popup-query="${escapeHtml(item.query)}" data-popup-query-type="${escapeHtml(item.type || 'query')}">${recent ? '<span aria-hidden="true">↗</span>' : `<b>${item.rank}</b>`}${escapeHtml(item.query)}${!recent && item.count ? `<small>${item.count.toLocaleString('ko-KR')}</small>` : ''}</button>`;
     const recent = popupRecentSearches();
     recentRoot.innerHTML = recent.length ? recent.map(item => button(item, true)).join('') : '<span class="popup-search-hint">아직 검색 기록이 없어요.</span>';
     const popular = popupPopularSearches();
@@ -1176,8 +1178,9 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
     const mapQuery = encodeURIComponent(popup.address || popup.venue || popup.name);
     const officialImageMissing = popup.imageSource === 'official-image-unavailable';
     const imageUrl = popup.imageUrl || popup.image || (officialImageMissing ? '' : popupFallbackImage(popup));
-    const imageMarkup = imageUrl
-      ? `<img src="${escapeHtml(imageUrl)}" alt="${escapeHtml(popup.name)} 대표 이미지" width="900" height="506" decoding="async">`
+    const galleryImages = [...new Set([imageUrl, ...(Array.isArray(popup.officialImageUrls) ? popup.officialImageUrls : [])].filter(Boolean))].slice(0, 12);
+    const imageMarkup = galleryImages.length
+      ? `<div class="popup-detail-gallery" role="region" aria-label="${escapeHtml(popup.name)} 사진 ${galleryImages.length}장">${galleryImages.map((url, index) => `<figure><img src="${escapeHtml(url)}" alt="${escapeHtml(popup.name)} ${index + 1}번째 사진" width="900" height="506" ${index ? 'loading="lazy"' : ''} decoding="async"><figcaption>${index + 1} / ${galleryImages.length}</figcaption></figure>`).join('')}</div>`
       : `<div class="popup-detail-image-empty"><span aria-hidden="true">◇</span><strong>공식 대표 이미지 미공개</strong></div>`;
     return `<div class="detail-cover popup-detail-cover${officialImageMissing ? ' popup-photo-missing' : ''}">${imageMarkup}</div>
       <header class="detail-hero popup-detail-hero">
@@ -1217,7 +1220,7 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
   function renderPopupOfficialPhotos(popup) {
     const photos = [...new Set([...(Array.isArray(popup.officialImageUrls) ? popup.officialImageUrls : []), popup.imageUrl].filter(Boolean))].slice(0, 12);
     if (!photos.length) return '';
-    return `<section class="official-food-photos popup-detail-section"><div><h3>공식 음식 사진</h3><small>공식 상세 페이지 제공</small></div><div class="official-food-photo-grid">${photos.map((url, index) => `<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer"><img src="${escapeHtml(url)}" alt="${escapeHtml(popup.name)} 공식 음식 사진 ${index + 1}" width="480" height="360" loading="lazy" decoding="async"></a>`).join('')}</div></section>`;
+    return `<section class="official-food-photos popup-detail-section"><div><h3>공식 음식 사진</h3><small>좌우로 넘겨보세요 · 공식 상세 페이지 제공</small></div><div class="official-food-photo-grid" role="region" aria-label="공식 음식 사진 ${photos.length}장">${photos.map((url, index) => `<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer"><img src="${escapeHtml(url)}" alt="${escapeHtml(popup.name)} 공식 음식 사진 ${index + 1}" width="480" height="360" loading="lazy" decoding="async"><span>${index + 1} / ${photos.length}</span></a>`).join('')}</div></section>`;
   }
   function renderPopupOfficialSource(popup) {
     return `<section class="popup-official-source popup-detail-section"><h3>공식 출처</h3><p><strong>${escapeHtml(popup.sourceName || '공식 정보')}</strong>${popup.lastVerifiedAt ? `<span>마지막 확인 ${escapeHtml(popup.lastVerifiedAt)}</span>` : ''}</p>${popup.sourceUrl ? `<a class="ghost" href="${escapeHtml(popup.sourceUrl)}" target="_blank" rel="noopener noreferrer">공식 정보 보기</a>` : '<small>공식 링크를 확인 중입니다.</small>'}</section>`;

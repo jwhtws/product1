@@ -126,15 +126,16 @@ test('홈 추천은 최근 7일 시작을 최우선으로 하면서 출처를 �
   assert.doesNotMatch(styles, /popup-card-rail>\.discovery-popup-card:nth-child\(n\+5\)\{display:none\}/u);
 });
 
-test('main 푸시는 Cloudflare Pages product1만 배포해 운영콘솔을 덮어쓰지 않는다', async () => {
+test('main 푸시는 Cloudflare Pages product1·product2에 배포하고 각각 검증한다', async () => {
   const workflow = await readFile('.github/workflows/cloudflare-pages-deploy.yml', 'utf8');
   assert.match(workflow, /push:[\s\S]*branches:\s*\[main\]/u);
   assert.match(workflow, /secrets\.CLOUDFLARE_API_TOKEN/u);
   assert.match(workflow, /secrets\.CLOUDFLARE_ACCOUNT_ID/u);
   assert.match(workflow, /project:[\s\S]*product1/u);
-  assert.doesNotMatch(workflow, /project:[\s\S]*product2/u);
+  assert.match(workflow, /project:[\s\S]*product2/u);
   assert.match(workflow, /pages deploy \. --project-name=\$\{\{ matrix\.project \}\} --branch=main/u);
   assert.match(workflow, /verify-popup-deployment\.mjs --url=https:\/\/mukdang\.com/u);
+  assert.match(workflow, /verify-popup-deployment\.mjs --url=https:\/\/product2-ezo\.pages\.dev/u);
 });
 
 test('종료 팝업도 운영 feed와 SEO 생성 대상에 보존한다', async () => {

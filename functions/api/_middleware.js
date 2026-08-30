@@ -1,12 +1,13 @@
 import { json } from '../_lib/auth.js';
 
 const SAFE_METHODS = new Set(['GET', 'HEAD', 'OPTIONS']);
+const TRUSTED_PREVIEW_ORIGINS = new Set(['https://product2-ezo.pages.dev']);
 
 export async function onRequest(context) {
   const requestId = crypto.randomUUID();
   const origin = context.request.headers.get('origin');
   const expectedOrigin = new URL(context.request.url).origin;
-  if (!SAFE_METHODS.has(context.request.method) && origin && origin !== expectedOrigin) {
+  if (!SAFE_METHODS.has(context.request.method) && origin && origin !== expectedOrigin && !TRUSTED_PREVIEW_ORIGINS.has(origin)) {
     return json({ error: '허용되지 않은 요청 출처입니다.', code: 'INVALID_ORIGIN' }, 403, { 'x-request-id': requestId });
   }
   try {
