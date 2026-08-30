@@ -10,6 +10,7 @@ import { createBatch4BrandCollectors } from './collectors/batch4-brand-newsrooms
 import { collectTimesSquareSitemap } from './collectors/times-square-sitemap.mjs';
 import { hyundaiBranchApiUrl, hyundaiDirectBranches, parseHyundaiBranchItems } from './lib/hyundai-branch-parser.mjs';
 import { parseIparkDiscoveryCandidates, parseIparkPopupDetail } from './lib/ipark-discovery-parser.mjs';
+import { parseAkPlazaPopupCategories } from './lib/akplaza-categories.mjs';
 import { extractOfficialMenuCandidates } from './lib/popup-content-quality.mjs';
 import { assertNotBlockedPage, BlockPageError, hardenedFetch } from './lib/hardened-fetch.mjs';
 import {
@@ -1158,14 +1159,27 @@ async function collectGalleria() {
     }
     for (const [storeCode, storeName] of akStores) {
       const seenSequences = new Set();
-      for (const category of ['11', '12']) {
+      let categoryMenuHtml = '';
+      try {
+        const categoryResponse = await fetchResilient(`https://www.akplaza.com/board/news/list?store=${storeCode}&page=1`);
+        if (categoryResponse.ok) categoryMenuHtml = await categoryResponse.text();
+      } catch (error) {
+        console.warn(`AK플라자 ${storeName} 카테고리 발견 건너뜀: ${error.message}`);
+      }
+      for (const { code: category, isFood: isOfficialFoodCategory } of parseAkPlazaPopupCategories(categoryMenuHtml)) {
         for (let page = 1; page <= 50; page += 1) {
         const listUrl = `https://www.akplaza.com/board/news/list?category=${category}&store=${storeCode}&page=${page}`;
-        const response = await fetch(listUrl, {
-          headers: { 'user-agent': 'mukdang-popup-indexer/1.0 (+https://mukdang.com)' },
-          signal: AbortSignal.timeout(20_000)
-        });
-        if (!response.ok) throw new Error(`AK플라자 ${storeName} 쇼핑뉴스 ${page}페이지 응답 ${response.status}`);
+        let response;
+        try {
+          response = await fetchResilient(listUrl);
+        } catch (error) {
+          console.warn(`AK플라자 ${storeName} ${category} 카테고리 ${page}페이지 건너뜀: ${error.message}`);
+          break;
+        }
+        if (!response.ok) {
+          console.warn(`AK플라자 ${storeName} ${category} 카테고리 ${page}페이지 응답 ${response.status}`);
+          break;
+        }
         const html = await response.text();
         const cards = [...html.matchAll(/<div class="posts-item"[\s\S]*?(?=<div class="posts-item"|<div class="paging"|<\/main>|$)/gi)];
         let newSequenceCount = 0;
@@ -1182,7 +1196,6 @@ async function collectGalleria() {
           // AK category 12 is the official food-hall category. Some cards expose
           // only a brand name (for example, "[브레더스] 신규 POP-UP") and leave
           // the summary empty, so keyword matching alone incorrectly drops them.
-          const isOfficialFoodCategory = category === '12';
           if (!title || !dates.length || !/팝업|POP[\s-]*UP/iu.test(searchable)
             || (!isOfficialFoodCategory && !foodWords.test(searchable))) continue;
           const date = dates[0];

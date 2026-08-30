@@ -15,9 +15,9 @@ const popup = (id, overrides = {}) => ({
   name: `상세 테스트 ${id}`,
   title: `상세 테스트 ${id}`,
   brand: '테스트 브랜드',
-  venue: '테스트 백화점 본점',
-  branch: '테스트 백화점 본점',
-  address: '서울특별시 중구 테스트로 1',
+  venue: 'AK플라자 수원점',
+  branch: 'AK플라자 수원점',
+  address: '경기도 수원시 팔달구 덕영대로 924',
   region: '서울특별시',
   category: 'food-popup',
   startDate: date(-1),
@@ -40,9 +40,8 @@ const fixtures = [
 ];
 
 async function openFixture(page, id) {
-  await page.locator('.popup-quick-actions [data-popup-quick="calendar"]').click();
-  await page.locator('#popup-search-input').fill(`상세 테스트 ${id}`);
-  await page.locator('#popup-search-submit').click();
+  await page.locator('#search-input').fill(`상세 테스트 ${id}`);
+  await page.locator('#search-button').click();
   const card = page.locator(`[data-popup-id="${id}"]`);
   await expect(card).toBeVisible();
   await card.click();
@@ -55,7 +54,7 @@ test.beforeEach(async ({ page }) => {
     localStorage.clear();
     Object.defineProperty(navigator, 'share', { configurable: true, value: async data => { window.__sharedPopup = data; } });
   });
-  await page.route(/\/data\/popups\.json/u, route => route.fulfill({
+  await page.route(/\/data\/popups(?:-public)?\.json/u, route => route.fulfill({
     contentType: 'application/json',
     body: JSON.stringify({ ...feed, updatedAt: new Date().toISOString(), popups: fixtures })
   }));
@@ -72,6 +71,11 @@ test('상세 구조, 날짜 상태, 저장·공유·관련 팝업·오류 신고
   expect(await page.locator('.popup-detail-summary dt').evaluateAll(labels => labels.map(label => label.firstChild.textContent))).toEqual(['장소·지점', '기간', '주소']);
   await expect(page.locator('.popup-primary-actions').getByText('길찾기', { exact: true })).toHaveAttribute('target', '_blank');
   await expect(page.locator('.popup-primary-actions').getByText('공식 정보', { exact: true })).toHaveAttribute('rel', /noopener noreferrer/u);
+  await expect(page.locator('.popup-detail-location')).toBeVisible();
+  await expect(page.locator('#popup-detail-map')).toHaveClass(/leaflet-container/u, { timeout: 15000 });
+  const detailMapSize = await page.locator('#popup-detail-map').boundingBox();
+  expect(detailMapSize.height).toBeLessThanOrEqual(150);
+  expect(detailMapSize.width).toBeGreaterThan(250);
   await expect(page.locator('.official-food-photo-grid img').first()).toHaveAttribute('loading', 'lazy');
   expect(await page.locator('#related-popups .discovery-popup-card').count()).toBeLessThanOrEqual(6);
   await expect(page.locator('#related-popups')).toBeVisible();

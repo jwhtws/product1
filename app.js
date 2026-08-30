@@ -453,6 +453,7 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
   const hiddenPopupIds = new Set(['lotte:discovered:0349:SNM00000000000549702']);
   const relatedPopupCache = new Map();
   let popupMapInstance = null;
+  let popupDetailMapInstance = null;
   function popupStatus(popup) {
     const today = koreaToday();
     const dateStatus = popup.endDate && popup.endDate < today
@@ -1176,6 +1177,7 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
     const dDay = popupDday(popup);
     const hasAddress = Boolean(String(popup.address || '').trim());
     const mapQuery = encodeURIComponent(popup.address || popup.venue || popup.name);
+    const mapLocation = popupMapLocations.get(popup.venue);
     const officialImageMissing = popup.imageSource === 'official-image-unavailable';
     const imageUrl = popup.imageUrl || popup.image || (officialImageMissing ? '' : popupFallbackImage(popup));
     const galleryImages = [...new Set([imageUrl, ...(Array.isArray(popup.officialImageUrls) ? popup.officialImageUrls : [])].filter(Boolean))].slice(0, 12);
@@ -1204,7 +1206,32 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
           <button class="ghost ${isSaved(popup) ? 'is-saved' : ''}" type="button" data-popup-save="${escapeHtml(popup.id)}" aria-pressed="${String(isSaved(popup))}">${isSaved(popup) ? '저장됨' : '저장'}</button>
           <button id="popup-share" class="ghost" type="button" aria-label="${escapeHtml(popup.name)} 공유">공유</button>
         </div>
+        ${mapLocation ? `<section class="popup-detail-location" aria-label="${escapeHtml(popup.venue)} 위치"><div><strong>장소 위치</strong><span>${escapeHtml(mapLocation.name || popup.venue)}</span></div><div id="popup-detail-map" role="img" aria-label="${escapeHtml(mapLocation.name || popup.venue)} 지도"></div></section>` : ''}
       </header>`;
+  }
+  async function renderPopupDetailMap(popup) {
+    const root = $('#popup-detail-map');
+    const location = popupMapLocations.get(popup.venue);
+    if (!root || !location) return;
+    try {
+      const L = await loadPopupMapLibrary();
+      if (!root.isConnected) return;
+      if (popupDetailMapInstance) { try { popupDetailMapInstance.remove(); } catch {} }
+      popupDetailMapInstance = L.map(root, {
+        zoomControl: false, attributionControl: true, dragging: false,
+        scrollWheelZoom: false, doubleClickZoom: false, boxZoom: false,
+        keyboard: false, touchZoom: false
+      }).setView([location.latitude, location.longitude], 16);
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxNativeZoom: 19, maxZoom: 19, attribution: '&copy; OpenStreetMap contributors'
+      }).addTo(popupDetailMapInstance);
+      const icon = L.divIcon({ className: 'popup-detail-location-marker', html: '<span aria-hidden="true"></span>', iconSize: [22, 22], iconAnchor: [11, 11] });
+      L.marker([location.latitude, location.longitude], { icon, title: location.name || popup.venue }).addTo(popupDetailMapInstance);
+      requestAnimationFrame(() => popupDetailMapInstance?.invalidateSize(false));
+    } catch (error) {
+      root.innerHTML = '<span class="popup-detail-map-error">지도를 불러오지 못했습니다.</span>';
+      console.warn('상세 위치 지도 실패', error);
+    }
   }
   function renderPopupDetailInfo(popup) {
     const hasAddress = Boolean(String(popup.address || '').trim());
@@ -1289,6 +1316,7 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
       history.pushState({ ...history.state, mukdang: true, mukdangLayer: 'detail', detailType: 'popup', searchMode: state.searchMode }, '');
     }
     bindPopupDetail(popup, related);
+    renderPopupDetailMap(popup);
     renderReviews();
     loadReviews(popup);
   }
@@ -1882,6 +1910,7 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
     focusModalHeading(backdrop);
   }
   function closeModalsDirect({ restoreFocus = true } = {}) {
+    if (popupDetailMapInstance) { try { popupDetailMapInstance.remove(); } catch {} popupDetailMapInstance = null; }
     $$('.modal-backdrop').forEach(x => x.classList.remove('open', 'review-keyboard-active'));
     document.body.classList.remove('locked');
     if (restoreFocus && modalReturnFocus?.isConnected) modalReturnFocus.focus();
