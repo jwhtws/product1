@@ -59,7 +59,7 @@ test.beforeEach(async ({ page }) => {
     contentType: 'application/json',
     body: JSON.stringify({ ...feed, updatedAt: new Date().toISOString(), popups: fixtures })
   }));
-  await page.route(/\/data\/popup-editorials\.json/u, route => route.fulfill({
+  await page.route(/(?:\/data\/popup-editorials\.json|\/api\/popup-editorials)/u, route => route.fulfill({
     contentType: 'application/json',
     body: JSON.stringify({ editorials: Object.fromEntries(fixtures.map(item => [item.id, { description: item.editorialDescription }])) })
   }));
@@ -84,7 +84,7 @@ test('상세 구조, 날짜 상태, 저장·공유·관련 팝업·오류 신고
   await expect(page.locator('#popup-detail-map .leaflet-control-zoom')).toBeVisible();
   await expect(page.locator('#popup-detail-map')).toHaveClass(/leaflet-grab/u);
   await expect(page.locator('.official-food-photo-grid img').first()).toHaveAttribute('loading', 'lazy');
-  await expect(page.locator('.official-food-photo-grid + .popup-editorial-description')).toHaveText(/테스트 브랜드 소개글/u);
+  await expect(page.locator('.popup-editorial .popup-editorial-description')).toHaveText(/테스트 브랜드 소개글/u);
   expect(await page.locator('#related-popups .discovery-popup-card').count()).toBeLessThanOrEqual(6);
   await expect(page.locator('#related-popups')).toBeVisible();
 
@@ -129,6 +129,7 @@ test('예정·종료·빈 상태와 뒤로가기 focus 복귀를 처리한다', 
   await expect(page.locator('.popup-detail-image-empty')).toContainText('공식 대표 이미지 미공개');
   await expect(page.locator('.popup-menu-empty')).toHaveText('메뉴는 공식 공지에서 확인해 주세요.');
   await expect(page.locator('.official-food-photos')).toHaveCount(0);
+  await expect(page.locator('.popup-editorial .popup-editorial-description')).toHaveText(/테스트 브랜드 소개글/u);
   await expect(page.locator('.popup-primary-actions').getByText('길찾기', { exact: true })).toBeDisabled();
   await expect(page.locator('.popup-primary-actions').getByText('공식 정보', { exact: true })).toHaveCount(0);
 });

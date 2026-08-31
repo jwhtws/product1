@@ -1247,8 +1247,11 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
   function renderPopupOfficialPhotos(popup) {
     const photos = [...new Set([...(Array.isArray(popup.officialImageUrls) ? popup.officialImageUrls : []), popup.imageUrl].filter(Boolean))].slice(0, 12);
     if (!photos.length) return '';
+    return `<section class="official-food-photos popup-detail-section"><div><h3>공식 음식 사진</h3><small>좌우로 넘겨보세요 · 공식 상세 페이지 제공</small></div><div class="official-food-photo-grid" role="region" aria-label="공식 음식 사진 ${photos.length}장">${photos.map((url, index) => `<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer"><img src="${escapeHtml(url)}" alt="${escapeHtml(popup.name)} 공식 음식 사진 ${index + 1}" width="480" height="360" loading="lazy" decoding="async"><span>${index + 1} / ${photos.length}</span></a>`).join('')}</div></section>`;
+  }
+  function renderPopupEditorial(popup) {
     const editorial = String(popup.editorialDescription || '').trim();
-    return `<section class="official-food-photos popup-detail-section"><div><h3>공식 음식 사진</h3><small>좌우로 넘겨보세요 · 공식 상세 페이지 제공</small></div><div class="official-food-photo-grid" role="region" aria-label="공식 음식 사진 ${photos.length}장">${photos.map((url, index) => `<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer"><img src="${escapeHtml(url)}" alt="${escapeHtml(popup.name)} 공식 음식 사진 ${index + 1}" width="480" height="360" loading="lazy" decoding="async"><span>${index + 1} / ${photos.length}</span></a>`).join('')}</div>${editorial ? `<p class="popup-editorial-description">${escapeHtml(editorial)}</p>` : ''}</section>`;
+    return editorial ? `<section class="popup-editorial popup-detail-section"><h3>브랜드·식당 소개</h3><p class="popup-editorial-description">${escapeHtml(editorial)}</p></section>` : '';
   }
   function renderPopupOfficialSource(popup) {
     return `<section class="popup-official-source popup-detail-section"><h3>공식 출처</h3><p><strong>${escapeHtml(popup.sourceName || '공식 정보')}</strong>${popup.lastVerifiedAt ? `<span>마지막 확인 ${escapeHtml(popup.lastVerifiedAt)}</span>` : ''}</p>${popup.sourceUrl ? `<a class="ghost" href="${escapeHtml(popup.sourceUrl)}" target="_blank" rel="noopener noreferrer">공식 정보 보기</a>` : '<small>공식 링크를 확인 중입니다.</small>'}</section>`;
@@ -1311,7 +1314,7 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
     const related = relatedPopups(popup);
     const content = $('#modal-content');
     content.className = 'popup-detail-content';
-    content.innerHTML = `${renderPopupDetailHeader(popup)}<main class="popup-detail-sections popup-detail-right">${renderPopupDetailInfo(popup)}${renderPopupMenuSection(popup)}${renderPopupOfficialPhotos(popup)}${renderPopupOfficialSource(popup)}${renderEndedPopupActions(popup, related)}${renderRelatedPopups(popup, related)}${renderPopupReviewSection(popup)}${renderPopupReportSection()}</main>${renderPopupMobileCta(popup)}`;
+    content.innerHTML = `${renderPopupDetailHeader(popup)}<main class="popup-detail-sections popup-detail-right">${renderPopupDetailInfo(popup)}${renderPopupEditorial(popup)}${renderPopupMenuSection(popup)}${renderPopupOfficialPhotos(popup)}${renderPopupOfficialSource(popup)}${renderEndedPopupActions(popup, related)}${renderRelatedPopups(popup, related)}${renderPopupReviewSection(popup)}${renderPopupReportSection()}</main>${renderPopupMobileCta(popup)}`;
     showDetailModal(origin);
     if (history.state?.mukdangLayer !== 'detail') {
       history.pushState({ ...history.state, mukdang: true, mukdangLayer: 'detail', detailType: 'popup', searchMode: state.searchMode }, '');
