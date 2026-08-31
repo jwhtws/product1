@@ -2275,7 +2275,7 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
       fetch('data/restaurants/regions.json?v=20260728-4'),
       fetch('data/restaurants/previews.json?v=20260728-4'),
       fetch(popupFeedUrl),
-      fetch('data/popup-editorials.json?v=20260831-1', { cache: 'no-store' }).catch(() => null)
+      fetch('https://product2-ezo.pages.dev/api/popup-editorials', { cache: 'no-store' }).catch(() => null)
     ]);
     if (!regionsResponse.ok || !previewsResponse.ok) throw Error('목록 로드 실패');
     const regionData = await regionsResponse.json(), previews = await previewsResponse.json();
