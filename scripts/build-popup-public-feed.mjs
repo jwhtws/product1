@@ -4,8 +4,19 @@ import { fileURLToPath } from 'node:url';
 const INTERNAL_FIELDS = new Set([
   'contentSearch', 'menuCandidates', 'imageCandidates', 'imageValidation',
   'qualityReasons', 'lastContentCheckedAt', 'ocrStatus', 'imageOriginalUrl',
-  'sourceItemId', 'officialUrl', 'editorialEvidence', 'editorialSource'
+  'sourceItemId', 'officialUrl', 'editorialEvidence', 'editorialSource',
+  'editorialDescription', 'editorialVerifiedAt', 'menuItems', 'image'
 ]);
+
+function publicPopup(row) {
+  const popup = Object.fromEntries(Object.entries(row).filter(([key]) => !INTERNAL_FIELDS.has(key)));
+  popup.imageUrl ||= row.image || '';
+  popup.menus = (Array.isArray(row.menus) ? row.menus : [])
+    .map(item => typeof item === 'string' ? { name: item } : { name: item?.name || '', price: item?.price || '' })
+    .filter(item => item.name)
+    .slice(0, 20);
+  return popup;
+}
 
 export async function buildPopupPublicFeed({
   inputPath = 'data/popups.json',
@@ -17,7 +28,7 @@ export async function buildPopupPublicFeed({
     feedVersion: source.feedVersion,
     popups: (source.popups || [])
       .filter(row => (!row.publishStatus || row.publishStatus === 'published'))
-      .map(row => Object.fromEntries(Object.entries(row).filter(([key]) => !INTERNAL_FIELDS.has(key))))
+      .map(publicPopup)
   };
   await writeFile(outputPath, `${JSON.stringify(payload)}\n`);
   return payload;

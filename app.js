@@ -453,6 +453,7 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
   const hiddenPopupIds = new Set(['lotte:discovered:0349:SNM00000000000549702']);
   const relatedPopupCache = new Map();
   let popupMapInstance = null;
+  let popupMapObserver = null;
   let popupDetailMapInstance = null;
   function popupStatus(popup) {
     const today = koreaToday();
@@ -958,6 +959,24 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
       console.warn(error);
     }
   }
+  function schedulePopupMap(rows) {
+    popupMapObserver?.disconnect();
+    popupMapObserver = null;
+    const root = $('#popup-map');
+    if (!root) return;
+    if (!matchMedia('(max-width: 720px)').matches || !('IntersectionObserver' in window)) {
+      renderPopupMap(rows);
+      return;
+    }
+    root.innerHTML = '<div class="popup-map-loading">지도로 이동하면 주변 팝업을 불러옵니다.</div>';
+    popupMapObserver = new IntersectionObserver(entries => {
+      if (!entries.some(entry => entry.isIntersecting)) return;
+      popupMapObserver?.disconnect();
+      popupMapObserver = null;
+      renderPopupMap(rows);
+    }, { rootMargin: '240px 0px' });
+    popupMapObserver.observe(root);
+  }
   function renderPopupDiscovery() {
     const root = $('#popup-home-content');
     if (!root) return;
@@ -1009,7 +1028,7 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
       popupMapSection()
     ].join('');
     bindPopupDiscovery();
-    renderPopupMap(active);
+    schedulePopupMap(active);
     syncNearbyControls();
   }
   function bindPopupDiscovery() {
@@ -2273,7 +2292,7 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
   try {
     // Home consumes the same-origin unified site feed exactly once. The cache
     // key exposes the newest collector build without reaching into raw data.
-    const popupFeedUrl = new URL('data/popups-public.json?v=20260831-manual-editorials-1', location.href);
+    const popupFeedUrl = new URL('data/popups-public.json?v=20260831-mobile-fast-1', location.href);
     const [regionsResponse, previewsResponse, popupsResponse, editorialsResponse] = await Promise.all([
       fetch('data/restaurants/regions.json?v=20260728-4'),
       fetch('data/restaurants/previews.json?v=20260728-4'),
