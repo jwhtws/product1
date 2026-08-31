@@ -109,7 +109,7 @@ test('홈 추천은 최근 7일 시작을 최우선으로 하면서 출처를 �
   assert.doesNotMatch(app, /fallbackPoint/u);
   assert.match(app, /const key = mapVenueName\(popup\) \|\| popup\.address/u);
   assert.doesNotMatch(app, /\.values\(\)\]\.slice\(0, 40\)/u);
-  assert.match(home, /<title>먹당 \| 전국 푸드팝업 일정·위치·지도<\/title>/u);
+  assert.match(home, /<title>전국 푸드팝업 일정·지도 \| 먹당<\/title>/u);
   assert.match(home, /<meta property="og:site_name" content="먹당">/u);
   assert.match(home, /"@type":"WebSite"[\s\S]*"name":"먹당"[\s\S]*"alternateName":\["먹당 푸드팝업","Mukdang","mukdang.com"\]/u);
   assert.match(home, />먹당<span> · 푸드팝업<\/span><\/a>/u);
