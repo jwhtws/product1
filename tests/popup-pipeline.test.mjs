@@ -51,7 +51,7 @@ test('Home·Search·Detail은 같은 운영 feed와 ID를 사용하고 fixture�
     readFile('data/popups-public.json', 'utf8').then(JSON.parse),
     readFile('data/popups.json', 'utf8'), readFile('data/popups-public.json', 'utf8')
   ]);
-  assert.match(app, /new URL\('data\/popups-public\.json\?v=2', location\.href\)/u);
+  assert.match(app, /new URL\('data\/popups-public\.json\?v=20260830-editorials-3', location\.href\)/u);
   assert.doesNotMatch(app, /fetch\(popupFeedUrl, \{ cache: 'no-store' \}\)/u);
   assert.match(app, /state\.popups = Array\.isArray\(popupData\.popups\)/u);
   assert.match(app, /state\.popups\.find\(item => item\.id ===/u);

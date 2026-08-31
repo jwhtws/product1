@@ -2270,7 +2270,7 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
   try {
     // Home consumes the same-origin unified site feed exactly once. The cache
     // key exposes the newest collector build without reaching into raw data.
-    const popupFeedUrl = new URL('data/popups-public.json?v=2', location.href);
+    const popupFeedUrl = new URL('data/popups-public.json?v=20260830-editorials-3', location.href);
     const [regionsResponse, previewsResponse, popupsResponse] = await Promise.all([
       fetch('data/restaurants/regions.json?v=20260728-4'),
       fetch('data/restaurants/previews.json?v=20260728-4'),
