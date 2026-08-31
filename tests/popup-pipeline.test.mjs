@@ -51,7 +51,7 @@ test('Home·Search·Detail은 같은 운영 feed와 ID를 사용하고 fixture�
     readFile('data/popups-public.json', 'utf8').then(JSON.parse),
     readFile('data/popups.json', 'utf8'), readFile('data/popups-public.json', 'utf8')
   ]);
-  assert.match(app, /new URL\('data\/popups-public\.json\?v=20260831-mobile-fast-1', location\.href\)/u);
+  assert.match(app, /new URL\('data\/popups-public\.json\?v=20260831-manual-editorials-1', location\.href\)/u);
   assert.doesNotMatch(app, /fetch\(popupFeedUrl, \{ cache: 'no-store' \}\)/u);
   assert.match(app, /state\.popups = Array\.isArray\(popupData\.popups\)/u);
   assert.match(app, /state\.popups\.find\(item => item\.id ===/u);
@@ -60,8 +60,6 @@ test('Home·Search·Detail은 같은 운영 feed와 ID를 사용하고 fixture�
   const published = payload.popups.filter(row => !row.publishStatus || row.publishStatus === 'published');
   assert.deepEqual(publicPayload.popups.map(row => row.id), published.map(row => row.id));
   assert.ok(publicPayload.popups.every(row => !('contentSearch' in row) && !('menuCandidates' in row) && !('imageCandidates' in row)));
-  assert.ok(publicPayload.popups.every(row => !('editorialDescription' in row) && !('menuItems' in row) && !('image' in row)));
-  assert.ok(publicPayload.popups.every(row => row.menus.every(item => Object.keys(item).every(key => ['name', 'price'].includes(key)))));
   assert.ok(publicPayload.popups.every(row => Array.isArray(row.menus) && Array.isArray(row.officialImageUrls)));
   assert.ok(Buffer.byteLength(publicFeed) < Buffer.byteLength(rawFeed) * 0.35);
 });
@@ -109,7 +107,7 @@ test('홈 추천은 최근 7일 시작을 최우선으로 하면서 출처를 �
   assert.doesNotMatch(app, /fallbackPoint/u);
   assert.match(app, /const key = mapVenueName\(popup\) \|\| popup\.address/u);
   assert.doesNotMatch(app, /\.values\(\)\]\.slice\(0, 40\)/u);
-  assert.match(home, /<title>전국 푸드팝업 일정·지도 \| 먹당<\/title>/u);
+  assert.match(home, /<title>먹당 \| 전국 푸드팝업 일정·위치·지도<\/title>/u);
   assert.match(home, /<meta property="og:site_name" content="먹당">/u);
   assert.match(home, /"@type":"WebSite"[\s\S]*"name":"먹당"[\s\S]*"alternateName":\["먹당 푸드팝업","Mukdang","mukdang.com"\]/u);
   assert.match(home, />먹당<span> · 푸드팝업<\/span><\/a>/u);

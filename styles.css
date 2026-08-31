@@ -314,3 +314,7 @@
 .popup-discovery-hero .hero-description strong{display:inline-flex;align-items:center;color:#111827;font-weight:800;letter-spacing:-.035em}
 .popup-discovery-hero .hero-description strong::before{width:4px;height:4px;margin-right:10px;border-radius:50%;background:var(--md-color-primary);content:""}
 @media(max-width:767px){.popup-discovery-hero .hero-description{gap:7px;font-size:14px!important}.popup-discovery-hero .hero-description strong::before{margin-right:7px}}
+
+/* Detail maps need enough vertical context to understand the surrounding area. */
+.popup-detail-location #popup-detail-map{height:225px}
+@media(max-width:620px){.popup-detail-location #popup-detail-map{height:198px}}

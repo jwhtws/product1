@@ -35,6 +35,7 @@ const popup = (id, overrides = {}) => ({
 const fixtures = [
   popup('active-new', { isNew: true }),
   popup('active-related', { venue: '다른 장소', address: '서울특별시 마포구 테스트로 2' }),
+  popup('regional-map', { venue: '부산 테스트 행사장', branch: '부산 테스트 행사장', address: '부산광역시 부산진구 중앙대로 672', latitude: null, longitude: null }),
   popup('upcoming', { brand: '예정 브랜드', startDate: date(3), endDate: date(8), status: 'upcoming', dDay: 3 }),
   popup('ended', { brand: '테스트 브랜드', startDate: date(-8), endDate: date(-1), status: 'ended', dDay: -1 }),
   popup('missing', { brand: '빈 상태 브랜드', image: '', imageUrl: '', officialImageUrls: [], imageSource: 'official-image-unavailable', menus: [], menuItems: [], address: '', sourceUrl: '', officialUrl: '' })
@@ -63,6 +64,11 @@ test.beforeEach(async ({ page }) => {
     contentType: 'application/json',
     body: JSON.stringify({ editorials: Object.fromEntries(fixtures.map(item => [item.id, { description: item.editorialDescription }])) })
   }));
+  await page.route(/\/api\/geocode/u, route => {
+    const url = new URL(route.request().url());
+    if (!url.searchParams.get('query')) return route.fulfill({ status: 404, contentType: 'application/json', body: JSON.stringify({ found: false }) });
+    return route.fulfill({ contentType: 'application/json', body: JSON.stringify({ latitude: 35.1796, longitude: 129.0756, provider: 'test', label: '부산 테스트 행사장' }) });
+  });
   await page.goto(baseUrl, { waitUntil: 'domcontentloaded' });
   await expect(page.locator('#active-popup-count')).toContainText(/\d+개/u, { timeout: 15000 });
 });
@@ -79,7 +85,7 @@ test('상세 구조, 날짜 상태, 저장·공유·관련 팝업·오류 신고
   await expect(page.locator('.popup-detail-location')).toBeVisible();
   await expect(page.locator('#popup-detail-map')).toHaveClass(/leaflet-container/u, { timeout: 15000 });
   const detailMapSize = await page.locator('#popup-detail-map').boundingBox();
-  expect(detailMapSize.height).toBeLessThanOrEqual(150);
+  expect(detailMapSize.height).toBeGreaterThanOrEqual(198);
   expect(detailMapSize.width).toBeGreaterThan(250);
   await expect(page.locator('#popup-detail-map .leaflet-control-zoom')).toBeVisible();
   await expect(page.locator('#popup-detail-map')).toHaveClass(/leaflet-grab/u);
@@ -107,6 +113,12 @@ test('상세 구조, 날짜 상태, 저장·공유·관련 팝업·오류 신고
   await page.keyboard.press('Escape');
   await expect(page.locator('#detail-modal')).not.toHaveClass(/open/u);
   await expect(card).toBeFocused();
+});
+
+test('등록 좌표가 없는 서울 외 주소도 지오코딩해 상세 지도를 표시한다', async ({ page }) => {
+  await openFixture(page, 'regional-map');
+  await expect(page.locator('#popup-detail-map')).toHaveClass(/leaflet-container/u, { timeout: 15000 });
+  await expect(page.locator('#popup-detail-map .popup-detail-location-marker')).toBeVisible();
 });
 
 test('예정·종료·빈 상태와 뒤로가기 focus 복귀를 처리한다', async ({ page }) => {

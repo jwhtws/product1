@@ -1,6 +1,6 @@
 import { api } from './js/api.js';
 import { buildingSitePlan } from './js/site-plan.js?v=20260729-2';
-import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
+import { popupMapLocations } from './js/popup-map-locations.js?v=20260831-1';
 
 (async function () {
   const $ = selector => document.querySelector(selector);
@@ -1197,6 +1197,8 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
     const hasAddress = Boolean(String(popup.address || '').trim());
     const mapQuery = encodeURIComponent(popup.address || popup.venue || popup.name);
     const mapLocation = popupMapLocations.get(popup.venue);
+    const canShowMap = Boolean(mapLocation || hasAddress || String(popup.venue || '').trim());
+    const mapLabel = mapLocation?.name || popup.venue || popup.address;
     const officialImageMissing = popup.imageSource === 'official-image-unavailable';
     const imageUrl = popup.imageUrl || popup.image || (officialImageMissing ? '' : popupFallbackImage(popup));
     const galleryImages = [...new Set([imageUrl, ...(Array.isArray(popup.officialImageUrls) ? popup.officialImageUrls : [])].filter(Boolean))].slice(0, 12);
@@ -1225,13 +1227,39 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
           <button class="ghost ${isSaved(popup) ? 'is-saved' : ''}" type="button" data-popup-save="${escapeHtml(popup.id)}" aria-pressed="${String(isSaved(popup))}">${isSaved(popup) ? '저장됨' : '저장'}</button>
           <button id="popup-share" class="ghost" type="button" aria-label="${escapeHtml(popup.name)} 공유">공유</button>
         </div>
-        ${mapLocation ? `<section class="popup-detail-location" aria-label="${escapeHtml(popup.venue)} 위치"><div><strong>장소 위치</strong><span>${escapeHtml(mapLocation.name || popup.venue)}</span></div><div id="popup-detail-map" role="img" aria-label="${escapeHtml(mapLocation.name || popup.venue)} 지도"></div></section>` : ''}
+        ${canShowMap ? `<section class="popup-detail-location" aria-label="${escapeHtml(mapLabel)} 위치"><div><strong>장소 위치</strong><span>${escapeHtml(mapLabel)}</span></div><div id="popup-detail-map" role="img" aria-label="${escapeHtml(mapLabel)} 지도"></div></section>` : ''}
       </header>`;
   }
   async function renderPopupDetailMap(popup) {
     const root = $('#popup-detail-map');
-    const location = popupMapLocations.get(popup.venue);
-    if (!root || !location) return;
+    if (!root) return;
+    let location = popupMapLocations.get(popup.venue);
+    const hasCoordinates = popup.latitude !== null && popup.latitude !== undefined && popup.latitude !== ''
+      && popup.longitude !== null && popup.longitude !== undefined && popup.longitude !== ''
+      && Number.isFinite(Number(popup.latitude)) && Number.isFinite(Number(popup.longitude));
+    if (!location && hasCoordinates) location = { latitude: Number(popup.latitude), longitude: Number(popup.longitude), name: popup.venue || popup.address };
+    if (!location) {
+      try {
+        const address = popup.address || popup.venue || popup.name;
+        const paths = [
+          `/api/geocode?address=${encodeURIComponent(address)}&name=${encodeURIComponent(popup.venue || popup.name)}`,
+          `/api/geocode?query=${encodeURIComponent(popup.venue || popup.name)}`
+        ];
+        for (const path of paths) {
+          const response = await fetch(publicApiUrl(path), { signal: AbortSignal.timeout(5000) });
+          if (!response.ok) continue;
+          const point = await response.json();
+          if (Number.isFinite(Number(point.latitude)) && Number.isFinite(Number(point.longitude))) {
+            location = { latitude: Number(point.latitude), longitude: Number(point.longitude), name: point.label || popup.venue || popup.address };
+            break;
+          }
+        }
+      } catch (error) { console.warn('상세 위치 좌표 조회 실패', popup.id, error); }
+    }
+    if (!location) {
+      root.innerHTML = '<span class="popup-detail-map-error">공식 주소의 지도 위치를 확인 중입니다.</span>';
+      return;
+    }
     try {
       const L = await loadPopupMapLibrary();
       if (!root.isConnected) return;
@@ -1917,6 +1945,13 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
   }
 
   let modalReturnFocus = null;
+  function resetDetailScroll(backdrop) {
+    const modal = backdrop?.querySelector('.modal');
+    const content = backdrop?.querySelector('#modal-content');
+    if (modal) modal.scrollTop = 0;
+    if (content) content.scrollTop = 0;
+    if (backdrop) backdrop.scrollTop = 0;
+  }
   function focusModalHeading(modal) {
     const target = modal.querySelector('#detail-title') || modal.querySelector('#panel-title') || modal.querySelector('.modal-close');
     target?.focus({ preventScroll: true });
@@ -1926,10 +1961,12 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
   function showDetailModal(origin = null) {
     const backdrop = $('#detail-modal');
     if (!$$('.modal-backdrop.open').length && !modalReturnFocus) modalReturnFocus = origin || (document.activeElement !== document.body ? document.activeElement : null);
-    backdrop.querySelector('.modal').scrollTop = 0;
+    resetDetailScroll(backdrop);
     backdrop.classList.remove('review-keyboard-active');
     backdrop.classList.add('open');
     document.body.classList.add('locked');
+    requestAnimationFrame(() => resetDetailScroll(backdrop));
+    setTimeout(() => { if (backdrop.classList.contains('open')) resetDetailScroll(backdrop); }, 50);
     focusModalHeading(backdrop);
   }
   function closeModalsDirect({ restoreFocus = true } = {}) {
