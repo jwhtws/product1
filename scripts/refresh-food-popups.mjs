@@ -2,7 +2,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname } from 'node:path';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
-import { collectLottePopups, discoverLottePopups, discoverLotteShoppingInfoPopups } from './lib/lotte-popup-collector.mjs';
+import { collectLottePopups, discoverLottePopups, discoverLotteShoppingInfoPopups, discoverLotteShopNowPopups } from './lib/lotte-popup-collector.mjs';
 import { selectCollectors } from './collectors/registry.mjs';
 import { createBatch3Collectors } from './collectors/batch3-popup-venues.mjs';
 import { createVerifiedVenueCollectors } from './collectors/batch3-verified-venues.mjs';
@@ -1324,10 +1324,14 @@ async function collectCuratedOfficial() {
   let discoveredRows = [];
   try {
     const discoveryOptions = { today, fetchResilient, clean, decodeHtml, fast: retailerScope === 'lotte' };
-    const [mobileRows, shoppingInfoRows] = await Promise.all([
-      discoverLottePopups(discoveryOptions), discoverLotteShoppingInfoPopups(discoveryOptions)
+    const [mobileRows, shoppingInfoRows, shopNowRows] = await Promise.all([
+      discoverLottePopups(discoveryOptions), discoverLotteShoppingInfoPopups(discoveryOptions), discoverLotteShopNowPopups(discoveryOptions)
     ]);
-    discoveredRows = [...mobileRows, ...shoppingInfoRows];
+    discoveredRows = [...[...mobileRows, ...shoppingInfoRows, ...shopNowRows].reduce((rows, row) => {
+      rows.set(row.id, { ...(rows.get(row.id) || {}), ...row,
+        officialListingVerified: row.officialListingVerified || rows.get(row.id)?.officialListingVerified || undefined });
+      return rows;
+    }, new Map()).values()];
   } catch (error) {
     console.warn(`롯데 전 지점 쇼핑뉴스 자동 발견 실패 · 수동 검증 목록 보존: ${error.message}`);
   }

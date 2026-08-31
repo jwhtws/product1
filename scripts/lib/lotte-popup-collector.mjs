@@ -12,6 +12,7 @@ const storeCodes = new Map([
 const lottePopupWords = /(팝업(?:\s*스토어)?|POP[\s-]*UP(?:\s*STORE)?)/iu;
 const lotteFoodWords = /(꽈배기|술빵|모찌|떡|절미|빵|베이커리|베이글|제과|페스츄리|디저트|케이크|쿠키|초콜릿|아이스크림|젤라또|도넛|마카롱|푸딩|타르트|약과|한과|오란다|구움과자|과일|복숭아|감자|요거트|미숫가루|카페|커피|로스터리|홍닝차|티룸|음료|주스|맥주|와인|막걸리|포장마차|분식|김밥|라면|국수|냉면|만두|스시|초밥|야끼|타코|닭|치킨|고기|육회|곱창|족발|해산물|오징어|건어물|반찬|김치|식품|푸드|F&B|FNB|맛집|셰프|요리|농산|수산|축산)/iu;
 const lotteNonHumanFood = /(반려|펫|강아지|고양이|사료|주얼리|쥬얼리|목걸이|팔찌|bracelet|necklace)/iu;
+const lotteObviousNonFood = /(패션|의류|신발|슈즈|화장품|코스메틱|가구|침구|식기|가전|전자|골프|키즈|문구|완구)/iu;
 const lotteShoppingInfoFoodWords = /(?:빵|베이커리|카스테라|초코|초콜릿|케이크|쿠키|디저트|떡|모찌|과자|타르트|도넛|베이글|푸딩|젤라또|아이스크림|음료|커피|차|주스|식품|푸드|맛집|셰프|레스토랑|치킨|만두|김밥|라면|국수|스시|초밥|고기|육회|반찬|김치|과일|간식|불고기|옥수수|젤리|캔디|돼지|두부|육개장|말차)/iu;
 const lotteSeedStores = new Map([['0333', '광복점']]);
 
@@ -293,6 +294,81 @@ export async function discoverLotteShoppingInfoPopups({ today, clean, decodeHtml
   return results;
 }
 
+// Shop Now is separate from shopping news and shpgInfo. New branch
+// highlights can appear here first, so retain the enclosing editorial section.
+export function parseLotteShopNowResults(html, { storeCode, storeName, today, decodeHtml, clean, sourceUrl }) {
+  const source = String(html || '').replace(/\\u002F/giu, '/').replace(/\\\//gu, '/');
+  const rows = [];
+  const seen = new Set();
+  for (const match of source.matchAll(/<li\b[^>]*class=["'][^"']*content-item[^"']*["'][^>]*>[\s\S]*?<\/li>/giu)) {
+    const card = match[0];
+    const link = card.match(/goCntsLink\(\s*["'](C\d+)["']\s*,\s*["']((?:SNM|THK)\d+)["']/iu);
+    if (!link || link[1] !== 'C00903') continue;
+    const sectionStart = source.lastIndexOf('class="content-section"', match.index);
+    const sectionContext = sectionStart >= 0 ? source.slice(sectionStart, match.index) : '';
+    const sectionTitle = clean(decodeHtml(sectionContext.match(/<h3\b[^>]*class=["'][^"']*section-title[^"']*["'][^>]*>([\s\S]*?)<\/h3>/iu)?.[1] || ''));
+    const title = clean(decodeHtml(card.match(/<div\b[^>]*class=["'][^"']*__title[^"']*["'][^>]*>([\s\S]*?)<\/div>/iu)?.[1] || '').replace(/<br\s*\/?\s*>/giu, ' '));
+    const lines = htmlLines(card, decodeHtml, clean);
+    const searchable = `${sectionTitle} ${lines.join(' ')}`;
+    const dates = lotteDateRange(searchable, today);
+    const isFoodSection = /Food\s*&\s*Drinks|Food\s*Avenue|\uBBF8\uC2DD|\uD478\uB4DC|\uB514\uC800\uD2B8|\uBCA0\uC774\uCEE4\uB9AC/iu.test(sectionTitle);
+    if (!title || !dates || !lottePopupWords.test(searchable)
+      || (!isFoodSection && !lotteFoodWords.test(searchable)) || lotteNonHumanFood.test(searchable)
+      || (!lotteFoodWords.test(title) && lotteObviousNonFood.test(title))) continue;
+    const venue = lotteVenue(lines, storeName);
+    if (!venue || seen.has(link[2])) continue;
+    seen.add(link[2]);
+    const detailUrl = `https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=${link[2]}`;
+    const officialImageUrls = officialImages(card, detailUrl, decodeHtml);
+    rows.push({
+      id: `lotte:discovered:${storeCode}:${link[2]}`, name: title, venue,
+      venueType: /\uC544\uC6B8\uB81B|\uBAB0|\uD0C0\uC784\uBE4C\uB77C\uC2A4/u.test(venue) ? '\uC1FC\uD551\uBAB0' : '\uBC31\uD654\uC810', address: venue,
+      ...dates, imageUrl: officialImageUrls[0] || null,
+      ...(officialImageUrls.length ? { officialImageUrls } : {}),
+      imageSource: officialImageUrls.length ? 'official-shop-now' : 'official-image-unavailable',
+      sourceName: '\uB86F\uB370\uC1FC\uD551 Shop Now \uACF5\uC2DD \uD558\uC774\uB77C\uC774\uD2B8', sourceUrl: detailUrl,
+      sourceGrade: 'official', firstSeenAt: today, lastSeenAt: today,
+      discoverySourceUrl: sourceUrl, shopNowSection: sectionTitle,
+      officialListingVerified: true
+    });
+  }
+  return rows;
+}
+
+export async function discoverLotteShopNowPopups({ today, clean, decodeHtml, fast = false }) {
+  const origin = 'https://www.lotteshopping.com';
+  const seedUrl = `${origin}/shopnow/cntsList?cstrCd=0001`;
+  const request = url => fetch(url, { headers: { 'user-agent': 'mukdang-popup-indexer/1.0 (+https://mukdang.com)' }, signal: AbortSignal.timeout(fast ? 8_000 : 15_000) });
+  const seed = await request(seedUrl);
+  if (!seed.ok) throw new Error(`\uB86F\uB370 Shop Now \uC9C0\uC810 \uBAA9\uB85D \uC751\uB2F5 ${seed.status}`);
+  const seedHtml = await seed.text();
+  const stores = [...seedHtml.matchAll(/changeCstrInfo\((\{[^)]*?["']selCstrCd["']\s*:\s*["'](\d{4})["'][^)]*?\})\)/gu)].flatMap(match => {
+    try { const data = JSON.parse(match[1].replace(/'/gu, '"')); return [{ code: match[2], name: clean(data.cstrDspNm || '') }]; }
+    catch { return []; }
+  });
+  const uniqueStores = [...new Map([{ code: '0001', name: '\uBCF8\uC810' }, ...stores].map(store => [store.code, store])).values()];
+  const targets = [
+    ...uniqueStores.map(store => ({ ...store, url: `${origin}/shopnow/cntsList?cstrCd=${store.code}` })),
+    { code: '0002', name: '\uC7A0\uC2E4\uC810', url: `${origin}/shopnow/cntsList?shpgHhlghNo=SHH00000000000040830&shpgHhlghAditNo=SHA00000000000147356` },
+    { code: '0002', name: '\uC7A0\uC2E4\uC810', url: `${origin}/shopnow/cntsList?cstrCd=0002&shpgHhlghNo=SHH00000000000040829&shpgHhlghAditNo=SHA00000000000147350` }
+  ];
+  const results = [];
+  let cursor = 0;
+  async function worker() {
+    while (cursor < targets.length) {
+      const target = targets[cursor++];
+      try {
+        const html = target.url === seedUrl ? seedHtml : await (async () => { const response = await request(target.url); return response.ok ? response.text() : ''; })();
+        if (html) results.push(...parseLotteShopNowResults(await html, { storeCode: target.code, storeName: target.name, today, decodeHtml, clean, sourceUrl: target.url }));
+      } catch (error) { console.warn(`\uB86F\uB370 ${target.name} Shop Now \uBCF4\uC874 \uCC98\uB9AC: ${error.message}`); }
+    }
+  }
+  await Promise.all(Array.from({ length: Math.min(fast ? 12 : 6, targets.length) }, () => worker()));
+  const deduped = [...new Map(results.map(row => [row.id, row])).values()];
+  console.log(`\uB86F\uB370 Shop Now \uC804\uC218 \uBC1C\uACAC: \uACF5\uC2DD \uD398\uC774\uC9C0 ${targets.length}\uAC1C \u00B7 \uD478\uB4DC \uD31D\uC5C5 ${deduped.length}\uAC74`);
+  return deduped;
+}
+
 export async function discoverLottePopups({ today, fetchResilient, clean, decodeHtml, fast = false }) {
   const requestSeconds = fast ? 6 : 12;
   const fetchSearch = url => fetchResilient(url, { attempts: 1, timeoutMs: requestSeconds * 1_000, curlMaxTime: requestSeconds });
@@ -541,6 +617,7 @@ export async function collectLottePopups({ rows, previous, today, fetchResilient
       imageSource: imageUrl ? imageSource : 'official-image-unavailable',
       sourceName: '롯데쇼핑 공식 행사', sourceUrl, sourceGrade: 'official-search',
       firstSeenAt: old?.firstSeenAt || today, lastSeenAt: today,
+      ...(normalizedInput.officialListingVerified ? { officialListingVerified: true } : {}),
       ...(menus.length ? { menus, menuSource } : {}),
       ...(parserFailureReason ? { parserFailureReason } : {}),
       contentSearch: {

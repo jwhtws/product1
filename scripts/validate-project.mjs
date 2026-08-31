@@ -172,7 +172,8 @@ if (popupData.contentPolicyVersion !== undefined) {
   const publishedIds = new Set(popupData.popups.map(row => row.id));
   for (const popup of popupData.popups) {
     if (popup.publishStatus !== 'published' || !['A', 'B'].includes(popup.contentQuality)
-      || popup.imageValidation?.status !== 'valid' || !popup.image || !popup.menus?.length) {
+      || popup.imageValidation?.status !== 'valid' || !popup.image
+      || (!popup.menus?.length && popup.officialListingVerified !== true)) {
       console.error(`공개 팝업 콘텐츠 품질 계약 위반: ${popup.id}`);
       process.exitCode = 1;
     }

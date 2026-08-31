@@ -72,7 +72,7 @@ export async function auditPopupPayload(payload, options = {}) {
       })),
       invariants: {
         publishedValidImageRate: published.length ? published.filter(row => row.imageValidation?.status === 'valid').length / published.length : 1,
-        publishedMenuRate: published.length ? published.filter(row => row.menus?.length).length / published.length : 1,
+        publishedMenuRate: published.length ? published.filter(row => row.menus?.length || row.officialListingVerified === true).length / published.length : 1,
         publishedBrokenImageCount: published.filter(row => row.qualityReasons?.includes('broken_image')).length,
         incompleteMisclassifiedMissingCount: result.rows.filter(row =>
           row.contentSearch?.status === 'search_incomplete'

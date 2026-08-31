@@ -296,11 +296,15 @@ export function evaluatePopupContent(row, {
   };
   const validImage = Boolean(hero) && validation.status === 'valid';
   const validMenu = menus.length > 0;
+  const verifiedOfficialListing = row.officialListingVerified === true
+    && ['official', 'official-search'].includes(row.sourceGrade)
+    && validImage && validIsoDate(row.startDate) && validIsoDate(row.endDate) && Boolean(clean(row.venue));
   const ocrLow = menuCandidates.some(menu => menu.ocr && menu.ocr.status !== 'verified');
   const parserFailed = Boolean(clean(row.parserFailureReason)) || search.status === 'parse_failed';
   const complete = completeSearchEvidence(search);
   const qualityReasons = (Array.isArray(row.qualityReasons) ? row.qualityReasons : [])
-    .filter(reason => QUALITY_REASONS.includes(reason));
+    .filter(reason => QUALITY_REASONS.includes(reason))
+    .filter(reason => !verifiedOfficialListing || !['search_incomplete', 'missing_menu'].includes(reason));
   if (search.failureReasons.includes('official_detail_brand_conflict')) qualityReasons.push('conflicting_sources');
   if (!safeUrl(row.officialUrl || row.sourceUrl)) qualityReasons.push('missing_official_url');
   if (!validIsoDate(row.startDate) || !validIsoDate(row.endDate) || row.endDate < row.startDate) qualityReasons.push('missing_dates');
@@ -312,7 +316,7 @@ export function evaluatePopupContent(row, {
     if (complete && !parserFailed) qualityReasons.push('missing_valid_image');
     else if (!parserFailed) qualityReasons.push('search_incomplete');
   }
-  if (!validMenu) {
+  if (!validMenu && !verifiedOfficialListing) {
     if (complete && !parserFailed) qualityReasons.push('missing_menu');
     else if (!parserFailed) qualityReasons.push('search_incomplete');
   }
