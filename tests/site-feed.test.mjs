@@ -62,9 +62,8 @@ test('단일 Site Feed는 필수 필드, 중복, Status, D-Day, NEW, 종료 임�
   assert.equal(ongoing.officialUrl, base.sourceUrl);
   assert.equal(ongoing.sourceUrl, base.sourceUrl);
   assert.equal(ongoing.sourceItemId, 'test:1');
-  assert.match(ongoing.editorialDescription, /테스트커피는 성수 테스트키친에서 선보이는/u);
-  assert.match(ongoing.editorialDescription, /공식 메뉴/u);
-  assert.equal((ongoing.editorialDescription.match(/[.] /gu) || []).length >= 5, true);
+  assert.equal(ongoing.editorialDescription, '');
+  assert.equal(ongoing.editorialSource, '');
   assert.equal(ongoing.latitude, null);
   assert.equal(ongoing.longitude, null);
   assert.equal(upcoming.status, 'upcoming');
@@ -74,6 +73,17 @@ test('단일 Site Feed는 필수 필드, 중복, Status, D-Day, NEW, 종료 임�
   assert.equal(ended.status, 'ended');
   assert.equal(ended.dDay, -1);
   assert.equal(feed.popups.find(row => row.id === 'brand:test:5').isNew, true);
+});
+
+test('관리자가 직접 작성한 팝업 소개글만 Site Feed에 보존한다', () => {
+  const manual = {
+    ...base,
+    editorialDescription: '테스트커피는 직접 로스팅한 원두와 계절 음료를 소개하는 브랜드입니다.',
+    editorialSource: 'manual-admin'
+  };
+  const { feed } = buildSiteFeedPayload({ popups: [manual] }, { today: '2026-08-05' });
+  assert.equal(feed.popups[0].editorialDescription, manual.editorialDescription);
+  assert.equal(feed.popups[0].editorialSource, 'manual-admin');
 });
 
 test('Feed 파일과 기존 run-report에 누락·중복 사유를 기록한다', async () => {

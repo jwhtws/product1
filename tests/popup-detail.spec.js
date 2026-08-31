@@ -59,6 +59,10 @@ test.beforeEach(async ({ page }) => {
     contentType: 'application/json',
     body: JSON.stringify({ ...feed, updatedAt: new Date().toISOString(), popups: fixtures })
   }));
+  await page.route(/\/data\/popup-editorials\.json/u, route => route.fulfill({
+    contentType: 'application/json',
+    body: JSON.stringify({ editorials: Object.fromEntries(fixtures.map(item => [item.id, { description: item.editorialDescription }])) })
+  }));
   await page.goto(baseUrl, { waitUntil: 'domcontentloaded' });
   await expect(page.locator('#active-popup-count')).toContainText(/\d+개/u, { timeout: 15000 });
 });

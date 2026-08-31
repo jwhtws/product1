@@ -2270,18 +2270,27 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
   try {
     // Home consumes the same-origin unified site feed exactly once. The cache
     // key exposes the newest collector build without reaching into raw data.
-    const popupFeedUrl = new URL('data/popups-public.json?v=20260830-editorials-3', location.href);
-    const [regionsResponse, previewsResponse, popupsResponse] = await Promise.all([
+    const popupFeedUrl = new URL('data/popups-public.json?v=20260831-manual-editorials-1', location.href);
+    const [regionsResponse, previewsResponse, popupsResponse, editorialsResponse] = await Promise.all([
       fetch('data/restaurants/regions.json?v=20260728-4'),
       fetch('data/restaurants/previews.json?v=20260728-4'),
-      fetch(popupFeedUrl)
+      fetch(popupFeedUrl),
+      fetch('data/popup-editorials.json?v=20260831-1', { cache: 'no-store' }).catch(() => null)
     ]);
     if (!regionsResponse.ok || !previewsResponse.ok) throw Error('목록 로드 실패');
     const regionData = await regionsResponse.json(), previews = await previewsResponse.json();
     if (popupsResponse.ok) {
       const popupData = await popupsResponse.json();
+      const editorialData = editorialsResponse?.ok ? await editorialsResponse.json() : { editorials: {} };
+      const manualEditorials = editorialData.editorials || {};
       state.popups = Array.isArray(popupData.popups)
-        ? popupData.popups.filter(popup => (!popup.publishStatus || popup.publishStatus === 'published') && !hiddenPopupIds.has(popup.id))
+        ? popupData.popups
+          .filter(popup => (!popup.publishStatus || popup.publishStatus === 'published') && !hiddenPopupIds.has(popup.id))
+          .map(popup => ({
+            ...popup,
+            editorialDescription: String(manualEditorials[popup.id]?.description || '').trim(),
+            editorialSource: manualEditorials[popup.id]?.description ? 'manual-admin' : ''
+          }))
         : [];
       state.popupUpdatedAt = popupData.updatedAt;
       const popupRegions = [...new Set(state.popups.map(popupRegionName).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'ko'));
