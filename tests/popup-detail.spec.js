@@ -77,6 +77,8 @@ test('상세 구조, 날짜 상태, 저장·공유·관련 팝업·오류 신고
   const detailMapSize = await page.locator('#popup-detail-map').boundingBox();
   expect(detailMapSize.height).toBeLessThanOrEqual(150);
   expect(detailMapSize.width).toBeGreaterThan(250);
+  await expect(page.locator('#popup-detail-map .leaflet-control-zoom')).toBeVisible();
+  await expect(page.locator('#popup-detail-map')).toHaveClass(/leaflet-grab/u);
   await expect(page.locator('.official-food-photo-grid img').first()).toHaveAttribute('loading', 'lazy');
   await expect(page.locator('.official-food-photo-grid + .popup-editorial-description')).toHaveText(/테스트 브랜드 소개글/u);
   expect(await page.locator('#related-popups .discovery-popup-card').count()).toBeLessThanOrEqual(6);

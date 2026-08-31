@@ -1218,9 +1218,9 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260817-1';
       if (!root.isConnected) return;
       if (popupDetailMapInstance) { try { popupDetailMapInstance.remove(); } catch {} }
       popupDetailMapInstance = L.map(root, {
-        zoomControl: false, attributionControl: true, dragging: false,
-        scrollWheelZoom: false, doubleClickZoom: false, boxZoom: false,
-        keyboard: false, touchZoom: false
+        zoomControl: true, attributionControl: true, dragging: true,
+        scrollWheelZoom: true, doubleClickZoom: true, boxZoom: true,
+        keyboard: true, touchZoom: true
       }).setView([location.latitude, location.longitude], 16);
       L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxNativeZoom: 19, maxZoom: 19, attribution: '&copy; OpenStreetMap contributors'
