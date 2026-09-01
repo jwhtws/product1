@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import {
   collectLottePopups,
+  detailMenus,
   discoverLottePopups,
   officialImages,
   parseLotteSearchResults,
@@ -220,4 +221,13 @@ test('광복점 퐁신당은 전체 검색 미적중 후 브랜드 검색·상�
   assert.equal(rows[0].contentSearch.checkedOfficialDetail,true);
   assert.equal(rows.sourceHealth.finalStatus,'recovered');
   assert.ok(requested.some(url=>new URL(url).searchParams.get('searchTerm')==='퐁신당'));
+});
+
+test('롯데 상세의 수량과 같은 줄에 있는 설화당 메뉴 가격을 복구한다', async () => {
+  const menus = detailMenus(`<html><p>양쯔간루 사고</p><p>1병 8,900원</p>
+    <p>딸기 요거크림 모찌</p><p>1개 6,000원</p></html>`, decodeHtml, clean, uniqueMenus);
+  assert.deepEqual(menus.slice(0, 2), [
+    { name: '양쯔간루 사고', price: '8,900원' },
+    { name: '딸기 요거크림 모찌', price: '6,000원' }
+  ]);
 });

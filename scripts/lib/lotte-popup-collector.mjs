@@ -422,15 +422,18 @@ export async function discoverLottePopups({ today, fetchResilient, clean, decode
   return deduped;
 }
 
-function detailMenus(html, decodeHtml, clean, uniqueMenus) {
+export function detailMenus(html, decodeHtml, clean, uniqueMenus) {
   const lines = String(html || '').replace(/<br\s*\/?\s*>/giu, '\n')
     .replace(/<\/(?:p|div|li|h[1-6])>/giu, '\n').split(/\r?\n/u)
     .map(decodeHtml).map(clean).filter(Boolean);
   const menus = [];
   for (let index = 0; index < lines.length; index += 1) {
-    const price = lines[index].match(/^([\d,]+)\s*원$/u)?.[0];
+    const priceMatch = lines[index].match(/([\d,]+)\s*원$/u);
+    const price = priceMatch?.[0];
     if (!price) continue;
-    const name = lines.slice(Math.max(0, index - 6), index).reverse().find(line =>
+    const inlineName = clean(lines[index].slice(0, priceMatch.index))
+      .replace(/^\d+\s*(?:개|병|팩|세트|입|box|pack)$/iu, '').trim();
+    const name = inlineName || lines.slice(Math.max(0, index - 6), index).reverse().find(line =>
       line.length >= 2 && line.length <= 60
       && !/^(?:Image|쇼핑뉴스|브랜드명|제품명|가격|행사 종료)$/iu.test(line)
       && !/^\([^)]*(?:kg|g|ml|l)\)$/iu.test(line)
