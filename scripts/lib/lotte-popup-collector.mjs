@@ -402,8 +402,24 @@ export async function discoverLottePopups({ today, fetchResilient, clean, decode
     }
   }
   await Promise.all(Array.from({ length: Math.min(fast ? 12 : 6, stores.length) }, () => worker()));
-  console.log(`롯데 쇼핑뉴스 자동 발견: 공식 지점 ${stores.length}곳 · 푸드 팝업 ${results.length}건`);
-  return results;
+  // Lotte's branch-wide result can omit a current card even though the same
+  // official branch search returns it. Keep narrow, verified recovery queries
+  // for those gaps and feed them through the identical parser and dedupe path.
+  const recoverySearches = [{ code: '0010', name: '영등포점', term: '설화당' }];
+  for (const store of recoverySearches) {
+    try {
+      const url = `https://m.lotteshopping.com/search/searchResult?cstrCd=${store.code}&searchTerm=${encodeURIComponent(store.term)}`;
+      const response = await fetchSearch(url);
+      if (response.ok) results.push(...parseLotteSearchResults(await response.text(), {
+        storeCode: store.code, storeName: store.name, today, decodeHtml, clean
+      }));
+    } catch (error) {
+      console.warn(`롯데 ${store.name} ${store.term} 보완 검색 보존 처리: ${error.message}`);
+    }
+  }
+  const deduped = [...new Map(results.map(row => [row.id, row])).values()];
+  console.log(`롯데 쇼핑뉴스 자동 발견: 공식 지점 ${stores.length}곳 · 푸드 팝업 ${deduped.length}건`);
+  return deduped;
 }
 
 function detailMenus(html, decodeHtml, clean, uniqueMenus) {

@@ -165,12 +165,15 @@ test('롯데 자동 발견은 광복점을 포함해 공식 페이지에 노출�
   const requested = [];
   const fetchResilient = async url => {
     requested.push(url);
-    return new Response(url.includes('cstrCd=0333') ? seedHtml : url.includes('cstrCd=0010') ? yeongdeungpoHtml : busanHtml, { status: 200 });
+    return new Response(url.includes('cstrCd=0333') ? seedHtml
+      : url.includes('cstrCd=0010') && url.includes(encodeURIComponent('설화당')) ? yeongdeungpoHtml
+      : url.includes('cstrCd=0010') ? '<html><title>일반 목록</title></html>' : busanHtml, { status: 200 });
   };
   const rows = await discoverLottePopups({ today: '2026-08-05', fetchResilient, clean, decodeHtml, fast: true });
   assert.deepEqual(new Set(rows.map(row => row.venue)), new Set(['롯데백화점 광복점', '롯데백화점 영등포점', '롯데백화점 부산본점']));
   assert.equal(requested.filter(url => url.includes('cstrCd=0333')).length, 1);
-  assert.equal(requested.filter(url => url.includes('cstrCd=0010')).length, 1);
+  assert.equal(requested.filter(url => url.includes('cstrCd=0010')).length, 2);
+  assert.equal(requested.filter(url => url.includes('cstrCd=0010') && url.includes(encodeURIComponent('설화당'))).length, 1);
   assert.equal(requested.filter(url => url.includes('cstrCd=0005')).length, 1);
 });
 
