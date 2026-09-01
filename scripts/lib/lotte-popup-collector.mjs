@@ -5,6 +5,7 @@ const storeCodes = new Map([
   ['롯데백화점 본점', '0001'], ['롯데백화점 노원점', '0022'],
   ['롯데백화점 센텀시티점', '0027'], ['롯데백화점 건대스타시티점', '0028'],
   ['롯데백화점 광복점', '0333'],
+  ['롯데백화점 영등포점', '0010'],
   ['롯데백화점 안산점', '0336'], ['롯데아울렛 청주점', '0342'],
   ['롯데백화점 인천점', '0344'], ['롯데백화점 동탄점', '0399']
 ]);
@@ -14,7 +15,10 @@ const lotteFoodWords = /(설화당|꽈배기|술빵|모찌|떡|절미|빵|베이
 const lotteNonHumanFood = /(반려|펫|강아지|고양이|사료|주얼리|쥬얼리|목걸이|팔찌|bracelet|necklace)/iu;
 const lotteObviousNonFood = /(패션|의류|신발|슈즈|화장품|코스메틱|가구|침구|식기|가전|전자|골프|키즈|문구|완구)/iu;
 const lotteShoppingInfoFoodWords = /(?:빵|베이커리|카스테라|초코|초콜릿|케이크|쿠키|디저트|떡|모찌|과자|타르트|도넛|베이글|푸딩|젤라또|아이스크림|음료|커피|차|주스|식품|푸드|맛집|셰프|레스토랑|치킨|만두|김밥|라면|국수|스시|초밥|고기|육회|반찬|김치|과일|간식|불고기|옥수수|젤리|캔디|돼지|두부|육개장|말차)/iu;
-const lotteSeedStores = new Map([['0333', '광복점']]);
+// The mobile search response does not always expose every branch link. Keep
+// verified branch codes here so a temporarily absent navigation link cannot
+// remove an entire branch from discovery.
+const lotteSeedStores = new Map([['0333', '광복점'], ['0010', '영등포점']]);
 
 const knownMenus = new Map([
   ['lotte:main:glaceau', [{ name: '프리미엄 수제 아이스크림', price: '' }]]

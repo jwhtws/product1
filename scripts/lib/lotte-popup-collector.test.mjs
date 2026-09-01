@@ -74,6 +74,7 @@ test('롯데 공식 지점 링크에서 광복점 seed와 다른 지점을 함�
     <a href="/search/searchResult?cstrCd=0027&amp;searchTerm=팝업"><span>센텀시티점</span></a>`;
   assert.deepEqual(parseLotteStoreLinks(html, { decodeHtml, clean }), [
     { code: '0333', name: '광복점' },
+    { code: '0010', name: '영등포점' },
     { code: '0005', name: '부산본점' },
     { code: '0027', name: '센텀시티점' }
   ]);
@@ -160,14 +161,16 @@ test('롯데 자동 발견은 광복점을 포함해 공식 페이지에 노출�
     <nav><a href="/search/searchResult?cstrCd=0005&amp;searchTerm=팝업">부산본점</a></nav>
     ${card({ newsId: gwangbokId, title: '파닭파닭 치킨 팝업', venue: '백화점 광복점 B1 행사장', dates: '8.3(월) ~ 8.9(일)' })}`;
   const busanHtml = card({ newsId: busanId, title: '수제맥주 Pop-Up', venue: '백화점 부산본점 B1 행사장', dates: '8.1(토) ~ 8.31(월)' });
+  const yeongdeungpoHtml = card({ newsId: 'SNM00000000000560001', title: '[설화당] Pop-Up', venue: '백화점 영등포점 B1 식품관', dates: '9.1(화) ~ 9.7(월)' });
   const requested = [];
   const fetchResilient = async url => {
     requested.push(url);
-    return new Response(url.includes('cstrCd=0333') ? seedHtml : busanHtml, { status: 200 });
+    return new Response(url.includes('cstrCd=0333') ? seedHtml : url.includes('cstrCd=0010') ? yeongdeungpoHtml : busanHtml, { status: 200 });
   };
   const rows = await discoverLottePopups({ today: '2026-08-05', fetchResilient, clean, decodeHtml, fast: true });
-  assert.deepEqual(new Set(rows.map(row => row.venue)), new Set(['롯데백화점 광복점', '롯데백화점 부산본점']));
+  assert.deepEqual(new Set(rows.map(row => row.venue)), new Set(['롯데백화점 광복점', '롯데백화점 영등포점', '롯데백화점 부산본점']));
   assert.equal(requested.filter(url => url.includes('cstrCd=0333')).length, 1);
+  assert.equal(requested.filter(url => url.includes('cstrCd=0010')).length, 1);
   assert.equal(requested.filter(url => url.includes('cstrCd=0005')).length, 1);
 });
 
