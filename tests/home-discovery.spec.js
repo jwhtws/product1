@@ -2,7 +2,7 @@ const { test, expect } = require('@playwright/test');
 const { readFileSync } = require('node:fs');
 
 const homeUrl = process.env.TEST_BASE_URL || 'http://127.0.0.1:8765/';
-const siteFeed = JSON.parse(readFileSync('data/popups.json', 'utf8'));
+const siteFeed = JSON.parse(readFileSync('data/popups-public.json', 'utf8'));
 const readyPattern = /\d+개\s*진행\s*중/u;
 
 test('팝업 discovery 홈의 핵심 탐색과 저장, 상세 진입이 동작한다', async ({ page }) => {
@@ -125,7 +125,7 @@ for (const width of [320, 375, 390, 768, 1024, 1440]) {
 test('Home은 단일 site-feed를 한 번만 읽고 Feed 필드로 카드를 렌더링한다', async ({ page }) => {
   const feedRequests = [];
   page.on('request', request => {
-    if (new URL(request.url()).pathname.endsWith('/data/popups.json')) feedRequests.push(request.url());
+    if (new URL(request.url()).pathname.endsWith('/data/popups-public.json')) feedRequests.push(request.url());
   });
   await page.goto(homeUrl, { waitUntil: 'domcontentloaded' });
   await expect(page.locator('#active-popup-count')).toContainText(readyPattern, { timeout: 15000 });
@@ -178,7 +178,7 @@ test('Home 주요 제어는 ARIA, 키보드 포커스와 44px 터치 영역을 �
 test('오늘 종료가 없으면 섹션을 숨기고 Feed가 비면 Premium Empty State를 표시한다', async ({ page }) => {
   const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
   let rows = siteFeed.popups.map(row => ({ ...row, endDate: row.endDate === today ? '2099-12-31' : row.endDate }));
-  await page.route(/\/data\/popups\.json/u, route => route.fulfill({
+  await page.route(/\/data\/popups-public\.json/u, route => route.fulfill({
     contentType: 'application/json', body: JSON.stringify({ updatedAt: siteFeed.updatedAt, popups: rows })
   }));
   await page.goto(homeUrl, { waitUntil: 'domcontentloaded' });

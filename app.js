@@ -883,7 +883,19 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260831-1';
       document.head.append(script);
     });
     window.popupMapLibraryPromise = (async () => {
-      if (!window.L) await loadScript('vendor/leaflet/leaflet.js?v=1.9.4');
+      let stylesReady = Promise.resolve();
+      if (!document.querySelector('link[data-popup-map-styles]')) {
+        const styles = document.createElement('link');
+        styles.rel = 'stylesheet';
+        styles.href = 'vendor/leaflet/leaflet.css?v=1.9.4';
+        styles.dataset.popupMapStyles = '';
+        stylesReady = new Promise((resolve, reject) => {
+          styles.onload = resolve;
+          styles.onerror = () => reject(new Error('지도 스타일을 불러오지 못했습니다.'));
+        });
+        document.head.append(styles);
+      }
+      await Promise.all([stylesReady, window.L ? Promise.resolve() : loadScript('vendor/leaflet/leaflet.js?v=1.9.4')]);
       return window.L;
     })();
     return window.popupMapLibraryPromise;
@@ -2332,27 +2344,19 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260831-1';
   try {
     // Home consumes the same-origin unified site feed exactly once. The cache
     // key exposes the newest collector build without reaching into raw data.
-    const popupFeedUrl = new URL('data/popups-public.json?v=20260831-mobile-fast-1', location.href);
-    const [regionsResponse, previewsResponse, popupsResponse, editorialsResponse] = await Promise.all([
+    const popupFeedUrl = new URL('data/popups-public.json?v=20260901-mobile-critical-path-1', location.href);
+    const [regionsResponse, previewsResponse, popupsResponse] = await Promise.all([
       fetch('data/restaurants/regions.json?v=20260728-4'),
       fetch('data/restaurants/previews.json?v=20260728-4'),
-      fetch(popupFeedUrl),
-      fetch('https://product2-ezo.pages.dev/api/popup-editorials', { cache: 'no-store' }).catch(() => null)
+      fetch(popupFeedUrl)
     ]);
     if (!regionsResponse.ok || !previewsResponse.ok) throw Error('목록 로드 실패');
     const regionData = await regionsResponse.json(), previews = await previewsResponse.json();
     if (popupsResponse.ok) {
       const popupData = await popupsResponse.json();
-      const editorialData = editorialsResponse?.ok ? await editorialsResponse.json() : { editorials: {} };
-      const manualEditorials = editorialData.editorials || {};
       state.popups = Array.isArray(popupData.popups)
         ? popupData.popups
           .filter(popup => (!popup.publishStatus || popup.publishStatus === 'published') && !hiddenPopupIds.has(popup.id))
-          .map(popup => ({
-            ...popup,
-            editorialDescription: String(manualEditorials[popup.id]?.description || '').trim(),
-            editorialSource: manualEditorials[popup.id]?.description ? 'manual-admin' : ''
-          }))
         : [];
       state.popupUpdatedAt = popupData.updatedAt;
       const popupRegions = [...new Set(state.popups.map(popupRegionName).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'ko'));
@@ -2381,6 +2385,18 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260831-1';
     $('#search-button').textContent = '검색';
     resolveReady();
     void (async () => {
+      try {
+        const editorialsResponse = await fetch('https://product2-ezo.pages.dev/api/popup-editorials', { cache: 'no-store' });
+        if (editorialsResponse.ok) {
+          const editorialData = await editorialsResponse.json();
+          const manualEditorials = editorialData.editorials || {};
+          state.popups = state.popups.map(popup => ({
+            ...popup,
+            editorialDescription: String(manualEditorials[popup.id]?.description || '').trim(),
+            editorialSource: manualEditorials[popup.id]?.description ? 'manual-admin' : ''
+          }));
+        }
+      } catch {}
       await Promise.all([loadPopularRestaurants(), loadPopupPopularSearches()]);
       renderHomePopularSearches();
       render();

@@ -2,7 +2,7 @@ const { test, expect } = require('@playwright/test');
 const { readFileSync } = require('node:fs');
 
 const baseUrl = process.env.TEST_BASE_URL || 'http://127.0.0.1:8765/';
-const siteFeed = JSON.parse(readFileSync('data/popups.json', 'utf8'));
+const siteFeed = JSON.parse(readFileSync('data/popups-public.json', 'utf8'));
 const ready = page => expect(page.locator('#active-popup-count')).toContainText(/\d+개/u, { timeout: 15000 });
 
 test('site-feed 검색 필드와 고정 Search V2 결과가 연결된다', async ({ page }) => {
@@ -81,7 +81,7 @@ test('지역·카테고리·상태·NEW·내 주변 필터와 네 정렬을 조�
 test('검색 없음 상태는 추천 행동을 제공하고 검색 중 추가 fetch가 없다', async ({ page }) => {
   const searchRequests = [];
   page.on('request', request => {
-    if (/data\/popups\.json|restaurants\/search-pages|\/api\/search\?q=/u.test(request.url())) searchRequests.push(request.url());
+    if (/data\/popups-public\.json|restaurants\/search-pages|\/api\/search\?q=/u.test(request.url())) searchRequests.push(request.url());
   });
   await page.goto(baseUrl, { waitUntil: 'networkidle' });
   await ready(page);
@@ -95,7 +95,7 @@ test('검색 없음 상태는 추천 행동을 제공하고 검색 중 추가 fe
   await page.locator('#popup-search-input').fill('서울');
   await page.waitForTimeout(250);
   expect(searchRequests).toHaveLength(baseline);
-  expect(searchRequests.filter(url => /data\/popups\.json/u.test(url))).toHaveLength(1);
+  expect(searchRequests.filter(url => /data\/popups-public\.json/u.test(url))).toHaveLength(1);
 });
 
 for (const viewport of [

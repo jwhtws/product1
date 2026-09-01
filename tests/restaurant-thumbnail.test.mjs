@@ -13,5 +13,5 @@ test('restaurant thumbnails do not show a category label', async () => {
   assert.doesNotMatch(app, /data-photo-badge>\$\{escapeHtml\(categoryLabel\(r\)\)\}/u);
   assert.match(app, /<div class="card-top restaurant-card-top"><button class="save/u);
   assert.doesNotMatch(app, /<div class="card-top"><span class="category">\$\{escapeHtml\(r\.category \|\| '음식점'\)\}<\/span>/u);
-  assert.match(home, /app\.js\?v=20260824-fast-2d-map/u);
+  assert.match(home, /app\.js\?v=20260901-mobile-critical-path-1/u);
 });

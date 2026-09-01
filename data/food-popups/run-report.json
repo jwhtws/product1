@@ -2695,24 +2695,24 @@
     }
   ],
   "siteFeed": {
-    "inputCount": 581,
-    "outputCount": 442,
-    "rejectedCount": 139,
-    "qualityExcludedCount": 139,
-    "duplicateRemovedCount": 0,
+    "inputCount": 442,
+    "outputCount": 441,
+    "rejectedCount": 1,
+    "qualityExcludedCount": 0,
+    "duplicateRemovedCount": 1,
     "rejectionReasons": {
-      "quality_review_required": 139
+      "duplicate_identity": 1
     },
     "statusDistribution": {
       "upcoming": 15,
-      "ongoing": 127,
+      "ongoing": 126,
       "ended": 300
     },
-    "newCount": 128,
+    "newCount": 127,
     "endingSoonCount": 78,
     "missingImageCount": 0,
     "missingMenuCount": 6,
-    "missingCoordinateCount": 441,
-    "generatedAt": "2026-09-01T03:50:19.575Z"
+    "missingCoordinateCount": 440,
+    "generatedAt": "2026-09-01T04:21:30.596Z"
   }
 }

@@ -51,8 +51,11 @@ test('Home·Search·Detail은 같은 운영 feed와 ID를 사용하고 fixture�
     readFile('data/popups-public.json', 'utf8').then(JSON.parse),
     readFile('data/popups.json', 'utf8'), readFile('data/popups-public.json', 'utf8')
   ]);
-  assert.match(app, /new URL\('data\/popups-public\.json\?v=20260831-manual-editorials-1', location\.href\)/u);
+  assert.match(app, /new URL\('data\/popups-public\.json\?v=20260901-mobile-critical-path-1', location\.href\)/u);
   assert.doesNotMatch(app, /fetch\(popupFeedUrl, \{ cache: 'no-store' \}\)/u);
+  assert.ok(app.indexOf("fetch('https://product2-ezo.pages.dev/api/popup-editorials'") > app.indexOf('resolveReady();'));
+  assert.doesNotMatch(await readFile('index.html', 'utf8'), /vendor\/leaflet\/leaflet\.css/u);
+  assert.match(app, /data-popup-map-styles/u);
   assert.match(app, /state\.popups = Array\.isArray\(popupData\.popups\)/u);
   assert.match(app, /state\.popups\.find\(item => item\.id ===/u);
   assert.match(seo, /readFileSync\('data\/popups\.json'/u);

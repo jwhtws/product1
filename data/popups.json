@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-01T03:50:19.575Z",
+  "updatedAt": "2026-09-01T04:21:30.596Z",
   "sources": [
     {
       "name": "현대백화점·현대아울렛",
@@ -177,15 +177,15 @@
     "parsed": 128,
     "beforeDedup": 583,
     "duplicateRemoved": 2,
-    "final": 442,
+    "final": 441,
     "status": {
       "upcoming": 15,
-      "ongoing": 127,
+      "ongoing": 126,
       "ended": 300
     },
     "photos": {
-      "popupCount": 442,
-      "imageCount": 2113,
+      "popupCount": 441,
+      "imageCount": 2101,
       "missingCount": 0
     },
     "failedSources": [],
@@ -219,25 +219,25 @@
       "브랜드 공식 · 동원F&B 뉴스"
     ],
     "siteFeed": {
-      "inputCount": 581,
-      "outputCount": 442,
-      "rejectedCount": 139,
-      "qualityExcludedCount": 139,
-      "duplicateRemovedCount": 0,
+      "inputCount": 442,
+      "outputCount": 441,
+      "rejectedCount": 1,
+      "qualityExcludedCount": 0,
+      "duplicateRemovedCount": 1,
       "rejectionReasons": {
-        "quality_review_required": 139
+        "duplicate_identity": 1
       },
       "statusDistribution": {
         "upcoming": 15,
-        "ongoing": 127,
+        "ongoing": 126,
         "ended": 300
       },
-      "newCount": 128,
+      "newCount": 127,
       "endingSoonCount": 78,
       "missingImageCount": 0,
       "missingMenuCount": 6,
-      "missingCoordinateCount": 441,
-      "generatedAt": "2026-09-01T03:50:19.575Z"
+      "missingCoordinateCount": 440,
+      "generatedAt": "2026-09-01T04:21:30.596Z"
     }
   },
   "coverage": {
@@ -2959,7 +2959,7 @@
         ],
         "checkedAt": "2026-09-01T03:49:26.973Z"
       },
-      "brand": "[바샤커피] Pop-Up",
+      "brand": "바샤커피",
       "region": "경기도",
       "category": "food-popup",
       "menuItems": [
@@ -3157,602 +3157,6 @@
         "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122"
       ],
       "editorialVerifiedAt": "2026-08-30"
-    },
-    {
-      "id": "lotte:dongtan:bacha-coffee",
-      "name": "바샤커피",
-      "venue": "롯데백화점 동탄점",
-      "venueType": "백화점",
-      "address": "경기도 화성시 동탄구 동탄역로 160, 동탄역 롯데캐슬 (여울동) · 롯데백화점 동탄점",
-      "startDate": "2026-07-24",
-      "endDate": "2026-09-30",
-      "imageUrl": "https://minfo.lotteshopping.com/content/news/202605/SNM00000000000531614/20260507104705644_2.jpeg",
-      "officialImageUrls": [
-        "https://minfo.lotteshopping.com/content/news/202605/SNM00000000000531614/20260507104705644_2.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202603/SNM00000000000518271/20260306152438765_7.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202504/SNM00000000000450272/20250424173900243_8.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000508377/20260122135049702_7.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000508377/20260122135049697_9.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000508377/20260122135755948_8.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202603/SNM00000000000518271/20260306152438775_7.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000508377/20260122161103108_2.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000508377/20260122161103113_1.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000508377/20260122161103117_3.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202603/SNM00000000000518271/20260306152438793_2.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202603/SNM00000000000518271/20260306152438798_1.jpeg"
-      ],
-      "imageSource": "official-detail",
-      "sourceName": "롯데쇼핑 공식 행사",
-      "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-      "sourceGrade": "official-search",
-      "firstSeenAt": "2026-08-31",
-      "lastSeenAt": "2026-09-01",
-      "menus": [
-        {
-          "name": "밀라노 모닝 커피 드립백(12개입)",
-          "price": 42000,
-          "priceText": "42,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "1910 커피 드립백 (12개입)",
-          "price": 42000,
-          "priceText": "42,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "캐러멜로 모닝 커피 드립백 (12개입)",
-          "price": 42000,
-          "priceText": "42,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "톨테카 초콜릿 커피 드립백 (12개입)",
-          "price": 42000,
-          "priceText": "42,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "마운트 케냐 커피 드립백 (12개입)",
-          "price": 42000,
-          "priceText": "42,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "네비게이터 커피 드립백 세트(25개입)",
-          "price": 84000,
-          "priceText": "84,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "익스플로러 커피 드립백 세트(25개입)",
-          "price": 84000,
-          "priceText": "84,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "어쏘티트 커피 드립백 세트(25개입)",
-          "price": 84000,
-          "priceText": "84,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "노마드컬렉션 밀라노 모닝 커피 원두 250g",
-          "price": 65000,
-          "priceText": "65,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "노마드컬렉션 1910 커피 원두 250g",
-          "price": 65000,
-          "priceText": "65,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "노마드컬렉션 아이 러브 파리 커피 원두 250g",
-          "price": 65000,
-          "priceText": "65,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "노마드컬렉션 블루마운틴 월렌포드 커피 원두 250g",
-          "price": 540000,
-          "priceText": "540,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        }
-      ],
-      "menuSource": "official-detail",
-      "contentSearch": {
-        "checkedOfficialList": true,
-        "checkedOfficialDetail": true,
-        "checkedEmbeddedData": true,
-        "checkedOfficialImages": true,
-        "checkedOperatorSearch": true,
-        "checkedBrandOfficialSources": false,
-        "checkedUrls": [
-          "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EB%B0%94%EC%83%A4%EC%BB%A4%ED%94%BC",
-          "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-          "https://minfo.lotteshopping.com/content/news/202605/SNM00000000000531614/20260507104705644_2.jpeg",
-          "https://minfo.lotteshopping.com/content/news/202603/SNM00000000000518271/20260306152438765_7.jpeg",
-          "https://minfo.lotteshopping.com/content/news/202504/SNM00000000000450272/20250424173900243_8.jpeg",
-          "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000508377/20260122135049702_7.jpeg",
-          "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000508377/20260122135049697_9.jpeg",
-          "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000508377/20260122135755948_8.jpeg",
-          "https://minfo.lotteshopping.com/content/news/202603/SNM00000000000518271/20260306152438775_7.jpeg",
-          "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000508377/20260122161103108_2.jpeg",
-          "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000508377/20260122161103113_1.jpeg",
-          "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000508377/20260122161103117_3.jpeg",
-          "https://minfo.lotteshopping.com/content/news/202603/SNM00000000000518271/20260306152438793_2.jpeg",
-          "https://minfo.lotteshopping.com/content/news/202603/SNM00000000000518271/20260306152438798_1.jpeg"
-        ],
-        "checkedMethods": [
-          "official_list_html",
-          "operator_internal_search",
-          "embedded_json_scan",
-          "official_detail_html",
-          "official_detail_embedded_json",
-          "official_image_candidate_scan"
-        ],
-        "imageCandidatesFound": 12,
-        "menuCandidatesFound": 12,
-        "priceCandidatesFound": 12,
-        "descriptionCandidatesFound": 0,
-        "status": "found",
-        "evidence": [
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "selector": "og:image|embedded JSON|img|srcset|background-image",
-            "imageUrl": "https://minfo.lotteshopping.com/content/news/202605/SNM00000000000531614/20260507104705644_2.jpeg",
-            "capturedAt": "2026-09-01T03:49:24.463Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "selector": "og:image|embedded JSON|img|srcset|background-image",
-            "imageUrl": "https://minfo.lotteshopping.com/content/news/202603/SNM00000000000518271/20260306152438765_7.jpeg",
-            "capturedAt": "2026-09-01T03:49:24.463Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "selector": "og:image|embedded JSON|img|srcset|background-image",
-            "imageUrl": "https://minfo.lotteshopping.com/content/news/202504/SNM00000000000450272/20250424173900243_8.jpeg",
-            "capturedAt": "2026-09-01T03:49:24.463Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "selector": "og:image|embedded JSON|img|srcset|background-image",
-            "imageUrl": "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000508377/20260122135049702_7.jpeg",
-            "capturedAt": "2026-09-01T03:49:24.463Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "selector": "og:image|embedded JSON|img|srcset|background-image",
-            "imageUrl": "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000508377/20260122135049697_9.jpeg",
-            "capturedAt": "2026-09-01T03:49:24.463Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "selector": "og:image|embedded JSON|img|srcset|background-image",
-            "imageUrl": "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000508377/20260122135755948_8.jpeg",
-            "capturedAt": "2026-09-01T03:49:24.463Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "selector": "og:image|embedded JSON|img|srcset|background-image",
-            "imageUrl": "https://minfo.lotteshopping.com/content/news/202603/SNM00000000000518271/20260306152438775_7.jpeg",
-            "capturedAt": "2026-09-01T03:49:24.463Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "selector": "og:image|embedded JSON|img|srcset|background-image",
-            "imageUrl": "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000508377/20260122161103108_2.jpeg",
-            "capturedAt": "2026-09-01T03:49:24.463Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "selector": "og:image|embedded JSON|img|srcset|background-image",
-            "imageUrl": "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000508377/20260122161103113_1.jpeg",
-            "capturedAt": "2026-09-01T03:49:24.463Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "selector": "og:image|embedded JSON|img|srcset|background-image",
-            "imageUrl": "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000508377/20260122161103117_3.jpeg",
-            "capturedAt": "2026-09-01T03:49:24.463Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "selector": "og:image|embedded JSON|img|srcset|background-image",
-            "imageUrl": "https://minfo.lotteshopping.com/content/news/202603/SNM00000000000518271/20260306152438793_2.jpeg",
-            "capturedAt": "2026-09-01T03:49:24.463Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "officialImageUrls",
-            "selector": "og:image|embedded JSON|img|srcset|background-image",
-            "imageUrl": "https://minfo.lotteshopping.com/content/news/202603/SNM00000000000518271/20260306152438798_1.jpeg",
-            "capturedAt": "2026-09-01T03:49:24.463Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "selector": "detail text price line and nearest product name",
-            "capturedAt": "2026-09-01T03:49:24.463Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "selector": "detail text price line and nearest product name",
-            "capturedAt": "2026-09-01T03:49:24.463Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "selector": "detail text price line and nearest product name",
-            "capturedAt": "2026-09-01T03:49:24.463Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "selector": "detail text price line and nearest product name",
-            "capturedAt": "2026-09-01T03:49:24.463Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "selector": "detail text price line and nearest product name",
-            "capturedAt": "2026-09-01T03:49:24.463Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "selector": "detail text price line and nearest product name",
-            "capturedAt": "2026-09-01T03:49:24.463Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "selector": "detail text price line and nearest product name",
-            "capturedAt": "2026-09-01T03:49:24.463Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "selector": "detail text price line and nearest product name",
-            "capturedAt": "2026-09-01T03:49:24.463Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "selector": "detail text price line and nearest product name",
-            "capturedAt": "2026-09-01T03:49:24.463Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "selector": "detail text price line and nearest product name",
-            "capturedAt": "2026-09-01T03:49:24.463Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "selector": "detail text price line and nearest product name",
-            "capturedAt": "2026-09-01T03:49:24.463Z"
-          },
-          {
-            "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-            "sourceName": "롯데쇼핑 공식 행사",
-            "contentType": "official_detail",
-            "extractedField": "menus",
-            "selector": "detail text price line and nearest product name",
-            "capturedAt": "2026-09-01T03:49:24.463Z"
-          }
-        ],
-        "failureReasons": [
-          "brand_official_sources_not_checked"
-        ],
-        "checkedAt": "2026-09-01T03:49:24.463Z"
-      },
-      "brand": "바샤커피",
-      "region": "경기도",
-      "category": "food-popup",
-      "menuItems": [
-        "밀라노 모닝 커피 드립백(12개입)",
-        "1910 커피 드립백 (12개입)",
-        "캐러멜로 모닝 커피 드립백 (12개입)",
-        "톨테카 초콜릿 커피 드립백 (12개입)",
-        "마운트 케냐 커피 드립백 (12개입)",
-        "네비게이터 커피 드립백 세트(25개입)",
-        "익스플로러 커피 드립백 세트(25개입)",
-        "어쏘티트 커피 드립백 세트(25개입)",
-        "노마드컬렉션 밀라노 모닝 커피 원두 250g",
-        "노마드컬렉션 1910 커피 원두 250g",
-        "노마드컬렉션 아이 러브 파리 커피 원두 250g",
-        "노마드컬렉션 블루마운틴 월렌포드 커피 원두 250g"
-      ],
-      "lastVerifiedAt": "2026-09-01",
-      "status": "ongoing",
-      "imageValidation": {
-        "status": "valid",
-        "contentType": "image/jpeg",
-        "width": 750,
-        "height": 750,
-        "checkedAt": "2026-09-01T03:49:51.100Z"
-      },
-      "contentQuality": "A",
-      "publishStatus": "published",
-      "qualityReasons": [],
-      "lastContentCheckedAt": "2026-09-01T03:49:48.905Z",
-      "imageCandidates": [
-        "https://minfo.lotteshopping.com/content/news/202605/SNM00000000000531614/20260507104705644_2.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202603/SNM00000000000518271/20260306152438765_7.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202504/SNM00000000000450272/20250424173900243_8.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000508377/20260122135049702_7.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000508377/20260122135049697_9.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000508377/20260122135755948_8.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202603/SNM00000000000518271/20260306152438775_7.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000508377/20260122161103108_2.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000508377/20260122161103113_1.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000508377/20260122161103117_3.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202603/SNM00000000000518271/20260306152438793_2.jpeg",
-        "https://minfo.lotteshopping.com/content/news/202603/SNM00000000000518271/20260306152438798_1.jpeg"
-      ],
-      "menuCandidates": [
-        {
-          "name": "밀라노 모닝 커피 드립백(12개입)",
-          "price": 42000,
-          "priceText": "42,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "1910 커피 드립백 (12개입)",
-          "price": 42000,
-          "priceText": "42,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "캐러멜로 모닝 커피 드립백 (12개입)",
-          "price": 42000,
-          "priceText": "42,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "톨테카 초콜릿 커피 드립백 (12개입)",
-          "price": 42000,
-          "priceText": "42,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "마운트 케냐 커피 드립백 (12개입)",
-          "price": 42000,
-          "priceText": "42,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "네비게이터 커피 드립백 세트(25개입)",
-          "price": 84000,
-          "priceText": "84,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "익스플로러 커피 드립백 세트(25개입)",
-          "price": 84000,
-          "priceText": "84,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "어쏘티트 커피 드립백 세트(25개입)",
-          "price": 84000,
-          "priceText": "84,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "노마드컬렉션 밀라노 모닝 커피 원두 250g",
-          "price": 65000,
-          "priceText": "65,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "노마드컬렉션 1910 커피 원두 250g",
-          "price": 65000,
-          "priceText": "65,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "노마드컬렉션 아이 러브 파리 커피 원두 250g",
-          "price": 65000,
-          "priceText": "65,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        },
-        {
-          "name": "노마드컬렉션 블루마운틴 월렌포드 커피 원두 250g",
-          "price": 540000,
-          "priceText": "540,000원",
-          "description": "",
-          "imageUrl": "",
-          "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-          "sourceName": "롯데쇼핑 공식 행사",
-          "evidenceType": "html"
-        }
-      ],
-      "ocrStatus": "not_used",
-      "title": "바샤커피",
-      "branch": "롯데백화점 동탄점",
-      "latitude": null,
-      "longitude": null,
-      "dDay": 29,
-      "image": "https://minfo.lotteshopping.com/content/news/202605/SNM00000000000531614/20260507104705644_2.jpeg",
-      "officialUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122",
-      "sourceItemId": "dongtan:bacha-coffee",
-      "editorialDescription": "",
-      "editorialSource": "",
-      "editorialEvidence": [
-        "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000549122"
-      ],
-      "editorialVerifiedAt": "2026-08-31",
-      "tags": [
-        "바샤커피",
-        "롯데백화점 동탄점",
-        "경기도",
-        "백화점",
-        "food-popup",
-        "밀라노 모닝 커피 드립백(12개입)",
-        "1910 커피 드립백 (12개입)",
-        "캐러멜로 모닝 커피 드립백 (12개입)",
-        "톨테카 초콜릿 커피 드립백 (12개입)",
-        "마운트 케냐 커피 드립백 (12개입)"
-      ],
-      "isNew": true,
-      "isEndingSoon": false,
-      "lastUpdated": "2026-08-31"
     },
     {
       "id": "galleria:gwanggyo:c85957:tdbd",
@@ -7172,7 +6576,7 @@
         ],
         "checkedAt": "2026-09-01T03:49:27.131Z"
       },
-      "brand": "[바샤커피] Pop-Up",
+      "brand": "바샤커피",
       "region": null,
       "category": "food-popup",
       "menuItems": [
@@ -46641,7 +46045,7 @@
         ],
         "checkedAt": "2026-09-01T03:49:26.587Z"
       },
-      "brand": "[사전광고｜앤식깡] 아프리카식물 POP-UP",
+      "brand": "[사전광고｜앤식깡] 아프리카식물",
       "region": "경기도",
       "category": "food-popup",
       "menuItems": [
