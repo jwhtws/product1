@@ -28,7 +28,7 @@ const popup = (id, overrides = {}) => ({
   isEndingSoon: false,
   menus: [{ name: '테스트 메뉴', price: '5,000원' }],
   menuItems: ['테스트 메뉴'],
-  editorialDescription: '공식 자료를 교차 확인해 작성한 테스트 브랜드 소개글이다.',
+  editorialDescription: '공식 자료를 교차 확인해 작성한 **테스트 브랜드** 소개글이다.',
   officialImageUrls: seed.imageUrl ? [seed.imageUrl] : [],
   ...overrides
 });
@@ -91,6 +91,7 @@ test('상세 구조, 날짜 상태, 저장·공유·관련 팝업·오류 신고
   await expect(page.locator('#popup-detail-map')).toHaveClass(/leaflet-grab/u);
   await expect(page.locator('.official-food-photo-grid img').first()).toHaveAttribute('loading', 'lazy');
   await expect(page.locator('.popup-editorial .popup-editorial-description')).toHaveText(/테스트 브랜드 소개글/u);
+  await expect(page.locator('.popup-editorial .popup-editorial-description strong')).toHaveText('테스트 브랜드');
   expect(await page.locator('#related-popups .discovery-popup-card').count()).toBeLessThanOrEqual(6);
   await expect(page.locator('#related-popups')).toBeVisible();
 

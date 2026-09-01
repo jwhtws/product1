@@ -21,6 +21,9 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260831-1';
     set(key, value) { localStorage.setItem(`meokdang-${key}`, JSON.stringify(value)); }
   };
   const escapeHtml = value => String(value ?? '').replace(/[&<>'"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[c]));
+  const renderEditorialText = value => escapeHtml(String(value || '').trim())
+    .replace(/\*\*([^*\n][^*]*?)\*\*/gu, '<strong>$1</strong>')
+    .replace(/\r?\n/gu, '<br>');
   const apiOrigin = location.hostname.endsWith('github.io') || location.hostname === 'product2-ezo.pages.dev' ? 'https://mukdang.com' : '';
   const publicApiUrl = path => `${apiOrigin}${path}`;
   const searchKey = value => String(value ?? '').toLocaleLowerCase('ko-KR').replace(/[^\p{L}\p{N}]+/gu, '');
@@ -1298,7 +1301,7 @@ import { popupMapLocations } from './js/popup-map-locations.js?v=20260831-1';
   }
   function renderPopupEditorial(popup) {
     const editorial = String(popup.editorialDescription || '').trim();
-    return editorial ? `<section class="popup-editorial popup-detail-section"><h3>브랜드·식당 소개</h3><p class="popup-editorial-description">${escapeHtml(editorial)}</p></section>` : '';
+    return editorial ? `<section class="popup-editorial popup-detail-section"><h3>브랜드·식당 소개</h3><p class="popup-editorial-description">${renderEditorialText(editorial)}</p></section>` : '';
   }
   function renderPopupOfficialSource(popup) {
     return `<section class="popup-official-source popup-detail-section"><h3>공식 출처</h3><p><strong>${escapeHtml(popup.sourceName || '공식 정보')}</strong>${popup.lastVerifiedAt ? `<span>마지막 확인 ${escapeHtml(popup.lastVerifiedAt)}</span>` : ''}</p>${popup.sourceUrl ? `<a class="ghost" href="${escapeHtml(popup.sourceUrl)}" target="_blank" rel="noopener noreferrer">공식 정보 보기</a>` : '<small>공식 링크를 확인 중입니다.</small>'}</section>`;

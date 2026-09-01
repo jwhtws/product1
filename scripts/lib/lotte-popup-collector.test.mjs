@@ -31,6 +31,18 @@ test('롯데 PC 쇼핑정보에서 해당 지점의 예정 식품 팝업만 수�
   assert.match(rows[0].sourceUrl, /cstrCd=0336/u);
 });
 
+test('영등포점 설화당 팝업을 식품 브랜드로 인식한다', () => {
+  const html = `
+    <li><strong>[설화당] Pop-Up</strong><p>백화점 영등포점 B1 식품관</p>
+    <span>9.1(화) ~ 9.7(월)</span><a href="/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000560001">상세보기</a></li>`;
+  const rows = parseLotteSearchResults(html, {
+    storeCode: '0010', storeName: '영등포점', today: '2026-09-01', decodeHtml, clean
+  });
+  assert.equal(rows.length, 1);
+  assert.equal(rows[0].name, '[설화당] Pop-Up');
+  assert.equal(rows[0].venue, '롯데백화점 영등포점');
+});
+
 const card = ({ newsId = '', title, venue, dates, image = '' }) => `
   <li class="shopping-news-card">
     <a href="${newsId ? `/shpgnews/shpgnewsDetail?shpgNewsNo=${newsId}` : '#'}">
