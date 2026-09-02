@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-09-02T00:21:50.648Z",
+  "updatedAt": "2026-09-02T23:24:10.897Z",
   "summary": {
-    "nationwideVenueTotal": 1025,
+    "nationwideVenueTotal": 1024,
     "verifiedPopupVenueCount": 49,
     "officialFeedMonitoredCount": 99,
-    "collectorNeededCount": 926,
+    "collectorNeededCount": 925,
     "disclaimer": "시설 원장은 전국 탐색 범위이며, 화면에는 공식 출처에서 시작일과 종료일을 확인한 푸드팝업만 표시합니다."
   },
   "venues": [
@@ -1320,7 +1320,7 @@
       "kind": "복합쇼핑몰",
       "collector": "롯데백화점·롯데아울렛·롯데몰",
       "status": "verified-popup-found",
-      "popupCount": 1
+      "popupCount": 3
     },
     {
       "venueId": "localdata:4060000:2025406050707500002",
@@ -1329,7 +1329,7 @@
       "kind": "복합쇼핑몰",
       "collector": "롯데백화점·롯데아울렛·롯데몰",
       "status": "verified-popup-found",
-      "popupCount": 1
+      "popupCount": 3
     },
     {
       "venueId": "localdata:4050000:2019405048407500002",
@@ -2175,7 +2175,7 @@
       "kind": "백화점",
       "collector": "현대백화점·현대아울렛",
       "status": "verified-popup-found",
-      "popupCount": 4
+      "popupCount": 7
     },
     {
       "venueId": "localdata:4040000:1998404000007500006",
@@ -2315,15 +2315,6 @@
     {
       "venueId": "localdata:5530000:2006553018707500001",
       "name": "홈플러스(주) 병점점",
-      "region": "경기도",
-      "kind": "대형마트",
-      "collector": "홈플러스",
-      "status": "adapter-needed",
-      "popupCount": 0
-    },
-    {
-      "venueId": "localdata:3860000:2009386021207500001",
-      "name": "홈플러스(주) 부천소사점",
       "region": "경기도",
       "kind": "대형마트",
       "collector": "홈플러스",
@@ -2823,7 +2814,7 @@
       "kind": "백화점",
       "collector": "롯데백화점·롯데아울렛·롯데몰",
       "status": "verified-popup-found",
-      "popupCount": 10
+      "popupCount": 11
     },
     {
       "venueId": "localdata:5670000:2012567035807500002",
@@ -2832,7 +2823,7 @@
       "kind": "백화점",
       "collector": "롯데백화점·롯데아울렛·롯데몰",
       "status": "verified-popup-found",
-      "popupCount": 10
+      "popupCount": 11
     },
     {
       "venueId": "localdata:5370000:2015537016507500001",
@@ -5613,7 +5604,7 @@
       "kind": "백화점",
       "collector": "롯데백화점·롯데아울렛·롯데몰",
       "status": "verified-popup-found",
-      "popupCount": 19
+      "popupCount": 20
     },
     {
       "venueId": "localdata:3050000:2010305010007500001",
@@ -7692,7 +7683,7 @@
       "kind": "백화점",
       "collector": "롯데백화점·롯데아울렛·롯데몰",
       "status": "verified-popup-found",
-      "popupCount": 14
+      "popupCount": 16
     },
     {
       "venueId": "localdata:5880000:2016495010907500001",
