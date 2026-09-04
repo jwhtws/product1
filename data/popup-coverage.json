@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-09-04T00:13:01.985Z",
+  "updatedAt": "2026-09-04T23:07:50.621Z",
   "summary": {
     "nationwideVenueTotal": 1024,
     "verifiedPopupVenueCount": 51,
-    "officialFeedMonitoredCount": 72,
-    "collectorNeededCount": 952,
+    "officialFeedMonitoredCount": 96,
+    "collectorNeededCount": 928,
     "disclaimer": "시설 원장은 전국 탐색 범위이며, 화면에는 공식 출처에서 시작일과 종료일을 확인한 푸드팝업만 표시합니다."
   },
   "venues": [
@@ -690,7 +690,7 @@
       "kind": "백화점",
       "collector": "현대백화점·현대아울렛",
       "status": "verified-popup-found",
-      "popupCount": 5
+      "popupCount": 6
     },
     {
       "venueId": "localdata:3860000:2003386010707500006",
@@ -699,7 +699,7 @@
       "kind": "백화점",
       "collector": "현대백화점·현대아울렛",
       "status": "verified-popup-found",
-      "popupCount": 5
+      "popupCount": 6
     },
     {
       "venueId": "localdata:5590000:2013559014807500001",
@@ -951,7 +951,7 @@
       "kind": "백화점",
       "collector": "롯데백화점·롯데아울렛·롯데몰",
       "status": "verified-popup-found",
-      "popupCount": 35
+      "popupCount": 36
     },
     {
       "venueId": "localdata:3940000:2000394000007500022",
@@ -3632,7 +3632,7 @@
       "region": "대구광역시",
       "kind": "백화점",
       "collector": "현대백화점·현대아울렛",
-      "status": "adapter-needed",
+      "status": "official-feed-monitored",
       "popupCount": 0
     },
     {
@@ -3821,7 +3821,7 @@
       "region": "대구광역시",
       "kind": "백화점",
       "collector": "현대백화점·현대아울렛",
-      "status": "adapter-needed",
+      "status": "official-feed-monitored",
       "popupCount": 0
     },
     {
@@ -4244,7 +4244,7 @@
       "region": "대전광역시",
       "kind": "쇼핑센터",
       "collector": "현대백화점·현대아울렛",
-      "status": "adapter-needed",
+      "status": "official-feed-monitored",
       "popupCount": 0
     },
     {
@@ -4253,7 +4253,7 @@
       "region": "대전광역시",
       "kind": "쇼핑센터",
       "collector": "현대백화점·현대아울렛",
-      "status": "adapter-needed",
+      "status": "official-feed-monitored",
       "popupCount": 0
     },
     {
@@ -4478,7 +4478,7 @@
       "region": "부산광역시",
       "kind": "쇼핑센터",
       "collector": "현대백화점·현대아울렛",
-      "status": "adapter-needed",
+      "status": "official-feed-monitored",
       "popupCount": 0
     },
     {
@@ -5234,7 +5234,7 @@
       "region": "서울특별시",
       "kind": "백화점",
       "collector": "현대백화점·현대아울렛",
-      "status": "adapter-needed",
+      "status": "official-feed-monitored",
       "popupCount": 0
     },
     {
@@ -5568,7 +5568,7 @@
       "kind": "백화점",
       "collector": "롯데백화점·롯데아울렛·롯데몰",
       "status": "verified-popup-found",
-      "popupCount": 9
+      "popupCount": 10
     },
     {
       "venueId": "localdata:3010000:2012301010007500002",
@@ -5595,7 +5595,7 @@
       "kind": "백화점",
       "collector": "롯데백화점·롯데아울렛·롯데몰",
       "status": "verified-popup-found",
-      "popupCount": 13
+      "popupCount": 12
     },
     {
       "venueId": "localdata:3230000:1998323013107500001",
@@ -6503,7 +6503,7 @@
       "region": "서울특별시",
       "kind": "쇼핑센터",
       "collector": "현대백화점·현대아울렛",
-      "status": "adapter-needed",
+      "status": "official-feed-monitored",
       "popupCount": 0
     },
     {
@@ -6782,7 +6782,7 @@
       "region": "울산광역시",
       "kind": "백화점",
       "collector": "현대백화점·현대아울렛",
-      "status": "adapter-needed",
+      "status": "official-feed-monitored",
       "popupCount": 0
     },
     {
@@ -7331,7 +7331,7 @@
       "region": "인천광역시",
       "kind": "백화점",
       "collector": "현대백화점·현대아울렛",
-      "status": "adapter-needed",
+      "status": "official-feed-monitored",
       "popupCount": 0
     },
     {
@@ -7403,7 +7403,7 @@
       "region": "인천광역시",
       "kind": "백화점",
       "collector": "현대백화점·현대아울렛",
-      "status": "adapter-needed",
+      "status": "official-feed-monitored",
       "popupCount": 0
     },
     {
@@ -7683,7 +7683,7 @@
       "kind": "백화점",
       "collector": "롯데백화점·롯데아울렛·롯데몰",
       "status": "verified-popup-found",
-      "popupCount": 21
+      "popupCount": 20
     },
     {
       "venueId": "localdata:5880000:2016495010907500001",
