@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-09-06T00:24:08.566Z",
+  "updatedAt": "2026-09-06T23:26:50.360Z",
   "summary": {
     "nationwideVenueTotal": 1024,
     "verifiedPopupVenueCount": 51,
-    "officialFeedMonitoredCount": 99,
-    "collectorNeededCount": 925,
+    "officialFeedMonitoredCount": 72,
+    "collectorNeededCount": 952,
     "disclaimer": "시설 원장은 전국 탐색 범위이며, 화면에는 공식 출처에서 시작일과 종료일을 확인한 푸드팝업만 표시합니다."
   },
   "venues": [
@@ -951,7 +951,7 @@
       "kind": "백화점",
       "collector": "롯데백화점·롯데아울렛·롯데몰",
       "status": "verified-popup-found",
-      "popupCount": 36
+      "popupCount": 40
     },
     {
       "venueId": "localdata:3940000:2000394000007500022",
@@ -3632,7 +3632,7 @@
       "region": "대구광역시",
       "kind": "백화점",
       "collector": "현대백화점·현대아울렛",
-      "status": "official-feed-monitored",
+      "status": "adapter-needed",
       "popupCount": 0
     },
     {
@@ -3821,7 +3821,7 @@
       "region": "대구광역시",
       "kind": "백화점",
       "collector": "현대백화점·현대아울렛",
-      "status": "official-feed-monitored",
+      "status": "adapter-needed",
       "popupCount": 0
     },
     {
@@ -4244,7 +4244,7 @@
       "region": "대전광역시",
       "kind": "쇼핑센터",
       "collector": "현대백화점·현대아울렛",
-      "status": "official-feed-monitored",
+      "status": "adapter-needed",
       "popupCount": 0
     },
     {
@@ -4253,7 +4253,7 @@
       "region": "대전광역시",
       "kind": "쇼핑센터",
       "collector": "현대백화점·현대아울렛",
-      "status": "official-feed-monitored",
+      "status": "adapter-needed",
       "popupCount": 0
     },
     {
@@ -4478,7 +4478,7 @@
       "region": "부산광역시",
       "kind": "쇼핑센터",
       "collector": "현대백화점·현대아울렛",
-      "status": "official-feed-monitored",
+      "status": "adapter-needed",
       "popupCount": 0
     },
     {
@@ -5234,7 +5234,7 @@
       "region": "서울특별시",
       "kind": "백화점",
       "collector": "현대백화점·현대아울렛",
-      "status": "official-feed-monitored",
+      "status": "adapter-needed",
       "popupCount": 0
     },
     {
@@ -5999,7 +5999,7 @@
       "region": "서울특별시",
       "kind": "백화점",
       "collector": "신세계백화점",
-      "status": "official-feed-monitored",
+      "status": "adapter-needed",
       "popupCount": 0
     },
     {
@@ -6503,7 +6503,7 @@
       "region": "서울특별시",
       "kind": "쇼핑센터",
       "collector": "현대백화점·현대아울렛",
-      "status": "official-feed-monitored",
+      "status": "adapter-needed",
       "popupCount": 0
     },
     {
@@ -6782,7 +6782,7 @@
       "region": "울산광역시",
       "kind": "백화점",
       "collector": "현대백화점·현대아울렛",
-      "status": "official-feed-monitored",
+      "status": "adapter-needed",
       "popupCount": 0
     },
     {
@@ -7331,7 +7331,7 @@
       "region": "인천광역시",
       "kind": "백화점",
       "collector": "현대백화점·현대아울렛",
-      "status": "official-feed-monitored",
+      "status": "adapter-needed",
       "popupCount": 0
     },
     {
@@ -7403,7 +7403,7 @@
       "region": "인천광역시",
       "kind": "백화점",
       "collector": "현대백화점·현대아울렛",
-      "status": "official-feed-monitored",
+      "status": "adapter-needed",
       "popupCount": 0
     },
     {
@@ -8735,7 +8735,7 @@
       "region": "충청남도",
       "kind": "백화점",
       "collector": "신세계백화점",
-      "status": "official-feed-monitored",
+      "status": "adapter-needed",
       "popupCount": 0
     },
     {
