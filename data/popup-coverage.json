@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-09-12T00:42:15.718Z",
+  "updatedAt": "2026-09-12T23:20:45.598Z",
   "summary": {
     "nationwideVenueTotal": 1022,
     "verifiedPopupVenueCount": 51,
-    "officialFeedMonitoredCount": 72,
-    "collectorNeededCount": 950,
+    "officialFeedMonitoredCount": 96,
+    "collectorNeededCount": 926,
     "disclaimer": "시설 원장은 전국 탐색 범위이며, 화면에는 공식 출처에서 시작일과 종료일을 확인한 푸드팝업만 표시합니다."
   },
   "venues": [
@@ -603,7 +603,7 @@
       "popupCount": 0
     },
     {
-      "venueId": "localdata:3780000:2005378010607500003",
+      "venueId": "localdata:3780000:2000378000007520001",
       "name": "(주)이마트분당점",
       "region": "경기도",
       "kind": "대형마트",
@@ -612,7 +612,7 @@
       "popupCount": 0
     },
     {
-      "venueId": "localdata:3780000:2000378000007520001",
+      "venueId": "localdata:3780000:2005378010607500003",
       "name": "(주)이마트분당점",
       "region": "경기도",
       "kind": "대형마트",
@@ -690,7 +690,7 @@
       "kind": "백화점",
       "collector": "현대백화점·현대아울렛",
       "status": "verified-popup-found",
-      "popupCount": 6
+      "popupCount": 7
     },
     {
       "venueId": "localdata:3860000:2003386010707500006",
@@ -699,7 +699,7 @@
       "kind": "백화점",
       "collector": "현대백화점·현대아울렛",
       "status": "verified-popup-found",
-      "popupCount": 6
+      "popupCount": 7
     },
     {
       "venueId": "localdata:5590000:2013559014807500001",
@@ -1320,7 +1320,7 @@
       "kind": "복합쇼핑몰",
       "collector": "롯데백화점·롯데아울렛·롯데몰",
       "status": "verified-popup-found",
-      "popupCount": 3
+      "popupCount": 4
     },
     {
       "venueId": "localdata:4060000:2025406050707500002",
@@ -1329,7 +1329,7 @@
       "kind": "복합쇼핑몰",
       "collector": "롯데백화점·롯데아울렛·롯데몰",
       "status": "verified-popup-found",
-      "popupCount": 3
+      "popupCount": 4
     },
     {
       "venueId": "localdata:4050000:2019405048407500002",
@@ -3623,7 +3623,7 @@
       "region": "대구광역시",
       "kind": "백화점",
       "collector": "현대백화점·현대아울렛",
-      "status": "adapter-needed",
+      "status": "official-feed-monitored",
       "popupCount": 0
     },
     {
@@ -3812,7 +3812,7 @@
       "region": "대구광역시",
       "kind": "백화점",
       "collector": "현대백화점·현대아울렛",
-      "status": "adapter-needed",
+      "status": "official-feed-monitored",
       "popupCount": 0
     },
     {
@@ -4235,7 +4235,7 @@
       "region": "대전광역시",
       "kind": "쇼핑센터",
       "collector": "현대백화점·현대아울렛",
-      "status": "adapter-needed",
+      "status": "official-feed-monitored",
       "popupCount": 0
     },
     {
@@ -4244,7 +4244,7 @@
       "region": "대전광역시",
       "kind": "쇼핑센터",
       "collector": "현대백화점·현대아울렛",
-      "status": "adapter-needed",
+      "status": "official-feed-monitored",
       "popupCount": 0
     },
     {
@@ -4469,7 +4469,7 @@
       "region": "부산광역시",
       "kind": "쇼핑센터",
       "collector": "현대백화점·현대아울렛",
-      "status": "adapter-needed",
+      "status": "official-feed-monitored",
       "popupCount": 0
     },
     {
@@ -5225,7 +5225,7 @@
       "region": "서울특별시",
       "kind": "백화점",
       "collector": "현대백화점·현대아울렛",
-      "status": "adapter-needed",
+      "status": "official-feed-monitored",
       "popupCount": 0
     },
     {
@@ -6494,7 +6494,7 @@
       "region": "서울특별시",
       "kind": "쇼핑센터",
       "collector": "현대백화점·현대아울렛",
-      "status": "adapter-needed",
+      "status": "official-feed-monitored",
       "popupCount": 0
     },
     {
@@ -6773,7 +6773,7 @@
       "region": "울산광역시",
       "kind": "백화점",
       "collector": "현대백화점·현대아울렛",
-      "status": "adapter-needed",
+      "status": "official-feed-monitored",
       "popupCount": 0
     },
     {
@@ -7322,7 +7322,7 @@
       "region": "인천광역시",
       "kind": "백화점",
       "collector": "현대백화점·현대아울렛",
-      "status": "adapter-needed",
+      "status": "official-feed-monitored",
       "popupCount": 0
     },
     {
@@ -7394,7 +7394,7 @@
       "region": "인천광역시",
       "kind": "백화점",
       "collector": "현대백화점·현대아울렛",
-      "status": "adapter-needed",
+      "status": "official-feed-monitored",
       "popupCount": 0
     },
     {
