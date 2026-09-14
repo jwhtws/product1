@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-09-14T00:19:27.595Z",
+  "updatedAt": "2026-09-14T23:56:26.852Z",
   "summary": {
     "nationwideVenueTotal": 1022,
     "verifiedPopupVenueCount": 52,
-    "officialFeedMonitoredCount": 99,
-    "collectorNeededCount": 923,
+    "officialFeedMonitoredCount": 96,
+    "collectorNeededCount": 926,
     "disclaimer": "시설 원장은 전국 탐색 범위이며, 화면에는 공식 출처에서 시작일과 종료일을 확인한 푸드팝업만 표시합니다."
   },
   "venues": [
@@ -951,7 +951,7 @@
       "kind": "백화점",
       "collector": "롯데백화점·롯데아울렛·롯데몰",
       "status": "verified-popup-found",
-      "popupCount": 46
+      "popupCount": 47
     },
     {
       "venueId": "localdata:3940000:2000394000007500022",
@@ -5990,7 +5990,7 @@
       "region": "서울특별시",
       "kind": "백화점",
       "collector": "신세계백화점",
-      "status": "official-feed-monitored",
+      "status": "adapter-needed",
       "popupCount": 0
     },
     {
@@ -8717,7 +8717,7 @@
       "region": "충청남도",
       "kind": "백화점",
       "collector": "신세계백화점",
-      "status": "official-feed-monitored",
+      "status": "adapter-needed",
       "popupCount": 0
     },
     {
