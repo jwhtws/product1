@@ -1,45 +1,45 @@
 {
-  "generatedAt": "2026-09-16T23:44:56.013Z",
+  "generatedAt": "2026-09-17T00:42:25.086Z",
   "stats": {
     "total": {
-      "totalCollected": 801,
-      "publishedCount": 595,
-      "reviewRequiredCount": 206,
+      "totalCollected": 805,
+      "publishedCount": 598,
+      "reviewRequiredCount": 207,
       "rejectedCount": 0,
-      "validImageCount": 652,
-      "missingImageCount": 149,
-      "menuCompleteCount": 623,
-      "missingMenuCount": 178,
-      "priceKnownCount": 580,
-      "descriptionCompleteCount": 621,
-      "searchIncompleteCount": 178,
+      "validImageCount": 655,
+      "missingImageCount": 150,
+      "menuCompleteCount": 626,
+      "missingMenuCount": 179,
+      "priceKnownCount": 583,
+      "descriptionCompleteCount": 625,
+      "searchIncompleteCount": 179,
       "parseFailedCount": 3,
       "notPublishedBySourceCount": 0,
-      "upcomingCount": 35,
-      "ongoingCount": 168,
+      "upcomingCount": 38,
+      "ongoingCount": 169,
       "endedCount": 597,
-      "newlyPublishedCount": 10,
-      "newlyEndedCount": 3,
+      "newlyPublishedCount": 3,
+      "newlyEndedCount": 0,
       "qualityDistribution": {
-        "A": 470,
+        "A": 473,
         "B": 125,
-        "C": 206
+        "C": 207
       },
       "asOfDate": "2026-09-17"
     },
     "bySource": {
       "롯데쇼핑 공식 행사": {
-        "totalCollected": 520,
-        "imageCompletenessRate": 0.7212,
-        "menuCompletenessRate": 0.6885,
-        "priceCompletenessRate": 0.6808,
-        "publishRate": 0.6558,
-        "searchIncompleteRate": 0.3058,
-        "parseFailureRate": 0.0058,
+        "totalCollected": 524,
+        "imageCompletenessRate": 0.7214,
+        "menuCompletenessRate": 0.6889,
+        "priceCompletenessRate": 0.6813,
+        "publishRate": 0.6565,
+        "searchIncompleteRate": 0.3053,
+        "parseFailureRate": 0.0057,
         "reviewRequiredReasons": {
-          "search_incomplete": 166,
+          "search_incomplete": 167,
           "broken_image": 13,
-          "conflicting_sources": 7,
+          "conflicting_sources": 8,
           "parse_failed": 10
         }
       },
@@ -189,7 +189,7 @@
           "official_detail_images_not_checked",
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-09-16T23:42:10.781Z"
+        "checkedAt": "2026-09-17T00:39:27.827Z"
       },
       "brand": null,
       "region": "충청북도",
@@ -201,14 +201,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -257,7 +257,7 @@
           "official_detail_images_not_checked",
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-09-16T23:42:10.737Z"
+        "checkedAt": "2026-09-17T00:39:27.815Z"
       },
       "brand": null,
       "region": "충청북도",
@@ -269,14 +269,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -337,14 +337,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -393,7 +393,7 @@
           "official_detail_images_not_checked",
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-09-16T23:42:09.641Z"
+        "checkedAt": "2026-09-17T00:39:24.009Z"
       },
       "brand": null,
       "region": "서울특별시",
@@ -405,14 +405,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -461,7 +461,7 @@
           "official_detail_images_not_checked",
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-09-16T23:42:09.693Z"
+        "checkedAt": "2026-09-17T00:39:24.043Z"
       },
       "brand": null,
       "region": "광주광역시",
@@ -473,14 +473,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -541,14 +541,82 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
+      "imageCandidates": [],
+      "menuCandidates": [],
+      "ocrStatus": "not_used"
+    },
+    {
+      "id": "lotte:shopping-info:0021:1ououco",
+      "name": "Pop-Up",
+      "venue": "롯데아울렛 광주월드컵점",
+      "venueType": "쇼핑몰",
+      "address": "전남광주통합특별시 서구 금화로 240 (풍암동) · 롯데아울렛 광주월드컵점",
+      "startDate": "2026-09-19",
+      "endDate": "2026-09-20",
+      "imageUrl": null,
+      "imageSource": "official-image-unavailable",
+      "sourceName": "롯데쇼핑 공식 행사",
+      "sourceUrl": "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0021&cntsTpCd=C00903",
+      "sourceGrade": "official-search",
+      "firstSeenAt": "2026-09-17",
+      "lastSeenAt": "2026-09-17",
+      "contentSearch": {
+        "checkedOfficialList": true,
+        "checkedOfficialDetail": false,
+        "checkedEmbeddedData": true,
+        "checkedOfficialImages": false,
+        "checkedOperatorSearch": true,
+        "checkedBrandOfficialSources": false,
+        "checkedUrls": [
+          "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0021&cntsTpCd=C00903&searchTerm=Pop-Up",
+          "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0021&cntsTpCd=C00903&searchTerm=Pop",
+          "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0021&cntsTpCd=C00903&searchTerm=Pop+Up",
+          "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0021&cntsTpCd=C00903"
+        ],
+        "checkedMethods": [
+          "official_list_html",
+          "operator_internal_search",
+          "embedded_json_scan"
+        ],
+        "imageCandidatesFound": 0,
+        "menuCandidatesFound": 0,
+        "priceCandidatesFound": 0,
+        "descriptionCandidatesFound": 0,
+        "status": "search_incomplete",
+        "evidence": [],
+        "failureReasons": [
+          "official_detail_not_identified",
+          "official_detail_images_not_checked",
+          "brand_official_sources_not_checked"
+        ],
+        "checkedAt": "2026-09-17T00:39:27.467Z"
+      },
+      "brand": null,
+      "region": "광주광역시",
+      "category": "food-popup",
+      "menus": [],
+      "menuItems": [],
+      "lastVerifiedAt": "2026-09-17",
+      "status": "upcoming",
+      "imageValidation": {
+        "status": "invalid",
+        "reason": "invalid_url",
+        "checkedAt": "2026-09-17T00:42:25.086Z"
+      },
+      "contentQuality": "C",
+      "publishStatus": "review_required",
+      "qualityReasons": [
+        "search_incomplete"
+      ],
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -702,7 +770,7 @@
             "extractedField": "officialImageUrls",
             "selector": "og:image|embedded JSON|img|srcset|background-image",
             "imageUrl": "https://minfo.lotteshopping.com/content/news/202609/SNM00000000000556861/20260915151028770_5.jpeg",
-            "capturedAt": "2026-09-16T23:42:06.209Z"
+            "capturedAt": "2026-09-17T00:39:20.383Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000556861",
@@ -711,7 +779,7 @@
             "extractedField": "officialImageUrls",
             "selector": "og:image|embedded JSON|img|srcset|background-image",
             "imageUrl": "https://minfo.lotteshopping.com/content/news/202606/SNM00000000000538879/20260603190503950_5.jpeg",
-            "capturedAt": "2026-09-16T23:42:06.209Z"
+            "capturedAt": "2026-09-17T00:39:20.383Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000556861",
@@ -720,7 +788,7 @@
             "extractedField": "officialImageUrls",
             "selector": "og:image|embedded JSON|img|srcset|background-image",
             "imageUrl": "https://minfo.lotteshopping.com/content/news/202606/SNM00000000000538691/20260602191037848_4.jpeg",
-            "capturedAt": "2026-09-16T23:42:06.209Z"
+            "capturedAt": "2026-09-17T00:39:20.383Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000556861",
@@ -729,7 +797,7 @@
             "extractedField": "officialImageUrls",
             "selector": "og:image|embedded JSON|img|srcset|background-image",
             "imageUrl": "https://minfo.lotteshopping.com/content/news/202606/SNM00000000000538691/20260602191037852_4.jpeg",
-            "capturedAt": "2026-09-16T23:42:06.209Z"
+            "capturedAt": "2026-09-17T00:39:20.383Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000556861",
@@ -738,7 +806,7 @@
             "extractedField": "officialImageUrls",
             "selector": "og:image|embedded JSON|img|srcset|background-image",
             "imageUrl": "https://minfo.lotteshopping.com/content/news/202606/SNM00000000000538691/20260602191037857_1.jpeg",
-            "capturedAt": "2026-09-16T23:42:06.209Z"
+            "capturedAt": "2026-09-17T00:39:20.383Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000556861",
@@ -747,7 +815,7 @@
             "extractedField": "officialImageUrls",
             "selector": "og:image|embedded JSON|img|srcset|background-image",
             "imageUrl": "https://minfo.lotteshopping.com/content/news/202606/SNM00000000000538691/20260602191037860_8.jpeg",
-            "capturedAt": "2026-09-16T23:42:06.209Z"
+            "capturedAt": "2026-09-17T00:39:20.383Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000556861",
@@ -756,7 +824,7 @@
             "extractedField": "officialImageUrls",
             "selector": "og:image|embedded JSON|img|srcset|background-image",
             "imageUrl": "https://minfo.lotteshopping.com/content/news/202606/SNM00000000000538691/20260602191037864_2.jpeg",
-            "capturedAt": "2026-09-16T23:42:06.209Z"
+            "capturedAt": "2026-09-17T00:39:20.383Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000556861",
@@ -765,7 +833,7 @@
             "extractedField": "officialImageUrls",
             "selector": "og:image|embedded JSON|img|srcset|background-image",
             "imageUrl": "https://minfo.lotteshopping.com/content/news/202606/SNM00000000000538691/20260602191037873_1.jpeg",
-            "capturedAt": "2026-09-16T23:42:06.209Z"
+            "capturedAt": "2026-09-17T00:39:20.383Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000556861",
@@ -774,7 +842,7 @@
             "extractedField": "officialImageUrls",
             "selector": "og:image|embedded JSON|img|srcset|background-image",
             "imageUrl": "https://minfo.lotteshopping.com/content/news/202606/SNM00000000000538691/20260602191037877_8.jpeg",
-            "capturedAt": "2026-09-16T23:42:06.209Z"
+            "capturedAt": "2026-09-17T00:39:20.383Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000556861",
@@ -782,7 +850,7 @@
             "contentType": "official_detail",
             "extractedField": "menus",
             "selector": "detail text price line and nearest product name",
-            "capturedAt": "2026-09-16T23:42:06.209Z"
+            "capturedAt": "2026-09-17T00:39:20.383Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000556861",
@@ -790,7 +858,7 @@
             "contentType": "official_detail",
             "extractedField": "menus",
             "selector": "detail text price line and nearest product name",
-            "capturedAt": "2026-09-16T23:42:06.209Z"
+            "capturedAt": "2026-09-17T00:39:20.383Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000556861",
@@ -798,7 +866,7 @@
             "contentType": "official_detail",
             "extractedField": "menus",
             "selector": "detail text price line and nearest product name",
-            "capturedAt": "2026-09-16T23:42:06.209Z"
+            "capturedAt": "2026-09-17T00:39:20.383Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000556861",
@@ -806,7 +874,7 @@
             "contentType": "official_detail",
             "extractedField": "menus",
             "selector": "detail text price line and nearest product name",
-            "capturedAt": "2026-09-16T23:42:06.209Z"
+            "capturedAt": "2026-09-17T00:39:20.383Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000556861",
@@ -814,7 +882,7 @@
             "contentType": "official_detail",
             "extractedField": "menus",
             "selector": "detail text price line and nearest product name",
-            "capturedAt": "2026-09-16T23:42:06.209Z"
+            "capturedAt": "2026-09-17T00:39:20.383Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000556861",
@@ -822,7 +890,7 @@
             "contentType": "official_detail",
             "extractedField": "menus",
             "selector": "detail text price line and nearest product name",
-            "capturedAt": "2026-09-16T23:42:06.209Z"
+            "capturedAt": "2026-09-17T00:39:20.383Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000556861",
@@ -830,13 +898,13 @@
             "contentType": "official_detail",
             "extractedField": "menus",
             "selector": "detail text price line and nearest product name",
-            "capturedAt": "2026-09-16T23:42:06.209Z"
+            "capturedAt": "2026-09-17T00:39:20.383Z"
           }
         ],
         "failureReasons": [
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-09-16T23:42:06.209Z"
+        "checkedAt": "2026-09-17T00:39:20.383Z"
       },
       "brand": null,
       "region": "인천광역시",
@@ -858,7 +926,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-09-16T23:44:58.584Z"
+        "checkedAt": "2026-09-17T00:42:27.237Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
@@ -866,7 +934,7 @@
         "broken_image",
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202606/SNM00000000000538879/20260603190503887_2.jpeg",
         "https://minfo.lotteshopping.com/content/news/202609/SNM00000000000556861/20260915151028770_5.jpeg",
@@ -1047,14 +1115,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -1115,14 +1183,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -1170,7 +1238,7 @@
           "official_detail_images_not_checked",
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-09-16T23:42:09.720Z"
+        "checkedAt": "2026-09-17T00:39:24.135Z"
       },
       "brand": null,
       "region": "울산광역시",
@@ -1182,7 +1250,7 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
@@ -1190,7 +1258,7 @@
         "conflicting_sources",
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -1238,7 +1306,7 @@
           "official_detail_images_not_checked",
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-09-16T23:42:10.146Z"
+        "checkedAt": "2026-09-17T00:39:25.005Z"
       },
       "brand": null,
       "region": "울산광역시",
@@ -1250,7 +1318,7 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
@@ -1258,7 +1326,7 @@
         "conflicting_sources",
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -1319,14 +1387,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -1375,7 +1443,7 @@
           "official_detail_images_not_checked",
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-09-16T23:42:09.530Z"
+        "checkedAt": "2026-09-17T00:39:23.925Z"
       },
       "brand": null,
       "region": "경기도",
@@ -1387,14 +1455,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -1480,14 +1548,14 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-09-16T23:44:58.983Z"
+        "checkedAt": "2026-09-17T00:42:27.762Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202604/SNM00000000000529691/20260425135653938_8.jpeg",
         "https://minfo.lotteshopping.com/content/news/202604/SNM00000000000529691/20260425135653948_2.jpeg"
@@ -1551,14 +1619,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -1580,14 +1648,14 @@
       "lastSeenAt": "2026-09-17",
       "contentSearch": {
         "checkedOfficialList": true,
-        "checkedOfficialDetail": false,
+        "checkedOfficialDetail": true,
         "checkedEmbeddedData": true,
         "checkedOfficialImages": false,
         "checkedOperatorSearch": true,
         "checkedBrandOfficialSources": false,
         "checkedUrls": [
           "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0021&cntsTpCd=C00903&searchTerm=%5B%EC%97%B0%EA%B7%BC%ED%8C%A9%ED%86%A0%EB%A6%AC%5D+Pop-Up",
-          "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0021&cntsTpCd=C00903&searchTerm=%EC%97%B0%EA%B7%BC%ED%8C%A9%ED%86%A0%EB%A6%AC+Pop+Up",
+          "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000364907",
           "https://www.lotteshopping.com/contents/shpgInfo?cstrCd=0021&cntsTpCd=C00903"
         ],
         "checkedMethods": [
@@ -1602,11 +1670,11 @@
         "status": "search_incomplete",
         "evidence": [],
         "failureReasons": [
-          "official_detail_not_identified",
+          "official_detail_brand_conflict",
           "official_detail_images_not_checked",
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-09-16T23:42:10.448Z"
+        "checkedAt": "2026-09-17T00:39:27.494Z"
       },
       "brand": null,
       "region": "광주광역시",
@@ -1618,14 +1686,15 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
-        "search_incomplete"
+        "search_incomplete",
+        "conflicting_sources"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -1686,14 +1755,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -1754,14 +1823,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -1821,14 +1890,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -1894,7 +1963,7 @@
             "contentType": "official_list",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://imgprism.ehyundai.com/evntCrdInf/imgPath/202609/03/46f14257-79c6-4fc2-b00b-d57fc1ff546f.jpg",
-            "capturedAt": "2026-09-16T00:30:45.388Z"
+            "capturedAt": "2026-09-17T00:42:05.163Z"
           },
           {
             "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E7802609502072&branchCd=B00178000&category=",
@@ -1902,7 +1971,7 @@
             "contentType": "official_list",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202609/03/10cd68d7-8e37-458a-a68f-4b9a67d49aa6.jpg",
-            "capturedAt": "2026-09-16T00:30:45.388Z"
+            "capturedAt": "2026-09-17T00:42:05.163Z"
           },
           {
             "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E7802609502072&branchCd=B00178000&category=",
@@ -1910,7 +1979,7 @@
             "contentType": "official_list",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202609/03/7471f8d5-0712-409a-bc42-683144dbc4b6.jpg",
-            "capturedAt": "2026-09-16T00:30:45.388Z"
+            "capturedAt": "2026-09-17T00:42:05.163Z"
           },
           {
             "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E7802609502072&branchCd=B00178000&category=",
@@ -1918,7 +1987,7 @@
             "contentType": "official_list",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202609/03/56f41f7b-e057-456d-9578-c76b12d6c213.jpg",
-            "capturedAt": "2026-09-16T00:30:45.388Z"
+            "capturedAt": "2026-09-17T00:42:05.163Z"
           },
           {
             "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E7802609502072&branchCd=B00178000&category=",
@@ -1926,7 +1995,7 @@
             "contentType": "official_list",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202609/03/fb99c0bd-c8f0-47e0-8fef-93196ca5c382.jpg",
-            "capturedAt": "2026-09-16T00:30:45.388Z"
+            "capturedAt": "2026-09-17T00:42:05.163Z"
           },
           {
             "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E7802609502072&branchCd=B00178000&category=",
@@ -1934,13 +2003,13 @@
             "contentType": "official_list",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202609/03/cbb1f5e0-1023-4d14-bba8-fd078fe8b4ee.jpg",
-            "capturedAt": "2026-09-16T00:30:45.388Z"
+            "capturedAt": "2026-09-17T00:42:05.163Z"
           }
         ],
         "failureReasons": [
           "legacy_collector_search_evidence_incomplete"
         ],
-        "checkedAt": "2026-09-16T00:30:45.388Z"
+        "checkedAt": "2026-09-17T00:42:05.163Z"
       },
       "lastVerifiedAt": "2026-09-17",
       "status": "ongoing",
@@ -1949,11 +2018,11 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-09-16T23:45:02.507Z"
+        "checkedAt": "2026-09-17T00:42:31.083Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202609/03/cbb1f5e0-1023-4d14-bba8-fd078fe8b4ee.jpg",
         "https://imgprism.ehyundai.com/evntCrdInf/imgPath/202609/03/46f14257-79c6-4fc2-b00b-d57fc1ff546f.jpg",
@@ -2026,7 +2095,7 @@
             "contentType": "official_list",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://imgprism.ehyundai.com/evntCrdInf/imgPath/202609/03/670c0068-8406-47b3-bf53-11d7e58ef932.JPG",
-            "capturedAt": "2026-09-16T00:30:45.389Z"
+            "capturedAt": "2026-09-17T00:42:05.164Z"
           },
           {
             "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E7802609502007&branchCd=B00178000&category=",
@@ -2034,7 +2103,7 @@
             "contentType": "official_list",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202609/03/d8ad08b5-c5f3-442b-a20b-5b9a3517aad9.JPG",
-            "capturedAt": "2026-09-16T00:30:45.389Z"
+            "capturedAt": "2026-09-17T00:42:05.164Z"
           },
           {
             "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E7802609502007&branchCd=B00178000&category=",
@@ -2042,7 +2111,7 @@
             "contentType": "official_list",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202609/03/38fb8513-ee0e-4114-85c8-4c935c461c3d.JPG",
-            "capturedAt": "2026-09-16T00:30:45.389Z"
+            "capturedAt": "2026-09-17T00:42:05.164Z"
           },
           {
             "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E7802609502007&branchCd=B00178000&category=",
@@ -2050,7 +2119,7 @@
             "contentType": "official_list",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202609/03/a859ec3b-d2fb-4099-b49c-fb3b4b39a597.jpg",
-            "capturedAt": "2026-09-16T00:30:45.389Z"
+            "capturedAt": "2026-09-17T00:42:05.164Z"
           },
           {
             "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E7802609502007&branchCd=B00178000&category=",
@@ -2058,7 +2127,7 @@
             "contentType": "official_list",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath2/202609/03/ff8b4772-cada-4999-bbf4-cc07acefa2b6.jpg",
-            "capturedAt": "2026-09-16T00:30:45.389Z"
+            "capturedAt": "2026-09-17T00:42:05.164Z"
           },
           {
             "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E7802609502007&branchCd=B00178000&category=",
@@ -2066,13 +2135,13 @@
             "contentType": "official_list",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202609/03/00e31dd9-066c-4ce9-94c6-18be815831c1.JPG",
-            "capturedAt": "2026-09-16T00:30:45.389Z"
+            "capturedAt": "2026-09-17T00:42:05.164Z"
           }
         ],
         "failureReasons": [
           "legacy_collector_search_evidence_incomplete"
         ],
-        "checkedAt": "2026-09-16T00:30:45.389Z"
+        "checkedAt": "2026-09-17T00:42:05.164Z"
       },
       "lastVerifiedAt": "2026-09-17",
       "status": "ongoing",
@@ -2081,11 +2150,11 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-09-16T23:45:03.298Z"
+        "checkedAt": "2026-09-17T00:42:31.122Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202609/03/00e31dd9-066c-4ce9-94c6-18be815831c1.JPG",
         "https://imgprism.ehyundai.com/evntCrdInf/imgPath/202609/03/670c0068-8406-47b3-bf53-11d7e58ef932.JPG",
@@ -2153,14 +2222,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -2221,14 +2290,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -2289,14 +2358,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -2357,14 +2426,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -2460,7 +2529,7 @@
             "contentType": "official_detail",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://imgprism.ehyundai.com/derivedImage/fileValue/202406/19/c9fc6c8c-4856-43e3-bcfc-f4f50fef9b6d_01.jpg",
-            "capturedAt": "2026-09-16T00:30:45.384Z"
+            "capturedAt": "2026-09-17T00:42:05.159Z"
           },
           {
             "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4602609502361&branchCd=B00146000&category=",
@@ -2468,7 +2537,7 @@
             "contentType": "official_detail",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://imgprism.ehyundai.com/img1ItemNmPrcTypeInf/imgPath/202604/28/98d82bd5-7fe4-4afe-b448-e998b8ed9142.jpg",
-            "capturedAt": "2026-09-16T00:30:45.384Z"
+            "capturedAt": "2026-09-17T00:42:05.159Z"
           },
           {
             "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4602609502361&branchCd=B00146000&category=",
@@ -2476,32 +2545,32 @@
             "contentType": "official_detail",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202609/09/46a34bff-4277-4a79-8342-763c8c255790.jpg",
-            "capturedAt": "2026-09-16T00:30:45.384Z"
+            "capturedAt": "2026-09-17T00:42:05.159Z"
           },
           {
             "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4602609502361&branchCd=B00146000&category=",
             "sourceName": "현대백화점 공식 쇼핑뉴스",
             "contentType": "official_detail",
             "extractedField": "menus",
-            "capturedAt": "2026-09-16T00:30:45.384Z"
+            "capturedAt": "2026-09-17T00:42:05.159Z"
           },
           {
             "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4602609502361&branchCd=B00146000&category=",
             "sourceName": "현대백화점 공식 쇼핑뉴스",
             "contentType": "official_detail",
             "extractedField": "menus",
-            "capturedAt": "2026-09-16T00:30:45.384Z"
+            "capturedAt": "2026-09-17T00:42:05.159Z"
           },
           {
             "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4602609502361&branchCd=B00146000&category=",
             "sourceName": "현대백화점 공식 쇼핑뉴스",
             "contentType": "official_detail",
             "extractedField": "menus",
-            "capturedAt": "2026-09-16T00:30:45.384Z"
+            "capturedAt": "2026-09-17T00:42:05.159Z"
           }
         ],
         "failureReasons": [],
-        "checkedAt": "2026-09-16T00:30:45.384Z"
+        "checkedAt": "2026-09-17T00:42:05.159Z"
       },
       "lastVerifiedAt": "2026-09-17",
       "status": "ongoing",
@@ -2509,11 +2578,11 @@
         "status": "review_required",
         "reason": "dimensions_unreadable",
         "contentType": "image/jpeg",
-        "checkedAt": "2026-09-16T23:45:05.119Z"
+        "checkedAt": "2026-09-17T00:42:32.997Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202609/09/46a34bff-4277-4a79-8342-763c8c255790.jpg",
         "https://imgprism.ehyundai.com/derivedImage/fileValue/202406/19/c9fc6c8c-4856-43e3-bcfc-f4f50fef9b6d_01.jpg",
@@ -2609,14 +2678,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -2677,14 +2746,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -2744,7 +2813,7 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
@@ -2752,7 +2821,7 @@
         "conflicting_sources",
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -2813,14 +2882,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -2873,13 +2942,13 @@
             "contentType": "official_list",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://cdndept.galleria.co.kr//image/dept/edm-content/2026/G0910_31s.jpg",
-            "capturedAt": "2026-09-16T23:44:33.818Z"
+            "capturedAt": "2026-09-17T00:42:05.174Z"
           }
         ],
         "failureReasons": [
           "legacy_collector_search_evidence_incomplete"
         ],
-        "checkedAt": "2026-09-16T23:44:33.818Z"
+        "checkedAt": "2026-09-17T00:42:05.174Z"
       },
       "lastVerifiedAt": "2026-09-17",
       "status": "ongoing",
@@ -2888,14 +2957,14 @@
         "contentType": "image/jpeg",
         "width": 640,
         "height": 480,
-        "checkedAt": "2026-09-16T23:45:07.327Z"
+        "checkedAt": "2026-09-17T00:42:34.901Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://cdndept.galleria.co.kr//image/dept/edm-content/2026/G0910_31s.jpg"
       ],
@@ -2958,14 +3027,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -3025,14 +3094,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -3094,7 +3163,7 @@
             "extractedField": "officialImageUrls",
             "selector": "og:image|embedded JSON|img|srcset|background-image",
             "imageUrl": "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000552390/20260811170658803_4.jpeg",
-            "capturedAt": "2026-09-16T23:42:09.242Z"
+            "capturedAt": "2026-09-17T00:39:23.714Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552390",
@@ -3103,7 +3172,7 @@
             "extractedField": "officialImageUrls",
             "selector": "og:image|embedded JSON|img|srcset|background-image",
             "imageUrl": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000544677/20260727183138148_3.jpeg",
-            "capturedAt": "2026-09-16T23:42:09.242Z"
+            "capturedAt": "2026-09-17T00:39:23.714Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552390",
@@ -3112,7 +3181,7 @@
             "extractedField": "officialImageUrls",
             "selector": "og:image|embedded JSON|img|srcset|background-image",
             "imageUrl": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000544677/20260701214505212_0.jpeg",
-            "capturedAt": "2026-09-16T23:42:09.242Z"
+            "capturedAt": "2026-09-17T00:39:23.714Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552390",
@@ -3121,7 +3190,7 @@
             "extractedField": "officialImageUrls",
             "selector": "og:image|embedded JSON|img|srcset|background-image",
             "imageUrl": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000544677/20260727183138211_1.jpeg",
-            "capturedAt": "2026-09-16T23:42:09.242Z"
+            "capturedAt": "2026-09-17T00:39:23.714Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552390",
@@ -3129,7 +3198,7 @@
             "contentType": "official_detail",
             "extractedField": "menus",
             "selector": "detail text price line and nearest product name",
-            "capturedAt": "2026-09-16T23:42:09.242Z"
+            "capturedAt": "2026-09-17T00:39:23.714Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552390",
@@ -3137,14 +3206,14 @@
             "contentType": "official_detail",
             "extractedField": "menus",
             "selector": "detail text price line and nearest product name",
-            "capturedAt": "2026-09-16T23:42:09.242Z"
+            "capturedAt": "2026-09-17T00:39:23.714Z"
           }
         ],
         "failureReasons": [
           "brand_official_sources_not_checked",
           "price_text_detected_menu_parse_empty"
         ],
-        "checkedAt": "2026-09-16T23:42:09.242Z"
+        "checkedAt": "2026-09-17T00:39:23.714Z"
       },
       "brand": null,
       "region": null,
@@ -3182,14 +3251,14 @@
         "contentType": "image/jpeg",
         "width": 670,
         "height": 947,
-        "checkedAt": "2026-09-16T23:45:07.089Z"
+        "checkedAt": "2026-09-17T00:42:34.712Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "parse_failed"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000552390/20260811170658803_4.jpeg",
         "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000544677/20260727183138148_3.jpeg",
@@ -3278,14 +3347,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -3345,14 +3414,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -3412,14 +3481,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -3778,14 +3847,14 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-09-16T23:44:58.584Z"
+        "checkedAt": "2026-09-17T00:42:27.237Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "broken_image"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202606/SNM00000000000538879/20260603190503887_2.jpeg",
         "https://minfo.lotteshopping.com/content/news/202606/SNM00000000000538879/20260603190503950_5.jpeg",
@@ -3979,7 +4048,7 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
@@ -3987,7 +4056,7 @@
         "conflicting_sources",
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -4047,7 +4116,7 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
@@ -4055,7 +4124,7 @@
         "conflicting_sources",
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -4116,14 +4185,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -4184,14 +4253,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -4259,14 +4328,14 @@
         "contentType": "image/jpeg",
         "width": 640,
         "height": 480,
-        "checkedAt": "2026-09-16T23:45:10.340Z"
+        "checkedAt": "2026-09-17T00:42:37.483Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://cdndept.galleria.co.kr//image/dept/edm-content/2026/G0904_25s.jpg"
       ],
@@ -4329,14 +4398,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -4397,14 +4466,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -4465,14 +4534,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -4533,14 +4602,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -4601,14 +4670,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -4669,14 +4738,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -4737,14 +4806,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -4805,14 +4874,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -4873,14 +4942,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -4941,14 +5010,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -5009,14 +5078,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -5077,14 +5146,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -5144,14 +5213,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -5212,14 +5281,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -5280,14 +5349,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -5348,14 +5417,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -5416,14 +5485,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -5491,14 +5560,14 @@
         "contentType": "image/jpeg",
         "width": 640,
         "height": 480,
-        "checkedAt": "2026-09-16T23:45:11.161Z"
+        "checkedAt": "2026-09-17T00:42:38.272Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://cdndept.galleria.co.kr//image/dept/edm-content/2026/G0904_7s.jpg"
       ],
@@ -5585,7 +5654,7 @@
             "extractedField": "officialImageUrls",
             "selector": "og:image|embedded JSON|img|srcset|background-image",
             "imageUrl": "https://minfo.lotteshopping.com/content/news/202605/SNM00000000000534667/20260516114210521_3.jpeg",
-            "capturedAt": "2026-09-16T23:42:11.092Z"
+            "capturedAt": "2026-09-17T00:39:28.501Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552398",
@@ -5594,7 +5663,7 @@
             "extractedField": "officialImageUrls",
             "selector": "og:image|embedded JSON|img|srcset|background-image",
             "imageUrl": "https://minfo.lotteshopping.com/content/news/202401/SNM00000000000344076/20240121171210102_2.jpeg",
-            "capturedAt": "2026-09-16T23:42:11.092Z"
+            "capturedAt": "2026-09-17T00:39:28.501Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552398",
@@ -5603,7 +5672,7 @@
             "extractedField": "officialImageUrls",
             "selector": "og:image|embedded JSON|img|srcset|background-image",
             "imageUrl": "https://minfo.lotteshopping.com/content/news/202401/SNM00000000000344076/20240121171210108_2.jpeg",
-            "capturedAt": "2026-09-16T23:42:11.092Z"
+            "capturedAt": "2026-09-17T00:39:28.501Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552398",
@@ -5612,7 +5681,7 @@
             "extractedField": "officialImageUrls",
             "selector": "og:image|embedded JSON|img|srcset|background-image",
             "imageUrl": "https://minfo.lotteshopping.com/content/news/202401/SNM00000000000344076/20240121171210112_5.jpeg",
-            "capturedAt": "2026-09-16T23:42:11.092Z"
+            "capturedAt": "2026-09-17T00:39:28.501Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552398",
@@ -5620,7 +5689,7 @@
             "contentType": "official_detail",
             "extractedField": "menus",
             "selector": "detail text price line and nearest product name",
-            "capturedAt": "2026-09-16T23:42:11.092Z"
+            "capturedAt": "2026-09-17T00:39:28.501Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000552398",
@@ -5628,13 +5697,13 @@
             "contentType": "official_detail",
             "extractedField": "menus",
             "selector": "detail text price line and nearest product name",
-            "capturedAt": "2026-09-16T23:42:11.092Z"
+            "capturedAt": "2026-09-17T00:39:28.501Z"
           }
         ],
         "failureReasons": [
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-09-16T23:42:11.092Z"
+        "checkedAt": "2026-09-17T00:39:28.501Z"
       },
       "brand": null,
       "region": null,
@@ -5650,14 +5719,14 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-09-16T23:45:11.153Z"
+        "checkedAt": "2026-09-17T00:42:38.250Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "broken_image"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202605/SNM00000000000534667/20260516114210521_3.jpeg",
         "https://minfo.lotteshopping.com/content/news/202401/SNM00000000000344076/20240121171210102_2.jpeg",
@@ -5860,14 +5929,14 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-09-16T23:45:11.240Z"
+        "checkedAt": "2026-09-17T00:42:38.305Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "parse_failed"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202407/SNM00000000000389485/20240723175243510_2.jpeg",
         "https://minfo.lotteshopping.com/content/news/202204/SNM00000000000203857/20220406163006781_3.jpeg",
@@ -5974,7 +6043,7 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
@@ -5982,7 +6051,7 @@
         "conflicting_sources",
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -6042,7 +6111,7 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
@@ -6050,7 +6119,7 @@
         "conflicting_sources",
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -6111,14 +6180,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -6179,14 +6248,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -6247,14 +6316,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -6315,14 +6384,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -6383,14 +6452,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -6451,14 +6520,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -6519,14 +6588,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -6679,14 +6748,14 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-09-16T23:45:12.222Z"
+        "checkedAt": "2026-09-17T00:42:39.223Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "parse_failed"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000555152/20260825185524164_3.jpeg",
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000555152/20260825190820287_0.jpeg",
@@ -7171,14 +7240,14 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-09-16T23:45:13.005Z"
+        "checkedAt": "2026-09-17T00:42:39.878Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "parse_failed"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000551551/20260805173614918_9.jpeg",
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000551551/20260805173614933_4.jpeg",
@@ -7595,14 +7664,14 @@
         "contentType": "image/jpeg",
         "width": 670,
         "height": 473,
-        "checkedAt": "2026-09-16T23:45:13.143Z"
+        "checkedAt": "2026-09-17T00:42:39.964Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "parse_failed"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000555705/20260827184254294_1.jpeg",
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000555705/20260827184254302_4.jpeg",
@@ -7949,14 +8018,14 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-09-16T23:45:13.416Z"
+        "checkedAt": "2026-09-17T00:42:40.199Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "broken_image"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000555830/20260827170052488_1.jpeg",
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000555830/20260827170052528_2.jpeg",
@@ -8436,14 +8505,14 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-09-16T23:45:13.525Z"
+        "checkedAt": "2026-09-17T00:42:40.348Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "parse_failed"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202508/SNM00000000000469152/20250808132129827_2.jpeg",
         "https://minfo.lotteshopping.com/content/news/202508/SNM00000000000469152/20250808132129895_6.jpeg",
@@ -8609,14 +8678,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -8717,11 +8786,11 @@
         "contentType": "image/png",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-09-16T23:45:14.467Z"
+        "checkedAt": "2026-09-17T00:42:41.170Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202608/13/d7323b8a-3536-4eb2-87d9-ffd48bcb96e8.png",
         "https://imgprism.ehyundai.com/evntCrdInf/imgPath/202608/13/5fb5209c-b053-4ea8-b8cc-871fbadef081.png",
@@ -8787,14 +8856,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -8855,14 +8924,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -8923,14 +8992,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -8991,14 +9060,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -9059,14 +9128,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -9127,14 +9196,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -9195,14 +9264,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -9263,14 +9332,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -9331,14 +9400,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -9399,14 +9468,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -9467,14 +9536,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -9535,14 +9604,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -9602,14 +9671,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -9670,14 +9739,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -9738,14 +9807,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -9806,14 +9875,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -9912,14 +9981,14 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-09-16T23:45:11.240Z"
+        "checkedAt": "2026-09-17T00:42:38.305Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "parse_failed"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202407/SNM00000000000389485/20240723175243510_2.jpeg",
         "https://minfo.lotteshopping.com/content/news/202204/SNM00000000000203857/20220406163006781_3.jpeg",
@@ -9983,14 +10052,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -10051,14 +10120,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -10119,14 +10188,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -10214,14 +10283,14 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-09-16T23:45:15.925Z"
+        "checkedAt": "2026-09-17T00:42:42.448Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "parse_failed"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000554299/20260820181115325_6.jpeg",
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000554299/20260820181115348_5.jpeg"
@@ -10284,14 +10353,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -10352,14 +10421,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -10420,14 +10489,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -10488,14 +10557,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -10594,14 +10663,14 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-09-16T23:45:16.404Z"
+        "checkedAt": "2026-09-17T00:42:42.858Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "parse_failed"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000542913/20260701094639661_3.jpeg",
         "https://minfo.lotteshopping.com/content/news/202606/SNM00000000000542913/20260624173306813_6.jpeg",
@@ -10773,7 +10842,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-09-16T23:45:16.462Z"
+        "checkedAt": "2026-09-17T00:42:42.894Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
@@ -10781,7 +10850,7 @@
         "broken_image",
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202606/SNM00000000000543107/20260625135529184_3.jpeg",
         "https://minfo.lotteshopping.com/content/news/202606/SNM00000000000543107/20260625135529200_3.jpeg",
@@ -10904,14 +10973,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -10997,14 +11066,14 @@
         "contentType": "image/jpeg",
         "width": 670,
         "height": 4791,
-        "checkedAt": "2026-09-16T23:45:17.990Z"
+        "checkedAt": "2026-09-17T00:42:44.125Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000553975/20260819142930983_1.jpeg",
         "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547661/20260717184854621_0.jpeg"
@@ -11165,14 +11234,14 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-09-16T23:45:18.557Z"
+        "checkedAt": "2026-09-17T00:42:44.745Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "parse_failed"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202601/SNM00000000000509190/20260125142331372_1.jpeg",
         "https://minfo.lotteshopping.com/content/news/202412/SNM00000000000421507/20241221155712985_6.jpeg",
@@ -11478,7 +11547,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-09-16T23:45:09.913Z"
+        "checkedAt": "2026-09-17T00:42:37.132Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
@@ -11486,7 +11555,7 @@
         "broken_image",
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202502/SNM00000000000433244/20250226163120706_0.jpeg",
         "https://minfo.lotteshopping.com/content/news/202307/SNM00000000000299612/20230706121415911_3.jpeg",
@@ -11640,14 +11709,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -11708,14 +11777,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -11776,14 +11845,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -11850,18 +11919,18 @@
             "contentType": "official_list",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://m.akplaza.com/upload/event/202608/new_renewal/s_nr_04.png",
-            "capturedAt": "2026-09-16T23:44:33.821Z"
+            "capturedAt": "2026-09-17T00:42:05.177Z"
           },
           {
             "sourceUrl": "https://www.akplaza.com/board/event/view?store=02&seq=3378",
             "sourceName": "AK플라자 공식 이벤트",
             "contentType": "official_list",
             "extractedField": "menus",
-            "capturedAt": "2026-09-16T23:44:33.821Z"
+            "capturedAt": "2026-09-17T00:42:05.177Z"
           }
         ],
         "failureReasons": [],
-        "checkedAt": "2026-09-16T23:44:33.821Z"
+        "checkedAt": "2026-09-17T00:42:05.177Z"
       },
       "lastVerifiedAt": "2026-09-17",
       "status": "ongoing",
@@ -11870,7 +11939,7 @@
         "contentType": "image/png",
         "width": 780,
         "height": 4428,
-        "checkedAt": "2026-09-16T23:45:22.530Z"
+        "checkedAt": "2026-09-17T00:42:48.349Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
@@ -11878,7 +11947,7 @@
         "broken_image",
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://m.akplaza.com/upload/event/202608/new_renewal/s_nr_04.png"
       ],
@@ -11971,14 +12040,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -12039,14 +12108,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -12107,14 +12176,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -12175,14 +12244,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -12243,14 +12312,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -12311,14 +12380,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -12379,14 +12448,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -12453,18 +12522,18 @@
             "contentType": "official_list",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://m.akplaza.com/upload/event/202608/new_renewal/s_nr_04.png",
-            "capturedAt": "2026-09-16T23:44:33.825Z"
+            "capturedAt": "2026-09-17T00:42:05.180Z"
           },
           {
             "sourceUrl": "https://www.akplaza.com/board/event/view?store=02&seq=3378",
             "sourceName": "AK플라자 공식 이벤트",
             "contentType": "official_list",
             "extractedField": "menus",
-            "capturedAt": "2026-09-16T23:44:33.825Z"
+            "capturedAt": "2026-09-17T00:42:05.180Z"
           }
         ],
         "failureReasons": [],
-        "checkedAt": "2026-09-16T23:44:33.825Z"
+        "checkedAt": "2026-09-17T00:42:05.180Z"
       },
       "lastVerifiedAt": "2026-09-17",
       "status": "ongoing",
@@ -12473,7 +12542,7 @@
         "contentType": "image/png",
         "width": 780,
         "height": 4428,
-        "checkedAt": "2026-09-16T23:45:22.530Z"
+        "checkedAt": "2026-09-17T00:42:48.349Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
@@ -12481,7 +12550,7 @@
         "broken_image",
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://m.akplaza.com/upload/event/202608/new_renewal/s_nr_04.png"
       ],
@@ -12574,14 +12643,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -12642,14 +12711,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -12710,14 +12779,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -12784,18 +12853,18 @@
             "contentType": "official_list",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://m.akplaza.com/upload/event/202608/new_renewal/s_nr_04.png",
-            "capturedAt": "2026-09-16T23:44:33.823Z"
+            "capturedAt": "2026-09-17T00:42:05.179Z"
           },
           {
             "sourceUrl": "https://www.akplaza.com/board/event/view?store=02&seq=3378",
             "sourceName": "AK플라자 공식 이벤트",
             "contentType": "official_list",
             "extractedField": "menus",
-            "capturedAt": "2026-09-16T23:44:33.823Z"
+            "capturedAt": "2026-09-17T00:42:05.179Z"
           }
         ],
         "failureReasons": [],
-        "checkedAt": "2026-09-16T23:44:33.823Z"
+        "checkedAt": "2026-09-17T00:42:05.179Z"
       },
       "lastVerifiedAt": "2026-09-17",
       "status": "ongoing",
@@ -12804,7 +12873,7 @@
         "contentType": "image/png",
         "width": 780,
         "height": 4428,
-        "checkedAt": "2026-09-16T23:45:22.530Z"
+        "checkedAt": "2026-09-17T00:42:48.349Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
@@ -12812,7 +12881,7 @@
         "broken_image",
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://m.akplaza.com/upload/event/202608/new_renewal/s_nr_04.png"
       ],
@@ -12905,14 +12974,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -12973,14 +13042,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -13047,18 +13116,18 @@
             "contentType": "official_list",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://m.akplaza.com/upload/event/202608/new_renewal/s_nr_04.png",
-            "capturedAt": "2026-09-16T23:44:33.822Z"
+            "capturedAt": "2026-09-17T00:42:05.178Z"
           },
           {
             "sourceUrl": "https://www.akplaza.com/board/event/view?store=02&seq=3378",
             "sourceName": "AK플라자 공식 이벤트",
             "contentType": "official_list",
             "extractedField": "menus",
-            "capturedAt": "2026-09-16T23:44:33.822Z"
+            "capturedAt": "2026-09-17T00:42:05.178Z"
           }
         ],
         "failureReasons": [],
-        "checkedAt": "2026-09-16T23:44:33.822Z"
+        "checkedAt": "2026-09-17T00:42:05.178Z"
       },
       "lastVerifiedAt": "2026-09-17",
       "status": "ongoing",
@@ -13067,7 +13136,7 @@
         "contentType": "image/png",
         "width": 780,
         "height": 4428,
-        "checkedAt": "2026-09-16T23:45:22.530Z"
+        "checkedAt": "2026-09-17T00:42:48.349Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
@@ -13075,7 +13144,7 @@
         "broken_image",
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://m.akplaza.com/upload/event/202608/new_renewal/s_nr_04.png"
       ],
@@ -13168,14 +13237,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -13236,14 +13305,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -13310,18 +13379,18 @@
             "contentType": "official_list",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://m.akplaza.com/upload/event/202608/new_renewal/s_nr_04.png",
-            "capturedAt": "2026-09-16T23:44:33.824Z"
+            "capturedAt": "2026-09-17T00:42:05.179Z"
           },
           {
             "sourceUrl": "https://www.akplaza.com/board/event/view?store=02&seq=3378",
             "sourceName": "AK플라자 공식 이벤트",
             "contentType": "official_list",
             "extractedField": "menus",
-            "capturedAt": "2026-09-16T23:44:33.824Z"
+            "capturedAt": "2026-09-17T00:42:05.179Z"
           }
         ],
         "failureReasons": [],
-        "checkedAt": "2026-09-16T23:44:33.824Z"
+        "checkedAt": "2026-09-17T00:42:05.179Z"
       },
       "lastVerifiedAt": "2026-09-17",
       "status": "ongoing",
@@ -13330,7 +13399,7 @@
         "contentType": "image/png",
         "width": 780,
         "height": 4428,
-        "checkedAt": "2026-09-16T23:45:22.530Z"
+        "checkedAt": "2026-09-17T00:42:48.349Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
@@ -13338,7 +13407,7 @@
         "broken_image",
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://m.akplaza.com/upload/event/202608/new_renewal/s_nr_04.png"
       ],
@@ -13437,18 +13506,18 @@
             "contentType": "official_list",
             "extractedField": "officialImageUrls",
             "imageUrl": "https://m.akplaza.com/upload/event/202608/new_renewal/s_nr_04.png",
-            "capturedAt": "2026-09-16T23:44:33.823Z"
+            "capturedAt": "2026-09-17T00:42:05.178Z"
           },
           {
             "sourceUrl": "https://www.akplaza.com/board/event/view?store=02&seq=3378",
             "sourceName": "AK플라자 공식 이벤트",
             "contentType": "official_list",
             "extractedField": "menus",
-            "capturedAt": "2026-09-16T23:44:33.823Z"
+            "capturedAt": "2026-09-17T00:42:05.178Z"
           }
         ],
         "failureReasons": [],
-        "checkedAt": "2026-09-16T23:44:33.823Z"
+        "checkedAt": "2026-09-17T00:42:05.178Z"
       },
       "lastVerifiedAt": "2026-09-17",
       "status": "ongoing",
@@ -13457,7 +13526,7 @@
         "contentType": "image/png",
         "width": 780,
         "height": 4428,
-        "checkedAt": "2026-09-16T23:45:22.530Z"
+        "checkedAt": "2026-09-17T00:42:48.349Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
@@ -13465,7 +13534,7 @@
         "broken_image",
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://m.akplaza.com/upload/event/202608/new_renewal/s_nr_04.png"
       ],
@@ -13558,14 +13627,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -13625,14 +13694,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -13693,14 +13762,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -13797,14 +13866,14 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-09-16T23:45:24.940Z"
+        "checkedAt": "2026-09-17T00:42:49.939Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000553245/2026081416200616_3.jpeg",
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000553245/2026081416200631_6.jpeg",
@@ -13869,14 +13938,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -13937,14 +14006,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -14005,14 +14074,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -14073,14 +14142,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -14141,14 +14210,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -14209,14 +14278,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -14361,7 +14430,7 @@
         "status": "invalid",
         "reason": "invalid_content_type",
         "contentType": "application/octet-stream",
-        "checkedAt": "2026-09-16T23:45:24.302Z"
+        "checkedAt": "2026-09-17T00:42:49.881Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
@@ -14369,7 +14438,7 @@
         "broken_image",
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://mukdang.com/assets/popups/shinsegae/693ffbbb41915612c4e8.bmp",
         "https://www.shinsegae.com/cms12/SC00010/info/shopping/brndsingle/__icsFiles/afieldfile/2026/08/20/fpB7aXwF5xJ4.bmp"
@@ -14473,14 +14542,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -14541,14 +14610,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -14609,14 +14678,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -14676,14 +14745,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -14743,14 +14812,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -14811,14 +14880,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -15008,7 +15077,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-09-16T23:45:26.125Z"
+        "checkedAt": "2026-09-17T00:42:51.180Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
@@ -15016,7 +15085,7 @@
         "broken_image",
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202511/SNM00000000000471494/20251125094739408_4.jpeg",
         "https://minfo.lotteshopping.com/content/news/202504/SNM00000000000444692/20250402130502279_5.jpeg",
@@ -15278,7 +15347,7 @@
         "contentType": "image/jpeg",
         "width": 670,
         "height": 670,
-        "checkedAt": "2026-09-16T23:45:26.121Z"
+        "checkedAt": "2026-09-17T00:42:51.212Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
@@ -15286,7 +15355,7 @@
         "broken_image",
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000552555/20260811154546368_8.jpeg",
         "https://minfo.lotteshopping.com/content/news/202604/SNM00000000000526404/20260410135931921_7.jpeg"
@@ -15438,14 +15507,14 @@
         "contentType": "image/jpeg",
         "width": 780,
         "height": 780,
-        "checkedAt": "2026-09-16T23:45:26.383Z"
+        "checkedAt": "2026-09-17T00:42:51.584Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://img-www.akplaza.com/upload/edm/news/28019/0fbac920-c96c-4cff-af6b-bbea0c329508.jpg",
         "https://img-www.akplaza.com/upload/edm/news/28019/f904b959-97f5-470a-b9f5-f10af50bcbad.jpg"
@@ -15687,7 +15756,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-09-16T23:45:09.913Z"
+        "checkedAt": "2026-09-17T00:42:37.132Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
@@ -15695,7 +15764,7 @@
         "broken_image",
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202502/SNM00000000000433244/20250226163120706_0.jpeg",
         "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000549410/20260727165033358_9.jpeg",
@@ -15896,14 +15965,14 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-09-16T23:45:26.672Z"
+        "checkedAt": "2026-09-17T00:42:51.746Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000551904/20260807144045914_2.jpeg",
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000551904/20260807144045930_7.jpeg",
@@ -16047,7 +16116,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-09-16T23:45:27.272Z"
+        "checkedAt": "2026-09-17T00:42:52.066Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
@@ -16055,7 +16124,7 @@
         "broken_image",
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000552682/20260812102804328_5.jpeg",
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000552682/20260812103017253_3.jpeg",
@@ -16340,7 +16409,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-09-16T23:44:59.376Z"
+        "checkedAt": "2026-09-17T00:42:28.174Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
@@ -16348,7 +16417,7 @@
         "broken_image",
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202606/SNM00000000000541249/20260616164449928_6.jpeg",
         "https://minfo.lotteshopping.com/content/news/202606/SNM00000000000541249/20260616164449940_6.jpeg",
@@ -16530,14 +16599,14 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-09-16T23:45:27.564Z"
+        "checkedAt": "2026-09-17T00:42:52.322Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000550921/20260803145458604_4.jpeg",
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000550921/20260803145458620_5.jpeg",
@@ -16602,14 +16671,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -16670,14 +16739,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -16738,14 +16807,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -17060,14 +17129,14 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-09-16T23:45:28.374Z"
+        "checkedAt": "2026-09-17T00:42:53.026Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000552733/2026081215342862_8.jpeg",
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000552733/20260812153428147_4.jpeg"
@@ -17223,14 +17292,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -17290,14 +17359,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -17358,14 +17427,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -17426,14 +17495,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -17501,14 +17570,14 @@
         "contentType": "image/jpeg",
         "width": 640,
         "height": 480,
-        "checkedAt": "2026-09-16T23:45:29.074Z"
+        "checkedAt": "2026-09-17T00:42:53.554Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://cdndept.galleria.co.kr//image/dept/edm-content/2026/G0814_25s.jpg"
       ],
@@ -17571,14 +17640,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -17639,14 +17708,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -17706,14 +17775,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -17774,14 +17843,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -17867,14 +17936,14 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-09-16T23:44:58.983Z"
+        "checkedAt": "2026-09-17T00:42:27.762Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202604/SNM00000000000529691/20260425135653938_8.jpeg",
         "https://minfo.lotteshopping.com/content/news/202604/SNM00000000000529691/20260425135653948_2.jpeg"
@@ -18146,7 +18215,7 @@
         "contentType": "image/jpeg",
         "width": 745,
         "height": 745,
-        "checkedAt": "2026-09-16T23:45:30.427Z"
+        "checkedAt": "2026-09-17T00:42:54.638Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
@@ -18154,7 +18223,7 @@
         "broken_image",
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202407/SNM00000000000387996/20240715153135420_8.jpeg",
         "https://minfo.lotteshopping.com/content/news/202504/SNM00000000000449687/20250423131942884_6.jpeg",
@@ -18329,7 +18398,7 @@
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://mukdang.com/assets/popups/shinsegae/5fd5cfe4142f384b701d.jpg",
         "https://www.shinsegae.com/cms12/SC00012/info/shopping/brndintg/__icsFiles/afieldfile/2026/08/13/0814APPha10.jpg",
@@ -18343,7 +18412,7 @@
         "contentType": "image/jpeg",
         "width": 720,
         "height": 720,
-        "checkedAt": "2026-09-16T23:45:30.294Z"
+        "checkedAt": "2026-09-17T00:42:54.572Z"
       }
     },
     {
@@ -18402,14 +18471,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -18470,14 +18539,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -18565,14 +18634,14 @@
         "contentType": "image/jpeg",
         "width": 925,
         "height": 925,
-        "checkedAt": "2026-09-16T23:45:30.590Z"
+        "checkedAt": "2026-09-17T00:42:54.825Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://img.ehyundai.com/files/derivedImage/fileValue/202608/08/4947b505-73ad-4a66-8552-628aef9eb155_02.jpg",
         "https://imgprism.ehyundai.com/derivedImage/fileValue/202608/08/4947b505-73ad-4a66-8552-628aef9eb155_01.jpg",
@@ -18662,14 +18731,14 @@
         "contentType": "image/jpeg",
         "width": 670,
         "height": 4791,
-        "checkedAt": "2026-09-16T23:45:31.542Z"
+        "checkedAt": "2026-09-17T00:42:55.459Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202608/SNM00000000000551162/20260804143859925_4.jpeg",
         "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547661/20260717184854621_0.jpeg"
@@ -18745,14 +18814,14 @@
         "contentType": "image/jpeg",
         "width": 2154,
         "height": 1020,
-        "checkedAt": "2026-09-16T23:45:31.647Z"
+        "checkedAt": "2026-09-17T00:42:55.587Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://mukdang.com/assets/popups/shinsegae/804afb23c9242b9cc849.jpg",
         "https://www.shinsegae.com/cms12/SC00008/info/shopping/brndintg/__icsFiles/afieldfile/2026/08/06/bbangbbang360.jpg"
@@ -18823,14 +18892,14 @@
         "contentType": "image/png",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-09-16T23:45:32.441Z"
+        "checkedAt": "2026-09-17T00:42:56.332Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202604/08/91cd14c8-90b2-44ff-86ab-498c1b60ee13.png"
       ],
@@ -18936,14 +19005,14 @@
         "status": "review_required",
         "reason": "dimensions_unreadable",
         "contentType": "image/jpeg",
-        "checkedAt": "2026-09-16T23:45:32.640Z"
+        "checkedAt": "2026-09-17T00:42:56.482Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202603/25/998186a8-5406-44e3-a9e8-65f953fece42.jpg"
       ],
@@ -19034,14 +19103,14 @@
         "contentType": "image/jpeg",
         "width": 640,
         "height": 480,
-        "checkedAt": "2026-09-16T23:45:33.479Z"
+        "checkedAt": "2026-09-17T00:42:57.216Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://cdndept.galleria.co.kr//image/dept/edm-content/2026/G0807_21s.jpg"
       ],
@@ -19116,14 +19185,14 @@
         "contentType": "image/png",
         "width": 720,
         "height": 360,
-        "checkedAt": "2026-09-16T23:45:33.168Z"
+        "checkedAt": "2026-09-17T00:42:56.934Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://mukdang.com/assets/popups/shinsegae/020305070f60c353d8dc.png",
         "https://www.shinsegae.com/cms12/SC00003/info/shopping/brndsingle/__icsFiles/afieldfile/2026/08/05/1bCscCnHaOSl.png"
@@ -19187,14 +19256,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -19349,14 +19418,14 @@
           "official_detail_images_not_checked",
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-09-16T23:42:02.480Z"
+        "checkedAt": "2026-09-17T00:39:16.213Z"
       },
       "imageValidation": {
         "status": "valid",
         "contentType": "image/jpeg",
         "width": 745,
         "height": 745,
-        "checkedAt": "2026-09-16T23:45:30.427Z"
+        "checkedAt": "2026-09-17T00:42:54.638Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
@@ -19364,7 +19433,7 @@
         "broken_image",
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202407/SNM00000000000387996/20240715153135420_8.jpeg",
         "https://minfo.lotteshopping.com/content/news/202504/SNM00000000000449687/20250423131942884_6.jpeg",
@@ -19520,14 +19589,14 @@
         "contentType": "image/jpeg",
         "width": 670,
         "height": 670,
-        "checkedAt": "2026-09-16T23:45:36.744Z"
+        "checkedAt": "2026-09-17T00:43:00.126Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000549268/20260729122830165_8.jpeg",
         "https://minfo.lotteshopping.com/content/news/202602/SNM00000000000511522/20260204123804171_6.jpeg"
@@ -19655,21 +19724,21 @@
           "official_detail_images_not_checked",
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-09-16T23:42:03.566Z"
+        "checkedAt": "2026-09-17T00:39:17.232Z"
       },
       "imageValidation": {
         "status": "valid",
         "contentType": "image/jpeg",
         "width": 1687,
         "height": 2249,
-        "checkedAt": "2026-09-16T23:45:37.155Z"
+        "checkedAt": "2026-09-17T00:43:00.542Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/prfl/202505/PRFL2025050818072491.jpg",
         "https://minfo.lotteshopping.com/content/news/202510/SNM00000000000489497/20251027133127740_0.jpeg",
@@ -19916,7 +19985,7 @@
         "contentType": "image/png",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-09-16T23:45:36.978Z"
+        "checkedAt": "2026-09-17T00:43:00.343Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
@@ -19924,7 +19993,7 @@
         "broken_image",
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/21/2174e7a9-d619-4620-9d83-14280f60eee7.png",
         "https://imgprism.ehyundai.com/img2ItemNmPrcTypeInf/imgPath1/202607/21/942a92b9-1fb4-4b97-b0fe-a50034cc31a4.png",
@@ -20285,7 +20354,7 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-09-16T23:45:37.036Z"
+        "checkedAt": "2026-09-17T00:43:00.409Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
@@ -20293,7 +20362,7 @@
         "broken_image",
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://img.ehyundai.com/files/evntCrdInf/imgPath2/202607/24/1eece98e-a959-43f6-9aaf-d1b87d84587c.jpg"
       ],
@@ -20495,19 +20564,19 @@
           "official_detail_images_not_checked",
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-09-16T23:42:04.850Z"
+        "checkedAt": "2026-09-17T00:39:18.892Z"
       },
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -20581,19 +20650,19 @@
           "official_detail_images_not_checked",
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-09-16T23:42:04.986Z"
+        "checkedAt": "2026-09-17T00:39:19.179Z"
       },
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -20666,19 +20735,19 @@
           "official_detail_images_not_checked",
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-09-16T23:42:04.761Z"
+        "checkedAt": "2026-09-17T00:39:18.663Z"
       },
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -20752,19 +20821,19 @@
           "official_detail_images_not_checked",
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-09-16T23:42:04.450Z"
+        "checkedAt": "2026-09-17T00:39:18.305Z"
       },
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -20837,19 +20906,19 @@
           "official_detail_images_not_checked",
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-09-16T23:42:04.631Z"
+        "checkedAt": "2026-09-17T00:39:18.526Z"
       },
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -20923,19 +20992,19 @@
           "official_detail_images_not_checked",
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-09-16T23:42:03.928Z"
+        "checkedAt": "2026-09-17T00:39:17.847Z"
       },
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -21007,19 +21076,19 @@
           "official_detail_images_not_checked",
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-09-16T23:42:03.745Z"
+        "checkedAt": "2026-09-17T00:39:17.570Z"
       },
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -21093,19 +21162,19 @@
           "official_detail_images_not_checked",
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-09-16T23:42:05.158Z"
+        "checkedAt": "2026-09-17T00:39:19.206Z"
       },
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -21165,14 +21234,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -21230,7 +21299,7 @@
             "extractedField": "officialImageUrls",
             "selector": "og:image|embedded JSON|img|srcset|background-image",
             "imageUrl": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547195/20260715171108398_1.jpeg",
-            "capturedAt": "2026-09-16T23:42:03.575Z"
+            "capturedAt": "2026-09-17T00:39:17.236Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000547195",
@@ -21239,7 +21308,7 @@
             "extractedField": "officialImageUrls",
             "selector": "og:image|embedded JSON|img|srcset|background-image",
             "imageUrl": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547195/20260715171108424_8.jpeg",
-            "capturedAt": "2026-09-16T23:42:03.575Z"
+            "capturedAt": "2026-09-17T00:39:17.236Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000547195",
@@ -21248,7 +21317,7 @@
             "extractedField": "officialImageUrls",
             "selector": "og:image|embedded JSON|img|srcset|background-image",
             "imageUrl": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547195/20260715184905847_6.jpeg",
-            "capturedAt": "2026-09-16T23:42:03.575Z"
+            "capturedAt": "2026-09-17T00:39:17.236Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000547195",
@@ -21257,7 +21326,7 @@
             "extractedField": "officialImageUrls",
             "selector": "og:image|embedded JSON|img|srcset|background-image",
             "imageUrl": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547195/20260715184905854_9.jpeg",
-            "capturedAt": "2026-09-16T23:42:03.575Z"
+            "capturedAt": "2026-09-17T00:39:17.236Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000547195",
@@ -21266,7 +21335,7 @@
             "extractedField": "officialImageUrls",
             "selector": "og:image|embedded JSON|img|srcset|background-image",
             "imageUrl": "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547195/20260715184905858_3.jpeg",
-            "capturedAt": "2026-09-16T23:42:03.575Z"
+            "capturedAt": "2026-09-17T00:39:17.236Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000547195",
@@ -21274,7 +21343,7 @@
             "contentType": "official_detail",
             "extractedField": "menus",
             "selector": "detail text price line and nearest product name",
-            "capturedAt": "2026-09-16T23:42:03.575Z"
+            "capturedAt": "2026-09-17T00:39:17.236Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000547195",
@@ -21282,7 +21351,7 @@
             "contentType": "official_detail",
             "extractedField": "menus",
             "selector": "detail text price line and nearest product name",
-            "capturedAt": "2026-09-16T23:42:03.575Z"
+            "capturedAt": "2026-09-17T00:39:17.236Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000547195",
@@ -21290,7 +21359,7 @@
             "contentType": "official_detail",
             "extractedField": "menus",
             "selector": "detail text price line and nearest product name",
-            "capturedAt": "2026-09-16T23:42:03.575Z"
+            "capturedAt": "2026-09-17T00:39:17.236Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000547195",
@@ -21298,7 +21367,7 @@
             "contentType": "official_detail",
             "extractedField": "menus",
             "selector": "detail text price line and nearest product name",
-            "capturedAt": "2026-09-16T23:42:03.575Z"
+            "capturedAt": "2026-09-17T00:39:17.236Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000547195",
@@ -21306,7 +21375,7 @@
             "contentType": "official_detail",
             "extractedField": "menus",
             "selector": "detail text price line and nearest product name",
-            "capturedAt": "2026-09-16T23:42:03.575Z"
+            "capturedAt": "2026-09-17T00:39:17.236Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000547195",
@@ -21314,7 +21383,7 @@
             "contentType": "official_detail",
             "extractedField": "menus",
             "selector": "detail text price line and nearest product name",
-            "capturedAt": "2026-09-16T23:42:03.575Z"
+            "capturedAt": "2026-09-17T00:39:17.236Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000547195",
@@ -21322,7 +21391,7 @@
             "contentType": "official_detail",
             "extractedField": "menus",
             "selector": "detail text price line and nearest product name",
-            "capturedAt": "2026-09-16T23:42:03.575Z"
+            "capturedAt": "2026-09-17T00:39:17.236Z"
           },
           {
             "sourceUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000547195",
@@ -21330,13 +21399,13 @@
             "contentType": "official_detail",
             "extractedField": "menus",
             "selector": "detail text price line and nearest product name",
-            "capturedAt": "2026-09-16T23:42:03.575Z"
+            "capturedAt": "2026-09-17T00:39:17.236Z"
           }
         ],
         "failureReasons": [
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-09-16T23:42:03.575Z"
+        "checkedAt": "2026-09-17T00:39:17.236Z"
       },
       "brand": null,
       "region": "경기도",
@@ -21440,14 +21509,14 @@
         "contentType": "image/jpeg",
         "width": 750,
         "height": 750,
-        "checkedAt": "2026-09-16T23:45:38.092Z"
+        "checkedAt": "2026-09-17T00:43:01.117Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547195/20260715171108398_1.jpeg",
         "https://minfo.lotteshopping.com/content/news/202607/SNM00000000000547195/20260715171108424_8.jpeg",
@@ -21603,14 +21672,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -21683,19 +21752,19 @@
           "official_detail_images_not_checked",
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-09-16T23:42:03.922Z"
+        "checkedAt": "2026-09-17T00:39:17.602Z"
       },
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -21756,14 +21825,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -21812,7 +21881,7 @@
           "official_detail_images_not_checked",
           "brand_official_sources_not_checked"
         ],
-        "checkedAt": "2026-09-16T23:42:09.587Z"
+        "checkedAt": "2026-09-17T00:39:23.956Z"
       },
       "brand": null,
       "region": "경기도",
@@ -21824,14 +21893,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -21892,14 +21961,14 @@
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
       "qualityReasons": [
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -21966,12 +22035,12 @@
         "failureReasons": [
           "legacy_collector_search_evidence_incomplete"
         ],
-        "checkedAt": "2026-09-16T23:44:33.808Z"
+        "checkedAt": "2026-09-17T00:42:05.166Z"
       },
       "imageValidation": {
         "status": "invalid",
         "reason": "invalid_url",
-        "checkedAt": "2026-09-16T23:44:56.013Z"
+        "checkedAt": "2026-09-17T00:42:25.086Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
@@ -21979,7 +22048,7 @@
         "missing_dates",
         "search_incomplete"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [],
       "menuCandidates": [],
       "ocrStatus": "not_used"
@@ -22176,7 +22245,7 @@
         "contentType": "image/jpeg",
         "width": 800,
         "height": 400,
-        "checkedAt": "2026-09-16T23:45:39.934Z"
+        "checkedAt": "2026-09-17T00:43:02.895Z"
       },
       "contentQuality": "C",
       "publishStatus": "review_required",
@@ -22184,7 +22253,7 @@
         "search_incomplete",
         "broken_image"
       ],
-      "lastContentCheckedAt": "2026-09-16T23:44:56.013Z",
+      "lastContentCheckedAt": "2026-09-17T00:42:25.086Z",
       "imageCandidates": [
         "https://nodeul.org/wp-content/themes/nodeul/img/nodeul-ogimage.jpg",
         "https://nodeul.org/wp-content/plugins/iamport-payment/dist/bundle-main.js?ver=20190105",
