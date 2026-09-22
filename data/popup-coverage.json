@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-09-22T00:58:48.785Z",
+  "updatedAt": "2026-09-22T23:42:03.884Z",
   "summary": {
     "nationwideVenueTotal": 1022,
     "verifiedPopupVenueCount": 52,
-    "officialFeedMonitoredCount": 100,
-    "collectorNeededCount": 922,
+    "officialFeedMonitoredCount": 97,
+    "collectorNeededCount": 925,
     "disclaimer": "시설 원장은 전국 탐색 범위이며, 화면에는 공식 출처에서 시작일과 종료일을 확인한 푸드팝업만 표시합니다."
   },
   "venues": [
@@ -960,7 +960,7 @@
       "kind": "백화점",
       "collector": "롯데백화점·롯데아울렛·롯데몰",
       "status": "verified-popup-found",
-      "popupCount": 22
+      "popupCount": 24
     },
     {
       "venueId": "localdata:3980000:2010398007807500001",
@@ -1158,7 +1158,7 @@
       "kind": "백화점",
       "collector": "롯데백화점·롯데아울렛·롯데몰",
       "status": "verified-popup-found",
-      "popupCount": 22
+      "popupCount": 24
     },
     {
       "venueId": "localdata:3930000:1999393000007500001",
@@ -3714,7 +3714,7 @@
       "kind": "백화점",
       "collector": "롯데백화점·롯데아울렛·롯데몰",
       "status": "verified-popup-found",
-      "popupCount": 11
+      "popupCount": 17
     },
     {
       "venueId": "localdata:3420000:2010342009007500001",
@@ -4506,7 +4506,7 @@
       "kind": "백화점",
       "collector": "롯데백화점·롯데아울렛·롯데몰",
       "status": "verified-popup-found",
-      "popupCount": 20
+      "popupCount": 21
     },
     {
       "venueId": "localdata:3300000:2012330007907500001",
@@ -5568,7 +5568,7 @@
       "kind": "백화점",
       "collector": "롯데백화점·롯데아울렛·롯데몰",
       "status": "verified-popup-found",
-      "popupCount": 7
+      "popupCount": 8
     },
     {
       "venueId": "localdata:3230000:2014323019807500011",
@@ -5595,7 +5595,7 @@
       "kind": "백화점",
       "collector": "롯데백화점·롯데아울렛·롯데몰",
       "status": "verified-popup-found",
-      "popupCount": 25
+      "popupCount": 26
     },
     {
       "venueId": "localdata:3050000:2010305010007500001",
@@ -5990,7 +5990,7 @@
       "region": "서울특별시",
       "kind": "백화점",
       "collector": "신세계백화점",
-      "status": "official-feed-monitored",
+      "status": "adapter-needed",
       "popupCount": 0
     },
     {
@@ -8717,7 +8717,7 @@
       "region": "충청남도",
       "kind": "백화점",
       "collector": "신세계백화점",
-      "status": "official-feed-monitored",
+      "status": "adapter-needed",
       "popupCount": 0
     },
     {
