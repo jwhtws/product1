@@ -1,16 +1,16 @@
 {
-  "updatedAt": "2026-09-23T23:46:46.858Z",
+  "updatedAt": "2026-09-24T23:54:37.686Z",
   "source": {
     "name": "행정안전부 생활_대규모점포",
     "pageUrl": "https://file.localdata.go.kr/file/large_scale_retail_stores/info",
     "downloadUrl": "https://file.localdata.go.kr/file/download/large_scale_retail_stores/info",
-    "sourceRows": 4185
+    "sourceRows": 4186
   },
   "policy": "전국 시설은 푸드팝업 탐색 대상 원장으로만 사용하며 시설 자체를 팝업으로 노출하지 않음",
-  "total": 1022,
+  "total": 1023,
   "byKind": {
     "기타 쇼핑시설": 6,
-    "대형마트": 539,
+    "대형마트": 540,
     "백화점": 111,
     "복합쇼핑몰": 100,
     "쇼핑센터": 162,
@@ -32,7 +32,7 @@
     "전남광주통합특별시": 62,
     "전북특별자치도": 35,
     "제주특별자치도": 15,
-    "충청남도": 44,
+    "충청남도": 45,
     "충청북도": 28,
     "호": 3,
     "효행로": 2
@@ -10762,6 +10762,17 @@
       "category": "대형마트",
       "permitDate": "2010-12-10",
       "updatedAt": "2024-04-19 17:52:41"
+    },
+    {
+      "id": "localdata:4490000:2026449050807500001",
+      "name": "주식회사 서림유통",
+      "kind": "대형마트",
+      "region": "충청남도",
+      "address": "충청남도 천안시 서북구 천안대로 1348 (신당동)",
+      "phone": "0410000000",
+      "category": "대형마트",
+      "permitDate": "2026-09-23",
+      "updatedAt": "2026-09-23 16:36:23"
     },
     {
       "id": "localdata:4520000:2012452022507500001",

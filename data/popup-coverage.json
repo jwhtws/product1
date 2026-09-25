@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-09-24T00:38:43.966Z",
+  "updatedAt": "2026-09-24T23:59:24.270Z",
   "summary": {
-    "nationwideVenueTotal": 1022,
+    "nationwideVenueTotal": 1023,
     "verifiedPopupVenueCount": 52,
     "officialFeedMonitoredCount": 100,
-    "collectorNeededCount": 922,
+    "collectorNeededCount": 923,
     "disclaimer": "시설 원장은 전국 탐색 범위이며, 화면에는 공식 출처에서 시작일과 종료일을 확인한 푸드팝업만 표시합니다."
   },
   "venues": [
@@ -5568,7 +5568,7 @@
       "kind": "백화점",
       "collector": "롯데백화점·롯데아울렛·롯데몰",
       "status": "verified-popup-found",
-      "popupCount": 8
+      "popupCount": 9
     },
     {
       "venueId": "localdata:3230000:2014323019807500011",
@@ -6783,7 +6783,7 @@
       "kind": "백화점",
       "collector": "현대백화점·현대아울렛",
       "status": "verified-popup-found",
-      "popupCount": 7
+      "popupCount": 8
     },
     {
       "venueId": "localdata:3690000:2006369006007500002",
@@ -8232,7 +8232,7 @@
       "kind": "백화점",
       "collector": "롯데백화점·롯데아울렛·롯데몰",
       "status": "verified-popup-found",
-      "popupCount": 12
+      "popupCount": 14
     },
     {
       "venueId": "localdata:4681000:2001468002007500001",
@@ -8781,6 +8781,15 @@
       "kind": "대형마트",
       "collector": "이마트·트레이더스",
       "status": "adapter-needed",
+      "popupCount": 0
+    },
+    {
+      "venueId": "localdata:4490000:2026449050807500001",
+      "name": "주식회사 서림유통",
+      "region": "충청남도",
+      "kind": "대형마트",
+      "collector": null,
+      "status": "collector-needed",
       "popupCount": 0
     },
     {
