@@ -1,57 +1,57 @@
 {
-  "runId": "food-popups-20261004004454079-2149",
+  "runId": "food-popups-20261004235948001-2166",
   "scope": "all",
-  "startedAt": "2026-10-04T00:44:54.079Z",
-  "finishedAt": "2026-10-04T00:49:20.708Z",
-  "durationMs": 266629,
-  "totalDiscovered": 1276,
+  "startedAt": "2026-10-04T23:59:48.001Z",
+  "finishedAt": "2026-10-05T00:04:14.726Z",
+  "durationMs": 266725,
+  "totalDiscovered": 1265,
   "totalFetched": 206,
-  "totalAccepted": 103,
-  "totalRejected": 1172,
+  "totalAccepted": 101,
+  "totalRejected": 1163,
   "totalDuplicates": 1,
-  "totalErrors": 4,
+  "totalErrors": 3,
   "sources": [
     {
       "source": "현대백화점·현대아울렛",
-      "discoveredCount": 507,
+      "discoveredCount": 486,
       "fetchedCount": 0,
-      "acceptedCount": 33,
-      "rejectedCount": 474,
+      "acceptedCount": 31,
+      "rejectedCount": 455,
       "duplicateCount": 0,
       "errorCount": 0,
       "rejectionReasons": {
-        "not_food": 176,
-        "duplicate_source_item": 264,
-        "not_popup": 34
+        "not_food": 168,
+        "duplicate_source_item": 254,
+        "not_popup": 33
       },
       "errors": [],
-      "startedAt": "2026-10-04T00:44:54.400Z",
-      "finishedAt": "2026-10-04T00:45:40.185Z",
+      "startedAt": "2026-10-04T23:59:48.171Z",
+      "finishedAt": "2026-10-05T00:00:40.123Z",
       "healthStatus": "healthy",
-      "healthMessage": "33건 승인",
-      "lastSuccessfulAt": "2026-10-04T00:45:40.185Z",
+      "healthMessage": "31건 승인",
+      "lastSuccessfulAt": "2026-10-05T00:00:40.123Z",
       "consecutiveFailureCount": 0,
       "anomalyFlags": []
     },
     {
       "source": "신세계백화점",
-      "discoveredCount": 349,
+      "discoveredCount": 359,
       "fetchedCount": 0,
       "acceptedCount": 6,
-      "rejectedCount": 343,
+      "rejectedCount": 353,
       "duplicateCount": 0,
       "errorCount": 0,
       "rejectionReasons": {
         "invalid_date": 18,
-        "not_food": 21,
-        "not_popup": 304
+        "not_food": 22,
+        "not_popup": 313
       },
       "errors": [],
-      "startedAt": "2026-10-04T00:44:54.400Z",
-      "finishedAt": "2026-10-04T00:45:19.426Z",
+      "startedAt": "2026-10-04T23:59:48.172Z",
+      "finishedAt": "2026-10-05T00:00:04.403Z",
       "healthStatus": "healthy",
       "healthMessage": "6건 승인",
-      "lastSuccessfulAt": "2026-10-04T00:45:19.426Z",
+      "lastSuccessfulAt": "2026-10-05T00:00:04.403Z",
       "consecutiveFailureCount": 0,
       "anomalyFlags": []
     },
@@ -65,11 +65,11 @@
       "errorCount": 0,
       "rejectionReasons": {},
       "errors": [],
-      "startedAt": "2026-10-04T00:44:54.401Z",
-      "finishedAt": "2026-10-04T00:44:56.397Z",
+      "startedAt": "2026-10-04T23:59:48.172Z",
+      "finishedAt": "2026-10-04T23:59:49.951Z",
       "healthStatus": "healthy",
       "healthMessage": "1건 승인",
-      "lastSuccessfulAt": "2026-10-04T00:44:56.397Z",
+      "lastSuccessfulAt": "2026-10-04T23:59:49.951Z",
       "consecutiveFailureCount": 0,
       "anomalyFlags": []
     },
@@ -83,11 +83,11 @@
       "errorCount": 0,
       "rejectionReasons": {},
       "errors": [],
-      "startedAt": "2026-10-04T00:44:54.401Z",
-      "finishedAt": "2026-10-04T00:49:20.055Z",
+      "startedAt": "2026-10-04T23:59:48.172Z",
+      "finishedAt": "2026-10-05T00:04:13.724Z",
       "healthStatus": "healthy",
       "healthMessage": "24건 승인",
-      "lastSuccessfulAt": "2026-10-04T00:49:20.055Z",
+      "lastSuccessfulAt": "2026-10-05T00:04:13.724Z",
       "consecutiveFailureCount": 0,
       "anomalyFlags": []
     },
@@ -101,11 +101,11 @@
       "errorCount": 0,
       "rejectionReasons": {},
       "errors": [],
-      "startedAt": "2026-10-04T00:44:54.401Z",
-      "finishedAt": "2026-10-04T00:45:36.238Z",
+      "startedAt": "2026-10-04T23:59:48.173Z",
+      "finishedAt": "2026-10-05T00:00:20.474Z",
       "healthStatus": "healthy",
       "healthMessage": "6건 승인",
-      "lastSuccessfulAt": "2026-10-04T00:45:36.238Z",
+      "lastSuccessfulAt": "2026-10-05T00:00:20.474Z",
       "consecutiveFailureCount": 0,
       "anomalyFlags": []
     },
@@ -119,11 +119,11 @@
       "errorCount": 0,
       "rejectionReasons": {},
       "errors": [],
-      "startedAt": "2026-10-04T00:44:54.402Z",
-      "finishedAt": "2026-10-04T00:45:05.408Z",
+      "startedAt": "2026-10-04T23:59:48.173Z",
+      "finishedAt": "2026-10-04T23:59:56.835Z",
       "healthStatus": "empty",
       "healthMessage": "정상 응답, 승인 항목 없음",
-      "lastSuccessfulAt": "2026-10-04T00:45:05.408Z",
+      "lastSuccessfulAt": "2026-10-04T23:59:56.835Z",
       "consecutiveFailureCount": 0,
       "anomalyFlags": []
     },
@@ -137,11 +137,11 @@
       "errorCount": 0,
       "rejectionReasons": {},
       "errors": [],
-      "startedAt": "2026-10-04T00:44:54.420Z",
-      "finishedAt": "2026-10-04T00:44:57.906Z",
+      "startedAt": "2026-10-04T23:59:48.195Z",
+      "finishedAt": "2026-10-04T23:59:50.666Z",
       "healthStatus": "empty",
       "healthMessage": "정상 응답, 승인 항목 없음",
-      "lastSuccessfulAt": "2026-10-04T00:44:57.906Z",
+      "lastSuccessfulAt": "2026-10-04T23:59:50.666Z",
       "consecutiveFailureCount": 0,
       "anomalyFlags": []
     },
@@ -157,11 +157,11 @@
         "not_food_popup": 252
       },
       "errors": [],
-      "startedAt": "2026-10-04T00:44:54.420Z",
-      "finishedAt": "2026-10-04T00:44:58.606Z",
+      "startedAt": "2026-10-04T23:59:48.196Z",
+      "finishedAt": "2026-10-04T23:59:51.611Z",
       "healthStatus": "empty",
       "healthMessage": "공식 페이지 정상 응답, 현재 승인 가능한 푸드팝업 없음",
-      "lastSuccessfulAt": "2026-10-04T00:44:58.606Z",
+      "lastSuccessfulAt": "2026-10-04T23:59:51.611Z",
       "consecutiveFailureCount": 0,
       "anomalyFlags": []
     },
@@ -179,8 +179,8 @@
           "message": "fetch failed"
         }
       ],
-      "startedAt": "2026-10-04T00:44:54.420Z",
-      "finishedAt": "2026-10-04T00:45:47.388Z",
+      "startedAt": "2026-10-04T23:59:48.196Z",
+      "finishedAt": "2026-10-05T00:00:41.176Z",
       "healthStatus": "failed",
       "healthMessage": "공식 경로 1개 요청 실패",
       "lastSuccessfulAt": null,
@@ -198,11 +198,12 @@
       "rejectionReasons": {},
       "errors": [
         {
-          "message": "fetch failed"
+          "message": "http_error HTTP 400 https://corporate.homeplus.co.kr/Business/Hyper_Notice.aspx",
+          "url": "https://corporate.homeplus.co.kr/Business/Hyper_Notice.aspx"
         }
       ],
-      "startedAt": "2026-10-04T00:44:54.420Z",
-      "finishedAt": "2026-10-04T00:45:47.389Z",
+      "startedAt": "2026-10-04T23:59:48.196Z",
+      "finishedAt": "2026-10-04T23:59:50.722Z",
       "healthStatus": "failed",
       "healthMessage": "공식 경로 1개 요청 실패",
       "lastSuccessfulAt": null,
@@ -221,11 +222,11 @@
         "not_popup": 21
       },
       "errors": [],
-      "startedAt": "2026-10-04T00:44:54.420Z",
-      "finishedAt": "2026-10-04T00:47:27.580Z",
+      "startedAt": "2026-10-04T23:59:48.196Z",
+      "finishedAt": "2026-10-05T00:01:21.635Z",
       "healthStatus": "empty",
       "healthMessage": "정상 sitemap, 승인 항목 없음",
-      "lastSuccessfulAt": "2026-10-04T00:47:27.580Z",
+      "lastSuccessfulAt": "2026-10-05T00:01:21.635Z",
       "consecutiveFailureCount": 0,
       "anomalyFlags": []
     },
@@ -241,8 +242,8 @@
         "invalid_date": 2
       },
       "errors": [],
-      "startedAt": "2026-10-04T00:44:54.420Z",
-      "finishedAt": "2026-10-04T00:45:50.006Z",
+      "startedAt": "2026-10-04T23:59:48.196Z",
+      "finishedAt": "2026-10-05T00:01:16.274Z",
       "healthStatus": "structure_changed",
       "healthMessage": "공식 대체 경로 확인 후도 존재 여부 미확정",
       "lastSuccessfulAt": null,
@@ -322,13 +323,13 @@
           "status": "empty",
           "httpStatus": 200,
           "contentType": "text/html;charset=UTF-8",
-          "responseSize": 77344,
+          "responseSize": 77338,
           "timeout": false,
           "retryCount": 0,
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:14.208Z"
+          "occurredAt": "2026-10-05T00:00:16.665Z"
         },
         {
           "method": "robots",
@@ -343,7 +344,7 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:14.779Z"
+          "occurredAt": "2026-10-05T00:00:17.707Z"
         },
         {
           "method": "sitemap",
@@ -358,7 +359,7 @@
           "blockedPageDetected": false,
           "itemsFound": 56,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:15.055Z"
+          "occurredAt": "2026-10-05T00:00:17.963Z"
         },
         {
           "method": "sitemap",
@@ -367,13 +368,13 @@
           "status": "failed",
           "httpStatus": 500,
           "contentType": "text/html;charset=UTF-8",
-          "responseSize": 117024,
+          "responseSize": 117018,
           "timeout": false,
           "retryCount": 0,
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "RequestFailedError",
-          "occurredAt": "2026-10-04T00:45:18.783Z"
+          "occurredAt": "2026-10-05T00:00:20.935Z"
         },
         {
           "method": "sitemap",
@@ -388,7 +389,7 @@
           "blockedPageDetected": false,
           "itemsFound": 1,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:20.095Z"
+          "occurredAt": "2026-10-05T00:00:46.571Z"
         },
         {
           "method": "sitemap",
@@ -403,7 +404,7 @@
           "blockedPageDetected": false,
           "itemsFound": 1,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:20.366Z"
+          "occurredAt": "2026-10-05T00:00:46.821Z"
         },
         {
           "method": "sitemap",
@@ -418,7 +419,7 @@
           "blockedPageDetected": false,
           "itemsFound": 4,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:20.645Z"
+          "occurredAt": "2026-10-05T00:00:47.075Z"
         },
         {
           "method": "sitemap",
@@ -433,7 +434,7 @@
           "blockedPageDetected": false,
           "itemsFound": 4,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:20.920Z"
+          "occurredAt": "2026-10-05T00:00:47.325Z"
         },
         {
           "method": "sitemap",
@@ -448,7 +449,7 @@
           "blockedPageDetected": false,
           "itemsFound": 4,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:21.193Z"
+          "occurredAt": "2026-10-05T00:00:47.577Z"
         },
         {
           "method": "sitemap",
@@ -463,7 +464,7 @@
           "blockedPageDetected": false,
           "itemsFound": 1,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:21.472Z"
+          "occurredAt": "2026-10-05T00:00:47.833Z"
         },
         {
           "method": "sitemap",
@@ -478,7 +479,7 @@
           "blockedPageDetected": false,
           "itemsFound": 4,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:21.748Z"
+          "occurredAt": "2026-10-05T00:00:48.088Z"
         },
         {
           "method": "sitemap",
@@ -493,7 +494,7 @@
           "blockedPageDetected": false,
           "itemsFound": 1,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:22.025Z"
+          "occurredAt": "2026-10-05T00:00:48.342Z"
         },
         {
           "method": "sitemap",
@@ -508,7 +509,7 @@
           "blockedPageDetected": false,
           "itemsFound": 1,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:22.301Z"
+          "occurredAt": "2026-10-05T00:00:48.593Z"
         },
         {
           "method": "sitemap",
@@ -523,7 +524,7 @@
           "blockedPageDetected": false,
           "itemsFound": 1,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:22.576Z"
+          "occurredAt": "2026-10-05T00:00:48.849Z"
         },
         {
           "method": "sitemap",
@@ -538,7 +539,7 @@
           "blockedPageDetected": false,
           "itemsFound": 1,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:22.853Z"
+          "occurredAt": "2026-10-05T00:00:49.105Z"
         },
         {
           "method": "sitemap",
@@ -553,7 +554,7 @@
           "blockedPageDetected": false,
           "itemsFound": 4,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:23.132Z"
+          "occurredAt": "2026-10-05T00:00:49.362Z"
         },
         {
           "method": "sitemap",
@@ -568,7 +569,7 @@
           "blockedPageDetected": false,
           "itemsFound": 4,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:23.406Z"
+          "occurredAt": "2026-10-05T00:00:49.615Z"
         },
         {
           "method": "sitemap",
@@ -583,7 +584,7 @@
           "blockedPageDetected": false,
           "itemsFound": 1,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:23.687Z"
+          "occurredAt": "2026-10-05T00:00:49.883Z"
         },
         {
           "method": "sitemap",
@@ -598,7 +599,7 @@
           "blockedPageDetected": false,
           "itemsFound": 1,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:23.956Z"
+          "occurredAt": "2026-10-05T00:00:50.129Z"
         },
         {
           "method": "sitemap",
@@ -613,7 +614,7 @@
           "blockedPageDetected": false,
           "itemsFound": 1,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:24.234Z"
+          "occurredAt": "2026-10-05T00:00:50.382Z"
         },
         {
           "method": "sitemap",
@@ -628,7 +629,7 @@
           "blockedPageDetected": false,
           "itemsFound": 1,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:24.504Z"
+          "occurredAt": "2026-10-05T00:00:50.636Z"
         },
         {
           "method": "sitemap",
@@ -643,7 +644,7 @@
           "blockedPageDetected": false,
           "itemsFound": 1,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:24.780Z"
+          "occurredAt": "2026-10-05T00:00:50.893Z"
         },
         {
           "method": "sitemap",
@@ -658,7 +659,7 @@
           "blockedPageDetected": false,
           "itemsFound": 4,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:25.056Z"
+          "occurredAt": "2026-10-05T00:00:51.148Z"
         },
         {
           "method": "sitemap",
@@ -673,7 +674,7 @@
           "blockedPageDetected": false,
           "itemsFound": 4,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:25.333Z"
+          "occurredAt": "2026-10-05T00:00:51.408Z"
         },
         {
           "method": "sitemap",
@@ -688,7 +689,7 @@
           "blockedPageDetected": false,
           "itemsFound": 1,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:25.608Z"
+          "occurredAt": "2026-10-05T00:00:51.663Z"
         },
         {
           "method": "sitemap",
@@ -703,7 +704,7 @@
           "blockedPageDetected": false,
           "itemsFound": 1,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:25.883Z"
+          "occurredAt": "2026-10-05T00:00:51.917Z"
         },
         {
           "method": "sitemap",
@@ -718,7 +719,7 @@
           "blockedPageDetected": false,
           "itemsFound": 1,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:26.158Z"
+          "occurredAt": "2026-10-05T00:00:52.172Z"
         },
         {
           "method": "sitemap",
@@ -733,7 +734,7 @@
           "blockedPageDetected": false,
           "itemsFound": 1,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:26.435Z"
+          "occurredAt": "2026-10-05T00:00:52.426Z"
         },
         {
           "method": "sitemap",
@@ -748,7 +749,7 @@
           "blockedPageDetected": false,
           "itemsFound": 1,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:26.711Z"
+          "occurredAt": "2026-10-05T00:00:52.680Z"
         },
         {
           "method": "sitemap",
@@ -763,7 +764,7 @@
           "blockedPageDetected": false,
           "itemsFound": 1,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:26.980Z"
+          "occurredAt": "2026-10-05T00:00:52.935Z"
         },
         {
           "method": "sitemap",
@@ -778,7 +779,7 @@
           "blockedPageDetected": false,
           "itemsFound": 1,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:27.257Z"
+          "occurredAt": "2026-10-05T00:00:53.191Z"
         },
         {
           "method": "sitemap",
@@ -793,7 +794,7 @@
           "blockedPageDetected": false,
           "itemsFound": 1,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:27.533Z"
+          "occurredAt": "2026-10-05T00:00:53.444Z"
         },
         {
           "method": "sitemap",
@@ -808,7 +809,7 @@
           "blockedPageDetected": false,
           "itemsFound": 1,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:27.811Z"
+          "occurredAt": "2026-10-05T00:00:53.701Z"
         },
         {
           "method": "sitemap",
@@ -823,7 +824,7 @@
           "blockedPageDetected": false,
           "itemsFound": 1,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:28.087Z"
+          "occurredAt": "2026-10-05T00:00:53.956Z"
         },
         {
           "method": "sitemap",
@@ -832,13 +833,13 @@
           "status": "failed",
           "httpStatus": 404,
           "contentType": "text/html;charset=UTF-8",
-          "responseSize": 117895,
+          "responseSize": 117889,
           "timeout": false,
           "retryCount": 0,
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "http_404",
-          "occurredAt": "2026-10-04T00:45:28.446Z"
+          "occurredAt": "2026-10-05T00:00:54.286Z"
         },
         {
           "method": "sitemap",
@@ -847,13 +848,13 @@
           "status": "failed",
           "httpStatus": 404,
           "contentType": "text/html;charset=UTF-8",
-          "responseSize": 117895,
+          "responseSize": 117889,
           "timeout": false,
           "retryCount": 0,
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "http_404",
-          "occurredAt": "2026-10-04T00:45:29.412Z"
+          "occurredAt": "2026-10-05T00:00:57.523Z"
         },
         {
           "method": "sitemap",
@@ -868,7 +869,7 @@
           "blockedPageDetected": false,
           "itemsFound": 4,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:30.387Z"
+          "occurredAt": "2026-10-05T00:00:58.042Z"
         },
         {
           "method": "sitemap",
@@ -877,13 +878,13 @@
           "status": "failed",
           "httpStatus": 404,
           "contentType": "text/html;charset=UTF-8",
-          "responseSize": 117895,
+          "responseSize": 117889,
           "timeout": false,
           "retryCount": 0,
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "http_404",
-          "occurredAt": "2026-10-04T00:45:30.724Z"
+          "occurredAt": "2026-10-05T00:00:58.345Z"
         },
         {
           "method": "sitemap",
@@ -898,7 +899,7 @@
           "blockedPageDetected": false,
           "itemsFound": 1,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:41.641Z"
+          "occurredAt": "2026-10-05T00:01:09.367Z"
         },
         {
           "method": "sitemap",
@@ -913,7 +914,7 @@
           "blockedPageDetected": false,
           "itemsFound": 1,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:41.917Z"
+          "occurredAt": "2026-10-05T00:01:09.620Z"
         },
         {
           "method": "sitemap",
@@ -928,7 +929,7 @@
           "blockedPageDetected": false,
           "itemsFound": 4,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:42.194Z"
+          "occurredAt": "2026-10-05T00:01:09.877Z"
         },
         {
           "method": "sitemap",
@@ -943,7 +944,7 @@
           "blockedPageDetected": false,
           "itemsFound": 4,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:42.469Z"
+          "occurredAt": "2026-10-05T00:01:10.131Z"
         },
         {
           "method": "sitemap",
@@ -958,7 +959,7 @@
           "blockedPageDetected": false,
           "itemsFound": 4,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:42.745Z"
+          "occurredAt": "2026-10-05T00:01:10.387Z"
         },
         {
           "method": "sitemap",
@@ -973,7 +974,7 @@
           "blockedPageDetected": false,
           "itemsFound": 1,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:43.022Z"
+          "occurredAt": "2026-10-05T00:01:10.641Z"
         },
         {
           "method": "sitemap",
@@ -988,7 +989,7 @@
           "blockedPageDetected": false,
           "itemsFound": 1,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:43.298Z"
+          "occurredAt": "2026-10-05T00:01:10.896Z"
         },
         {
           "method": "sitemap",
@@ -1003,7 +1004,7 @@
           "blockedPageDetected": false,
           "itemsFound": 1,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:43.573Z"
+          "occurredAt": "2026-10-05T00:01:11.151Z"
         },
         {
           "method": "sitemap",
@@ -1018,7 +1019,7 @@
           "blockedPageDetected": false,
           "itemsFound": 1,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:43.849Z"
+          "occurredAt": "2026-10-05T00:01:11.406Z"
         },
         {
           "method": "sitemap",
@@ -1033,7 +1034,7 @@
           "blockedPageDetected": false,
           "itemsFound": 1,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:44.125Z"
+          "occurredAt": "2026-10-05T00:01:11.661Z"
         },
         {
           "method": "sitemap",
@@ -1048,7 +1049,7 @@
           "blockedPageDetected": false,
           "itemsFound": 1,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:44.401Z"
+          "occurredAt": "2026-10-05T00:01:11.910Z"
         },
         {
           "method": "sitemap",
@@ -1063,7 +1064,7 @@
           "blockedPageDetected": false,
           "itemsFound": 1,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:44.676Z"
+          "occurredAt": "2026-10-05T00:01:12.165Z"
         },
         {
           "method": "sitemap",
@@ -1078,7 +1079,7 @@
           "blockedPageDetected": false,
           "itemsFound": 1,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:44.952Z"
+          "occurredAt": "2026-10-05T00:01:12.419Z"
         },
         {
           "method": "sitemap",
@@ -1093,7 +1094,7 @@
           "blockedPageDetected": false,
           "itemsFound": 1,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:45.220Z"
+          "occurredAt": "2026-10-05T00:01:12.672Z"
         },
         {
           "method": "sitemap",
@@ -1108,7 +1109,7 @@
           "blockedPageDetected": false,
           "itemsFound": 2,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:45.495Z"
+          "occurredAt": "2026-10-05T00:01:12.926Z"
         },
         {
           "method": "sitemap",
@@ -1123,7 +1124,7 @@
           "blockedPageDetected": false,
           "itemsFound": 4,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:45.770Z"
+          "occurredAt": "2026-10-05T00:01:13.182Z"
         },
         {
           "method": "sitemap",
@@ -1138,7 +1139,7 @@
           "blockedPageDetected": false,
           "itemsFound": 1,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:46.046Z"
+          "occurredAt": "2026-10-05T00:01:13.437Z"
         },
         {
           "method": "sitemap",
@@ -1153,7 +1154,7 @@
           "blockedPageDetected": false,
           "itemsFound": 1,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:46.320Z"
+          "occurredAt": "2026-10-05T00:01:13.685Z"
         },
         {
           "method": "sitemap",
@@ -1168,7 +1169,7 @@
           "blockedPageDetected": false,
           "itemsFound": 1,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:46.593Z"
+          "occurredAt": "2026-10-05T00:01:13.937Z"
         },
         {
           "method": "sitemap",
@@ -1183,7 +1184,7 @@
           "blockedPageDetected": false,
           "itemsFound": 1,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:46.865Z"
+          "occurredAt": "2026-10-05T00:01:14.191Z"
         },
         {
           "method": "sitemap",
@@ -1198,7 +1199,7 @@
           "blockedPageDetected": false,
           "itemsFound": 1,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:47.142Z"
+          "occurredAt": "2026-10-05T00:01:14.448Z"
         },
         {
           "method": "sitemap",
@@ -1213,7 +1214,7 @@
           "blockedPageDetected": false,
           "itemsFound": 1,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:47.411Z"
+          "occurredAt": "2026-10-05T00:01:14.697Z"
         },
         {
           "method": "official_detail_html",
@@ -1222,13 +1223,13 @@
           "status": "parse_failed",
           "httpStatus": 200,
           "contentType": "text/html;charset=UTF-8",
-          "responseSize": 109970,
+          "responseSize": 111461,
           "timeout": false,
           "retryCount": 0,
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "required_fields_not_extracted",
-          "occurredAt": "2026-10-04T00:45:49.006Z"
+          "occurredAt": "2026-10-05T00:01:15.408Z"
         },
         {
           "method": "official_detail_html",
@@ -1237,13 +1238,13 @@
           "status": "parse_failed",
           "httpStatus": 200,
           "contentType": "text/html;charset=UTF-8",
-          "responseSize": 102479,
+          "responseSize": 102473,
           "timeout": false,
           "retryCount": 0,
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "required_fields_not_extracted",
-          "occurredAt": "2026-10-04T00:45:49.848Z"
+          "occurredAt": "2026-10-05T00:01:16.139Z"
         }
       ],
       "detailPagesChecked": 2,
@@ -1258,19 +1259,15 @@
       "acceptedCount": 0,
       "rejectedCount": 0,
       "duplicateCount": 0,
-      "errorCount": 1,
+      "errorCount": 0,
       "rejectionReasons": {},
-      "errors": [
-        {
-          "message": "fetch failed"
-        }
-      ],
-      "startedAt": "2026-10-04T00:44:54.420Z",
-      "finishedAt": "2026-10-04T00:45:05.405Z",
-      "healthStatus": "failed",
-      "healthMessage": "공식 출처 요청 실패",
-      "lastSuccessfulAt": null,
-      "consecutiveFailureCount": 1,
+      "errors": [],
+      "startedAt": "2026-10-04T23:59:48.197Z",
+      "finishedAt": "2026-10-04T23:59:57.180Z",
+      "healthStatus": "empty",
+      "healthMessage": "정상 응답, 승인 항목 없음",
+      "lastSuccessfulAt": "2026-10-04T23:59:57.180Z",
+      "consecutiveFailureCount": 0,
       "anomalyFlags": []
     },
     {
@@ -1283,8 +1280,8 @@
       "errorCount": 0,
       "rejectionReasons": {},
       "errors": [],
-      "startedAt": "2026-10-04T00:44:54.421Z",
-      "finishedAt": "2026-10-04T00:48:27.266Z",
+      "startedAt": "2026-10-04T23:59:48.198Z",
+      "finishedAt": "2026-10-05T00:03:21.427Z",
       "healthStatus": "unverified",
       "healthMessage": "공식 검색 및 상세 경로 응답 미확인",
       "lastSuccessfulAt": null,
@@ -1293,35 +1290,35 @@
       "sourceId": "lotte-department-outlet-mall",
       "primaryPath": "https://m.lotteshopping.com/search/searchResult?cstrCd=0333&searchTerm=-",
       "fallbackPathsTried": [
-        "https://m.lotteshopping.com/search/searchResult?cstrCd=0342&searchTerm=%EB%8F%99%EB%B4%89",
         "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=%EB%B2%A0%EC%9D%B4%EA%B8%80%EB%A6%AC%EC%8A%A4%ED%8A%B8",
         "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=%EC%A7%91%EB%B0%A5%EC%9E%A5%EC%9D%B8",
         "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=%EC%95%84%EB%A5%B4%EB%84%9B",
         "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=%EB%8F%99%ED%99%94%EC%86%8D%EB%94%B8%EA%B8%B0",
         "https://m.lotteshopping.com/search/searchResult?cstrCd=0342&searchTerm=%EC%98%A4%EC%A7%80%EC%83%81",
-        "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=%EC%95%84%EB%A5%B4%EB%84%9B+%EC%88%98%EC%A0%9C+%ED%94%BC%EC%B9%B8+%ED%98%B8%EB%91%90",
-        "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=%EB%B2%A0%EC%9D%B4%EA%B8%80%EB%A6%AC%EC%8A%A4%ED%8A%B8+%EB%9D%BC%ED%81%AC%EB%A3%A8%EB%9C%A8",
+        "https://m.lotteshopping.com/search/searchResult?cstrCd=0342&searchTerm=%EB%8F%99%EB%B4%89",
         "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=%EB%A1%A4%EC%8A%A4%EB%A1%A4%EC%8A%A4",
         "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=%EB%A9%94%EC%A2%85%EC%9B%90%EC%8A%A4%EC%9D%B4%EC%96%B4",
+        "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=%EB%B2%A0%EC%9D%B4%EA%B8%80%EB%A6%AC%EC%8A%A4%ED%8A%B8+%EB%9D%BC%ED%81%AC%EB%A3%A8%EB%9C%A8",
         "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=%EB%8F%99%ED%99%94%EC%86%8D%EB%94%B8%EA%B8%B0+%EA%B3%BC%EC%9D%BC%EC%B2%AD+%EC%9E%BC",
+        "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=%EC%95%84%EB%A5%B4%EB%84%9B+%EC%88%98%EC%A0%9C+%ED%94%BC%EC%B9%B8+%ED%98%B8%EB%91%90",
         "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%9A%94%EC%95%84%EC%A0%95",
-        "https://m.lotteshopping.com/search/searchResult?cstrCd=0001&searchTerm=%EA%B8%80%EB%9D%BC%EC%87%BC",
-        "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%95%BC%EB%AF%B8%ED%91%B8%EB%A3%A8%EB%94%B0",
-        "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%8B%9C%EC%98%A4%ED%8C%A1%EC%95%BC",
-        "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EB%8F%84%EC%BF%84%EB%B2%A0%EB%A6%AC",
         "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%B0%BE%EB%8B%A4%EB%B3%B4%EB%8B%88%EC%97%AC%EA%B8%B0",
+        "https://m.lotteshopping.com/search/searchResult?cstrCd=0001&searchTerm=%EA%B8%80%EB%9D%BC%EC%87%BC",
+        "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EB%8F%84%EC%BF%84%EB%B2%A0%EB%A6%AC",
+        "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%8B%9C%EC%98%A4%ED%8C%A1%EC%95%BC",
+        "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%95%BC%EB%AF%B8%ED%91%B8%EB%A3%A8%EB%94%B0",
         "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%B0%BE%EB%8B%A4%EB%B3%B4%EB%8B%88%EC%97%AC%EA%B8%B0+%EA%B1%B4%EC%96%B4%EB%AC%BC+%EA%B1%B4%EA%B0%95%EC%B9%A9",
         "https://m.lotteshopping.com/search/searchResult?cstrCd=0001&searchTerm=%EB%B0%80%EB%B9%9B",
+        "https://m.lotteshopping.com/search/searchResult?cstrCd=0344&searchTerm=%EB%8B%B4%EC%95%84%ED%97%8C",
+        "https://m.lotteshopping.com/search/searchResult?cstrCd=0336&searchTerm=%EC%84%9C%EC%9A%B8%EB%A1%A4",
+        "https://m.lotteshopping.com/search/searchResult?cstrCd=0027&searchTerm=%EC%A0%95%EB%82%A8%EB%AF%B8%EB%AA%85%EA%B3%BC",
         "https://m.lotteshopping.com/search/searchResult?cstrCd=0336&searchTerm=%EC%88%98%EC%88%98%EB%8C%80%EC%9E%A5%EA%B5%B0",
         "https://m.lotteshopping.com/search/searchResult?cstrCd=0027&searchTerm=%EC%8B%9D%ED%92%88%EA%B4%80",
         "https://m.lotteshopping.com/search/searchResult?cstrCd=0344&searchTerm=%EB%A3%A8%EC%86%94",
-        "https://m.lotteshopping.com/search/searchResult?cstrCd=0336&searchTerm=%EC%84%9C%EC%9A%B8%EB%A1%A4",
-        "https://m.lotteshopping.com/search/searchResult?cstrCd=0344&searchTerm=%EB%8B%B4%EC%95%84%ED%97%8C",
-        "https://m.lotteshopping.com/search/searchResult?cstrCd=0027&searchTerm=%EC%A0%95%EB%82%A8%EB%AF%B8%EB%AA%85%EA%B3%BC",
         "https://blog.lotte.co.kr/50904?searchTerm=%EC%84%B8%EB%B8%90%EC%85%80%EB%A0%89%ED%8A%B8",
         "https://m.lotteshopping.com/search/searchResult?cstrCd=0333&searchTerm=%ED%90%81%EC%8B%A0%EB%8B%B9",
-        "https://m.lotteshopping.com/search/searchResult?cstrCd=0336&searchTerm=%EC%84%9C%EC%9A%B8%EB%A1%A4+%EC%B2%A0%ED%8C%90%ED%94%BC%EC%9E%90+%ED%8A%80%EC%9D%BC",
         "https://m.lotteshopping.com/search/searchResult?cstrCd=0333&searchTerm=%EB%9D%BC%EC%9D%B4%ED%94%84%EC%BB%AC%EC%B2%98",
+        "https://m.lotteshopping.com/search/searchResult?cstrCd=0336&searchTerm=%EC%84%9C%EC%9A%B8%EB%A1%A4+%EC%B2%A0%ED%8C%90%ED%94%BC%EC%9E%90+%ED%8A%80%EC%9D%BC",
         "https://m.lotteshopping.com/search/searchResult?cstrCd=0333&searchTerm=%EB%9D%BC%EC%9D%B4%ED%94%84%EC%BB%AC%EC%B2%98+Pop+Up",
         "https://m.lotteshopping.com/search/searchResult?cstrCd=0333&searchTerm=%ED%90%81%EC%8B%A0%EB%8B%B9+Pop+Up"
       ],
@@ -1342,7 +1339,7 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:45:27.404Z"
+          "occurredAt": "2026-10-05T00:00:21.190Z"
         },
         {
           "method": "operator_internal_search",
@@ -1357,7 +1354,7 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:45:27.405Z"
+          "occurredAt": "2026-10-05T00:00:21.192Z"
         },
         {
           "method": "operator_internal_search",
@@ -1372,7 +1369,7 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:45:27.408Z"
+          "occurredAt": "2026-10-05T00:00:21.196Z"
         },
         {
           "method": "operator_internal_search",
@@ -1387,7 +1384,7 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:45:27.410Z"
+          "occurredAt": "2026-10-05T00:00:21.198Z"
         },
         {
           "method": "operator_internal_search",
@@ -1402,37 +1399,7 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:45:27.412Z"
-        },
-        {
-          "method": "operator_internal_search",
-          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0028&searchTerm=%EB%84%88%EA%B5%AC%EB%A6%AC%EB%B2%A0%EC%9D%B4%EA%B8%80",
-          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0028&searchTerm=%EB%84%88%EA%B5%AC%EB%A6%AC%EB%B2%A0%EC%9D%B4%EA%B8%80",
-          "status": "failed",
-          "httpStatus": null,
-          "contentType": null,
-          "responseSize": null,
-          "timeout": false,
-          "retryCount": 0,
-          "blockedPageDetected": false,
-          "itemsFound": 0,
-          "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:45:27.414Z"
-        },
-        {
-          "method": "operator_internal_search",
-          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0344&searchTerm=%ED%94%84%EB%9E%91%EC%8A%A4%EB%A3%A8%EB%B8%8C%EB%A5%B4%EB%B0%94%EA%B2%8C%ED%8A%B8",
-          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0344&searchTerm=%ED%94%84%EB%9E%91%EC%8A%A4%EB%A3%A8%EB%B8%8C%EB%A5%B4%EB%B0%94%EA%B2%8C%ED%8A%B8",
-          "status": "failed",
-          "httpStatus": null,
-          "contentType": null,
-          "responseSize": null,
-          "timeout": false,
-          "retryCount": 0,
-          "blockedPageDetected": false,
-          "itemsFound": 0,
-          "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:45:27.416Z"
+          "occurredAt": "2026-10-05T00:00:21.199Z"
         },
         {
           "method": "operator_internal_search",
@@ -1447,12 +1414,12 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:45:27.418Z"
+          "occurredAt": "2026-10-05T00:00:21.203Z"
         },
         {
-          "method": "operator_internal_search_fallback",
-          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0342&searchTerm=%EB%8F%99%EB%B4%89",
-          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0342&searchTerm=%EB%8F%99%EB%B4%89",
+          "method": "operator_internal_search",
+          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0344&searchTerm=%ED%94%84%EB%9E%91%EC%8A%A4%EB%A3%A8%EB%B8%8C%EB%A5%B4%EB%B0%94%EA%B2%8C%ED%8A%B8",
+          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0344&searchTerm=%ED%94%84%EB%9E%91%EC%8A%A4%EB%A3%A8%EB%B8%8C%EB%A5%B4%EB%B0%94%EA%B2%8C%ED%8A%B8",
           "status": "failed",
           "httpStatus": null,
           "contentType": null,
@@ -1462,7 +1429,22 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:45:49.879Z"
+          "occurredAt": "2026-10-05T00:00:21.205Z"
+        },
+        {
+          "method": "operator_internal_search",
+          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0028&searchTerm=%EB%84%88%EA%B5%AC%EB%A6%AC%EB%B2%A0%EC%9D%B4%EA%B8%80",
+          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0028&searchTerm=%EB%84%88%EA%B5%AC%EB%A6%AC%EB%B2%A0%EC%9D%B4%EA%B8%80",
+          "status": "failed",
+          "httpStatus": null,
+          "contentType": null,
+          "responseSize": null,
+          "timeout": false,
+          "retryCount": 0,
+          "blockedPageDetected": false,
+          "itemsFound": 0,
+          "errorType": "network_error",
+          "occurredAt": "2026-10-05T00:00:21.207Z"
         },
         {
           "method": "operator_internal_search",
@@ -1477,22 +1459,7 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:45:49.880Z"
-        },
-        {
-          "method": "operator_internal_search",
-          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=%EB%A1%A4%EC%8A%A4%EB%A1%A4%EC%8A%A4+%EB%B6%88%EC%B4%88%EB%B0%A5",
-          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=%EB%A1%A4%EC%8A%A4%EB%A1%A4%EC%8A%A4+%EB%B6%88%EC%B4%88%EB%B0%A5",
-          "status": "failed",
-          "httpStatus": null,
-          "contentType": null,
-          "responseSize": null,
-          "timeout": false,
-          "retryCount": 0,
-          "blockedPageDetected": false,
-          "itemsFound": 0,
-          "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:45:49.882Z"
+          "occurredAt": "2026-10-05T00:00:43.661Z"
         },
         {
           "method": "operator_internal_search_fallback",
@@ -1507,7 +1474,7 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:45:49.885Z"
+          "occurredAt": "2026-10-05T00:00:43.663Z"
         },
         {
           "method": "operator_internal_search_fallback",
@@ -1522,7 +1489,7 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:45:49.888Z"
+          "occurredAt": "2026-10-05T00:00:43.664Z"
         },
         {
           "method": "operator_internal_search_fallback",
@@ -1537,7 +1504,7 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:45:49.889Z"
+          "occurredAt": "2026-10-05T00:00:43.667Z"
         },
         {
           "method": "operator_internal_search_fallback",
@@ -1552,7 +1519,7 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:45:49.891Z"
+          "occurredAt": "2026-10-05T00:00:43.670Z"
         },
         {
           "method": "operator_internal_search_fallback",
@@ -1567,12 +1534,12 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:45:49.894Z"
+          "occurredAt": "2026-10-05T00:00:43.671Z"
         },
         {
           "method": "operator_internal_search_fallback",
-          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=%EC%95%84%EB%A5%B4%EB%84%9B+%EC%88%98%EC%A0%9C+%ED%94%BC%EC%B9%B8+%ED%98%B8%EB%91%90",
-          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=%EC%95%84%EB%A5%B4%EB%84%9B+%EC%88%98%EC%A0%9C+%ED%94%BC%EC%B9%B8+%ED%98%B8%EB%91%90",
+          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0342&searchTerm=%EB%8F%99%EB%B4%89",
+          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0342&searchTerm=%EB%8F%99%EB%B4%89",
           "status": "failed",
           "httpStatus": null,
           "contentType": null,
@@ -1582,12 +1549,12 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:46:12.359Z"
+          "occurredAt": "2026-10-05T00:00:43.674Z"
         },
         {
           "method": "operator_internal_search",
-          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EB%A7%8C%EC%84%9D%EB%8B%AD%EA%B0%95%EC%A0%95",
-          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EB%A7%8C%EC%84%9D%EB%8B%AD%EA%B0%95%EC%A0%95",
+          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=%EB%A1%A4%EC%8A%A4%EB%A1%A4%EC%8A%A4+%EB%B6%88%EC%B4%88%EB%B0%A5",
+          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=%EB%A1%A4%EC%8A%A4%EB%A1%A4%EC%8A%A4+%EB%B6%88%EC%B4%88%EB%B0%A5",
           "status": "failed",
           "httpStatus": null,
           "contentType": null,
@@ -1597,37 +1564,7 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:46:12.360Z"
-        },
-        {
-          "method": "operator_internal_search",
-          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%9A%94%EC%95%84%EC%A0%95+%EC%BB%B5%EB%B9%99%EC%88%98",
-          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%9A%94%EC%95%84%EC%A0%95+%EC%BB%B5%EB%B9%99%EC%88%98",
-          "status": "failed",
-          "httpStatus": null,
-          "contentType": null,
-          "responseSize": null,
-          "timeout": false,
-          "retryCount": 0,
-          "blockedPageDetected": false,
-          "itemsFound": 0,
-          "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:46:12.362Z"
-        },
-        {
-          "method": "operator_internal_search_fallback",
-          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=%EB%B2%A0%EC%9D%B4%EA%B8%80%EB%A6%AC%EC%8A%A4%ED%8A%B8+%EB%9D%BC%ED%81%AC%EB%A3%A8%EB%9C%A8",
-          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=%EB%B2%A0%EC%9D%B4%EA%B8%80%EB%A6%AC%EC%8A%A4%ED%8A%B8+%EB%9D%BC%ED%81%AC%EB%A3%A8%EB%9C%A8",
-          "status": "failed",
-          "httpStatus": null,
-          "contentType": null,
-          "responseSize": null,
-          "timeout": false,
-          "retryCount": 0,
-          "blockedPageDetected": false,
-          "itemsFound": 0,
-          "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:46:12.364Z"
+          "occurredAt": "2026-10-05T00:00:43.677Z"
         },
         {
           "method": "operator_internal_search_fallback",
@@ -1642,7 +1579,7 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:46:12.367Z"
+          "occurredAt": "2026-10-05T00:01:06.136Z"
         },
         {
           "method": "operator_internal_search_fallback",
@@ -1657,12 +1594,12 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:46:12.369Z"
+          "occurredAt": "2026-10-05T00:01:06.137Z"
         },
         {
-          "method": "operator_internal_search",
-          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EB%B0%94%EC%83%A4%EC%BB%A4%ED%94%BC",
-          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EB%B0%94%EC%83%A4%EC%BB%A4%ED%94%BC",
+          "method": "operator_internal_search_fallback",
+          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=%EB%B2%A0%EC%9D%B4%EA%B8%80%EB%A6%AC%EC%8A%A4%ED%8A%B8+%EB%9D%BC%ED%81%AC%EB%A3%A8%EB%9C%A8",
+          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=%EB%B2%A0%EC%9D%B4%EA%B8%80%EB%A6%AC%EC%8A%A4%ED%8A%B8+%EB%9D%BC%ED%81%AC%EB%A3%A8%EB%9C%A8",
           "status": "failed",
           "httpStatus": null,
           "contentType": null,
@@ -1672,7 +1609,37 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:46:12.371Z"
+          "occurredAt": "2026-10-05T00:01:06.142Z"
+        },
+        {
+          "method": "operator_internal_search",
+          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EB%A7%8C%EC%84%9D%EB%8B%AD%EA%B0%95%EC%A0%95",
+          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EB%A7%8C%EC%84%9D%EB%8B%AD%EA%B0%95%EC%A0%95",
+          "status": "failed",
+          "httpStatus": null,
+          "contentType": null,
+          "responseSize": null,
+          "timeout": false,
+          "retryCount": 0,
+          "blockedPageDetected": false,
+          "itemsFound": 0,
+          "errorType": "network_error",
+          "occurredAt": "2026-10-05T00:01:06.144Z"
+        },
+        {
+          "method": "operator_internal_search",
+          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%9A%94%EC%95%84%EC%A0%95+%EC%BB%B5%EB%B9%99%EC%88%98",
+          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%9A%94%EC%95%84%EC%A0%95+%EC%BB%B5%EB%B9%99%EC%88%98",
+          "status": "failed",
+          "httpStatus": null,
+          "contentType": null,
+          "responseSize": null,
+          "timeout": false,
+          "retryCount": 0,
+          "blockedPageDetected": false,
+          "itemsFound": 0,
+          "errorType": "network_error",
+          "occurredAt": "2026-10-05T00:01:06.147Z"
         },
         {
           "method": "operator_internal_search_fallback",
@@ -1687,7 +1654,37 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:46:12.373Z"
+          "occurredAt": "2026-10-05T00:01:06.151Z"
+        },
+        {
+          "method": "operator_internal_search_fallback",
+          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=%EC%95%84%EB%A5%B4%EB%84%9B+%EC%88%98%EC%A0%9C+%ED%94%BC%EC%B9%B8+%ED%98%B8%EB%91%90",
+          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0022&searchTerm=%EC%95%84%EB%A5%B4%EB%84%9B+%EC%88%98%EC%A0%9C+%ED%94%BC%EC%B9%B8+%ED%98%B8%EB%91%90",
+          "status": "failed",
+          "httpStatus": null,
+          "contentType": null,
+          "responseSize": null,
+          "timeout": false,
+          "retryCount": 0,
+          "blockedPageDetected": false,
+          "itemsFound": 0,
+          "errorType": "network_error",
+          "occurredAt": "2026-10-05T00:01:06.151Z"
+        },
+        {
+          "method": "operator_internal_search",
+          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EB%B0%94%EC%83%A4%EC%BB%A4%ED%94%BC",
+          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EB%B0%94%EC%83%A4%EC%BB%A4%ED%94%BC",
+          "status": "failed",
+          "httpStatus": null,
+          "contentType": null,
+          "responseSize": null,
+          "timeout": false,
+          "retryCount": 0,
+          "blockedPageDetected": false,
+          "itemsFound": 0,
+          "errorType": "network_error",
+          "occurredAt": "2026-10-05T00:01:06.152Z"
         },
         {
           "method": "operator_internal_search",
@@ -1702,97 +1699,7 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:46:34.939Z"
-        },
-        {
-          "method": "operator_internal_search",
-          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%B0%BE%EB%8B%A4%EB%B3%B4%EB%8B%88%EC%97%AC%EA%B8%B0+%EA%B1%B4%EC%96%B4%EB%AC%BC%C2%B7%EA%B1%B4%EA%B0%95%EC%B9%A9",
-          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%B0%BE%EB%8B%A4%EB%B3%B4%EB%8B%88%EC%97%AC%EA%B8%B0+%EA%B1%B4%EC%96%B4%EB%AC%BC%C2%B7%EA%B1%B4%EA%B0%95%EC%B9%A9",
-          "status": "failed",
-          "httpStatus": null,
-          "contentType": null,
-          "responseSize": null,
-          "timeout": false,
-          "retryCount": 0,
-          "blockedPageDetected": false,
-          "itemsFound": 0,
-          "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:46:34.941Z"
-        },
-        {
-          "method": "operator_internal_search",
-          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EB%8F%84%EC%BF%84%EB%B2%A0%EB%A6%AC+%EC%83%9D%EA%B3%BC%EC%9D%BC%EB%AA%A8%EC%B0%8C",
-          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EB%8F%84%EC%BF%84%EB%B2%A0%EB%A6%AC+%EC%83%9D%EA%B3%BC%EC%9D%BC%EB%AA%A8%EC%B0%8C",
-          "status": "failed",
-          "httpStatus": null,
-          "contentType": null,
-          "responseSize": null,
-          "timeout": false,
-          "retryCount": 0,
-          "blockedPageDetected": false,
-          "itemsFound": 0,
-          "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:46:34.942Z"
-        },
-        {
-          "method": "operator_internal_search",
-          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%B2%AD%EC%A3%BC%EB%AF%B8%EC%B9%9C%EB%A7%8C%EB%91%90",
-          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%B2%AD%EC%A3%BC%EB%AF%B8%EC%B9%9C%EB%A7%8C%EB%91%90",
-          "status": "failed",
-          "httpStatus": null,
-          "contentType": null,
-          "responseSize": null,
-          "timeout": false,
-          "retryCount": 0,
-          "blockedPageDetected": false,
-          "itemsFound": 0,
-          "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:46:34.945Z"
-        },
-        {
-          "method": "operator_internal_search_fallback",
-          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%9A%94%EC%95%84%EC%A0%95",
-          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%9A%94%EC%95%84%EC%A0%95",
-          "status": "failed",
-          "httpStatus": null,
-          "contentType": null,
-          "responseSize": null,
-          "timeout": false,
-          "retryCount": 0,
-          "blockedPageDetected": false,
-          "itemsFound": 0,
-          "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:46:34.947Z"
-        },
-        {
-          "method": "operator_internal_search",
-          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%8B%9C%EC%98%A4%ED%8C%A1%EC%95%BC+%EC%86%8C%EA%B8%88%EB%B9%B5",
-          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%8B%9C%EC%98%A4%ED%8C%A1%EC%95%BC+%EC%86%8C%EA%B8%88%EB%B9%B5",
-          "status": "failed",
-          "httpStatus": null,
-          "contentType": null,
-          "responseSize": null,
-          "timeout": false,
-          "retryCount": 0,
-          "blockedPageDetected": false,
-          "itemsFound": 0,
-          "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:46:34.950Z"
-        },
-        {
-          "method": "operator_internal_search",
-          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%95%BC%EB%AF%B8%ED%91%B8%EB%A3%A8%EB%94%B0+%EC%B0%A9%EC%A6%99%EC%A3%BC%EC%8A%A4",
-          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%95%BC%EB%AF%B8%ED%91%B8%EB%A3%A8%EB%94%B0+%EC%B0%A9%EC%A6%99%EC%A3%BC%EC%8A%A4",
-          "status": "failed",
-          "httpStatus": null,
-          "contentType": null,
-          "responseSize": null,
-          "timeout": false,
-          "retryCount": 0,
-          "blockedPageDetected": false,
-          "itemsFound": 0,
-          "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:46:34.951Z"
+          "occurredAt": "2026-10-05T00:01:28.620Z"
         },
         {
           "method": "operator_internal_search",
@@ -1807,27 +1714,12 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:46:34.954Z"
-        },
-        {
-          "method": "operator_internal_search_fallback",
-          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0001&searchTerm=%EA%B8%80%EB%9D%BC%EC%87%BC",
-          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0001&searchTerm=%EA%B8%80%EB%9D%BC%EC%87%BC",
-          "status": "failed",
-          "httpStatus": null,
-          "contentType": null,
-          "responseSize": null,
-          "timeout": false,
-          "retryCount": 0,
-          "blockedPageDetected": false,
-          "itemsFound": 0,
-          "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:46:57.523Z"
+          "occurredAt": "2026-10-05T00:01:28.621Z"
         },
         {
           "method": "operator_internal_search",
-          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0001&searchTerm=%EB%B0%80%EB%B9%9B+%ED%81%AC%EB%A6%BC%EC%B9%98%EC%A6%88%EB%B9%B5",
-          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0001&searchTerm=%EB%B0%80%EB%B9%9B+%ED%81%AC%EB%A6%BC%EC%B9%98%EC%A6%88%EB%B9%B5",
+          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%95%BC%EB%AF%B8%ED%91%B8%EB%A3%A8%EB%94%B0+%EC%B0%A9%EC%A6%99%EC%A3%BC%EC%8A%A4",
+          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%95%BC%EB%AF%B8%ED%91%B8%EB%A3%A8%EB%94%B0+%EC%B0%A9%EC%A6%99%EC%A3%BC%EC%8A%A4",
           "status": "failed",
           "httpStatus": null,
           "contentType": null,
@@ -1837,42 +1729,12 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:46:57.525Z"
-        },
-        {
-          "method": "operator_internal_search_fallback",
-          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%95%BC%EB%AF%B8%ED%91%B8%EB%A3%A8%EB%94%B0",
-          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%95%BC%EB%AF%B8%ED%91%B8%EB%A3%A8%EB%94%B0",
-          "status": "failed",
-          "httpStatus": null,
-          "contentType": null,
-          "responseSize": null,
-          "timeout": false,
-          "retryCount": 0,
-          "blockedPageDetected": false,
-          "itemsFound": 0,
-          "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:46:57.527Z"
-        },
-        {
-          "method": "operator_internal_search_fallback",
-          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%8B%9C%EC%98%A4%ED%8C%A1%EC%95%BC",
-          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%8B%9C%EC%98%A4%ED%8C%A1%EC%95%BC",
-          "status": "failed",
-          "httpStatus": null,
-          "contentType": null,
-          "responseSize": null,
-          "timeout": false,
-          "retryCount": 0,
-          "blockedPageDetected": false,
-          "itemsFound": 0,
-          "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:46:57.529Z"
+          "occurredAt": "2026-10-05T00:01:28.624Z"
         },
         {
           "method": "operator_internal_search",
-          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0336&searchTerm=%EC%86%8C%EA%B8%88%EC%83%81%ED%9A%8C",
-          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0336&searchTerm=%EC%86%8C%EA%B8%88%EC%83%81%ED%9A%8C",
+          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%8B%9C%EC%98%A4%ED%8C%A1%EC%95%BC+%EC%86%8C%EA%B8%88%EB%B9%B5",
+          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%8B%9C%EC%98%A4%ED%8C%A1%EC%95%BC+%EC%86%8C%EA%B8%88%EB%B9%B5",
           "status": "failed",
           "httpStatus": null,
           "contentType": null,
@@ -1882,12 +1744,12 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:46:57.531Z"
+          "occurredAt": "2026-10-05T00:01:28.626Z"
         },
         {
           "method": "operator_internal_search",
-          "url": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000546957",
-          "finalUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000546957",
+          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%B2%AD%EC%A3%BC%EB%AF%B8%EC%B9%9C%EB%A7%8C%EB%91%90",
+          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%B2%AD%EC%A3%BC%EB%AF%B8%EC%B9%9C%EB%A7%8C%EB%91%90",
           "status": "failed",
           "httpStatus": null,
           "contentType": null,
@@ -1897,12 +1759,27 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:46:57.532Z"
+          "occurredAt": "2026-10-05T00:01:28.628Z"
+        },
+        {
+          "method": "operator_internal_search",
+          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EB%8F%84%EC%BF%84%EB%B2%A0%EB%A6%AC+%EC%83%9D%EA%B3%BC%EC%9D%BC%EB%AA%A8%EC%B0%8C",
+          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EB%8F%84%EC%BF%84%EB%B2%A0%EB%A6%AC+%EC%83%9D%EA%B3%BC%EC%9D%BC%EB%AA%A8%EC%B0%8C",
+          "status": "failed",
+          "httpStatus": null,
+          "contentType": null,
+          "responseSize": null,
+          "timeout": false,
+          "retryCount": 0,
+          "blockedPageDetected": false,
+          "itemsFound": 0,
+          "errorType": "network_error",
+          "occurredAt": "2026-10-05T00:01:28.630Z"
         },
         {
           "method": "operator_internal_search_fallback",
-          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EB%8F%84%EC%BF%84%EB%B2%A0%EB%A6%AC",
-          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EB%8F%84%EC%BF%84%EB%B2%A0%EB%A6%AC",
+          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%9A%94%EC%95%84%EC%A0%95",
+          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%9A%94%EC%95%84%EC%A0%95",
           "status": "failed",
           "httpStatus": null,
           "contentType": null,
@@ -1912,7 +1789,22 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:46:57.535Z"
+          "occurredAt": "2026-10-05T00:01:28.633Z"
+        },
+        {
+          "method": "operator_internal_search",
+          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%B0%BE%EB%8B%A4%EB%B3%B4%EB%8B%88%EC%97%AC%EA%B8%B0+%EA%B1%B4%EC%96%B4%EB%AC%BC%C2%B7%EA%B1%B4%EA%B0%95%EC%B9%A9",
+          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%B0%BE%EB%8B%A4%EB%B3%B4%EB%8B%88%EC%97%AC%EA%B8%B0+%EA%B1%B4%EC%96%B4%EB%AC%BC%C2%B7%EA%B1%B4%EA%B0%95%EC%B9%A9",
+          "status": "failed",
+          "httpStatus": null,
+          "contentType": null,
+          "responseSize": null,
+          "timeout": false,
+          "retryCount": 0,
+          "blockedPageDetected": false,
+          "itemsFound": 0,
+          "errorType": "network_error",
+          "occurredAt": "2026-10-05T00:01:28.635Z"
         },
         {
           "method": "operator_internal_search_fallback",
@@ -1927,12 +1819,12 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:46:57.538Z"
+          "occurredAt": "2026-10-05T00:01:51.166Z"
         },
         {
-          "method": "operator_internal_search_fallback",
-          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%B0%BE%EB%8B%A4%EB%B3%B4%EB%8B%88%EC%97%AC%EA%B8%B0+%EA%B1%B4%EC%96%B4%EB%AC%BC+%EA%B1%B4%EA%B0%95%EC%B9%A9",
-          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%B0%BE%EB%8B%A4%EB%B3%B4%EB%8B%88%EC%97%AC%EA%B8%B0+%EA%B1%B4%EC%96%B4%EB%AC%BC+%EA%B1%B4%EA%B0%95%EC%B9%A9",
+          "method": "operator_internal_search",
+          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0001&searchTerm=%EB%B0%80%EB%B9%9B+%ED%81%AC%EB%A6%BC%EC%B9%98%EC%A6%88%EB%B9%B5",
+          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0001&searchTerm=%EB%B0%80%EB%B9%9B+%ED%81%AC%EB%A6%BC%EC%B9%98%EC%A6%88%EB%B9%B5",
           "status": "failed",
           "httpStatus": null,
           "contentType": null,
@@ -1942,7 +1834,97 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:47:20.102Z"
+          "occurredAt": "2026-10-05T00:01:51.167Z"
+        },
+        {
+          "method": "operator_internal_search_fallback",
+          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0001&searchTerm=%EA%B8%80%EB%9D%BC%EC%87%BC",
+          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0001&searchTerm=%EA%B8%80%EB%9D%BC%EC%87%BC",
+          "status": "failed",
+          "httpStatus": null,
+          "contentType": null,
+          "responseSize": null,
+          "timeout": false,
+          "retryCount": 0,
+          "blockedPageDetected": false,
+          "itemsFound": 0,
+          "errorType": "network_error",
+          "occurredAt": "2026-10-05T00:01:51.170Z"
+        },
+        {
+          "method": "operator_internal_search",
+          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0336&searchTerm=%EC%86%8C%EA%B8%88%EC%83%81%ED%9A%8C",
+          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0336&searchTerm=%EC%86%8C%EA%B8%88%EC%83%81%ED%9A%8C",
+          "status": "failed",
+          "httpStatus": null,
+          "contentType": null,
+          "responseSize": null,
+          "timeout": false,
+          "retryCount": 0,
+          "blockedPageDetected": false,
+          "itemsFound": 0,
+          "errorType": "network_error",
+          "occurredAt": "2026-10-05T00:01:51.173Z"
+        },
+        {
+          "method": "operator_internal_search_fallback",
+          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EB%8F%84%EC%BF%84%EB%B2%A0%EB%A6%AC",
+          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EB%8F%84%EC%BF%84%EB%B2%A0%EB%A6%AC",
+          "status": "failed",
+          "httpStatus": null,
+          "contentType": null,
+          "responseSize": null,
+          "timeout": false,
+          "retryCount": 0,
+          "blockedPageDetected": false,
+          "itemsFound": 0,
+          "errorType": "network_error",
+          "occurredAt": "2026-10-05T00:01:51.174Z"
+        },
+        {
+          "method": "operator_internal_search",
+          "url": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000546957",
+          "finalUrl": "https://m.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000546957",
+          "status": "failed",
+          "httpStatus": null,
+          "contentType": null,
+          "responseSize": null,
+          "timeout": false,
+          "retryCount": 0,
+          "blockedPageDetected": false,
+          "itemsFound": 0,
+          "errorType": "network_error",
+          "occurredAt": "2026-10-05T00:01:51.177Z"
+        },
+        {
+          "method": "operator_internal_search_fallback",
+          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%8B%9C%EC%98%A4%ED%8C%A1%EC%95%BC",
+          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%8B%9C%EC%98%A4%ED%8C%A1%EC%95%BC",
+          "status": "failed",
+          "httpStatus": null,
+          "contentType": null,
+          "responseSize": null,
+          "timeout": false,
+          "retryCount": 0,
+          "blockedPageDetected": false,
+          "itemsFound": 0,
+          "errorType": "network_error",
+          "occurredAt": "2026-10-05T00:01:51.179Z"
+        },
+        {
+          "method": "operator_internal_search_fallback",
+          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%95%BC%EB%AF%B8%ED%91%B8%EB%A3%A8%EB%94%B0",
+          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%95%BC%EB%AF%B8%ED%91%B8%EB%A3%A8%EB%94%B0",
+          "status": "failed",
+          "httpStatus": null,
+          "contentType": null,
+          "responseSize": null,
+          "timeout": false,
+          "retryCount": 0,
+          "blockedPageDetected": false,
+          "itemsFound": 0,
+          "errorType": "network_error",
+          "occurredAt": "2026-10-05T00:01:51.180Z"
         },
         {
           "method": "operator_internal_search",
@@ -1957,37 +1939,7 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:47:20.102Z"
-        },
-        {
-          "method": "operator_internal_search",
-          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0336&searchTerm=%EC%84%9C%EC%9A%B8%EB%A1%A4+%EC%B2%A0%ED%8C%90%ED%94%BC%EC%9E%90%26%ED%8A%80%EC%9D%BC",
-          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0336&searchTerm=%EC%84%9C%EC%9A%B8%EB%A1%A4+%EC%B2%A0%ED%8C%90%ED%94%BC%EC%9E%90%26%ED%8A%80%EC%9D%BC",
-          "status": "failed",
-          "httpStatus": null,
-          "contentType": null,
-          "responseSize": null,
-          "timeout": false,
-          "retryCount": 0,
-          "blockedPageDetected": false,
-          "itemsFound": 0,
-          "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:47:20.104Z"
-        },
-        {
-          "method": "operator_internal_search_fallback",
-          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0001&searchTerm=%EB%B0%80%EB%B9%9B",
-          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0001&searchTerm=%EB%B0%80%EB%B9%9B",
-          "status": "failed",
-          "httpStatus": null,
-          "contentType": null,
-          "responseSize": null,
-          "timeout": false,
-          "retryCount": 0,
-          "blockedPageDetected": false,
-          "itemsFound": 0,
-          "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:47:20.107Z"
+          "occurredAt": "2026-10-05T00:02:13.751Z"
         },
         {
           "method": "operator_internal_search",
@@ -2002,7 +1954,22 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:47:20.109Z"
+          "occurredAt": "2026-10-05T00:02:13.752Z"
+        },
+        {
+          "method": "operator_internal_search_fallback",
+          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%B0%BE%EB%8B%A4%EB%B3%B4%EB%8B%88%EC%97%AC%EA%B8%B0+%EA%B1%B4%EC%96%B4%EB%AC%BC+%EA%B1%B4%EA%B0%95%EC%B9%A9",
+          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0399&searchTerm=%EC%B0%BE%EB%8B%A4%EB%B3%B4%EB%8B%88%EC%97%AC%EA%B8%B0+%EA%B1%B4%EC%96%B4%EB%AC%BC+%EA%B1%B4%EA%B0%95%EC%B9%A9",
+          "status": "failed",
+          "httpStatus": null,
+          "contentType": null,
+          "responseSize": null,
+          "timeout": false,
+          "retryCount": 0,
+          "blockedPageDetected": false,
+          "itemsFound": 0,
+          "errorType": "network_error",
+          "occurredAt": "2026-10-05T00:02:13.755Z"
         },
         {
           "method": "operator_internal_search",
@@ -2017,7 +1984,7 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:47:20.111Z"
+          "occurredAt": "2026-10-05T00:02:13.758Z"
         },
         {
           "method": "operator_internal_search",
@@ -2032,7 +1999,7 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:47:20.113Z"
+          "occurredAt": "2026-10-05T00:02:13.759Z"
         },
         {
           "method": "operator_internal_search",
@@ -2047,57 +2014,12 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:47:20.115Z"
-        },
-        {
-          "method": "operator_internal_search_fallback",
-          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0336&searchTerm=%EC%88%98%EC%88%98%EB%8C%80%EC%9E%A5%EA%B5%B0",
-          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0336&searchTerm=%EC%88%98%EC%88%98%EB%8C%80%EC%9E%A5%EA%B5%B0",
-          "status": "failed",
-          "httpStatus": null,
-          "contentType": null,
-          "responseSize": null,
-          "timeout": false,
-          "retryCount": 0,
-          "blockedPageDetected": false,
-          "itemsFound": 0,
-          "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:47:42.454Z"
-        },
-        {
-          "method": "operator_internal_search_fallback",
-          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0027&searchTerm=%EC%8B%9D%ED%92%88%EA%B4%80",
-          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0027&searchTerm=%EC%8B%9D%ED%92%88%EA%B4%80",
-          "status": "failed",
-          "httpStatus": null,
-          "contentType": null,
-          "responseSize": null,
-          "timeout": false,
-          "retryCount": 0,
-          "blockedPageDetected": false,
-          "itemsFound": 0,
-          "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:47:42.456Z"
-        },
-        {
-          "method": "operator_internal_search_fallback",
-          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0344&searchTerm=%EB%A3%A8%EC%86%94",
-          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0344&searchTerm=%EB%A3%A8%EC%86%94",
-          "status": "failed",
-          "httpStatus": null,
-          "contentType": null,
-          "responseSize": null,
-          "timeout": false,
-          "retryCount": 0,
-          "blockedPageDetected": false,
-          "itemsFound": 0,
-          "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:47:42.458Z"
+          "occurredAt": "2026-10-05T00:02:13.762Z"
         },
         {
           "method": "operator_internal_search",
-          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0333&searchTerm=%ED%90%81%EC%8B%A0%EB%8B%B9+Pop-Up",
-          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0333&searchTerm=%ED%90%81%EC%8B%A0%EB%8B%B9+Pop-Up",
+          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0336&searchTerm=%EC%84%9C%EC%9A%B8%EB%A1%A4+%EC%B2%A0%ED%8C%90%ED%94%BC%EC%9E%90%26%ED%8A%80%EC%9D%BC",
+          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0336&searchTerm=%EC%84%9C%EC%9A%B8%EB%A1%A4+%EC%B2%A0%ED%8C%90%ED%94%BC%EC%9E%90%26%ED%8A%80%EC%9D%BC",
           "status": "failed",
           "httpStatus": null,
           "contentType": null,
@@ -2107,12 +2029,12 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:47:42.460Z"
+          "occurredAt": "2026-10-05T00:02:13.764Z"
         },
         {
           "method": "operator_internal_search_fallback",
-          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0336&searchTerm=%EC%84%9C%EC%9A%B8%EB%A1%A4",
-          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0336&searchTerm=%EC%84%9C%EC%9A%B8%EB%A1%A4",
+          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0001&searchTerm=%EB%B0%80%EB%B9%9B",
+          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0001&searchTerm=%EB%B0%80%EB%B9%9B",
           "status": "failed",
           "httpStatus": null,
           "contentType": null,
@@ -2122,7 +2044,7 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:47:42.461Z"
+          "occurredAt": "2026-10-05T00:02:13.767Z"
         },
         {
           "method": "operator_internal_search_fallback",
@@ -2137,12 +2059,12 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:47:42.463Z"
+          "occurredAt": "2026-10-05T00:02:36.353Z"
         },
         {
           "method": "operator_internal_search",
-          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0333&searchTerm=%EB%9D%BC%EC%9D%B4%ED%94%84%EC%BB%AC%EC%B2%98+Pop-Up",
-          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0333&searchTerm=%EB%9D%BC%EC%9D%B4%ED%94%84%EC%BB%AC%EC%B2%98+Pop-Up",
+          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0333&searchTerm=%ED%90%81%EC%8B%A0%EB%8B%B9+Pop-Up",
+          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0333&searchTerm=%ED%90%81%EC%8B%A0%EB%8B%B9+Pop-Up",
           "status": "failed",
           "httpStatus": null,
           "contentType": null,
@@ -2152,7 +2074,22 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:47:42.465Z"
+          "occurredAt": "2026-10-05T00:02:36.355Z"
+        },
+        {
+          "method": "operator_internal_search_fallback",
+          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0336&searchTerm=%EC%84%9C%EC%9A%B8%EB%A1%A4",
+          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0336&searchTerm=%EC%84%9C%EC%9A%B8%EB%A1%A4",
+          "status": "failed",
+          "httpStatus": null,
+          "contentType": null,
+          "responseSize": null,
+          "timeout": false,
+          "retryCount": 0,
+          "blockedPageDetected": false,
+          "itemsFound": 0,
+          "errorType": "network_error",
+          "occurredAt": "2026-10-05T00:02:36.355Z"
         },
         {
           "method": "operator_internal_search_fallback",
@@ -2167,7 +2104,67 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:47:42.466Z"
+          "occurredAt": "2026-10-05T00:02:36.359Z"
+        },
+        {
+          "method": "operator_internal_search_fallback",
+          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0336&searchTerm=%EC%88%98%EC%88%98%EB%8C%80%EC%9E%A5%EA%B5%B0",
+          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0336&searchTerm=%EC%88%98%EC%88%98%EB%8C%80%EC%9E%A5%EA%B5%B0",
+          "status": "failed",
+          "httpStatus": null,
+          "contentType": null,
+          "responseSize": null,
+          "timeout": false,
+          "retryCount": 0,
+          "blockedPageDetected": false,
+          "itemsFound": 0,
+          "errorType": "network_error",
+          "occurredAt": "2026-10-05T00:02:36.361Z"
+        },
+        {
+          "method": "operator_internal_search_fallback",
+          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0027&searchTerm=%EC%8B%9D%ED%92%88%EA%B4%80",
+          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0027&searchTerm=%EC%8B%9D%ED%92%88%EA%B4%80",
+          "status": "failed",
+          "httpStatus": null,
+          "contentType": null,
+          "responseSize": null,
+          "timeout": false,
+          "retryCount": 0,
+          "blockedPageDetected": false,
+          "itemsFound": 0,
+          "errorType": "network_error",
+          "occurredAt": "2026-10-05T00:02:36.362Z"
+        },
+        {
+          "method": "operator_internal_search",
+          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0333&searchTerm=%EB%9D%BC%EC%9D%B4%ED%94%84%EC%BB%AC%EC%B2%98+Pop-Up",
+          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0333&searchTerm=%EB%9D%BC%EC%9D%B4%ED%94%84%EC%BB%AC%EC%B2%98+Pop-Up",
+          "status": "failed",
+          "httpStatus": null,
+          "contentType": null,
+          "responseSize": null,
+          "timeout": false,
+          "retryCount": 0,
+          "blockedPageDetected": false,
+          "itemsFound": 0,
+          "errorType": "network_error",
+          "occurredAt": "2026-10-05T00:02:36.363Z"
+        },
+        {
+          "method": "operator_internal_search_fallback",
+          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0344&searchTerm=%EB%A3%A8%EC%86%94",
+          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0344&searchTerm=%EB%A3%A8%EC%86%94",
+          "status": "failed",
+          "httpStatus": null,
+          "contentType": null,
+          "responseSize": null,
+          "timeout": false,
+          "retryCount": 0,
+          "blockedPageDetected": false,
+          "itemsFound": 0,
+          "errorType": "network_error",
+          "occurredAt": "2026-10-05T00:02:36.366Z"
         },
         {
           "method": "operator_internal_search",
@@ -2182,7 +2179,7 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:47:43.430Z"
+          "occurredAt": "2026-10-05T00:02:37.231Z"
         },
         {
           "method": "operator_internal_search_fallback",
@@ -2197,7 +2194,7 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:47:44.081Z"
+          "occurredAt": "2026-10-05T00:02:37.795Z"
         },
         {
           "method": "operator_internal_search_fallback",
@@ -2212,22 +2209,7 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:48:04.682Z"
-        },
-        {
-          "method": "operator_internal_search_fallback",
-          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0336&searchTerm=%EC%84%9C%EC%9A%B8%EB%A1%A4+%EC%B2%A0%ED%8C%90%ED%94%BC%EC%9E%90+%ED%8A%80%EC%9D%BC",
-          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0336&searchTerm=%EC%84%9C%EC%9A%B8%EB%A1%A4+%EC%B2%A0%ED%8C%90%ED%94%BC%EC%9E%90+%ED%8A%80%EC%9D%BC",
-          "status": "failed",
-          "httpStatus": null,
-          "contentType": null,
-          "responseSize": null,
-          "timeout": false,
-          "retryCount": 0,
-          "blockedPageDetected": false,
-          "itemsFound": 0,
-          "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:48:04.683Z"
+          "occurredAt": "2026-10-05T00:02:58.843Z"
         },
         {
           "method": "operator_internal_search_fallback",
@@ -2242,7 +2224,22 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:48:04.685Z"
+          "occurredAt": "2026-10-05T00:02:58.843Z"
+        },
+        {
+          "method": "operator_internal_search_fallback",
+          "url": "https://m.lotteshopping.com/search/searchResult?cstrCd=0336&searchTerm=%EC%84%9C%EC%9A%B8%EB%A1%A4+%EC%B2%A0%ED%8C%90%ED%94%BC%EC%9E%90+%ED%8A%80%EC%9D%BC",
+          "finalUrl": "https://m.lotteshopping.com/search/searchResult?cstrCd=0336&searchTerm=%EC%84%9C%EC%9A%B8%EB%A1%A4+%EC%B2%A0%ED%8C%90%ED%94%BC%EC%9E%90+%ED%8A%80%EC%9D%BC",
+          "status": "failed",
+          "httpStatus": null,
+          "contentType": null,
+          "responseSize": null,
+          "timeout": false,
+          "retryCount": 0,
+          "blockedPageDetected": false,
+          "itemsFound": 0,
+          "errorType": "network_error",
+          "occurredAt": "2026-10-05T00:02:58.844Z"
         },
         {
           "method": "operator_internal_search_fallback",
@@ -2257,7 +2254,7 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:48:27.266Z"
+          "occurredAt": "2026-10-05T00:03:21.426Z"
         },
         {
           "method": "operator_internal_search_fallback",
@@ -2272,7 +2269,7 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:48:27.266Z"
+          "occurredAt": "2026-10-05T00:03:21.427Z"
         }
       ],
       "detailPagesChecked": 0,
@@ -2292,8 +2289,8 @@
         "not_popup": 1
       },
       "errors": [],
-      "startedAt": "2026-10-04T00:44:54.422Z",
-      "finishedAt": "2026-10-04T00:45:15.943Z",
+      "startedAt": "2026-10-04T23:59:48.198Z",
+      "finishedAt": "2026-10-05T00:00:04.961Z",
       "healthStatus": "unverified",
       "healthMessage": "공식 대체 경로 확인 후도 존재 여부 미확정",
       "lastSuccessfulAt": null,
@@ -2319,7 +2316,7 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:14.992Z"
+          "occurredAt": "2026-10-04T23:59:57.814Z"
         },
         {
           "method": "official_detail_html",
@@ -2334,7 +2331,7 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:15.629Z"
+          "occurredAt": "2026-10-05T00:00:04.751Z"
         }
       ],
       "detailPagesChecked": 1,
@@ -2354,8 +2351,8 @@
         "not_popup": 1
       },
       "errors": [],
-      "startedAt": "2026-10-04T00:44:54.422Z",
-      "finishedAt": "2026-10-04T00:45:16.428Z",
+      "startedAt": "2026-10-04T23:59:48.198Z",
+      "finishedAt": "2026-10-04T23:59:59.411Z",
       "healthStatus": "unverified",
       "healthMessage": "공식 대체 경로 확인 후도 존재 여부 미확정",
       "lastSuccessfulAt": null,
@@ -2381,7 +2378,7 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:44:59.113Z"
+          "occurredAt": "2026-10-04T23:59:51.940Z"
         },
         {
           "method": "official_detail_html",
@@ -2396,7 +2393,7 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:15.487Z"
+          "occurredAt": "2026-10-04T23:59:58.678Z"
         }
       ],
       "detailPagesChecked": 1,
@@ -2416,8 +2413,8 @@
         "expired": 1
       },
       "errors": [],
-      "startedAt": "2026-10-04T00:44:54.422Z",
-      "finishedAt": "2026-10-04T00:45:01.220Z",
+      "startedAt": "2026-10-04T23:59:48.198Z",
+      "finishedAt": "2026-10-04T23:59:52.348Z",
       "healthStatus": "unverified",
       "healthMessage": "공식 대체 경로 확인 후도 존재 여부 미확정",
       "lastSuccessfulAt": null,
@@ -2443,7 +2440,7 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:44:59.903Z"
+          "occurredAt": "2026-10-04T23:59:51.774Z"
         },
         {
           "method": "official_detail_html",
@@ -2458,7 +2455,7 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:01.209Z"
+          "occurredAt": "2026-10-04T23:59:52.339Z"
         }
       ],
       "detailPagesChecked": 1,
@@ -2476,8 +2473,8 @@
       "errorCount": 0,
       "rejectionReasons": {},
       "errors": [],
-      "startedAt": "2026-10-04T00:44:54.422Z",
-      "finishedAt": "2026-10-04T00:44:59.546Z",
+      "startedAt": "2026-10-04T23:59:48.198Z",
+      "finishedAt": "2026-10-04T23:59:51.469Z",
       "healthStatus": "unverified",
       "healthMessage": "공식 대체 경로 확인 후도 존재 여부 미확정",
       "lastSuccessfulAt": null,
@@ -2503,7 +2500,7 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:44:59.536Z"
+          "occurredAt": "2026-10-04T23:59:51.461Z"
         }
       ],
       "detailPagesChecked": 0,
@@ -2521,8 +2518,8 @@
       "errorCount": 0,
       "rejectionReasons": {},
       "errors": [],
-      "startedAt": "2026-10-04T00:44:54.422Z",
-      "finishedAt": "2026-10-04T00:46:49.117Z",
+      "startedAt": "2026-10-04T23:59:48.198Z",
+      "finishedAt": "2026-10-05T00:01:40.319Z",
       "healthStatus": "unverified",
       "healthMessage": "공식 대체 경로 확인 후도 존재 여부 미확정",
       "lastSuccessfulAt": null,
@@ -2551,13 +2548,13 @@
           "status": "empty",
           "httpStatus": 200,
           "contentType": "text/html; charset=utf-8",
-          "responseSize": 111162,
+          "responseSize": 111159,
           "timeout": false,
           "retryCount": 0,
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:14.909Z"
+          "occurredAt": "2026-10-04T23:59:58.014Z"
         },
         {
           "method": "official_fallback_html",
@@ -2566,13 +2563,13 @@
           "status": "empty",
           "httpStatus": 200,
           "contentType": "text/html; charset=utf-8",
-          "responseSize": 111158,
+          "responseSize": 111155,
           "timeout": false,
           "retryCount": 0,
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:15.305Z"
+          "occurredAt": "2026-10-04T23:59:58.375Z"
         },
         {
           "method": "robots",
@@ -2587,7 +2584,7 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:15.592Z"
+          "occurredAt": "2026-10-04T23:59:58.674Z"
         },
         {
           "method": "sitemap",
@@ -2602,7 +2599,7 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:15.869Z"
+          "occurredAt": "2026-10-04T23:59:59.019Z"
         },
         {
           "method": "sitemap",
@@ -2617,7 +2614,7 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:16.187Z"
+          "occurredAt": "2026-10-04T23:59:59.304Z"
         },
         {
           "method": "sitemap",
@@ -2632,7 +2629,7 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:17.346Z"
+          "occurredAt": "2026-10-05T00:00:03.193Z"
         },
         {
           "method": "sitemap",
@@ -2647,7 +2644,7 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:45:47.440Z"
+          "occurredAt": "2026-10-05T00:00:31.806Z"
         },
         {
           "method": "sitemap",
@@ -2662,7 +2659,7 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:46:16.989Z"
+          "occurredAt": "2026-10-05T00:01:08.794Z"
         },
         {
           "method": "sitemap",
@@ -2677,7 +2674,7 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "network_error",
-          "occurredAt": "2026-10-04T00:46:49.109Z"
+          "occurredAt": "2026-10-05T00:01:40.309Z"
         }
       ],
       "detailPagesChecked": 0,
@@ -2697,8 +2694,8 @@
         "expired": 1
       },
       "errors": [],
-      "startedAt": "2026-10-04T00:44:54.422Z",
-      "finishedAt": "2026-10-04T00:45:03.706Z",
+      "startedAt": "2026-10-04T23:59:48.198Z",
+      "finishedAt": "2026-10-04T23:59:53.635Z",
       "healthStatus": "unverified",
       "healthMessage": "공식 대체 경로 확인 후도 존재 여부 미확정",
       "lastSuccessfulAt": null,
@@ -2729,7 +2726,7 @@
           "blockedPageDetected": false,
           "itemsFound": 1,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:02.255Z"
+          "occurredAt": "2026-10-04T23:59:52.336Z"
         },
         {
           "method": "official_fallback_html",
@@ -2744,7 +2741,7 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "http_404",
-          "occurredAt": "2026-10-04T00:45:02.561Z"
+          "occurredAt": "2026-10-04T23:59:52.602Z"
         },
         {
           "method": "official_fallback_html",
@@ -2759,7 +2756,7 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "http_404",
-          "occurredAt": "2026-10-04T00:45:02.841Z"
+          "occurredAt": "2026-10-04T23:59:52.860Z"
         },
         {
           "method": "robots",
@@ -2774,7 +2771,7 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "http_404",
-          "occurredAt": "2026-10-04T00:45:03.143Z"
+          "occurredAt": "2026-10-04T23:59:53.111Z"
         },
         {
           "method": "sitemap",
@@ -2789,7 +2786,7 @@
           "blockedPageDetected": false,
           "itemsFound": 0,
           "errorType": "http_404",
-          "occurredAt": "2026-10-04T00:45:03.421Z"
+          "occurredAt": "2026-10-04T23:59:53.366Z"
         },
         {
           "method": "official_detail_html",
@@ -2804,7 +2801,7 @@
           "blockedPageDetected": false,
           "itemsFound": 1,
           "errorType": null,
-          "occurredAt": "2026-10-04T00:45:03.703Z"
+          "occurredAt": "2026-10-04T23:59:53.631Z"
         }
       ],
       "detailPagesChecked": 1,
@@ -2822,8 +2819,8 @@
       "errorCount": 0,
       "rejectionReasons": {},
       "errors": [],
-      "startedAt": "2026-10-04T00:44:54.422Z",
-      "finishedAt": "2026-10-04T00:44:54.422Z",
+      "startedAt": "2026-10-04T23:59:48.198Z",
+      "finishedAt": "2026-10-04T23:59:48.199Z",
       "healthStatus": "unverified",
       "healthMessage": "공식 공간이 리노베이션 임시 휴관 중이며 실행 환경에서 공식 도메인의 구형 TLS를 검증할 수 없음",
       "lastSuccessfulAt": null,
@@ -2840,12 +2837,12 @@
       "errorCount": 0,
       "rejectionReasons": {},
       "errors": [],
-      "startedAt": "2026-10-04T00:44:54.422Z",
-      "finishedAt": "2026-10-04T00:45:03.421Z",
-      "healthStatus": "unverified",
+      "startedAt": "2026-10-04T23:59:48.198Z",
+      "finishedAt": "2026-10-05T00:00:41.175Z",
+      "healthStatus": "failed",
       "healthMessage": "공식 대체 경로 확인 후도 존재 여부 미확정",
       "lastSuccessfulAt": null,
-      "consecutiveFailureCount": 0,
+      "consecutiveFailureCount": 1,
       "anomalyFlags": [],
       "sourceId": "seoul-forest-community-center",
       "primaryPath": "https://seoulforest.or.kr/",
@@ -2858,22 +2855,22 @@
           "method": "official_list_html",
           "url": "https://seoulforest.or.kr/",
           "finalUrl": "https://seoulforest.or.kr/",
-          "status": "empty",
-          "httpStatus": 200,
-          "contentType": "text/html; charset=UTF-8",
-          "responseSize": 124877,
+          "status": "failed",
+          "httpStatus": null,
+          "contentType": null,
+          "responseSize": null,
           "timeout": false,
           "retryCount": 0,
           "blockedPageDetected": false,
           "itemsFound": 0,
-          "errorType": null,
-          "occurredAt": "2026-10-04T00:45:02.986Z"
+          "errorType": "network_error",
+          "occurredAt": "2026-10-05T00:00:41.174Z"
         }
       ],
       "detailPagesChecked": 0,
-      "imageCandidatesFound": 38,
+      "imageCandidatesFound": 0,
       "menuCandidatesFound": 0,
-      "finalStatus": "search_incomplete"
+      "finalStatus": "request_failed"
     },
     {
       "source": "신세계사이먼 프리미엄 아울렛",
@@ -2887,11 +2884,11 @@
         "not_popup": 46
       },
       "errors": [],
-      "startedAt": "2026-10-04T00:44:54.422Z",
-      "finishedAt": "2026-10-04T00:45:07.270Z",
+      "startedAt": "2026-10-04T23:59:48.198Z",
+      "finishedAt": "2026-10-04T23:59:56.374Z",
       "healthStatus": "healthy",
       "healthMessage": "2건 파싱",
-      "lastSuccessfulAt": "2026-10-04T00:45:07.270Z",
+      "lastSuccessfulAt": "2026-10-04T23:59:56.374Z",
       "consecutiveFailureCount": 0,
       "anomalyFlags": []
     },
@@ -2907,8 +2904,8 @@
         "not_popup": 1
       },
       "errors": [],
-      "startedAt": "2026-10-04T00:44:54.422Z",
-      "finishedAt": "2026-10-04T00:45:04.613Z",
+      "startedAt": "2026-10-04T23:59:48.198Z",
+      "finishedAt": "2026-10-04T23:59:52.454Z",
       "healthStatus": "unverified",
       "healthMessage": "정상 응답이지만 현재 행사 없음을 확정할 근거 부족",
       "lastSuccessfulAt": null,
@@ -2927,8 +2924,8 @@
         "not_popup": 13
       },
       "errors": [],
-      "startedAt": "2026-10-04T00:44:54.422Z",
-      "finishedAt": "2026-10-04T00:45:04.804Z",
+      "startedAt": "2026-10-04T23:59:48.198Z",
+      "finishedAt": "2026-10-04T23:59:52.530Z",
       "healthStatus": "unverified",
       "healthMessage": "정상 응답이지만 현재 행사 없음을 확정할 근거 부족",
       "lastSuccessfulAt": null,
@@ -2945,8 +2942,8 @@
       "errorCount": 0,
       "rejectionReasons": {},
       "errors": [],
-      "startedAt": "2026-10-04T00:44:54.422Z",
-      "finishedAt": "2026-10-04T00:45:04.788Z",
+      "startedAt": "2026-10-04T23:59:48.198Z",
+      "finishedAt": "2026-10-04T23:59:52.332Z",
       "healthStatus": "unverified",
       "healthMessage": "0건이지만 대체 공식 경로 확인 미완료",
       "lastSuccessfulAt": null,
@@ -2963,8 +2960,8 @@
       "errorCount": 0,
       "rejectionReasons": {},
       "errors": [],
-      "startedAt": "2026-10-04T00:44:54.422Z",
-      "finishedAt": "2026-10-04T00:45:13.636Z",
+      "startedAt": "2026-10-04T23:59:48.198Z",
+      "finishedAt": "2026-10-04T23:59:53.816Z",
       "healthStatus": "unverified",
       "healthMessage": "0건이지만 대체 공식 경로 확인 미완료",
       "lastSuccessfulAt": null,
@@ -2981,8 +2978,8 @@
       "errorCount": 0,
       "rejectionReasons": {},
       "errors": [],
-      "startedAt": "2026-10-04T00:44:54.422Z",
-      "finishedAt": "2026-10-04T00:45:13.056Z",
+      "startedAt": "2026-10-04T23:59:48.198Z",
+      "finishedAt": "2026-10-04T23:59:56.454Z",
       "healthStatus": "unverified",
       "healthMessage": "0건이지만 대체 공식 경로 확인 미완료",
       "lastSuccessfulAt": null,
@@ -2999,8 +2996,8 @@
       "errorCount": 0,
       "rejectionReasons": {},
       "errors": [],
-      "startedAt": "2026-10-04T00:44:54.422Z",
-      "finishedAt": "2026-10-04T00:45:13.339Z",
+      "startedAt": "2026-10-04T23:59:48.198Z",
+      "finishedAt": "2026-10-04T23:59:53.822Z",
       "healthStatus": "unverified",
       "healthMessage": "0건이지만 대체 공식 경로 확인 미완료",
       "lastSuccessfulAt": null,
@@ -3017,8 +3014,8 @@
       "errorCount": 0,
       "rejectionReasons": {},
       "errors": [],
-      "startedAt": "2026-10-04T00:44:54.422Z",
-      "finishedAt": "2026-10-04T00:45:14.853Z",
+      "startedAt": "2026-10-04T23:59:48.198Z",
+      "finishedAt": "2026-10-04T23:59:55.650Z",
       "healthStatus": "unverified",
       "healthMessage": "0건이지만 대체 공식 경로 확인 미완료",
       "lastSuccessfulAt": null,
@@ -3039,8 +3036,8 @@
           "message": "fetch failed"
         }
       ],
-      "startedAt": "2026-10-04T00:44:54.422Z",
-      "finishedAt": "2026-10-04T00:45:14.591Z",
+      "startedAt": "2026-10-04T23:59:48.198Z",
+      "finishedAt": "2026-10-05T00:00:03.274Z",
       "healthStatus": "failed",
       "healthMessage": "공식 출처 요청 실패",
       "lastSuccessfulAt": null,
@@ -3060,8 +3057,8 @@
         "expired": 7
       },
       "errors": [],
-      "startedAt": "2026-10-04T00:44:54.422Z",
-      "finishedAt": "2026-10-04T00:45:12.633Z",
+      "startedAt": "2026-10-04T23:59:48.198Z",
+      "finishedAt": "2026-10-04T23:59:54.997Z",
       "healthStatus": "unverified",
       "healthMessage": "0건이지만 대체 공식 경로 확인 미완료",
       "lastSuccessfulAt": null,
@@ -3080,8 +3077,8 @@
         "expired": 1
       },
       "errors": [],
-      "startedAt": "2026-10-04T00:44:54.422Z",
-      "finishedAt": "2026-10-04T00:45:13.558Z",
+      "startedAt": "2026-10-04T23:59:48.199Z",
+      "finishedAt": "2026-10-04T23:59:56.629Z",
       "healthStatus": "unverified",
       "healthMessage": "0건이지만 대체 공식 경로 확인 미완료",
       "lastSuccessfulAt": null,
@@ -3101,8 +3098,8 @@
         "invalid_date": 1
       },
       "errors": [],
-      "startedAt": "2026-10-04T00:44:54.422Z",
-      "finishedAt": "2026-10-04T00:45:14.861Z",
+      "startedAt": "2026-10-04T23:59:48.199Z",
+      "finishedAt": "2026-10-04T23:59:57.808Z",
       "healthStatus": "unverified",
       "healthMessage": "0건이지만 대체 공식 경로 확인 미완료",
       "lastSuccessfulAt": null,
@@ -3121,14 +3118,14 @@
     },
     "statusDistribution": {
       "upcoming": 9,
-      "ongoing": 150,
-      "ended": 636
+      "ongoing": 143,
+      "ended": 643
     },
-    "newCount": 111,
-    "endingSoonCount": 16,
+    "newCount": 98,
+    "endingSoonCount": 84,
     "missingImageCount": 0,
     "missingMenuCount": 10,
     "missingCoordinateCount": 794,
-    "generatedAt": "2026-10-04T00:50:19.908Z"
+    "generatedAt": "2026-10-05T00:05:09.907Z"
   }
 }
